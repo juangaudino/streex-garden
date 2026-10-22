@@ -42,6 +42,7 @@ const detailLabels = {
     ediblePart: "Parte comestible",
     bestUse: "Mejor uso",
     quickUses: "Usos rápidos",
+    foodSafety: "Seguridad alimentaria",
     neighbors: "Buenas vecinas / Mejor separar",
     supportedRelations:
       "Relaciones respaldadas por evidencia; no son una promesa universal de companion planting.",
@@ -74,6 +75,7 @@ const detailLabels = {
     ediblePart: "Edible part",
     bestUse: "Best use",
     quickUses: "Quick uses",
+    foodSafety: "Food safety",
     neighbors: "Good neighbors / Better separate",
     supportedRelations:
       "Evidence-backed relationships; not a universal companion-planting promise.",
@@ -370,17 +372,28 @@ function FullSheet({
               </div>
             </div>
 
-            <p className="eyebrow mt-5 text-[10px]">{labels.quickUses}</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {detail.harvestUse.quickUses.map((use) => (
-                <span
-                  key={use}
-                  className="rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-semibold"
-                >
-                  {use}
-                </span>
-              ))}
-            </div>
+            {detail.harvestUse.quickUses.length > 0 && (
+              <>
+                <p className="eyebrow mt-5 text-[10px]">{labels.quickUses}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {detail.harvestUse.quickUses.map((use) => (
+                    <span
+                      key={use}
+                      className="rounded-full border border-border bg-background/60 px-3 py-1.5 text-xs font-semibold"
+                    >
+                      {use}
+                    </span>
+                  ))}
+                </div>
+              </>
+            )}
+
+            {detail.harvestUse.safetyNote && (
+              <aside className="glass-soft mt-4 border border-accent/30 p-4" role="note">
+                <p className="eyebrow text-[10px]">{labels.foodSafety}</p>
+                <p className="mt-2 text-sm leading-6">{detail.harvestUse.safetyNote}</p>
+              </aside>
+            )}
 
             <div className="mt-5 grid gap-3 md:grid-cols-2">
               {detail.harvestUse.options.map((option) => (
@@ -419,6 +432,34 @@ function FullSheet({
                 </article>
               ))}
             </div>
+          </section>
+        )}
+
+        {(
+          [
+            "asparagus", "rhubarb", "escarole", "blush-hibiscus", "pink-petunia",
+            "black-viola", "northern-highbush-blueberry", "red-raspberry",
+            "common-fig", "table-grape-vine",
+          ].includes(detail.id)
+        ) && !detail.neighbors && (
+          <section className="glass-panel p-5 sm:p-6">
+            <p className="eyebrow text-[10px]">↔ {language === "es" ? "Vecinas" : "Neighbors"}</p>
+            <h2 className="mt-1 font-display text-2xl font-bold leading-tight">{labels.neighbors}</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              {language === "es"
+                ? "No tenemos una pareja de plantas con beneficio demostrado para esta ficha. Una lista tradicional de acompañantes no equivale a evidencia experimental."
+                : "No verified beneficial companion pair is documented for this profile. Traditional companion-planting lists are not equivalent to experimental evidence."}
+            </p>
+            <p className="mt-3 text-sm leading-relaxed">
+              {language === "es"
+                ? "Para decidir qué colocar cerca, compara el espacio adulto, la luz, el agua, las raíces y el método de cultivo. La compatibilidad física no demuestra que una planta beneficie a otra."
+                : "For nearby planting, compare mature space, light, water, roots and growing method. Physical compatibility does not prove that one plant benefits another."}
+            </p>
+            {detail.visualGuide && (
+              <p className="mt-3 text-xs text-muted-foreground">
+                <SourceLink label={detail.visualGuide.publisher} url={detail.visualGuide.url} />
+              </p>
+            )}
           </section>
         )}
 
@@ -588,7 +629,9 @@ function GuideAccordion({
           <span className="block font-display text-base font-semibold leading-tight">
             {guide.title}
           </span>
-          <span className="mt-0.5 block text-xs text-muted-foreground">{guide.subtitle}</span>
+          {guide.subtitle && (
+            <span className="mt-0.5 block text-xs text-muted-foreground">{guide.subtitle}</span>
+          )}
         </span>
         {open ? (
           <Minus aria-hidden="true" className="size-4 shrink-0" />
@@ -610,6 +653,12 @@ function GuideAccordion({
               </li>
             )}
           </ul>
+          {guide.gardenAdaptation && (
+            <aside className="mt-3 rounded-xl border border-accent/25 bg-accent/5 p-3">
+              <p className="eyebrow text-[10px]">{labels.gardenAdaptation}</p>
+              <p className="mt-1 text-sm leading-6">{guide.gardenAdaptation}</p>
+            </aside>
+          )}
           {guide.context && (
             <p className="mt-3 text-sm leading-7">
               <strong>{language === "es" ? "Contexto:" : "Context:"}</strong> {guide.context}

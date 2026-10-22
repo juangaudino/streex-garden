@@ -45,11 +45,11 @@
     "url": "https://plants.ces.ncsu.edu/plants/codiaeum-variegatum/",
     "type": "horticulture_reference",
     "tier": 1,
-    "scope": "Species-level croton description, broad cultivar variation, outdoor light/soil guidance, indoor houseplant context, and pest/sap cautions; listed dimensions are not assigned as a cultivar-specific container size",
-    "accessed": "2026-10-16",
+    "scope": "Species-level croton description, broad cultivar variation, outdoor light/soil guidance, indoor houseplant context, inconspicuous flowers, and pest/sap/ingestion cautions; listed dimensions are not assigned as a cultivar-specific container size",
+    "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 37",
-    "claimKinds": ["identity", "growth", "cultivation", "problems", "safety"]
+    "claimKinds": ["identity", "growth", "cultivation", "flowering", "problems", "safety"]
   },
   {
     "id": "ufifas-codiaeum-propagation-wave37",
@@ -89,6 +89,19 @@
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 37",
     "claimKinds": ["identity", "growth", "cultivation", "propagation", "maintenance", "problems", "safety"]
+  },
+  {
+    "id": "iastate-how-propagate-succulents-2023-wave37",
+    "publisher": "Iowa State University Extension and Outreach",
+    "title": "How to Propagate Succulents",
+    "url": "https://yardandgarden.extension.iastate.edu/how-to/how-propagate-succulents",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "General succulent propagation method; specifically lists Kalanchoe for stem and leaf cuttings and describes callusing, well-drained media, leaf orientation and moisture; not a cultivar-specific schedule or guarantee",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["propagation"]
   },
   {
     "id": "kew-heptapleurum-arboricola-wave37",
@@ -136,11 +149,11 @@
     "url": "https://plants.ces.ncsu.edu/plants/ficus-benjamina/common-name/weeping-fig/",
     "type": "horticulture_reference",
     "tier": 1,
-    "scope": "Species-level indoor/outdoor habit and size distinction, light sensitivity, container care, pruning, stem-cutting propagation and common pests; cultivar-specific traits remain distinct",
-    "accessed": "2026-10-16",
+    "scope": "Species-level indoor/outdoor habit and size distinction, light sensitivity, container care, pruning, flower/fig biology, stem-cutting propagation and common pests; cultivar-specific traits remain distinct",
+    "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 37",
-    "claimKinds": ["identity", "growth", "cultivation", "propagation", "maintenance", "problems"]
+    "claimKinds": ["identity", "growth", "cultivation", "propagation", "maintenance", "problems", "flowering"]
   },
   {
     "id": "kew-citrus-meyeri-wave37",
@@ -175,11 +188,11 @@
     "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-citrus-indoors",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Indoor citrus guidance; specifically names Meyer lemon and calamondin among citrus houseplants and states that citrus stem cuttings root easily; genus/crop-level claims are not cultivar-specific",
+    "scope": "Minnesota indoor-citrus guidance; names calamondin and Meyer lemon, and covers citrus light, temperature, potting, seasonal movement, leaf washing, pests, pollination, fruit use and general stem-cutting/seed propagation; group-level claims are not cultivar-specific",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 37",
-    "claimKinds": ["cultivation", "propagation", "maintenance"]
+    "claimKinds": ["cultivation", "propagation", "maintenance", "harvest", "problems"]
   },
   {
     "id": "kew-citrus-microcarpa-wave37",
@@ -245,6 +258,32 @@
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 37",
     "claimKinds": ["cultivation", "growth", "harvest", "propagation"]
+  },
+  {
+    "id": "ufifas-papaya-home-mg054-2026",
+    "publisher": "University of Florida IFAS Extension",
+    "title": "Papaya Growing in the Florida Home Landscape (MG054)",
+    "url": "https://ask.ifas.ufl.edu/publication/MG054",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Florida home-landscape guidance for papaya flower-sex variation and pollination, water/mulch management, selected pest/disease signs, fruit maturity, use and refrigerated storage; regional and not cultivar-specific",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile enrichment research",
+    "claimKinds": ["growth", "cultivation", "care", "flowering", "pollination", "harvest", "use", "problems"]
+  },
+  {
+    "id": "ufifas-passion-fruit-postharvest-hs1527-wave37",
+    "publisher": "University of Florida IFAS Extension",
+    "title": "Passion Fruit: Postharvest Handling Practices and Physiological Disorders (HS1527)",
+    "url": "https://ask.ifas.ufl.edu/publication/HS1527",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Passiflora edulis postharvest use, cultivar-dependent maturity colors, harvest handling, pollination context and postharvest disorders in Florida; purple/yellow type-specific facts are not assigned to this unresolved-color species identity",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Labs plant-profile evidence review",
+    "claimKinds": ["growth", "harvest", "uses", "problems"]
   },
   {
     "id": "kew-carica-papaya-wave37",

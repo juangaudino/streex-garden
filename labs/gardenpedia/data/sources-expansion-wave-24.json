@@ -19,13 +19,14 @@
     "url": "https://ucanr.edu/node/124939/printable/print",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Regional home-garden celeriac sowing, light-dependent germination, temperature, crop duration, root growth and bolting context; no cultivar-specific claim",
+    "scope": "Regional home-garden celeriac sowing, light-dependent germination, temperature, crop duration, root growth, even-moisture care, careful cultivation, side-root removal and hilling, harvest cues, bolting and leaf-miner signs; no cultivar-specific claim",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
     "claimKinds": [
       "identity",
       "cultivation",
+      "maintenance",
       "propagation",
       "harvest",
       "problems"
@@ -207,11 +208,11 @@
     "url": "https://corn.agronomy.wisc.edu/Crops/Chickpea.aspx",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Crop-level chickpea climate, seed quality, planting depth, seedbed, drainage and field establishment guidance; not a home-container or indoor hydroponic recipe",
+    "scope": "Crop-level chickpea production evidence including dry-pulse or green-vegetable use, field harvest at yellowing/mature pod color, seed quality and storage; not a home-container or indoor hydroponic recipe",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "propagation", "problems"]
+    "claimKinds": ["identity", "cultivation", "propagation", "problems", "harvest", "uses"]
   },
   {
     "id": "iastate-beans-chickpea-500",

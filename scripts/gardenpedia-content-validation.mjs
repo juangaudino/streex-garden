@@ -652,8 +652,8 @@ if (wave47Plants.length !== 1 || Object.keys(wave47Translations).length !== wave
   throw new Error("Wave 47 must contain one bilingual profile and one source-supported seed profile");
 if (wave48Plants.length !== 5 || Object.keys(wave48Translations).length !== wave48Plants.length || Object.keys(read("seed-profiles-expansion-wave-48.json").profiles).length !== 4)
   throw new Error("Wave 48 must contain five bilingual profiles and four evidence-supported seed profiles");
-if (wave49Plants.length !== 6 || Object.keys(wave49Translations).length !== wave49Plants.length || Object.keys(read("seed-profiles-expansion-wave-49.json").profiles).length !== 3)
-  throw new Error("Wave 49 must contain six bilingual profiles and three evidence-supported seed profiles");
+if (wave49Plants.length !== 6 || Object.keys(wave49Translations).length !== wave49Plants.length || Object.keys(read("seed-profiles-expansion-wave-49.json").profiles).length !== 5)
+  throw new Error("Wave 49 must contain six bilingual profiles and five evidence-supported seed profiles");
 if (wave50Plants.length !== 5 || Object.keys(wave50Translations).length !== wave50Plants.length || Object.keys(read("seed-profiles-expansion-wave-50.json").profiles).length !== 0)
   throw new Error("Wave 50 must contain five bilingual plant profiles and no unsupported Seed Profiles");
 if (wave51Plants.length !== 9 || Object.keys(wave51Translations).length !== wave51Plants.length || Object.keys(read("seed-profiles-expansion-wave-51.json").profiles).length !== 0)
@@ -686,7 +686,7 @@ if (
   throw new Error("Wave 62 must contain three bilingual profiles and one evidence-supported Seed Profile");
 if (
   wave63Plants.length !== 3 ||
-  Object.keys(wave63Translations).length !== wave63Plants.length ||
+  wave63Plants.some((plant) => !wave63Translations[plant.id]) ||
   Object.keys(read("seed-profiles-expansion-wave-63.json").profiles).length !== 2
 )
   throw new Error("Wave 63 must contain three bilingual profiles and two evidence-supported Seed Profiles");

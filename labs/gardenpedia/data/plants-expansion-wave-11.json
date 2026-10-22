@@ -8,22 +8,64 @@
     "category": "ornamentals",
     "emoji": "🪴",
     "tags": ["pinguicula lilac lollipop", "lilac lollipop butterwort", "butterwort", "planta carnívora"],
-    "summary": "California Carnivores identifies Lilac Lollipop as a cyclosecta hybrid and sells it as bare-root plant material. Its exact parentage and formal cultivar status are not established by the selected evidence.",
+    "summary": "California Carnivores sells Lilac Lollipop as a bare-root, cyclosecta hybrid and reports a 2–4 in full-growth rosette with lilac flowers and seasonal leaf-form changes. UC Davis explains that Mexican/tropical Pinguicula care varies by species; exact parentage and formal cultivar registration are not established, so the profile stays at the supplier-named product scope.",
     "metrics": [],
     "sections": {
       "identity": {
         "short": "Supplier-named Pinguicula hybrid",
-        "guidance": "The specialist grower describes Lilac Lollipop as a cyclosecta hybrid. Kew accepts Pinguicula cyclosecta as a species, but does not establish the parentage or nomenclatural status of this horticultural hybrid.",
+        "guidance": "California Carnivores identifies the product as a cyclosecta hybrid named Lilac Lollipop. Kew accepts Pinguicula cyclosecta as a species but does not establish this hybrid's exact parentage or formal cultivar status. The profile therefore treats Lilac Lollipop as a supplier-named horticultural product, not a formally registered cultivar or a fully resolved botanical cross.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["calif-carnivores-lilac-lollipop-500", "kew-pinguicula-cyclosecta-500"]
       },
-      "cultivation": {
-        "short": "Use Mexican butterwort care context cautiously",
-        "guidance": "California Carnivores describes its product as a butterwort and notes purple coloration under bright light. Do not translate that observation into an exact indoor light setpoint or assume every plant colors identically.",
+      "growth": {
+        "short": "Small rosette; supplier reports 2–4 in at full growth",
+        "guidance": "California Carnivores reports this named product at about 2–4 inches across when fully grown and says it may arrive much smaller in its winter succulent-leaf phase. The size is supplier-reported for Lilac Lollipop, not an independent trial or a height measurement.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["calif-carnivores-lilac-lollipop-500"]
+      },
+      "flowering": {
+        "short": "Supplier describes soft lilac flowers",
+        "guidance": "The supplier names Lilac Lollipop for its lilac-colored flowers and describes abundant flowering. This is the product description; it does not guarantee flower count, timing, or repeat bloom under every home condition.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500"]
+      },
+      "cultivation": {
+        "short": "Use Mexican butterwort care context cautiously",
+        "guidance": "California Carnivores groups this product with Mexican/Tropical Pinguicula and recommends full-to-part sun, including a sunny indoor windowsill or grow lights, while protecting plants from strong afternoon sun. The seller reports a purple blush under bright light; UC Davis notes that light needs and color response vary among species and hybrids. Neither source gives a quantified lamp intensity, so no indoor light tier or setpoint is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500", "ucdavis-botanical-conservatory-pinguicula-wave11"]
+      },
+      "watering": {
+        "short": "Use mineral-free water; adjust moisture to the leaf phase",
+        "guidance": "California Carnivores and UC Davis advise deionized, reverse-osmosis, or distilled water for Pinguicula because dissolved minerals can damage plants. UC Davis describes Mexican/tropical butterworts as moist but not bog plants; its general tray guidance allows the medium to dry between refills. The supplier advises reducing water as a succulent winter rosette begins and warns that seasonal transitions are a rot-risk period. Exact species-level seasonal watering needs vary, so observe the plant rather than applying a calendar recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500", "ucdavis-botanical-conservatory-pinguicula-wave11"]
+      },
+      "substrate": {
+        "short": "Use a low-mineral, free-draining Pinguicula medium",
+        "guidance": "California Carnivores recommends its sandy Pinguicula mix for Mexican/Tropical plants; UC Davis gives a general tropical Pinguicula medium based on coarse sand, peat and perlite and warns against pre-fertilized media. These are source-specific formulations, not a single proven recipe for every hybrid. The guidance concerns a potted carnivorous plant, not hydroponics.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500", "ucdavis-botanical-conservatory-pinguicula-wave11"]
+      },
+      "maintenance": {
+        "short": "A succulent winter rosette can be normal seasonal growth",
+        "guidance": "The supplier says Lilac Lollipop may form small, tight succulent leaves in winter and return to larger carnivorous leaves in spring; it does not require inducing this phase. UC Davis confirms that some tropical Mexican Pinguicula, including P. cyclosecta, can change leaf form seasonally, while care differs by species. A compact succulent rosette alone should not be treated as failure; follow the plant's observed transition and avoid overwatering during it.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500", "ucdavis-botanical-conservatory-pinguicula-wave11"]
+      },
+      "problems": {
+        "short": "Mineral buildup and excess moisture can damage butterworts",
+        "guidance": "The seller warns that Pinguicula are highly sensitive to dissolved minerals and salts; UC Davis likewise recommends mineral-free water and cautions against keeping tropical pings too wet. The supplier flags seasonal transition as a higher-risk period for rot. No specific pest or disease diagnosis for Lilac Lollipop is established by these sources.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["calif-carnivores-lilac-lollipop-500", "ucdavis-botanical-conservatory-pinguicula-wave11"]
       },
       "propagation": {
         "short": "Leaf pullings are a documented vegetative route for Pinguicula",
@@ -31,22 +73,15 @@
         "evidenceType": "garden_adaptation",
         "confidence": "medium",
         "sourceIds": ["calif-carnivores-pinguicula-propagation-500"]
-      },
-      "identityReview": {
-        "short": "Parentage and formal naming remain unresolved",
-        "guidance": "The product evidence supports the supplier name and a cyclosecta-hybrid description, but not a complete cross formula or formal registration. Retain this limitation rather than importing community-repeated parentage claims.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": ["calif-carnivores-lilac-lollipop-500"]
       }
     },
     "compatibilityProfile": {
       "profileVersion": 1,
       "hydroponicSuitability": {"status":"unknown","reason":"The selected sources do not establish hydroponic cultivation for this horticultural hybrid."},
-      "growthHabits": {"status":"unknown","reason":"No standardized growth-habit value selected for this named hybrid."},
+      "growthHabits": {"status":"known","value":["rosette"],"evidence":[{"sourceIds":["calif-carnivores-lilac-lollipop-500","ucdavis-botanical-conservatory-pinguicula-wave11"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"genus","taxon":"Pinguicula"},"note":"The supplier and UC Davis describe Pinguicula as rosette-forming; this is genus-level form, not a cultivar-specific size claim."}]},
       "matureSize": {
         "height":{"status":"unknown","reason":"No verified mature height for Lilac Lollipop selected."},
-        "spread":{"status":"unknown","reason":"No verified mature spread for Lilac Lollipop selected."}
+        "spread":{"status":"known","value":{"minCm":5,"maxCm":10,"context":"container"},"evidence":[{"sourceIds":["calif-carnivores-lilac-lollipop-500"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"identity"},"note":"California Carnivores reports 2–4 in across at full growth for its Lilac Lollipop product; converted to a rounded 5–10 cm container-context range. This is supplier-reported, not an independent trial."}]}
       },
       "spacing":{"status":"unknown","reason":"No planting-spacing evidence selected."},
       "light":{"status":"unknown","reason":"Bright-light coloration is not an indoor lamp-intensity classification."}

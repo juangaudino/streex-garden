@@ -6,8 +6,8 @@
     "url": "https://blog-fruit-vegetable-ipm.extension.umn.edu/2021/03/2021-considerations-brassica-bonanza.html",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Asian brassica crop context for mizuna, tatsoi and mustard greens; not named-cultivar proof",
-    "accessed": "2026-10-01",
+    "scope": "UMN Extension's regional spring field/high-tunnel context for mizuna, mustard greens and Asian brassicas; identifies mizuna and mustard as baby-leaf/cut-and-come-again crop groups and reports multiple field/high-tunnel cuts as production observations, not guarantees for a named cultivar or home/indoor system",
+    "accessed": "2026-10-17",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 2 source registry",
     "claimKinds": [
@@ -27,6 +27,61 @@
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 2 source registry",
+    "claimKinds": [
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "psu-mizuna-asian-green-2026",
+    "publisher": "Penn State Extension",
+    "title": "Mizuna: an Asian Green",
+    "url": "https://extension.psu.edu/mizuna-an-asian-green",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Mizuna type identity, leaf morphology, cool-season cultivation and harvest; nomenclature is reported as published and not treated as cultivar-specific evidence",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "harvest",
+      "uses"
+    ]
+  },
+  {
+    "id": "osu-winter-asian-greens-2026",
+    "publisher": "Oregon State University Extension Service",
+    "title": "Winter Vegetable Production on Small Farms and Gardens West of the Cascades",
+    "url": "https://extension.oregonstate.edu/catalog/pnw-548-winter-vegetable-production-small-farms-gardens-west-cascades",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Regional western Oregon/Washington winter crop context and distinctions among mizuna, tatsoi and mustard greens; not a cultivar guide or universal home-system prescription",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "harvest",
+      "problems"
+    ]
+  },
+  {
+    "id": "johnnys-baby-leaf-brassicas-2026",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "Baby-Leaf Brassica Greens — Key Growing Information",
+    "url": "https://prod-na02.johnnyseeds.com/growers-library/vegetables/baby-leaf/baby-leaf-brassicas-key-growing-information.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Commercial baby-leaf production guidance covering mizuna, tatsoi and baby mustard among several brassicas; harvest interval and methods are production references, not cultivar-specific or universal home-system guarantees",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs targeted profile research",
     "claimKinds": [
       "cultivation",
       "harvest",
@@ -156,13 +211,18 @@
     "url": "https://www.johnnyseeds.com/vegetables/tomatoes/cherry-tomatoes/sun-gold-f1-tomato-seed-770.53.html",
     "type": "product_reference",
     "tier": 2,
-    "scope": "Sun Gold identity and product-specific growing facts; not all tomato evidence",
+    "scope": "Johnny's Sun Gold F1 product facts: orange cherry fruit, stated flavor/size/57-day transplant maturity, indeterminate habit, tendency to split, and product-listed resistance codes. General tomato culture on the same page remains crop-level; product traits do not apply to other cultivars or establish indoor/hydroponic requirements",
     "accessed": "2026-10-01",
     "license": null,
     "provenance": "Gardenpedia Labs Wave 2 source registry",
     "claimKinds": [
       "identity",
       "cultivar",
+      "growth",
+      "support",
+      "harvest",
+      "uses",
+      "problems",
       "seedling"
     ]
   },
@@ -252,6 +312,26 @@
     ]
   },
   {
+    "id": "ncsu-satureja-hortensis-wave2",
+    "publisher": "North Carolina State University Extension",
+    "title": "Satureja hortensis (Summer Savory) — Plant Toolbox",
+    "url": "https://plants.ces.ncsu.edu/plants/satureja-hortensis/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Species-level summer savory lifecycle, established-plant conditions, bud-stage cutting/fresh flush, flowering and bee attraction; culinary and medicinal claims are not used",
+    "accessed": "2026-10-20",
+    "license": null,
+    "provenance": "Gardenpedia Labs content enrichment",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "care",
+      "harvest",
+      "flowering"
+    ]
+  },
+  {
     "id": "illinois-herbs-wave2",
     "publisher": "University of Illinois Extension",
     "title": "Growing Herbs",
@@ -284,5 +364,148 @@
       "cultivation",
       "flowering"
     ]
+  },
+  {
+    "id": "ncsu-cosmos-bipinnatus-wave2",
+    "publisher": "North Carolina State Extension",
+    "title": "Garden Cosmos — Cosmos bipinnatus",
+    "url": "https://plants.ces.ncsu.edu/plants/cosmos-bipinnatus/common-name/garden-cosmos/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Cosmos bipinnatus species dimensions and garden cultivation; lists the Sensation series but does not report its exact dimensions",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment research",
+    "claimKinds": ["identity", "growth", "cultivation", "maintenance", "flowering", "problems"]
+  },
+  {
+    "id": "umn-zinnia-home-garden-wave2",
+    "publisher": "University of Minnesota Extension",
+    "title": "Zinnia",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/zinnia",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "general zinnia crop cultivation, flowering, cut-flower and powdery-mildew guidance; not State Fair-specific evidence",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment research",
+    "claimKinds": ["cultivation", "maintenance", "harvest", "problems"]
+  },
+  {
+    "id": "iastate-sunflowers-home-wave2",
+    "publisher": "Iowa State University Extension and Outreach",
+    "title": "Growing Sunflowers and Their Varieties",
+    "url": "https://yardandgarden.extension.iastate.edu/how-to/growing-sunflowers-and-their-varieties",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Helianthus annuus group-level outdoor cultivation and mature seed-head harvest; named cultivar table values apply only to the exact cultivar listed",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment research",
+    "claimKinds": ["identity", "cultivation", "maintenance", "harvest", "problems"]
+  },
+  {
+    "id": "palermo-c-endivia-floating-system-2018",
+    "publisher": "Agronomy (MDPI), University of Palermo research team",
+    "title": "Effect of Molybdenum Rate on Yield and Quality of Lettuce, Escarole, and Curly Endive Grown in a Floating System",
+    "url": "https://doi.org/10.3390/agronomy8090171",
+    "type": "university_research",
+    "tier": 1,
+    "scope": "Peer-reviewed greenhouse floating-system trial that included Cichorium endivia var. latifolium (escarole) and var. crispum (curly endive); supports hydroponic production evidence for these species forms, not a named catalog cultivar, household appliance fit, or transferable nutrient recipe",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["cultivation", "growth", "compatibility", "harvest"]
+  },
+  {
+    "id": "iastate-marigolds-home-garden-2026",
+    "publisher": "Iowa State University Extension and Outreach",
+    "title": "Growing Marigolds in the Home Garden",
+    "url": "https://yardandgarden.extension.iastate.edu/how-to/growing-marigolds-home-garden",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Home-garden marigold species/type comparison including Tagetes patula size and flower forms, deadheading context, outdoor care, and crop-level pest/disease notes; no unnamed cultivar performance or hydroponic compatibility",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["identity", "growth", "cultivation", "maintenance", "flowering", "problems"]
+  },
+  {
+    "id": "iastate-cut-flowers-home-garden-2025",
+    "publisher": "Iowa State University Extension and Outreach",
+    "title": "How to Harvest, Condition, and Care for Cut Flowers",
+    "url": "https://yardandgarden.extension.iastate.edu/how-to/how-harvest-condition-and-care-cut-flowers",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "General home cut-flower handling: clean shears, species-appropriate harvest stage, prompt hydration, clean vase and water; does not establish a Tagetes patula-specific harvest stage or vase life",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["harvest", "handling"]
+  },
+  {
+    "id": "johnnys-state-fair-mix-zinnia-2026",
+    "publisher": "Johnny's Selected Seeds",
+    "title": "State Fair Mix Zinnia Seed",
+    "url": "https://www.johnnyseeds.com/flowers/zinnias/zinnia-mixes/state-fair-mix-zinnia-seed-1347.11.html",
+    "type": "grower_reference",
+    "tier": 2,
+    "scope": "Johnny's State Fair Mix product description: Zinnia elegans identity, 36–46 in product height, 3–5 in dahlia-type double/semi-double blooms, long stems and repeated cut-flower harvest; product-specific claims, not a guarantee for every State Fair-labelled seed lot",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["identity", "cultivar", "growth", "flowering", "harvest"]
+  },
+  {
+    "id": "edenbrothers-state-fair-zinnia-2026",
+    "publisher": "Eden Brothers",
+    "title": "Zinnia Seeds — State Fair Mix",
+    "url": "https://www.edenbrothers.com/products/zinnia-state-fair-mix",
+    "type": "grower_reference",
+    "tier": 3,
+    "scope": "Retail product description for State Fair Mix: Zinnia elegans type, upright habit, mixed double/semi-double/dahlia-flowered blooms and height listed up to 30 in; commercial product evidence, not a controlled cultivar trial",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["identity", "cultivar", "growth", "flowering"]
+  },
+  {
+    "id": "rutgers-zinnia-cut-harvest-2011",
+    "publisher": "Rutgers Cooperative Extension",
+    "title": "Harvesting and Handling Zinnias",
+    "url": "https://njaes.rutgers.edu/pubs/download.php?strPubID=FS1161",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Zinnia crop-level cut-flower stage and handling guidance from Rutgers; not State Fair-specific",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["harvest", "handling"]
+  },
+  {
+    "id": "msstate-zinnia-farmer-florist-2025",
+    "publisher": "Mississippi State University Extension Service",
+    "title": "Zinnias (Zinnia elegans) for the Farmer Florist",
+    "url": "https://extension.msstate.edu/publications/zinnias-zinnia-elegans-for-the-farmer-florist",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Commercial/farmer-florist Zinnia elegans production, disease recognition and postharvest guidance; its fully-developed cut stage and production dimensions are not State Fair-specific",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["cultivation", "growth", "harvest", "handling", "problems"]
+  },
+  {
+    "id": "umn-lettuce-home-gardens-2024",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing lettuce, endive and radicchio in home gardens",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-lettuce-endive-and-radicchio",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Minnesota home-garden guidance for lettuce, endive and radicchio: cool-season growth, shallow-root moisture, regional outdoor spacing, harvest and disorders. Spacing and calendars are soil-garden references, not indoor pod counts, universal dates or hydroponic settings.",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia profile completion research; promoted from evidence request after source-scope review",
+    "claimKinds": ["growth", "cultivation", "care", "harvest", "problems"]
   }
 ]

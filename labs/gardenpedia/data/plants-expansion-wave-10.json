@@ -30,35 +30,42 @@
         "guidance": "University of Wisconsin–Madison Extension describes salad arugula at crop scope as an annual rosette with lobed leaves. Long days, high temperatures, or dry soil can trigger a branched flowering stem. These are general arugula traits, not measurements or a bolting-resistance claim for Astro.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["johnnys-arugula-wave1"]
+        "sourceIds": ["uw-arugula-extension-2026"]
       },
       "cultivation": {
         "short": "Cool-season crop; crop-level spacing is not pod spacing",
         "guidance": "University of Wisconsin–Madison Extension recommends full sun in fertile, well-drained soil, with light shade as one way to slow bolting during hot weather. It describes successive outdoor sowings every two to three weeks and container growing, including a bright windowsill. Its field spacing is not converted to indoor pod counts. Johnny's separately labels the Astro product a hydroponic performer; this does not establish a nutrient recipe, yield, or fit in every home system.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["johnnys-arugula-wave1", "johnnys-astro-arugula-500"]
+        "sourceIds": ["uw-arugula-extension-2026", "johnnys-astro-arugula-500"]
       },
       "flowering": {
         "short": "Small edible flowers follow bolting",
         "guidance": "The extension describes creamy-white arugula flowers with contrasting veins and notes that the blossoms are edible as a mild garnish. Flowering is normal crop development after bolting; timing and color intensity are not asserted specifically for Astro.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["johnnys-arugula-wave1"]
+        "sourceIds": ["uw-arugula-extension-2026"]
       },
       "harvest": {
         "short": "Pick young leaves or cut above the base for regrowth",
         "guidance": "University of Wisconsin–Madison Extension says leaves can be harvested when a couple of inches long: remove individual rosette leaves, or cut the plant an inch or two above ground and harvest again from regrowth. It also notes that regular picking can delay seed set and that older leaves may taste stronger or more bitter. This is crop-level guidance; no Astro-specific harvest date or yield is claimed.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["johnnys-arugula-wave1"]
+        "sourceIds": ["uw-arugula-extension-2026"]
+      },
+      "uses": {
+        "short": "Young leaves suit salads; mature leaves can be cooked",
+        "guidance": "University of Wisconsin–Madison Extension describes arugula generally as a peppery leafy green used raw in salads or cooked as an accent. The source also documents edible flowers as a mild garnish and young, tender seed pods as edible. These are crop-level uses, not Astro-specific flavor or performance claims.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["uw-arugula-extension-2026"]
       },
       "problems": {
         "short": "Heat, long days, drought and flea beetles matter",
         "guidance": "The extension identifies long days, high temperatures, or dry soil as bolting triggers; hot and dry conditions can also intensify leaf flavor. Flea beetles may leave small shot holes or severely damage seedlings. These are general arugula risks, not an Astro-specific resistance rating.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["johnnys-arugula-wave1"]
+        "sourceIds": ["uw-arugula-extension-2026"]
       }
     },
     "compatibilityProfile": {
@@ -113,7 +120,7 @@
       "tomate cherry rojo grande",
       "cherry tomato"
     ],
-    "summary": "Large Red Cherry is a named cherry-tomato seed product represented separately from generic Cherry Tomato. Product-specific claims remain attributed to the seller; general tomato care remains crop-scoped.",
+    "summary": "Large Red Cherry is a supplier-listed cherry-tomato seed product within Solanum lycopersicum, not a separately accepted species. The seller describes its selection as indeterminate; outdoor tomato cultivation is crop-level guidance, and dimensions, indoor fit and hydroponic performance remain unknown.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -133,19 +140,47 @@
         "confidence": "medium",
         "sourceIds": ["seedman-large-red-cherry-500", "johnnys-tomato"]
       },
-      "harvest": {
-        "short": "Cherry fruit; timing remains an estimate",
-        "guidance": "The seller describes red cherry-sized fruit and gives a product maturity estimate. Treat that figure as a supplier estimate, not a guaranteed indoor harvest date; Garden-specific harvest observations are not available in this public profile.",
+      "growth": {
+        "short": "Supplier-listed indeterminate cherry tomato; mature size unknown",
+        "guidance": "The supplier describes this product as indeterminate, indicating continued vine growth, but does not establish a reliable mature height or spread here. USU Extension explains that tomato support should follow the plant's actual growth habit; do not infer a particular cage, pruning system or indoor footprint from the product name.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["seedman-large-red-cherry-500"]
+        "sourceIds": ["seedman-large-red-cherry-500", "usu-tomatoes-garden"]
+      },
+      "care": {
+        "short": "Maintain even soil moisture outdoors; do not transfer this to a reservoir schedule",
+        "guidance": "UMN Extension links fluctuating garden-soil moisture during fruit growth with blossom-end rot and recommends steady root-zone watering. This does not establish a watering volume for this seed selection or a hydroponic reservoir routine.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-tomato-disorders-2024", "umn-tomatoes-home-gardens-2024"]
+      },
+      "harvest": {
+        "short": "Cherry fruit; timing remains an estimate",
+        "guidance": "The seller describes red cherry-sized fruit and gives a product maturity estimate; treat that figure as a supplier estimate, not a guaranteed indoor harvest date. USU Extension's general cue is fruit at full color while still firm. Harvest timing varies with the seed lot and growing conditions; Garden-specific observations are not available in this public profile.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["seedman-large-red-cherry-500", "usu-tomatoes-garden"]
+      },
+      "problems": {
+        "short": "Recognize blossom-end rot and growth cracks without assuming a single cause",
+        "guidance": "UMN Extension describes blossom-end rot as a tan-to-black flattened patch at the blossom end; it is associated with interrupted calcium movement and does not by itself prove calcium-poor soil. Growth cracks may follow rapid fruit growth or uneven moisture. These are general outdoor tomato warning signs, not a disease-resistance statement or a diagnosis of this named product.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-tomato-disorders-2024"]
       },
       "support": {
-        "short": "Support requirements need local validation",
-        "guidance": "The supplier calls the listed plant indeterminate. That supports planning for continued vine growth, but does not prescribe a specific stake, pruning regime or indoor system configuration.",
-        "evidenceType": "garden_adaptation",
-        "confidence": "low",
-        "sourceIds": ["seedman-large-red-cherry-500"]
+        "short": "Plan support for an indeterminate vine",
+        "guidance": "Seedman describes this named product as indeterminate; UMN Extension says vining tomatoes need support such as a cage, stake or trellis. Choose a structure for the actual outdoor plant and its site. Neither source gives this product a measured mature height or indoor-system configuration.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["seedman-large-red-cherry-500", "umn-tomatoes-home-gardens-2024"]
+      },
+      "flowering": {
+        "short": "Flower movement supports fruit set; sustained heat can cause flower drop",
+        "guidance": "At crop level, UMN Extension explains that tomato flower parts sit close together and flower movement can transfer pollen; tomatoes can produce fruit without bee pollination. UMN's Minnesota-specific example says sustained days above 85°F and nights above 70°F can stress flowers and impair fruit set; flowers may then drop. Treat this as regional diagnostic context, not a Large Red Cherry trait or indoor setpoint.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-pollination-vegetables-2026", "umn-excessive-heat-vegetables-2026"]
       }
     },
     "compatibilityProfile": {
@@ -208,15 +243,15 @@
         ]
       },
       "cultivation": {
-        "short": "Bright indoor light or filtered outdoor placement",
-        "guidance": "University of Minnesota Extension describes coleus as adaptable to sun or shade, with plants in full sun needing more frequent water; indoors, bright light is needed. These are species/crop-level directions, not mix-specific color guarantees.",
+        "short": "Cultivar light preference varies; Rainbow Mix does not identify its component cultivars",
+        "guidance": "University of Minnesota Extension notes that coleus selections differ: some are suited to shade, partial shade, or full sun, and plants in full sun generally need more frequent watering. Because the constituents of Rainbow Mix are unspecified, its individual seedlings' outdoor exposure preference is not established by that crop-level guidance. The source does not define an indoor grow-light tier or hydroponic recipe for this mix.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["umn-coleus-500"]
       },
       "care": {
         "short": "Pinch tips; decide whether to retain flower spikes",
-        "guidance": "The Extension guide recommends clipping stem tips when plants are about 6 inches tall to encourage bushier form and clipping flower stalks when prioritizing foliage. Apply these as general coleus care, not as a requirement for every ornamental use.",
+        "guidance": "For a bushier plant, University of Minnesota Extension recommends cutting the top 2 inches just above a leaf node when the plant is about 6 inches tall. Clip flower stalks as they form when the goal is more foliage rather than flowers or seed. These are crop-level options; the mix's appearance and the grower's ornamental goal may differ.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["umn-coleus-500"]
@@ -227,6 +262,20 @@
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["umn-coleus-500", "sdsc-rainbow-coleus-500"]
+      },
+      "growth": {
+        "short": "Foliage color and mature size vary among coleus selections",
+        "guidance": "University of Minnesota Extension describes coleus as grown mainly for varied foliage and gives a broad crop range of about 6–36 inches tall, often nearly as wide. Since Rainbow Mix's component cultivars are not identified, that range describes coleus diversity, not a guaranteed size for each plant in this packet.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["umn-coleus-500"]
+      },
+      "problems": {
+        "short": "Coleus is cold-sensitive; pests and diseases are usually not a major issue",
+        "guidance": "University of Minnesota Extension identifies coleus as very cold-sensitive and says pests and diseases are usually not an issue. Its light guidance varies by cultivar, so do not use one exposure preference as a diagnosis or universal rule for the unspecified Rainbow Mix seedlings.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["umn-coleus-500"]
       }
     },
     "compatibilityProfile": {
@@ -287,33 +336,50 @@
       "hon tsai tai greens",
       "brassica rapa parachinensis"
     ],
-    "summary": "Hon Tsai Tai is a flowering-stem Asian green in the Brassica rapa choy-sum/parachinensis crop group. The seed listing supports the named seed product; the production guide is regional crop-level guidance.",
+    "summary": "Hon Tsai Tai is a flowering-stem Asian green within the Brassica rapa choy-sum/cai xin crop group. Its established-plant harvest is the tender stem with leaves and developed flower buds; choy-sum crop guidance is kept distinct from product-specific facts.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Brassica rapa choy-sum crop type",
-        "guidance": "Fedco sells Hon Tsai Tai as an open-pollinated Asian-green seed product. Kew accepts Brassica rapa and treats Brassica parachinensis as a synonym of that species; the crop group remains a horticultural distinction, not a separate accepted species here.",
+        "short": "Hon Tsai Tai is a choy-sum/cai xin horticultural type within Brassica rapa",
+        "guidance": "Fedco lists Hon Tsai Tai as an open-pollinated Asian-green seed product. Kew accepts Brassica rapa and treats Brassica parachinensis as a synonym at species level. Sources use choy sum, cai xin and Hon Tsai Tai with overlapping horticultural scope; this record does not elevate the crop name to a separate accepted species or assert a named cultivar.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": [
-          "fedco-hon-tsai-tai-500",
-          "kew-brassica-rapa-500",
-          "ufifas-choy-sum-500"
-        ]
+        "sourceIds": ["fedco-hon-tsai-tai-500", "kew-brassica-rapa-500", "ufifas-choy-sum-500", "oregonstate-chinese-brassicas-500"]
+      },
+      "growth": {
+        "short": "An edible flowering-stem green, not a crop grown to suppress flowering",
+        "guidance": "Oregon State describes Hon Tsai Tai as a purple-stemmed Brassica rapa form. The choy-sum group has leafy shoots topped by small flowers; UF/IFAS reports group-level plant height varying with genetics and environment. That range is not assigned as a cultivar measurement for every Hon Tsai Tai seed lot.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["oregonstate-chinese-brassicas-500", "ufifas-choy-sum-500"]
       },
       "cultivation": {
-        "short": "Use choy-sum guidance at crop scope",
-        "guidance": "UF/IFAS provides production information for choy sum in Florida. Regional field recommendations should not be converted into indoor Garden spacing, a hydroponic recipe, or Hon Tsai Tai cultivar-specific performance.",
+        "short": "Cool-season choy-sum guidance; avoid persistently waterlogged soil",
+        "guidance": "UF/IFAS describes choy sum as a cool-season crop and reports stronger stalks and sweeter quality in its cited 59–77°F (15–25°C) context. It favors fertile, well-drained soil and notes susceptibility to waterlogging. These are choy-sum group/Florida production findings, not a Hon Tsai Tai indoor temperature, nutrient, or pod-spacing prescription.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["ufifas-choy-sum-500"]
       },
+      "care": {
+        "short": "Flower-bud development is the harvest cue, not a reason to deadhead",
+        "guidance": "Unlike a leaf crop where bolting ends the desired harvest, choy sum is grown for flowering shoots. UF/IFAS recommends harvest when buds are fully developed but not yet open; Johnny's classifies choy sum as a budding/cutting type and says a few blooms may be visible. Field succession timing remains production context, not a home-system schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-choy-sum-500", "johnnys-asian-greens-grower-guide-2026"]
+      },
       "harvest": {
-        "short": "Flowering stems and leaves are the crop focus",
-        "guidance": "Oregon State describes Hon Tsai Tai as a purple-stemmed Brassica rapa form harvested for tender flowering stems and young leaves as flowers begin to open. This is crop-type context and not a product-specific harvest date.",
+        "short": "Cut tender stems with leaves and flower buds together; repeat cuts are possible",
+        "guidance": "UF/IFAS says leaves, flower buds and stems are harvested together when the buds are developed but unopened, and reports two to three harvests per season in the production setting it cites. Johnny's notes that multiple harvests are possible for budding/cutting types. These sources support the crop's repeat-harvest behavior but not a guaranteed number of cuts for an individual home-grown plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ufifas-choy-sum-500", "johnnys-asian-greens-grower-guide-2026"]
+      },
+      "problems": {
+        "short": "Watch for waterlogging-related soft rot and brassica-feeding insects",
+        "guidance": "UF/IFAS reports choy sum susceptibility to waterlogging and bacterial soft rot, and lists aphids, armyworms and diamondback moth among pests in its Florida production context. Johnny's names flea beetles for Asian greens and recommends row-cover exclusion from sowing in field production. These are risk alerts, not a diagnosis or indoor intervention protocol.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["oregonstate-chinese-brassicas-500"]
+        "sourceIds": ["ufifas-choy-sum-500", "johnnys-asian-greens-grower-guide-2026"]
       }
     },
     "compatibilityProfile": {
@@ -362,7 +428,7 @@
       "remolacha bull's blood",
       "leaf beet"
     ],
-    "summary": "Bull's Blood is a named beet variety with red foliage and root use described in Cornell's community variety record. Beet sowing guidance remains crop-level rather than a cultivar-specific germination prescription.",
+    "summary": "Bull's Blood is a named dual-purpose beet selection: Cornell's variety record describes red tops as well as root use. Established-plant guidance here separates leaf harvest from root sizing and keeps general beet stress advice at crop scope; Cornell's observations are community-submitted, not controlled trials.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -372,19 +438,40 @@
         "confidence": "medium",
         "sourceIds": ["cornell-bulls-blood-500", "kew-beta-vulgaris-500"]
       },
-      "cultivation": {
-        "short": "Use beet crop guidance; preserve the cultivar scope",
-        "guidance": "Johnny's beet guide provides crop-level sowing and cultivation instructions. No Bull's Blood-specific indoor size, hydroponic suitability or system spacing is inferred from the general beet guide.",
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": ["johnnys-beets-wave1"]
-      },
-      "harvest": {
-        "short": "Leaves and roots are both described uses",
-        "guidance": "Cornell's variety listing calls Bull's Blood dual-purpose and records glossy red tops as harvestable. A specific Garden harvest date or root size is not inferred from community observations.",
+      "growth": {
+        "short": "Red beet tops and a storage-root crop",
+        "guidance": "Cornell's Bull's Blood record describes glossy red tops and the variety as dual-purpose. That supports using the foliage and root, but it is a community-sourced variety record rather than a controlled comparison; no exact root size or leaf yield is assigned here.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["cornell-bulls-blood-500"]
+      },
+      "cultivation": {
+        "short": "Cool-season beet for a sunny, deep, well-drained bed",
+        "guidance": "Utah State Extension recommends a sunny site and deep, fertile, well-drained soil for table beets. This is outdoor crop guidance applicable to the beet type, not Bull's Blood-specific indoor dimensions, hydroponic suitability, temperature limits or Garden pod spacing.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["johnnys-beets-wave1", "usu-beets-home-gardens-2020"]
+      },
+      "care": {
+        "short": "Keep moisture more even while roots size",
+        "guidance": "Utah State Extension says moisture fluctuations can crack roots and reduce growth or yield. Avoid interpreting a single symptom as a nutrient problem; this is broad beet-crop field guidance, not an indoor watering schedule or a Bull's Blood-specific response.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
+      },
+      "harvest": {
+        "short": "Harvest greens separately or lift roots as they size",
+        "guidance": "Cornell characterizes Bull's Blood as dual-purpose. Utah State Extension says young beet leaves can be harvested around 4–6 inches and roots can be lifted once sizing begins; loosen soil with a digging fork before lifting. Timing depends on desired stage and local conditions; these are crop-level guides, not fixed Bull's Blood or indoor dates.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["cornell-bulls-blood-500", "usu-beets-home-gardens-2020"]
+      },
+      "problems": {
+        "short": "Recognize chilling, crowding, stress and root-disorder signals",
+        "guidance": "Utah State Extension reports that early chilling can trigger flowering instead of root swelling, crowding can limit root development, and hot weather or water stress can make roots woody. Black, sunken spots on or in a beet root may indicate boron deficiency, but appearance alone is not a diagnosis; confirm with a soil test or local Extension before treatment because excess boron can injure plants. These are beet-crop risks, not a Bull's Blood resistance or sensitivity rating.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["usu-beets-home-gardens-2020"]
       }
     },
     "compatibilityProfile": {
@@ -449,6 +536,13 @@
         "confidence": "medium",
         "sourceIds": ["rhs-perpetual-spinach-500"]
       },
+      "growth": {
+        "short": "Bushy, clump-forming cultivar; RHS garden range 0.1–0.5 m",
+        "guidance": "RHS describes the named cultivar as bushy and clump-forming, with ultimate height and spread each in a 0.1–0.5 m range in its UK garden context. This is not a guaranteed indoor footprint or pod-spacing recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["rhs-perpetual-spinach-500"]
+      },
       "harvest": {
         "short": "Repeated outer-leaf harvest",
         "guidance": "RHS describes harvest through the year as a cut-and-come-again crop and notes that young leaves may be harvested for salads at around eight weeks. The timing is regional guidance, not a guaranteed indoor date.",
@@ -456,11 +550,25 @@
         "confidence": "medium",
         "sourceIds": ["rhs-perpetual-spinach-500"]
       },
+      "maintenance": {
+        "short": "No shaping prune; remove outer leaves as they mature",
+        "guidance": "RHS says no pruning is required and advises removing outer leaves when large enough. This supports continued leaf harvest; it is not a seedling-thinning or indoor-system instruction.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["rhs-perpetual-spinach-500"]
+      },
       "problems": {
         "short": "RHS reports good resistance to bolting in dry conditions",
         "guidance": "RHS describes very good resistance to bolting even in dry conditions for this cultivar. Do not extend that statement to unrelated beet/chard cultivars or assume drought is desirable for production.",
         "evidenceType": "source_backed",
         "confidence": "medium",
+        "sourceIds": ["rhs-perpetual-spinach-500"]
+      },
+      "uses": {
+        "short": "Young leaves suit salads; edible stems distinguish this cultivar from true spinach",
+        "guidance": "RHS describes young leaves for salads and notes that the thick stems are edible. This is specific to the named Perpetual Spinach leaf-beet cultivar; the name does not make it Spinacia oleracea, and no preparation method for the stems is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": ["rhs-perpetual-spinach-500"]
       }
     },
@@ -507,7 +615,7 @@
     "id": "wasabina-mustard-greens",
     "name": "Wasabina Mustard Greens",
     "spanishName": "Mostaza Wasabina",
-    "scientificName": "Brassica juncea",
+    "scientificName": "× Brassarda juncea",
     "variety": "Wasabina supplier-listed mustard selection; formal cultivar status unresolved",
     "category": "leafy greens",
     "emoji": "🥬",
@@ -518,12 +626,12 @@
       "mostaza wasabi",
       "brassica juncea"
     ],
-    "summary": "Wasabina is a supplier-listed Brassica juncea mustard-green selection, not true wasabi (Wasabia japonica/Eutrema japonicum). NC State and Utah State Extension provide useful mustard-crop cultivation and harvest guidance, but do not document Wasabina-specific performance. USDA and Kew's taxonomic treatments differ; that conflict remains open.",
+    "summary": "Wasabina is a supplier-listed mustard-green product, not true wasabi (Wasabia japonica/Eutrema japonicum). Kew accepts × Brassarda juncea and lists Brassica × juncea as a synonym; the seller and USDA use Brassica juncea. Garden follows Kew's current backbone while preserving that usage difference. The supplier's dimensions, full-sun condition, maturity estimate and wasabi-like flavor remain product-scoped; Wasabina is not asserted to be a formally registered cultivar.",
     "metrics": [],
     "sections": {
       "identity": {
         "short": "Mustard green product; not botanical wasabi",
-        "guidance": "Hudson Valley Seed Company lists Wasabina: Wasabi Greens and identifies Brassica juncea. The name describes a mustard-green product and is not evidence that the plant is true wasabi. Kew POWO adopts × Brassarda juncea while USDA PLANTS lists Brassica juncea; taxonomy is flagged for review rather than silently choosing one backbone.",
+        "guidance": "Hudson Valley Seed Company lists Wasabina: Wasabi Greens as Brassica juncea; the name describes a mustard-green product, not true wasabi. Kew POWO accepts × Brassarda juncea and lists Brassica × juncea as a synonym, while USDA PLANTS and the seller use Brassica juncea. Garden uses Kew's current accepted name and preserves the seller/USDA usage as an alternative name; this does not establish a formal Wasabina cultivar registration.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -534,18 +642,18 @@
         ]
       },
       "growth": {
-        "short": "Brassica juncea is an annual mustard; Wasabina-specific size is unknown",
-        "guidance": "NC State Extension describes Brassica juncea as an annual herb in the mustard family. This supports species-level lifecycle context only; it does not establish Wasabina's mature dimensions, leaf form, or formal cultivar status.",
+        "short": "Annual mustard; seller lists this Wasabina product at 6 in (15 cm) tall and wide",
+        "guidance": "NC State Extension describes Brassica juncea as an annual herb in the mustard family; this is species-level lifecycle context. Hudson Valley Seed Company lists its Wasabina product at 6 in (about 15 cm) in mature height and width. Treat those as seller-listed dimensions for this product, not a species-wide range or independently measured trial. The listing does not establish formal cultivar registration.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["ncstate-brassica-juncea-gardener-500"]
+        "sourceIds": ["ncstate-brassica-juncea-gardener-500", "hudson-valley-wasabina-500"]
       },
       "cultivation": {
-        "short": "Cool-season mustard greens; field guidance is not a hydroponic recipe",
-        "guidance": "NC State Extension describes Brassica juncea mustard as a cool-season crop for spring and fall, grown in full sun to part shade in rich, well-drained, consistently moist soil. It notes that heat and moisture stress can intensify flavor and encourage bolting. Utah State Extension gives field cultivation guidance for mustard greens; neither source establishes Wasabina-specific hydroponic suitability, indoor lighting, nutrient targets, or pod spacing.",
+        "short": "Cool-season crop; this seller-listed product specifies full sun",
+        "guidance": "For its Wasabina product, Hudson Valley Seed Company specifies full sun (8+ hours) and lists 6 in (about 15 cm) mature height and width. These are seller product details, not a universal Brassica juncea prescription. NC State Extension describes mustard as a cool-season crop for spring and fall, in full sun to part shade, with rich, well-drained, consistently moist soil; heat and moisture stress can intensify flavor and encourage bolting. Utah State Extension gives field cultivation guidance. The seller's 12 in field plant/row spacing is not hydroponic pod spacing; no source here establishes Wasabina-specific hydroponic suitability, indoor lighting, or nutrient targets.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["ncstate-brassica-juncea-gardener-500", "usuext-mustard-garden-500"]
+        "sourceIds": ["hudson-valley-wasabina-500", "ncstate-brassica-juncea-gardener-500", "usuext-mustard-garden-500"]
       },
       "flowering": {
         "short": "Long, warm days can bring a normal flower stalk",
@@ -555,11 +663,11 @@
         "sourceIds": ["usuext-mustard-garden-500", "ncstate-brassica-juncea-gardener-500"]
       },
       "harvest": {
-        "short": "Pick young leaves or cut above an intact growing point",
-        "guidance": "Utah State Extension recommends harvesting mustard leaves before the seed stalk forms, either by removing older leaves or cutting near the soil while leaving the growing point intact for continued growth. This is general mustard guidance; Wasabina-specific harvest days and yield remain unverified.",
+        "short": "Pick leaves before bolting; seller estimates 45 days to maturity",
+        "guidance": "Utah State Extension recommends harvesting mustard leaves before the seed stalk forms, either by removing older leaves or cutting near the soil while leaving the growing point intact for continued growth. This is general mustard guidance. Hudson Valley Seed Company lists 45 days to maturity for its Wasabina product, but the page does not define the timing anchor or guarantee a harvest date; it is a supplier estimate, not a verified Wasabina harvest schedule or yield.",
         "evidenceType": "source_backed",
         "confidence": "medium",
-        "sourceIds": ["usuext-mustard-garden-500"]
+        "sourceIds": ["usuext-mustard-garden-500", "hudson-valley-wasabina-500"]
       },
       "problems": {
         "short": "Heat-related bolting and leaf pests are useful warning signs",
@@ -572,8 +680,14 @@
     "compatibilityProfile": {
       "profileVersion": 1,
       "hydroponicSuitability": {
-        "status": "unknown",
-        "reason": "No identity-specific hydroponic performance evidence selected."
+        "status": "conditional",
+        "conditions": [
+          {"kind": "system_type", "description": "UF/IFAS reports mustard greens identified as Brassica juncea are broadly adaptable to multiple hydroponic systems; this is crop-level Florida protected-culture evidence, not validation of every home appliance or Wasabina seed lot."},
+          {"kind": "environment", "description": "UF/IFAS notes mustard greens prefer cooler conditions and may bolt in summer or hot greenhouses; system environment can affect performance."}
+        ],
+        "evidence": [
+          {"sourceIds": ["ufifas-leafy-greens-hydroponics-hs1279"], "evidenceType": "source_backed", "confidence": "medium", "taxonomicScope": {"level": "species", "taxon": "Brassica juncea"}, "note": "UF/IFAS describes mustard greens (Brassica juncea) as adaptable to multiple hydroponic systems in Florida protected-culture guidance. This supports conditional crop-level suitability only; it does not establish Wasabina-specific performance, Garden appliance compatibility, pod count, or nutrient targets."}
+        ]
       },
       "growthHabits": {
         "status": "unknown",
@@ -581,12 +695,14 @@
       },
       "matureSize": {
         "height": {
-          "status": "unknown",
-          "reason": "No identity-specific mature dimensions selected."
+          "status": "known",
+          "value": {"minCm": 15.24, "maxCm": 15.24, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["hudson-valley-wasabina-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "Hudson Valley Seed Company lists 6 in mature height for its Wasabina product; converted to 15.24 cm. Seller/product scope only, not a species-wide dimension or independent trial."}]
         },
         "spread": {
-          "status": "unknown",
-          "reason": "No identity-specific mature dimensions selected."
+          "status": "known",
+          "value": {"minCm": 15.24, "maxCm": 15.24, "context": "outdoor_general"},
+          "evidence": [{"sourceIds": ["hudson-valley-wasabina-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "Hudson Valley Seed Company lists 6 in mature width for its Wasabina product; converted to 15.24 cm. Seller/product scope only, not a species-wide dimension or independent trial."}]
         }
       },
       "spacing": {
@@ -594,8 +710,9 @@
         "reason": "No source-supported system position count selected."
       },
       "light": {
-        "status": "unknown",
-        "reason": "No light requirement normalized for this product."
+        "status": "known",
+        "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}],
+        "evidence": [{"sourceIds": ["hudson-valley-wasabina-500"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "Hudson Valley Seed Company lists full sun (8+ hours) for this Wasabina product; outdoor exposure for the seller's specific item, not a Brassica juncea-wide or indoor grow-light claim."}]
       }
     }
   },
@@ -608,7 +725,7 @@
     "category": "flowers",
     "emoji": "🌻",
     "tags": ["sunflower", "girasol", "common sunflower", "helianthus annuus"],
-    "summary": "This species-level entry represents an unspecified common sunflower seed product without assigning it to American Giant, Autumn Beauty, or another named cultivar. Cultivar size, branching and bloom behavior vary.",
+    "summary": "This species-level entry represents common sunflower (Helianthus annuus), not a named cultivar. Sunflower forms differ in mature size, branching and flower number; the established plant develops a conspicuous head that can be grown for display, cut flowers or seed, depending on the selected type.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -618,19 +735,47 @@
         "confidence": "high",
         "sourceIds": ["kew-helianthus-annuus-500"]
       },
+      "growth": {
+        "short": "Mature size, branching and flower number vary by type",
+        "guidance": "Illinois Extension notes substantial variation among sunflower types in height, branching and flower number. Because this identity names no cultivar, do not apply dimensions or a single-stem/branching habit from a named packet to it.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
       "cultivation": {
-        "short": "Warm-season, sunny garden crop",
-        "guidance": "Illinois Extension notes that sunflower types vary in branching and flower number and recommends following the particular seed packet for spacing. This profile does not assert one species-wide mature height or universal Garden placement.",
+        "short": "Full sun and soil that is not persistently soggy",
+        "guidance": "Illinois Extension says sunflowers grow in a wide range of soils when the site is sunny and not consistently soggy. It directs gardeners to the selected type's packet for spacing because size and branching vary. This outdoor guidance does not establish an indoor-light tier, Garden pod count or compatibility with a small hydroponic unit.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
+      "care": {
+        "short": "Water during dry spells; manage weeds while plants are young",
+        "guidance": "Illinois Extension notes that sunflowers tolerate drought but benefit from watering when weather turns dry. Young plants compete poorly with weeds for light, water and nutrients, so remove weeds or use mulch while they establish. Taller types with large heads can be damaged by wind; choose shelter or add support when the observed plant and site call for it. These are general sunflower recommendations, not a fixed schedule or universal staking rule for every selection.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
+      "flowering": {
+        "short": "Young flower buds move; mature heads become fixed facing east",
+        "guidance": "Illinois Extension explains that developing flower buds can follow the sun's daily path, but mature stems stiffen and the heads remain oriented east. Pollinators visit flowering sunflowers, though some newer cut-flower selections produce little or no pollen; check the selected variety when pollinator food is a goal. Exact flower color and branching pattern depend on type.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["illinois-sunflowers-500"]
       },
       "harvest": {
-        "short": "Flower and seed uses depend on the selection",
-        "guidance": "Sunflowers may be grown for display, cutting, or seed, but the unnamed product's intended use and harvest stage are not established. Keep those choices tied to its packet or an identified cultivar.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Cut flowers as petals begin to open; harvest seed heads as they dry",
+        "guidance": "Illinois Extension gives two distinct harvest cues: cut flowers when ray petals begin to rise, and collect seed heads when the back turns yellow-brown and droops. These are general sunflower harvest instructions; the unspecified identity does not establish whether its seed product is intended for cutting, edible seed or both.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-sunflowers-500"]
+      },
+      "problems": {
+        "short": "Watch for powdery mildew, occasional insects and seed-eating wildlife",
+        "guidance": "Illinois Extension notes that powdery mildew can occur in humid conditions and recommends following packet spacing; aphids, stink bugs, caterpillars and headclipping weevils are occasional problems that rarely need management. Birds and squirrels may eat drying seed heads, which can be welcome for wildlife but compete with seed harvest. These are broad sunflower risks, not a named-cultivar susceptibility or resistance claim.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["illinois-sunflowers-500"]
       }
     },
     "compatibilityProfile": {

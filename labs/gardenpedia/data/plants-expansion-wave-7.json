@@ -15,7 +15,7 @@
       "ocimum sanctum",
       "albahaca sagrada"
     ],
-    "summary": "Tulsi is Ocimum tenuiflorum, a distinct species from culinary sweet basil (O. basilicum). North Carolina Extension documents seed propagation, rapid erect growth, full-sun cultivation and culinary use; no tulsi cultivar is specified.",
+    "summary": "Tulsi is the species Ocimum tenuiflorum, distinct from culinary sweet basil. NC State Extension describes its rapid multistem growth, aromatic foliage, variable flower colors, culinary leaf use and regional spread/pest cautions; no cultivar is specified.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -28,9 +28,16 @@
           "ncsu-ocimum-tenuiflorum-500"
         ]
       },
+      "growth": {
+        "short": "Aromatic, fast-growing upright herb with a multi-stem form",
+        "guidance": "NC State Extension describes holy basil as an aromatic annual or short-lived perennial/subshrub, growing rapidly to about 3 feet with an erect, multi-stemmed form. Its opposite leaves are aromatic and may have a purple cast; stems can be green or purple. The source describes it as shorter-lived than culinary sweet basil; actual lifespan depends on conditions. These are species-level traits, not cultivar measurements.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-ocimum-tenuiflorum-500"]
+      },
       "cultivation": {
         "short": "Full sun; avoid waterlogged soil",
-        "guidance": "NC State Extension describes a rapidly growing, erect, multi-stemmed herb that prefers full sun and moist, well-drained soil. Its regional outdoor guidance does not establish an indoor lamp setting or hydroponic recipe.",
+        "guidance": "NC State Extension describes a rapidly growing, erect, multi-stemmed herb that prefers full sun and moist, well-drained soil, and recommends a confined area or container to manage spread. This is regional outdoor guidance; it does not establish an indoor lamp setting or hydroponic recipe.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -57,12 +64,19 @@
       },
       "problems": {
         "short": "Contain spread where needed",
-        "guidance": "The extension profile notes self-seeding and potential weediness outside the native range. This is a regional ecological caution, not a claim of invasive status in every location.",
+        "guidance": "The extension profile notes self-seeding and potential weediness outside the native range; contain plants where unwanted spread is a concern. It also reports Japanese beetles skeletonizing leaves and recommends hand removal. This is a regional source warning, not a claim that the pest or invasive behavior occurs everywhere.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "ncsu-ocimum-tenuiflorum-500"
         ]
+      },
+      "flowering": {
+        "short": "Small flowers form in terminal clusters; color varies",
+        "guidance": "NC State Extension describes small tubular flowers in terminal racemes or panicles, with white, pink or purple reported across the species account. This is a species-level color range, not a prediction for an unnamed cultivar or an indoor bloom guarantee.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-ocimum-tenuiflorum-500"]
       }
     },
     "compatibilityProfile": {
@@ -125,12 +139,8 @@
       "light": {
         "status": "known",
         "value": [
-          {
-            "phase": "growing",
-            "requirement": {
-              "kind": "full_sun"
-            }
-          }
+          {"phase": "growing", "requirement": {"kind": "full_sun"}},
+          {"phase": "growing", "requirement": {"kind": "partial_sun"}}
         ],
         "evidence": [
           {
@@ -232,6 +242,26 @@
         "confidence": "high",
         "sourceIds": [
           "ncsu-trigonella-foenum-graecum-500",
+          "omafra-fenugreek-500"
+        ]
+      },
+      "care": {
+        "short": "Cool-season crop; avoid overwatering and keep drainage open",
+        "guidance": "UC Master Gardeners describe fenugreek as a cool-season herb with low-to-moderate water needs and good drainage, advising against overwatering. OMAFRA says irrigation benefits herb production under Ontario conditions. Keep those regional recommendations in context; neither source defines a fixed indoor watering schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-fenugreek-2026",
+          "omafra-fenugreek-500"
+        ]
+      },
+      "flowering": {
+        "short": "Leaf harvest and seed production have different flowering goals",
+        "guidance": "UC Master Gardeners describe fenugreek as a cool-season herb that begins to set seed as spring temperatures warm and advise allowing regrowth and flowers when seed is the goal. OMAFRA notes that herb harvest may need to happen earlier in hot weather to avoid flowering. This is a crop-purpose decision, not a universal instruction to remove every flower.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ucanr-fenugreek-2026",
           "omafra-fenugreek-500"
         ]
       }
@@ -350,6 +380,13 @@
           "ncsu-mentha-piperita-500"
         ]
       },
+      "growth": {
+        "short": "Upright, fast-growing perennial that spreads by rhizomes",
+        "guidance": "NC State describes peppermint as an upright perennial hybrid that forms an aggressive groundcover through rhizomes. Its reported height and spread are outdoor regional ranges, not container or indoor-system guarantees.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-mentha-piperita-500"]
+      },
       "cultivation": {
         "short": "Moisture and containment matter",
         "guidance": "NC State describes an upright, rhizomatous perennial that prefers rich, moist soil and partial shade in its regional context. It spreads aggressively; the source suggests container culture as a way to contain the plant, not as a hydroponic recommendation.",
@@ -370,16 +407,31 @@
       },
       "harvest": {
         "short": "Leaves and flowers have culinary uses",
-        "guidance": "NC State lists fresh or dried leaves and flowers for teas, beverages, sauces and other uses, and reports pinching as a way to encourage bushier growth. This is species-level horticultural guidance.",
+        "guidance": "NC State lists fresh or dried leaves and flowers for teas, beverages, sauces and other uses, and reports pinching as a way to encourage bushier growth. Johnny's general Mentha guide says individual leaves can be picked once plants are established, while a whole-plant harvest is timed just before flowering; for drying, it recommends a warm, well-ventilated place out of direct sun. The harvest timing and drying method are genus-level crop guidance, not a peppermint-specific yield or essential-oil rule.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-mentha-piperita-500"
+          "ncsu-mentha-piperita-500",
+          "johnnys-mint"
         ]
+      },
+      "pruning": {
+        "short": "Pinch branch tips to encourage bushier, leafier growth",
+        "guidance": "NC State recommends regularly pinching branch tips; it says this promotes bushier, leafier growth and increases available harvest. This is established-plant management, not a seedling protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-mentha-piperita-500"]
+      },
+      "flowering": {
+        "short": "Small pink-to-lavender flowers bloom in summer; seed is rarely set",
+        "guidance": "NC State describes small tubular pink-to-lavender flowers in dense terminal spikes, blooming in summer. It reports that peppermint rarely sets seed, consistent with treating Mentha × piperita as a hybrid usually maintained vegetatively. This is North Carolina source context, not a universal bloom calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-mentha-piperita-500"]
       },
       "problems": {
         "short": "Plan for spreading rhizomes",
-        "guidance": "The extension source characterizes peppermint as an aggressive ground cover. Monitor its spread and contain it where needed; do not infer a specific Garden system compatibility from this habit.",
+        "guidance": "NC State characterizes peppermint as an aggressive rhizomatous ground cover and lists low-severity poison characteristics: large human ingestions may cause vomiting or diarrhea, and the plant is flagged as a problem for cats, dogs, and horses. Contain its spread and keep access by pets in mind. This warning does not turn culinary leaf use into a medicinal claim or provide a dose; concentrated essential oils are not interchangeable with culinary leaves.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -481,7 +533,7 @@
             "taxonomicScope": {
               "level": "identity"
             },
-            "note": "Full sun is one of the explicitly listed outdoor options; partial shade is not mapped to indoor-light requirement."
+          "note": "Full sun and partial shade are both listed outdoor options; neither is mapped to an indoor grow-light requirement."
           }
         ]
       }
@@ -518,7 +570,26 @@
       },
       "cultivation": {
         "short": "Shade and containers are documented options",
-        "guidance": "NC State describes part-sun to shade preference, especially in hot summers, and use in containers, hanging baskets and shade borders. Its soil context is outdoor horticultural guidance, not proof of indoor-system compatibility.",
+        "guidance": "NC State favors part sun to shade, especially in hot summers, and describes containers, hanging baskets and shade borders; RHS says the species performs best in sun but tolerates some shade. Together these are outdoor, climate/context-dependent positions, not a single indoor grow-light requirement. Both sources describe fertile, moist but drained growing conditions; NC State recommends mulch to keep roots cool. Neither establishes indoor-system compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-torenia-fournieri-500",
+          "rhs-torenia-fournieri-wave64"
+        ]
+      },
+      "growth": {
+        "short": "Low-growing annual with an upright-to-spreading habit",
+        "guidance": "NC State gives a broad species-page range of 6–18 inches tall and 6–8 inches wide. This is general Torenia fournieri guidance, not a dimension for an unidentified violet cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-torenia-fournieri-500"
+        ]
+      },
+      "flowering": {
+        "short": "Two-tone trumpet flowers bloom through summer and fall",
+        "guidance": "NC State describes a long bloom season with two-tone tubular flowers and a distinctive wishbone-shaped pair of stamens. The species page describes violet/blue tones, while many cultivars extend the color range; the violet reference name does not identify a cultivar.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -536,11 +607,21 @@
       },
       "pruning": {
         "short": "Pinching can retain a bushier form",
-        "guidance": "NC State recommends pinching back to retain a bushier shape. The claim is species-level cultivation guidance and does not define a fixed pruning schedule.",
+        "guidance": "NC State recommends pinching to retain a bushier shape. RHS says routine pruning is not required, but if growth becomes leggy it recommends cutting the plant back by about half to encourage bushier growth and potentially another flush of flowers. These are species-level options for different conditions, not a fixed schedule or cultivar-specific response.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-torenia-fournieri-500"
+          "ncsu-torenia-fournieri-500",
+          "rhs-torenia-fournieri-wave64"
+        ]
+      },
+      "problems": {
+        "short": "Monitor for common pests and moisture-related disease",
+        "guidance": "RHS lists wishbone flower as potentially susceptible to slugs, snails and aphids, as well as root rot and powdery mildews. Treat these as monitoring concerns, not a diagnosis or a claim that every plant is susceptible; the reviewed sources do not establish a Torenia-specific treatment protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "rhs-torenia-fournieri-wave64"
         ]
       }
     },
@@ -676,9 +757,36 @@
           "rhs-drosera-aliciae-500"
         ]
       },
+      "growth": {
+        "short": "Dense basal rosette that can form a low mound",
+        "guidance": "RHS describes spoon-shaped leaves with sticky red glands in a dense, clumping basal rosette. Older dead basal leaves can build into a 1.5–4 cm mound; RHS separately lists maximum plant height up to 10 cm and spread of 0.1–0.5 m. These are RHS profile dimensions, not a guaranteed indoor footprint.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-drosera-aliciae-500"
+        ]
+      },
       "cultivation": {
         "short": "Wet, low-mineral conditions are documented",
         "guidance": "RHS describes cultivation under glass in full light, with medium kept continually moist to wet during the growing season using lime-free water; it advises less water standing in winter and no fertilizer. These species-specific carnivorous-plant conditions are not a nutrient-solution recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-drosera-aliciae-500"
+        ]
+      },
+      "flowering": {
+        "short": "Deep-pink flowers rise above the rosette in summer",
+        "guidance": "RHS reports a summer inflorescence up to 4 cm tall, bearing 2–12 individual deep-pink flowers that open in ascending order. This describes normal flowering, not a signal that the rosette is failing.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-drosera-aliciae-500"
+        ]
+      },
+      "pruning": {
+        "short": "Routine pruning is not required",
+        "guidance": "RHS states that pruning is not required for Drosera aliciae. The profile does not prescribe removing healthy leaves or flower stalks.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -791,40 +899,71 @@
     "summary": "Tennessee Coneflower is the accepted species Echinacea tennesseensis, not a Tennessee-selected cultivar of E. purpurea. Kew confirms its narrow native range; University of Tennessee guidance stresses isolation from other Echinacea when maintaining seed genetic integrity.",
     "metrics": [],
     "sections": {
-      "identity": {
-        "short": "Accepted species: Echinacea tennesseensis",
-        "guidance": "Kew accepts Echinacea tennesseensis and lists the historic combination E. angustifolia var. tennesseensis as a synonym. The common name is not treated as a cultivar name.",
+    "identity": {
+      "short": "Accepted species: Echinacea tennesseensis",
+      "guidance": "Kew accepts Echinacea tennesseensis and lists the historic combination E. angustifolia var. tennesseensis as a synonym. NC State also treats Tennessee Coneflower as the species name, not a cultivar of E. purpurea.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "kew-echinacea-tennesseensis-500",
-          "utk-echinacea-tennesseensis-500"
+        "utk-echinacea-tennesseensis-500",
+        "ncsu-echinacea-tennesseensis-wave7"
         ]
       },
+    "growth": {
+      "short": "Slow-growing perennial, about 1–2 ft tall and wide",
+      "guidance": "NC State reports a slow growth rate and a species-level landscape range of 1–2 ft in both height and width. This is outdoor garden information, not an indoor pod or machine-size estimate.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["ncsu-echinacea-tennesseensis-wave7"]
+    },
       "cultivation": {
-        "short": "Native-range context is specific to Tennessee",
-        "guidance": "Kew gives Tennessee as the native range. This narrow-range fact is not a complete cultivation prescription; light, water, mature dimensions and hydroponic suitability remain unestablished in the selected sources.",
+      "short": "Full sun to part shade; average moist-to-dry soils",
+      "guidance": "NC State reports full sun to part shade and average moist-to-dry soils in its regional plant guidance. Kew and NC State describe its native range as Tennessee; these landscape conditions do not establish hydroponic compatibility.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "kew-echinacea-tennesseensis-500"
+        "kew-echinacea-tennesseensis-500",
+        "ncsu-echinacea-tennesseensis-wave7"
         ]
       },
+    "flowering": {
+      "short": "Distinctive erect pink-purple rays bloom June through August",
+      "guidance": "NC State describes erect pink-purple ray flowers around an orange disk from June to August. Flowering is a normal seasonal stage; timing is regional, not an indoor schedule.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["ncsu-echinacea-tennesseensis-wave7"]
+    },
+    "care": {
+      "short": "Keep seed source isolated from other Echinacea if preserving identity",
+      "guidance": "NC State and University of Tennessee Extension warn that Echinacea tennesseensis cross-pollinates with other Echinacea; seed grown near other coneflowers may not remain true to type. UT guidance says isolation is needed when seed genetic integrity is the goal, but does not establish an exact distance. This is a seed-production caveat, not a routine pruning instruction.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["utk-echinacea-tennesseensis-500", "ncsu-echinacea-tennesseensis-wave7"]
+    },
       "propagation": {
         "short": "Seed may require isolation to preserve identity",
-        "guidance": "University of Tennessee Extension says seed intended to retain genetic integrity should be harvested from plants isolated from other Echinacea species. The source does not provide a germination protocol or isolation distance.",
+      "guidance": "NC State lists seed as a propagation route and warns that cross-pollination with other Echinacea can produce seed that does not grow true to type. University of Tennessee Extension also advises isolation for seed genetic integrity but gives no exact distance or household germination protocol; do not create a Seed Profile without that evidence.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "utk-echinacea-tennesseensis-500"
+        "utk-echinacea-tennesseensis-500",
+        "ncsu-echinacea-tennesseensis-wave7"
         ]
       },
-      "needsValidation": {
-        "short": "Additional cultivation guidance remains unresolved",
-        "guidance": "The reviewed authoritative sources establish identity and a seed-purity caution but not a full home-growing protocol. Dimensions, soil conditions, light, germination treatment and transplant timing are intentionally not filled speculatively.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+    "uses": {
+      "short": "Border, meadow or woodland planting for pollinators and finches",
+      "guidance": "NC State lists border, meadow and woodland-garden use, and reports pollinator visits and finches eating the seeds. The source supports ornamental and wildlife value, not edible use by people.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["ncsu-echinacea-tennesseensis-wave7"]
+    },
+    "problems": {
+      "short": "Japanese beetles are occasional; leaf spot is reported rarely",
+      "guidance": "NC State reports no serious recurring problems, with occasional Japanese beetles and rare leaf spot. These are source observations, not a claim of disease resistance.",
+      "evidenceType": "source_backed",
+      "confidence": "high",
+      "sourceIds": ["ncsu-echinacea-tennesseensis-wave7"]
       }
     },
     "compatibilityProfile": {
@@ -873,7 +1012,7 @@
       "dwarf tomato",
       "mini tomato"
     ],
-    "summary": "Micro-Tom is a named miniature, determinate cultivar of Solanum lycopersicum developed by the University of Florida. It is distinct from Tiny Tim; NParks reports a very compact plant and fruiting roughly 50–60 days from sowing, while general tomato hydroponic assumptions are not inferred.",
+    "summary": "Micro-Tom is a named dwarf, determinate tomato cultivar developed by the University of Florida. NParks describes a bushy plant about 15–20 cm tall with small red fruits borne in a concentrated set. UF research included Micro-Tom among compact cultivars studied indoors; that is not a universal hydroponic compatibility claim.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -888,31 +1027,64 @@
         ]
       },
       "cultivation": {
-        "short": "Compact determinate habit is cultivar-specific",
-        "guidance": "NParks reports Micro-Tom growing up to about 20 cm and producing a concentrated set of fruit. UF research includes it among compact tomato cultivars studied for indoor production. This does not establish compatibility with every indoor or hydroponic system.",
+        "short": "Outdoor sun and container context are documented",
+        "guidance": "NParks recommends at least 4–6 hours of direct sun, lists container planting, and describes well-drained fertile loamy soil. UF research included Micro-Tom among compact tomato cultivars evaluated indoors. The outdoor sun figure is not an indoor grow-light tier, and the study does not establish universal hydroponic compatibility.",
         "evidenceType": "source_backed",
-        "confidence": "high",
+        "confidence": "medium",
         "sourceIds": [
           "nparks-micro-tom-500",
           "uf-micro-tom-500"
         ]
       },
-      "propagation": {
-        "short": "Use verified cultivar seed for the named type",
-        "guidance": "The references identify Micro-Tom as a cultivar and describe a fruiting interval from seed sowing, but the selected institutional sources do not specify sowing depth, germination temperature or transplant stage. Those seed-stage fields remain unresolved.",
+      "growth": {
+        "short": "Bushy, dwarf and determinate; compact fruit set",
+        "guidance": "NParks describes Micro-Tom as a bushy, dwarf, determinate cultivar reaching about 15–20 cm. Its round, deep-red fruits are about 1.5 cm wide, with roughly 25 fruits typically borne together. These are NParks cultivar-level observations, not dimensions or yield expectations for other dwarf tomatoes.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-micro-tom-500"
+        ]
+      },
+      "harvest": {
+        "short": "Use the red, smooth fruit cue; no dependable day-count is published",
+        "guidance": "NParks describes Micro-Tom fruit as ripe when red and smooth, with a concentrated crop. Its page conflicts internally: narrative text says about 50–60 days from sowing, while a separate field lists 90–120 days to typical fruiting. Gardenpedia does not publish either as a reliable schedule; use the visible fruit cue and treat the exact timing as unknown.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "nparks-micro-tom-500"
+        ]
+      },
+      "care": {
+        "short": "Keep the root zone moist but free-draining; avoid a fixed watering rule",
+        "guidance": "NParks lists both moderate and high water preferences and a well-drained, fertile loam root zone, so it does not establish one precise water amount. UMN's general tomato advice favors consistent soil moisture and watering at the base; use the medium and plant condition rather than a calendar or reservoir volume.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["nparks-micro-tom-500", "umn-tomatoes-home-gardens-2024"]
+      },
+      "support": {
+        "short": "A compact determinate bush; routine trellising is not established as necessary",
+        "guidance": "NParks identifies Micro-Tom as a dwarf, determinate, bushy cultivar. UMN says bush-type tomatoes generally do not need staking or trellising, but does not test Micro-Tom specifically; inspect the actual plant and fruit load instead of assuming a support system is never needed.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["nparks-micro-tom-500", "umn-tomatoes-home-gardens-2024"]
+      },
+      "problems": {
+        "short": "Monitor listed sap-feeding pests and avoid overfeeding",
+        "guidance": "NParks lists aphids, whiteflies, red spider mites and root-knot nematodes as potential problems, and cautions that over-fertilising can encourage aphids. Check foliage regularly; this is a source-listed watchlist, not a diagnosis or a product-specific pesticide recommendation.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "nparks-micro-tom-500"
         ]
       },
-      "harvest": {
-        "short": "NParks reports an early cultivar-specific fruiting window",
-        "guidance": "NParks reports fruit production about 50–60 days from seed sowing. Keep this as a source-reported cultivar estimate; it is not a local harvest guarantee or an exact maturity standard.",
+      "flowering": {
+        "short": "Flower movement supports fruit set; sustained heat can cause flower drop",
+        "guidance": "At tomato crop level, UMN Extension explains that flower parts sit close together and flower movement can transfer pollen; tomatoes can produce fruit without bee pollination. UMN's Minnesota-specific example says sustained days above 85°F and nights above 70°F can stress flowers and impair fruit set; flowers may then drop. Treat this as regional context, not a Micro-Tom trial result or indoor setpoint.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "nparks-micro-tom-500"
+          "umn-pollination-vegetables-2026",
+          "umn-excessive-heat-vegetables-2026"
         ]
       }
     },
@@ -923,13 +1095,27 @@
         "reason": "UF indoor compact-tomato research and cultivar size do not establish nutrient-solution compatibility or system-specific pod limits."
       },
       "growthHabits": {
-        "status": "unknown",
-        "reason": "Cultivar-specific habit remains documented in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+        "status": "known",
+        "value": ["bushy"],
+        "evidence": [{
+          "sourceIds": ["nparks-micro-tom-500"],
+          "evidenceType": "source_backed",
+          "confidence": "high",
+          "taxonomicScope": {"level": "identity"},
+          "note": "NParks describes Micro-Tom itself as a dwarf, determinate cultivar with a bushy growth habit."
+        }]
       },
       "matureSize": {
         "height": {
-          "status": "unknown",
-          "reason": "Cultivar-specific dimensions remain in sourced Plant Profile content; Compatibility Profile v1 does not encode cultivar-level evidence scope."
+          "status": "known",
+          "value": {"minCm": 15, "maxCm": 20, "context": "unspecified"},
+          "evidence": [{
+            "sourceIds": ["nparks-micro-tom-500"],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {"level": "identity"},
+            "note": "NParks lists Micro-Tom maximum height as 15–20 cm; measurement context is unspecified, so the contract retains that context."
+          }]
         },
         "spread": {
           "status": "unknown",
@@ -961,7 +1147,7 @@
       "tomate orange hat",
       "solanum lycopersicum orange hat"
     ],
-    "summary": "Orange Hat is a separately marketed micro-dwarf tomato cultivar, distinct from Micro-Tom and Tiny Tim. Baker Creek's product record supports the named product and gives cultivar-scoped dimensions and sowing instructions; these commercial details are not generalized to tomato species.",
+    "summary": "Orange Hat is a separately marketed micro-dwarf tomato cultivar, distinct from Micro-Tom and Tiny Tim. Baker Creek describes its extra-dwarf habit, orange fruit and container care; those product-specific details are not generalized to tomato species.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -975,26 +1161,40 @@
         ]
       },
       "cultivation": {
-        "short": "Supplier describes a 6–9 inch determinate bush",
-        "guidance": "Baker Creek describes Orange Hat as extra-dwarf, determinate and 6–9 inches tall. These are supplier-stated cultivar characteristics, not dimensions for other dwarf tomatoes or a guarantee in all environments.",
+        "short": "Product is described for sunny windows or patio containers",
+        "guidance": "Baker Creek describes Orange Hat as an extra-dwarf, determinate bush, 6–9 inches tall, suited to patio/container growing and full sun. The supplier's sun statement is outdoor exposure; its separate mention of sunny windows and grow lights does not give an indoor light duration or prove universal hydroponic compatibility.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "bakercreek-orange-hat-500"
         ]
       },
-      "propagation": {
-        "short": "Supplier provides a specific sowing protocol",
-        "guidance": "Baker Creek instructs sowing about 1/8 inch deep and reports 7–14 day germination around 75–85°F. This is product-specific supplier guidance; use the purchased packet if its instructions differ.",
+      "growth": {
+        "short": "Extra-dwarf determinate bush, listed at 6–9 inches",
+        "guidance": "Baker Creek describes its Orange Hat product as an extra-dwarf, determinate bush reaching 6–9 inches, with small orange fruits. These are seller-reported cultivar characteristics and should not be generalized to Micro-Tom, Tiny Tim or dwarf tomatoes as a group.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "bakercreek-orange-hat-500"
         ]
+      },
+      "care": {
+        "short": "Regular watering and occasional balanced feeding; no schedule specified",
+        "guidance": "Baker Creek recommends regular watering and occasional balanced fertilizer for Orange Hat, but gives no measured interval or dose. Iowa State notes that container tomatoes can dry quickly, need thorough watering with drainage and should not remain waterlogged; this general container guidance is not a hydroponic recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["bakercreek-orange-hat-500", "iastate-tomatoes-containers-2024"]
+      },
+      "support": {
+        "short": "Baker Creek says staking is not required for this compact product",
+        "guidance": "The supplier states that Orange Hat's compact size does not require staking. Treat this as a product-level recommendation; inspect the actual plant if fruit load or growing conditions cause stems to lean.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["bakercreek-orange-hat-500"]
       },
       "harvest": {
         "short": "Maturity estimate is supplier-reported",
-        "guidance": "Baker Creek lists 55–65 days to maturity for its Orange Hat product. This estimate is retained at product scope and should not be treated as a guaranteed indoor harvest date.",
+        "guidance": "Baker Creek lists 55–65 days to maturity and describes Orange Hat fruit as orange and sweet. The figure is a product estimate, not a guaranteed date or a clearly defined sowing-to-harvest interval; use full fruit color as a cue, with Iowa State's general tomato guidance that ripe fruit gives slightly to touch.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
@@ -1008,6 +1208,23 @@
         "confidence": "medium",
         "sourceIds": [
           "bakercreek-orange-hat-500"
+        ]
+      },
+      "problems": {
+        "short": "Watch for cracking or blossom-end rot when moisture fluctuates",
+        "guidance": "No Orange Hat-specific disease resistance or susceptibility is established here. Iowa State describes cracking and blossom-end rot as moisture-related issues in container tomatoes; inspect the fruit and growing medium before diagnosing, and do not treat these crop-level risks as a cultivar defect.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["iastate-tomatoes-containers-2024"]
+      },
+      "flowering": {
+        "short": "Flower movement supports fruit set; sustained heat can cause flower drop",
+        "guidance": "At tomato crop level, UMN Extension explains that flower parts sit close together and flower movement can transfer pollen; tomatoes can produce fruit without bee pollination. UMN's Minnesota-specific example says sustained days above 85°F and nights above 70°F can stress flowers and impair fruit set; flowers may then drop. Treat this as regional context, not an Orange Hat trial result or indoor setpoint.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-pollination-vegetables-2026",
+          "umn-excessive-heat-vegetables-2026"
         ]
       }
     },
@@ -1068,13 +1285,40 @@
           "usda-black-pearl-500"
         ]
       },
+      "growth": {
+        "short": "Compact, upright annual; averages 18 in tall by 12 in wide",
+        "guidance": "The U.S. National Arboretum reports an average height of 18 inches and diameter of 12 inches; in warmer regions with longer growing seasons, plants may reach 2–3 feet tall. These are cultivar-specific outdoor garden measurements, not indoor-clearance or hydroponic-spacing specifications.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usna-black-pearl-500"
+        ]
+      },
       "cultivation": {
         "short": "Selected for ornamental foliage and fruit",
-        "guidance": "USDA ARS describes black foliage and upright clusters of small fruits that turn red, with compact ornamental performance and limited evaluation for pot culture under high light. The source does not establish a general hydroponic protocol.",
+        "guidance": "USDA ARS describes black foliage and upright clusters of small fruits that turn red, with compact ornamental performance and limited evaluation for pot culture under high light. The National Arboretum recommends full sun for best growth and black leaf color, and well-drained loam or sandy loam with some organic matter. Neither source establishes a general hydroponic protocol.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "usda-black-pearl-500",
+          "usna-black-pearl-500"
+        ]
+      },
+      "care": {
+        "short": "Compact shape does not require pruning",
+        "guidance": "The U.S. National Arboretum reports that Black Pearl maintains its compact upright shape without pruning. Do not automatically apply pruning practices used for other pepper production goals to this ornamental cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usna-black-pearl-500"
+        ]
+      },
+      "flowering": {
+        "short": "Purple summer flowers precede upright ornamental fruit clusters",
+        "guidance": "The National Arboretum describes summer-borne purple flowers that are not themselves ornamental, followed by upright clusters of 6–8 round fruits. Fruits begin glossy black and mature cherry red; the mature-fruit display is reported as lasting about 80–120 days, occasionally 140. This is cultivar-specific ornamental display information, not a harvest calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
           "usna-black-pearl-500"
         ]
       },
@@ -1094,6 +1338,15 @@
         "confidence": "high",
         "sourceIds": [
           "usna-black-pearl-500"
+        ]
+      },
+      "problems": {
+        "short": "Heat and uneven moisture can affect pepper flowering and fruit",
+        "guidance": "University of Minnesota Extension's guidance is for peppers at crop level, not specifically Black Pearl: hot days and nights can cause flower drop, while inconsistent soil moisture can weaken flowers and small fruit and contribute to blossom-end rot. Treat these as general Capsicum warning signs; cultivar-specific susceptibility or disease resistance has not been established.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-peppers-home-gardens-2026"
         ]
       }
     },
@@ -1132,7 +1385,7 @@
     "name": "White Carolina Pineberry",
     "spanishName": "Pineberry White Carolina",
     "scientificName": "Fragaria × ananassa",
-    "variety": "Supplier-listed cultivar name 'White Carolina'; cultivar registration not independently verified",
+    "variety": "Supplier-listed name 'White Carolina'; historical unpatented breeding parent documented, current retail-stock equivalence not established",
     "category": "fruits",
     "emoji": "🍓",
     "tags": [
@@ -1142,41 +1395,72 @@
       "white strawberry",
       "fresa blanca"
     ],
-    "summary": "White Carolina is a supplier-listed cultivated-strawberry name within Fragaria × ananassa. The commercial listing supports the marketed name, while independent cultivar registration and cultivar-specific traits remain unverified.",
+    "summary": "White Carolina is a marketed name for a white-fruited pineberry, represented here at Fragaria × ananassa / pineberry-type scope rather than as an authenticated historic clone. The berries ripen pale with red achenes. Grow it like a garden strawberry and place a compatible red-fruited cultivar nearby as a cautious pollination measure; cultivar-specific size, stock lineage, and pollination requirements vary or remain unverified.",
     "metrics": [],
     "sections": {
       "identity": {
-        "short": "Supplier-listed name; independent cultivar status pending",
-        "guidance": "Kew accepts Fragaria × ananassa as the garden-strawberry hybrid. Ebert's Greenhouse lists Fragaria × ananassa 'White Carolina' as a pineberry. That commercial listing supports the name used here but is not independent proof of cultivar registration or breeding history.",
+        "short": "Supplier-listed name with a historical breeding record; retail stock not authenticated",
+        "guidance": "Kew accepts Fragaria × ananassa as the garden-strawberry hybrid. Ebert's Greenhouse and Raintree Nursery market White Carolina pineberry plants under that hybrid. USDA GRIN records accession PI 551681 (accession 1446653) as 'White Carolina' under Fragaria × ananassa and currently lists it as not available. US plant patent USPP34612 documents White Carolina/White Pine as an unpatented white-fruited parent of QBC-1: paragraphs [0005] and [0043] give PI 551681, while paragraph [0017] prints PI 555681. The official GRIN record supports 551681 as the accession associated with the historic name; the patent's isolated 555681 reference is a document inconsistency, not a second accession assignment. Neither source registers White Carolina or proves that current nursery stocks are clonal matches to that historic accession.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "kew-fragaria-ananassa-500",
-          "eberts-white-carolina-500"
+          "eberts-white-carolina-500",
+          "raintree-white-carolina-2026",
+          "uspp34612-white-carolina-parent-2022",
+          "usda-grin-white-carolina-pi551681-2026"
         ]
       },
       "cultivation": {
         "short": "Pineberry is a white-fruited garden-strawberry type",
-        "guidance": "University of Illinois Extension describes pineberries as white-to-blush-fruited Fragaria × ananassa and recommends starting with nursery transplants. These are crop/type-level facts, not cultivar-specific performance claims for White Carolina.",
+        "guidance": "University of Illinois Extension says pineberries can be grown like garden strawberries: full sun, well-drained soil rich in organic matter, and mulch to suppress weeds and moderate soil moisture and temperature. This is pineberry-type outdoor guidance, not a White Carolina-specific recipe or hydroponic recommendation.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "illinois-pineberry-500"
         ]
       },
-      "propagation": {
-        "short": "Cultivar-specific propagation remains unverified",
-        "guidance": "The reviewed sources do not establish a cultivar-specific seed-starting protocol or runner behavior for White Carolina. Do not infer either from the broader pineberry type.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+      "growth": {
+        "short": "Pale-to-blush ripe fruit with red achenes; dimensions vary by cultivar",
+        "guidance": "Illinois Extension describes pineberry-type fruit as generally smaller and softer than standard red strawberries, with white-to-blush ripe color and red achenes. For the supplier-listed White Carolina selection, Ebert's and Walters Gardens each list 6–8 in height and 12–18 in spread; Raintree lists 6–10 in height and the same spread. These are supplier specifications, not independent trial measurements, and the catalog's current stock is not authenticated as the same clone, so they are not presented as a guaranteed mature size. Ebert also reports numerous runners; this has not been independently confirmed for the selection represented here.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": ["illinois-pineberry-500", "eberts-white-carolina-500", "walters-white-carolina-pollination-2026", "raintree-white-carolina-2026"]
       },
-      "needsValidation": {
-        "short": "Verify cultivar status and propagation behavior",
-        "guidance": "The exact White Carolina cultivar status and cultivar-specific runner behavior were not independently established in the reviewed authoritative material.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+      "harvest": {
+        "short": "Use achene color, not white flesh alone, as a ripeness cue",
+        "guidance": "Illinois Extension describes ripe pineberries as white to blush with bright-red achenes; the achenes changing from green to red are a more reliable maturity cue than softness. Harvest gently with a twist or pinch and refrigerate until use. This is pineberry-type guidance, not a White Carolina-specific harvest date or storage-life promise.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-pineberry-500"]
+      },
+      "pollination": {
+        "short": "A compatible red-fruited strawberry is a cautious pollination partner",
+        "guidance": "Illinois Extension recommends a compatible red-fruited garden cultivar for many pineberries and gives a type-level ratio of three pineberries to one standard strawberry. For its White Carolina product, Walters Gardens recommends one everbearing variety per five plants to help pollination and improve landscape performance. Raintree also recommends an everbearing partner at that ratio, although its listing calls White Carolina self-fertile; Ebert's says another strawberry's pollen is required. The sources therefore agree that a partner can help but do not agree whether it is required or establish one universal ratio. As a Garden adaptation while the stock represented here remains unauthenticated, grow a compatible everbearing red-fruited strawberry nearby if prioritizing fruit set; do not treat either ratio as a universal or verified compatibility rule for this catalog stock.",
+        "evidenceType": "garden_adaptation",
+        "confidence": "medium",
+        "sourceIds": ["illinois-pineberry-500", "walters-white-carolina-pollination-2026", "eberts-white-carolina-500", "raintree-white-carolina-2026", "uconn-strawberries-2026"]
+      },
+      "propagation": {
+        "short": "Start with a nursery transplant; seed may not retain the white-fruit type",
+        "guidance": "University of Illinois and Missouri Extension advise starting pineberries from reputable transplants rather than seed because open pollination means seedlings may not come true to type. Missouri lists White Carolina among marketed pineberry cultivars. This supports the pineberry type, not clonal authentication of a particular supplier's White Carolina stock. Ebert's reports runners for its listing, but that seller-specific trait is not generalized to this profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-pineberry-500", "mizzou-pineberry-2015", "eberts-white-carolina-500"]
+      },
+      "uses": {
+        "short": "Edible white-to-blush berries; pineapple notes are not universal",
+        "guidance": "Illinois Extension describes pineberries as edible strawberries marketed for a pineapple-like flavor or aroma, while noting that people do not all perceive that flavor. Treat this as the fruit's culinary context, not a guaranteed flavor profile for every White Carolina plant. Do not confuse normal pale ripe pineberry fruit with albinism in red-fruited strawberries, which Illinois Extension associates with unfavorable growing conditions and poor flavor.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-pineberry-500"]
+      },
+      "problems": {
+        "short": "Watch for common strawberry pests and diseases",
+        "guidance": "Illinois Extension says pineberries can be susceptible to the same problems as garden strawberries, including leaf spot and scorch, root rots, red stele, anthracnose, gray mold, viruses, spider mites, aphids, leafrollers, slugs, nematodes, and strawberry weevils. This is a monitoring list for the pineberry type, not a diagnosis or a claim that every problem is present; identify the cause before choosing a treatment. Birds may also take fruit, although Illinois Extension notes the pale color may make it less noticeable to them.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-pineberry-500"]
       }
     },
     "compatibilityProfile": {

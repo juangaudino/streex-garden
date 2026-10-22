@@ -16,7 +16,8 @@
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "cornell-tokyo-long-white-variety-2026"
       ],
       "conflicts": []
     },
@@ -311,20 +312,23 @@
     },
     {
       "plantIdentityId": "leek-american-flag",
-      "acceptedScientificName": "Allium ampeloprasum",
-      "synonyms": [],
-      "family": null,
+      "acceptedScientificName": "Allium porrum",
+      "synonyms": ["Allium ampeloprasum var. porrum"],
+      "family": "Amaryllidaceae",
       "genus": "Allium",
-      "species": "Allium ampeloprasum",
-      "cultivar": "American Flag type",
-      "horticulturalType": "American Flag type",
+      "species": "Allium porrum",
+      "cultivar": "American Flag",
+      "horticulturalType": "Leek/Porrum Group; named variety American Flag",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
+        "kew-powo-allium-porrum-2026",
+        "usda-grin-allium-porrum-leek-group-2026",
+        "wisc-leeks-home-gardens-2026"
       ],
-      "conflicts": []
+      "conflicts": [
+        "POWO accepts Allium porrum; horticultural sources also use Allium ampeloprasum var. porrum and the broader Leek/Porrum Group treatment. Gardenpedia selects the POWO accepted name and preserves the alternative horticultural grouping as nomenclatural context, not as an unresolved cultivar identity."
+      ]
     },
     {
       "plantIdentityId": "bush-bean-blue-lake",
@@ -367,15 +371,18 @@
       "family": null,
       "genus": "Petroselinum",
       "species": "Petroselinum crispum",
-      "cultivar": "Flat-leaf type",
-      "horticulturalType": "Flat-leaf type",
+      "cultivar": null,
+      "horticulturalType": "Italian flat-leaf parsley type within Petroselinum crispum; no named cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "umn-parsley-home-gardens-2026"
       ],
-      "conflicts": []
+      "conflicts": [
+        "UMN Extension labels Italian flat-leaf parsley as Petroselinum neapolitanum; the catalog retains Kew's accepted Petroselinum crispum and treats flat-leaf as a horticultural type, not a named cultivar."
+      ]
     },
     {
       "plantIdentityId": "lemon-balm",
@@ -384,8 +391,8 @@
       "family": null,
       "genus": "Melissa",
       "species": "Melissa officinalis",
-      "cultivar": "Lemon balm",
-      "horticulturalType": "Lemon balm",
+      "cultivar": null,
+      "horticulturalType": "Melissa officinalis species identity; no named cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
@@ -413,37 +420,47 @@
     },
     {
       "plantIdentityId": "lemon-thyme",
-      "acceptedScientificName": "Thymus citriodorus",
-      "synonyms": [],
-      "family": null,
+      "acceptedScientificName": "Thymus × citriodorus",
+      "synonyms": ["Thymus citriodorus"],
+      "family": "Lamiaceae",
       "genus": "Thymus",
-      "species": "Thymus citriodorus",
-      "cultivar": "Lemon thyme type",
+      "species": "Thymus × citriodorus",
+      "cultivar": null,
       "horticulturalType": "Lemon thyme type",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
+        "kew-thymus-x-citriodorus-2026",
+        "ncsu-lemon-thyme-2026",
+        "iastate-all-about-thyme-2026"
       ],
-      "conflicts": []
+      "conflicts": [
+        "Accepted name follows POWO/WCVP: Thymus × citriodorus, hybrid formula T. pulegioides × T. vulgaris. Iowa State Extension and NC State's title/structured fields use the hybrid treatment; NC State's narrative contains a conflicting sentence calling it a distinct species. The source-internal discrepancy is documented but does not override the accepted POWO name. Thymus citriodorus is retained as a previously-used name listed by NC State, not as a named cultivar."
+      ]
     },
     {
       "plantIdentityId": "nasturtium-empress-of-india",
-      "acceptedScientificName": "Tropaeolum majus",
+      "acceptedScientificName": "Tropaeolum sp.",
       "synonyms": [],
-      "family": null,
+      "family": "Tropaeolaceae",
       "genus": "Tropaeolum",
-      "species": "Tropaeolum majus",
+      "species": null,
       "cultivar": "Empress of India",
       "horticulturalType": "Empress of India",
-      "status": "candidate-reconciled",
-      "confidence": "medium",
+      "status": "conflict-review",
+      "confidence": "pending",
       "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
+        "kew-tropaeolum-genus-2026",
+        "kew-tropaeolum-majus-2026",
+        "rhs-empress-of-india-nasturtium-2026",
+        "rhs-empress-of-india-genus-2026",
+        "uw-tropaeolum-garden-nasturtium-500",
+        "takii-empress-of-india-2026",
+        "johnnys-empress-of-india-2026"
       ],
-      "conflicts": []
+      "conflicts": [
+        "Species attribution for the named Empress of India selection conflicts: one RHS profile uses T. majus, another RHS profile retains the genus-level Tropaeolum name, and UW–Madison Extension, Takii and Johnny's list T. minus. Kew accepts T. majus and T. minus as species but does not identify this cultivar. Keep species null pending cultivar-level resolution."
+      ]
     },
     {
       "plantIdentityId": "calendula-pacific-beauty",
@@ -499,7 +516,7 @@
     {
       "plantIdentityId": "mizuna",
       "acceptedScientificName": "Brassica rapa",
-      "synonyms": [],
+      "synonyms": ["Brassica rapa var. nipposinica", "Brassica rapa subsp. nipposinica"],
       "family": "Brassicaceae",
       "genus": "Brassica",
       "species": "rapa",
@@ -509,9 +526,11 @@
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "kew-brassica-rapa-mizuna-2026",
+        "usda-grin-mizuna-nipposinica-2026"
       ],
-      "conflicts": []
+      "conflicts": ["Oregon State's winter-crops guide places mizuna within Brassica rapa but one figure caption identifies it as B. juncea; Penn State, Kew and USDA GRIN support the B. rapa mizuna placement. No named cultivar is assigned."]
     },
     {
       "plantIdentityId": "tatsoi",
@@ -532,8 +551,8 @@
     },
     {
       "plantIdentityId": "mustard-greens",
-      "acceptedScientificName": "Brassica juncea",
-      "synonyms": [],
+      "acceptedScientificName": "× Brassarda juncea (L.) Su Liu & Z.H.Feng",
+      "synonyms": ["Brassica × juncea (L.) Czern."],
       "family": "Brassicaceae",
       "genus": "Brassica",
       "species": "juncea",
@@ -911,13 +930,14 @@
       "family": "Lamiaceae",
       "genus": "Origanum",
       "species": "majorana",
-      "cultivar": "Sweet marjoram",
-      "horticulturalType": "Sweet marjoram",
+      "cultivar": null,
+      "horticulturalType": "Sweet marjoram common-name/type identity; no named cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "ncsu-sweet-marjoram-2026"
       ],
       "conflicts": []
     },
@@ -928,8 +948,8 @@
       "family": "Lamiaceae",
       "genus": "Satureja",
       "species": "hortensis",
-      "cultivar": "Summer savory",
-      "horticulturalType": "Summer savory",
+      "cultivar": null,
+      "horticulturalType": "Annual culinary herb species; no named cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
@@ -945,8 +965,8 @@
       "family": "Lamiaceae",
       "genus": "Agastache",
       "species": "foeniculum",
-      "cultivar": "Anise hyssop",
-      "horticulturalType": "Anise hyssop",
+      "cultivar": null,
+      "horticulturalType": "Agastache foeniculum species identity; no named cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
@@ -1155,7 +1175,8 @@
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "oregonstate-chinese-brassicas-500"
       ],
       "conflicts": []
     },
@@ -1166,15 +1187,16 @@
       "family": "Lamiaceae",
       "genus": "Origanum",
       "species": "vulgare",
-      "cultivar": "Greek oregano",
-      "horticulturalType": "Greek oregano",
+      "cultivar": null,
+      "horticulturalType": "Greek oregano type associated by NC State with Origanum vulgare subsp. hirtum; no cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "ncsu-greek-oregano-2026"
       ],
-      "conflicts": []
+      "conflicts": ["NC State treats Greek oregano as O. vulgare subsp. hirtum; the catalog retains the species-level O. vulgare identity rather than silently promoting the profile to subspecies scope."]
     },
     {
       "plantIdentityId": "russian-tarragon",
@@ -1200,8 +1222,8 @@
       "family": "Lamiaceae",
       "genus": "Satureja",
       "species": "montana",
-      "cultivar": "Winter savory",
-      "horticulturalType": "Winter savory",
+      "cultivar": null,
+      "horticulturalType": "Woody perennial culinary herb species; no named cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
@@ -1217,8 +1239,8 @@
       "family": "Apiaceae",
       "genus": "Carum",
       "species": "carvi",
-      "cultivar": "Caraway",
-      "horticulturalType": "Caraway",
+      "cultivar": null,
+      "horticulturalType": "Biennial culinary herb species; no named cultivar assigned",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
@@ -1236,15 +1258,19 @@
       "family": "Amaranthaceae",
       "genus": "Dysphania",
       "species": "ambrosioides",
-      "cultivar": "Epazote",
-      "horticulturalType": "Epazote",
+      "cultivar": null,
+      "horticulturalType": null,
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "kew-powo-dysphania-ambrosioides-2026",
+        "ncsu-epazote-plant-toolbox-2026"
       ],
-      "conflicts": []
+      "conflicts": [
+        "Life-form descriptions vary: Kew's summary lists perennial, NC State says annual or short-lived perennial, and the Flora accounts cited by Kew describe it as usually annual and rarely short-lived perennial. Retain the variation; do not assign a climate-independent lifespan."
+      ]
     },
     {
       "plantIdentityId": "grape-tomato",
@@ -1429,7 +1455,9 @@
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "osuext-broccoli-2010",
+        "illinois-broccolini-2024"
       ],
       "conflicts": []
     },
@@ -1520,20 +1548,23 @@
     },
     {
       "plantIdentityId": "king-richard-leek",
-      "acceptedScientificName": "Allium ampeloprasum",
-      "synonyms": [],
+      "acceptedScientificName": "Allium porrum",
+      "synonyms": ["Allium ampeloprasum var. porrum"],
       "family": "Amaryllidaceae",
       "genus": "Allium",
-      "species": "ampeloprasum",
+      "species": "Allium porrum",
       "cultivar": "King Richard",
-      "horticulturalType": "King Richard",
+      "horticulturalType": "Leek/Porrum Group; named variety King Richard",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
+        "kew-powo-allium-porrum-2026",
+        "usda-grin-allium-porrum-leek-group-2026",
+        "wisc-leeks-home-gardens-2026"
       ],
-      "conflicts": []
+      "conflicts": [
+        "POWO accepts Allium porrum; horticultural sources also use Allium ampeloprasum var. porrum and the broader Leek/Porrum Group treatment. Gardenpedia selects the POWO accepted name and preserves the alternative horticultural grouping as nomenclatural context, not as an unresolved cultivar identity."
+      ]
     },
     {
       "plantIdentityId": "seed-grown-shallot",
@@ -1946,7 +1977,7 @@
     {
       "plantIdentityId": "mizuna-red-streaks",
       "acceptedScientificName": "Brassica rapa",
-      "synonyms": [],
+      "synonyms": ["Brassica rapa var. nipposinica", "Brassica rapa subsp. nipposinica"],
       "family": "Brassicaceae",
       "genus": "Brassica",
       "species": "rapa",
@@ -1956,9 +1987,12 @@
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "kew-brassica-rapa-mizuna-2026",
+        "usda-grin-mizuna-nipposinica-2026",
+        "harris-red-streaked-mizuna-2026"
       ],
-      "conflicts": []
+      "conflicts": ["Harris Seeds confirms a Red Streaked Mizuna product label and its product description, but does not establish a formal cultivar or exact seed-lot taxon. Kew and USDA GRIN support the broader mizuna placement under Brassica rapa; the profile retains the supplier/type scope."]
     },
     {
       "plantIdentityId": "mexican-tarragon",
@@ -1973,7 +2007,8 @@
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "kew-powo-tagetes-lucida-2026"
       ],
       "conflicts": []
     },
@@ -2337,7 +2372,10 @@
     {
       "plantIdentityId": "gai-lan",
       "acceptedScientificName": "Brassica oleracea",
-      "synonyms": [],
+      "synonyms": [
+        "Brassica alboglabra",
+        "Brassica oleracea var. alboglabra"
+      ],
       "family": "Brassicaceae",
       "genus": "Brassica",
       "species": "oleracea",
@@ -2347,7 +2385,8 @@
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "powo-brassica-oleracea-alboglabra-2026"
       ],
       "conflicts": []
     },
@@ -2375,13 +2414,14 @@
       "family": "Brassicaceae",
       "genus": "Brassica",
       "species": "oleracea",
-      "cultivar": null,
-      "horticulturalType": "Long Island Improved type",
+      "cultivar": "Long Island Improved",
+      "horticulturalType": "Brussels sprouts (Gemmifera Group)",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
         "kew-powo-wave1",
-        "usda-plants-wave1"
+        "usda-plants-wave1",
+        "cornell-long-island-improved-brussels-2026"
       ],
       "conflicts": []
     },
@@ -2506,20 +2546,23 @@
     },
     {
       "plantIdentityId": "giant-musselburgh-leek",
-      "acceptedScientificName": "Allium ampeloprasum",
-      "synonyms": [],
+      "acceptedScientificName": "Allium porrum",
+      "synonyms": ["Allium ampeloprasum var. porrum"],
       "family": "Amaryllidaceae",
       "genus": "Allium",
-      "species": "ampeloprasum",
+      "species": "Allium porrum",
       "cultivar": null,
-      "horticulturalType": "Giant Musselburgh type",
+      "horticulturalType": "Leek/Porrum Group; named variety Giant Musselburgh",
       "status": "candidate-reconciled",
       "confidence": "medium",
       "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
+        "kew-powo-allium-porrum-2026",
+        "usda-grin-allium-porrum-leek-group-2026",
+        "wisc-leeks-home-gardens-2026"
       ],
-      "conflicts": []
+      "conflicts": [
+        "POWO accepts Allium porrum; horticultural sources also use Allium ampeloprasum var. porrum and the broader Leek/Porrum Group treatment. Gardenpedia selects the POWO accepted name and preserves the alternative horticultural grouping as nomenclatural context, not as an unresolved cultivar identity."
+      ]
     },
     {
       "plantIdentityId": "sweet-spanish-onion",
@@ -2710,20 +2753,26 @@
     },
     {
       "plantIdentityId": "alaska-nasturtium",
-      "acceptedScientificName": "Tropaeolum majus",
+      "acceptedScientificName": "Tropaeolum sp.",
       "synonyms": [],
       "family": "Tropaeolaceae",
       "genus": "Tropaeolum",
-      "species": "majus",
+      "species": null,
       "cultivar": null,
-      "horticulturalType": "Alaska type",
-      "status": "candidate-reconciled",
-      "confidence": "medium",
+      "horticulturalType": "Alaska type; exact supplier/series not identified",
+      "status": "conflict-review",
+      "confidence": "pending",
       "sourceIds": [
-        "kew-powo-wave1",
-        "usda-plants-wave1"
+        "kew-tropaeolum-genus-2026",
+        "kew-tropaeolum-minus-500",
+        "rhs-alaska-series-nasturtium-2026",
+        "jekkas-alaska-series-nasturtium-2026",
+        "johnnys-alaska-mix-nasturtium-2026",
+        "uw-tropaeolum-garden-nasturtium-500"
       ],
-      "conflicts": []
+      "conflicts": [
+        "RHS and Jekka identify their Alaska Series material as T. majus, while UW–Madison and Johnny's label Alaska series/Mix material as T. minus. The catalog does not identify the represented supplier or line, so the sources may describe distinct material. Keep species null and resolve the catalog's seed-line identity before assigning a species or series-level traits."
+      ]
     },
     {
       "plantIdentityId": "ivory-princess-calendula",
@@ -3353,14 +3402,14 @@
       "acceptedScientificName": "Brassica juncea",
       "synonyms": [],
       "family": "Brassicaceae",
-      "genus": "Brassica",
-      "species": "Brassica juncea",
+      "genus": "× Brassarda",
+      "species": "× Brassarda juncea",
       "cultivar": "Wasabina (supplier-listed product selection)",
       "horticulturalType": "Mustard green seed product; wasabi-like flavor name, not Wasabia japonica",
-      "status": "conflict-review",
-      "confidence": "medium",
+      "status": "candidate-reconciled",
+      "confidence": "high",
       "sourceIds": ["usda-brassica-juncea-500", "kew-brassica-juncea-conflict-500", "hudson-valley-wasabina-500"],
-      "conflicts": ["USDA PLANTS uses Brassica juncea; the consulted Kew backbone record reflects a different hybrid nomenclatural treatment. Retain supplier identification and flag the backbone conflict for editorial review."]
+      "conflicts": ["USDA PLANTS and the supplier use Brassica juncea; Kew accepts × Brassarda juncea and lists Brassica × juncea as a synonym. Garden follows the current Kew backbone while preserving the established agricultural name."]
     },
     {
       "plantIdentityId": "sunflower-helianthus-annuus",
@@ -4284,7 +4333,7 @@
       "horticulturalType": "Gardyn pink-flowered product selection; cultivar not established",
       "status": "candidate-reconciled",
       "confidence": "high",
-      "sourceIds": ["kew-petunia-atkinsiana", "gardyn-pink-petunia-wave28"],
+      "sourceIds": ["kew-petunia-atkinsiana-public", "gardyn-pink-petunia-wave28"],
       "conflicts": ["Gardyn uses Petunia × hybrida; Kew currently accepts Petunia × atkinsiana and treats Petunia × hybrida as a synonym."]
     },
     {
@@ -5180,7 +5229,7 @@
     {"plantIdentityId":"sweet-scabiosa-scabiosa-atropurpurea","acceptedScientificName":"Scabiosa atropurpurea","synonyms":[],"family":"Caprifoliaceae","genus":"Scabiosa","species":"Scabiosa atropurpurea","cultivar":null,"horticulturalType":"Sweet scabiosa species; annual ornamental","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-scabiosa-atropurpurea-wave61"],"conflicts":["Pincushion flower is shared by other taxa; this record is limited to Scabiosa atropurpurea."]},
     {"plantIdentityId":"sea-thrift-armeria-maritima","acceptedScientificName":"Armeria maritima","synonyms":[],"family":"Plumbaginaceae","genus":"Armeria","species":"Armeria maritima","cultivar":null,"horticulturalType":"Sea thrift species; subspecies and cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-armeria-maritima-wave61"],"conflicts":["The source notes geographic subspecies; none is assigned to this identity."]},
     {"plantIdentityId":"caucasian-pincushion-lomelosia-caucasica","acceptedScientificName":"Lomelosia caucasica","synonyms":["Scabiosa caucasica"],"family":"Caprifoliaceae","genus":"Lomelosia","species":"Lomelosia caucasica","cultivar":null,"horticulturalType":"Caucasian pincushion species; perennial ornamental","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-lomelosia-caucasica-wave61"],"conflicts":["The source records Scabiosa caucasica as a synonym; the accepted profile identity follows Lomelosia caucasica."]},
-    {"plantIdentityId":"common-rue-ruta-graveolens","acceptedScientificName":"Ruta graveolens","synonyms":[],"family":"Rutaceae","genus":"Ruta","species":"Ruta graveolens","cultivar":null,"horticulturalType":"Common rue species; ornamental herb","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-ruta-graveolens-wave61"],"conflicts":["Potential skin photosensitivity and toxicity caution mean culinary use is not inferred from the herb label."]},
+    {"plantIdentityId":"common-rue-ruta-graveolens","acceptedScientificName":"Ruta graveolens","synonyms":[],"family":"Rutaceae","genus":"Ruta","species":"Ruta graveolens","cultivar":null,"horticulturalType":"Common rue species; ornamental herb","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-ruta-graveolens-wave61"],"conflicts":[]},
     {"plantIdentityId":"garden-angelica-angelica-archangelica","acceptedScientificName":"Angelica archangelica","synonyms":[],"family":"Apiaceae","genus":"Angelica","species":"Angelica archangelica","cultivar":null,"horticulturalType":"Garden angelica species; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-angelica-archangelica-wave61"],"conflicts":["Common name wild celery is also used for unrelated plants; accepted name anchors this identity."]},
     {"plantIdentityId":"blazing-star-liatris-spicata","acceptedScientificName":"Liatris spicata","synonyms":[],"family":"Asteraceae","genus":"Liatris","species":"Liatris spicata","cultivar":null,"horticulturalType":"Blazing star species; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-liatris-spicata-wave61"],"conflicts":[]},
     {"plantIdentityId":"snow-in-summer-cerastium-tomentosum","acceptedScientificName":"Cerastium tomentosum","synonyms":[],"family":"Caryophyllaceae","genus":"Cerastium","species":"Cerastium tomentosum","cultivar":null,"horticulturalType":"Snow-in-summer species; groundcover ornamental","status":"candidate-reconciled","confidence":"high","sourceIds":["ncsu-cerastium-tomentosum-wave61"],"conflicts":[]},
@@ -5202,6 +5251,6 @@
     {"plantIdentityId":"black-eyed-pea-vigna-unguiculata-unguiculata","acceptedScientificName":"Vigna unguiculata subsp. unguiculata","synonyms":[],"family":"Fabaceae","genus":"Vigna","species":"Vigna unguiculata","cultivar":null,"horticulturalType":"Blackeye/southern-pea crop form associated with accepted subsp. unguiculata; cultivar unspecified","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-vigna-unguiculata-wave62","clemson-southern-peas-wave62","ncsu-vigna-unguiculata-wave62"],"conflicts":["Common-name use overlaps broadly with cowpea; this identity is scoped to the blackeye/southern-pea crop form and kept distinct from V. unguiculata subsp. sesquipedalis yardlong bean."]},
     {"plantIdentityId":"greater-galangal-alpinia-galanga","acceptedScientificName":"Alpinia galanga","synonyms":[],"family":"Zingiberaceae","genus":"Alpinia","species":"Alpinia galanga","cultivar":null,"horticulturalType":"Greater galangal culinary species; distinct from lesser galangal and other galangal-named taxa","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-alpinia-galanga-wave63","ufifas-ginger-turmeric-production-wave62"],"conflicts":["Common names galangal and Thai ginger also refer to other species; this identity is specifically A. galanga."]},
     {"plantIdentityId":"common-sage-salvia-officinalis","acceptedScientificName":"Salvia officinalis","synonyms":[],"family":"Lamiaceae","genus":"Salvia","species":"Salvia officinalis","cultivar":null,"horticulturalType":"Common culinary sage species; no named cultivar assigned","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-salvia-officinalis-wave63","uw-sage-salvia-officinalis-wave63"],"conflicts":["Common sage is distinct from pineapple sage (Salvia elegans), clary sage (S. sclarea), and named leaf-color cultivars."]},
-    {"plantIdentityId":"curry-leaf-tree-bergera-koenigii","acceptedScientificName":"Bergera koenigii","synonyms":["Murraya koenigii (L.) Spreng."],"family":"Rutaceae","genus":"Bergera","species":"Bergera koenigii","cultivar":null,"horticulturalType":"Curry-leaf tree species; no named compact or dwarf form assigned","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-bergera-koenigii-wave63","ucanr-curry-leaf-wave63"],"conflicts":["Kew accepts Bergera koenigii and lists Murraya koenigii as a synonym; older horticultural and nursery references continue to use the synonym. This is one species identity, not two catalog records."]}
+    {"plantIdentityId":"curry-leaf-tree-bergera-koenigii","acceptedScientificName":"Bergera koenigii","synonyms":["Murraya koenigii (L.) Spreng."],"family":"Rutaceae","genus":"Bergera","species":"Bergera koenigii","cultivar":null,"horticulturalType":"Curry-leaf tree species; no named compact or dwarf form assigned","status":"candidate-reconciled","confidence":"high","sourceIds":["kew-bergera-koenigii-wave63","ucanr-curry-leaf-wave63"],"conflicts":["Kew accepts Bergera koenigii and lists Murraya koenigii as a synonym; older horticultural and nursery references continue to use the synonym."]}
   ]
 }

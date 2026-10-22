@@ -1,6 +1,6 @@
 {
   "celeriac-apium-graveolens": {
-    "summary": "Tipo de apio cultivado por su base ensanchada, no por los tallos. La semilla es diminuta y lenta; la guía doméstica de California indica que necesita luz para germinar.",
+    "summary": "El apionabo es la forma de Apium graveolens cultivada por su base ensanchada y nudosa, no por las pencas. Es un cultivo de ciclo largo que necesita humedad constante y condiciones moderadas; el tamaño varietal y el rendimiento en sistemas de interior siguen sin establecerse.",
     "sections": {
       "identity": {
         "short": "El apionabo es un tipo hortícola de Apium graveolens",
@@ -10,17 +10,21 @@
         "short": "Cultivo de ciclo largo para condiciones frescas y suelo que retenga humedad",
         "guidance": "UC ANR describe un cultivo de ciclo largo y recomienda clima moderado y suelo fértil que retenga humedad en su guía de California. El frío al plantar puede inducir floración antes de formar una raíz grande; la advertencia es regional y no específica de cultivar."
       },
+      "maintenance": {
+        "short": "Mantén húmedas de forma pareja las raíces superficiales y cuida la base ensanchada",
+        "guidance": "UC ANR aconseja mantener húmedas, pero no anegadas, las pocas pulgadas superiores del suelo porque las raíces del apionabo son superficiales. Evita la competencia de malezas y cultiva con cuidado; al ensancharse la base, la guía regional describe recortar raíces laterales y aporcar tierra alrededor para blanquear el exterior. Son prácticas en suelo exterior, no un procedimiento hidropónico."
+      },
       "growth": {
         "short": "Forma una base ensanchada en vez de las pencas típicas del apio",
         "guidance": "Oregon State University Extension distingue el apionabo, que desarrolla una base ensanchada, del apio cultivado por sus pencas. No se trasladan al apionabo supuestos de cosecha o espaciamiento del apio de pencas."
       },
       "harvest": {
-        "short": "Cosecha la base cuando alcance un tamaño útil",
-        "guidance": "UC ANR ofrece un ciclo amplio de 100–150 días en su contexto regional. La cosecha real depende del clima y el cultivar; no se promete una fecha o tamaño únicos."
+        "short": "Levanta la base ensanchada cuando alcance un tamaño útil",
+        "guidance": "UC ANR describe levantar la base ensanchada del apionabo cuando mide alrededor de 3–4 pulgadas de diámetro o algo más; otra tabla regional ofrece un intervalo más amplio de 3–5 pulgadas. Úsalos como referencias hortícolas de esas fuentes, no como tamaño o calendario universal. El ciclo amplio de 100–150 días también varía según clima y cultivar."
       },
       "problems": {
-        "short": "El suelo frío al plantar puede provocar floración antes de ensanchar la raíz",
-        "guidance": "UC ANR advierte que plantar en suelo frío puede hacer que la planta florezca sin formar una base grande. Es guía regional para el tipo de cultivo, no una afirmación de resistencia o susceptibilidad varietal."
+        "short": "El suelo frío puede inducir floración; los túneles en hojas pueden indicar minadores",
+        "guidance": "UC ANR advierte que plantar en suelo frío puede inducir floración antes de que se forme una base grande. También describe hojas amarillas o con pequeños agujeros y túneles como posibles señales del minador del apio y recomienda retirar las hojas afectadas; babosas y caracoles son otras preocupaciones mencionadas. Son señales regionales del cultivo, no afirmaciones de susceptibilidad varietal."
       }
     }
   },
@@ -32,16 +36,20 @@
         "guidance": "Kew acepta Cichorium intybus. UC ANR sitúa el radicchio dentro de esa especie y lo distingue de endivia y escarola, asociadas a Cichorium endivia en el grupo de cultivos citado. No se representa un cultivar nombrado."
       },
       "cultivation": {
-        "short": "Cultivo de estación fresca; el calor puede provocar floración o quemadura apical",
-        "guidance": "UC ANR informa que el calor interior de verano puede causar floración y quemadura apical y ofrece calendarios costeros de California. Esas fechas y separaciones de bancal son guía regional de campo, no una pauta universal ni un diseño hidropónico."
+        "short": "Achicoria de estación fresca; la humedad constante y temperaturas moderadas favorecen la cabeza",
+        "guidance": "UC ANR informa que el calor de verano en zonas interiores puede causar floración y quemadura apical, y ofrece calendarios costeros de California. University of Minnesota Extension recomienda suelo húmedo y bien drenado para las achicorias y describe condiciones frescas para radicchio; sus calendarios y recomendaciones de suelo corresponden al jardín exterior regional, no a una pauta universal ni un diseño hidropónico."
       },
       "growth": {
         "short": "Forma hojas y cabezas; la forma depende del tipo de radicchio",
         "guidance": "UMN Extension agrupa radicchio con lechuga y endivia para el establecimiento doméstico; UC ANR señala variación entre tipos y variedades. No se asigna una forma o dimensión única a esta identidad sin cultivar."
       },
       "harvest": {
-        "short": "Cosecha cabezas u hojas según el tipo elegido",
-        "guidance": "Las fuentes describen el radicchio como cultivo para ensalada y un ciclo más largo que la lechuga en la región de Salinas. La etapa exacta varía por tipo y condiciones locales; no se infiere un calendario de cultivar."
+        "short": "Cosecha la cabeza o las hojas al alcanzar un tamaño útil; el calendario varía según el tipo",
+        "guidance": "University of Minnesota Extension describe cabezas densas y amargas de radicchio y da aproximadamente 60–70 días hasta la madurez en su guía para huertos de Minnesota. La forma y etapa de cosecha varían entre tipos y climas; es una estimación regional a nivel de cultivo, no una garantía de cultivar. También se pueden cosechar hojas para ensalada."
+      },
+      "maintenance": {
+        "short": "Mantén húmeda la zona de raíces superficiales y deshierba sin cavar profundo",
+        "guidance": "University of Minnesota Extension señala que las achicorias absorben buena parte del agua y los nutrientes mediante raíces horizontales superficiales. Recomienda mantener el suelo húmedo, regar los cultivos de hoja antes de cosechar para favorecer hojas crujientes y usar cultivo superficial frecuente o mantillo para controlar malezas sin dañar la planta. Son prácticas regionales para suelo, no un calendario de sistemas interiores."
       },
       "problems": {
         "short": "El calor puede perjudicar la calidad de la cabeza",
@@ -59,6 +67,10 @@
       "cultivation": {
         "short": "Necesita una temporada cálida larga y espacio para una enredadera",
         "guidance": "UF/IFAS informa que desde semilla se requieren cinco a nueve meses de clima cálido para obtener raíces comestibles y que las enredaderas pueden llegar a unos 20 pies. Texas A&M señala que el inicio de la raíz depende del fotoperiodo en su guía de Texas; no es recomendación para recipiente compacto ni sistema interior."
+      },
+      "maintenance": {
+        "short": "Reserva mucho espacio para la enredadera; no hay una pauta establecida de soporte o poda",
+        "guidance": "UF/IFAS indica que las enredaderas de jícama pueden alcanzar unos 20 pies y necesitan bastante espacio. Como adaptación de Garden, reserva suficiente área exterior para que no invada cultivos vecinos; la fuente no especifica enrejado, método de amarre ni calendario de poda, así que aquí no se prescribe ninguno."
       },
       "growth": {
         "short": "Enredadera que produce una raíz de reserva comestible",
@@ -86,8 +98,12 @@
         "guidance": "Wisconsin Extension describe enredaderas vigorosas y recomienda soporte; su guía regional cubre condiciones exteriores de suelo y siembra. No demuestra compatibilidad hidropónica interior."
       },
       "growth": {
-        "short": "Enredadera trepadora; los cotiledones permanecen bajo tierra al emerger",
-        "guidance": "Wisconsin Extension señala que el ayocote presenta germinación hipogea: los cotiledones quedan bajo tierra, y documenta su crecimiento trepador. No confundas la falta de cotiledones visibles con una emergencia fallida si la plántula continúa desarrollándose."
+        "short": "Enredadera vigorosa; UMN informa vides de hasta 3 m en jardín doméstico",
+        "guidance": "Wisconsin Extension describe un crecimiento trepador vigoroso, y University of Minnesota Extension informa vides de hasta 3 m en su contexto de jardín doméstico. No es una garantía de tamaño para un cultivar nombrado; no se asigna una huella adulta única a esta selección sin especificar."
+      },
+      "flowering": {
+        "short": "Flores rojas, rosas o bicolores abundantes, de valor ornamental",
+        "guidance": "University of Minnesota Extension describe flores abundantes rojas, rosas o bicolores en el ayocote escarlata y señala su valor ornamental y atractivo para colibríes. Es orientación de cultivo a nivel de especie, no garantía para un lote de semilla sin especificar ni un cultivar de color nombrado."
       },
       "harvest": {
         "short": "Las vainas se aprovechan tiernas o se dejan madurar para grano seco",
@@ -114,6 +130,10 @@
         "short": "Planta anual arbustiva con vainas de una o dos semillas",
         "guidance": "Iowa State Extension describe el garbanzo como planta arbustiva e informa una o dos semillas por vaina. Sus dimensiones regionales no se consideran específicas de cultivar ni recomendación de separación interior."
       },
+      "flowering": {
+        "short": "El color de la flor varía según la variedad de garbanzo",
+        "guidance": "UW–Madison Extension describe flores autopolinizadas en grupos de dos o tres; pueden ser moradas, blancas, rosas o azules según la variedad. Esta identidad a nivel de especie no selecciona color floral ni tipo kabuli/desi. La guía de cultivo del Alto Medio Oeste también advierte que el calor y la sequedad durante la floración pueden aumentar el aborto de flores y vainas."
+      },
       "harvest": {
         "short": "Cosecha vainas tiernas o semillas secas maduras según el uso",
         "guidance": "Kew registra el uso alimentario del garbanzo e Iowa State Extension describe vainas maduras que se secan y abren cerca de cosecha. No se asigna fecha fija porque varían región, cultivar y etapa de uso."
@@ -132,24 +152,24 @@
         "guidance": "Kew POWO presenta Vicia lens como nombre aceptado y Lens culinaris como sinónimo, mientras que la guía de cultivo de Wisconsin usa Lens culinaris. Se conserva explícita esta diferencia nomenclatural y no se elige clase de semilla o cultivar."
       },
       "cultivation": {
-        "short": "Leguminosa de estación fresca; la guía de campo es regional",
-        "guidance": "UW–Madison Extension describe la adaptación a condiciones frescas y ofrece instrucciones de campo sobre inoculación y establecimiento. Sus recomendaciones de enfermedad y maquinaria no se convierten en una receta doméstica interior."
+        "short": "Leguminosa de estación fresca; evita el exceso de agua y no confundas la distancia en suelo con la de un sistema hidropónico",
+        "guidance": "La guía de huerto doméstico de Montana State University Extension describe la lenteja como cultivo de estación fresca, recomienda ralear las plantas establecidas a unos 10–15 cm en suelo de jardín, permite entutorarlas si se desea y advierte que el exceso de riego puede matarlas. Aconseja detener el riego cuando las vainas empiezan a secarse. Son recomendaciones de huerto y suelo en el contexto de Montana, no instrucciones para interior o hidroponía. Se conserva la guía de cultivo extensivo de UW–Madison solo como contexto regional; sus recomendaciones de inoculación, enfermedades y maquinaria no se convierten en una receta doméstica."
       },
       "growth": {
-        "short": "Anual de grano con vainas pequeñas de una o dos semillas",
-        "guidance": "USDA NRCS describe características de la semilla y la vaina, y distingue los tipos macrosperma y microsperma. Esta identidad no selecciona ninguna de las dos clases comerciales."
+        "short": "Anual esbelta y semierecta; las vainas cortas suelen tener una o dos semillas",
+        "guidance": "UW–Madison describe la lenteja como anual esbelta y semierecta, comúnmente de 30–51 cm en condiciones de campo; la altura depende de la temporada, la humedad y la fertilidad. Las flores avanzan desde las ramas bajas hacia arriba; cada flor forma una vaina corta con una o dos semillas, y los tallos débiles pueden acamarse al madurar. USDA NRCS distingue las clases de semilla macrosperma y microsperma, pero esta identidad no selecciona ninguna. La altura de campo es contexto, no una dimensión para un sistema doméstico."
       },
       "harvest": {
-        "short": "Método y momento de cosecha doméstica requieren validación",
-        "guidance": "Las fuentes seleccionadas describen la lenteja como cultivo para grano, pero no establecen un método de cosecha doméstica para una clase no especificada. No se toma prestado el calendario ni la maquinaria del cultivo extensivo.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending"
+        "short": "Elige vainas verdes tiernas o espera a que sequen para obtener grano; vigila que no se desgranen",
+        "guidance": "Montana State University Extension indica que las vainas verdes pueden cosecharse y comerse como los chícharos tiernos; para obtener lentejas secas da un contexto aproximado de 80–100 días y recomienda cosechar cuando las vainas estén completamente secas, retirando luego las semillas para guardarlas. Toma ese intervalo como estimación regional, no como promesa para toda clase de semilla o lugar. UW–Madison señala que las vainas bajas maduran primero y que las secas pueden abrirse y perder semillas; observa su color y sequedad en vez de depender de una fecha única. Las instrucciones de hilerado de campo no son instrucciones de cosecha doméstica."
       },
       "problems": {
-        "short": "No se recomiendan tratamientos fitosanitarios de campo para cultivo doméstico",
-        "guidance": "Wisconsin Extension analiza problemas bajo condiciones de producción de campo. No se asigna resistencia ni se convierte una recomendación de inoculación o fungicida de campo en tratamiento doméstico.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending"
+        "short": "Exceso de agua, acame y apertura de vainas secas son señales útiles",
+        "guidance": "Montana State University Extension advierte que el riego excesivo puede matar las plantas de lenteja y recomienda detenerlo cuando las vainas empiezan a secarse. UW–Madison describe tallos débiles que pueden acamarse y vainas que pueden abrirse al madurar. Son riesgos generales del cultivo; las notas de acame y apertura de vainas provienen de producción de campo. No establecen un diagnóstico de enfermedad, una resistencia ni un tratamiento para una planta doméstica."
+      },
+      "uses": {
+        "short": "Las vainas verdes se desgranan; la semilla madura se cocina en distintos platos",
+        "guidance": "Montana State University Extension indica que las vainas verdes pueden cosecharse y comerse como guisantes tiernos; las lentejas secas maduras se preparan en sopas, guisos, ensaladas, purés y otros platos. El tiempo de cocción varía según la variedad y la textura deseada, por lo que esta ficha a nivel de especie no asigna una receta ni un rasgo culinario único a una clase de semilla no especificada."
       }
     }
   }

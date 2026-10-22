@@ -1,6 +1,130 @@
 {
-  "monstera-deliciosa": {"summary":"Aroid trepador tropical que suele cultivarse como planta de interior. Esta ficha a nivel de especie no implica un cultivar variegado ni la identidad distinta Monstera adansonii.","sections":{"identity":{"short":"Especie aceptada: Monstera deliciosa","guidance":"Kew acepta Monstera deliciosa. NC State aclara que el nombre común split-leaf philodendron puede confundir: es una Monstera, no un Philodendron. No se especifica cultivar."},"cultivation":{"short":"Luz indirecta brillante, calor y soporte firme","guidance":"NC State recomienda luz moderada sin sol directo, ambiente interior cálido, humedad relativamente alta y dejar secar parcialmente la parte superior del sustrato entre riegos. Recomienda soporte firme y podar o trasplantar cuando haga falta. Son indicaciones para maceta, no especificaciones hidropónicas."},"growth":{"short":"Trepadora con hojas cada vez más divididas","guidance":"NC State describe una enredadera perenne trepadora; en hogares suele mantenerse mucho menor que su tamaño potencial silvestre. No se afirma un tamaño interior fijo ni una forma de hoja propia de cultivar."},"propagation":{"short":"Se documentan acodo y esquejes de tallo","guidance":"NC State enumera el acodo y los esquejes de tallo. Son métodos vegetativos; la fuente no ofrece un protocolo de siembra para la planta de interior."},"problems":{"short":"Evita el sol directo y los tallos sin soporte","guidance":"NC State señala que el sol directo puede quemar las hojas y que el soporte ayuda a evitar que se quiebren los tallos. No se infiere resistencia a enfermedades ni compatibilidad hidropónica."}}},
-  "heartleaf-philodendron-philodendron-hederaceum": {"summary":"Planta tropical de interior, trepadora o colgante, con hojas acorazonadas. Es distinta del potus (Epipremnum aureum); no se representa un cultivar de Philodendron con nombre propio.","sections":{"identity":{"short":"Especie aceptada: Philodendron hederaceum","guidance":"Kew acepta Philodendron hederaceum. NC State la distingue de Epipremnum aureum por rasgos como las estípulas y los pecíolos. Esta ficha de especie no implica cultivares como Brasil o Lemon Lime."},"cultivation":{"short":"Prefiere luz interior media y tolera luz baja","guidance":"NC State indica que prefiere luz media, aunque tolera luz baja, temperaturas interiores promedio y sustrato ligeramente húmedo con menos riego en invierno. Se refiere a luz natural doméstica, no a una categoría de lámpara de Garden."},"growth":{"short":"Los tallos colgantes o trepadores pueden guiarse con soporte","guidance":"NC State describe una enredadera perenne de hábitos colgante, trepador y extendido. Puede dejarse colgar o guiarse; no se afirma un calendario fijo de poda."},"propagation":{"short":"Se documentan esquejes de tallo","guidance":"NC State enumera esquejes de tallo para esta especie. Es propagación vegetativa; la fuente seleccionada no ofrece un protocolo de semilla."},"problems":{"short":"Evita el sustrato persistentemente mojado y vigila plagas comunes","guidance":"NC State relaciona el sustrato demasiado mojado con pudrición de raíz y menciona pulgones, araña roja, cochinillas y escamas. También advierte de toxicidad baja; mantén la planta fuera del alcance de niños y mascotas."}}},
-  "aloe-vera": {"summary":"Planta perenne suculenta que suele crecer en maceta. Forma rosetas y se extiende mediante hijuelos; esta ficha de especie no hace afirmaciones medicinales ni asigna cultivar.","sections":{"identity":{"short":"Especie aceptada: Aloe vera","guidance":"Kew acepta Aloe vera. NC State también registra Aloe barbadensis entre los nombres usados anteriormente para esta especie. No se identifica cultivar."},"cultivation":{"short":"Usa un sustrato muy drenante para suculentas y deja que se seque entre riegos","guidance":"NC State recomienda sustrato muy drenante para suculentas, maceta con orificios, sol pleno a sombra parcial y dejar secar por completo el sustrato entre riegos; en invierno recomienda regar menos. Son instrucciones para maceta, no hidroponía."},"growth":{"short":"Hojas carnosas en roseta; puede producir hijuelos","guidance":"NC State describe una suculenta de tallo corto y hojas en roseta que suele formar hijuelos. La fuente da un rango general de especie, pero no se elige una altura exacta para interiores."},"propagation":{"short":"Se documenta la división de hijuelos","guidance":"NC State enumera la división como estrategia de propagación y describe el crecimiento mediante hijuelos. La fuente seleccionada no ofrece un protocolo de siembra."},"problems":{"short":"El exceso de riego puede causar pudrición de raíz","guidance":"NC State advierte contra el exceso de riego y menciona cochinillas y pulgones como posibles problemas. También indica toxicidad baja por ingestión; esta ficha no presenta el uso tópico o medicinal como tratamiento."}}},
-  "jade-plant-crassula-ovata": {"summary":"Arbusto suculento cultivado ampliamente como planta de interior. Puede propagarse con esquejes de hoja; los cultivares con nombre, como Gollum y Hobbit, no forman parte de esta ficha sin especificación.","sections":{"identity":{"short":"Especie aceptada: Crassula ovata","guidance":"Kew acepta Crassula ovata y registra Crassula argentea como sinónimo. NC State enumera numerosas formas cultivadas, pero ninguna se asigna a esta ficha general de especie."},"cultivation":{"short":"Luz interior brillante y riego moderado","guidance":"NC State recomienda sustrato para maceta bien drenante, ubicación interior soleada con algo de sombra por la tarde y riego moderado cuando el suelo esté seco; aconseja reducirlo desde otoño hasta fines del invierno. Es cuidado en maceta, no una receta hidropónica."},"growth":{"short":"Las hojas suculentas y tallos ramificados forman un aspecto arbustivo","guidance":"NC State describe la especie como arbusto suculento que puede adoptar forma de arbolito al madurar. La página ofrece dimensiones exteriores amplias y describe muchos cultivares; no se asigna un tamaño interior universal."},"propagation":{"short":"Se documentan esquejes de hoja y tallo","guidance":"NC State enumera esquejes de hoja y tallo como métodos de propagación. Esta ficha registra esas vías vegetativas sin inferir un protocolo de plántula."},"problems":{"short":"El exceso de riego puede provocar caída de hojas y pudrición de raíz","guidance":"NC State relaciona el exceso de riego con caída de hojas y pudrición de raíz; también menciona pulgones, escamas, araña roja y cochinillas como plagas ocasionales. No establece resistencia específica de cultivar."}}}
+  "monstera-deliciosa": {
+    "summary": "Aroid trepador tropical que suele cultivarse como planta de interior. NC State da 1,8–2,4 m como altura típica en hogares; esta ficha a nivel de especie no implica un cultivar variegado ni la identidad distinta Monstera adansonii.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Monstera deliciosa",
+        "guidance": "Kew acepta Monstera deliciosa. NC State aclara que el nombre común split-leaf philodendron puede confundir: es una Monstera, no un Philodendron. No se especifica cultivar."
+      },
+      "cultivation": {
+        "short": "Luz indirecta brillante, calor y sustrato drenante",
+        "guidance": "NC State da 16–29 °C como rango adecuado de temperatura interior, con luz moderada sin sol directo y humedad relativamente alta. Riega a fondo y deja secar aproximadamente el cuarto o tercio superior del sustrato antes de volver a regar. Son indicaciones para maceta, no especificaciones hidropónicas."
+      },
+      "maintenance": {
+        "short": "Guía la planta en un soporte firme y poda o trasplanta cuando haga falta",
+        "guidance": "NC State recomienda un soporte firme para reducir el riesgo de que se quiebren los tallos y señala que la poda o el trasplante pueden hacerse en primavera cuando sean necesarios. También incluye limpiar con regularidad el polvo de las hojas grandes. La fuente no prescribe un intervalo de poda ni un diseño específico de soporte."
+      },
+      "growth": {
+        "short": "Trepadora cuyas hojas maduras desarrollan los orificios característicos",
+        "guidance": "NC State explica que los orificios internos característicos aparecen conforme maduran las hojas; las jóvenes pueden no tenerlos todavía. Su página da 1,8–2,4 m como altura típica en el hogar, distinta del tamaño mucho mayor en estado silvestre. Es contexto de planta de interior a nivel de especie, no una altura final garantizada ni específica de cultivar."
+      },
+      "flowering": {
+        "short": "Rara vez florece en interiores; la inflorescencia tiene espata y espádice",
+        "guidance": "NC State describe una espata grande de color blanco cremoso que rodea un espádice más corto y señala que Monstera deliciosa rara vez florece en interiores. No es un hito habitual de una planta de casa; su ausencia por sí sola no indica mal cuidado. No se establece edad ni calendario de floración en interior."
+      },
+      "propagation": {
+        "short": "Se documentan acodo y esquejes de tallo",
+        "guidance": "NC State enumera el acodo y los esquejes de tallo. Son métodos vegetativos; la fuente no ofrece un protocolo de siembra para la planta de interior."
+      },
+      "problems": {
+        "short": "Evita el sol directo y los tallos sin soporte",
+        "guidance": "NC State señala que el sol directo puede quemar las hojas y que el soporte ayuda a evitar que se quiebren los tallos. Clasifica como baja la gravedad de la intoxicación por ingestión, relaciona los síntomas con comer grandes cantidades y advierte que la savia puede irritar la piel. Solo describe como comestible el fruto maduro, y algunas personas pueden ser alérgicas; no trates un fruto que rara vez aparece en interior como alimento habitual. No se infiere resistencia a enfermedades ni compatibilidad hidropónica."
+      }
+    }
+  },
+  "heartleaf-philodendron-philodendron-hederaceum": {
+    "summary": "Planta tropical de interior, trepadora o colgante, con hojas acorazonadas. Es distinta del potus (Epipremnum aureum); no se representa un cultivar de Philodendron con nombre propio.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Philodendron hederaceum",
+        "guidance": "Kew acepta Philodendron hederaceum. NC State la distingue de Epipremnum aureum por rasgos como las estípulas y los pecíolos. Esta ficha de especie no implica cultivares como Brasil o Lemon Lime."
+      },
+      "cultivation": {
+        "short": "Prefiere luz interior media y tolera luz baja",
+        "guidance": "NC State indica que prefiere luz media, aunque tolera luz baja, temperaturas interiores promedio y sustrato ligeramente húmedo con menos riego en invierno. Se refiere a luz natural doméstica, no a una categoría de lámpara de Garden."
+      },
+      "growth": {
+        "short": "Los tallos colgantes o trepadores pueden guiarse con soporte",
+        "guidance": "NC State describe una enredadera perenne de hábitos colgante, trepador y extendido. Puede dejarse colgar o guiarse; no se afirma un calendario fijo de poda."
+      },
+      "care": {
+        "short": "Elige porte colgante o guiado; el soporte y la poda dan forma a la planta interior",
+        "guidance": "UF/IFAS describe el filodendro de hoja acorazonada en cestas colgantes o guiado sobre una malla, enrejado, poste o tabla con corteza; en interiores, el crecimiento depende de la altura del soporte, el guiado y la poda. Esto permite elegir una forma de exhibición y manejar las guías según haga falta, pero no establece un calendario fijo de poda ni un tamaño adulto garantizado."
+      },
+      "propagation": {
+        "short": "Se documentan esquejes de tallo",
+        "guidance": "NC State enumera esquejes de tallo para esta especie. Es propagación vegetativa; la fuente seleccionada no ofrece un protocolo de semilla."
+      },
+      "problems": {
+        "short": "Hojas amarillas, puntas marrones curvadas, pudrición y plagas tienen señales distintas",
+        "guidance": "UF/IFAS relaciona las hojas amarillas con exceso de agua o poca luz y las puntas marrones y curvadas con exceso de fertilizante; también enumera pulgones, cochinillas, escamas y araña roja. NC State identifica pudrición de raíz en sustrato demasiado mojado y advierte de toxicidad baja. Estas señales ayudan a orientar la observación, pero no confirman un diagnóstico; mantén la planta lejos de mascotas y niños."
+      }
+    }
+  },
+  "aloe-vera": {
+    "summary": "Planta perenne suculenta que suele crecer en maceta. Forma rosetas y se extiende mediante hijuelos; esta ficha de especie no hace afirmaciones medicinales ni asigna cultivar.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Aloe vera",
+        "guidance": "Kew acepta Aloe vera. NC State también registra Aloe barbadensis entre los nombres usados anteriormente para esta especie. No se identifica cultivar."
+      },
+      "cultivation": {
+        "short": "Sustrato grueso y drenante; deja secar entre riegos",
+        "guidance": "NC State recomienda sustrato muy drenante para suculentas, maceta con orificios, sol pleno a sombra parcial y dejar secar por completo el sustrato entre riegos; en invierno recomienda regar menos. Penn State también aconseja una mezcla gruesa y drenante y no dejar la maceta en agua estancada. Son instrucciones para maceta, no hidroponía."
+      },
+      "lighting": {
+        "short": "Ventana soleada; el nivel de lámpara no está establecido",
+        "guidance": "La guía de Penn State para el género Aloe recomienda una ventana soleada con sol pleno a luz natural indirecta brillante, girar la maceta y considerar una lámpara si la luz natural es insuficiente. UF/IFAS dice específicamente que Aloe vera crece en interiores en un lugar soleado y puede adaptarse a menos luz; aclimata gradualmente una planta de menor luz antes de exponerla al sol exterior intenso. Ninguna fuente da duración o umbral medido, así que no se traduce a las categorías de luz alta/media/baja para lámparas de Garden."
+      },
+      "growth": {
+        "short": "Hojas carnosas en roseta e hijuelos; el tamaño publicado varía",
+        "guidance": "NC State describe una suculenta de tallo corto y hojas en roseta que suele formar hijuelos. Las medidas publicadas difieren: el texto de NC State indica 2–3 pies de alto, mientras que su tabla da 1–2 pies de alto por 1–2.5 pies de ancho; Penn State dice que Aloe vera puede superar 2 pies y UF/IFAS informa plantas exteriores de Florida de hasta unos 2 pies. Son observaciones de especie, maceta o región, no una huella fija para interior o sistema."
+      },
+      "flowering": {
+        "short": "Las plantas maduras pueden producir flores tubulares anaranjadas o amarillas",
+        "guidance": "NC State indica que las plantas de al menos tres años pueden emitir un tallo floral con flores tubulares de tono anaranjado a amarillento que se abren progresivamente desde abajo. Es una observación a nivel de especie, no una edad garantizada ni un calendario de floración en interiores."
+      },
+      "propagation": {
+        "short": "Se documenta la división de hijuelos",
+        "guidance": "NC State enumera la división como estrategia de propagación y describe el crecimiento mediante hijuelos. La fuente seleccionada no ofrece un protocolo de siembra."
+      },
+      "uses": {
+        "short": "Se cultiva como planta de interior o acento en maceta",
+        "guidance": "NC State describe Aloe vera como planta de interior y de maceta/patio que puede trasladarse al exterior durante el verano; también menciona jardines de rocas y tolerantes a la sequía en regiones adecuadas. Son usos ornamentales, no una recomendación para ingerirla o aplicarla."
+      },
+      "problems": {
+        "short": "Evita el exceso de riego; vigila plagas y manipula las hojas con cuidado",
+        "guidance": "NC State relaciona el exceso de riego con pudrición de raíz y menciona cochinillas y pulgones como posibles plagas. También registra toxicidad baja por ingestión y posible irritación cutánea por el látex de las hojas; mantén la planta fuera del alcance de niños y mascotas y no interpretes la ficha como consejo de uso médico."
+      }
+    }
+  },
+  "jade-plant-crassula-ovata": {
+    "summary": "Arbusto suculento cultivado ampliamente como planta de interior. Puede propagarse con esquejes de hoja; los cultivares con nombre, como Gollum y Hobbit, no forman parte de esta ficha sin especificación.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Crassula ovata",
+        "guidance": "Kew acepta Crassula ovata y registra Crassula argentea como sinónimo. NC State enumera numerosas formas cultivadas, pero ninguna se asigna a esta ficha general de especie."
+      },
+      "cultivation": {
+        "short": "Luz interior brillante y riego moderado",
+        "guidance": "NC State recomienda sustrato para maceta bien drenante, ubicación interior soleada con algo de sombra por la tarde y riego moderado cuando el suelo esté seco; aconseja reducirlo desde otoño hasta fines del invierno. Es cuidado en maceta, no una receta hidropónica."
+      },
+      "growth": {
+        "short": "Arbusto suculento ramificado que puede adoptar forma de arbolito",
+        "guidance": "NC State describe Crassula ovata como un arbusto suculento cuyos tallos gruesos y ramificados pueden adquirir forma de arbolito con la edad. Sus dimensiones exteriores amplias y sus numerosos cultivares no establecen un tamaño interior universal para esta ficha de especie sin cultivar especificado."
+      },
+      "flowering": {
+        "short": "Las pequeñas flores primaverales son poco comunes en plantas de interior",
+        "guidance": "NC State informa pequeñas flores rosadas en primavera en plantas cultivadas al aire libre y señala que el árbol de jade normalmente no florece en el hogar. La ausencia de flores en interior es normal; la fuente no establece una edad, tratamiento de temperatura ni calendario garantizado para esta ficha de planta de interior a nivel de especie."
+      },
+      "propagation": {
+        "short": "Se documentan esquejes de hoja y tallo",
+        "guidance": "NC State enumera esquejes de hoja y tallo como métodos de propagación. Esta ficha registra esas vías vegetativas sin inferir un protocolo de plántula."
+      },
+      "problems": {
+        "short": "El exceso de riego puede provocar caída de hojas y pudrición de raíz",
+        "guidance": "NC State relaciona el exceso de riego con caída de hojas y pudrición de raíz; también menciona pulgones, escamas, araña roja y cochinillas como plagas ocasionales. Además, identifica Crassula ovata como posible problema para gatos, perros y caballos. Como precaución de Garden, mantenla fuera del alcance de animales que puedan mordisquearla; la fuente no especifica mecanismo, dosis ni síntomas."
+      }
+    }
+  }
 }

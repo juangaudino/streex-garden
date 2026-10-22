@@ -1,6 +1,118 @@
 {
-  "mexican-snowball-echeveria-elegans":{"summary":"Una pequeña suculenta mexicana de roseta, común en macetas. NC State Extension documenta la propagación por hojas y retoños y advierte que el exceso de agua es un problema frecuente; corresponde a la especie Echeveria elegans, no a un híbrido comercial sin identificar.","sections":{"identity":{"short":"Especie aceptada Echeveria elegans","guidance":"Kew acepta Echeveria elegans Rose y la ubica en Crassulaceae. NC State registra bola de nieve mexicana, gema mexicana y rosa blanca mexicana como nombres comunes. No se asigna cultivar ni híbrido."},"growth":{"short":"Suculenta perenne de rosetas","guidance":"NC State describe grupos de rosetas compactas y uso en macetas o jardines de roca en su perfil regional. Sus medidas y exposición solar no se generalizan a todos los interiores ni a híbridos de Echeveria."},"cultivation":{"short":"Proporciona luz abundante y sustrato con drenaje rápido","guidance":"NC State recomienda suelo bien drenado y reporta pleno sol a sombra parcial para esta especie en Carolina del Norte. Identifica el exceso de riego como un problema común; estas recomendaciones para suelo no demuestran compatibilidad hidropónica."},"propagation":{"short":"Se documentan retoños, hojas y esquejes","guidance":"NC State enumera esquejes de hoja y división de retoños como estrategias de propagación. Aquí no se asigna cultivar nombrado que requiera preservarse mediante semilla."}}},
-  "zebra-haworthiopsis-attenuata":{"summary":"Una suculenta sudafricana de crecimiento lento, llamada a menudo haworthia cebra. El nombre aceptado es Haworthiopsis attenuata; Haworthia attenuata es un sinónimo y H. fasciata, parecida, es otra especie.","sections":{"identity":{"short":"Nombre aceptado Haworthiopsis attenuata","guidance":"Kew acepta Haworthiopsis attenuata y lista Haworthia attenuata entre sus sinónimos. NC State indica que suele confundirse comercialmente con H. fasciata, que es distinta; el perfil conserva el nombre aceptado."},"growth":{"short":"Suculenta perenne de crecimiento lento","guidance":"NC State describe una suculenta perenne de crecimiento lento originaria de Sudáfrica. Señala que H. attenuata correctamente identificada tiene protuberancias en toda la superficie de las hojas, a diferencia de la cara superior lisa de H. fasciata. Es una distinción de identificación, no un cultivar."},"cultivation":{"short":"Apta para maceta, con más énfasis en drenaje que en riego frecuente","guidance":"NC State recomienda una mezcla para cactus o suculentas con buen drenaje. Esta guía de sustrato no demuestra compatibilidad hidropónica ni establece un intervalo fijo de riego."},"propagation":{"short":"Los retoños son una ruta documentada","guidance":"NC State describe los retoños como vía práctica de propagación. La clasificación prioriza esos retoños vegetativos; no se seleccionó aquí un protocolo de germinación."}}},
-  "burros-tail-sedum-morganianum":{"summary":"Una suculenta mexicana colgante con hojas carnosas y frágiles, adecuada para maceta suspendida si hay espacio. NC State documenta propagación sencilla por hoja y tallo; manipúlala con cuidado y evita el sustrato húmedo sin drenaje.","sections":{"identity":{"short":"Especie aceptada Sedum morganianum","guidance":"Kew acepta Sedum morganianum, nativa de partes de México. NC State registra cola de burro, cola de asno y cola de cordero como nombres comunes; esta identidad no es un perfil genérico de Sedum."},"growth":{"short":"Tallos colgantes con hojas que se desprenden fácilmente","guidance":"NC State describe tallos colgantes de hasta 61 cm en su ficha y señala que las hojas se desprenden con facilidad. La medida es reportada por esa fuente, no una garantía de interior; utiliza una maceta colgante solo donde los tallos puedan protegerse del roce."},"cultivation":{"short":"Deja secar el sustrato entre riegos","guidance":"NC State aconseja un interior luminoso, sustrato bien drenado, maceta poco profunda y dejar secar el suelo entre riegos, reduciendo el riego en invierno. La guía regional de interior no demuestra uso en solución nutritiva ni compatibilidad con sistemas."},"propagation":{"short":"Las hojas desprendidas y esquejes de tallo pueden enraizar","guidance":"NC State informa que los esquejes y hojas caídas enraízan con facilidad. La propagación vegetativa permite continuar la forma de la planta; no se necesita inferir un protocolo de siembra por semilla."}}},
-  "common-houseleek-sempervivum-tectorum":{"summary":"Una suculenta europea resistente al frío, de roseta y productora de retoños. NC State respalda el cultivo exterior seco y con buen drenaje y la división; Kew confirma la especie aceptada y sus sinónimos.","sections":{"identity":{"short":"Especie aceptada Sempervivum tectorum","guidance":"Kew acepta Sempervivum tectorum y lista Sedum tectorum como sinónimo. NC State usa siempreviva común, hens and chicks y houseleek de techo; no se asigna cultivar ni híbrido."},"growth":{"short":"Rosetas suculentas que se extienden por retoños","guidance":"NC State describe los retoños alrededor de la planta madre y un hábito horizontal y extendido. Se mantiene la identidad de especie, sin tratar toda planta comercial llamada hens and chicks como esta especie."},"cultivation":{"short":"Pleno sol y suelo exterior con drenaje rápido","guidance":"NC State describe pleno sol, suelo arenoso o gravoso bien drenado y tolerancia a algo de sombra ligera y sequía en su perfil regional de paisaje. No es una recomendación para hidroponía interior."},"propagation":{"short":"La división de retoños es una ruta establecida","guidance":"NC State enumera división y semilla y describe la producción fácil de retoños. Para conservar una forma de roseta específica, la división mantiene más directamente la identidad de la planta madre que la semilla; no se afirma un cultivar nombrado."}}}
+  "mexican-snowball-echeveria-elegans": {
+    "summary": "Una suculenta mexicana de roseta, cultivada en macetas o jardines de roca. Sus hojas carnosas pálidas forman grupos; los tallos florales de temporada sobresalen de las rosetas y el exceso de riego es un problema de cultivo más frecuente que una enfermedad documentada.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada Echeveria elegans",
+        "guidance": "Kew acepta Echeveria elegans Rose y la ubica en Crassulaceae. NC State registra bola de nieve mexicana, gema mexicana y rosa blanca mexicana como nombres comunes. No se asigna cultivar ni híbrido."
+      },
+      "growth": {
+        "short": "Rosetas de crecimiento lento con tallos florales de temporada",
+        "guidance": "NC State describe grupos compactos de rosetas con hojas carnosas verde azuladas pálidas o verde plateadas, y clasifica la especie como de crecimiento lento y bajo mantenimiento. Los tallos florales largos sobresalen de las rosetas; no se asigna cultivar ni híbrido comercial sin identificar."
+      },
+      "cultivation": {
+        "short": "Proporciona luz abundante y sustrato con drenaje rápido",
+        "guidance": "NC State indica que en Carolina del Norte esta especie suele mantenerse como planta de interior en recipientes poco profundos y también puede crecer en jardines de roca o recipientes en patios y terrazas soleados y secos. Recomienda suelo bien drenado y reporta pleno sol a sombra parcial; su tabla indica zonas USDA 9a–11b. Son condiciones regionales de paisaje y recipiente, no un nivel medido de lámpara interior ni evidencia de compatibilidad hidropónica."
+      },
+      "flowering": {
+        "short": "Flores tubulares rosadas que aparecen repetidamente en tallos altos",
+        "guidance": "NC State describe tallos delgados y largos con racimos de unas cinco a siete flores tubulares rosadas con puntas amarillas. Su descripción narrativa sitúa la floración desde finales de invierno hasta el verano, mientras la tabla enumera invierno y primavera y señala que la planta florece varias veces durante su vida. Son descripciones regionales de la fuente, no un calendario fijo. La misma tabla indica que atrae abejas, mariposas y colibríes; es un rasgo de paisaje documentado, no una garantía de visitas."
+      },
+      "problems": {
+        "short": "Evita el suelo persistentemente húmedo y vigila plagas comunes",
+        "guidance": "NC State identifica el exceso de riego como el problema más común y recomienda suelo seco y bien drenado. Aconseja vigilar cochinillas, pulgones y gorgojos de la vid, y no reporta enfermedades significativas; son señales para inspeccionar, no un diagnóstico ni una afirmación de resistencia."
+      },
+      "propagation": {
+        "short": "Se documentan retoños, hojas y esquejes",
+        "guidance": "NC State enumera esquejes de hoja y división de retoños como estrategias de propagación. Aquí no se asigna cultivar nombrado que requiera preservarse mediante semilla."
+      }
+    }
+  },
+  "zebra-haworthiopsis-attenuata": {
+    "summary": "Una suculenta sudafricana de roseta y crecimiento lento, apta para un lugar interior luminoso y una mezcla con drenaje rápido. Las protuberancias de las hojas ayudan a distinguir Haworthiopsis attenuata de H. fasciata; NC State también documenta señales de estrés y contexto de seguridad doméstica.",
+    "sections": {
+      "identity": {
+        "short": "Nombre aceptado Haworthiopsis attenuata",
+        "guidance": "Kew acepta Haworthiopsis attenuata y lista Haworthia attenuata entre sus sinónimos. NC State indica que suele confundirse comercialmente con H. fasciata, que es distinta; el perfil conserva el nombre aceptado."
+      },
+      "growth": {
+        "short": "Rosetas compactas en mata; revisa las protuberancias foliares",
+        "guidance": "NC State describe una suculenta sin tallo, de crecimiento lento, con rosetas compactas en forma de estrella y hábito de mata. Su ficha informa 10–30 cm de alto y 15 cm–61 cm de ancho; son medidas reportadas por la fuente, no una huella interior garantizada. Las protuberancias en ambas caras de las hojas distinguen H. attenuata de la cara superior lisa de H. fasciata."
+      },
+      "cultivation": {
+        "short": "Luz indirecta brillante, ambiente templado y suelo que se seca entre riegos",
+        "guidance": "NC State recomienda una mezcla para cactus o suculentas con buen drenaje, luz indirecta brillante (aunque tolera algo de luz baja) y dejar secar el suelo entre riegos. Indica 16–27 °C como rango favorable, tolerancia a la humedad habitual del hogar y evitar corrientes frías y temperaturas inferiores a 10 °C. La tolerancia a luz baja no establece un nivel de lámpara Garden X ni compatibilidad hidropónica."
+      },
+      "maintenance": {
+        "short": "Los retoños son prácticos; las flores nacen en tallos delgados",
+        "guidance": "NC State describe los retoños como vía práctica y señala flores tubulares rosadas agrupadas en tallos largos y delgados. También enumera esquejes de hoja y la semilla como método poco frecuente, pero no da aquí un protocolo de siembra; no se infieren parámetros de germinación."
+      },
+      "problems": {
+        "short": "Vigila pudrición, manchas foliares, plagas y cambios de luz",
+        "guidance": "NC State aconseja vigilar escamas y cochinillas. El suelo demasiado húmedo puede causar pudrición de raíz; el suelo mojado o el agua que queda en las hojas pueden favorecer manchas o enfermedades fúngicas. Los patrones que palidecen pueden indicar poca luz y el sol directo puede quemar las hojas. Son pistas para inspeccionar, no diagnósticos por sí solas. NC State describe la planta como no tóxica para personas y mascotas."
+      },
+      "propagation": {
+        "short": "Los retoños son prácticos; también se describen esquejes y semilla",
+        "guidance": "NC State describe separar hijuelos o retoños como vía práctica, enumera esquejes de hoja y señala que la propagación por semilla es rara. La página citada no ofrece un protocolo de siembra, así que no se añaden instrucciones de germinación."
+      }
+    }
+  },
+  "burros-tail-sedum-morganianum": {
+    "summary": "Una suculenta mexicana colgante, de hojas carnosas y frágiles y flores terminales en primavera y verano. Sus tallos lucen en una maceta suspendida, pero las hojas se desprenden con facilidad; importan la luz abundante, el drenaje y la manipulación cuidadosa, no una medida interior fija.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada Sedum morganianum",
+        "guidance": "Kew acepta Sedum morganianum, nativa de partes de México. NC State registra cola de burro, cola de asno y cola de cordero como nombres comunes; esta identidad no es un perfil genérico de Sedum."
+      },
+      "growth": {
+        "short": "Tallos colgantes, hojas frágiles y flores de verano",
+        "guidance": "NC State describe tallos colgantes de hasta 61 cm, hojas carnosas verde azuladas que se desprenden al manipularlas y racimos terminales rosados o rojos en verano; señala que rara vez florece como planta de interior. RHS describe tallos de 30 cm o más y floración en primavera/verano. Son descripciones de cada fuente, no una altura interior ni un calendario de floración garantizados."
+      },
+      "cultivation": {
+        "short": "Deja secar el sustrato entre riegos",
+        "guidance": "NC State aconseja un interior luminoso, sustrato bien drenado, maceta poco profunda y dejar secar el suelo entre riegos, reduciendo el agua en invierno. La guía de RHS para cultivo bajo vidrio indica luz filtrada brillante, compost franco con gravilla, riego libre durante el crecimiento activo y escaso en invierno. Mantén visibles esos contextos en lugar de fundirlos en un calendario universal; ambas fuentes destacan el drenaje y el ajuste estacional. Ninguna establece una receta nutritiva ni compatibilidad con sistemas."
+      },
+      "problems": {
+        "short": "Protege las hojas frágiles y evita suelo húmedo sin drenaje",
+        "guidance": "NC State informa que las hojas se desprenden al manipularlas y menciona babosas y caracoles ocasionales en exterior. RHS también enumera posibles larvas de gorgojo de la vid, escamas, cochinillas y pudriciones fúngicas o bacterianas de corona/raíz. El sustrato mojado, mal drenado o con exceso de riego puede favorecer problemas; inspecciona planta y medio en vez de tratar un síntoma aislado como diagnóstico o asumir que toda plaga listada está presente."
+      },
+      "propagation": {
+        "short": "Las hojas desprendidas y esquejes de tallo pueden enraizar",
+        "guidance": "NC State informa que los esquejes y hojas caídas enraízan con facilidad. La propagación vegetativa permite continuar la forma de la planta; no se necesita inferir un protocolo de siembra por semilla."
+      },
+      "care": {
+        "short": "No requiere poda rutinaria; protege los tallos al manipularla",
+        "guidance": "RHS indica que no requiere poda. Como las hojas carnosas se desprenden con facilidad, manipula con cuidado los tallos colgantes al mover o atender la planta; NC State señala que las hojas desprendidas pueden enraizar. Esto no implica necesidad de dar forma ni cortar regularmente."
+      }
+    }
+  },
+  "common-houseleek-sempervivum-tectorum": {
+    "summary": "Una suculenta europea que forma colonias de rosetas mediante retoños. Su ciclo floral es importante para reconocer el desarrollo normal: la roseta madre muere después de florecer mientras los retoños continúan la colonia; el drenaje rápido ayuda a prevenir la pudrición de corona.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada Sempervivum tectorum",
+        "guidance": "Kew acepta Sempervivum tectorum y lista Sedum tectorum como sinónimo. NC State usa siempreviva común, hens and chicks y houseleek de techo; no se asigna cultivar ni híbrido."
+      },
+      "growth": {
+        "short": "Los retoños extienden la colonia; la roseta madre muere tras florecer",
+        "guidance": "NC State describe una colonia horizontal de rosetas conectadas por retoños. Cada roseta individual florece en un tallo erguido y muere después; los retoños cercanos continúan la colonia. Es el ciclo documentado de Sempervivum tectorum, no significa que toda la colonia muera a la vez."
+      },
+      "cultivation": {
+        "short": "Pleno sol y suelo exterior con drenaje rápido",
+        "guidance": "NC State describe pleno sol, suelo arenoso o gravoso bien drenado y tolerancia a algo de sombra ligera y sequía en su perfil regional de paisaje. No es una recomendación para hidroponía interior."
+      },
+      "maintenance": {
+        "short": "Retira la roseta madre agotada después de la floración",
+        "guidance": "NC State indica que las rosetas individuales mueren después de florecer y deben retirarse del jardín en ese momento. Revisa si quedan retoños sanos alrededor; la fuente no prescribe retirarla antes de florecer ni fija una fecha universal."
+      },
+      "problems": {
+        "short": "El exceso de riego puede causar pudrición de corona",
+        "guidance": "NC State identifica la pudrición de corona como riesgo del exceso de riego y aconseja dejar secar las plantas entre riegos. La fuente no establece un intervalo universal; importan el drenaje y las condiciones locales."
+      },
+      "propagation": {
+        "short": "La división de retoños es una ruta establecida",
+        "guidance": "NC State enumera división y semilla y describe la producción fácil de retoños. Para conservar una forma de roseta específica, la división mantiene más directamente la identidad de la planta madre que la semilla; no se afirma un cultivar nombrado."
+      }
+    }
+  }
 }

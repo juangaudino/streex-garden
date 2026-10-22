@@ -31,35 +31,81 @@
     "sections": {
       "identity": {
         "short": "Especie perenne aceptada: Asparagus officinalis",
-        "guidance": "Kew acepta Asparagus officinalis en Asparagaceae. Esta ficha representa el espárrago hortícola a nivel de especie y no especifica cultivar. UMN describe plantas macho y hembra separadas (dioicas); ambas producen turiones comestibles, pero las hembras pueden producir bayas rojas no comestibles. Algunos híbridos nombrados son exclusivamente masculinos; no se atribuye sexo ni híbrido a esta ficha."
+        "guidance": "Kew acepta Asparagus officinalis en Asparagaceae. Esta ficha representa el espárrago hortícola a nivel de especie y no especifica cultivar. UMN describe plantas macho y hembra separadas (dioicas); ambas producen turiones comestibles, pero las hembras pueden producir bayas rojas no comestibles. Algunos híbridos nombrados son exclusivamente masculinos; no se atribuye sexo ni híbrido a esta ficha.",
+        "items": [
+          "Kew acepta Asparagus officinalis en Asparagaceae.",
+          "Esta ficha representa el espárrago hortícola a nivel de especie y no especifica cultivar.",
+          "UMN describe plantas macho y hembra separadas (dioicas); ambas producen turiones comestibles, pero las hembras pueden producir bayas rojas no comestibles."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "cultivation": {
         "short": "Sitio soleado permanente; raíces profundas requieren humedad y buen drenaje",
-        "guidance": "UMN recomienda un sitio fértil, soleado, bien drenado y capaz de retener humedad; conviene evitar suelos poco profundos o encharcados y zonas propensas a heladas. La plantación puede durar 15 años o más. El pH 6.5–7.0, la preparación del bancal y el espaciamiento entre hileras son recomendaciones para suelo exterior, no dimensiones para maceta, iluminación interior ni hidroponía. El helecho adulto puede sombrear otros cultivos; la fuente sugiere ubicar la cama al norte de un jardín mayor en Minnesota."
+        "guidance": "UMN recomienda un sitio fértil, soleado, bien drenado y capaz de retener humedad; conviene evitar suelos poco profundos o encharcados y zonas propensas a heladas. La plantación puede durar 15 años o más. El pH 6.5–7.0, la preparación del bancal y el espaciamiento entre hileras son recomendaciones para suelo exterior, no dimensiones para maceta, iluminación interior ni hidroponía. El helecho adulto puede sombrear otros cultivos; la fuente sugiere ubicar la cama al norte de un jardín mayor en Minnesota.",
+        "items": [
+          "Elige un bancal exterior permanente, soleado, fértil y bien drenado.",
+          "Reserva espacio para raíces perennes profundas y follaje vigoroso en verano.",
+          "Aplica pH y distancias de Extension al suelo, no como objetivos hidropónicos."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "growth": {
         "short": "Las coronas subterráneas producen turiones que se convierten en helechos",
-        "guidance": "UMN explica que los turiones comestibles son tallos que brotan de yemas en una corona subterránea. Si no se cosechan, se ramifican y forman un follaje plumoso llamado helecho, que repone las reservas para la cosecha del año siguiente. Durante el pico de temporada, los turiones pueden crecer rápidamente y conviene observarlos con frecuencia. Es una perenne persistente, no una hoja compacta."
+        "guidance": "UMN explica que los turiones comestibles son tallos que brotan de yemas en una corona subterránea. Si no se cosechan, se ramifican y forman un follaje plumoso llamado helecho, que repone las reservas para la cosecha del año siguiente. Durante el pico de temporada, los turiones pueden crecer rápidamente y conviene observarlos con frecuencia. Es una perenne persistente, no una hoja compacta.",
+        "items": [
+          "Reconoce los turiones como tallos que brotan de la corona perenne.",
+          "Deja crecer turiones sin cosechar para formar follaje que reponga las reservas."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "maintenance": {
         "short": "Después de cosechar, deja crecer y conserva sano el helecho",
-        "guidance": "No cortes el helecho verde al terminar la cosecha: produce reservas para el año siguiente. En su contexto de manejo de plagas, UMN recomienda retirar el helecho viejo cuando esté completamente marrón y en dormancia, a fines de otoño o principios de primavera; no lo retires mientras siga verde. Mantén humedad durante el crecimiento del helecho, controla malezas con cuidado y basa el fertilizante en un análisis de suelo, no en una rutina fija. La labranza debe ser superficial para no dañar coronas ni turiones."
+        "guidance": "No cortes el helecho verde al terminar la cosecha: produce reservas para el año siguiente. En su contexto de manejo de plagas, UMN recomienda retirar el helecho viejo cuando esté completamente marrón y en dormancia, a fines de otoño o principios de primavera; no lo retires mientras siga verde. Mantén humedad durante el crecimiento del helecho, controla malezas con cuidado y basa el fertilizante en un análisis de suelo, no en una rutina fija. La labranza debe ser superficial para no dañar coronas ni turiones.",
+        "items": [
+          "Conserva el follaje verde después de la cosecha.",
+          "Retira follaje viejo completamente seco solo en la época adecuada.",
+          "Controla malezas y mantén el riego apropiado en el bancal perenne."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "flowering": {
         "short": "Hay plantas macho y hembra; solo las hembras producen bayas",
-        "guidance": "UMN Extension describe al espárrago como dioico. Ambos sexos producen turiones comestibles; las plantas hembra pueden formar bayas rojas con semillas, mientras que muchos híbridos nombrados son exclusivamente masculinos. Esas diferencias corresponden al sexo o a una variedad específica y no se atribuyen a esta ficha sin cultivar."
+        "guidance": "UMN Extension describe al espárrago como dioico. Ambos sexos producen turiones comestibles; las plantas hembra pueden formar bayas rojas con semillas, mientras que muchos híbridos nombrados son exclusivamente masculinos. Esas diferencias corresponden al sexo o a una variedad específica y no se atribuyen a esta ficha sin cultivar.",
+        "items": [
+          "UMN Extension describe al espárrago como dioico.",
+          "Ambos sexos producen turiones comestibles; las plantas hembra pueden formar bayas rojas con semillas, mientras que muchos híbridos nombrados son exclusivamente masculinos."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "harvest": {
         "short": "Cosecha turiones en tamaño adecuado y detente para recuperar reservas",
-        "guidance": "En la guía doméstica de Minnesota, se deja establecer la corona antes de cosechar; una plantación vigorosa puede comenzar en su segunda primavera, aunque algunas personas esperan hasta el tercer año. La guía comercial de UMN indica 6–10 pulgadas como tamaño de cosecha y describe una temporada de 6–8 semanas para plantaciones adultas de Minnesota: son referencias regionales, no un calendario universal. En el primer año de recolección, limita la cosecha a unas dos semanas y luego deja que los turiones formen helechos. En años posteriores, detente al final de la temporada local o cuando los turiones se adelgacen y el crecimiento disminuya. Se pueden partir o cortar sin lesionar la corona; prolongar demasiado la cosecha puede debilitar la del año siguiente."
+        "guidance": "En la guía doméstica de Minnesota, se deja establecer la corona antes de cosechar; una plantación vigorosa puede comenzar en su segunda primavera, aunque algunas personas esperan hasta el tercer año. La guía comercial de UMN indica 6–10 pulgadas como tamaño de cosecha y describe una temporada de 6–8 semanas para plantaciones adultas de Minnesota: son referencias regionales, no un calendario universal. En el primer año de recolección, limita la cosecha a unas dos semanas y luego deja que los turiones formen helechos. En años posteriores, detente al final de la temporada local o cuando los turiones se adelgacen y el crecimiento disminuya. Se pueden partir o cortar sin lesionar la corona; prolongar demasiado la cosecha puede debilitar la del año siguiente.",
+        "items": [
+          "Permite que las coronas se establezcan antes de cosechar regularmente.",
+          "Selecciona turiones del tamaño recomendado por la guía local.",
+          "Detén la cosecha a tiempo para que crezca follaje sano y se recupere la corona."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "uses": {
         "short": "Usa los brotes tiernos como hortaliza de primavera y refrigéralos pronto",
-        "guidance": "La parte comestible es el turión joven, que se consume como hortaliza. UMN indica que puede usarse poco después de cortar y ofrece pautas domésticas para refrigerar, congelar y enlatar a presión. La duración almacenada depende de la fuente y del manejo, por lo que esta ficha no promete una vida útil universal. El helecho posterior es esencial para la planta y no es la parte cosechada."
+        "guidance": "La parte comestible es el turión joven, que se consume como hortaliza. UMN indica que puede usarse poco después de cortar y ofrece pautas domésticas para refrigerar, congelar y enlatar a presión. La duración almacenada depende de la fuente y del manejo, por lo que esta ficha no promete una vida útil universal. El helecho posterior es esencial para la planta y no es la parte cosechada.",
+        "items": [
+          "La parte comestible es el turión joven, que se consume como hortaliza.",
+          "UMN indica que puede usarse poco después de cortar y ofrece pautas domésticas para refrigerar, congelar y enlatar a presión.",
+          "La duración almacenada depende de la fuente y del manejo, por lo que esta ficha no promete una vida útil universal."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "problems": {
         "short": "Reconoce daño por helada, alimentación de escarabajos y enfermedades del helecho",
-        "guidance": "UMN señala que las heladas tardías pueden matar turiones expuestos. Las larvas del escarabajo del espárrago pueden curvarlos en forma de cayado; sus huevos oscuros pueden verse en turiones o helechos. En el helecho, la roya puede producir lesiones crema o franjas anaranjadas; Cercospora puede formar lesiones grises o tostadas con bordes rojizos y amarilleo progresivo. Son señales de alerta de fuentes de Minnesota, no problemas inevitables ni afirmaciones de resistencia de la especie. Retirar el helecho viejo ya dormido puede reducir la persistencia de plagas; este perfil no prescribe pesticidas ni sustituye la etiqueta legal."
+        "guidance": "UMN señala que las heladas tardías pueden matar turiones expuestos. Las larvas del escarabajo del espárrago pueden curvarlos en forma de cayado; sus huevos oscuros pueden verse en turiones o helechos. En el helecho, la roya puede producir lesiones crema o franjas anaranjadas; Cercospora puede formar lesiones grises o tostadas con bordes rojizos y amarilleo progresivo. Son señales de alerta de fuentes de Minnesota, no problemas inevitables ni afirmaciones de resistencia de la especie. Retirar el helecho viejo ya dormido puede reducir la persistencia de plagas; este perfil no prescribe pesticidas ni sustituye la etiqueta legal.",
+        "items": [
+          "UMN señala que las heladas tardías pueden matar turiones expuestos.",
+          "Las larvas del escarabajo del espárrago pueden curvarlos en forma de cayado; sus huevos oscuros pueden verse en turiones o helechos.",
+          "En el helecho, la roya puede producir lesiones crema o franjas anaranjadas; Cercospora puede formar lesiones grises o tostadas con bordes rojizos y amarilleo progresivo."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       }
     }
   },
@@ -85,31 +131,109 @@
     "sections": {
       "cultivation": {
         "short": "Lugar soleado, bien drenado y con espacio para una corona grande",
-        "guidance": "UMN recomienda sol durante todo el día, suelo bien drenado que conserve humedad y suficiente espacio para cada planta. Los suelos francos retienen mejor agua y nutrientes que los arenosos. En los suelos de jardín de Minnesota tolera un rango amplio de pH; esto no determina pH de solución hidropónica, tamaño de maceta ni iluminación interior. Aporta compost o fertilizante según el suelo y el vigor, evitando acumular fósforo innecesariamente."
+        "guidance": "UMN recomienda sol durante todo el día, suelo bien drenado que conserve humedad y suficiente espacio para cada planta. Los suelos francos retienen mejor agua y nutrientes que los arenosos. En los suelos de jardín de Minnesota tolera un rango amplio de pH; esto no determina pH de solución hidropónica, tamaño de maceta ni iluminación interior. Aporta compost o fertilizante según el suelo y el vigor, evitando acumular fósforo innecesariamente.",
+        "items": [
+          "Elige un bancal exterior soleado, con buen drenaje y espacio para que se expanda la corona.",
+          "Mantén humedad suficiente durante el crecimiento activo sin encharcar.",
+          "Decide si necesita compost o fertilizante según el suelo y el vigor de la planta."
+        ],
+        "avoid": [
+          "Convertir el pH del suelo exterior en un objetivo de pH para solución hidropónica.",
+          "Tratar el ruibarbo como una hortaliza compacta apta para cualquier pod interior."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "growth": {
         "short": "La corona persistente forma hojas grandes y grupos de tallos",
-        "guidance": "La corona del ruibarbo se expande y forma yemas para las temporadas siguientes. Una plantación bien cuidada puede durar 15 años o más. Color, longitud, fibra y vigor varían entre variedades, por lo que esta ficha de especie no promete tallos rojos. Las hojas permiten recuperar reservas después de cosechar."
+        "guidance": "La corona del ruibarbo se expande y forma yemas para las temporadas siguientes. Una plantación bien cuidada puede durar 15 años o más. Color, longitud, fibra y vigor varían entre variedades, por lo que esta ficha de especie no promete tallos rojos. Las hojas permiten recuperar reservas después de cosechar.",
+        "items": [
+          "Observa la corona perenne aunque el follaje cambie con las estaciones.",
+          "Conserva hojas sanas suficientes para recuperar las reservas de la corona después de la cosecha primaveral.",
+          "Registra el crecimiento estacional y el vigor, sin usar el color del tallo como único indicador de madurez."
+        ],
+        "avoid": [
+          "Considerar inmaduro un cultivar de tallos verdes solo porque no se vuelve rojo."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "maintenance": {
-        "short": "Riega durante el verano, controla malezas y divide coronas viejas",
-        "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Divide coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad; cada división necesita yemas viables. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas."
+        "short": "Riega durante el verano y controla las malezas alrededor de la corona",
+        "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas.",
+        "items": [
+          "Riega bien durante el crecimiento, también después de la cosecha principal.",
+          "Controla malezas con cuidado alrededor de la corona, especialmente durante el establecimiento.",
+          "Retira los tallos florales al aparecer si buscas mantener el crecimiento vegetativo."
+        ],
+        "avoid": [
+          "Retirar hojas sanas después de cosechar cuando la corona necesita recuperar reservas."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "harvest": {
         "short": "Extrae los tallos maduros girando y tirando; descarta las hojas",
-        "guidance": "Espera hasta la segunda temporada para cosechar, o la tercera si se inició desde semilla. Cuando los tallos alcancen su longitud completa, sujétalos cerca de la base, tira y gira en lugar de cortar la corona. Recorta y desecha de inmediato las láminas foliares, que son tóxicas. En Minnesota la cosecha principal va de primavera a principios de verano; después deja de recolectar regularmente para que las hojas restantes recuperen reservas. No es un calendario universal."
+        "guidance": "Espera hasta la segunda temporada para cosechar, o la tercera si se inició desde semilla. Cuando los tallos alcancen su longitud completa, sujétalos cerca de la base, tira y gira en lugar de cortar la corona. Recorta y desecha de inmediato las láminas foliares, que son tóxicas. En Minnesota la cosecha principal va de primavera a principios de verano; después deja de recolectar regularmente para que las hojas restantes recuperen reservas. No es un calendario universal.",
+        "items": [
+          "Evita cosechar regularmente el primer año; si procede de semilla, espera hasta el tercero según la orientación de UMN.",
+          "Selecciona pecíolos maduros de longitud completa; sujétalos cerca de la base, tira y gira para desprenderlos.",
+          "Separa y desecha la lámina de la hoja; utiliza únicamente el pecíolo comestible.",
+          "Termina la cosecha regular tras el período primaveral hasta comienzos de verano descrito para Minnesota, dejando follaje para recuperar la corona."
+        ],
+        "avoid": [
+          "Comer o cocinar hojas de ruibarbo: las láminas foliares son tóxicas.",
+          "Quitar demasiado follaje a una corona joven o en recuperación.",
+          "Aplicar el calendario de Minnesota sin adaptarlo al clima local."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "uses": {
         "short": "Cocina los tallos ácidos; nunca consumas las hojas",
-        "guidance": "La parte comestible es el pecíolo o tallo de la hoja, que suele cocinarse y endulzarse para tartas, salsas, pasteles, conservas o bebidas. Los tallos verdes y rojos pueden ser comestibles; el color rojo no garantiza mayor dulzor. Las láminas foliares son tóxicas y deben desecharse. Las raíces no forman parte de la cosecha alimentaria."
+        "guidance": "La parte comestible es el pecíolo o tallo de la hoja, que suele cocinarse y endulzarse para tartas, salsas, pasteles, conservas o bebidas. Los tallos verdes y rojos pueden ser comestibles; el color rojo no garantiza mayor dulzor. Las láminas foliares son tóxicas y deben desecharse. Las raíces no forman parte de la cosecha alimentaria.",
+        "items": [
+          "Separa inmediatamente los pecíolos comestibles de las láminas foliares tóxicas.",
+          "Lava y corta los tallos; cocínalos en salsas, tartas, conservas u otras preparaciones ácidas.",
+          "No utilices el color rojo o verde como prueba de seguridad alimentaria."
+        ],
+        "avoid": [
+          "Consumir las láminas foliares o las raíces.",
+          "Confundir el pecíolo o tallo de la hoja con la lámina foliar."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "problems": {
         "short": "Vigila encharcamiento, pudrición de corona y manchas en hojas",
-        "guidance": "El drenaje deficiente y la humedad excesiva pueden favorecer pudrición de raíces o corona. UMN describe el curculiónido del ruibarbo y los barrenadores de tallos como posibles causas de perforaciones, y Ascochyta o Ramularia como causas de manchas foliares en Minnesota. El color anormal y la pérdida de vigor pueden tener varias causas, incluidos virus; los síntomas solos no confirman un diagnóstico. Retira follaje completamente muerto después de heladas fuertes cuando corresponda, sin atribuir toda mancha a una sola enfermedad."
+        "guidance": "El drenaje deficiente y la humedad excesiva pueden favorecer pudrición de raíces o corona. UMN describe el curculiónido del ruibarbo y los barrenadores de tallos como posibles causas de perforaciones, y Ascochyta o Ramularia como causas de manchas foliares en Minnesota. El color anormal y la pérdida de vigor pueden tener varias causas, incluidos virus; los síntomas solos no confirman un diagnóstico. Retira follaje completamente muerto después de heladas fuertes cuando corresponda, sin atribuir toda mancha a una sola enfermedad.",
+        "items": [
+          "Revisa drenaje y exceso de humedad si la corona decae o aparecen tejidos podridos.",
+          "Examina los orificios en tallos y corona antes de atribuirlos a un insecto concreto.",
+          "Fotografía las manchas y registra su evolución: la apariencia no basta para identificar Ascochyta, Ramularia ni virus.",
+          "Si el deterioro persiste, solicita diagnóstico a extensión agrícola local antes de tratar basándote solo en una foto."
+        ],
+        "avoid": [
+          "Afirmar un patógeno específico a partir de una sola fotografía.",
+          "Tratar todas las manchas foliares como si tuvieran la misma causa."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "identity": {
         "short": "Especie aceptada: Rheum rhabarbarum",
-        "guidance": "Kew acepta Rheum rhabarbarum en Polygonaceae. Esta ficha describe el cultivo a nivel de especie y no una variedad de tallos rojos. UMN señala que las variedades difieren en tamaño, color, acidez y fibra."
+        "guidance": "Kew acepta Rheum rhabarbarum en Polygonaceae. Esta ficha describe el cultivo a nivel de especie y no una variedad de tallos rojos. UMN señala que las variedades difieren en tamaño, color, acidez y fibra.",
+        "items": [
+          "Confirma que la planta tenga una corona perenne y grandes pecíolos; no identifiques el cultivar solo por el color del tallo.",
+          "Registra el cultivar únicamente cuando una etiqueta, paquete de semillas o registro fiable lo confirme."
+        ],
+        "avoid": [
+          "Suponer que solo son comestibles los tallos rojos."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "propagation": {
+        "short": "Divide una corona vieja y poco productiva a principios de primavera",
+        "guidance": "UMN recomienda dividir coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad. Cada división necesita yemas viables. Esta es una indicación de división de corona; aquí no se infiere un protocolo de siembra.",
+        "items": [
+          "Considera dividir una corona vieja y poco productiva a principios de primavera, cuando empieza el crecimiento.",
+          "Conserva yemas viables en cada división."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       }
     }
   },
@@ -118,23 +242,58 @@
     "sections": {
       "identity": {
         "short": "Tipo escarola de Cichorium endivia",
-        "guidance": "Kew acepta Cichorium endivia. UMN Extension distingue la escarola como forma de endive de hojas anchas y lisas, frente al endive rizado; esta ficha no establece un cultivar."
+        "guidance": "Kew acepta Cichorium endivia. UMN Extension distingue la escarola como forma de endive de hojas anchas y lisas, frente al endive rizado; esta ficha no establece un cultivar.",
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "cultivation": {
-        "short": "Orientación de cultivo para el grupo de achicorias",
-        "guidance": "UMN Extension agrupa escarola con achicorias y ofrece orientación regional para iniciar, sembrar directamente y manejar humedad del suelo. Fechas de Minnesota y espaciamiento en campo no se generalizan a otros climas ni a pods interiores."
+        "short": "Cultivo de temporada fresca y humedad constante en la zona superficial",
+        "guidance": "UMN Extension agrupa escarola con las achicorias y las describe como cultivos de temporada fresca. Su guía de Minnesota da un rango de pH de suelo de 6.0–6.8 para lechugas y achicorias y destaca el suelo bien drenado que retiene humedad, porque la mayoría de las raíces que absorben agua y nutrientes son superficiales. Es contexto regional para suelo de jardín, no pH de solución ni receta hidropónica; adapta las fechas al clima local.",
+        "items": [
+          "Cultiva como hoja de temporada fresca y adapta las fechas de siembra al clima local.",
+          "Mantén humedad suficiente y relativamente constante en la zona superficial; el suelo seco puede reducir crecimiento y calidad.",
+          "El rango de pH 6.0–6.8 de la fuente corresponde a suelo de jardín para lechugas y achicorias, no a solución nutritiva.",
+          "No copies el espaciamiento de campo de Minnesota a un pod interior sin evidencia independiente."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "growth": {
         "short": "Hojas más anchas y lisas que las del endive rizado",
-        "guidance": "La fuente de Extension describe escarola como una forma de endive de hojas más anchas y lisas. Es una distinción de tipo hortícola dentro de Cichorium endivia, no otra especie ni un cultivar nombrado."
+        "guidance": "La fuente de Extension describe escarola como una forma de endive de hojas más anchas y lisas. Es una distinción de tipo hortícola dentro de Cichorium endivia, no otra especie ni un cultivar nombrado.",
+        "items": [
+          "Identifica las hojas anchas y lisas características de la escarola.",
+          "Distingue el cultivar de la especie general Cichorium endivia."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "harvest": {
         "short": "Usa las hojas en ensaladas y cocina",
-        "guidance": "UMN Extension describe escarola como hoja para ensalada y cocina y recomienda cosechar hojas con frecuencia para ensaladas frescas dentro de la guía de cultivos de hoja. No se asigna una fecha de cosecha específica de cultivar."
+        "guidance": "UMN Extension señala que las recetas suelen usar escarola cocida. Su orientación para achicorias y hojas permite cosechar repetidamente hojas exteriores utilizables dejando la mayoría de las hojas interiores pequeñas, o cortar la planta a ras o justo sobre el suelo para cosecharla completa. Regar con frecuencia durante los días previos puede mejorar la textura crujiente; no se asigna una fecha específica de cultivar.",
+        "items": [
+          "Cosecha hojas utilizables según se necesiten, dejando la mayoría de las hojas interiores pequeñas para que continúen creciendo, o corta la planta completa al nivel del suelo.",
+          "Usa el crecimiento real de la planta en vez de un plazo de madurez inventado para un cultivar.",
+          "Para hojas crujientes, conserva humedad suficiente en el suelo los días previos; cocina la escarola cuando así lo indique la receta."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "problems": {
         "short": "El calor y los días largos pueden favorecer el espigado",
-        "guidance": "UMN informa que el grupo de achicorias se desarrolla mejor en condiciones frescas y que el calor o los días largos pueden causar espigado y amargor. Es orientación regional para el grupo, no una afirmación de resistencia varietal."
+        "guidance": "UMN informa que las achicorias se desarrollan mejor con clima fresco y que el calor y los días largos pueden provocar espigado, terminar la cosecha de hojas y causar amargor pronunciado. La guía también describe tipburn (bordes de hojas amarronados) cuando vuelve el riego tras un periodo seco. Son señales de alerta para el grupo de cultivos en una guía de Minnesota, no afirmaciones de resistencia varietal.",
+        "items": [
+          "Un tallo floral indica espigado; termina la cosecha y las hojas pueden volverse muy amargas.",
+          "Los bordes marrones después de reanudar el riego tras sequía pueden ser tipburn; procura una humedad más constante.",
+          "Revisa las hojas por mordeduras y las plantas jóvenes por gusanos cortadores; la guía también menciona babosas/caracoles y alticinos en estos cultivos."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "maintenance": {
+        "short": "El blanqueo opcional puede producir un corazón más pálido",
+        "guidance": "UMN describe atar las hojas externas del endive alrededor del corazón para blanquear las hojas interiores; el proceso toma unas dos semanas y un espaciamiento cercano puede blanquear parcialmente las plantas por sí solo. Como la escarola es un tipo de endive de hoja ancha, es una técnica de tipo que el horticultor puede elegir, no un requisito ni un resultado específico de cultivar.",
+        "items": [
+          "Si se desea un centro más pálido, ata con cuidado las hojas externas alrededor del corazón; la guía de UMN indica que el blanqueo toma unas dos semanas.",
+          "El blanqueo es una decisión de manejo, no un paso obligatorio para cultivar o cosechar escarola.",
+          "No interpretes el espaciamiento ni el calendario de campo de Minnesota como instrucciones para sistemas interiores."
+        ],
+        "context": "La fuente describe el blanqueo de endive; aquí se aplica al tipo hortícola de escarola y no a un cultivar específico."
       }
     }
   }

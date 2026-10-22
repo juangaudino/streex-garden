@@ -1,0 +1,1049 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "upland-cress": {
+      "wave": 30,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Missouri's ivy-specific ambient-light/moisture guidance is distinct from its general houseplant potting-medium advice; neither specifies grow-light intensity or hydroponics. NC State's outdoor containment recommendation is regional.",
+            "es": "La guía de Missouri sobre luz ambiental/humedad para hiedra se distingue de su consejo general de medio para plantas de interior; ninguna especifica intensidad de lámpara ni hidroponía. La recomendación exterior de contención de NC State es regional."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "jute-mallow": {
+      "wave": 30,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "bottle-gourd": {
+      "wave": 30,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "chayote": {
+      "wave": 31,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "waterleaf-talinum-fruticosum": {
+      "wave": 31,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "lemon-verbena-aloysia-citrodora": {
+      "wave": 32,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "cuban-oregano-coleus-amboinicus": {
+      "wave": 32,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "purple-shamrock-oxalis-triangularis": {
+      "wave": 33,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "arrowhead-plant-syngonium-podophyllum": {
+      "wave": 33,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "baby-rubber-plant-peperomia-obtusifolia": {
+      "wave": 33,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "satin-pothos-scindapsus-pictus": {
+      "wave": 33,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "chinese-money-plant-pilea-peperomioides": {
+      "wave": 33,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "cast-iron-plant-aspidistra-elatior": {
+      "wave": 34,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "parlor-palm-chamaedorea-elegans": {
+      "wave": 34,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "birds-nest-fern-asplenium-nidus": {
+      "wave": 34,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "african-violet-streptocarpus-ionanthus": {
+      "wave": 34,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "english-ivy-hedera-helix": {
+      "wave": 35,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "dumbcane-dieffenbachia-seguine": {
+      "wave": 35,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "flamingo-flower-anthurium-andraeanum": {
+      "wave": 35,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "polka-dot-begonia-begonia-maculata": {
+      "wave": 35,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "hoja-santa-piper-auritum": {
+      "wave": 36,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "meyer-lemon": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "calamondin": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "passion-fruit": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "papaya": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Harvest and storage cues come from a Florida home-landscape guide; they do not promise fruiting or a fixed calendar for an individual seed-grown plant.",
+            "es": "Las señales de cosecha y almacenamiento proceden de una guía de paisaje doméstico de Florida; no prometen fructificación ni un calendario fijo para una planta individual nacida de semilla."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Water and mulch guidance is from Florida home landscapes and should not be converted into a universal container watering schedule.",
+            "es": "La orientación de riego y mantillo procede de jardines domésticos de Florida y no debe convertirse en un calendario universal de riego para maceta."
+          }
+        },
+        "pollination": {
+          "context": {
+            "en": "Flower-sex and pollination descriptions are species-level observations from a Florida guide; sex expression and fruit set vary among plants and conditions.",
+            "es": "La descripción de tipos florales y polinización es una observación a nivel de especie en una guía de Florida; la expresión sexual y el cuajado varían entre plantas y condiciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Pest and disease signs are reported for Florida papaya landscapes; local diagnosis and current regional advice are needed before control decisions.",
+            "es": "Las señales de plagas y enfermedades se reportan para papayas de paisaje en Florida; antes de decidir controles se necesita diagnóstico local y orientación regional vigente."
+          }
+        }
+      }
+    },
+    "goeppertia-orbifolia": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "croton-codiaeum-variegatum": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "florist-kalanchoe-kalanchoe-blossfeldiana": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "safety": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "dwarf-umbrella-tree-heptapleurum-arboricola": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    },
+    "weeping-fig-ficus-benjamina": {
+      "wave": 37,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The cited evidence applies at its stated taxonomic or product level; verify local conditions.",
+            "es": "La evidencia citada corresponde al nivel taxonómico o producto indicado; verifica las condiciones locales."
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,11 +6,11 @@
     "url":"https://www.californiacarnivores.com/products/pinguicula-lilac-lollipop",
     "type":"product_reference",
     "tier":2,
-    "scope":"Supplier product identity and description as a cyclosecta hybrid; does not establish full parentage, formal registration, or universal cultivation parameters",
-    "accessed":"2026-10-16",
+    "scope":"Supplier product identity as a cyclosecta hybrid, bare-root sale form, 2–4 in full-growth diameter, lilac flowering/color response, and supplier care for Mexican/Tropical Pinguicula (light, seasonal rosettes, water quality and media); does not establish full parentage, formal registration, exact lamp intensity, or universal cultivation parameters",
+    "accessed":"2026-10-18",
     "license":null,
     "provenance":"Gardenpedia Labs mandatory-coverage reconciliation",
-    "claimKinds":["identity","cultivation","propagation"]
+    "claimKinds":["identity","cultivation","physical_characteristics","flowering","maintenance","problems","propagation"]
   },
   {
     "id":"kew-pinguicula-cyclosecta-500",
@@ -37,5 +37,18 @@
     "license":null,
     "provenance":"Gardenpedia Labs mandatory-coverage reconciliation",
     "claimKinds":["propagation"]
+  },
+  {
+    "id":"ucdavis-botanical-conservatory-pinguicula-wave11",
+    "publisher":"University of California, Davis — Botanical Conservatory",
+    "title":"Butterworts (Pinguicula sp.)",
+    "url":"https://conservatory.ucdavis.edu/collections/carnivorous/pinguicula",
+    "type":"university_extension",
+    "tier":1,
+    "scope":"Genus-level cultivation context and distinctions among tropical Mexican, warm-temperate, and cold-temperate Pinguicula; mineral-free water, media, moisture, light and seasonal leaf phases vary by species and are not a cultivar-specific Lilac Lollipop protocol",
+    "accessed":"2026-10-18",
+    "license":null,
+    "provenance":"Gardenpedia Labs individual profile review, 2026-10-18",
+    "claimKinds":["cultivation","maintenance","problems","characteristics"]
   }
 ]

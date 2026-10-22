@@ -23,7 +23,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "harvest"]
+    "claimKinds": ["identity", "cultivation", "harvest", "flowering"]
   },
   {
     "id": "uga-southern-peas-wave25",
@@ -45,11 +45,11 @@
     "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:525492-1/general-information",
     "type": "botanical_taxonomy",
     "tier": 1,
-    "scope": "Accepted species identity and taxonomic context for mung bean; no cultivar-specific cultivation claims",
-    "accessed": "2026-10-16",
+    "scope": "Accepted species identity and taxonomy; Kew's included Flora descriptions also support species-level habit and reproductive morphology, not cultivar-specific traits, flowering schedules, or garden-production instructions",
+    "accessed": "2026-10-20",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "taxonomy"]
+    "claimKinds": ["identity", "taxonomy", "growth", "flowering"]
   },
   {
     "id": "uaex-mungbeans-wave25",
@@ -58,11 +58,11 @@
     "url": "https://www.uaex.uada.edu/publications/PDF/FSA-6090.pdf",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Home-garden mung bean identity, direct sowing in warm soil, crop care and dry-seed harvest; cultivar-table values are not generalized to the species",
-    "accessed": "2026-10-16",
+    "scope": "Home-garden mung bean identity, crop-level sunny-site/well-drained-loam and pH preferences, warm-weather cultivation, crop care and dry-seed harvest; cultivar-table values are not generalized to the species, and outdoor row spacing is not hydroponic pod guidance",
+    "accessed": "2026-10-21",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "seedling", "harvest"]
+    "claimKinds": ["identity", "cultivation", "growth", "maintenance", "seedling", "harvest"]
   },
   {
     "id": "kew-glebionis-coronaria-wave25",
@@ -110,10 +110,10 @@
     "url": "https://yardandgarden.extension.iastate.edu/how-to/growing-cantaloupe-muskmelon-and-other-melons-home-garden",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Home-garden honeydew/inodorus crop-group identity, melon cultivation, sowing, pollination and harvest; regional Iowa calendar and soil spacing remain regional field guidance",
+    "scope": "Home-garden honeydew/inodorus crop-group identity, melon cultivation, sowing, pollination, irrigation care and harvest; regional Iowa calendar and soil spacing remain regional field guidance",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion",
-    "claimKinds": ["identity", "cultivation", "seedling", "harvest", "problems"]
+    "claimKinds": ["identity", "cultivation", "growth", "seedling", "harvest", "problems", "care"]
   }
 ]

@@ -1,44 +1,71 @@
 {
   "catnip-nepeta-cataria": {
-    "summary": "Una hierba perenne aromática y útil en cocina y para polinizadores. Puede extenderse con facilidad y su ingestión puede causar molestias gastrointestinales en gatos; esta ficha de especie no ofrece un protocolo de siembra.",
+    "summary": "Hierba perenne aromática para cocina y polinizadores, de hojas gris verdosas, acorazonadas y dentadas, con flores azuladas durante la temporada. Illinois Extension describe una mata abierta de unos 61–91 cm en su contexto regional; puede extenderse con rapidez. Su ingestión puede causar molestias gastrointestinales en gatos.",
     "sections": {
       "identity": {
+        "short": "Especie aceptada; no se asigna cultivar",
         "guidance": "Kew acepta Nepeta cataria. NC State enumera hierba gatera, catmint y catswort entre sus nombres comunes; este registro representa la especie, no una selección nombrada."
       },
       "growth": {
+        "short": "Hierba perenne en mata abierta, erguida y extendida",
         "guidance": "NC State describe una hierba perenne de crecimiento rápido, con formas cespitosas, erguidas o extendidas. Puede volverse invasiva en el jardín; la fuente sugiere considerar el cultivo en recipiente."
       },
       "cultivation": {
+        "short": "Pleno sol o sombra parcial; requiere buen drenaje",
         "guidance": "NC State informa que tolera pleno sol o sombra parcial y requiere buen drenaje; acepta diversos suelos. Señala cierta sensibilidad al calor y la humedad, por lo que sugiere sombra por la tarde en esas condiciones. Esta guía exterior no demuestra aptitud hidropónica interior."
       },
       "propagation": {
+        "short": "Se mencionan semillas y división; siembra no detallada",
         "guidance": "NC State enumera división o semilla, pero la ficha consultada no ofrece profundidad, calendario, temperatura ni procedimiento de germinación. Por eso la guía pública deja el establecimiento desde semilla como insuficientemente documentado."
       },
+      "maintenance": {
+        "short": "Recorta la mata y divide las plantas envejecidas",
+        "guidance": "Illinois Extension recomienda recortar en primavera cuando se reanuda el crecimiento; los cortes durante la temporada ayudan a conservar una forma más compacta y ordenada. También sugiere dividir las plantas con regularidad al envejecer. NC State recomienda recortar las espigas florales después de la primera floración para favorecer más floración. Son prácticas de jardín exterior a nivel de especie, no un calendario fijo para interior."
+      },
       "harvest": {
-        "guidance": "NC State describe las hojas de sabor mentolado como apropiadas para tés, sopas, guisos, salsas, verduras y pasta. La fuente no especifica un calendario de cosecha."
+        "short": "Cosecha los tallos cuando la planta esté en plena floración",
+        "guidance": "NC State documenta las hojas de sabor mentolado para tés, sopas, guisos, salsas, verduras y pasta. Illinois Extension indica que el sabor y el aroma alcanzan su punto máximo durante la plena floración; recomienda cortar los tallos, colgarlos para secar en un lugar fresco y ventilado, retirar las hojas de los tallos gruesos y guardarlas en un recipiente cerrado. No se infiere una duración de almacenamiento."
+      },
+      "flowering": {
+        "short": "Recorta las espigas florales marchitas para favorecer más floración",
+        "guidance": "NC State recomienda recortar las espigas después de la primera floración para favorecer una floración continua. Es una pauta de cultivo exterior a nivel de especie; no establece un calendario fijo para interior o hidroponía."
       },
       "safety": {
+        "short": "Precaución con gatos",
         "guidance": "NC State advierte que la ingestión puede causar vómitos y diarrea en gatos y que la respuesta varía. Es una precaución de seguridad para mascotas, no una afirmación sobre el contacto habitual en el jardín."
       }
     }
   },
   "bay-laurel-laurus-nobilis": {
-    "summary": "Un árbol perenne aromático cuyas hojas se usan en cocina, cultivado a menudo en recipiente en climas frescos. La ficha de Extension consultada no establece un protocolo doméstico de propagación, por lo que esa información queda pendiente.",
+    "summary": "Un árbol o arbusto perenne aromático cuyas hojas se usan en cocina y que suele cultivarse en recipiente en climas frescos. Sus hojas aromatizan alimentos cocidos, pero deben retirarse antes de servir; tolera la poda de formación. RHS documenta opciones de propagación vegetativa; los detalles para iniciar por semilla son una cuestión separada del Seed Profile. No se establecen dimensiones en recipiente ni aptitud hidropónica.",
     "sections": {
       "identity": {
+        "short": "Especie aceptada; distinta de otras plantas llamadas laurel",
         "guidance": "Kew acepta Laurus nobilis, de la familia Lauraceae. El nombre común ‘laurel’ es ambiguo; esta identidad corresponde específicamente al laurel de cocina, no a especies de Kalmia o Quercus que también reciben ese nombre."
       },
       "growth": {
+        "short": "Árbol o arbusto perenne de crecimiento lento",
         "guidance": "NC State describe una especie mediterránea perenne que puede alcanzar gran tamaño en su ambiente nativo, pero que suele mantenerse mucho más pequeña en recipientes en el contexto regional de la ficha. Es dioica: solo las plantas femeninas producen frutos."
       },
       "cultivation": {
+        "short": "Pleno sol o sombra parcial; suelo bien drenado",
         "guidance": "NC State informa tolerancia a varios suelos con buen drenaje y a pleno sol o sombra parcial. En regiones más frías que la zona USDA 8b recomienda protegerla durante el invierno en interior; es una indicación regional, no una necesidad universal de cultivo interior."
       },
       "harvest": {
+        "short": "Hojas aromáticas para condimentar alimentos cocidos",
         "guidance": "NC State describe hojas frescas o secas para aromatizar sopas y pasta. Advierte que no se deben ingerir enteras porque su forma puede causar atragantamiento o cortes; retíralas antes de servir."
       },
+      "pruning": {
+        "short": "Puede formarse como topiaria; no hay calendario fijo de poda",
+        "guidance": "NC State documenta que el laurel puede podarse en formas de topiaria y jardines formales, pero la ficha de especie consultada no prescribe fechas, frecuencia ni intensidad. No conviertas ese uso ornamental en un calendario obligatorio."
+      },
+      "problems": {
+        "short": "Vigila cochinillas, psílidos y problemas de raíz",
+        "guidance": "NC State enumera cochinillas y psílidos como plagas ocasionales y señala susceptibilidad a la muerte regresiva del laurel, Phytophthora y pudrición de raíz. La ficha no ofrece criterios de diagnóstico ni tratamiento; observa la planta y consulta a Extension local antes de atribuir una causa o tratar."
+      },
       "propagation": {
-        "guidance": "La ficha de especie de NC State seleccionada no ofrece un procedimiento doméstico para iniciar semillas ni para propagación vegetativa. No se infiere un método ni se crea un Seed Profile V0 a partir de esta ausencia; hace falta evidencia de propagación para esta identidad."
+        "short": "RHS considera más fácil el esqueje semileñoso; también se puede acodar o dividir hijuelos",
+        "guidance": "RHS enumera semilla, acodo y esquejes semileñosos para Laurus nobilis. Su guía de propagación de hierbas identifica los esquejes semileñosos a fines del verano o comienzos del otoño como el método más fácil; también son posibles la división de hijuelos en primavera y el acodo simple. Son recomendaciones estacionales del Reino Unido para propagación vegetativa. Aquí no se proporcionan detalles de germinación: corresponden al Seed Profile, no a la guía de planta establecida."
       }
     }
   },
@@ -54,11 +81,15 @@
       "cultivation": {
         "guidance": "NC State informa que requiere calor, luz indirecta brillante para el establecimiento de coronas, medio húmedo pero bien drenado y protección contra heladas. La ficha da un intervalo de temperatura de 68–86 °F y humedad ambiental moderada a alta; estas indicaciones de suelo y recipiente no demuestran compatibilidad con solución nutritiva hidropónica."
       },
+      "harvest": {
+        "short": "Se forma un fruto maduro; el color de la cáscara cambia al madurar",
+        "guidance": "NC State describe cómo las unidades fusionadas del fruto pasan de verde hacia amarillo o marrón claro al madurar. El aspecto exacto varía entre formas cultivadas; observa el desarrollo del fruto en vez de seguir un calendario fijo. Después de producir un fruto, la planta madre declina y los hijuelos permiten su continuación vegetativa."
+      },
       "propagation": {
         "guidance": "NC State describe la propagación asexual mediante la corona del fruto, hijuelos basales o plántulas bajo la inflorescencia. Explica el recorte y secado de la corona antes de plantarla y señala que una planta iniciada así puede tardar al menos 24 meses en florecer. Kew describe la piña cultivada como sin semillas; esta identidad no corresponde a propagación por semilla."
       },
       "problems": {
-        "guidance": "NC State advierte sobre heladas, humedad prolongada, pudriciones y algunas plagas; los bordes de las hojas pueden causar lesiones. También indica que la bromelina puede causar dermatitis de contacto o irritación de boca y garganta en ciertas circunstancias."
+        "guidance": "NC State advierte sobre heladas, humedad prolongada, pudriciones y algunas plagas; los bordes de las hojas pueden causar lesiones. La fuente enumera el fruto maduro como comestible y también advierte que la bromelina puede irritar piel sensible o boca y garganta, especialmente en grandes cantidades; no se generaliza esto como una afirmación de que el fruto maduro sea venenoso."
       }
     }
   },
@@ -66,19 +97,36 @@
     "summary": "Una selección culinaria de estragón con aroma anisado, distinta del estragón ruso que se cultiva desde semilla. El verdadero estragón francés se mantiene vegetativamente porque sus flores son estériles y no produce semillas viables.",
     "sections": {
       "identity": {
+        "short": "Tipo culinario francés; distinto del estragón ruso",
         "guidance": "University of Illinois identifica el estragón francés como Artemisia dracunculus var. sativa y lo distingue del estragón ruso, cuyas semillas se venden con frecuencia pero cuyo sabor se considera inferior. Kew respalda la especie Artemisia dracunculus; la ficha conserva la variedad o tipo hortícola en el alcance usado por Extension, sin atribuir a Kew la aceptación de esa forma infraespecífica."
       },
       "growth": {
+        "short": "Hierba perenne abierta, de unos 2–3 pies",
         "guidance": "University of Illinois describe una planta perenne abierta de unos 2–3 pies, con hojas estrechas, verde oscuro y aromáticas. Distingue su sabor y flores estériles de los del estragón ruso."
       },
       "cultivation": {
+        "short": "Pleno sol y suelo bien drenado; evita humedad invernal",
         "guidance": "Illinois Extension recomienda pleno sol —tolera sombra ligera— y suelo preparado, bien drenado. Advierte que el mal drenaje en invierno puede impedir que la planta sobreviva. La guía exterior no establece aptitud hidropónica interior."
       },
       "propagation": {
+        "short": "Esquejes o división de raíz; no produce semilla viable",
         "guidance": "Illinois Extension indica que el verdadero estragón francés se consigue como plantas de esqueje o división de raíz; sus flores son estériles y no puede cultivarse desde semilla. No confundas paquetes rotulados simplemente ‘estragón’, que pueden producir estragón ruso, con este tipo culinario."
       },
       "harvest": {
+        "short": "Cosecha puntas jóvenes y hojas según necesidad",
         "guidance": "Illinois Extension recomienda cosechar puntas jóvenes y hojas según se necesiten durante la temporada y señala que el uso fresco conserva mejor el sabor característico. También ofrece consejos para secarlo, pero no cuantifica rendimiento ni intervalo de cosecha."
+    },
+    "care": {
+      "short": "Recorta al reanudarse el crecimiento; divide cada 3–4 años",
+      "guidance": "Illinois Extension recomienda recortar las plantas en primavera cuando se reanuda el crecimiento y dividirlas cada 3–4 años para mantener vigor y productividad. Dejar los tallos en pie durante el invierno es una recomendación regional, no un calendario universal para interiores."
+    },
+    "use": {
+      "short": "Fresco conserva mejor el sabor anisado culinario",
+      "guidance": "Illinois Extension indica que el sabor del estragón se pierde rápidamente al secarlo y recomienda usarlo fresco cuando sea posible. Menciona vinagres, aceites, marinadas y ensaladas; son ejemplos culinarios, no mediciones de conservación del sabor ni de duración de almacenamiento."
+    },
+    "problems": {
+      "short": "El mal drenaje, sobre todo en invierno, amenaza la supervivencia",
+      "guidance": "Illinois Extension advierte que el estragón francés no tolera el suelo mal drenado, especialmente durante el invierno, y puede no sobrevivir en esas condiciones. Es un riesgo de sitio y manejo; la fuente no ofrece un diagnóstico de enfermedad ni una calificación de resistencia."
       }
     }
   },
@@ -93,6 +141,10 @@
       },
       "cultivation": {
         "guidance": "NC State la describe en ambientes boscosos con sombra ligera o moderada y suelo ácido, húmedo y bien drenado; tolera sombra más intensa. Esta evidencia de hábitat no establece necesidades de luz interior ni de solución nutritiva."
+      },
+      "harvest": {
+        "short": "El fruto rojo aparece en otoño; NC State lo describe como comestible",
+        "guidance": "NC State indica otoño como periodo de presencia/cosecha del fruto y describe el fruto rojo, parecido a una baya, como comestible crudo o cocido. Esto no establece una porción ni una garantía de inocuidad; la misma fuente ya no recomienda preparar té con las hojas."
       },
       "propagation": {
         "guidance": "NC State enumera semilla y esqueje de raíz, pero no indica profundidad, tratamiento, duración ni temperatura de germinación en la ficha consultada. El establecimiento desde semilla queda insuficientemente documentado; el esqueje de raíz es una alternativa documentada."

@@ -12,8 +12,8 @@
     ],
     "beneficialRoles": {
       "marigold-jolly-jester":{"role":"pest-management / pollinator flower","sourceId":"usu-companion-2025"},
-      "zinnia-lilliput-mixed":{"role":"pollinator flower","sourceId":"ferry-zinnia-lilliput"},
-      "petunia-dwarf-bedding-mixed":{"role":"pollinator flower","sourceId":"ferry-petunia-dwarf"}
+      "zinnia-lilliput-mixed":{"role":"pollinator flower","sourceId":"ferry-zinnia-lilliput-public"},
+      "petunia-dwarf-bedding-mixed":{"role":"pollinator flower","sourceId":"ferry-petunia-dwarf-public"}
     }
   },
   "profiles": {

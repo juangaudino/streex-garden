@@ -13,7 +13,7 @@
       "granado",
       "Punica granatum"
     ],
-    "summary": "A deciduous fruiting shrub or small tree valued for its edible arils and ornamental flowers. Fruiting reliability depends on climate and pollination; no cultivar is specified.",
+    "summary": "A deciduous multi-stem shrub or small tree with ornamental flowers and edible arils. Cultivar and seasonal conditions affect fruit color, quality, and harvest; no cultivar is specified.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -36,37 +36,47 @@
         ]
       },
       "cultivation": {
-        "short": "Sun to partial shade; moisture and good drainage",
-        "guidance": "NC State reports sun to partial shade, moisture and good drainage, with drought tolerance after establishment. Its North Carolina context notes cold and humidity can limit fruiting; this is not hydroponic evidence.",
+        "short": "Sun, drainage, and more even moisture near fruiting",
+        "guidance": "NC State reports sun to partial shade, moisture and good drainage. UGA's Georgia production guide recommends adequate soil moisture and warns that drought followed by rain or excessive fall irrigation can contribute to fruit splitting. These are outdoor, region-scoped observations and do not establish hydroponic suitability.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-punica-granatum-wave51"
+          "ncsu-punica-granatum-wave51",
+          "uga-pomegranate-c997-wave64"
         ]
       },
       "harvest": {
-        "short": "Eat the juicy arils when fruit is mature",
-        "guidance": "NC State describes edible fleshy arils and reports fruiting may be unreliable in the Southeast, partly due to pollination and humidity. No universal harvest date is assigned.",
+        "short": "Use cultivar-aware maturity cues and clip the fruit",
+        "guidance": "UGA says maturity depends on sugar, acid, and rind color, which varies by season and cultivar; its numeric indices are specific to 'Wonderful' and are not assigned here. Clip near the fruit base rather than pulling, and handle gently because impacts can crack fruit. Arils are edible fresh or used for juice.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-punica-granatum-wave51"
+          "ncsu-punica-granatum-wave51",
+          "uga-pomegranate-c997-wave64"
         ]
       },
       "propagation": {
-        "short": "No home seed protocol established in selected sources",
-        "guidance": "The selected sources do not provide seed depth, germination conditions or a home seedling protocol. Keep propagation unresolved rather than infer a method from seeds inside the fruit.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "Hardwood cuttings can clone a plant; seedlings do not preserve cultivar identity",
+        "guidance": "UGA Extension describes hardwood cuttings as a preferred propagation method and also notes that seed-grown trees take longer to bear. A seedling from a named cultivar is not the same cultivar. This is regional propagation guidance; the separate Seed Profile governs seed-to-seedling establishment.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uga-pomegranate-c997-wave64"]
+      },
+      "management": {
+        "short": "Prune lightly and maintain an open, supported canopy",
+        "guidance": "UGA reports annual pruning to manage suckers and maintain structure, with major pruning in winter before bud break and lighter sucker removal in summer. Heavy pruning can remove older fruiting wood and reduce yield; support branches carrying heavy fruit. This is Georgia production guidance, not a universal home-garden calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["uga-pomegranate-c997-wave64"]
       },
       "problems": {
         "short": "Fruit set may be unreliable in humid regions",
-        "guidance": "NC State lists possible scale, whiteflies, mealybugs, leaf spot, fruit blotch and root rot. It specifically cautions that Southeast fruiting may be unreliable; this is regional, not universal.",
+        "guidance": "NC State lists possible scale, whiteflies, mealybugs, leaf spot, fruit blotch and root rot. UGA also documents sunscald and fruit splitting linked with uneven moisture; humid bloom can impair fruit set in its Georgia context. These are scouting risks, not guaranteed outcomes or cultivar resistance claims.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-punica-granatum-wave51"
+          "ncsu-punica-granatum-wave51",
+          "uga-pomegranate-c997-wave64"
         ]
       }
     },
@@ -114,7 +124,7 @@
       "carambola",
       "Averrhoa carambola"
     ],
-    "summary": "A tropical fruit tree whose fruit has a distinctive star-shaped cross-section. This species-level entry does not assign a named cultivar.",
+    "summary": "An evergreen tropical fruit tree with ribbed, star-shaped fruit. UF/IFAS reports ripe-fruit, pruning and landscape guidance for South Florida; this species-level entry does not assign a named cultivar.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -128,8 +138,8 @@
         ]
       },
       "growth": {
-        "short": "Small-to-medium tropical tree",
-        "guidance": "UF/IFAS reports trees up to about 35 ft in South Florida and notes pruning can maintain a smaller landscape tree. Those dimensions are not indoor/container sizes.",
+        "short": "Spreading tropical tree, about 22–33 ft in the UF/IFAS account",
+        "guidance": "UF/IFAS describes a small-to-medium evergreen tree about 22–33 ft tall and 20–25 ft wide in its Florida landscape account. It may lose some or all leaves in cooler locations. These are outdoor dimensions, not indoor/container sizes.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -145,9 +155,18 @@
           "ufifas-carambola-wave51"
         ]
       },
+      "care": {
+        "short": "Selective pruning can control size; avoid routine severe cuts",
+        "guidance": "UF/IFAS says selective pruning can maintain mature landscape trees around 6–12 ft and reduce shading of lower canopy branches; it advises not removing the lower branches. The publication also describes specialized pruning to induce off-season flowering in South Florida, which is not presented here as a routine home-garden instruction.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-carambola-wave51"
+        ]
+      },
       "harvest": {
-        "short": "South Florida harvest season varies by cultivar",
-        "guidance": "UF/IFAS reports a broad June–February harvest window in South Florida, with variable peaks. Its cultivar table is not generalized to an unnamed plant.",
+        "short": "Pick when the furrows turn yellow while rib tips remain green",
+        "guidance": "UF/IFAS says fruit does not gain sugar after picking: for best sweetness, harvest when the furrow between ribs changes from green to yellow while rib tips remain green. It reports a broad June–February window in South Florida, with cultivar-dependent peaks; that calendar is not universal.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -166,6 +185,15 @@
       "safety": {
         "short": "Kidney-disease dietary caution",
         "guidance": "UF/IFAS warns that people with diagnosed kidney disease should avoid star fruit unless their physician says it is safe. This is a dietary caution, not a plant-handling hazard.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-carambola-wave51"
+        ]
+      },
+      "problems": {
+        "short": "Excessively wet soil can lead to root rot and decline",
+        "guidance": "UF/IFAS associates overly wet or flooded conditions with root rot and tree decline, including reduced vigor, leaf drop, dieback and smaller or fewer fruits. It also documents scale and fruit pests in Florida; local diagnosis is appropriate before treatment.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -255,6 +283,13 @@
           "ncsu-asimina-triloba-wave51"
         ]
       },
+      "pollination": {
+        "short": "A genetically different plant is usually needed for fruit set",
+        "guidance": "Alabama Extension says pawpaws are usually not self-fertile and recommends at least two cultivars with overlapping bloom. A single clonal grove may not provide cross-pollination. Hand pollination is laborious and is not presented as a routine requirement when natural pollinators are present.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["aces-pawpaw-production-anr3095-wave64"]
+      },
       "cultivation": {
         "short": "Acidic, moisture-retentive, well-drained soil",
         "guidance": "NC State reports preference for acidic soil that retains moisture but drains well. It tolerates occasional moisture, not permanently saturated conditions. This does not establish hydroponic compatibility.",
@@ -265,29 +300,28 @@
         ]
       },
       "harvest": {
-        "short": "Soft, custard-like fruit ripens in late summer to early fall",
-        "guidance": "NC State describes edible sweet fruit and wildlife competition. It recommends gloves at harvest because contact dermatitis has been reported.",
+        "short": "Pick as fruit first softens and handle gently",
+        "guidance": "Alabama Extension says pawpaws soften rapidly at ripeness, may shift from darker green toward lighter green or yellow depending on cultivar, and bruise easily. Check trees frequently during the regional harvest period and pick when flesh first softens; unripe fruit can cause gastrointestinal distress. Alabama's July–September dates are not a universal calendar. NC State reports contact dermatitis for some people.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-asimina-triloba-wave51"
+          "ncsu-asimina-triloba-wave51",
+          "aces-pawpaw-production-anr3095-wave64"
         ]
       },
       "propagation": {
-        "short": "Home seed protocol unresolved",
-        "guidance": "The selected identity-matched sources do not give a home seedling protocol. Do not borrow propagation advice from tropical papaya or another Asimina species.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
-      },
-      "problems": {
-        "short": "Root suckers and pollination need attention",
-        "guidance": "NC State notes root suckers can become troublesome and flowers need genetically different pollen for fruit production.",
+        "short": "Use grafted trees for named-cultivar fruit; seedlings vary",
+        "guidance": "Alabama Extension describes pawpaw propagation by seed or grafting and notes that seed-grown trees vary from the parent. Grafted scions from named cultivars are used when predictable fruit characteristics are the goal; digging and transplanting root suckers is usually unsuccessful. Seed stratification and sowing instructions belong in the Seed Profile, not here.",
         "evidenceType": "source_backed",
         "confidence": "high",
-        "sourceIds": [
-          "ncsu-asimina-triloba-wave51"
-        ]
+        "sourceIds": ["aces-pawpaw-production-anr3095-wave64"]
+      },
+      "problems": {
+        "short": "Root suckers can require management",
+        "guidance": "NC State notes root suckers can become troublesome. Monitor the spread of suckers around established trees and remove unwanted shoots as appropriate; the source does not prescribe a universal removal schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-asimina-triloba-wave51"]
       }
     },
     "compatibilityProfile": {
@@ -383,6 +417,15 @@
           "ncsu-diospyros-virginiana-wave51"
         ]
       },
+      "care": {
+        "short": "Control root suckers if a spreading colony is not wanted",
+        "guidance": "NC State Extension notes mature trees produce root suckers that can become a weed problem. Monitor around the established tree and remove unwanted suckers; the source does not prescribe a routine canopy-pruning program for this species.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-virginiana-wave51"
+        ]
+      },
       "problems": {
         "short": "Sex expression and fruit maturity matter",
         "guidance": "NC State describes usually separate male and female trees and warns that green fruit is astringent. Root suckers may become a weed problem; no disease resistance is claimed.",
@@ -453,7 +496,7 @@
       },
       "growth": {
         "short": "Deciduous fruit tree, about 20–30 ft in cited landscape profile",
-        "guidance": "NC State reports 20–30 ft and says sex expression can vary; some trees can set seedless fruit without pollination. Landscape measurements are not indoor dimensions.",
+        "guidance": "NC State reports a 20–30 ft landscape height and describes a deciduous tree with glossy leaves and notable yellow-to-red autumn color. These are regional outdoor observations, not indoor dimensions or a cultivar-specific size guarantee.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -469,9 +512,23 @@
           "ncsu-diospyros-kaki-wave51"
         ]
       },
+      "flowering": {
+        "short": "Cream female flowers and pink male clusters bloom in spring",
+        "guidance": "NC State describes solitary cream-white female flowers and pink male flowers in clusters of three. Its page places general bloom around mid-April in North Carolina; late frost may damage bloom, and local timing can differ.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-diospyros-kaki-wave51"]
+      },
+      "pollination": {
+        "short": "Sex expression and fruit set vary; another variety is not always required",
+        "guidance": "NC State says trees are usually dioecious, though some have both male and female flowers and some have perfect flowers. The species can also set seedless fruit without pollination. Planting more than one variety is recommended when larger yields are the goal, but is not required for fruit set. This entry names no variety or individual tree sex, so it cannot promise a crop or prescribe a pollinizer.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-diospyros-kaki-wave51"]
+      },
       "harvest": {
         "short": "Fruit behavior varies by cultivar",
-        "guidance": "NC State describes non-astringent varieties that can be sliced and eaten raw. Because no cultivar is identified, this trait is not assigned to every D. kaki plant.",
+        "guidance": "NC State describes non-astringent varieties that can be sliced and eaten raw. Because no cultivar is identified, this trait is not assigned to every D. kaki plant. Its general page says trees may take 4–6 years to begin fruiting and that a heavy crop may be followed by a smaller one; these are broad species-page expectations, not a guaranteed schedule for an individual tree.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -481,6 +538,15 @@
       "propagation": {
         "short": "Seed and grafting are listed; no seed-starting protocol",
         "guidance": "NC State lists seed and grafting but does not give a home seed-starting procedure. Seedlings are not identified as named cultivars, and cultivar fruit traits remain unresolved.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-diospyros-kaki-wave51"
+        ]
+      },
+      "care": {
+        "short": "Remove unwanted root suckers; annual pruning is not required",
+        "guidance": "NC State Extension says this species does not require annual pruning but produces root suckers that should be removed unless a naturalized effect is wanted. This is species-level landscape guidance; no cultivar-specific training system is assigned.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -541,7 +607,7 @@
       "Eriobotrya japonica",
       "níspero japonés"
     ],
-    "summary": "An evergreen fruiting tree with leathery leaves and edible fruit in warm climates. Flowering and fruiting are cold-sensitive; no cultivar is assigned.",
+    "summary": "An evergreen shrub or tree with leathery, toothed leaves and yellow-orange edible fruit. Flowering and fruiting are cold-sensitive; no cultivar is assigned.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -556,7 +622,7 @@
       },
       "growth": {
         "short": "Evergreen shrub or tree with leathery, toothed leaves",
-        "guidance": "NC State describes a tropical evergreen shrub or tree and notes that it usually does not fruit in North Carolina due to cold sensitivity.",
+        "guidance": "NC State describes a tropical evergreen shrub or tree, usually 10–25 ft tall and wide in its landscape profile, with large leathery, toothed leaves. It usually does not fruit in North Carolina because of cold sensitivity; the profile also notes its rounded form can be trained as an espalier.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -565,7 +631,7 @@
       },
       "cultivation": {
         "short": "Warm site; protect blooms and fruit from cold",
-        "guidance": "NC State reports blooms or fruit likely will not survive below 28°F although the tree may survive to about 10°F. This is regional guidance, not an indoor-light or hydroponic claim.",
+        "guidance": "NC State recommends full sun (with partial shade tolerated) and moist, well-drained soil. It reports blooms or fruit likely will not survive below 28°F although the tree may survive to about 10°F. These are landscape/regional facts, not an indoor-light or hydroponic claim.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -574,7 +640,7 @@
       },
       "harvest": {
         "short": "Fruit set depends on winter temperatures",
-        "guidance": "A surviving tree does not guarantee a crop in cold regions because blooms and fruit are more sensitive. No universal harvest date or cultivar traits are assigned.",
+        "guidance": "NC State describes spring-display fruit as yellow-orange, pear-shaped and about 1–2 inches, with edible flesh. The source lists spring as its harvest season and notes cold can prevent flowering/fruit from surviving; do not treat that regional season as a universal date.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -582,11 +648,22 @@
         ]
       },
       "propagation": {
-        "short": "Selected Extension page gives no propagation method",
-        "guidance": "The selected species page provides identity and climate context but no home seed or vegetative propagation procedure. Do not infer a method from another Rosaceae fruit tree.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "NC State lists stem cuttings; no step-by-step protocol is supplied",
+        "guidance": "NC State lists stem cutting as a recommended propagation strategy for this species. The page does not give a rooting procedure, timing or success conditions, so those details remain unspecified rather than inferred from another Rosaceae fruit tree.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-eriobotrya-japonica-wave51"
+        ]
+      },
+      "problems": {
+        "short": "Watch for fire blight; seeds have a specific ingestion caution",
+        "guidance": "NC State identifies fire blight and other leaf/fruit diseases as concerns. It also flags the seeds: the low-severity poisoning warning applies to eating large quantities of cracked seed pits/kernels, not ordinary handling of the edible flesh. Do not crack or eat the kernels; seek medical advice for an actual ingestion concern.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-eriobotrya-japonica-wave51"
+        ]
       }
     },
     "compatibilityProfile": {
@@ -665,6 +742,15 @@
           "ncsu-ziziphus-jujuba-wave51"
         ]
       },
+      "care": {
+        "short": "Expect root suckers; pruning can constrain tree size",
+        "guidance": "UF/IFAS reports that Chinese jujube commonly produces root suckers, sometimes emerging several feet from the parent tree, and that pruning can constrain its 15–30 ft height. Central-leader and open-center forms are described as orchard training systems; the source does not prescribe a universal home pruning schedule or a specific sucker-removal method.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ufifas-jujube-florida-fruit-crop-2026"
+        ]
+      },
       "harvest": {
         "short": "Fruit matures from crisp green to date-like brown-purple",
         "guidance": "NC State describes green fruit with apple-like texture that matures to wrinkled brown-purple fruit, eaten fresh, dried or cooked. In its northern regions the growing season may be too short for fruit set.",
@@ -675,11 +761,13 @@
         ]
       },
       "propagation": {
-        "short": "Practical propagation route unresolved in selected page",
-        "guidance": "The selected sources describe species and fruit but do not establish a practical home propagation protocol. No seed method is inferred from fruit facts.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": []
+        "short": "NC State lists grafting, seed and stem cutting as routes",
+        "guidance": "NC State's species page lists grafting, seed and stem cutting as propagation strategies, but gives no step-by-step method or conditions for any of them. This documents possible routes only; a home propagation protocol remains unspecified.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-ziziphus-jujuba-wave51"
+        ]
       }
     },
     "compatibilityProfile": {
@@ -751,6 +839,15 @@
       "cultivation": {
         "short": "Sun to partial shade; fertile, well-drained soil",
         "guidance": "NC State recommends full sun to partial shade and well-drained fertile soil. Outdoor pruning guidance is not converted into an indoor trellis or pod-spacing rule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-actinidia-arguta-wave51"
+        ]
+      },
+      "management": {
+        "short": "Prune in winter and control long shoots in summer",
+        "guidance": "NC State recommends pruning each stem in winter back to 8–10 buds and pruning in summer as needed to control overlong branches. The page does not specify a training system or cultivar-specific schedule, so this remains species-level guidance.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -829,7 +926,7 @@
       "moral rojo",
       "native mulberry"
     ],
-    "summary": "A deciduous North American tree with edible fruit when ripe and wildlife value. The Extension profile warns about unripe fruit and milky sap.",
+    "summary": "A deciduous North American tree with edible fruit when ripe and wildlife value. Fruiting is not assured for an unspecified individual because male and female flowers usually occur on separate trees; unripe fruit and milky sap carry safety warnings.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -844,7 +941,7 @@
       },
       "growth": {
         "short": "Deciduous tree with dense, spreading crown",
-        "guidance": "NC State describes a tree with a broad landscape canopy. Summer fruit attracts wildlife and dropped fruit can stain hard surfaces.",
+        "guidance": "NC State describes a tree with a dense, spreading landscape crown. Its alternate, toothed leaves may be heart-shaped and range from unlobed to deeply lobed; young shoots more often carry lobed leaves, while canopy leaves are more often unlobed. Leaves turn yellow in fall. Summer fruit attracts wildlife and can stain hard surfaces when it drops.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -860,9 +957,16 @@
           "ncsu-morus-rubra-wave51"
         ]
       },
+      "maintenance": {
+        "short": "Prune in late fall or winter to limit bleeding",
+        "guidance": "NC State recommends pruning in late fall or winter to avoid bleeding from cuts. This is species-level landscape-tree guidance; it does not establish a special fruiting-pruning system or a container-tree form for this identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-morus-rubra-wave51"]
+      },
       "harvest": {
         "short": "Consume fruit only when fully ripe",
-        "guidance": "NC State says ripe fruit is harmless and edible, while unripe fruit is poisonous. The fruit can be eaten fresh or used in preserves but has a short shelf life.",
+        "guidance": "NC State describes the fruit as changing from reddish to dark purple as it matures; eat it only when fully ripe, since the source warns that unripe fruit is poisonous. Ripe fruit can be eaten fresh or used in preserves, but has a short shelf life. Fruit color and timing here are species-level North Carolina observations, not a local calendar.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -880,12 +984,26 @@
       },
       "problems": {
         "short": "Unripe fruit and sap have toxicity cautions",
-        "guidance": "NC State warns that unripe fruit and milky sap may cause hallucinations and stomach upset; ripe fruit is described as harmless. It also lists pests, diseases, messy fruit and self-seeding concerns.",
+        "guidance": "NC State warns that unripe fruit and milky sap may cause hallucinations and stomach upset, and notes that sap can cause contact dermatitis. Its regional list includes borers, whiteflies, bacterial blight that can kill foliage or branches, coral-spot cankers associated with twig dieback, and other possible pests or diseases. These are monitoring cues, not a diagnosis or a prediction that every tree will be affected; dropped fruit and self-seeding can also create maintenance issues.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "ncsu-morus-rubra-wave51"
         ]
+      },
+      "flowering": {
+        "short": "Small greenish catkin-like flowers appear in spring",
+        "guidance": "NC State describes small, pale-green, unisexual flowers in drooping catkin-like spikes in spring. The account gives April–May for North Carolina; local bloom timing can differ.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-morus-rubra-wave51"]
+      },
+      "pollination": {
+        "short": "Male and female flowers usually occur on separate trees",
+        "guidance": "NC State reports that male and female flowers usually occur on separate red mulberry trees. This catalog identity does not specify the sex of an individual tree or a compatible pollen source, so fruit production should not be assumed for one unidentified specimen.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["ncsu-morus-rubra-wave51"]
       }
     },
     "compatibilityProfile": {

@@ -1,0 +1,1743 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "rose-painted-calathea-goeppertia-roseopicta": {
+      "wave": 46,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "beautiful-hoya-hoya-bella": {
+      "wave": 46,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "common-hoya-hoya-australis": {
+      "wave": 46,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "schillers-moth-orchid-phalaenopsis-schilleriana": {
+      "wave": 46,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Kew's accepted species identity is distinct from unnamed commercial Phalaenopsis hybrids.",
+            "es": "La identidad de especie aceptada por Kew es distinta de los híbridos comerciales de Phalaenopsis sin identificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Height differs between NC State and RHS; foliage and flower-spike measurements are not assumed equivalent.",
+            "es": "La altura difiere entre NC State y RHS; no se asume que las medidas de follaje y vara floral sean equivalentes."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Species culture guidance is distinguished from general hybrid retail advice; no hydroponic device fit is established.",
+            "es": "La guía de cultivo de la especie se distingue del consejo general para híbridos comerciales; no se establece compatibilidad con dispositivos hidropónicos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Watering cues refer to orchid media and roots, not a hydroponic reservoir.",
+            "es": "Las señales de riego corresponden al medio y las raíces de orquídea, no a un depósito hidropónico."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "RHS bloom season is UK context; cooler autumn nights are a separate documented initiation cue.",
+            "es": "La temporada de floración de RHS corresponde al Reino Unido; las noches otoñales frescas son otra señal documentada de inducción."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "RHS spike pruning guidance does not guarantee repeat flowering.",
+            "es": "La guía RHS para cortar varas no garantiza una nueva floración."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Pest lists are source-reported risks, not diagnoses or disease-resistance evidence.",
+            "es": "Las listas de plagas son riesgos informados por las fuentes, no diagnósticos ni evidencia de resistencia a enfermedades."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "RHS describes mature-plant keiki propagation; orchid seed propagation is limited to controlled laboratory conditions.",
+            "es": "RHS describe la propagación por keiki en plantas maduras; la propagación por semilla de orquídea se limita a condiciones controladas de laboratorio."
+          }
+        }
+      }
+    },
+    "giant-bamburanta-ctenanthe-oppenheimiana": {
+      "wave": 46,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "false-african-violet-streptocarpus-saxorum": {
+      "wave": 47,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "stock-matthiola-incana": {
+      "wave": 48,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "four-oclock-mirabilis-jalapa": {
+      "wave": 48,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "safety": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "common-morning-glory-ipomoea-purpurea": {
+      "wave": 48,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "safety": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "garden-impatiens-impatiens-walleriana": {
+      "wave": 48,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "cardinal-flower-lobelia-cardinalis": {
+      "wave": 48,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "safety": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "african-marigold-tagetes-erecta": {
+      "wave": 49,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "purple-coneflower-echinacea-purpurea": {
+      "wave": 49,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "pale-purple-coneflower-echinacea-pallida": {
+      "wave": 49,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "moss-rose-portulaca-grandiflora": {
+      "wave": 49,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "indian-blanket-flower-gaillardia-pulchella": {
+      "wave": 49,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "great-blanketflower-gaillardia-aristata": {
+      "wave": 49,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "catnip-nepeta-cataria": {
+      "wave": 50,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "NC State's post-bloom shearing advice is species-level outdoor guidance and is not a fixed indoor schedule.",
+            "es": "El recorte tras la floración que aconseja NC State es orientación exterior a nivel de especie, no un calendario fijo para interior."
+          }
+        },
+        "safety": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "bay-laurel-laurus-nobilis": {
+      "wave": 50,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "pineapple-ananas-comosus": {
+      "wave": 50,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "french-tarragon-artemisia-dracunculus-sativa": {
+      "wave": 50,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "wintergreen-gaultheria-procumbens": {
+      "wave": 50,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "safety": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "pomegranate-punica-granatum": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "starfruit-averrhoa-carambola": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "safety": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "pawpaw-asimina-triloba": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "american-persimmon-diospyros-virginiana": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "asian-persimmon-diospyros-kaki": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Kew supports species identity; Fuyu, Jiro and Hana Gosho are examples, not the represented cultivar.",
+            "es": "Kew respalda la identidad de especie; Fuyu, Jiro y Hana Gosho son ejemplos, no el cultivar representado."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Height and foliage notes are NC State landscape observations, not indoor/container dimensions or a cultivar promise.",
+            "es": "La altura y el follaje son observaciones paisajísticas de NC State, no dimensiones interiores/de recipiente ni promesas de cultivar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Astringency varies by cultivar; 4–6 years and crop alternation are broad page-level expectations, not a guarantee for this tree.",
+            "es": "La astringencia varía por cultivar; 4–6 años y la alternancia de cosecha son expectativas generales de la página, no garantías para este árbol."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Root-sucker removal and the lack of annual-pruning requirement are NC State species-level landscape guidance.",
+            "es": "Retirar retoños de raíz y que no se requiera poda anual son indicaciones paisajísticas de NC State a nivel de especie."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Flower color and bloom timing are described at species scope for North Carolina; local timing may vary.",
+            "es": "El color floral y la época de floración se describen a nivel de especie para Carolina del Norte; el calendario local puede variar."
+          }
+        },
+        "pollination": {
+          "context": {
+            "en": "Sex expression and parthenocarpy vary; no individual tree sex or named pollen partner is established.",
+            "es": "La expresión sexual y la partenocarpia varían; no se establece el sexo de un árbol individual ni una variedad polinizadora."
+          }
+        }
+      }
+    },
+    "loquat-eriobotrya-japonica": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "chinese-jujube-ziziphus-jujuba": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "hardy-kiwi-actinidia-arguta": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "red-mulberry-morus-rubra": {
+      "wave": 51,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Kew/North Carolina Extension support the Morus rubra species identity; no cultivar is represented.",
+            "es": "Kew y NC State Extension respaldan la identidad de especie Morus rubra; no se representa un cultivar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Leaf variation and spreading tree form are species-level observations; do not use them to identify a cultivar.",
+            "es": "La variación foliar y el porte arbóreo extendido son observaciones de especie; no sirven para identificar un cultivar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Ripe-versus-unripe safety and color progression follow the North Carolina source; timing is not a universal calendar.",
+            "es": "La seguridad según madurez y la progresión de color siguen la fuente de Carolina del Norte; el calendario no es universal."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Pests, disease and toxicity cues are from a regional Extension account; they are not diagnoses or guaranteed outcomes.",
+            "es": "Las señales de plagas, enfermedades y toxicidad proceden de una ficha regional de Extensión; no son diagnósticos ni resultados garantizados."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Flower form and April–May timing are described for North Carolina; local phenology may differ.",
+            "es": "La forma floral y el periodo abril–mayo corresponden a Carolina del Norte; la fenología local puede variar."
+          }
+        },
+        "pollination": {
+          "context": {
+            "en": "Separate male/female trees are usual, not an identification of this individual tree's sex or pollen partner.",
+            "es": "Lo habitual es que haya árboles masculinos y femeninos distintos; eso no identifica el sexo de este ejemplar ni su pareja de polen."
+          }
+        }
+      }
+    },
+    "buckwheat-fagopyrum-esculentum": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "management": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "crimson-clover-trifolium-incarnatum": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "management": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "white-clover-trifolium-repens": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "management": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "cereal-rye-secale-cereale": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "management": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "oats-avena-sativa": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "management": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "alpine-strawberry-fragaria-vesca": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "black-chokeberry-aronia-melanocarpa": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "honeyberry-lonicera-caerulea": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvestUse": {
+          "context": {
+            "en": "Use the UMN Extension harvest and handling guidance at crop level; Minnesota timing is weather- and variety-dependent, and no tested home-preservation process is supplied.",
+            "es": "Aplica a nivel de cultivo la orientación de cosecha y manipulación de UMN Extension; el momento en Minnesota depende del clima y la variedad, y no se proporciona un proceso probado de conservación doméstica."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "lingonberry-vaccinium-vitis-idaea": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "saskatoon-serviceberry-amelanchier-alnifolia": {
+      "wave": 52,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    },
+    "butterfly-pea-clitoria-ternatea": {
+      "wave": 53,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "The summer-to-fall bloom period and blue/yellow flower description are NC State's species page context; white or double flowers are explicitly cultivar variation.",
+            "es": "El periodo de floración de verano a otoño y la descripción azul/amarilla corresponden a la ficha de especie de NC State; las flores blancas o dobles son variación explícita de cultivar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "moringa-moringa-oleifera": {
+      "wave": 53,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        }
+      }
+    },
+    "mexican-oregano-lippia-origanoides": {
+      "wave": 53,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Use the cited source scope; do not transfer outcomes to other cultivars or methods.",
+            "es": "Respeta el alcance de la fuente; no traslades resultados a otros cultivares o métodos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Not established for this identity or growing system.",
+            "es": "No establecido para esta identidad o sistema de cultivo."
+          }
+        }
+      }
+    }
+  }
+}

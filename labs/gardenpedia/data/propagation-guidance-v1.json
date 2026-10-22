@@ -243,12 +243,12 @@
     },
     "white-carolina-pineberry": {
       "classification": "insufficient_documentation",
-      "status": "pending",
+      "status": "source_backed",
       "summary": {
-        "en": "The reviewed sources identify White Carolina as a supplier-listed pineberry name but do not establish cultivar-specific seed or vegetative propagation. Illinois Extension discusses pineberries generally and recommends nursery transplants; no method is assigned to this named record until stronger evidence is available.",
-        "es": "Las fuentes revisadas identifican White Carolina como nombre comercial de pineberry, pero no establecen propagación por semilla o vegetativa específica del cultivar. Illinois Extension habla de pineberries en general y recomienda trasplantes de vivero; no se asigna un método a este registro sin evidencia más sólida."
+        "en": "Missouri and Illinois Extension describe pineberries as nursery-plant material; Missouri specifically advises buying plants rather than seed to retain white-fruit character. This type-level guidance does not authenticate the catalog's White Carolina stock or establish a cultivar-specific vegetative propagation method, so the identity remains pending.",
+        "es": "Missouri e Illinois Extension describen las pineberries como material de vivero; Missouri recomienda específicamente comprar plantas, no semillas, para conservar el carácter de fruto blanco. Esta orientación a nivel de tipo no autentica el material White Carolina del catálogo ni establece un método vegetativo específico del cultivar, por lo que la identidad sigue pendiente."
       },
-      "sourceIds": []
+      "sourceIds": ["mizzou-pineberry-2015", "illinois-pineberry-500"]
     },
     "pineapple-mint-mentha-suaveolens-variegata": {
       "classification": "vegetative_preferred",
@@ -838,11 +838,12 @@
       "classification": "insufficient_documentation",
       "status": "source_backed",
       "summary": {
-        "en": "NC State lists both seed and stem cuttings for Hypoestes phyllostachya and describes reseeding in warm, temperate settings. It supplies no sowing or germination protocol, so cuttings are the usable documented route while seed establishment remains unresolved.",
-        "es": "NC State enumera tanto semillas como esquejes de tallo para Hypoestes phyllostachya y describe resiembra en lugares cálidos y templados. No ofrece protocolo de siembra ni germinación; los esquejes son la vía práctica documentada y el establecimiento por semilla sigue sin resolverse."
+        "en": "NC State lists seed and stem cuttings for Hypoestes phyllostachya. RHS gives a basic spring sowing method (moist compost, press lightly, leave uncovered for light) but no germination duration or temperature. The partial instructions do not establish a full Seed Profile V0 protocol; stem cuttings remain the practical vegetative route documented by NC State.",
+        "es": "NC State enumera semillas y esquejes de tallo para Hypoestes phyllostachya. La RHS ofrece un método básico de siembra primaveral (sustrato húmedo, presionar ligeramente y dejar sin cubrir para que reciba luz), pero no indica duración ni temperatura de germinación. Estas instrucciones parciales no forman un protocolo completo de Seed Profile V0; los esquejes siguen siendo la vía vegetativa práctica documentada por NC State."
       },
       "sourceIds": [
-        "ncsu-hypoestes-phyllostachya-wave41"
+        "ncsu-hypoestes-phyllostachya-wave41",
+        "rhs-hypoestes-growing-guide-wave41"
       ]
     },
     "purple-heart-tradescantia-pallida": {
@@ -1128,17 +1129,6 @@
         "ncsu-lobelia-cardinalis-wave48"
       ]
     },
-    "purple-coneflower-echinacea-purpurea": {
-      "classification": "insufficient_documentation",
-      "status": "source_backed",
-      "summary": {
-        "en": "NC State confirms seed as a propagation route for Echinacea purpurea but does not provide a home sowing or germination protocol. Seed is possible; establishment details remain unresolved and no Seed Profile V0 is created.",
-        "es": "NC State confirma la semilla como vía de propagación para Echinacea purpurea, pero no ofrece un protocolo doméstico de siembra o germinación. La semilla es posible; los detalles de establecimiento siguen sin resolverse y no se crea Seed Profile V0."
-      },
-      "sourceIds": [
-        "ncsu-echinacea-purpurea-wave49"
-      ]
-    },
     "moss-rose-portulaca-grandiflora": {
       "classification": "insufficient_documentation",
       "status": "source_backed",
@@ -1148,17 +1138,6 @@
       },
       "sourceIds": [
         "ncsu-portulaca-grandiflora-wave49"
-      ]
-    },
-    "great-blanketflower-gaillardia-aristata": {
-      "classification": "insufficient_documentation",
-      "status": "source_backed",
-      "summary": {
-        "en": "NC State lists seed and division for perennial Gaillardia aristata without giving a household sowing protocol. Keep this distinct from annual G. pulchella and hybrid blanket flowers; seed requirements remain unresolved.",
-        "es": "NC State enumera semilla y división para la perenne Gaillardia aristata sin ofrecer un protocolo doméstico de siembra. Mantenla distinta de la anual G. pulchella y de los híbridos de blanket flower; los requisitos de semilla siguen sin resolverse."
-      },
-      "sourceIds": [
-        "ncsu-gaillardia-aristata-wave49"
       ]
     },
     "catnip-nepeta-cataria": {

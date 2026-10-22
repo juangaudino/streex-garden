@@ -1,5 +1,167 @@
 {
-  "blush-hibiscus":{"summary":"La selección Blush Hibiscus de Gardyn aparece documentada con el nombre botánico histórico Hibiscus moscheutos. Kew acepta ahora Muenchhusia moscheutos; la página del producto no establece un cultivar nombrado."},
-  "pink-petunia":{"summary":"Pink Petunia de Gardyn es una selección de flores rosas identificada como Petunia × hybrida, sinónimo del nombre aceptado por Kew Petunia × atkinsiana. No se establece un cultivar nombrado."},
-  "black-viola":{"summary":"Gardyn identifica su producto Black Viola como Viola cornuta y describe flores oscuras. Kew acepta Viola cornuta como especie; el producto no establece un cultivar nombrado."}
+  "blush-hibiscus": {
+    "summary": "La guía de Gardyn para Hibiscus (Blush & Red) identifica esta selección de flores rosas como Hibiscus moscheutos; Kew acepta Muenchhusia moscheutos. No se confirma un cultivar nombrado. Gardyn documenta la zona de luz y el tamaño aproximado de su producto, además de revisión de raíces, pinzado, soporte, tandas de floración y corte para florero. NC State aporta cuidados exteriores a nivel de especie; esas dimensiones y condiciones de jardín no predicen otra selección ni otro sistema hidropónico.",
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Muenchhusia moscheutos",
+        "guidance": "Kew acepta Muenchhusia moscheutos y considera Hibiscus moscheutos un sinónimo. Blush es una selección comercial de Gardyn, no un cultivar confirmado.",
+        "items": ["Distingue el nombre comercial Gardyn de un cultivar identificado formalmente.", "Usa Muenchhusia moscheutos como nombre aceptado de la especie."],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "cultivation": {
+        "short": "Gardyn indica una zona de luz media; la guía exterior es aparte",
+        "guidance": "Para su producto Hibiscus (Blush & Red), Gardyn indica una zona de luz media y recomienda revisar las raíces dos veces al mes; se deben recortar las raíces marrones o que sobresalgan del yPod. La zona y el manejo de raíces corresponden al sistema Gardyn: no son una categoría estandarizada de luz de cultivo ni una regla para otros sistemas. Para Muenchhusia moscheutos al aire libre, NC State recomienda sol pleno o parcial y suelo húmedo a ocasionalmente mojado; señala mejor floración a pleno sol, protección del viento y buena circulación de aire. Estas condiciones exteriores no establecen el comportamiento de esta selección sin nombre al aire libre.",
+        "items": ["Sigue las instrucciones de Gardyn solo con el pod y sistema documentados.", "Registra el sistema real y la respuesta de la planta antes de adaptar indicaciones."],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "growth": {
+        "short": "Gardyn indica 61–91 cm para su producto; la especie exterior tiene un rango más amplio",
+        "guidance": "Kew clasifica Muenchhusia moscheutos como perenne o helófita. NC State describe una perenne herbácea erecta y de varios tallos, de unos 61–183 cm de alto y 61–152 cm de ancho al aire libre. Por separado, Gardyn indica 61–91 cm para su producto Hibiscus (Blush & Red). Mantén esa cifra aproximada del producto separada del amplio rango de especie exterior; ninguna establece las dimensiones de un cultivar sin nombre en otro sistema.",
+        "items": ["Kew clasifica la especie como perenne o helófita."],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "care": {
+        "short": "Usa el pinzado, la poda y el soporte de Gardyn solo en ese sistema",
+        "guidance": "Para su planta Gardyn, el fabricante recomienda revisar las raíces dos veces al mes, recortar las que estén marrones o sobresalgan del yPod y, después de varias series de hojas pero antes de florecer, despuntar el tallo principal conservando cerca de dos tercios de su altura. Advierte que el despunte puede retrasar los botones florales unas semanas. Recomienda pinzar las flores marchitas bajo la cabezuela para favorecer otra tanda, podar después de florecer para controlar altura o sombra conservando dos tercios, y usar un Plant Belt para sostener el tallo alto. Son instrucciones específicas del producto. Para plantas exteriores, NC State dice que pinzar puede favorecer un porte más tupido y retirar flores marchitas mejora el aspecto. NC State da indicaciones otoñales en tensión —cortar casi al ras, pero también dejar tallos muertos de 30–61 cm para abejas que anidan en tallos—, así que no se prescribe una poda otoñal universal.",
+        "items": ["Pinza las puntas solo si deseas un porte más tupido a nivel de especie.", "Retira flores marchitas por estética; no hagas un corte otoñal general sin considerar las recomendaciones locales para abejas que anidan en tallos."],
+        "context": "Las instrucciones de Gardyn son para su sistema; la guía otoñal de NC State es exterior y presenta recomendaciones en tensión."
+      },
+      "flowering": {
+        "short": "Gardyn describe tandas sucesivas; el calendario exterior es a nivel de especie",
+        "guidance": "NC State sitúa la floración exterior de la especie entre mediados de verano y comienzos de otoño; cada flor dura poco, aunque el periodo total suele durar alrededor de un mes. La guía de Gardyn dice que cada flor dura un día y después se abren tandas sucesivas de unas 8–12 flores, seguidas de un descanso; con cuidados adecuados, informa dos o tres tandas durante aproximadamente 8–10 meses. Esto es un reporte del fabricante para su producto, no un calendario garantizado para otros cultivares o sistemas. La etiqueta Blush no identifica un cultivar nombrado.",
+        "context": "El calendario de Gardyn corresponde a su producto; el de NC State es exterior y a nivel de especie."
+      },
+      "harvest": {
+        "short": "Corta las flores justo antes de abrir; las afirmaciones alimentarias son específicas del producto",
+        "guidance": "Para florero en Gardyn, el fabricante indica cortar la flor por su tallo justo antes de abrir, cuando los pétalos empiezan a mostrarse. La misma guía describe los pétalos y las hojas jóvenes como comestibles; indica separar los pétalos del centro de la flor y consumir crudas o cocidas las hojas jóvenes. Es una afirmación de la guía del producto Gardyn, no una verificación independiente de inocuidad para toda planta vendida como hibisco; no trates como alimento una planta ornamental cuyo manejo o historial de tratamientos se desconoce.",
+        "context": "La cosecha se limita a la guía del producto Hibiscus (Blush & Red) de Gardyn; no se verifican de forma independiente la aptitud alimentaria ni el historial de tratamientos."
+      },
+      "problems": {
+        "short": "Distingue la decoloración descrita por Gardyn del estrés y las plagas exteriores",
+        "guidance": "Para su hibisco Gardyn, el fabricante indica que pueden aparecer zonas amarillas o marrones entre las venas o cerca de los bordes sin impedir que la planta siga creciendo y floreciendo. Esta observación específica del producto no significa que toda decoloración sea inocua. Al aire libre, NC State señala que el suelo seco puede causar escaldadura foliar y que escarabajos japoneses y larvas de moscas de sierra pueden defoliar gravemente; también pueden aparecer moscas blancas, pulgones y escamas, además de manchas, tizones, roya y chancros. Son señales de vigilancia a nivel de especie, no diagnósticos ni susceptibilidades demostradas para la selección sin nombre.",
+        "items": ["Busca daño de mordida antes de atribuirlo a escarabajos o larvas.", "Revisa la humedad si las hojas se escaldan; documenta manchas o síntomas de roya antes de asignar una enfermedad."],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      }
+    }
+  },
+  "pink-petunia": {
+    "summary": "La guía de Gardyn describe su Pink Petunia como una selección rosada y fragante de porte naturalmente colgante, identificada como Petunia × hybrida; Kew acepta Petunia × atkinsiana. No se confirma cultivar ni grupo hortícola. Gardyn documenta una zona de luz media, contexto de temperatura, revisión de raíces, soporte, eliminación de flores marchitas, poda y una advertencia clara de que no es comestible. University of Minnesota y Clemson aportan cuidados exteriores por separado; las instrucciones del producto no establecen el comportamiento en otros sistemas.",
+    "sections": {
+      "identity": {
+        "short": "Híbrido aceptado: Petunia × atkinsiana",
+        "guidance": "Kew acepta Petunia × atkinsiana; Petunia × hybrida es sinónimo. El color rosa no identifica un cultivar.",
+        "items": [
+          "Kew acepta Petunia × atkinsiana; Petunia × hybrida es sinónimo.",
+          "El color rosa no identifica un cultivar."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "cultivation": {
+        "short": "Separa la zona de luz media y temperatura de Gardyn del sol exterior",
+        "guidance": "Para su producto Pink Petunia, Gardyn indica una zona de luz media y prefiere días de 21–27 °C (70–80 °F) con noches más frescas de 16–18 °C (60–65 °F). Son instrucciones del producto para Gardyn, no un nivel normalizado de lámpara ni un ensayo general de temperatura para Petunia. Por separado, University of Minnesota Extension indica que las petunias de exterior necesitan al menos 5–6 horas de buena luz solar y suelo con drenaje razonable; el riego varía según el grupo hortícola y el recipiente. No se conoce el grupo del producto ni se convierte su zona de luz en requisito para otros sistemas.",
+        "items": [
+          "Distingue los cuidados del producto Gardyn de las recomendaciones generales para petunias exteriores.",
+          "Registra el sistema y la iluminación reales sin suponer un montaje universal."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "growth": {
+        "short": "Gardyn describe una planta colgante de 18–25 cm; es contexto de producto",
+        "guidance": "Gardyn describe su Pink Petunia con unos 18–25 cm de altura, flores rosa suave y fragantes, y crecimiento que se extiende antes de florecer; sus datos del producto indican un tamaño aproximado de 30 cm y dicen que el porte cae de forma natural. Son descripciones del producto, no dimensiones adultas universales de un cultivar ni una clasificación validada para otros sistemas. El nombre híbrido aceptado por Kew se mantiene separado de la etiqueta comercial de Gardyn.",
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "maintenance": {
+        "short": "En Gardyn, revisa raíces mensualmente, retira flores marchitas y conserva un tercio",
+        "guidance": "Para su producto Gardyn, el fabricante recomienda revisar las raíces cada mes y recortar las marrones o que sobresalgan del yPod. Retira las flores marchitas para favorecer nuevos botones; recorta las ramas a la longitud deseada conservando al menos un tercio de la planta. Gardyn indica que las ramas cortadas también pueden producir nuevos grupos de botones. El porte cae de forma natural; se puede usar un Plant Belt para guiarlo hacia arriba. La guía también señala que las petunias son algo pegajosas al tacto. Por separado, el pinzado de UMN depende del grupo hortícola; como aquí no se conoce, no se aplica una regla de grupo.",
+        "items": [
+          "Retira flores marchitas cuando corresponda para mantener la planta.",
+          "Recorta ligeramente según el crecimiento real, no por un calendario varietal supuesto."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "pruning": {
+        "short": "Si los tallos establecidos se alargan débilmente o dejan de florecer, una fuente regional describe una poda de recuperación",
+        "guidance": "Clemson Cooperative Extension aconseja recortar aproximadamente a la mitad los tallos de petunia cuando las plantas se alargan débilmente o dejan de florecer; si hace falta, pueden cortarse hasta unos pocos centímetros de la base, pero sin quitar todas las hojas. La fuente recomienda regar y aplicar fertilizante líquido para favorecer el nuevo crecimiento. Es guía general para petunias exteriores en Carolina del Sur, no un calendario fijo ni una respuesta validada para la selección rosa sin identificar de Gardyn o para hidroponía.",
+        "context": "Orientación general de Petunia para exteriores en Carolina del Sur; no es específica del producto Gardyn."
+      },
+      "problems": {
+        "short": "Vigila la araña roja señalada por el producto y otras señales generales de estrés/plagas",
+        "guidance": "Gardyn menciona araña roja como posible plaga en sus instrucciones de producto. Por separado, Clemson Extension indica que las petunias a la sombra pueden crecer débiles y florecer poco; menciona pulgones y babosas, señala el tizón de pétalos en tiempo lluvioso y muy húmedo, y dice que los virus aparecen ocasionalmente. Evitar mojar el follaje y las flores al regar puede ayudar a reducir el riesgo de enfermedad. Las señales de Clemson son generales para Petunia en Carolina del Sur, no un diagnóstico ni una afirmación de susceptibilidad de esta selección; la nota sobre araña roja sigue limitada al producto.",
+        "items": [
+          "Inspecciona si hay araña roja solo según lo indicado por el producto; revisa pulgones o daños de babosas cuando haya lesiones visibles.",
+          "En exteriores lluviosos y muy húmedos, vigila las flores por tizón; no diagnostiques un virus a partir de síntomas inespecíficos."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "flowering": {
+        "short": "Gardyn describe flores fragantes rosa suave y porte colgante natural",
+        "guidance": "Gardyn describe flores tubulares rosa suave y delicadamente fragantes; indica que la planta se extiende antes de florecer y que cae de forma natural. Estas observaciones corresponden a la descripción de su producto Pink Petunia. UMN Extension señala que el tamaño de flor y el porte varían entre grupos hortícolas; la ficha de Gardyn no establece cultivar nombrado ni identidad formal grandiflora, multiflora, milliflora o extendida, y no se indica un calendario exacto de floración.",
+        "context": "Orientación general de Petunia, no específica de cultivar."
+      },
+      "harvest": {
+        "short": "Corta tallos para arreglos; Gardyn indica que esta petunia no es comestible",
+        "guidance": "UMN Extension sugiere cortar tallos de petunia para ramos y retirar las hojas que quedarían bajo el agua. La guía de Pink Petunia de Gardyn indica explícitamente que sus flores no son comestibles. Mantén el uso ornamental; no infieras uso culinario a partir del género Petunia ni de otras fichas de flores ornamentales.",
+        "context": "Orientación general de Petunia, no específica de cultivar."
+      }
+    }
+  },
+  "black-viola": {
+    "summary": "Black Viola es la selección de flores oscuras de Gardyn identificada como Viola cornuta; no se nombra un cultivar. NC State describe la violeta cornuda como perenne o anual de temporada fresca, con tallos rastreros/ascendentes, suelo húmedo y bien drenado, y pleno sol a sombra parcial. Las dimensiones y cuidados de especie no son medidas ni garantías para el pod Gardyn.",
+    "sections": {
+      "identity": {
+        "short": "Identidad: Viola cornuta",
+        "guidance": "Gardyn identifica Black Viola como Viola cornuta y Kew acepta la especie. El color oscuro no es un cultivar confirmado.",
+        "items": [
+          "Gardyn identifica Black Viola como Viola cornuta y Kew acepta la especie.",
+          "El color oscuro no es un cultivar confirmado."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "cultivation": {
+        "short": "Para exterior: suelo húmedo y drenado, en clima fresco",
+        "guidance": "NC State recomienda suelo húmico, húmedo pero bien drenado y pleno sol a sombra parcial para V. cornuta; la floración puede decaer con periodos prolongados de calor. Son condiciones exteriores a nivel de especie. La oscuridad y las instrucciones de temperatura de Gardyn se limitan al contexto de su pod y semilla; no se traducen en categorías de luz exterior ni de lámpara general.",
+        "items": [
+          "Aplica la germinación de Gardyn únicamente al pod Gardyn.",
+          "Para exteriores, considera que es una especie de temporada fresca y verifica el clima local."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "growth": {
+        "short": "Tallos rastreros y ascendentes; tamaño de referencia a nivel de especie",
+        "guidance": "NC State describe tallos rastreros y ascendentes de hasta unos 30 cm y dimensiones generales de 15–23 cm de alto por 15–30 cm de ancho. Gardyn también indica un tamaño de producto menor a 30 cm, pero esa etiqueta comercial no es una medida adulta exacta ni una garantía varietal.",
+        "items": [
+          "Extension describe el hábito de la especie; el tamaño comercial de Gardyn no es una medida universal."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "harvest": {
+        "short": "Uso ornamental; la comestibilidad de la selección Gardyn no está verificada",
+        "guidance": "NC State indica que las flores y hojas de V. cornuta son comestibles a nivel de especie, pero la selección oscura de Gardyn no está identificada como cultivar y no se documentan aquí sus insumos ni manejo para uso alimentario. Por eso se presenta para canteros, bordes o cobertura ornamental y no se recomienda consumirla.",
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar.",
+        "items": [
+          "Trata la selección comercial no identificada como ornamental.",
+          "No recomiendes comer sus flores sin comprobar la seguridad alimentaria del producto real."
+        ]
+      },
+      "problems": {
+        "short": "Babosas, caracoles y hongos foliares",
+        "guidance": "NC State Extension menciona estas posibilidades en la especie, sin confirmar un diagnóstico para una planta concreta.",
+        "items": [
+          "Revisa babosas y caracoles si observas daños de alimentación.",
+          "Documenta las manchas foliares antes de atribuirlas a hongos."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "care": {
+        "short": "Retira flores marchitas o recorta tras el calor si se espera rebrote fresco",
+        "guidance": "NC State indica que retirar flores marchitas puede promover nuevos botones y que recortar la planta puede permitir otra floración cuando bajen las temperaturas. También señala que un cantero establecido puede cubrir el suelo y quizá requiera deshierbe al principio. Son prácticas de paisaje para la especie, no instrucciones del pod Gardyn.",
+        "items": ["Retira flores marchitas si buscas nuevos botones.", "Si el calor frena la floración, recorta solo cuando la planta exterior y la temporada local permitan crecimiento fresco."],
+        "context": "Guía de especie de NC State; no se establece una respuesta específica del cultivar o del sistema Gardyn."
+      },
+      "flowering": {
+        "short": "Puede florecer en primavera y en clima fresco; el calor prolongado reduce la floración",
+        "guidance": "NC State describe floración primaveral y señala que la violeta cornuda suele florecer con temperaturas frescas; el calor prolongado puede reducirla y puede volver a florecer cuando refresca. No se documentan la estabilidad exacta del color oscuro ni el calendario de la selección Gardyn."
+      }
+    }
+  }
 }

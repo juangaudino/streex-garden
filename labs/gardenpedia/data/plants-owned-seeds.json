@@ -100,26 +100,8 @@
         },
         "matureSize": {
           "height": {
-            "status": "known",
-            "value": {
-              "minCm": 25.4,
-              "maxCm": 40.64,
-              "context": "outdoor_general"
-            },
-            "evidence": [
-              {
-                "sourceIds": [
-                  "johnnys-chervil"
-                ],
-                "evidenceType": "source_backed",
-                "confidence": "high",
-                "taxonomicScope": {
-                  "level": "species",
-                  "taxon": "Anthriscus cerefolium"
-                },
-                "note": "Johnny’s general chervil reference gives 10–16 inches; converted to 25.4–40.64 cm at species scope, not a special curled cultivar measurement."
-              }
-            ]
+            "status": "unknown",
+            "reason": "Johnny’s general chervil guide gives 10–16 in, while UMD reports species plants up to 2 ft. The source contexts differ and neither confirms a mature height for this curled-leaf catalog selection."
           },
           "spread": {
             "status": "unknown",

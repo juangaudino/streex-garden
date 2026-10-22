@@ -7,18 +7,132 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "🌱",
-    "tags": ["polka dot plant", "freckle face", "pink splash", "planta de lunares", "Hypoestes phyllostachya", "houseplant"],
+    "tags": [
+      "polka dot plant",
+      "freckle face",
+      "pink splash",
+      "planta de lunares",
+      "Hypoestes phyllostachya",
+      "houseplant"
+    ],
     "summary": "Hypoestes phyllostachya is a spotted-leaf species sold in multiple color hybrids; this profile stays at species scope and does not assign a color cultivar. NC State describes it as a container or houseplant that can also be grown as a warm-climate annual.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Species-level identity; color hybrids are not assigned", "guidance": "Kew accepts Hypoestes phyllostachya. NC State notes several cultivated color hybrids and lists names such as Pink Splash among common names; this record does not claim a specific hybrid or cultivar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-hypoestes-phyllostachya-wave41", "ncsu-hypoestes-phyllostachya-wave41"]},
-      "growth": {"short": "Green leaves carry pink, red, or pale spots", "guidance": "NC State describes ovate green foliage with rose, pink, or white markings and a dense, mounding-to-spreading form. Flowering is secondary to foliage display; the page says removing flower spikes directs more of the plant's energy toward foliage.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hypoestes-phyllostachya-wave41"]},
-      "cultivation": {"short": "Filtered bright light preserves color without harsh exposure", "guidance": "NC State recommends bright filtered light: excessive direct sun can curl or crinkle leaves, while too little light can fade color and make stems leggy. The source's outdoor shade categories are not converted into an indoor grow-light tier.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hypoestes-phyllostachya-wave41"]},
-      "maintenance": {"short": "Pinch leggy growth; remove flower spikes if foliage is the goal", "guidance": "NC State says pinching back leggy plants can maintain a compact form and removing blooms shifts the display toward foliage. Neither action is presented as a cultivar-specific schedule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hypoestes-phyllostachya-wave41"]},
-      "propagation": {"short": "Stem cuttings root in water; seed is listed without a sowing protocol", "guidance": "NC State documents stem cuttings rooted in water and notes spontaneous reseeding in warm, temperate locations. It does not give seed sowing or germination parameters, so this is not a Seed Profile.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hypoestes-phyllostachya-wave41"]},
-      "problems": {"short": "Watch for root rot, mildew, and sap-feeding insects", "guidance": "NC State lists root rot and powdery mildew as possible problems and names aphids, mealybugs, and whiteflies. The page does not establish broad pest resistance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hypoestes-phyllostachya-wave41"]}
+      "identity": {
+        "short": "Species-level identity; color hybrids are not assigned",
+        "guidance": "Kew accepts Hypoestes phyllostachya. NC State notes several cultivated color hybrids and lists names such as Pink Splash among common names; this record does not claim a specific hybrid or cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-hypoestes-phyllostachya-wave41",
+          "ncsu-hypoestes-phyllostachya-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Green leaves carry pink, red, or pale spots",
+        "guidance": "NC State describes ovate green foliage with rose, pink, red, or white markings and a dense, mounding-to-spreading form. Its plant profile lists garden dimensions of 1–2 ft high and 9–12 in wide; these are not a fixed indoor-pot size or a named color-hybrid measurement. RHS describes the commonly sold houseplant as small and bushy, reaching about 30 cm (1 ft) tall over time; that is a general indoor guide, not a cultivar-specific or hydroponic system dimension.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hypoestes-phyllostachya-wave41",
+          "rhs-hypoestes-growing-guide-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Bright indirect light, warmth, and even moisture support indoor foliage",
+        "guidance": "NC State recommends bright filtered light: excessive direct sun can curl or crinkle leaves, while too little light can fade color and make stems leggy. For houseplants, RHS recommends plenty of bright indirect light, a minimum temperature of 12°C (54°F), moderate-to-high humidity, and moisture-retentive houseplant compost; keep the compost moist but allow its surface to dry slightly between waterings. These are qualitative indoor/container directions, not a measured grow-light tier, watering schedule, or hydroponic recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hypoestes-phyllostachya-wave41",
+          "rhs-hypoestes-growing-guide-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Pinch leggy growth; remove flower spikes if foliage is the goal",
+        "guidance": "NC State says pinching back leggy plants can maintain a compact form and removing blooms shifts the display toward foliage. RHS likewise advises pinching tall, straggly shoots and flower stems to keep houseplants low and bushy. Neither source gives a cultivar-specific schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hypoestes-phyllostachya-wave41",
+          "rhs-hypoestes-growing-guide-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Stem cuttings root in water; RHS also documents basic spring sowing",
+        "guidance": "NC State documents stem cuttings rooted in water and notes spontaneous reseeding in warm, temperate locations. RHS also lists spring sowing on moist compost, pressed lightly and left uncovered because light stimulates germination. It supplies no germination duration or temperature; those seed-stage details are not presented here as a complete Seed Profile protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hypoestes-phyllostachya-wave41",
+          "rhs-hypoestes-growing-guide-wave41"
+        ]
+      },
+      "problems": {
+        "short": "Watch for root rot, mildew, dry-air browning, and sap-feeding insects",
+        "guidance": "NC State lists root rot and powdery mildew as possible problems and names aphids, mealybugs, and whiteflies. RHS notes that dry air can brown leaf edges and that underwatered plants may droop or wilt, then recover after thorough watering. These are useful warning cues, not a diagnosis or a claim of broad pest resistance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hypoestes-phyllostachya-wave41",
+          "rhs-hypoestes-growing-guide-wave41"
+        ]
+      },
+      "flowering": {
+        "short": "Small lilac flower spikes are secondary to foliage and may appear sporadically indoors",
+        "guidance": "NC State describes small tubular lilac-to-pale-purple flowers on spikes, generally in late spring and summer outdoors; its trait table notes indoor flowering can occur sporadically through the year. The plant is usually grown for foliage, and removing flower spikes is a documented choice when that is the goal.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hypoestes-phyllostachya-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Container and garden guidance does not establish sustained hydroponic performance."}, "growthHabits": {"status": "known", "value": ["mounded", "spreading"], "evidence": [{"sourceIds": ["ncsu-hypoestes-phyllostachya-wave41"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "NC State lists dense, mounding, rounded, and spreading forms."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The source lists general garden dimensions, not a stable indoor/container mature endpoint."}, "spread": {"status": "unknown", "reason": "The source lists general garden dimensions, not a stable indoor/container mature endpoint."}}, "spacing": {"status": "unknown", "reason": "No indoor container or hydroponic spacing is established."}, "light": {"status": "unknown", "reason": "Filtered light and outdoor shade categories do not establish a measured indoor grow-light tier or canonical outdoor exposure value."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Container and garden guidance does not establish sustained hydroponic performance."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "mounded",
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-hypoestes-phyllostachya-wave41"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "NC State lists dense, mounding, rounded, and spreading forms."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The source lists general garden dimensions, not a stable indoor/container mature endpoint."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The source lists general garden dimensions, not a stable indoor/container mature endpoint."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor container or hydroponic spacing is established."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Filtered light and outdoor shade categories do not establish a measured indoor grow-light tier or canonical outdoor exposure value."
+      }
+    }
   },
   {
     "id": "purple-heart-tradescantia-pallida",
@@ -28,18 +142,153 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "💜",
-    "tags": ["purple heart", "purple queen", "purple spiderwort", "corazón púrpura", "Tradescantia pallida", "Setcreasea pallida"],
+    "tags": [
+      "purple heart",
+      "purple queen",
+      "purple spiderwort",
+      "corazón púrpura",
+      "Tradescantia pallida",
+      "Setcreasea pallida"
+    ],
     "summary": "Tradescantia pallida is the accepted species commonly sold as Purple Heart. The profile is species-level, not a named purple-leaf cultivar; outdoor sun can deepen color, while shade can make foliage greener.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species; Purple Heart is used as a common name", "guidance": "Kew accepts Tradescantia pallida and treats Setcreasea pallida among its historical names. NC State uses Purple Heart as a common name; no named cultivar is assigned here.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-tradescantia-pallida-wave41", "ncsu-tradescantia-pallida-wave41"]},
-      "growth": {"short": "Trailing purple stems and foliage; short-lived pink flowers", "guidance": "NC State describes a low, trailing, fast-growing perennial with purple stems and leaves. Flowers occur in midsummer and each lasts one day; this is an ornamental foliage profile, not an edible-use claim.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-tradescantia-pallida-wave41"]},
-      "cultivation": {"short": "Outdoor full sun strengthens purple color; protect from cold", "guidance": "NC State recommends full sun to partial shade outdoors and says full sun gives the best color while shade can turn foliage greener. It reports intolerance below 50°F; that threshold is a cold-damage warning, not an ideal temperature target. Use moist, well-drained, organic-rich soil for outdoor culture.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-tradescantia-pallida-wave41"]},
-      "maintenance": {"short": "Pinch stems to encourage a bushier form", "guidance": "NC State recommends pinching to encourage bushiness. The species is also used as a trailing container plant; the source does not supply a fixed pruning calendar.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-tradescantia-pallida-wave41"]},
-      "propagation": {"short": "Stem cuttings are the documented propagation route", "guidance": "NC State recommends stem cuttings. It does not provide a seed-starting protocol for this ornamental identity, so vegetative propagation is presented as the documented route without claiming seed is impossible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-tradescantia-pallida-wave41"]},
-      "problems": {"short": "Contain vigorous spread and monitor common pests", "guidance": "NC State notes a tendency to become invasive in beds and lists scale, aphids, vine weevil, mealybugs, caterpillars, slugs, and snails. Strong winds can damage stems. The page flags low-severity poison characteristics; avoid ingestion and keep plant material appropriately out of reach.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-tradescantia-pallida-wave41"]}
+      "identity": {
+        "short": "Accepted species; Purple Heart is used as a common name",
+        "guidance": "Kew accepts Tradescantia pallida and treats Setcreasea pallida among its historical names. NC State uses Purple Heart as a common name; no named cultivar is assigned here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-tradescantia-pallida-wave41",
+          "ncsu-tradescantia-pallida-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Low, fast-growing perennial with trailing purple stems and foliage",
+        "guidance": "NC State describes a low, trailing, fast-growing perennial with purple stems and leaves, commonly used as ornamental ground cover, bedding, or in trailing containers. Its plant profile lists garden dimensions of about 1 ft high and 1–2 ft wide; these are landscape dimensions, not a fixed indoor-pot endpoint. Full sun deepens the purple color; shaded plants may appear greener. This profile does not imply edible use.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-tradescantia-pallida-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Outdoor full sun strengthens purple color; protect from cold",
+        "guidance": "NC State recommends full sun to partial shade outdoors and says full sun gives the best color while shade can turn foliage greener. It reports intolerance below 50°F; that threshold is a cold-damage warning, not an ideal temperature target. Use moist, well-drained, organic-rich soil for outdoor culture.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-tradescantia-pallida-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Pinch stems to encourage a bushier form",
+        "guidance": "NC State recommends pinching to encourage bushiness. The species is also used as a trailing container plant; the source does not supply a fixed pruning calendar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-tradescantia-pallida-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Stem cuttings are the documented propagation route",
+        "guidance": "NC State recommends stem cuttings. It does not provide a seed-starting protocol for this ornamental identity, so vegetative propagation is presented as the documented route without claiming seed is impossible.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-tradescantia-pallida-wave41"
+        ]
+      },
+      "problems": {
+        "short": "Contain vigorous spread and monitor common pests",
+        "guidance": "NC State notes a tendency to become invasive in beds and lists scale, aphids, vine weevil, mealybugs, caterpillars, slugs, and snails. Strong winds can damage stems. It reports that ingestion may irritate the mouth and stomach and that sap or leaf contact may irritate skin in people and pets; avoid ingestion and use care when handling sap.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-tradescantia-pallida-wave41"
+        ]
+      },
+      "flowering": {
+        "short": "Pink-to-pale-purple flowers appear in midsummer and last about a day",
+        "guidance": "NC State describes small three-petaled pink-to-pale-purple flowers, usually in terminal clusters in midsummer. Each flower lasts one day; flowering is a normal ornamental feature, not an edible-use signal.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-tradescantia-pallida-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Soil and container guidance does not establish long-term hydroponic suitability."}, "growthHabits": {"status": "known", "value": ["trailing", "spreading"], "evidence": [{"sourceIds": ["ncsu-tradescantia-pallida-wave41"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "NC State describes a trailing, spreading form."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The landscape dimensions are not an indoor container endpoint."}, "spread": {"status": "unknown", "reason": "No stable indoor spread is established."}}, "spacing": {"status": "unknown", "reason": "No indoor or hydroponic spacing is documented."}, "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}, {"phase": "growing", "requirement": {"kind": "partial_sun"}}], "evidence": [{"sourceIds": ["ncsu-tradescantia-pallida-wave41"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "NC State recommends full sun to partial shade for outdoor culture; this does not define an indoor grow-light tier."}]}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Soil and container guidance does not establish long-term hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "trailing",
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-tradescantia-pallida-wave41"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "NC State describes a trailing, spreading form."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The landscape dimensions are not an indoor container endpoint."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No stable indoor spread is established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor or hydroponic spacing is documented."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          },
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-tradescantia-pallida-wave41"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "NC State recommends full sun to partial shade for outdoor culture; this does not define an indoor grow-light tier."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "wax-plant-hoya-pubicalyx",
@@ -49,18 +298,110 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "🌸",
-    "tags": ["Hoya pubicalyx", "wax plant", "porcelain flower", "silver pink vine", "hoya filipina"],
+    "tags": [
+      "Hoya pubicalyx",
+      "wax plant",
+      "porcelain flower",
+      "silver pink vine",
+      "hoya filipina"
+    ],
     "summary": "Hoya pubicalyx is a Philippine epiphytic climber with waxy foliage and fragrant clustered flowers. ‘Silver Pink’ is a named horticultural form shown by NC State, but this profile does not assign that cultivar to the species record.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species; no cultivar specified", "guidance": "Kew accepts Hoya pubicalyx as a Philippine species. NC State's page depicts a named ‘Silver Pink’ form among its images, but the canonical identity here remains the species and does not inherit that form's specific appearance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-hoya-pubicalyx-wave41", "ncsu-hoya-pubicalyx-wave41"]},
-      "growth": {"short": "Epiphytic climbing vine with fragrant flower clusters", "guidance": "NC State describes an epiphytic perennial with climbing or creeping stems, thick narrow leaves, and clustered pink flowers whose fragrance is noticeable in the evening. It notes slow maturity to flowering, potentially taking up to two years; this is not a guaranteed schedule.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hoya-pubicalyx-wave41"]},
-      "cultivation": {"short": "Bright filtered light, humidity, and a well-drained medium", "guidance": "NC State recommends bright indirect light, filtered exposure, and humidity around 60–70%; direct sun may scorch foliage. Keep temperatures above 50°F, provide climbing support, and use a well-drained medium. These are houseplant recommendations, not hydroponic parameters.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hoya-pubicalyx-wave41"]},
-      "maintenance": {"short": "Let the medium dry between seasonal waterings; preserve old flower spurs", "guidance": "NC State recommends frequent watering during active growth while allowing the potting medium to dry between waterings, with less water in fall and winter. It advises against removing old flower spurs because they can flower again, and says trimming is appropriate if the plant becomes too large.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hoya-pubicalyx-wave41"]},
-      "propagation": {"short": "Stem cuttings are the documented route", "guidance": "NC State lists stem cuttings for Hoya pubicalyx. No seed sowing method or germination guidance is provided by the selected source; propagation is therefore described as vegetative-preferred, not seed-impossible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hoya-pubicalyx-wave41"]},
-      "problems": {"short": "Overwatering can cause root rot and leaf drop", "guidance": "NC State lists mealybugs, aphids, and whiteflies and warns that excess water can cause root rot and leaf loss. Keep the plant away from vents and heaters that dry foliage; the source does not establish a disease-resistance claim.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-hoya-pubicalyx-wave41"]}
+      "identity": {
+        "short": "Accepted species; no cultivar specified",
+        "guidance": "Kew accepts Hoya pubicalyx as a Philippine species. NC State's page depicts a named ‘Silver Pink’ form among its images, but the canonical identity here remains the species and does not inherit that form's specific appearance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-hoya-pubicalyx-wave41",
+          "ncsu-hoya-pubicalyx-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Epiphytic climber with thick, narrow foliage",
+        "guidance": "NC State describes an epiphytic perennial with climbing or creeping stems and thick, narrow, glossy foliage that may show silver flecks. This species-level description does not assign the appearance of the separately pictured ‘Silver Pink’ form to every Hoya pubicalyx.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hoya-pubicalyx-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Bright filtered light, humidity, and a well-drained medium",
+        "guidance": "NC State recommends bright indirect light, filtered exposure, and humidity around 60–70%; direct sun may scorch foliage. Keep temperatures above 50°F, provide climbing support, and use a well-drained medium. These are houseplant recommendations, not hydroponic parameters.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hoya-pubicalyx-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Let the medium dry between seasonal waterings; preserve old flower spurs",
+        "guidance": "NC State recommends frequent watering during active growth while allowing the potting medium to dry between waterings, with less water in fall and winter. It advises against removing old flower spurs because they can flower again, and says trimming is appropriate if the plant becomes too large.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hoya-pubicalyx-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Stem cuttings are the documented route",
+        "guidance": "NC State lists stem cuttings for Hoya pubicalyx. No seed sowing method or germination guidance is provided by the selected source; propagation is therefore described as vegetative-preferred, not seed-impossible.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hoya-pubicalyx-wave41"
+        ]
+      },
+      "problems": {
+        "short": "Overwatering can cause root rot and leaf drop",
+        "guidance": "NC State lists mealybugs, aphids, and whiteflies and warns that excess water can cause root rot and leaf loss. Keep the plant away from vents and heaters that dry foliage; the source does not establish a disease-resistance claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hoya-pubicalyx-wave41"
+        ]
+      },
+      "flowering": {
+        "short": "Pink clusters are fragrant at night; flowering maturity may take up to two years",
+        "guidance": "NC State describes clusters of dusty-pink flowers with pink centers and evening fragrance. Plants mature and flower slowly; maturity may take up to two years, not a guaranteed timetable. The page separately depicts the named ‘Silver Pink’ form, so its cultivar-specific appearance is not assigned to this species-level record.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-hoya-pubicalyx-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The source documents epiphytic container care, not a hydroponic system."}, "growthHabits": {"status": "unknown", "reason": "Climbing and creeping are not represented by the controlled growth-habit values."}, "matureSize": {"height": {"status": "unknown", "reason": "A defined mature indoor height is not established."}, "spread": {"status": "unknown", "reason": "A defined mature indoor spread is not established."}}, "spacing": {"status": "unknown", "reason": "No indoor spacing or hydroponic pod density is documented."}, "light": {"status": "unknown", "reason": "Bright filtered indoor light is not equivalent to a measured grow-light tier or a categorical outdoor sun requirement."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The source documents epiphytic container care, not a hydroponic system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Climbing and creeping are not represented by the controlled growth-habit values."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "A defined mature indoor height is not established."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "A defined mature indoor spread is not established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor spacing or hydroponic pod density is documented."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Bright filtered indoor light is not equivalent to a measured grow-light tier or a categorical outdoor sun requirement."
+      }
+    }
   },
   {
     "id": "common-staghorn-fern-platycerium-bifurcatum",
@@ -70,18 +411,101 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "🌿",
-    "tags": ["staghorn fern", "elkhorn fern", "common staghorn fern", "helecho cuerno de alce", "Platycerium bifurcatum"],
+    "tags": [
+      "staghorn fern",
+      "elkhorn fern",
+      "common staghorn fern",
+      "helecho cuerno de alce",
+      "Platycerium bifurcatum"
+    ],
     "summary": "Platycerium bifurcatum is an accepted epiphytic fern with distinct sterile shield fronds and antler-like fertile fronds. It can be grown in a free-draining epiphytic mix or mounted; a mounted fern is not a soil-grown or hydroponic crop.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted epiphytic fern species", "guidance": "Kew accepts Platycerium bifurcatum in Polypodiaceae and lists historical combinations including Acrostichum bifurcatum. NC State's common staghorn fern is the same species; no cultivar is assigned.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-platycerium-bifurcatum-wave41", "ncsu-platycerium-bifurcatum-wave41"]},
-      "growth": {"short": "Shield fronds and antler-like fertile fronds serve different roles", "guidance": "NC State describes sterile shield fronds that press against the support and trap litter, and fertile forked fronds that photosynthesize and bear spores. Mature fertile fronds commonly reach 2–3 ft in cultivated settings; the page notes larger potential lengths in other contexts.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-platycerium-bifurcatum-wave41"]},
-      "cultivation": {"short": "Grow epiphytically with airflow and dappled light", "guidance": "NC State recommends an orchid-type medium or sphagnum moss, or mounting on wood or bark. Water the crown regularly, allow roots to dry slightly between waterings without letting them dry completely, and provide dappled sun to partial shade. This substrate practice does not imply recirculating hydroponic compatibility.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-platycerium-bifurcatum-wave41"]},
-      "maintenance": {"short": "Keep mature shield fronds in place; divide offsets only when large", "guidance": "The brown shield fronds are a normal mature stage and protect the root crown; they are not automatically a problem to remove. NC State reports that rhizomes form pups and large plants may be divided.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-platycerium-bifurcatum-wave41"]},
-      "propagation": {"short": "Division of rhizome offsets is the documented home-growing route", "guidance": "NC State describes pups forming along rhizomes and division of large plants. The fern also reproduces by spores, but the selected source does not provide a home sowing protocol; this profile does not create a Seed Profile.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-platycerium-bifurcatum-wave41"]},
-      "problems": {"short": "Avoid waterlogged roots and stagnant, overly humid air", "guidance": "NC State lists spider mites, aphids, and mealybugs and notes black spot can occur with excessive humidity. Good drainage and airflow are part of the cited care context; no generic disease-resistance claim is made.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-platycerium-bifurcatum-wave41"]}
+      "identity": {
+        "short": "Accepted epiphytic fern species",
+        "guidance": "Kew accepts Platycerium bifurcatum in Polypodiaceae and lists historical combinations including Acrostichum bifurcatum. NC State's common staghorn fern is the same species; no cultivar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-platycerium-bifurcatum-wave41",
+          "ncsu-platycerium-bifurcatum-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Shield fronds and antler-like fertile fronds serve different roles",
+        "guidance": "NC State describes sterile shield fronds that press against the support and trap litter, and fertile forked fronds that photosynthesize and bear spores. Mature fertile fronds commonly reach 2–3 ft in cultivated settings; the page notes larger potential lengths in other contexts.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-platycerium-bifurcatum-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Grow epiphytically with airflow and dappled light",
+        "guidance": "NC State recommends an orchid-type medium or sphagnum moss, or mounting on wood or bark. Water the crown regularly, allow roots to dry slightly between waterings without letting them dry completely, and provide dappled sun to partial shade. This substrate practice does not imply recirculating hydroponic compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-platycerium-bifurcatum-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Keep mature shield fronds in place; divide offsets only when large",
+        "guidance": "The brown shield fronds are a normal mature stage and protect the root crown; they are not automatically a problem to remove. NC State reports that rhizomes form pups and large plants may be divided.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-platycerium-bifurcatum-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Division of rhizome offsets is the documented home-growing route",
+        "guidance": "NC State describes pups forming along rhizomes and division of large plants. The fern also reproduces by spores, but the selected source does not provide a home sowing protocol; this profile does not create a Seed Profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-platycerium-bifurcatum-wave41"
+        ]
+      },
+      "problems": {
+        "short": "Avoid waterlogged roots and stagnant, overly humid air",
+        "guidance": "NC State lists spider mites, aphids, and mealybugs and notes black spot can occur with excessive humidity. Good drainage and airflow are part of the cited care context; no generic disease-resistance claim is made.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-platycerium-bifurcatum-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Epiphytic mounting and moss/orchid media are not evidence of hydroponic suitability."}, "growthHabits": {"status": "unknown", "reason": "Epiphytic rhizomatous fern habit is not represented in the controlled compatibility values."}, "matureSize": {"height": {"status": "unknown", "reason": "The source's general height is not a defined container endpoint."}, "spread": {"status": "unknown", "reason": "The source's general dimensions vary with mounting and age."}}, "spacing": {"status": "unknown", "reason": "No indoor spacing or hydroponic pod spacing is documented."}, "light": {"status": "unknown", "reason": "Dappled shade guidance does not establish a calibrated indoor fixture tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Epiphytic mounting and moss/orchid media are not evidence of hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Epiphytic rhizomatous fern habit is not represented in the controlled compatibility values."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The source's general height is not a defined container endpoint."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The source's general dimensions vary with mounting and age."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor spacing or hydroponic pod spacing is documented."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Dappled shade guidance does not establish a calibrated indoor fixture tier."
+      }
+    }
   },
   {
     "id": "delta-maidenhair-fern-adiantum-raddianum",
@@ -91,18 +515,101 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "🌿",
-    "tags": ["delta maidenhair", "maidenhair fern", "culantrillo delta", "Adiantum raddianum", "bathroom fern"],
+    "tags": [
+      "delta maidenhair",
+      "maidenhair fern",
+      "culantrillo delta",
+      "Adiantum raddianum",
+      "bathroom fern"
+    ],
     "summary": "Adiantum raddianum is an accepted tropical fern often grown indoors. Its fine fronds and creeping rhizomes suit humid, sheltered settings, but the roots should not be allowed to dry out and the plant is not established as hydroponic.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted maidenhair fern species", "guidance": "Kew accepts Adiantum raddianum in Pteridaceae. NC State calls it Delta maidenhair and distinguishes its delicate flat-plane fronds from other maidenhair species; no cultivar is specified.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-adiantum-raddianum-wave41", "ncsu-adiantum-raddianum-wave41"]},
-      "growth": {"short": "Fine, divided fronds arise from creeping rhizomes", "guidance": "NC State describes a herbaceous perennial fern with decompound fronds and creeping rhizomes, generally 1–2 ft tall and wide. The listed dimensions are general plant-profile values, not a guaranteed indoor footprint.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-adiantum-raddianum-wave41"]},
-      "cultivation": {"short": "Keep the root zone consistently moist in partial to full shade", "guidance": "NC State recommends partial shade to shade and moist-to-wet soil; the roots should not dry out. It notes use as a houseplant and suitability for humid bathrooms or sheltered terrariums. These are natural-light and substrate conditions, not grow-light or hydroponic specifications.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-adiantum-raddianum-wave41"]},
-      "maintenance": {"short": "Avoid drying the root ball; remove only clearly dead fronds", "guidance": "The central care requirement supported by NC State is preventing the roots from drying. The selected profile does not prescribe a pruning schedule or fertilizer routine.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-adiantum-raddianum-wave41"]},
-      "propagation": {"short": "Rhizome division is documented; spores have no protocol here", "guidance": "NC State identifies creeping rhizomes and lists division as a propagation strategy. Fern spores are not seeds, and no spore-sowing procedure is added without a reliable source-specific protocol.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-adiantum-raddianum-wave41"]},
-      "problems": {"short": "Frond decline can follow dry roots or unsuitable exposure", "guidance": "NC State's guidance identifies drying roots, too much shade, and full sun as unsuitable conditions. No specific pest or disease diagnosis is added where the selected species profile does not establish one.", "evidenceType": "source_backed", "confidence": "medium", "sourceIds": ["ncsu-adiantum-raddianum-wave41"]}
+      "identity": {
+        "short": "Accepted maidenhair fern species",
+        "guidance": "Kew accepts Adiantum raddianum in Pteridaceae. NC State calls it Delta maidenhair and distinguishes its delicate flat-plane fronds from other maidenhair species; no cultivar is specified.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-adiantum-raddianum-wave41",
+          "ncsu-adiantum-raddianum-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Fine, divided fronds arise from creeping rhizomes",
+        "guidance": "NC State describes a herbaceous perennial fern with decompound fronds and creeping rhizomes, generally 1–2 ft tall and wide. The listed dimensions are general plant-profile values, not a guaranteed indoor footprint.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-adiantum-raddianum-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Keep the root zone consistently moist in partial to full shade",
+        "guidance": "NC State recommends partial shade to shade and moist-to-wet soil; the roots should not dry out. It notes use as a houseplant and suitability for humid bathrooms or sheltered terrariums. These are natural-light and substrate conditions, not grow-light or hydroponic specifications.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-adiantum-raddianum-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Keep the root ball from drying; no pruning calendar is established",
+        "guidance": "NC State's central care requirement is preventing the roots from drying. The selected species profile does not prescribe a pruning or fertilizer schedule, so no routine is invented here.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-adiantum-raddianum-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Rhizome division is documented; spores have no protocol here",
+        "guidance": "NC State identifies creeping rhizomes and lists division as a propagation strategy. Fern spores are not seeds, and no spore-sowing procedure is added without a reliable source-specific protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-adiantum-raddianum-wave41"
+        ]
+      },
+      "problems": {
+        "short": "Dry roots and unsuitable exposure weaken the fern; one caterpillar is noted",
+        "guidance": "NC State says roots should not dry out and that the species loses vitality in too much shade or full sun. It reports no significant diseases or pests generally, while noting that the Florida Fern Caterpillar can be a problem. These are evidence-based inspection cues, not a diagnosis of a particular plant.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-adiantum-raddianum-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "A need for moist soil is not evidence of hydroponic suitability."}, "growthHabits": {"status": "unknown", "reason": "Creeping rhizomes are not represented by the controlled compatibility vocabulary."}, "matureSize": {"height": {"status": "unknown", "reason": "General height does not specify the mature indoor endpoint."}, "spread": {"status": "unknown", "reason": "General width varies with the container and rhizome spread."}}, "spacing": {"status": "unknown", "reason": "No container or hydroponic spacing is documented."}, "light": {"status": "unknown", "reason": "Partial shade-to-shade outdoor guidance does not establish indoor grow-light intensity."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "A need for moist soil is not evidence of hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Creeping rhizomes are not represented by the controlled compatibility vocabulary."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "General height does not specify the mature indoor endpoint."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "General width varies with the container and rhizome spread."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No container or hydroponic spacing is documented."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Partial shade-to-shade outdoor guidance does not establish indoor grow-light intensity."
+      }
+    }
   },
   {
     "id": "scarlet-star-guzmania-lingulata",
@@ -112,18 +619,102 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "🌺",
-    "tags": ["scarlet star", "orange star", "vase plant", "estrella escarlata", "Guzmania lingulata", "bromeliad"],
+    "tags": [
+      "scarlet star",
+      "orange star",
+      "vase plant",
+      "estrella escarlata",
+      "Guzmania lingulata",
+      "bromeliad"
+    ],
     "summary": "Guzmania lingulata is an accepted epiphytic bromeliad with a tank-forming rosette and conspicuous bracts. NC State notes the flowering rosette later declines while producing offsets, which are the documented home propagation route.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted epiphytic bromeliad species", "guidance": "Kew accepts Guzmania lingulata and lists Tillandsia lingulata among its synonyms. NC State uses Scarlet Star and Vase Plant as common names; the profile does not assign one of the many colored cultivars.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-guzmania-lingulata-wave41", "ncsu-guzmania-lingulata-wave41"]},
-      "growth": {"short": "Tank-forming rosette with long-lasting colored bracts", "guidance": "NC State describes leathery leaves forming a central tank and a red/orange bracted inflorescence with small white flowers. The display may last 2–4 months; after flowering, the main rosette declines and dies while producing offsets.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-guzmania-lingulata-wave41"]},
-      "cultivation": {"short": "Shade-tolerant indoor bromeliad with airy epiphytic medium", "guidance": "NC State says the plant grows in part to full shade and tolerates artificial lighting, and recommends bromeliad/orchid medium with air around the roots. Water sparingly at the roots while maintaining water in the rosette cup, especially in summer; this is not a hydroponic nutrient protocol.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-guzmania-lingulata-wave41"]},
-      "maintenance": {"short": "Separate offsets after the flowering rosette begins to decline", "guidance": "NC State describes offsets forming at the base after flowering and lists division as the propagation strategy. The source does not provide a precise offset-separation size or timing threshold.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-guzmania-lingulata-wave41"]},
-      "propagation": {"short": "Basal offsets are the documented replacement for the spent rosette", "guidance": "NC State recommends division and explains that offsets can grow into new plants after the mother rosette declines. Seed production or seedling technique is not covered, so no Seed Profile is created.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-guzmania-lingulata-wave41"]},
-      "problems": {"short": "Monitor for leaf spots, scale, mites, and mealybugs", "guidance": "NC State lists leaf spots, scales, spider mites, and mealybugs. It does not identify a universal treatment schedule or claim resistance.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-guzmania-lingulata-wave41"]}
+      "identity": {
+        "short": "Accepted epiphytic bromeliad species",
+        "guidance": "Kew accepts Guzmania lingulata and lists Tillandsia lingulata among its synonyms. NC State uses Scarlet Star and Vase Plant as common names; the profile does not assign one of the many colored cultivars.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-guzmania-lingulata-wave41",
+          "ncsu-guzmania-lingulata-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Tank-forming rosette with long-lasting colored bracts",
+        "guidance": "NC State describes leathery leaves forming a central tank and a red/orange bracted inflorescence with small white flowers. Its general species-page dimensions are 1–2 ft tall and wide; these are not cultivar-specific or a pod-spacing recommendation. The display may last 2–4 months; after flowering, the main rosette declines and dies while producing offsets.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-guzmania-lingulata-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Shade-tolerant indoor bromeliad with airy epiphytic medium",
+        "guidance": "NC State says the plant grows in part to full shade and tolerates artificial lighting, and recommends bromeliad/orchid medium with air around the roots. Water sparingly at the roots while maintaining water in the rosette cup, especially in summer; this is not a hydroponic nutrient protocol.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-guzmania-lingulata-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Separate offsets after the flowering rosette begins to decline",
+        "guidance": "NC State describes offsets forming at the base after flowering and lists division as the propagation strategy. The source does not provide a precise offset-separation size or timing threshold.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-guzmania-lingulata-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Basal offsets are the documented replacement for the spent rosette",
+        "guidance": "NC State recommends division and explains that offsets can grow into new plants after the mother rosette declines. Seed production or seedling technique is not covered, so no Seed Profile is created.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-guzmania-lingulata-wave41"
+        ]
+      },
+      "problems": {
+        "short": "Monitor for leaf spots, scale, mites, and mealybugs",
+        "guidance": "NC State lists leaf spots, scales, spider mites, and mealybugs. It does not identify a universal treatment schedule or claim resistance.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-guzmania-lingulata-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "Epiphytic potting-medium guidance and a water-holding leaf cup do not establish root-zone hydroponic compatibility."}, "growthHabits": {"status": "unknown", "reason": "Tank-forming rosette habit is not represented by the controlled compatibility vocabulary."}, "matureSize": {"height": {"status": "unknown", "reason": "The source's general dimensions do not identify a mature indoor endpoint for the unselected cultivars."}, "spread": {"status": "unknown", "reason": "The source's general dimensions do not identify a mature indoor endpoint for the unselected cultivars."}}, "spacing": {"status": "unknown", "reason": "No indoor arrangement or pod spacing is documented."}, "light": {"status": "unknown", "reason": "Shade and artificial-light tolerance are not a measured grow-light intensity."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Epiphytic potting-medium guidance and a water-holding leaf cup do not establish root-zone hydroponic compatibility."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Tank-forming rosette habit is not represented by the controlled compatibility vocabulary."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The source's general dimensions do not identify a mature indoor endpoint for the unselected cultivars."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The source's general dimensions do not identify a mature indoor endpoint for the unselected cultivars."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor arrangement or pod spacing is documented."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Shade and artificial-light tolerance are not a measured grow-light intensity."
+      }
+    }
   },
   {
     "id": "thanksgiving-cactus-schlumbergera-truncata",
@@ -133,18 +724,138 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "🌵",
-    "tags": ["thanksgiving cactus", "crab cactus", "holiday cactus", "false christmas cactus", "cactus de Acción de Gracias", "Schlumbergera truncata"],
+    "tags": [
+      "thanksgiving cactus",
+      "crab cactus",
+      "holiday cactus",
+      "false christmas cactus",
+      "cactus de Acción de Gracias",
+      "Schlumbergera truncata"
+    ],
     "summary": "Schlumbergera truncata is an accepted Brazilian epiphytic cactus commonly called Thanksgiving Cactus. Pointed teeth on its stem segments distinguish it from the rounder-edged Christmas cactus hybrid often sold alongside it.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species; distinguish from Christmas cactus hybrids", "guidance": "Kew accepts Schlumbergera truncata and lists historical names including Zygocactus truncatus. NC State distinguishes its pointed segment margins from the rounded margins of Christmas cactus, Schlumbergera × buckleyi; mass-market plants may be hybrids, so this record does not identify an unspecified store plant as S. truncata.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-schlumbergera-truncata-wave41", "ncsu-schlumbergera-truncata-wave41"]},
-      "growth": {"short": "Pendulous segmented stems with upright winter flowers", "guidance": "NC State describes a bushy, cascading epiphyte whose flattened stem segments have pointed marginal projections. It reports flowering around late November and a possible second bloom as days lengthen; timing is seasonal, not a guaranteed calendar date.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-schlumbergera-truncata-wave41"]},
-      "cultivation": {"short": "Bright winter light, summer shade, and a well-drained mix", "guidance": "NC State recommends partial shade, a moist but well-drained cactus/succulent mix, and 70–80°F room conditions. It notes that direct sun can scorch stems and summer sun can yellow them. It also reports at least 13 uninterrupted dark hours as relevant to flowering; this is a bloom cue, not a seed-germination light requirement.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-schlumbergera-truncata-wave41"]},
-      "maintenance": {"short": "Reduce fall/winter feeding and avoid overwatering", "guidance": "NC State recommends monthly fertilizing after spring growth begins, reducing fertilizer in fall and early winter, and repotting roughly every three years because the plant tolerates being slightly pot-bound. Root rot is associated with overwatering; its moisture advice is for potting mix, not hydroponics.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-schlumbergera-truncata-wave41"]},
-      "propagation": {"short": "Root short stem-segment cuttings after callusing", "guidance": "NC State describes removing two or three stem segments, allowing the cut end to callus for a few days, then planting in moist, well-draining mix. It reports rooting after a few weeks; no seed-starting protocol is selected.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-schlumbergera-truncata-wave41"]},
-      "problems": {"short": "Bud drop can follow disrupted dark periods or environmental changes", "guidance": "NC State lists aphids, spider mites, scale, mealybugs, root rot, and gray mold under humid, poorly ventilated conditions. It associates reduced flowering or bud drop with insufficient uninterrupted darkness, sudden temperature or light changes, and moisture changes.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["ncsu-schlumbergera-truncata-wave41"]}
+      "identity": {
+        "short": "Accepted species; distinguish from Christmas cactus hybrids",
+        "guidance": "Kew accepts Schlumbergera truncata and lists historical names including Zygocactus truncatus. NC State distinguishes its pointed segment margins from the rounded margins of Christmas cactus, Schlumbergera × buckleyi; mass-market plants may be hybrids, so this record does not identify an unspecified store plant as S. truncata.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-schlumbergera-truncata-wave41",
+          "ncsu-schlumbergera-truncata-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Pendulous segmented stems with upright winter flowers",
+        "guidance": "NC State describes a bushy, cascading epiphyte whose flattened stem segments have pointed marginal projections. It reports flowering around late November and a possible second bloom as days lengthen; timing is seasonal, not a guaranteed calendar date.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-schlumbergera-truncata-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Bright winter light, summer shade, and a well-drained mix",
+        "guidance": "NC State recommends partial shade, a moist but well-drained cactus/succulent mix, and 70–80°F room conditions. It notes that direct sun can scorch stems and summer sun can yellow them. It also reports at least 13 uninterrupted dark hours as relevant to flowering; this is a bloom cue, not a seed-germination light requirement.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-schlumbergera-truncata-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Reduce fall/winter feeding and avoid overwatering",
+        "guidance": "NC State recommends monthly fertilizing after spring growth begins, reducing fertilizer in fall and early winter, and repotting roughly every three years because the plant tolerates being slightly pot-bound. Root rot is associated with overwatering; its moisture advice is for potting mix, not hydroponics.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-schlumbergera-truncata-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Root short stem-segment cuttings after callusing",
+        "guidance": "NC State describes removing two or three stem segments, allowing the cut end to callus for a few days, then planting in moist, well-draining mix. It reports rooting after a few weeks; no seed-starting protocol is selected.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-schlumbergera-truncata-wave41"
+        ]
+      },
+      "problems": {
+        "short": "Bud drop can follow disrupted dark periods or environmental changes",
+        "guidance": "NC State lists aphids, spider mites, scale, mealybugs, root rot, and gray mold under humid, poorly ventilated conditions. It associates reduced flowering or bud drop with insufficient uninterrupted darkness, sudden temperature or light changes, and moisture changes.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-schlumbergera-truncata-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The source supports epiphytic pot culture and stem cuttings, not hydroponic production."}, "growthHabits": {"status": "known", "value": ["trailing", "spreading"], "evidence": [{"sourceIds": ["ncsu-schlumbergera-truncata-wave41"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "NC State describes a pendulous, cascading habit; the controlled trailing value is a presentation mapping."}]}, "matureSize": {"height": {"status": "unknown", "reason": "The page dimensions do not define a stable mature indoor endpoint."}, "spread": {"status": "unknown", "reason": "The page dimensions depend on age and hanging-container form."}}, "spacing": {"status": "unknown", "reason": "No indoor or hydroponic spacing is documented."}, "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "partial_sun"}}], "evidence": [{"sourceIds": ["ncsu-schlumbergera-truncata-wave41"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "identity"}, "note": "NC State lists partial shade for outdoor culture; the distinct indoor winter-light recommendation is not converted into a grow-light tier."}]}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The source supports epiphytic pot culture and stem cuttings, not hydroponic production."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "trailing",
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-schlumbergera-truncata-wave41"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "NC State describes a pendulous, cascading habit; the controlled trailing value is a presentation mapping."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The page dimensions do not define a stable mature indoor endpoint."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The page dimensions depend on age and hanging-container form."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor or hydroponic spacing is documented."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-schlumbergera-truncata-wave41"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "identity"
+            },
+            "note": "NC State lists partial shade for outdoor culture; the distinct indoor winter-light recommendation is not converted into a grow-light tier."
+          }
+        ]
+      }
+    }
   },
   {
     "id": "arabian-jasmine-jasminum-sambac",
@@ -154,17 +865,138 @@
     "variety": null,
     "category": "ornamentals",
     "emoji": "🤍",
-    "tags": ["arabian jasmine", "sambac jasmine", "mogra", "jazmín árabe", "Jasminum sambac"],
+    "tags": [
+      "arabian jasmine",
+      "sambac jasmine",
+      "mogra",
+      "jazmín árabe",
+      "Jasminum sambac"
+    ],
     "summary": "Jasminum sambac is an accepted fragrant evergreen shrub or scrambling plant grown for white flowers. Cultivars such as double-flowered forms are not assigned here; the profile describes species-level container and warm-climate use.",
     "metrics": [],
     "sections": {
-      "identity": {"short": "Accepted species; flower form cultivar unspecified", "guidance": "Kew accepts Jasminum sambac and lists Mogorium sambac and numerous historical names as synonyms. Arabian jasmine is the common-name scope here; the profile does not infer a double-flowered cultivar such as Maid of Orleans or Grand Duke of Tuscany.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-jasminum-sambac-wave41", "mobot-jasminum-sambac-wave41"]},
-      "growth": {"short": "Evergreen scrambling shrub with fragrant white flowers", "guidance": "Kew describes the species as a scrambling shrub. Missouri Botanical Garden reports fragrant white summer flowers and a 4–5 ft landscape-profile height and spread; those figures are not treated as a universal indoor-container mature size.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["kew-jasminum-sambac-wave41", "mobot-jasminum-sambac-wave41"]},
-      "cultivation": {"short": "Warm-climate plant; use a bright container that can overwinter indoors", "guidance": "Missouri Botanical Garden recommends loose, humusy, evenly moist but well-drained soil and full sun to part shade in USDA zones 9–11. In colder settings it describes container culture and overwintering indoors before frost; these are regional landscape recommendations, not hydroponic specifications.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["mobot-jasminum-sambac-wave41"]},
-      "maintenance": {"short": "Train to support if climbing is desired; prune to shape", "guidance": "Missouri Botanical Garden says stems may be tied to support if climbing is desired and the plant can be pruned as needed to maintain shape. It recommends reduced watering while overwintering indoors; no exact indoor light or temperature setpoint is established.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["mobot-jasminum-sambac-wave41"]},
-      "propagation": {"short": "Summer cuttings are documented; seed protocol is not", "guidance": "Missouri Botanical Garden recommends propagation from cuttings in summer. The selected reference does not provide seed establishment parameters, so no Seed Profile is created and seed propagation is not declared impossible.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["mobot-jasminum-sambac-wave41"]},
-      "problems": {"short": "Protect from frost and avoid waterlogged substrate", "guidance": "Missouri Botanical Garden limits outdoor hardiness guidance to zones 9–11 and recommends bringing container plants indoors before the first fall frost. Its well-drained-medium recommendation is retained; no pest or disease list is added from an unrelated species source.", "evidenceType": "source_backed", "confidence": "high", "sourceIds": ["mobot-jasminum-sambac-wave41"]}
+      "identity": {
+        "short": "Accepted species; flower form cultivar unspecified",
+        "guidance": "Kew accepts Jasminum sambac and lists Mogorium sambac and numerous historical names as synonyms. Arabian jasmine is the common-name scope here; the profile does not infer a double-flowered cultivar such as Maid of Orleans or Grand Duke of Tuscany.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-jasminum-sambac-wave41",
+          "mobot-jasminum-sambac-wave41"
+        ]
+      },
+      "growth": {
+        "short": "Evergreen scrambling shrub with fragrant white flowers",
+        "guidance": "Kew describes the species as a scrambling shrub. Missouri Botanical Garden reports fragrant white summer flowers and a 4–5 ft landscape-profile height and spread; those figures are not treated as a universal indoor-container mature size.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-jasminum-sambac-wave41",
+          "mobot-jasminum-sambac-wave41"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm-climate plant; use a bright container that can overwinter indoors",
+        "guidance": "Missouri Botanical Garden recommends loose, humusy, evenly moist but well-drained soil and full sun to part shade in USDA zones 9–11. In colder settings it describes container culture and overwintering indoors before frost; these are regional landscape recommendations, not hydroponic specifications.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "mobot-jasminum-sambac-wave41"
+        ]
+      },
+      "maintenance": {
+        "short": "Train to support if climbing is desired; prune to shape",
+        "guidance": "Missouri Botanical Garden says stems may be tied to support if climbing is desired and the plant can be pruned as needed to maintain shape. It recommends reduced watering while overwintering indoors; no exact indoor light or temperature setpoint is established.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "mobot-jasminum-sambac-wave41"
+        ]
+      },
+      "propagation": {
+        "short": "Summer cuttings are documented; seed protocol is not",
+        "guidance": "Missouri Botanical Garden recommends propagation from cuttings in summer. The selected reference does not provide seed establishment parameters, so no Seed Profile is created and seed propagation is not declared impossible.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "mobot-jasminum-sambac-wave41"
+        ]
+      },
+      "harvest": {
+        "short": "Dried flowers are documented for scenting tea; harvest timing is not established",
+        "guidance": "Missouri Botanical Garden reports that dried Jasminum sambac flowers are used to scent jasmine tea. This describes an aromatic use, not proof that the flowers themselves are consumed; the source gives no home harvest stage or drying protocol. Illinois Extension advises confirming flower identity and avoiding pesticide or chemical use on plants whose flowers are intended for food or tea.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "mobot-jasminum-sambac-wave41",
+          "illinois-edible-flowers-safety-2015"
+        ]
+      },
+      "problems": {
+        "short": "Protect from frost and avoid waterlogged substrate",
+        "guidance": "Missouri Botanical Garden limits outdoor hardiness guidance to zones 9–11 and recommends bringing container plants indoors before the first fall frost. Its well-drained-medium recommendation is retained; no pest or disease list is added from an unrelated species source.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "mobot-jasminum-sambac-wave41"
+        ]
+      }
     },
-    "compatibilityProfile": {"profileVersion": 1, "hydroponicSuitability": {"status": "unknown", "reason": "The selected sources describe soil and container growing, not hydroponic culture."}, "growthHabits": {"status": "unknown", "reason": "Scrambling shrub habit is not represented by the controlled growth-habit values."}, "matureSize": {"height": {"status": "unknown", "reason": "Landscape dimensions are not a mature indoor-container endpoint."}, "spread": {"status": "unknown", "reason": "Landscape dimensions are not a mature indoor-container endpoint."}}, "spacing": {"status": "unknown", "reason": "No indoor or hydroponic spacing is established."}, "light": {"status": "known", "value": [{"phase": "growing", "requirement": {"kind": "full_sun"}}, {"phase": "growing", "requirement": {"kind": "partial_sun"}}], "evidence": [{"sourceIds": ["mobot-jasminum-sambac-wave41"], "evidenceType": "source_backed", "confidence": "high", "taxonomicScope": {"level": "species", "taxon": "Jasminum sambac"}, "note": "Missouri Botanical Garden lists full sun to part shade for outdoor/landscape culture; this is not an indoor grow-light specification."}]}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The selected sources describe soil and container growing, not hydroponic culture."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Scrambling shrub habit is not represented by the controlled growth-habit values."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "Landscape dimensions are not a mature indoor-container endpoint."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Landscape dimensions are not a mature indoor-container endpoint."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "No indoor or hydroponic spacing is established."
+      },
+      "light": {
+        "status": "known",
+        "value": [
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "full_sun"
+            }
+          },
+          {
+            "phase": "growing",
+            "requirement": {
+              "kind": "partial_sun"
+            }
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "mobot-jasminum-sambac-wave41"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Jasminum sambac"
+            },
+            "note": "Missouri Botanical Garden lists full sun to part shade for outdoor/landscape culture; this is not an indoor grow-light specification."
+          }
+        ]
+      }
+    }
   }
 ]

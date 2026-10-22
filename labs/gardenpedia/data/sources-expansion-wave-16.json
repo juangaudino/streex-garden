@@ -1,10 +1,200 @@
 [
-  {"id":"kew-monstera-deliciosa-500","publisher":"Royal Botanic Gardens, Kew","title":"Monstera deliciosa Liebm. — Plants of the World Online","url":"https://powo.science.kew.org/taxon/87478-1","type":"botanical_taxonomy","tier":1,"scope":"Accepted species identity and family; taxonomy and botanical context, not houseplant cultivation instructions","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","taxonomy"]},
-  {"id":"ncsu-monstera-deliciosa-500","publisher":"NC State Extension","title":"Monstera deliciosa — North Carolina Extension Gardener Plant Toolbox","url":"https://plants.ces.ncsu.edu/plants/monstera-deliciosa/","type":"university_extension","tier":1,"scope":"Species-level houseplant characteristics, container care, support, propagation and problems; no named cultivar is implied","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","cultivation","propagation","problems"]},
-  {"id":"kew-philodendron-hederaceum-500","publisher":"Royal Botanic Gardens, Kew","title":"Philodendron hederaceum (Jacq.) Schott — Plants of the World Online","url":"https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:87797-1","type":"botanical_taxonomy","tier":1,"scope":"Accepted species identity, family, genus and taxonomy; no horticultural cultivar identity","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","taxonomy"]},
-  {"id":"ncsu-philodendron-hederaceum-500","publisher":"NC State Extension","title":"Philodendron hederaceum — North Carolina Extension Gardener Plant Toolbox","url":"https://plants.ces.ncsu.edu/plants/philodendron-hederaceum/common-name/philodendron/","type":"university_extension","tier":1,"scope":"Species-level heartleaf philodendron houseplant care, habit, propagation, pests and safety; not Epipremnum aureum","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","cultivation","propagation","problems"]},
-  {"id":"kew-aloe-vera-500","publisher":"Royal Botanic Gardens, Kew","title":"Aloe vera (L.) Burm.f. — Plants of the World Online","url":"https://powo.science.kew.org/taxon/530017-1","type":"botanical_taxonomy","tier":1,"scope":"Accepted species identity, synonyms and botanical context; not a medicinal-use endorsement","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","taxonomy"]},
-  {"id":"ncsu-aloe-vera-500","publisher":"NC State Extension","title":"Aloe vera — North Carolina Extension Gardener Plant Toolbox","url":"https://plants.ces.ncsu.edu/plants/aloe-vera/common-name/aloe-vera/","type":"university_extension","tier":1,"scope":"Species-level succulent container care, offsets/division, size and common problems; regional context retained","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","cultivation","propagation","problems"]},
-  {"id":"kew-crassula-ovata-500","publisher":"Royal Botanic Gardens, Kew","title":"Crassula ovata (Mill.) Druce — Plants of the World Online","url":"https://powo.science.kew.org/taxon/273350-1","type":"botanical_taxonomy","tier":1,"scope":"Accepted species identity, synonyms and botanical context; cultivars remain separate","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","taxonomy"]},
-  {"id":"ncsu-crassula-ovata-500","publisher":"NC State Extension","title":"Crassula ovata — North Carolina Extension Gardener Plant Toolbox","url":"https://plants.ces.ncsu.edu/plants/crassula-ovata/common-name/chinese-rubber-plant/","type":"university_extension","tier":1,"scope":"Species-level jade-plant container care, leaf/stem cutting propagation, named cultivar examples and common problems","accessed":"2026-10-16","license":null,"provenance":"Gardenpedia Labs botanical expansion","claimKinds":["identity","cultivation","propagation","problems"]}
+  {
+    "id": "kew-monstera-deliciosa-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Monstera deliciosa Liebm. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/87478-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity and family; taxonomy and botanical context, not houseplant cultivation instructions",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
+  },
+  {
+    "id": "ncsu-monstera-deliciosa-500",
+    "publisher": "NC State Extension",
+    "title": "Monstera deliciosa — North Carolina Extension Gardener Plant Toolbox",
+    "url": "https://plants.ces.ncsu.edu/plants/monstera-deliciosa/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Species-level houseplant characteristics, container care, spring maintenance, mature leaf and inflorescence development, propagation and problems; no named cultivar is implied",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "growth",
+      "maintenance",
+      "flowering",
+      "propagation",
+      "problems"
+    ]
+  },
+  {
+    "id": "kew-philodendron-hederaceum-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Philodendron hederaceum (Jacq.) Schott — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:87797-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity, family, genus and taxonomy; no horticultural cultivar identity",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
+  },
+  {
+    "id": "ncsu-philodendron-hederaceum-500",
+    "publisher": "NC State Extension",
+    "title": "Philodendron hederaceum — North Carolina Extension Gardener Plant Toolbox",
+    "url": "https://plants.ces.ncsu.edu/plants/philodendron-hederaceum/common-name/philodendron/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Species-level heartleaf philodendron houseplant care, habit, propagation, pests and safety; not Epipremnum aureum",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "propagation",
+      "problems"
+    ]
+  },
+  {
+    "id": "kew-aloe-vera-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Aloe vera (L.) Burm.f. — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/530017-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity, synonyms and botanical context; not a medicinal-use endorsement",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
+  },
+  {
+    "id": "ncsu-aloe-vera-500",
+    "publisher": "NC State Extension",
+    "title": "Aloe vera — North Carolina Extension Gardener Plant Toolbox",
+    "url": "https://plants.ces.ncsu.edu/plants/aloe-vera/common-name/aloe-vera/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Species-level succulent container care, rosette and offset habit, division, mature flowering observations, ornamental/container uses, size and common problems including ingestion toxicity and latex-related skin irritation; regional context retained; not a medicinal-use endorsement",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "cultivation",
+      "propagation",
+      "flowering",
+      "uses",
+      "problems"
+    ]
+  },
+  {
+    "id": "psu-aloe-houseplant-2026",
+    "publisher": "Penn State Extension",
+    "title": "Aloe, a Hardy Houseplant",
+    "url": "https://extension.psu.edu/aloe-a-hardy-houseplant",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Aloe genus indoor container guidance: sunny windows, full sun to bright indirect natural light, rotation, supplemental grow lights, dry media and repotting; specifically notes Aloe vera can grow over 2 feet. Genus-level care is not an indoor grow-light tier or universal species dimension.",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment",
+    "claimKinds": [
+      "cultivation",
+      "light",
+      "growth",
+      "container_care"
+    ]
+  },
+  {
+    "id": "ufifas-aloe-houseplant-2025",
+    "publisher": "University of Florida IFAS Extension, Charlotte County",
+    "title": "One of the most popular houseplants – aloe – easy-going growing!",
+    "url": "https://blogs.ifas.ufl.edu/charlotteco/2025/11/25/one-of-the-most-popular-houseplants-aloe-easy-going-growing/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Aloe vera houseplant/container context: sunny indoor location, adaptation to lower light, gradual outdoor sun acclimation, offsets, and Florida outdoor mature height reported up to about 2 feet; regional outdoor observations are not a fixed indoor size or grow-light threshold.",
+    "accessed": "2026-10-17",
+    "license": null,
+    "provenance": "Gardenpedia Labs profile enrichment",
+    "claimKinds": [
+      "cultivation",
+      "light",
+      "growth",
+      "container_care"
+    ]
+  },
+  {
+    "id": "kew-crassula-ovata-500",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Crassula ovata (Mill.) Druce — Plants of the World Online",
+    "url": "https://powo.science.kew.org/taxon/273350-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Accepted species identity, synonyms and botanical context; cultivars remain separate",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
+  },
+  {
+    "id": "ncsu-crassula-ovata-500",
+    "publisher": "NC State Extension",
+    "title": "Crassula ovata — North Carolina Extension Gardener Plant Toolbox",
+    "url": "https://plants.ces.ncsu.edu/plants/crassula-ovata/common-name/chinese-rubber-plant/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Species-level jade-plant container care, shrub/tree-like mature form, outdoor spring flowering versus uncommon indoor bloom, leaf/stem cutting propagation, named cultivar examples and common problems",
+    "accessed": "2026-10-16",
+    "license": null,
+    "provenance": "Gardenpedia Labs botanical expansion",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "flowering",
+      "propagation",
+      "problems"
+    ]
+  },
+  {
+    "id": "ufifas-heartleaf-philodendron-2026",
+    "publisher": "University of Florida Institute of Food and Agricultural Sciences Extension",
+    "title": "Heartleaf Philodendron — Gardening Solutions",
+    "url": "https://gardeningsolutions.ifas.ufl.edu/plants/houseplants/heartleaf-philodendron/",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "UF/IFAS indoor heartleaf philodendron (Philodendron hederaceum var. oxycardium) guidance on trailing versus supported display, training/pruning effects, household light and temperature, watering, recognizable stress cues, pests and pet toxicity. This source's form name does not redefine Garden's accepted species identity; no fixed pruning schedule, grow-light tier or hydroponic compatibility is inferred.",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "care",
+      "problems",
+      "safety"
+    ]
+  }
 ]

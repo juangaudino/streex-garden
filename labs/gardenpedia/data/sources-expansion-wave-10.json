@@ -19,11 +19,11 @@
     "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/coleus",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Species/crop-level coleus indoor seed starting, light-dependent germination, seedling temperatures, pinching, cuttings and care; not Rainbow Mix-specific",
+    "scope": "Coleus crop-level morphology and broad mature-size range, outdoor cultivar-dependent sun/shade selection, cold sensitivity, pinching, flower removal, pest/disease context, seed starting and cuttings; not Rainbow Mix-specific and not a home-system or nutrient prescription",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["propagation", "cultivation", "care"]
+    "claimKinds": ["growth", "cultivation", "care", "problems", "propagation"]
   },
   {
     "id": "sdsc-rainbow-coleus-500",
@@ -114,7 +114,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "cultivation", "harvest", "propagation"]
+    "claimKinds": ["identity", "cultivation", "harvest", "propagation", "use"]
   },
   {
     "id": "wisconsin-kohlrabi-500",
@@ -123,11 +123,11 @@
     "url": "https://hort.extension.wisc.edu/articles/kohlrabi-brassica-olearcea-var-gongylodes/",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Kohlrabi crop identity and general cultivation; notes that purple-skinned and white-skinned cultivars exist, without identifying the user's exact product",
+    "scope": "Kohlrabi crop identity and general outdoor soil cultivation, harvest, culinary uses and common pest/disease concerns; includes source-listed traits for named varieties such as Early White Vienna (few leaves, about 55 days) and must not be generalized to unnamed types or other cultivars",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "cultivation", "harvest"]
+    "claimKinds": ["identity", "cultivation", "care", "harvest", "use", "problems"]
   },
   {
     "id": "udel-delicacy-purple-kohlrabi-500",
@@ -153,7 +153,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "cultivation", "harvest"]
+    "claimKinds": ["identity", "cultivation", "harvest", "use", "problems"]
   },
   {
     "id": "fedco-hon-tsai-tai-500",
@@ -175,11 +175,11 @@
     "url": "https://hudsonvalleyseed.com/products/wasabina-wasabi-greens",
     "type": "seed_reference",
     "tier": 2,
-    "scope": "Seller-listed Wasabina seed product, Brassica juncea identification and product description; not evidence that it is true Wasabi or a named registered cultivar",
-    "accessed": "2026-10-16",
+    "scope": "Hudson Valley Seed Company’s specific Wasabina: Wasabi Greens product listing: seller identity, product-described pungent/zesty mustard flavor, its own growing instructions, 45-day maturity estimate, listed 6-inch mature width/height, full-sun condition and field spacing. Product claims only; not true wasabi, not a species-wide standard, not a formal cultivar registration, and field spacing is not hydroponic pod spacing.",
+    "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "propagation"]
+    "claimKinds": ["identity", "propagation", "growth", "cultivation", "harvest", "use"]
   },
   {
     "id": "kew-brassica-oleracea-500",
@@ -218,7 +218,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "cultivation", "propagation"]
+    "claimKinds": ["identity", "taxonomy", "growth", "cultivation", "propagation"]
   },
   {
     "id": "oregonstate-chinese-brassicas-500",
@@ -227,11 +227,11 @@
     "url": "https://horticulture.oregonstate.edu/oregon-vegetables/cabbage-chinese",
     "type": "university_extension",
     "tier": 1,
-    "scope": "Crop-type context identifies Hon Tsai Tai as purple-stemmed Brassica rapa harvested for tender flowering stems and young leaves; not product-specific timing",
+    "scope": "OSU distinguishes Asian Brassica rapa crop types: Hon Tsai Tai/choy-sum forms are grown for tender flowering stems and young leaves; komatsuna has dark-green bunching leaves with slender petioles; tatsoi forms a low, flat rosette with thick spoon-shaped leaves. Crop/type context only, not cultivar-specific timing, dimensions or hydroponic prescriptions",
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["identity", "harvest"]
+    "claimKinds": ["identity", "growth", "harvest"]
   },
   {
     "id": "seedman-large-red-cherry-500",
@@ -266,8 +266,8 @@
     "url": "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A77354001-1/general-information",
     "type": "botanical_taxonomy",
     "tier": 1,
-    "scope": "Kew's current taxonomic treatment of the Brassica juncea name as a synonym of × Brassarda juncea; records a real backbone conflict with USDA PLANTS/GRIN",
-    "accessed": "2026-10-16",
+    "scope": "Kew accepts × Brassarda juncea and lists Brassica × juncea as a synonym; this records the nomenclatural difference from USDA PLANTS and supplier usage Brassica juncea, which Garden preserves as an alternative name",
+    "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
     "claimKinds": ["identity", "taxonomy"]
@@ -279,10 +279,10 @@
     "url": "https://extension.illinois.edu/blogs/good-growing/2022-03-18-how-grow-sunflowers-home-great-addition-any-garden",
     "type": "university_extension",
     "tier": 1,
-    "scope": "General sunflower home-growing context and warning that branching, flower number and spacing depend on type/seed packet",
-    "accessed": "2026-10-16",
+    "scope": "General sunflower home-growing context: sun/soil, dry-spell watering, young-plant weed management, conditional wind support, flowering/pollinator and pollenless-selection context, cut-flower and seed harvest cues, wildlife, occasional pests/disease, and warning that branching, flower number, mature size and spacing depend on type/seed packet; not evidence for a named cultivar",
+    "accessed": "2026-10-18",
     "license": null,
     "provenance": "Gardenpedia Labs reference-coverage expansion",
-    "claimKinds": ["cultivation", "care"]
+    "claimKinds": ["growth", "cultivation", "care", "flowering", "harvest", "use", "problems"]
   }
 ]

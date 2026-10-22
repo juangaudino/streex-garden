@@ -1,41 +1,394 @@
 [
   {
-    "id":"smooth-luffa-luffa-aegyptiaca","name":"Smooth Luffa","spanishName":"Lufa lisa","scientificName":"Luffa aegyptiaca","variety":"Smooth-luffa species; distinct from angled luffa (Luffa acutangula); no named cultivar represented","category":"vegetables","emoji":"🥒","guideCompletion":67,
-    "tags":["smooth luffa","sponge gourd","loofah","luffa cylindrica","lufa lisa","Luffa aegyptiaca"],
-    "summary":"A vigorous tropical cucurbit grown for young edible fruit or mature fibrous gourds. Kew accepts Luffa aegyptiaca; UF/IFAS distinguishes smooth luffa from angled luffa, which is a separate species.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Luffa aegyptiaca","guidance":"Kew accepts Luffa aegyptiaca in Cucurbitaceae. UF/IFAS identifies smooth luffa as L. aegyptiaca (also known as L. cylindrica) and distinguishes it from angled luffa (L. acutangula). No cultivar is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-luffa-aegyptiaca-500","uf-ifas-luffa-500"]},
-      "cultivation":{"short":"Warm-season vine; needs well-drained soil and steady moisture","guidance":"UF/IFAS describes direct seeding and transplanting in Florida and warns that cold, wet conditions can cause damping-off; excess water can slow growth and increase root-disease risk. These are outdoor crop conditions, not hydroponic specifications.","evidenceType":"source_backed","confidence":"high","sourceIds":["uf-ifas-luffa-500"]},
-      "growth":{"short":"Long climbing vine that benefits from trellising","guidance":"UF/IFAS reports vines up to about 30 feet and recommends vertical trellising for field production. It also documents 2–5 gallon container production, but does not establish performance in indoor hydroponics or a compact cultivar identity.","evidenceType":"source_backed","confidence":"high","sourceIds":["uf-ifas-luffa-500"]},
-      "harvest":{"short":"Harvest young fruit for food or leave fruit to mature for fiber","guidance":"UF/IFAS distinguishes immature fruits harvested as a vegetable from mature, fibrous fruit used as a scrubber. It reports that a long hot season is needed for edible fruit and that overmature fruit becomes fibrous; timing depends on regional conditions.","evidenceType":"source_backed","confidence":"high","sourceIds":["uf-ifas-luffa-500"]},
-      "problems":{"short":"Avoid cold, saturated soil and fruit rot near the ground","guidance":"UF/IFAS notes damping-off risk in cold, wet seedling conditions, leafminer as a common insect pest, and fruit rot when fruit develops near the ground. These are crop-guide concerns, not a claim of cultivar-specific susceptibility.","evidenceType":"source_backed","confidence":"medium","sourceIds":["uf-ifas-luffa-500"]}
+    "id": "smooth-luffa-luffa-aegyptiaca",
+    "name": "Smooth Luffa",
+    "spanishName": "Lufa lisa",
+    "scientificName": "Luffa aegyptiaca",
+    "variety": "Smooth-luffa species; distinct from angled luffa (Luffa acutangula); no named cultivar represented",
+    "category": "vegetables",
+    "emoji": "🥒",
+    "guideCompletion": 67,
+    "tags": [
+      "smooth luffa",
+      "sponge gourd",
+      "loofah",
+      "luffa cylindrica",
+      "lufa lisa",
+      "Luffa aegyptiaca"
+    ],
+    "summary": "A vigorous tropical cucurbit grown for young edible fruit or mature fibrous gourds. Kew accepts Luffa aegyptiaca; UF/IFAS distinguishes smooth luffa from angled luffa, which is a separate species.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Luffa aegyptiaca",
+        "guidance": "Kew accepts Luffa aegyptiaca in Cucurbitaceae. UF/IFAS identifies smooth luffa as L. aegyptiaca (also known as L. cylindrica) and distinguishes it from angled luffa (L. acutangula). No cultivar is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-luffa-aegyptiaca-500",
+          "uf-ifas-luffa-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm-season vine; needs well-drained soil and steady moisture",
+        "guidance": "UF/IFAS describes direct seeding and transplanting in Florida and warns that cold, wet conditions can cause damping-off; excess water can slow growth and increase root-disease risk. These are outdoor crop conditions, not hydroponic specifications.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uf-ifas-luffa-500"
+        ]
+      },
+      "growth": {
+        "short": "A vigorous climbing vine needs a tall support; pollinators visit its flowers",
+        "guidance": "UF/IFAS reports stems up to about 30 feet and recommends a vertical trellis at least 6 feet tall to support the vine and encourage straighter fruit. Pollinators visit its yellow flowers. The guide also documents outdoor container production in 2–5 gallon pots; this does not establish performance in indoor hydroponics or a compact cultivar identity.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uf-ifas-luffa-500"
+        ]
+      },
+      "harvest": {
+        "short": "Harvest fruit under 6 inches for food; leave it to mature for fiber",
+        "guidance": "UF/IFAS gives a practical food-use cue: harvest smooth-luffa fruit while it is less than 6 inches long. For sponge fiber, leave fruit to mature until its green or brown skin begins pulling away from the fibers inside. These are Florida Extension cues for the smooth-luffa crop, not a named-cultivar schedule; regional season length affects whether fruit reaches either stage.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uf-ifas-luffa-500"
+        ]
+      },
+      "problems": {
+        "short": "Avoid cold, saturated soil and fruit rot near the ground",
+        "guidance": "UF/IFAS notes damping-off risk in cold, wet seedling conditions, leafminer as a common insect pest, and fruit rot when fruit develops near the ground. These are crop-guide concerns, not a claim of cultivar-specific susceptibility.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "uf-ifas-luffa-500"
+        ]
+      },
+      "flowering": {
+        "short": "Male flower clusters generally appear first; female blooms follow, and fruit develops after pollination",
+        "guidance": "UF/IFAS describes smooth luffa as monoecious: male flowers occur in racemes of roughly 10–16, while female flowers are solitary; both are yellow or orange. The female flower has a visible ovary at its base, and pollinated flowers develop cylindrical fruit. UC Master Gardeners of Santa Clara County report that male blossoms generally appear first, female blossoms later, and fruit follows; bees and other insects pollinate, and a small brush is an optional hand-pollination aid when needed. These are source observations, not a fixed bloom calendar, expected sex ratio, or guarantee of fruit set.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uf-ifas-luffa-500",
+          "ucanr-santa-clara-luffa-pollination-2026"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"UF/IFAS documents outdoor field and container growing, but not a recirculating hydroponic system."},"growthHabits":{"status":"unknown","reason":"Sources describe a climbing vine; climbing is not represented in the current controlled growth-habit vocabulary."},"matureSize":{"height":{"status":"known","value":{"maxCm":914,"context":"outdoor_general"},"evidence":[{"sourceIds":["uf-ifas-luffa-500"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Luffa aegyptiaca"},"note":"UF/IFAS reports vines up to 30 feet in crop production; not a cultivar-specific garden maximum."}]},"spread":{"status":"unknown","reason":"No defensible mature spread for this species-level entry is selected."}},"spacing":{"status":"unknown","reason":"Florida field row spacing does not translate to indoor pod spacing."},"light":{"status":"unknown","reason":"Selected evidence does not establish a precise outdoor exposure category or indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "UF/IFAS documents outdoor field and container growing, but not a recirculating hydroponic system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "Sources describe a climbing vine; climbing is not represented in the current controlled growth-habit vocabulary."
+      },
+      "matureSize": {
+        "height": {
+          "status": "known",
+          "value": {
+            "maxCm": 914,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "uf-ifas-luffa-500"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Luffa aegyptiaca"
+              },
+              "note": "UF/IFAS reports vines up to 30 feet in crop production; not a cultivar-specific garden maximum."
+            }
+          ]
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No defensible mature spread for this species-level entry is selected."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Florida field row spacing does not translate to indoor pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Selected evidence does not establish a precise outdoor exposure category or indoor grow-light tier."
+      }
+    }
   },
   {
-    "id":"new-zealand-spinach-tetragonia-tetragonoides","name":"New Zealand Spinach","spanishName":"Espinaca de Nueva Zelanda","scientificName":"Tetragonia tetragonoides","variety":"Species-level leafy vegetable identity; cultivar unspecified","category":"leafy greens","emoji":"🥬","guideCompletion":70,
-    "tags":["New Zealand spinach","warrigal greens","kōkihi","espinaca de Nueva Zelanda","Tetragonia tetragonoides","Tetragonia expansa"],
-    "summary":"A warm-season leafy green used as a spinach alternative, but botanically unrelated to true spinach (Spinacia oleracea). It can continue producing in hot weather when true spinach struggles.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Tetragonia tetragonoides","guidance":"Kew POWO accepts Tetragonia tetragonoides and treats T. expansa as a synonym. Utah State Extension uses Tetragonia tetragonoides and distinguishes this warm-season crop from true spinach; no named selection is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-tetragonia-tetragonoides-500","usu-new-zealand-spinach-500"]},
-      "cultivation":{"short":"Warm-season crop; protect from frost and maintain moisture for leaf quality","guidance":"Utah State Extension recommends sowing outdoors after frost danger or starting transplants shortly before the last frost and setting them out afterward. It reports heat and drought tolerance, while consistent moisture supports flavor. Its soil and row recommendations remain outdoor garden guidance.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-new-zealand-spinach-500"]},
-      "growth":{"short":"Spreading leafy plant; regular tip cutting encourages regrowth","guidance":"Utah State Extension describes a spreading habit and recommends cutting young tips to encourage replacement growth. The source's row spacing is not converted to hydroponic pod spacing, and no compact cultivar is represented.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-new-zealand-spinach-500"]},
-      "harvest":{"short":"Harvest young leaves and tips repeatedly","guidance":"Utah State Extension reports a seed-to-harvest interval of about 50–70 days and recommends cutting tips back to encourage replacement leaves. The interval is a regional guide estimate, not a seed-lot or cultivar guarantee.","evidenceType":"source_backed","confidence":"medium","sourceIds":["usu-new-zealand-spinach-500"]},
-      "problems":{"short":"Slow, uneven emergence and frost sensitivity affect establishment","guidance":"Utah State Extension says emergence may take two to three weeks and can be nonuniform; frost-sensitive plants should not be set outdoors until danger has passed. It reports weeds during establishment and occasional chewing beetle damage, not a universal disease profile.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-new-zealand-spinach-500"]}
+    "id": "new-zealand-spinach-tetragonia-tetragonoides",
+    "name": "New Zealand Spinach",
+    "spanishName": "Espinaca de Nueva Zelanda",
+    "scientificName": "Tetragonia tetragonoides",
+    "variety": "Species-level leafy vegetable identity; cultivar unspecified",
+    "category": "leafy greens",
+    "emoji": "🥬",
+    "guideCompletion": 70,
+    "tags": [
+      "New Zealand spinach",
+      "warrigal greens",
+      "kōkihi",
+      "espinaca de Nueva Zelanda",
+      "Tetragonia tetragonoides",
+      "Tetragonia expansa"
+    ],
+    "summary": "A warm-season leafy green used as a spinach alternative, but botanically unrelated to true spinach (Spinacia oleracea). It can continue producing in hot weather when true spinach struggles.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Tetragonia tetragonoides",
+        "guidance": "Kew POWO accepts Tetragonia tetragonoides and treats T. expansa as a synonym. Utah State Extension uses Tetragonia tetragonoides and distinguishes this warm-season crop from true spinach; no named selection is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-tetragonia-tetragonoides-500",
+          "usu-new-zealand-spinach-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Warm-season crop; frost-free conditions and steady moisture support leaf quality",
+        "guidance": "Utah State Extension describes this as a warm-season crop for planting after frost danger, in loose, fertile, well-drained soil. It tolerates heat and drought, but consistent moisture is recommended for best flavor; its Utah soil and row guidance is regional outdoor advice, not an indoor or hydroponic recipe. A peer-reviewed University of Palermo study tested hydroponic baby-plant production in greenhouse tray/substrate conditions over two seasons; it does not establish mature-plant performance or compatibility with a household recirculating system.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-new-zealand-spinach-500",
+          "unipa-tetragonia-hydroponic-baby-2025"
+        ]
+      },
+      "growth": {
+        "short": "Spreading leafy plant; regular tip cutting encourages regrowth",
+        "guidance": "Utah State Extension describes a spreading habit and recommends cutting young tips to encourage replacement growth. The source's row spacing is not converted to hydroponic pod spacing, and no compact cultivar is represented.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-new-zealand-spinach-500"
+        ]
+      },
+      "harvest": {
+        "short": "Cut young tips near 4 inches; repeated harvest encourages replacement leaves",
+        "guidance": "Utah State Extension recommends frequent harvest of young leaves and tips, cutting tips back at about 4 inches so new leaves can replace older growth. It describes the leaves as usable raw or steamed and separately recommends blanching for three minutes, discarding the water and refreshing the greens in ice water because of their reported oxalate content; the source also notes that some people eat them raw. These are Extension's preparation statements, not a universal medical threshold. This cue describes harvest management of the established plant; seed-to-harvest timing remains in Seed Profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-new-zealand-spinach-500"
+        ]
+      },
+      "maintenance": {
+        "short": "Frequent tip harvest promotes fresh replacement growth",
+        "guidance": "Utah State Extension says regular trimming encourages lush replacement growth. It also reports that inadequate fertilization can lead to early flowering and stop growth; the page's monthly fertilizer rate is a Utah row-crop recommendation and is not transferred to containers, hydroponic systems, or Garden Nutrient Engine targets.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-new-zealand-spinach-500"
+        ]
+      },
+      "problems": {
+        "short": "Frost can injure plants; chewing beetles may leave small round holes",
+        "guidance": "Utah State Extension advises planting outdoors after frost danger has passed. It reports occasional chewing-beetle damage as small, round holes in leaves, while noting the crop often grows quickly enough that control is unnecessary. Slow, uneven emergence is seed/establishment information and is kept out of this established-plant section.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-new-zealand-spinach-500"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Outdoor garden cultivation evidence does not establish home recirculating hydroponic performance."},"growthHabits":{"status":"known","value":["spreading"],"evidence":[{"sourceIds":["usu-new-zealand-spinach-500"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Tetragonia tetragonoides"},"note":"Utah State Extension describes a spreading habit for this species-level leafy crop."}]},"matureSize":{"height":{"status":"unknown","reason":"The selected source does not establish a species-level mature height."},"spread":{"status":"unknown","reason":"Spreading habit is documented, but no defensible mature spread measurement is selected."}},"spacing":{"status":"unknown","reason":"Outdoor row spacing is not an indoor pod-spacing recommendation."},"light":{"status":"unknown","reason":"The selected Extension source does not provide a precise sun-exposure category or indoor grow-light tier."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "conditional",
+        "conditions": [
+          {
+            "kind": "system_type",
+            "description": "Hydroponic baby-plant production is documented only in a two-season greenhouse tray/substrate study; mature-plant and home recirculating-system performance remain unestablished."
+          }
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "unipa-tetragonia-hydroponic-baby-2025"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Tetragonia tetragonoides"
+            },
+            "note": "Peer-reviewed study tested hydroponic production of whole baby plants in greenhouse tray/substrate conditions; it does not establish full-size crop or consumer-appliance suitability."
+          }
+        ]
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "usu-new-zealand-spinach-500"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Tetragonia tetragonoides"
+            },
+            "note": "Utah State Extension describes a spreading habit for this species-level leafy crop."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The selected source does not establish a species-level mature height."
+        },
+        "spread": {
+          "status": "known",
+          "value": {
+            "maxCm": 60.96,
+            "context": "outdoor_general"
+          },
+          "evidence": [
+            {
+              "sourceIds": [
+                "ufifas-leafy-greens-hydroponics-hs1279"
+              ],
+              "evidenceType": "source_backed",
+              "confidence": "medium",
+              "taxonomicScope": {
+                "level": "species",
+                "taxon": "Tetragonia tetragonoides"
+              },
+              "note": "UF/IFAS describes New Zealand spinach as spreading up to 2 ft; converted to 60.96 cm and kept at species scope, not as a cultivar or indoor footprint."
+            }
+          ]
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor row spacing is not an indoor pod-spacing recommendation."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The selected Extension source does not provide a precise sun-exposure category or indoor grow-light tier."
+      }
+    }
   },
   {
-    "id":"sweet-corn-zea-mays","name":"Sweet Corn","spanishName":"Maíz dulce","scientificName":"Zea mays","variety":"Sweet-corn horticultural crop type within Zea mays; cultivar and sugary genotype unspecified","category":"vegetables","emoji":"🌽","guideCompletion":70,
-    "tags":["sweet corn","corn","maize","maíz dulce","elote","Zea mays"],
-    "summary":"A warm-season grain crop selected for sweet immature kernels. Sweet-corn cultivars differ in kernel-sugar genetics and cold-soil sensitivity; this entry does not represent a named cultivar or supersweet genotype.","metrics":[],
-    "sections":{
-      "identity":{"short":"Accepted species: Zea mays; sweet corn is a crop type","guidance":"Kew accepts Zea mays in Poaceae. Utah State Extension describes distinct sweet-corn kernel-genetic classes with different seed appearance and cold-soil response. This profile covers sweet corn generally and does not assign a hybrid or sugary genotype.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-zea-mays-500","usu-sweet-corn-home-500","usu-sweet-corn-planting-500"]},
-      "cultivation":{"short":"Wait for warm soil; cold, wet conditions can impair emergence","guidance":"Utah State Extension recommends planting when soil is at least 60°F to reduce seed rot and reports growth can begin near 55°F, with an optimum range of 70–86°F. UMN Extension advises at least 65°F for untreated seed. This difference is retained as regional/source context; seed genotype and treatment matter.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-sweet-corn-planting-500","umn-sweet-corn-home-500"]},
-      "growth":{"short":"Tall, wind-pollinated crop that should be planted in blocks","guidance":"UMN Extension recommends block planting rather than a single long row to improve pollination in home gardens. Ear filling depends on pollination, variety, spacing, and conditions; this field-crop architecture is not represented as hydroponic compatibility.","evidenceType":"source_backed","confidence":"high","sourceIds":["umn-sweet-corn-home-500","usu-sweet-corn-home-500"]},
-      "harvest":{"short":"Harvest ears at the cultivar's fresh-eating stage","guidance":"Sweet-corn harvest timing and kernel quality vary substantially among varieties and maturity classes. The selected general Extension sources do not establish a cultivar-specific harvest date for this identity, so days to harvest remain unresolved.","evidenceType":"needs_validation","confidence":"pending","sourceIds":[]},
-      "problems":{"short":"Poor emergence is associated with cold, wet soil and sensitive seed types","guidance":"Utah State Extension warns about seed rot and reduced emergence in cold soil; UMN notes untreated seed and some sugary classes require warmer soil. Inadequate pollination can also leave ears incompletely filled. These are crop-level risks, not disease-resistance claims.","evidenceType":"source_backed","confidence":"high","sourceIds":["usu-sweet-corn-planting-500","umn-sweet-corn-home-500"]}
+    "id": "sweet-corn-zea-mays",
+    "name": "Sweet Corn",
+    "spanishName": "Maíz dulce",
+    "scientificName": "Zea mays",
+    "variety": "Sweet-corn horticultural crop type within Zea mays; cultivar and sugary genotype unspecified",
+    "category": "vegetables",
+    "emoji": "🌽",
+    "tags": [
+      "sweet corn",
+      "corn",
+      "maize",
+      "maíz dulce",
+      "elote",
+      "Zea mays"
+    ],
+    "summary": "A warm-season grain crop selected for sweet immature kernels. Sweet-corn cultivars differ in kernel-sugar genetics and cold-soil sensitivity; this entry does not represent a named cultivar or supersweet genotype.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species: Zea mays; sweet corn is a crop type",
+        "guidance": "Kew accepts Zea mays in Poaceae. Utah State Extension describes distinct sweet-corn kernel-genetic classes with different seed appearance and cold-soil response. This profile covers sweet corn generally and does not assign a hybrid or sugary genotype.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-zea-mays-500",
+          "usu-sweet-corn-home-500",
+          "usu-sweet-corn-planting-500"
+        ]
+      },
+      "cultivation": {
+        "short": "Wait for warm soil; cold, wet conditions can impair emergence",
+        "guidance": "Utah State Extension recommends planting when soil is at least 60°F to reduce seed rot and reports growth can begin near 55°F, with an optimum range of 70–86°F. UMN Extension advises at least 65°F for untreated seed. This difference is retained as regional/source context; seed genotype and treatment matter.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-sweet-corn-planting-500",
+          "umn-sweet-corn-home-500"
+        ]
+      },
+      "care": {
+        "short": "Protect ear development with timely water; remove weeds shallowly",
+        "guidance": "Illinois Extension advises thorough irrigation when rainfall is deficient during tasseling, silking and ear maturation, because hot, dry pollination conditions can reduce kernel fill. It recommends shallow cultivation for weed control and reports that removing side shoots does not improve yield. The page also advises side-dressing nitrogen when plants reach 12–18 inches; this is regional home-garden guidance, not a fertilizer dose or hydroponic nutrient recipe.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "illinois-corn-home-garden-2026"
+        ]
+      },
+      "growth": {
+        "short": "Tall, wind-pollinated crop that should be planted in blocks",
+        "guidance": "UMN Extension recommends block planting rather than a single long row to improve pollination in home gardens. Ear filling depends on pollination, variety, spacing, and conditions; this field-crop architecture is not represented as hydroponic compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-sweet-corn-home-500",
+          "usu-sweet-corn-home-500"
+        ]
+      },
+      "harvest": {
+        "short": "Pick ears when kernels just reach the milk stage",
+        "guidance": "USU's Vegetable Guide places harvest about 15–22 days after silking as a production-context reference, but says to judge maturity by the ear: kernels should be nearly full-size, soft and tender, with clear-to-milky juice when punctured; the tip should fill out and silks should be dry and brown. These are crop-level sweet-corn cues, not a named-cultivar calendar. USU reports prime quality can last only 1–2 days when daytime temperatures stay above 86°F and advises early picking and rapid chilling.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-sweet-corn-harvest-2026"
+        ]
+      },
+      "problems": {
+        "short": "Poor emergence is associated with cold, wet soil and sensitive seed types",
+        "guidance": "Utah State Extension warns about seed rot and reduced emergence in cold soil; UMN notes untreated seed and some sugary classes require warmer soil. Inadequate pollination can also leave ears incompletely filled. These are crop-level risks, not disease-resistance claims.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-sweet-corn-planting-500",
+          "umn-sweet-corn-home-500"
+        ]
+      }
     },
-    "compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Field and home-garden sweet-corn guidance does not establish suitability for a recirculating home hydroponic system."},"growthHabits":{"status":"unknown","reason":"The selected sources establish a tall field crop but do not map it to a supported controlled growth-habit category."},"matureSize":{"height":{"status":"unknown","reason":"No general mature height for an unspecified sweet-corn cultivar is selected."},"spread":{"status":"unknown","reason":"No mature spread is established for this cultivar-unspecified crop type."}},"spacing":{"status":"unknown","reason":"Soil-row spacing is not converted to hydroponic pod spacing."},"light":{"status":"unknown","reason":"Selected sources do not provide a precise outdoor sun category or indoor grow-light requirement."}}
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Field and home-garden sweet-corn guidance does not establish suitability for a recirculating home hydroponic system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The selected sources establish a tall field crop but do not map it to a supported controlled growth-habit category."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No general mature height for an unspecified sweet-corn cultivar is selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No mature spread is established for this cultivar-unspecified crop type."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Soil-row spacing is not converted to hydroponic pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Selected sources do not provide a precise outdoor sun category or indoor grow-light requirement."
+      }
+    }
   }
 ]

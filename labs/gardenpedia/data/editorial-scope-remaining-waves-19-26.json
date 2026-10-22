@@ -1,0 +1,1225 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "garden-cress-lepidium-sativum": {
+      "wave": 19,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "No identity-specific evidence establishes this recommendation for the system.",
+            "es": "No hay evidencia específica que valide esta recomendación para el sistema."
+          }
+        }
+      }
+    },
+    "corn-salad-valeriana-locusta": {
+      "wave": 19,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "common-sorrel-rumex-acetosa": {
+      "wave": 19,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "malabar-spinach-basella-alba": {
+      "wave": 20,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "yardlong-bean-vigna-unguiculata-sesquipedalis": {
+      "wave": 20,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "bitter-melon-momordica-charantia": {
+      "wave": 20,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "peanut-arachis-hypogaea": {
+      "wave": 20,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "The shallow-cultivation guidance comes from an Iowa State home-garden article published in 1997 that warns it may be outdated; present it as cautious corroboration, not universal current advice.",
+            "es": "La recomendación de cultivo superficial procede de un artículo de Iowa State para huertos domésticos publicado en 1997, que advierte que podría estar desactualizado; preséntala como corroboración cautelosa, no como consejo actual universal."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "common-purslane-portulaca-oleracea": {
+      "wave": 20,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Flowering and seed-release observations are species-level reports from UW–Madison Extension, not a universal flowering calendar.",
+            "es": "Las observaciones de floración y liberación de semillas son informes a nivel de especie de UW–Madison Extension, no un calendario universal de floración."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "smooth-luffa-luffa-aegyptiaca": {
+      "wave": 21,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "new-zealand-spinach-tetragonia-tetragonoides": {
+      "wave": 21,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "sweet-corn-zea-mays": {
+      "wave": 21,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "USU's harvest and use guidance is crop-level for sweet corn; it is not a cultivar-specific calendar or a hydroponic harvest rule.",
+            "es": "La guía de cosecha y uso de USU corresponde al maíz dulce como cultivo; no es un calendario de cultivar ni una regla de cosecha hidropónica."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "sweet-potato-ipomoea-batatas": {
+      "wave": 22,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "potato-solanum-tuberosum": {
+      "wave": 22,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "garlic-allium-sativum": {
+      "wave": 22,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "ginger-zingiber-officinale": {
+      "wave": 22,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "turmeric-curcuma-longa": {
+      "wave": 22,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "chervil-anthriscus-cerefolium": {
+      "wave": 23,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "lovage-levisticum-officinale": {
+      "wave": 23,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "globe-artichoke-cynara-cardunculus": {
+      "wave": 23,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "celeriac-apium-graveolens": {
+      "wave": 24,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "radicchio-cichorium-intybus": {
+      "wave": 24,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "jicama-pachyrhizus-erosus": {
+      "wave": 24,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "scarlet-runner-bean-phaseolus-coccineus": {
+      "wave": 24,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "The Minnesota Extension flower colors and ornamental/pollinator notes are crop-level descriptions, not a named cultivar guarantee.",
+            "es": "Los colores florales y las notas ornamentales/de polinizadores de Minnesota Extension describen el cultivo, no garantizan un cultivar nombrado."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "chickpea-cicer-arietinum": {
+      "wave": 24,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Flower colors vary by variety; this identity does not select a kabuli/desi class or a specific flower color. Heat/drought caution is Upper Midwest field-crop context.",
+            "es": "El color floral varía por variedad; esta identidad no selecciona clase kabuli/desi ni un color específico. La advertencia de calor/sequía corresponde al cultivo de campo del Alto Medio Oeste."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "lentil-vicia-lens": {
+      "wave": 24,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "No identity-specific evidence establishes this recommendation for the system.",
+            "es": "No hay evidencia específica que valide esta recomendación para el sistema."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "No identity-specific evidence establishes this recommendation for the system.",
+            "es": "No hay evidencia específica que valide esta recomendación para el sistema."
+          }
+        }
+      }
+    },
+    "southern-pea-vigna-unguiculata": {
+      "wave": 25,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "mung-bean-vigna-radiata": {
+      "wave": 25,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "maintenance": {
+          "context": {
+            "en": "Arkansas home-garden shallow cultivation and fertility notes are regional soil guidance; do not convert product rates into universal or hydroponic recommendations.",
+            "es": "Las notas de cultivo superficial y fertilidad para jardín doméstico de Arkansas son orientación regional de suelo; no conviertas dosis de producto en recomendaciones universales o hidropónicas."
+          }
+        }
+      }
+    },
+    "tong-hao-glebionis-coronaria": {
+      "wave": 25,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "honeydew-melon-cucumis-melo": {
+      "wave": 25,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "hansel-f1-eggplant": {
+      "wave": 26,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "fairy-tale-f1-eggplant": {
+      "wave": 26,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "patio-baby-f1-eggplant": {
+      "wave": 26,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "delicata-js-squash": {
+      "wave": 26,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    },
+    "honey-bear-f1-acorn-squash": {
+      "wave": 26,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Follow the cited crop or product scope; do not infer unverified cultivar-specific outcomes.",
+            "es": "Respeta el alcance del cultivo o producto citado; no infieras resultados varietales sin verificar."
+          }
+        }
+      }
+    }
+  }
+}

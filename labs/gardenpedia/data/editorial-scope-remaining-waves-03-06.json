@@ -1,0 +1,2725 @@
+{
+  "schemaVersion": 1,
+  "profiles": {
+    "acorn-squash": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "UMN places acorn squash within Cucurbita pepo winter squash; this is type-level context, not a named cultivar.",
+            "es": "UMN ubica la calabaza acorn entre las calabazas de invierno Cucurbita pepo; es contexto de tipo, no de un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor soil guidance only; field spacing is not hydroponic pod spacing.",
+            "es": "Guía para suelo exterior; el espaciamiento de campo no equivale a separación hidropónica de pods."
+          },
+          "action": {
+            "en": "Allow room for a spreading winter-squash vine and keep the root zone draining. The cited source does not establish an indoor or hydroponic system prescription.",
+            "es": "Deja espacio para una guía extendida de calabaza de invierno y conserva drenaje en la zona de raíces. La fuente citada no establece una prescripción de sistema interior o hidropónico."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "No routine pruning schedule for the acorn type was established in the sources reviewed.",
+            "es": "Las fuentes revisadas no establecen un calendario rutinario de poda para el tipo acorn."
+          },
+          "action": {
+            "en": "Preserve healthy leaf area supporting developing fruit. Removing damaged tissue is an observation-led Garden adaptation, not an acorn-specific yield rule.",
+            "es": "Conserva el follaje sano que sostiene los frutos en desarrollo. Retirar tejido dañado es una adaptación de Garden guiada por observación, no una regla de rendimiento propia de acorn."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maturity cues apply to winter squash broadly, not a named acorn cultivar or fixed calendar.",
+            "es": "Las señales de madurez se aplican a calabazas de invierno en general, no a un cultivar acorn ni a un calendario fijo."
+          },
+          "action": {
+            "en": "Leave fruit on the vine until the rind resists a fingernail and the stem hardens; cut the stem rather than pulling the fruit off. Winter squash does not continue ripening after harvest.",
+            "es": "Deja el fruto en la guía hasta que la cáscara resista una uña y el tallo se endurezca; córtalo en vez de arrancarlo. La calabaza de invierno no sigue madurando después de cosecharse."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Downy-mildew symptoms are crop-group and regional evidence, not a diagnosis or cultivar-resistance claim.",
+            "es": "Los síntomas de mildiu velloso son evidencia del grupo de cultivo y contexto regional, no diagnóstico ni afirmación de resistencia varietal."
+          },
+          "action": {
+            "en": "Look for angular yellow leaf spots and gray-purple growth underneath in humid conditions. Similar symptoms can have other causes; confirm the pattern before treating.",
+            "es": "Busca manchas foliares amarillas angulares y crecimiento gris violáceo debajo en condiciones húmedas. Otros problemas pueden parecerse; confirma el patrón antes de tratar."
+          }
+        }
+      }
+    },
+    "butternut-squash": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "UMN identifies butternut as Cucurbita moschata winter squash; guidance is crop-type, not named-cultivar specific.",
+            "es": "UMN identifica butternut como calabaza de invierno Cucurbita moschata; la guía corresponde al tipo, no a un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Johnny's describes outdoor winter-squash culture; no indoor or hydroponic suitability is established.",
+            "es": "Johnny's describe el cultivo exterior de calabaza de invierno; no establece idoneidad interior o hidropónica."
+          },
+          "action": {
+            "en": "Treat butternut as a spreading warm-season vine and preserve healthy canopy. Exact mature spread remains unknown for this represented type.",
+            "es": "Maneja butternut como una guía extendida de estación cálida y conserva el follaje sano. La extensión adulta exacta sigue sin conocerse para este tipo representado."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "The reviewed sources do not establish a butternut-specific pruning schedule.",
+            "es": "Las fuentes revisadas no establecen un calendario de poda específico para butternut."
+          },
+          "action": {
+            "en": "Do not remove healthy leaves solely to reduce apparent vine size; this is a cautious management adaptation, not a proven yield result.",
+            "es": "No retires hojas sanas solo para reducir el tamaño aparente de la guía; es una adaptación cautelosa, no un resultado de rendimiento demostrado."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Winter-squash maturity indicators; not a fixed butternut harvest date or storage guarantee.",
+            "es": "Indicadores de madurez de calabaza de invierno; no son fecha fija ni garantía de almacenamiento de butternut."
+          },
+          "action": {
+            "en": "Wait until the rind resists a fingernail and the stem has become hard and woody. Cut the fruit with its stem attached; it will not ripen further after harvest.",
+            "es": "Espera a que la cáscara resista una uña y el tallo esté duro y leñoso. Corta el fruto dejando el tallo unido; no seguirá madurando después de la cosecha."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Regional cucurbit disease guidance; similar leaf symptoms require confirmation and do not establish resistance.",
+            "es": "Guía regional de enfermedades de cucurbitáceas; los síntomas foliares similares deben confirmarse y no establecen resistencia."
+          },
+          "action": {
+            "en": "Check both leaf surfaces for angular yellow lesions and gray-purple growth underneath during humid weather; confirm before choosing management.",
+            "es": "Revisa ambas caras de la hoja para detectar lesiones amarillas angulares y crecimiento gris violáceo debajo con humedad; confirma antes de elegir manejo."
+          }
+        }
+      }
+    },
+    "california-poppy": {
+      "wave": 3,
+      "sections": {
+        "identity": {"context":{"en":"Species identity is explicit; no cultivar or color selection is assigned.","es":"La identidad de especie es explícita; no se asigna cultivar ni selección de color."}},
+        "growth": {"context":{"en":"Perennial behavior is described for mild Napa conditions, not as a universal lifecycle.","es":"El comportamiento perenne se describe para el clima templado de Napa, no como ciclo universal."}},
+        "cultivation": {"context":{"en":"Regional outdoor drainage guidance; indoor and hydroponic requirements remain unestablished.","es":"Guía regional exterior de drenaje; las necesidades interiores e hidropónicas no están establecidas."}},
+        "care": {"context":{"en":"Deadheading and seed retention are alternative goals, not simultaneous rules.","es":"Desflorar y conservar semilla son objetivos alternativos, no reglas simultáneas."}},
+        "problems": {"context":{"en":"Poor drainage is documented; no pest or disease resistance is claimed.","es":"Se documenta el mal drenaje; no se afirma resistencia a plagas o enfermedades."}}
+      }
+    },
+    "phacelia-tanacetifolia": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Species-level Phacelia tanacetifolia; common names do not establish a separate cultivar.",
+            "es": "Phacelia tanacetifolia a nivel de especie; los nombres comunes no establecen un cultivar distinto."
+          }
+        },
+        "growth": {"context":{"en":"Dimensions are broad species references and vary by region and use.","es":"Las dimensiones son referencias amplias de especie y varían por región y uso."}},
+        "cultivation": {"context":{"en":"Outdoor/cover-crop evidence; indoor and hydroponic suitability remain unknown.","es":"Evidencia de exterior/cultivo de cobertura; la idoneidad interior e hidropónica sigue desconocida."}},
+        "care": {"context":{"en":"Account for self-seeding and taproot; no system spacing is inferred.","es":"Considera la resiembra y raíz pivotante; no se infiere separación para sistemas."}},
+        "pruning": {
+          "context": {
+            "en": "Removing seedheads is a conditional adaptation to limit volunteers, not a universal pruning requirement.",
+            "es": "Retirar cabezas con semillas es una adaptación condicional para reducir plantas voluntarias, no un requisito universal de poda."
+          }
+        },
+        "flowering": {"context":{"en":"Bloom timing varies by region; no universal date is published.","es":"El momento de floración varía por región; no se publica una fecha universal."}},
+        "harvest": {
+          "context": {
+            "en": "Pollinator and cover-crop uses are documented; termination timing depends on management goals.",
+            "es": "Se documentan usos para polinizadores y cobertura; el momento de terminación depende del objetivo de manejo."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Waterlogging and self-seeding concerns are site-dependent; not a universal invasive-status claim.",
+            "es": "El anegamiento y la resiembra dependen del sitio; no se afirma que sea invasora universalmente."
+          }
+        }
+      }
+    },
+    "bee-balm": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "This entry is Monarda didyma; common name bee balm also applies to other Monarda species.",
+            "es": "Esta ficha corresponde a Monarda didyma; el nombre común bee balm también se aplica a otras especies de Monarda."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Dimensions are regional NC State guidance, not a named-cultivar guarantee.",
+            "es": "Las dimensiones son orientación regional de NC State, no una garantía para un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor site guidance only; hydroponic and indoor-light behavior remain unestablished.",
+            "es": "Solo orientación de sitio exterior; el comportamiento hidropónico y bajo luz interior no está establecido."
+          }
+        },
+        "flowering": {"context":{"en":"The summer timing is regional to the Appalachian/NC source context.","es":"La época estival corresponde al contexto regional de los Apalaches y Carolina del Norte de la fuente."}},
+        "care": {"context":{"en":"The cut-back recommendation is specifically for dead stems and stem-nesting bee habitat.","es":"La recomendación de recorte se refiere específicamente a tallos muertos y al hábitat de abejas que anidan en tallos."}},
+        "harvest": {"context":{"en":"Culinary uses are source-listed; medicinal use is not turned into health advice.","es":"Los usos culinarios están enumerados por la fuente; el uso medicinal no se convierte en consejo de salud."}},
+        "problems": {
+          "context": {
+            "en": "Resistance reported for some cultivars is not generalized to the unspecified identity.",
+            "es": "La resistencia descrita para algunos cultivares no se generaliza a esta identidad sin cultivar especificado."
+          }
+        }
+      }
+    },
+    "snapdragon": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+          "en": "The published identity is Lathyrus odoratus, the ornamental sweet pea; it is not Pisum sativum, the edible garden pea.",
+          "es": "La identidad publicada es Lathyrus odoratus, el guisante de olor ornamental; no es Pisum sativum, el guisante comestible."
+          }
+        },
+      "growth": {
+        "context": {
+          "en": "Bush and climbing forms vary; this record does not name a cultivar or select one mature form.",
+          "es": "Las formas de mata y trepadora varían; esta ficha no nombra un cultivar ni fija una sola forma adulta."
+        }
+      },
+      "cultivation": {
+        "context": {
+          "en": "Outdoor soil recommendations do not establish indoor grow-light requirements or hydroponic suitability.",
+          "es": "Las recomendaciones para suelo exterior no establecen requisitos de luz artificial ni compatibilidad hidropónica."
+        }
+      },
+        "pruning": {
+          "context": {
+          "en": "RHS describes pinching as an optional garden method and deadheading as useful for annual sweet peas; no cultivar-specific interval is given.",
+          "es": "RHS describe el pinzado como método opcional de jardín y el desflorado como útil para guisantes de olor anuales; no indica un intervalo específico de cultivar."
+          }
+        },
+        "harvest": {
+          "context": {
+          "en": "This is cut-flower use only. Sweet-pea pods must not be eaten; do not confuse this species with edible garden peas.",
+          "es": "Este uso es exclusivamente como flor cortada. No se deben consumir las vainas del guisante de olor; no se debe confundir esta especie con los guisantes comestibles."
+          }
+        },
+        "problems": {
+          "context": {
+          "en": "The heat/humidity and pest notes are species-level observations, not cultivar resistance ratings or diagnoses.",
+          "es": "Las notas sobre calor, humedad y plagas son observaciones a nivel de especie, no calificaciones de resistencia ni diagnósticos."
+          }
+        }
+      }
+    },
+    "teddy-bear-sunflower": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Cultivar-level flower description; accepted species identity remains Helianthus annuus.",
+            "es": "Descripción floral a nivel de cultivar; la identidad de especie aceptada sigue siendo Helianthus annuus."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Cultivar dimensions are reported ranges, not guarantees across sites or containers.",
+            "es": "Las dimensiones del cultivar son rangos reportados, no garantías para todos los sitios o contenedores."
+          }
+        },
+        "cultivation": {"context":{"en":"General H. annuus outdoor guidance; no hydroponic or indoor-light prescription is established.","es":"Guía general de H. annuus para exterior; no establece receta hidropónica ni de luz interior."}},
+        "care": {"context":{"en":"Tall-variety support and spacing guidance is not automatically applied to this compact cultivar.","es":"La orientación de soporte y separación para variedades altas no se aplica automáticamente a este cultivar compacto."}},
+        "flowering": {"context":{"en":"The cited sources describe flower form but do not establish a universal bloom calendar.","es":"Las fuentes citadas describen la forma floral, pero no establecen un calendario universal de floración."}},
+        "harvest": {
+          "context": {
+            "en": "Cut-flower timing is general sunflower guidance, not a cultivar-specific vase-life claim.",
+            "es": "El momento de corte es una guía general para girasol, no una afirmación de duración en florero específica del cultivar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Crop-level risks are not cultivar resistance claims.",
+            "es": "Los riesgos del cultivo no son afirmaciones de resistencia del cultivar."
+          }
+        }
+      }
+    },
+    "dwarf-sunflower": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Dwarf is a horticultural group here, not a single cultivar or uniform morphology.",
+            "es": "En esta ficha, enano es un grupo hortícola, no un cultivar único ni una morfología uniforme."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The source's height cutoff defines a category; it is not a full mature-size range.",
+            "es": "El límite de altura de la fuente define una categoría; no es un rango completo de tamaño adulto."
+          }
+        },
+        "cultivation": {"context":{"en":"General species-level outdoor guidance; indoor and hydroponic compatibility remain unknown.","es":"Guía general de exterior a nivel de especie; la compatibilidad interior e hidropónica sigue desconocida."}},
+        "care": {"context":{"en":"Support decisions depend on the actual cultivar and site; tall-type rules are not universal.","es":"El soporte depende del cultivar y del sitio reales; las reglas para tipos altos no son universales."}},
+        "flowering": {"context":{"en":"The group includes distinct cultivars; no single flower form or date is assigned.","es":"El grupo incluye cultivares distintos; no se asigna una sola forma floral ni fecha."}},
+        "harvest": {
+          "context": {
+            "en": "Cut-flower guidance is crop-level; seed maturity requires separate cues.",
+            "es": "La guía de flor cortada es del cultivo; la madurez de semillas requiere señales distintas."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "General sunflower risks do not establish cultivar-specific susceptibility or resistance.",
+            "es": "Los riesgos generales del girasol no establecen susceptibilidad ni resistencia específica de cultivar."
+          }
+        }
+      }
+    },
+    "sweet-pea": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cosmos-seashell": {
+      "wave": 3,
+      "sections": {
+        "identity": {"context":{"en":"Seashells is documented as a mix; do not imply one uniform cultivar phenotype.","es":"Seashells se documenta como mezcla; no implica un fenotipo uniforme de cultivar."}},
+        "growth": {"context":{"en":"The approx. 3 ft height is mix-level; species dimensions are not substituted as cultivar measurements.","es":"La altura aproximada de 90 cm es de la mezcla; no se sustituyen medidas de especie como medidas de cultivar."}},
+        "cultivation": {"context":{"en":"Outdoor Cosmos bipinnatus guidance; not a hydroponic or indoor-light prescription.","es":"Guía exterior para Cosmos bipinnatus; no es receta hidropónica ni de luz interior."}},
+        "care": {"context":{"en":"Staking is conditional for taller plants in exposed sites, not a universal requirement.","es":"El tutorado es condicional para plantas altas en sitios expuestos, no un requisito universal."}},
+        "flowering": {"context":{"en":"Color and tubular petals refer to the named mix description; bloom date varies by context.","es":"El color y los pétalos tubulares corresponden a la descripción de la mezcla; la fecha varía según el contexto."}},
+        "harvest": {"context":{"en":"Cut-flower use is supported; cultivar-specific vase life and harvest stage are not provided.","es":"Se respalda el uso como flor cortada; no se aportan duración en florero ni etapa de corte específicas del cultivar."}},
+        "problems": {"context":{"en":"Species-level possible problems are not cultivar resistance ratings.","es":"Los problemas posibles a nivel de especie no son calificaciones de resistencia del cultivar."}}
+      }
+    },
+    "black-eyed-susan": {
+      "wave": 3,
+      "sections": {
+        "identity": {"context":{"en":"Black-eyed Susan is taxonomically ambiguous; this profile explicitly means R. hirta.","es":"Black-eyed Susan es taxonómicamente ambiguo; esta ficha se refiere explícitamente a R. hirta."}},
+        "growth": {"context":{"en":"Species lifecycle and dimensions vary regionally; no cultivar is specified.","es":"El ciclo y las dimensiones de la especie varían por región; no se especifica cultivar."}},
+        "cultivation": {"context":{"en":"Outdoor species guidance; no indoor-system or hydroponic validation is available.","es":"Guía exterior de especie; no hay validación para sistemas interiores o hidroponía."}},
+        "care": {"context":{"en":"Deadheading versus reseeding depends on whether blooms or seed retention is preferred.","es":"Desflorar o permitir resiembra depende de si se prefieren flores prolongadas o conservar semilla."}},
+        "flowering": {"context":{"en":"Illinois dates are regional; treat as context, not a universal calendar.","es":"Las fechas de Illinois son regionales; son contexto, no calendario universal."}},
+        "harvest": {"context":{"en":"No edible use is supported by the sources reviewed for this profile.","es":"Las fuentes revisadas para esta ficha no respaldan uso comestible."}},
+        "problems": {"context":{"en":"Possible pests and disease do not establish a diagnosis or resistance trait.","es":"Las plagas y enfermedades posibles no establecen diagnóstico ni rasgo de resistencia."}}
+      }
+    },
+    "bachelor-button": {
+      "wave": 3,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "red-sail-lettuce": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "AAS award description and supplier record are specific to Red Sails; neither establishes a current disease-resistance rating.",
+            "es": "La descripción del premio AAS y la ficha del proveedor son específicas de Red Sails; ninguna establece una calificación actual de resistencia a enfermedades."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Looseleaf habit and bronze-red crinkled foliage are variety-specific descriptions, not romaine traits.",
+            "es": "El porte de hoja suelta y el follaje bronce rojizo rizado son descripciones de la variedad, no rasgos de la romana."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Shallow roots, moisture and heat/bolting guidance come from UMN's general lettuce guidance, not Red Sails trials.",
+            "es": "Las raíces poco profundas y la guía de humedad y calor/espigado proceden de la guía general de lechuga de UMN, no de ensayos de Red Sails."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Cutting guidance is supplier-specific; repeat regrowth is not guaranteed.",
+            "es": "La guía de corte es específica del proveedor; no se garantiza el rebrote repetido."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Baby/full-size dates and technique are supplier estimates/instructions, not local guarantees.",
+            "es": "Las fechas y técnicas baby/completa son estimaciones e instrucciones del proveedor, no garantías locales."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Bolting and tipburn are crop-level lettuce guidance; no Red Sails-specific tolerance or resistance claim is made.",
+            "es": "El espigado y el tipburn son guía general del cultivo de lechuga; no se afirma tolerancia o resistencia específica de Red Sails."
+          }
+        }
+      }
+    },
+    "parris-island-romaine": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Named variety, annual/open-pollinated status and type are from Johnny's product documentation.",
+            "es": "La variedad nombrada, su condición anual/de polinización abierta y el tipo proceden de la documentación de producto de Johnny's."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Leaf color/shape and maturity estimates are specific to Johnny's Parris Island listing.",
+            "es": "El color/forma de hoja y las estimaciones de madurez son específicas de la ficha Parris Island de Johnny's."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Field distances are production guidance and are explicitly not converted to Garden pod spacing; UMN context is crop-level.",
+            "es": "Las distancias de campo son guía de producción y no se convierten en separación de pods de Garden; el contexto UMN es general del cultivo."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Succession sowing is presented as an optional home adaptation of the supplier's production suggestion.",
+            "es": "La siembra escalonada se presenta como adaptación doméstica opcional de la sugerencia productiva del proveedor."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Baby/full-size dates and harvest methods are supplier estimates/instructions, not guaranteed local timing.",
+            "es": "Las fechas y formas de cosecha baby/completa son estimaciones e instrucciones del proveedor, no tiempos locales garantizados."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Bolting/tipburn guidance is general lettuce evidence; no Parris Island resistance profile is established.",
+            "es": "La guía sobre espigado/tipburn es evidencia general de lechuga; no se establece un perfil de resistencia de Parris Island."
+          }
+        }
+      }
+    },
+    "red-mustard-greens": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "watercress": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "redbor-kale": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Johnny's Redbor F1 product identity is cultivar-specific; it does not establish traits of all kale.",
+            "es": "La identidad del producto Redbor F1 de Johnny's es específica de esta selección; no establece rasgos de todas las coles rizadas."
+          },
+          "action": {
+            "en": "Keep F1 and purple-red leaf claims attached to Redbor; do not generalize them to Brassica oleracea or kale as a whole.",
+            "es": "Mantén las afirmaciones de F1 y hojas púrpura rojizas vinculadas a Redbor; no las generalices a Brassica oleracea ni a toda la col rizada."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Leaf color, frill, and uniformity are supplier-described Redbor traits; mature dimensions were not established.",
+            "es": "El color, el rizado y la uniformidad son rasgos de Redbor descritos por el proveedor; no se establecieron dimensiones maduras."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor kale soil/moisture guidance is crop-level; UW–Madison cold-season context is kale-level, not an indoor or hydroponic prescription.",
+            "es": "La guía exterior de suelo y humedad es de nivel cultivo; el contexto de estación fresca de UW–Madison es para col rizada, no una receta interior o hidropónica."
+          },
+          "action": {
+            "en": "Do not infer grow-light intensity, hydroponic suitability, nutrient targets, or pod spacing from field guidance.",
+            "es": "No infieras intensidad de luz de cultivo, aptitud hidropónica, objetivos de nutrientes ni separación de pods a partir de una guía de campo."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Cold-enhanced color, curl, and flavor are supplier-reported Redbor responses without a universal temperature threshold.",
+            "es": "El color, el rizado y el sabor intensificados por el frío son respuestas de Redbor descritas por el proveedor, sin umbral térmico universal."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Repeated outer-leaf harvest is general kale guidance; preserving the center is a practical adaptation, not a Redbor-specific pruning trial.",
+            "es": "La cosecha repetida de hojas exteriores es guía general de col rizada; conservar el centro es una adaptación práctica, no un ensayo de poda específico de Redbor."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The approximately 55-day figure is Johnny's estimate from direct seeding for its product; extension leaf-harvest advice is crop-level and timing varies.",
+            "es": "La cifra aproximada de 55 días es una estimación de Johnny's desde siembra directa para su producto; la cosecha de hojas de Extension es de nivel cultivo y el tiempo varía."
+          },
+          "action": {
+            "en": "Treat maturity days as a reference, not a guarantee or transplant-to-harvest interval.",
+            "es": "Trata los días a madurez como referencia, no como garantía ni como intervalo desde trasplante hasta cosecha."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Cabbage worms/loopers and row-cover guidance are supplier kale culture; seed-lot pathogen tests are not cultivar resistance claims.",
+            "es": "Los gusanos/medidores y las cubiertas corresponden a cultivo general de col rizada; las pruebas de patógenos del lote no prueban resistencia del cultivar."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Supplier field-row spacing is outdoor soil guidance only; no Redbor pod count or indoor spacing is established.",
+            "es": "La distancia entre hileras del proveedor es solo guía de suelo exterior; no se estableció número de pods ni distancia interior para Redbor."
+          }
+        }
+      }
+    },
+    "georgia-collards": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "mizuna-red-streaks": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "mexican-tarragon": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "purple-basil": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cinnamon-basil": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "anise": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "hyssop": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "feverfew": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "stevia": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "black-krim-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "san-marzano-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cherry-bomb-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "yellow-brandywine-tomato": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "black-beauty-eggplant": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Cornell's named Black Beauty entry is a participatory variety record, not a controlled trial; UMN advice is eggplant crop-level and Minnesota outdoor guidance.",
+            "es": "La ficha Black Beauty de Cornell es un registro participativo de variedad, no un ensayo controlado; la guía de UMN es de berenjena general y huerto exterior de Minnesota."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "UMN describes support and sunburn prevention, but does not establish a cultivar-specific pruning program; preserving healthy foliage is a cautious Garden adaptation.",
+            "es": "UMN describe soporte y prevención de quemadura solar, pero no establece poda específica del cultivar; conservar follaje sano es una adaptación prudente de Garden."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Glossy/firm maturity cues and shear harvest are UMN eggplant guidance; Cornell's fruit-size observations are aggregated and not a picking-size guarantee.",
+            "es": "El brillo/firmeza y el corte con tijeras son guía de UMN para berenjena; el tamaño de Cornell es agregado y no garantiza una medida de cosecha."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Heat, moisture, and sunburn concerns are Minnesota eggplant crop guidance; no Black Beauty disease-resistance claim is made.",
+            "es": "Calor, humedad y quemadura solar son guía de cultivo de berenjena de Minnesota; no se afirma resistencia a enfermedades de Black Beauty."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Repeat flowering after harvest is UMN species/crop guidance, not a guaranteed Black Beauty yield pattern.",
+            "es": "La floración repetida tras cosechar es guía de UMN a nivel de especie/cultivo, no patrón garantizado de rendimiento Black Beauty."
+          }
+        }
+      }
+    },
+    "tomatillo": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "UMN discusses both Physalis ixocarpa and P. philadelphica; its variety examples and values are not automatically assigned to this unspecified tomatillo type.",
+            "es": "UMN trata Physalis ixocarpa y P. philadelphica; sus ejemplos y valores varietales no se asignan automáticamente a este tipo de tomatillo sin cultivar especificado."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Conditional pruning is UMN outdoor guidance when plants crowd each other, not a routine pruning or indoor training protocol.",
+            "es": "La poda condicional es guía exterior de UMN cuando las plantas se amontonan, no protocolo rutinario ni de guiado interior."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Green, firm, husk-filled harvest is UMN crop guidance; color examples and fruit sizes for named varieties remain variety-specific.",
+            "es": "Cosechar verde, firme y llenando el cáliz es guía de cultivo de UMN; los colores y tamaños de variedades nombradas siguen siendo específicos."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Flower-abortion temperature values are Minnesota crop thresholds, not universal cultivar limits or a diagnosis from one symptom.",
+            "es": "Los umbrales térmicos de aborto floral son valores regionales de Minnesota, no límites universales de cultivar ni diagnóstico por un síntoma aislado."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "More than one plant is UMN's crop-level recommendation for better fruit set; it does not assert that every tomatillo selection is self-incompatible.",
+            "es": "Más de una planta es recomendación de UMN para mejorar el cuajado; no afirma que toda selección de tomatillo sea autoincompatible."
+          }
+        }
+      }
+    },
+    "ground-cherry": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "UMN's shared ground-cherry page covers several Physalis species; only genus/group-level statements should be applied unless P. pruinosa is named.",
+            "es": "La página conjunta de UMN abarca varias especies de Physalis; aplica afirmaciones de género/grupo salvo que se nombre P. pruinosa."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "The source does not prescribe pruning/support for P. pruinosa; do not transfer tomatillo or tomato training automatically.",
+            "es": "La fuente no prescribe poda/soporte para P. pruinosa; no traslades automáticamente el guiado de tomatillo o tomate."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Dry husk and fruit drop are shared ground-cherry maturity cues across the UMN page; no specific cultivar timing is established.",
+            "es": "Cáliz seco y fruto caído son señales compartidas de madurez en la guía de UMN; no se establece calendario de cultivar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Disease notes and temperature values are crop-group and Minnesota regional guidance, not a P. pruinosa resistance assessment.",
+            "es": "Las enfermedades y temperaturas son guía regional de grupo para Minnesota, no evaluación de resistencia de P. pruinosa."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "The cited temperature warning covers tomatillos and ground cherries together and is not species-specific to every Physalis accession.",
+            "es": "La advertencia térmica citada cubre tomatillos y cerezas de tierra juntas y no es específica de todo acceso de Physalis."
+          }
+        }
+      }
+    },
+    "cantaloupe": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "USU guidance is cantaloupe/muskmelon crop-level evidence, not a named-cultivar claim.",
+            "es": "La guía de USU corresponde al cultivo de cantalupo/melón, no a un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Utah outdoor-soil recommendations; do not translate field water or spacing into hydroponic settings.",
+            "es": "Recomendaciones de suelo exterior para Utah; no conviertas riego ni distancias de campo en ajustes hidropónicos."
+          },
+          "action": {
+            "en": "Keep moisture reaching the root zone, especially around flowering and fruit set. USU's recommendation to reduce water near ripening is regional crop advice, not a universal indoor target.",
+            "es": "Procura que la humedad llegue a la zona de raíces, sobre todo durante floración y cuajado. La recomendación regional de USU de reducir el agua al acercarse la madurez no es un objetivo universal de interior."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Trellising is an optional small-garden adaptation, not a pruning requirement.",
+            "es": "El enrejado es una adaptación opcional para jardines pequeños, no un requisito de poda."
+          },
+          "action": {
+            "en": "If you train vines vertically, support each enlarging melon so its weight does not injure the vine; USU does not establish a cultivar-specific pruning regimen.",
+            "es": "Si guías las enredaderas en vertical, sostiene cada melón que aumente de tamaño para que su peso no dañe la guía; USU no establece un régimen de poda propio de cultivar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "USU maturity cues apply to cantaloupe crop types; days from flowering vary by temperature and variety.",
+            "es": "Las señales de madurez de USU corresponden a tipos de cantalupo; los días desde floración varían con temperatura y variedad."
+          },
+          "action": {
+            "en": "Use several signs together: coarser netting, creamy-yellow background color, and fruit separating easily with a gentle twist. Pick ripe fruit rather than relying on a single date.",
+            "es": "Combina varias señales: red más áspera, color de fondo crema-amarillo y separación fácil del fruto con un giro suave. Cosecha cuando esté maduro, no solo por una fecha."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Fruit-set causes and downy-mildew symptoms are crop-level; confirm symptoms before intervention.",
+            "es": "Las causas de cuajado y síntomas de mildiu velloso corresponden al cultivo; confirma antes de intervenir."
+          },
+          "action": {
+            "en": "When female flowers fail to set fruit, consider pollination, heat, and water stress rather than assuming a cultivar defect. For angular yellow lesions and gray-purple undersides, verify downy mildew with a reliable diagnosis.",
+            "es": "Si las flores femeninas no cuajan, considera polinización, calor y estrés hídrico antes de asumir un defecto de cultivar. Ante lesiones amarillas angulares y envés gris violáceo, confirma el mildiu con diagnóstico confiable."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "USU's male/female flower description is cantaloupe crop guidance.",
+            "es": "La descripción de flores masculinas y femeninas de USU es guía del cultivo de cantalupo."
+          },
+          "action": {
+            "en": "Male flowers commonly appear first. A female bloom has a small swelling behind it that becomes fruit after pollination; early male-flower drop alone is normal.",
+            "es": "Las flores masculinas suelen aparecer primero. Detrás de la flor femenina hay un pequeño ovario que puede convertirse en fruto tras la polinización; que caigan las primeras flores masculinas es normal."
+          }
+        }
+      }
+    },
+    "sugar-baby-watermelon": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "USU watermelon advice is species/crop-level and is not Sugar Baby cultivar evidence.",
+            "es": "La guía de sandía de USU corresponde a especie/cultivo y no es evidencia específica de Sugar Baby."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor Utah soil guidance; spacing and water amounts are not indoor or hydroponic settings.",
+            "es": "Guía de suelo exterior de Utah; distancias y cantidades de agua no son ajustes de interior o hidroponía."
+          },
+          "action": {
+            "en": "Maintain deep root-zone moisture as vines and fruit develop. Do not interpret a reduction near harvest as permission to let the plant wilt or as a fixed irrigation formula.",
+            "es": "Mantén humedad profunda en la zona de raíces mientras crecen las guías y frutos. Reducir agua cerca de cosecha no significa dejar marchitar la planta ni aplicar una fórmula fija."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "No Sugar Baby-specific pruning, trellising, or compactness evidence was found in the cited crop guide.",
+            "es": "La guía del cultivo no aporta evidencia de poda, enrejado o porte compacto específicos de Sugar Baby."
+          },
+          "action": {
+            "en": "Handle the trailing vine carefully and avoid assuming that a smaller-fruited name means a compact plant.",
+            "es": "Manipula con cuidado la guía rastrera y no supongas que un nombre asociado a frutos pequeños significa una planta compacta."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "These are general watermelon maturity cues; no Sugar Baby date or size threshold is established.",
+            "es": "Son señales generales de madurez de sandía; no se establece fecha ni umbral de tamaño para Sugar Baby."
+          },
+          "action": {
+            "en": "Check the tendril opposite the fruit, the ground spot, and whether the rind has dulled; combine indicators instead of judging by tapping or calendar alone.",
+            "es": "Revisa el zarcillo opuesto al fruto, la mancha de apoyo y si la cáscara se volvió opaca; combina indicadores en vez de depender solo del sonido o calendario."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Stress and downy-mildew guidance is crop-level and cannot diagnose an individual plant or claim cultivar resistance.",
+            "es": "La guía de estrés y mildiu es del cultivo; no diagnostica una planta ni demuestra resistencia de cultivar."
+          },
+          "action": {
+            "en": "Note wilting, heat, and soil moisture when flavor or fruit development is poor. Angular lesions with gray-purple growth beneath leaves can indicate downy mildew, but confirm before treatment.",
+            "es": "Registra marchitez, calor y humedad del suelo si el sabor o desarrollo del fruto es deficiente. Lesiones angulares con crecimiento gris violáceo debajo pueden indicar mildiu velloso; confirma antes de tratar."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "The crop sources do not establish a Sugar Baby flower-removal practice.",
+            "es": "Las fuentes del cultivo no establecen una práctica de retirar flores para Sugar Baby."
+          },
+          "action": {
+            "en": "Track flowering and fruit set separately and note environmental stress; do not remove flowers based on a generic herb-care rule.",
+            "es": "Registra floración y cuajado por separado y anota estrés ambiental; no retires flores aplicando una regla genérica de hierbas."
+          }
+        }
+      }
+    },
+    "sweet-chocolate-pepper": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "waltham-29-broccoli": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "purple-of-sicily-cauliflower": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "golden-acre-cabbage": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Fedco's identity and selection description is limited to its open-pollinated Copenhagen Market-type Golden Acre seed offering.",
+            "es": "La identidad y descripción de selección de Fedco se limita a su oferta Golden Acre de polinización abierta tipo Copenhagen Market."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Compact plant and head-weight description is Fedco product context; it does not establish height, spread or system fit.",
+            "es": "La descripción de planta compacta y peso de cabeza es contexto del producto Fedco; no establece altura, extensión ni compatibilidad con un sistema."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Fedco's 62-day figure is from transplant for its offering; it is a catalog estimate, not universal timing.",
+            "es": "Los 62 días de Fedco se cuentan desde el trasplante de su oferta; es una estimación de catálogo, no un calendario universal."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "red-acre-cabbage": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "early-white-vienna-kohlrabi": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "gai-lan": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Kew reconciles the older alboglabra name as a synonym; OMAFRA crop facts remain regional and no cultivar is claimed.",
+            "es": "Kew reconcilia el nombre antiguo alboglabra como sinónimo; los datos de cultivo de OMAFRA son regionales y no se afirma un cultivar."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The edible crop is described as stems and leaves; mature dimensions are not established.",
+            "es": "La cosecha comestible se describe como tallos y hojas; las dimensiones maduras no están establecidas."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Ontario season and field spacing do not transfer to Garden indoor or pod settings.",
+            "es": "La temporada y distancia de campo de Ontario no se trasladan al cultivo interior ni a los pods de Garden."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Bolting triggers are brassica crop guidance; no cultivar tolerance is inferred.",
+            "es": "Los factores de floración prematura son orientación para brassicas; no se infiere tolerancia varietal."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The 15–20 cm cue and repeat-harvest note are Ontario crop guidance, not a universal schedule.",
+            "es": "La señal de 15–20 cm y la cosecha repetida son guía regional de Ontario, no un calendario universal."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "OMAFRA pest observations are explicitly regional and limited; inspect before diagnosing.",
+            "es": "Las observaciones de plagas de OMAFRA son explícitamente regionales y limitadas; inspecciona antes de diagnosticar."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Cuisine and preparation examples are crop-level use context, not cultivar flavor claims.",
+            "es": "Las cocinas y preparaciones son contexto de uso del cultivo, no afirmaciones de sabor varietal."
+          }
+        }
+      }
+    },
+    "purple-sprouting-broccoli": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "The profile describes the sprouting-broccoli crop type, not a named cultivar or calabrese head type.",
+            "es": "La ficha describe el tipo brócoli de brotes, no un cultivar nombrado ni el tipo de cabeza calabrés."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "RHS dimensions and season vary by variety and UK context; no exact size or calendar is assigned here.",
+            "es": "Las dimensiones y temporada RHS varían por variedad y contexto británico; aquí no se asigna tamaño ni calendario exactos."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Cool-summer response is crop-level RHS guidance, not a cultivar-specific heat rating.",
+            "es": "La respuesta a veranos frescos es guía RHS del cultivo, no una calificación térmica varietal."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Watering and support directions concern outdoor growing and depend on site exposure.",
+            "es": "El riego y soporte se refieren al cultivo exterior y dependen de la exposición del sitio."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Tight-bud and side-shoot guidance applies to sprouting broccoli crop behavior; timing varies by type.",
+            "es": "La cosecha con botones cerrados y brotes laterales corresponde al comportamiento del cultivo; el momento varía por tipo."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Pest and disease notes describe common brassica risks, not profile-specific resistance or diagnosis.",
+            "es": "Las plagas y enfermedades son riesgos comunes de brassicas, no resistencia ni diagnóstico específico de la ficha."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Edible shoot and cooking notes are general sprouting-broccoli guidance.",
+            "es": "La parte comestible y preparación son orientación general del brócoli de brotes."
+          }
+        }
+      }
+    },
+    "brussels-sprouts-long-island": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Cornell identifies the named variety; its listing is not a controlled trial, and reported dimensions conflict.",
+            "es": "Cornell identifica la variedad nombrada; su registro no es un ensayo controlado y las dimensiones publicadas discrepan."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "The stalk and bottom-up bud development are crop-level; exact cultivar height and spread remain unresolved.",
+            "es": "El tallo y la maduración ascendente son del cultivo; la altura y extensión exactas del cultivar siguen sin resolverse."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Cool-season and moisture notes are Minnesota outdoor guidance, not an indoor watering formula.",
+            "es": "El clima fresco y la humedad son guía exterior de Minnesota, no una fórmula de riego interior."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Moisture-related quality symptoms are crop-level observations; no named-variety susceptibility is claimed.",
+            "es": "Los síntomas de calidad ligados a humedad son observaciones del cultivo; no se afirma susceptibilidad varietal."
+          }
+        },
+        "management": {
+          "context": {
+            "en": "Topping is an optional crop-management technique for a stated purpose, not mandatory routine pruning.",
+            "es": "El despunte es una técnica opcional con un objetivo concreto, no una poda rutinaria obligatoria."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The one-inch cue is a UMN crop reference; size and maturity vary across sources and conditions.",
+            "es": "La señal de una pulgada es referencia de cultivo de UMN; tamaño y madurez varían entre fuentes y condiciones."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Pests and moisture issues are general Brussels-sprout risks, not cultivar-specific resistance claims.",
+            "es": "Las plagas y problemas de humedad son riesgos generales, no afirmaciones de resistencia del cultivar."
+          }
+        },
+        "uses": {
+          "context": {
+            "en": "Leaf-use information is from UMN crop guidance, not a Long Island Improved flavor claim.",
+            "es": "El uso de hojas procede de guía de cultivo de UMN, no de una afirmación de sabor de Long Island Improved."
+          }
+        }
+      }
+    },
+    "danvers-carrot": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "chioggia-beet": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "UW–Madison identifies Chioggia as a historic named garden-beet variety; generic cultivation statements remain beet-level.",
+            "es": "UW–Madison identifica Chioggia como variedad histórica de remolacha de jardín; las indicaciones generales de cultivo siguen siendo de nivel remolacha."
+          },
+          "action": {
+            "en": "Keep the Italian heirloom and ringed-root claims specific to Chioggia; do not apply them to all Beta vulgaris.",
+            "es": "Mantén el origen italiano y los anillos de la raíz como afirmaciones específicas de Chioggia; no los atribuyas a toda Beta vulgaris."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Root shape and red-white rings are described for Chioggia, with explicitly noted variation among roots.",
+            "es": "La forma de raíz y los anillos rojos y blancos se describen para Chioggia, con variación explícita entre raíces."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Cool-season, loose-soil, and moisture guidance is outdoor garden-beet context, not hydroponic or indoor evidence.",
+            "es": "La estación fresca, el suelo suelto y la humedad corresponden al cultivo exterior de remolacha, no a evidencia hidropónica o de interior."
+          },
+          "action": {
+            "en": "Do not convert outdoor soil spacing or culture into a hydroponic system recommendation.",
+            "es": "No conviertas la distancia o el manejo de suelo exterior en una recomendación para sistemas hidropónicos."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Root-shoulder covering, shallow-root caution, and dryness effects are garden-beet guidance in the cited Chioggia article.",
+            "es": "Cubrir el hombro, cuidar las raíces superficiales y evitar sequedad son indicaciones de remolacha de jardín en el artículo de Chioggia citado."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Pinching crowded beet seedlings is outdoor establishment guidance; it is not a mature-plant pruning prescription.",
+            "es": "Pellizcar plántulas agrupadas es guía de establecimiento exterior; no es una prescripción de poda para la planta madura."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The 50–60 day interval and approximately 1-inch root size are UW–Madison references, not fixed cultivar guarantees.",
+            "es": "El intervalo de 50–60 días y el tamaño cercano a 1 pulgada son referencias de UW–Madison, no garantías fijas del cultivar."
+          },
+          "action": {
+            "en": "Harvest by observed root size and condition; timing depends on conditions and intended use.",
+            "es": "Cosecha según el tamaño y estado observados de la raíz; el tiempo depende de las condiciones y del uso previsto."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Few major problems, leafminer effects, superficial soil-pest damage, and dry-root texture are beet-level observations, not Chioggia resistance claims.",
+            "es": "Los pocos problemas graves, los minadores, el daño superficial del suelo y la textura por sequedad son observaciones de remolacha, no afirmaciones de resistencia de Chioggia."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "About 2-inch thinning is outdoor soil spacing from the extension source; it is not pod spacing.",
+            "es": "El aclareo de unas 2 pulgadas es una distancia de suelo exterior de la fuente de Extension; no equivale a separación de pods."
+          }
+        }
+      }
+    },
+    "french-breakfast-radish": {
+      "wave": 2,
+      "sections": {
+        "identity": {"context": {"en": "French Breakfast is treated as an elongated horticultural type within Raphanus sativus, not as a verified named seed strain.", "es": "French Breakfast se trata como tipo hortícola alargado dentro de Raphanus sativus, no como una cepa nombrada verificada."}},
+        "cultivation": {"context": {"en": "Cool, moist, loose-soil guidance is crop-level outdoor evidence; no hydroponic settings are established.", "es": "La guía de clima fresco, humedad y suelo suelto es evidencia del cultivo exterior; no establece parámetros hidropónicos."}},
+        "growth": {"context": {"en": "The elongated form is type-level; no cultivar-specific mature dimensions are established.", "es": "La forma alargada corresponde al tipo; no se establecen dimensiones maduras específicas de un cultivar."}},
+        "care": {"context": {"en": "Pest descriptions apply to radish crops generally and do not imply French Breakfast resistance or susceptibility.", "es": "Las plagas descritas corresponden al cultivo de rábano en general y no implican resistencia o susceptibilidad de French Breakfast."}},
+        "harvest": {"context": {"en": "Harvest advice is crop-level and condition-based, not a fixed maturity promise for this type.", "es": "La cosecha se basa en el cultivo y el estado observado, no en una promesa fija de madurez para este tipo."}},
+        "problems": {"context": {"en": "Heat, moisture fluctuation, and overmaturity are general radish-quality risks, not cultivar-specific diagnoses.", "es": "El calor, los cambios de humedad y la sobremadurez son riesgos generales de calidad del rábano, no diagnósticos del cultivar."}},
+        "management": {"context": {"en": "No routine mature-plant pruning protocol is established in the selected evidence.", "es": "La evidencia seleccionada no establece un protocolo de poda rutinaria para la planta madura."}}
+      }
+    },
+    "daikon-radish": {
+      "wave": 2,
+      "sections": {
+        "identity": {"context": {"en": "Daikon is a horticultural type within Raphanus sativus; individual selections vary in root form and size.", "es": "Daikon es un tipo hortícola dentro de Raphanus sativus; cada selección varía en forma y tamaño de raíz."}},
+        "cultivation": {"context": {"en": "Deep, friable soil and moisture claims refer to outdoor root-crop cultivation, not a hydroponic system.", "es": "El suelo profundo y friable y las indicaciones de humedad corresponden al cultivo exterior de raíz, no a un sistema hidropónico."}},
+        "growth": {"context": {"en": "Large taproots are characteristic of the type, but no single mature length is assigned to all daikon selections.", "es": "Las raíces pivotantes grandes caracterizan el tipo, pero no se asigna una longitud madura única a todas las selecciones daikon."}},
+        "care": {"context": {"en": "Seasonal bolting guidance varies by selection and climate; this profile avoids a universal calendar.", "es": "La recomendación estacional para reducir floración prematura varía por selección y clima; esta ficha evita un calendario universal."}},
+        "harvest": {"context": {"en": "Careful loosening and lifting are type-level harvest guidance; exact timing and target size vary.", "es": "Aflojar el suelo y levantar con cuidado son indicaciones de cosecha del tipo; el momento y tamaño objetivo varían."}},
+        "problems": {"context": {"en": "Soil compaction, drought, and heat are crop-level quality concerns, not disease diagnoses.", "es": "La compactación, sequía y calor son factores generales de calidad del cultivo, no diagnósticos de enfermedad."}},
+        "management": {"context": {"en": "No routine pruning or training schedule is established for the established root crop.", "es": "No se establece un calendario rutinario de poda o conducción para el cultivo de raíz establecido."}}
+      }
+    },
+    "cherry-belle-radish": {
+      "wave": 3,
+      "sections": {
+        "identity": {"context": {"en": "The round scarlet root and white flesh description is scoped to Burpee's Cherry Belle product.", "es": "La descripción de raíz escarlata redonda y pulpa blanca se limita al producto Cherry Belle de Burpee."}},
+        "cultivation": {"context": {"en": "Cool, moist, loose-soil cultivation is general radish guidance, not a Cherry Belle indoor or hydroponic prescription.", "es": "El cultivo fresco, húmedo y en suelo suelto es guía general de rábanos, no una prescripción interior o hidropónica para Cherry Belle."}},
+        "growth": {"context": {"en": "Product morphology is not a guarantee of dimensions or performance across sellers and seed lots.", "es": "La morfología del producto no garantiza dimensiones o desempeño entre proveedores y lotes de semillas."}},
+        "care": {"context": {"en": "Pest recognition is radish-crop level; no Cherry Belle disease-resistance claim is made.", "es": "El reconocimiento de plagas corresponde al cultivo de rábano; no se afirma resistencia a enfermedades de Cherry Belle."}},
+        "harvest": {"context": {"en": "Harvest cues apply to table radishes generally; exact maturity depends on local conditions and seed source.", "es": "Las señales de cosecha corresponden a rábanos de mesa en general; la madurez depende de las condiciones y proveedor de semilla."}},
+        "problems": {"context": {"en": "Heat, moisture fluctuation, and overmaturity are crop-level concerns, not cultivar-specific diagnoses.", "es": "El calor, las variaciones de humedad y la sobremadurez son factores generales del cultivo, no diagnósticos del cultivar."}},
+        "management": {"context": {"en": "No routine pruning schedule is established in the selected Cherry Belle or crop-level sources.", "es": "Las fuentes seleccionadas de Cherry Belle y del cultivo no establecen un calendario rutinario de poda."}}
+      }
+    },
+    "tokyo-cross-turnip": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Takii identifies Tokyo Cross F1; breeder-described traits apply to this named product only.",
+            "es": "Takii identifica Tokyo Cross F1; los rasgos descritos por el obtentor corresponden solo a este producto nombrado."
+          }
+        },
+        "growth": { "context": { "en": "Root dimensions and harvest-size window are breeder specifications, not a Garden-system promise.", "es": "Las dimensiones y ventana de tamaño son especificaciones del obtentor, no una promesa para sistemas Garden." } },
+        "cultivation": { "context": { "en": "UMN outdoor soil guidance is crop-level and regional; no indoor or hydroponic parameters are inferred.", "es": "La guía de UMN para suelo exterior es general y regional; no se infieren parámetros interiores o hidropónicos." } },
+        "maintenance": { "context": { "en": "Pest references are turnip crop-level and do not establish Tokyo Cross resistance.", "es": "Las plagas citadas son del cultivo de nabo y no establecen resistencia de Tokyo Cross." } },
+        "harvest": {
+          "context": {
+            "en": "Takii's broad size range is a breeder claim; UMN's overmaturity warning is general turnip advice.",
+            "es": "El amplio rango de tamaño de Takii es una afirmación del obtentor; la advertencia de sobremadurez de UMN es general para el nabo."
+          }
+        },
+        "uses": { "context": { "en": "Fresh-market use is Takii's product description; leaf-specific uses are not specified on that page.", "es": "El uso fresco proviene de la descripción del producto de Takii; la página no especifica usos de las hojas." } },
+        "problems": { "context": { "en": "Heat and drought are general turnip quality concerns, not a Tokyo Cross diagnosis or resistance claim.", "es": "El calor y la sequía son riesgos generales de calidad del nabo, no diagnóstico ni resistencia de Tokyo Cross." } }
+      }
+    },
+    "watermelon-radish": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "UF/IFAS describes the watermelon-radish type; this is not a named-cultivar identification.",
+            "es": "UF/IFAS describe el tipo de rábano sandía; no es la identificación de un cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Cool-season and moisture guidance is general Raphanus crop evidence, not a hydroponic prescription.",
+            "es": "La guía de estación fresca y humedad es evidencia general de Raphanus, no una prescripción hidropónica."
+          }
+        },
+        "growth": {"context": {"en": "Pink patterned flesh and pale exterior describe the type; no standard mature size is claimed.", "es": "La pulpa rosada y el exterior pálido describen el tipo; no se afirma un tamaño maduro estándar."}},
+        "care": {"context": {"en": "Pests are described at radish-crop level; no type-specific resistance or treatment schedule is claimed.", "es": "Las plagas se describen a nivel del cultivo de rábano; no se afirma resistencia ni tratamiento específico del tipo."}},
+        "harvest": {
+          "context": {
+            "en": "Harvest recommendations are based on root condition and crop-level guidance, not fixed type-level timing.",
+            "es": "La cosecha se basa en la condición de la raíz y guía general del cultivo, no en un plazo fijo del tipo."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Heat and uneven moisture are general radish-quality risks, not a cultivar-specific disease diagnosis.",
+            "es": "El calor y la humedad irregular son riesgos generales de calidad del rábano, no un diagnóstico de enfermedad del cultivar."
+          }
+        },
+        "management": {
+          "context": {
+            "en": "No routine pruning need is established for this established root crop.",
+            "es": "No se establece una necesidad rutinaria de poda para este cultivo de raíz establecido."
+          }
+        }
+      }
+    },
+    "salsify": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "First-year roots/leaves and second-year flowering are biennial species-level traits; do not confuse edible salsify with black salsify.",
+            "es": "Las raíces/hojas del primer año y la floración del segundo son rasgos bienales a nivel de especie; no confundas el salsifí comestible con el salsifí negro."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Keep deep soil and moisture guidance scoped to outdoor/containers; no hydroponic fit is established.",
+            "es": "Limita la guía de suelo profundo y humedad a exterior/recipientes; no se establece aptitud hidropónica."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "RHS states established-plant maintenance; do not repeat seed-sowing instructions here.",
+            "es": "RHS describe el mantenimiento de plantas establecidas; no repitas aquí las instrucciones de siembra."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Purple-pink second-year flowering and self-seeding behavior are RHS species-level guidance, not cultivar timing.",
+            "es": "La floración rosa-púrpura del segundo año y la resiembra son guía de RHS a nivel de especie, no un calendario de cultivar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "white-lisbon-bunching-onion": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "walla-walla-onion": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "giant-musselburgh-leek": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sweet-spanish-onion": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "thinning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "blue-lake-pole-bean": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "The 6–7 inch pod description and long picking window belong to West Coast Seeds' Blue Lake pole product; they do not transfer to bush Blue Lake or every pole strain.",
+            "es": "La descripción de vainas de 6–7 pulgadas y la ventana larga corresponden al producto Blue Lake de enrame de West Coast Seeds; no se transfieren a Blue Lake de mata ni a toda línea de enrame."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "provider-bush-bean": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Provider pod and resistance traits refer to Johnny's listed selection; UMN care and harvest guidance remains common-bean crop-level, not hydroponic advice.",
+            "es": "Las vainas y resistencia de Provider corresponden a la selección listada por Johnny's; el cuidado y la cosecha de UMN siguen a nivel del frijol común, no son consejos hidropónicos."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Provider pod shape/size and BMV/PM resistance codes are Johnny's product claims; the crop-level harvest cue remains UMN guidance and resistance is not immunity.",
+            "es": "La forma/tamaño de vaina y los códigos BMV/PM son afirmaciones del producto Provider de Johnny's; la señal de cosecha es guía de UMN y resistencia no significa inmunidad."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sugar-ann-snow-pea": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "AAS and Johnny's document the named Sugar Ann snap-pea selection; its traits do not apply to every snow or snap pea.",
+            "es": "AAS y Johnny's documentan la selección nombrada Sugar Ann de guisante snap; sus rasgos no aplican a todos los guisantes de nieve o snap."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "AAS's pod size and flavor are named-selection descriptions; harvest by tenderness and fill rather than a fixed date.",
+            "es": "El tamaño y sabor de vaina de AAS describen esta selección; cosecha por ternura y llenado, no por fecha fija."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "AAS resistance/tolerance wording is source-specific and does not mean immunity; heat response remains regional pea-crop guidance.",
+            "es": "La redacción de resistencia/tolerancia de AAS es específica de su fuente y no significa inmunidad; la respuesta al calor sigue siendo guía regional del guisante."
+          }
+        }
+      }
+    },
+    "green-arrow-shelling-pea": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Iowa State lists Green Arrow as a named garden-pea cultivar; the cited dimensions and season class remain regional varietal references.",
+            "es": "Iowa State incluye Green Arrow como cultivar de guisante de jardín; sus dimensiones y clase de temporada son referencias varietales regionales."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Iowa State's 24–28-inch vine range is a regional Green Arrow cultivar reference, not a controlled-system measurement.",
+            "es": "El rango de guías de 24–28 pulgadas de Iowa State es una referencia regional del cultivar Green Arrow, no una medida para sistemas controlados."
+          }
+        },
+        "care": {
+          "context": {
+            "en": "Illinois Extension's pole/fence recommendation is for outdoor garden production and harvest access.",
+            "es": "La recomendación de Illinois Extension sobre postes o cercas corresponde al cultivo exterior y al acceso para cosechar."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Swollen-pod timing is crop-level shelling-pea guidance; it does not supply a cultivar-specific harvest date.",
+            "es": "El punto de cosecha por vaina hinchada es guía del cultivo para guisantes de desgranar; no fija una fecha específica para el cultivar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Heat response and wilt/root-rot signs are crop-level and regional; no Green Arrow resistance is asserted.",
+            "es": "La respuesta al calor y las señales de marchitez/pudrición son del cultivo y de alcance regional; no se afirma resistencia de Green Arrow."
+          }
+        }
+      }
+    },
+    "edamame": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "fava-bean": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "straight-eight-cucumber": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "armenian-cucumber": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "UF/IFAS identifies Armenian cucumber as Cucumis melo var. flexuosus, not Cucumis sativus; cultivar within the type is unresolved.",
+            "es": "UF/IFAS identifica el pepino armenio como Cucumis melo var. flexuosus, no Cucumis sativus; el cultivar dentro del tipo no está resuelto."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "UF/IFAS guidance reflects a northeast Florida demonstration; its exact pH, spacing, and dates are regional.",
+            "es": "La guía de UF/IFAS refleja una demostración del noreste de Florida; pH, distancias y fechas exactas son regionales."
+          },
+          "action": {
+            "en": "Provide full sun, warm conditions, drainage, and consistent water in soil culture. Vines can climb or trail; the source does not establish hydroponic compatibility.",
+            "es": "En cultivo en suelo, ofrece sol pleno, condiciones cálidas, drenaje y agua constante. Las guías pueden trepar o extenderse; la fuente no establece compatibilidad hidropónica."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Fruit form is described at Armenian cucumber type scope, not for one named cultivar.",
+            "es": "La forma del fruto se describe para el tipo de pepino armenio, no para un cultivar nombrado."
+          },
+          "action": {
+            "en": "Expect long, slender, thin-skinned fruit with longitudinal ridges; shape can be straight or curved. Trellising may produce straighter fruit in the cited demonstration, not a guaranteed cultivar trait.",
+            "es": "Espera frutos largos, delgados y de piel fina con surcos longitudinales; pueden ser rectos o curvos. En la demostración citada el enrejado produjo frutos más rectos, no es un rasgo garantizado de cultivar."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Trellising is optional and the source does not give routine pruning instructions.",
+            "es": "El enrejado es opcional y la fuente no ofrece instrucciones de poda rutinaria."
+          },
+          "action": {
+            "en": "Guide vines onto support without forcing them, or let them trail. Cut fruit from the vine rather than twisting or pulling it.",
+            "es": "Guía las enredaderas sobre el soporte sin forzarlas, o deja que se extiendan. Corta el fruto en vez de torcerlo o arrancarlo."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "12–14 inches is a local UF/IFAS flavor cue, not a universal cultivar size threshold.",
+            "es": "12–14 pulgadas es una referencia local de sabor de UF/IFAS, no un umbral universal de tamaño de cultivar."
+          },
+          "action": {
+            "en": "Harvest frequently while fruit is tender; cut it cleanly to avoid vine injury. Regular picking can encourage continued production in the cited trial.",
+            "es": "Cosecha con frecuencia mientras el fruto esté tierno; córtalo limpiamente para no herir la guía. En la prueba citada, la cosecha regular puede favorecer producción continua."
+          }
+        },
+        "flowering": {
+          "context": {
+            "en": "Pollinator access advice comes from a northeast Florida demonstration and is not proof every setup needs hand pollination.",
+            "es": "La recomendación de acceso a polinizadores proviene de una demostración del noreste de Florida y no prueba que todo sistema requiera polinización manual."
+          },
+          "action": {
+            "en": "If using row covers, uncover during the day or consider hand pollination so flowers can set fruit; the local source does not establish this as a universal requirement.",
+            "es": "Si usas cubiertas, retíralas durante el día o considera polinización manual para que las flores puedan cuajar; la fuente local no lo establece como requisito universal."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Downy-mildew guidance covers cucurbits regionally; symptoms can resemble other disorders.",
+            "es": "La guía de mildiu velloso cubre cucurbitáceas en contexto regional; sus síntomas pueden parecerse a otros trastornos."
+          },
+          "action": {
+            "en": "Inspect angular yellow lesions and gray-purple growth beneath leaves; confirm the diagnosis before choosing treatment. No Armenian cucumber resistance claim is available.",
+            "es": "Inspecciona lesiones amarillas angulares y crecimiento gris violáceo bajo las hojas; confirma el diagnóstico antes de tratar. No hay una afirmación de resistencia para pepino armenio."
+          }
+        }
+      }
+    },
+    "eight-ball-zucchini": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "sugar-pumpkin": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Sugar/pie pumpkin is represented as a horticultural type within Cucurbita pepo, not a named cultivar.",
+            "es": "La calabaza Sugar o para pay se representa como tipo hortícola dentro de Cucurbita pepo, no como cultivar nombrado."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Outdoor winter-squash crop guidance; no indoor or hydroponic footprint is established.",
+            "es": "Guía de cultivo exterior para calabaza de invierno; no establece huella interior o hidropónica."
+          },
+          "action": {
+            "en": "Allow the spreading vine room and retain healthy canopy while fruit develops. Exact mature spread and cultivar dimensions remain unknown.",
+            "es": "Deja espacio para la guía extendida y conserva el follaje sano durante el desarrollo del fruto. La extensión adulta exacta y dimensiones de cultivar siguen desconocidas."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "No routine pruning schedule for this pumpkin type was established in the reviewed sources.",
+            "es": "Las fuentes revisadas no establecen un calendario rutinario de poda para este tipo de calabaza."
+          },
+          "action": {
+            "en": "Avoid removing healthy leaves just to make the vine smaller; this is a conservative management adaptation, not a proven yield rule.",
+            "es": "Evita retirar hojas sanas solo para reducir la guía; es una adaptación conservadora de manejo, no una regla demostrada de rendimiento."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Maturity cues apply to pumpkins/winter squash broadly; curing applies only when storage is intended and conditions allow.",
+            "es": "Las señales de madurez corresponden a calabazas en general; el curado se aplica si se almacenará el fruto y las condiciones lo permiten."
+          },
+          "action": {
+            "en": "Wait for a hard rind and woody stem, then cut with stem attached. Cure only in dry, warm, ventilated conditions; the source does not promise a fixed storage life for this type.",
+            "es": "Espera una cáscara dura y un tallo leñoso; corta dejando el tallo unido. Cura solo con condiciones secas, cálidas y ventiladas; la fuente no promete duración fija de almacenamiento para este tipo."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Regional cucurbit disease recognition does not diagnose an individual pumpkin or imply type resistance.",
+            "es": "El reconocimiento regional de enfermedades de cucurbitáceas no diagnostica una calabaza ni implica resistencia del tipo."
+          },
+          "action": {
+            "en": "Look for angular yellow spots and gray-purple growth beneath leaves in humid conditions; similar symptoms require confirmation before intervention.",
+            "es": "Busca manchas amarillas angulares y crecimiento gris violáceo bajo las hojas con humedad; síntomas similares requieren confirmación antes de intervenir."
+          }
+        }
+      }
+    },
+    "alaska-nasturtium": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "pruning": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "ivory-princess-calendula": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Species-level Calendula officinalis facts are separated from one local Ivory Princess grower's observations.",
+            "es": "Los datos de Calendula officinalis a nivel de especie se separan de las observaciones locales de una cultivadora de Ivory Princess."
+          }
+        },
+        "growth": {"context":{"en":"No cultivar-specific mature dimensions are established.","es":"No se establecen dimensiones maduras específicas de este cultivar."}},
+        "cultivation": {"context":{"en":"Outdoor, cool-season calendula guidance; not an indoor-light or hydroponic prescription.","es":"Guía exterior para caléndula de clima fresco; no es una receta de luz interior ni hidroponía."}},
+        "care": {"context":{"en":"Pinching/deadheading guidance is species-level; follow the actual plant, not a fixed calendar.","es":"La guía de pinzado y despunte es de especie; observa la planta real en vez de seguir un calendario fijo."}},
+        "pruning": {
+          "context": {
+            "en": "Deadheading is supported to encourage further bloom; no cultivar-specific pruning schedule is established.",
+            "es": "Se respalda retirar flores marchitas para favorecer más floración; no hay un calendario de poda específico del cultivar."
+          }
+        },
+        "flowering": {"context":{"en":"Ivory Princess color and mildew comments are reported in a specific California coastal garden.","es":"El color y los comentarios sobre mildiu de Ivory Princess se reportaron en un jardín costero específico de California."}},
+        "harvest": {
+          "context": {
+            "en": "Cut-flower use is described for Ivory Princess; edible-petal evidence is species-level and does not verify treatment of a packet.",
+            "es": "El uso como flor de corte se describe para Ivory Princess; la evidencia de pétalos comestibles es de especie y no verifica el tratamiento del paquete."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Anecdotal low-mildew observation is not a disease-resistance rating.",
+            "es": "La observación anecdótica de poco mildiu no equivale a una calificación de resistencia a enfermedades."
+          }
+        }
+      }
+    },
+    "lemon-queen-sunflower": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "This record is the annual seed-grown H. annuus selection, not the separate perennial Helianthus 'Lemon Queen'.",
+            "es": "Esta ficha es para la selección anual de H. annuus cultivada por semilla, no para el Helianthus 'Lemon Queen' perenne distinto."
+          }
+        },
+        "growth": {
+          "context": {
+            "en": "Published height ranges differ by source and growing context; treat them as variable reports.",
+            "es": "Los rangos de altura publicados difieren según fuente y contexto de cultivo; son referencias variables."
+          }
+        },
+        "cultivation": {"context":{"en":"General H. annuus outdoor guidance; no hydroponic or indoor-light prescription is established.","es":"Guía general de H. annuus para exterior; no establece receta hidropónica ni de luz interior."}},
+        "care": {"context":{"en":"Support is conditional on actual stem stability, wind exposure and head load.","es":"El soporte depende de la estabilidad real del tallo, exposición al viento y peso de los capítulos."}},
+        "flowering": {"context":{"en":"Flower form is cultivar-specific; bloom dates are not universal.","es":"La forma floral es específica del cultivar; las fechas de floración no son universales."}},
+        "harvest": {
+          "context": {
+            "en": "Cut-flower timing is general sunflower guidance, not a cultivar-specific vase-life claim.",
+            "es": "El momento de corte es una guía general para girasol, no una afirmación de duración en florero específica del cultivar."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Crop-level risks are not cultivar resistance claims.",
+            "es": "Los riesgos del cultivo no son afirmaciones de resistencia del cultivar."
+          }
+        }
+      }
+    },
+    "signet-marigold": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Species-level Tagetes tenuifolia; this is not a named color cultivar.",
+            "es": "Tagetes tenuifolia a nivel de especie; no corresponde a un cultivar de color nombrado."
+          }
+        },
+        "growth": {"context":{"en":"Published size ranges describe the species and are not guaranteed for every seed lot.","es":"Los rangos de tamaño publicados describen la especie y no se garantizan para cada lote de semillas."}},
+        "cultivation": {"context":{"en":"Container use is documented; hydroponic compatibility is not established.","es":"Se documenta el uso en maceta; no se establece compatibilidad hidropónica."}},
+        "care": {"context":{"en":"Shelter/support advice is conditional on taller varieties and site exposure.","es":"El consejo de resguardo/soporte depende de variedades altas y de la exposición del sitio."}},
+        "pruning": {
+          "context": {
+            "en": "Deadheading is supported; no universal pinching instruction is available for this type.",
+            "es": "Se respalda retirar flores marchitas; no hay una instrucción universal de pinzado para este tipo."
+          }
+        },
+        "flowering": {"context":{"en":"Species-level colors and season vary; no color-specific cultivar is represented.","es":"Los colores y la temporada a nivel de especie varían; no se representa un cultivar de color específico."}},
+        "harvest": {
+          "context": {
+            "en": "Only some named cultivars are documented as edible; this unspecified type is not presented as food.",
+            "es": "Solo algunos cultivares nombrados se documentan como comestibles; este tipo sin especificar no se presenta como alimento."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Listed pests and botrytis are species-level cautions, not a cultivar diagnosis.",
+            "es": "Las plagas y botritis enumeradas son precauciones de especie, no un diagnóstico del cultivar."
+          }
+        }
+      }
+    },
+    "dwarf-cosmos": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "This is an unnamed dwarf-growing C. bipinnatus type; no specific compact cultivar is resolved.",
+            "es": "Es un tipo enano sin nombre de C. bipinnatus; no se resuelve un cultivar compacto específico."
+          }
+        },
+        "growth": {"context":{"en":"Species and cultivar size references are not a measurement for this unnamed type.","es":"Las referencias de tamaño de especie y cultivar no son una medida de este tipo sin nombre."}},
+        "cultivation": {"context":{"en":"Outdoor crop guidance only; no indoor-light or hydroponic prescription.","es":"Solo guía de cultivo exterior; no es receta de luz interior ni hidroponía."}},
+        "care": {"context":{"en":"Support is conditional on actual height, wind and stem stability.","es":"El soporte depende de la altura real, viento y estabilidad del tallo."}},
+        "pruning": {
+          "context": {
+            "en": "Deadheading supports continued bloom; leaving heads can allow self-sowing.",
+            "es": "Retirar flores marchitas favorece la floración; dejar cabezas puede permitir la resiembra."
+          }
+        },
+        "flowering": {"context":{"en":"Flower color and compactness are not cultivar-specific for this record.","es":"El color floral y porte compacto no son específicos de cultivar en esta ficha."}},
+        "harvest": {
+          "context": {
+            "en": "Ornamental/cut-flower use is supported; no edible use is claimed.",
+            "es": "Se respalda el uso ornamental y como flor de corte; no se afirma uso comestible."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Crop-level risks are possible issues, not guaranteed cultivar outcomes.",
+            "es": "Los riesgos del cultivo son problemas posibles, no resultados garantizados del cultivar."
+          }
+        }
+      }
+    },
+    "sweet-alyssum-white": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "White-flowered type of L. maritima; no named cultivar is assigned.",
+            "es": "Tipo de flor blanca de L. maritima; no se asigna un cultivar nombrado."
+          }
+        },
+        "growth": {"context":{"en":"Species dimensions are broad references, not cultivar-specific measurements.","es":"Las dimensiones de especie son referencias amplias, no medidas específicas del cultivar."}},
+        "cultivation": {"context":{"en":"Outdoor exposure and drainage guidance; not an indoor or hydroponic recipe.","es":"Guía exterior de exposición y drenaje; no es receta interior ni hidropónica."}},
+        "care": {"context":{"en":"Cutback timing follows local heat and observed bloom decline.","es":"El recorte depende del calor local y de la caída de floración observada."}},
+        "pruning": {
+          "context": {
+            "en": "No exact cut height or schedule is established.",
+            "es": "No se establece altura de corte ni calendario exactos."
+          }
+        },
+        "flowering": {"context":{"en":"Heat can reduce bloom; white-flower fragrance is a species-page observation.","es":"El calor puede reducir la floración; el aroma de las flores blancas es una observación de la página de especie."}},
+        "harvest": {
+          "context": {
+            "en": "Ornamental use is documented; culinary use is not established here.",
+            "es": "Se documenta uso ornamental; aquí no se establece uso culinario."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "The source lists possible stresses and rots; no disease resistance is claimed.",
+            "es": "La fuente enumera estreses y pudriciones posibles; no se afirma resistencia a enfermedades."
+          }
+        }
+      }
+    },
+    "love-in-a-mist": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Generic Nigella damascena identity; listed named cultivars are not assigned here.",
+            "es": "Identidad genérica Nigella damascena; aquí no se asignan los cultivares nombrados de la fuente."
+          }
+        },
+        "growth": {"context":{"en":"Dimensions are species-level references and may vary by cultivar/site.","es":"Las dimensiones son referencias de especie y pueden variar por cultivar o sitio."}},
+        "cultivation": {"context":{"en":"Outdoor cool-season garden guidance; no hydroponic or indoor system values.","es":"Guía exterior de jardín para clima fresco; sin valores hidropónicos ni de cultivo interior."}},
+        "care": {"context":{"en":"Bloom extension and pod retention are competing goals.","es":"Prolongar la floración y conservar cápsulas son objetivos contrapuestos."}},
+        "pruning": {
+          "context": {
+            "en": "Deadheading removes the flowers that would otherwise form decorative capsules.",
+            "es": "Retirar flores marchitas elimina las flores que formarían cápsulas decorativas."
+          }
+        },
+        "flowering": {"context":{"en":"Seasonal timing is regional and not a universal bloom calendar.","es":"El momento estacional es regional y no constituye un calendario universal."}},
+        "harvest": {
+          "context": {
+            "en": "Cut/dried ornamental use is documented; no edible use is claimed.",
+            "es": "Se documenta uso ornamental fresco o seco; no se afirma uso comestible."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "No known pests/diseases are listed, which does not rule out local issues.",
+            "es": "No se enumeran plagas/enfermedades conocidas, lo que no descarta problemas locales."
+          }
+        }
+      }
+    },
+    "globe-amaranth": {
+      "wave": 4,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Gomphrena globosa species-level profile; no named cultivar is represented.",
+            "es": "Ficha de Gomphrena globosa a nivel de especie; no se representa un cultivar nombrado."
+          }
+        },
+        "growth": {"context":{"en":"Reported species ranges are references, not guaranteed mature dimensions.","es":"Los rangos de especie publicados son referencias, no dimensiones maduras garantizadas."}},
+        "cultivation": {"context":{"en":"Full-sun outdoor crop guidance; no indoor or hydroponic method is established.","es":"Guía exterior de cultivo a pleno sol; no se establece un método interior ni hidropónico."}},
+        "care": {"context":{"en":"Drought tolerance applies after establishment, not as a reason to ignore young-plant moisture.","es":"La tolerancia a sequía aplica después del establecimiento, no justifica ignorar la humedad de plantas jóvenes."}},
+        "pruning": {
+          "context": {
+            "en": "The source does not establish a required deadheading or shaping schedule.",
+            "es": "La fuente no establece un calendario obligatorio de despunte ni de formación."
+          }
+        },
+        "flowering": {"context":{"en":"Flower color and timing are variable and not cultivar-specific here.","es":"El color y momento de floración varían y aquí no son específicos de un cultivar."}},
+        "harvest": {
+          "context": {
+            "en": "Harvest/use is ornamental and floral; no edible use is claimed.",
+            "es": "La cosecha y el uso son ornamentales y florales; no se afirma uso comestible."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "General species notes include possible cultivar-specific disorders; they are not resistance claims.",
+            "es": "Las notas generales de especie incluyen posibles trastornos específicos de ciertos cultivares; no son afirmaciones de resistencia."
+          }
+        }
+      }
+    },
+    "culantro": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "papalo-porophyllum-ruderale": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "shiso-perilla-frutescens": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "bloody-dock-rumex-sanguineus": {
+      "wave": 5,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "harvest": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "venus-flytrap-dionaea-muscipula": {
+      "wave": 6,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "cape-sundew-drosera-capensis": {
+      "wave": 6,
+      "sections": {
+        "identity": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "propagation": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        },
+        "problems": {
+          "context": {
+            "en": "Evidence is scoped to the cited crop or product; verify the actual growing system.",
+            "es": "Evidencia limitada al cultivo o producto citado; verifica el sistema real."
+          }
+        }
+      }
+    },
+    "pinguicula-primuliflora": {
+      "wave": 6,
+      "sections": {
+        "identity": {"context":{"en":"The species identity is accepted; butterwort is a broader common-name group.","es":"La identidad de especie está aceptada; butterwort/grasilla es un nombre común más amplio."}},
+        "growth": {"context":{"en":"The 4–16 cm crown-width range is not a spacing or pod-count recommendation.","es":"El rango de 4–16 cm de ancho de corona no es una recomendación de separación ni de cantidad de pods."}},
+        "cultivation": {"context":{"en":"Carnivorous-plant media and root-zone wetness do not establish recirculating nutrient-solution compatibility.","es":"El medio para plantas carnívoras y la humedad de raíces no establecen compatibilidad con solución nutritiva recirculante."}},
+        "care": {"context":{"en":"Leaf-tip plantlets are a vegetative feature; this is not a seed-starting instruction.","es":"Los hijuelos en las puntas foliares son una característica vegetativa; esto no es una instrucción de germinación."}},
+        "flowering": {"context":{"en":"Flower morphology is documented; no universal indoor bloom schedule is claimed.","es":"La morfología floral está documentada; no se afirma un calendario universal de floración en interior."}},
+        "propagation": {"context":{"en":"Vegetative plantlets are supported; a dependable seed protocol remains unestablished.","es":"Los hijuelos vegetativos están respaldados; no se ha establecido un protocolo fiable de semilla."}}
+      }
+    },
+    "nepenthes-x-ventrata": {
+      "wave": 6,
+      "sections": {
+        "identity": {"context":{"en":"This is a natural horticultural hybrid, not either parent species or a named cultivar.","es":"Es un híbrido hortícola natural, no una de las especies parentales ni un cultivar nombrado."}},
+        "growth": {"context":{"en":"Pitcher color can vary with light; it is not a cultivar guarantee or a stand-alone health test.","es":"El color de los jarros puede variar con la luz; no es una garantía de cultivar ni un indicador de salud por sí solo."}},
+        "cultivation": {"context":{"en":"NParks gives semi-shade as a care tag but separately links 6–8 hours of full sun to pitcher color; treat these contexts distinctly and validate local placement.","es":"NParks indica semisombra como etiqueta de cuidado y por separado relaciona 6–8 horas de sol pleno con el color de los jarros; distingue esos contextos y valida la ubicación local."}},
+        "care": {"context":{"en":"Misting is described as occasional; the source supplies no numeric humidity target or schedule.","es":"La nebulización se describe como ocasional; la fuente no da objetivo numérico de humedad ni calendario."}},
+        "propagation": {"context":{"en":"Commercial tissue-culture prevalence does not mean seed propagation is impossible.","es":"La prevalencia del cultivo de tejidos comercial no significa que la propagación por semilla sea imposible."}}
+      }
+    }
+  }
+}

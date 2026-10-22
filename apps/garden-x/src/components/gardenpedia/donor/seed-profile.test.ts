@@ -13,10 +13,10 @@ import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
 
 describe("canonical Seed Profile adapter", () => {
   it("exposes every published Seed Profile through the public catalog", () => {
-    expect(seedProfileCount).toBe(326);
-    expect(canonicalSeedEntries).toHaveLength(326);
-    expect(buildSeedProfiles("en")).toHaveLength(326);
-    expect(new Set(canonicalSeedEntries.map((entry) => entry.libraryPlantId)).size).toBe(326);
+    expect(seedProfileCount).toBe(328);
+    expect(canonicalSeedEntries).toHaveLength(328);
+    expect(buildSeedProfiles("en")).toHaveLength(328);
+    expect(new Set(canonicalSeedEntries.map((entry) => entry.libraryPlantId)).size).toBe(328);
   });
 
   it("makes every active public identity addressable in the broader propagation view", () => {
@@ -27,7 +27,7 @@ describe("canonical Seed Profile adapter", () => {
 
     expect(cards).toHaveLength(activeCount);
     expect(new Set(cards.map((card) => card.id)).size).toBe(activeCount);
-    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(326);
+    expect(filterSeedLibraryCards(cards, { mode: "seeds" })).toHaveLength(328);
     expect(filterSeedLibraryCards(cards, { mode: "propagation" })).toHaveLength(activeCount);
   });
 

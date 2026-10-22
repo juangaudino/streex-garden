@@ -20,16 +20,16 @@
             "es": "Germinación"
           },
           "value": {
-            "en": "Crop-specific range pending",
-            "es": "Rango específico del cultivo pendiente"
+            "en": "Slow; exact days not reported",
+            "es": "Lenta; no se indican días exactos"
           },
           "note": {
-            "en": "Do not turn a general crop window into a packet guarantee",
-            "es": "No conviertas una ventana general del cultivo en garantía del paquete"
+            "en": "Illinois Extension says caraway seed is slow to germinate; this is not a packet-specific day range",
+            "es": "Illinois Extension indica que la semilla de alcaravea germina lentamente; no es un rango de días del paquete"
           },
-          "evidenceType": "needs_validation",
-          "confidence": "pending",
-          "sourceIds": []
+          "evidenceType": "source_backed",
+          "confidence": "medium",
+          "sourceIds": ["illinois-caraway-wave3"]
         },
         {
           "key": "temperature",
@@ -112,8 +112,8 @@
           "items": [
             {
               "text": {
-                "en": "Keep the seed at the crop-appropriate depth and label the identity separately from related types.",
-                "es": "Mantén la semilla a la profundidad apropiada del cultivo y etiqueta la identidad por separado de tipos relacionados."
+                "en": "Follow the cited crop guide for sowing depth; packet-specific seed treatment and lot details remain unverified.",
+                "es": "Sigue la guía citada del cultivo para la profundidad de siembra; el tratamiento y los detalles específicos del lote siguen sin verificarse."
               },
               "evidenceType": "source_backed",
               "confidence": "medium",
@@ -2398,19 +2398,16 @@
             "es": "Temperatura de germinación"
           },
           "value": {
-            "en": "Use the crop guide range",
-            "es": "Usa el rango de la guía del cultivo"
+            "en": "Not established",
+            "es": "No establecida"
           },
           "note": {
-            "en": "Exact packet conditions are not resolved in Wave 3",
-            "es": "Las condiciones exactas del paquete no están resueltas en Wave 3"
+            "en": "The reviewed Caraway crop source does not specify a germination temperature; use the actual packet when available",
+            "es": "La fuente de cultivo revisada para alcaravea no especifica una temperatura de germinación; consulta el paquete real cuando esté disponible"
           },
-          "evidenceType": "source_backed",
-          "confidence": "medium",
-          "sourceIds": [
-            "illinois-caraway-wave3",
-            "illinois-herbs-wave2"
-          ]
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
         },
         {
           "key": "depth",
@@ -2419,20 +2416,16 @@
             "es": "Profundidad de siembra"
           },
           "value": {
-            "en": "Follow the crop-specific guide",
-            "es": "Sigue la guía específica del cultivo"
+            "en": "Not established",
+            "es": "No establecida"
           },
           "note": {
-            "en": "Packet depth should win when the actual packet is available",
-            "es": "La profundidad del paquete debe prevalecer cuando el paquete real esté disponible"
+            "en": "The cited Caraway crop guide does not state a sowing depth; follow the packet when available",
+            "es": "La guía citada del cultivo de alcaravea no indica profundidad de siembra; sigue el paquete cuando esté disponible"
           },
-          "evidenceType": "source_backed",
-          "confidence": "medium",
-          "sourceIds": [
-            "illinois-caraway-wave3",
-            "illinois-herbs-wave2",
-            "johnnys-seed-starting"
-          ]
+          "evidenceType": "needs_validation",
+          "confidence": "pending",
+          "sourceIds": []
         },
         {
           "key": "seedType",
@@ -2462,24 +2455,22 @@
           },
           "icon": "🌱",
           "short": {
-            "en": "Start with a clean, evenly moist medium",
-            "es": "Empieza con un medio limpio y uniformemente húmedo"
+            "en": "Direct-sow in the intended position and keep the seedbed moist",
+            "es": "Siembra directamente en la posición final y mantén húmedo el semillero"
           },
           "guidance": {
-            "en": "Use the Caraway crop guide for method and depth. Do not convert outdoor spacing into a Garden position count.",
-            "es": "Usa la guía del cultivo Alcaravea para el método y la profundidad. No conviertas la separación exterior en un número de posiciones de Garden."
+            "en": "Illinois Extension recommends growing Caraway from seed and direct-sowing because the long taproot makes successful transplanting difficult. Keep the seedbed moist during slow germination. The source does not give sowing depth; do not invent one or convert outdoor spacing into a Garden position count.",
+            "es": "Illinois Extension recomienda cultivar la alcaravea desde semilla y sembrarla directamente porque la raíz pivotante larga dificulta el trasplante exitoso. Mantén húmedo el semillero durante la germinación lenta. La fuente no indica profundidad; no la inventes ni conviertas la separación exterior en un número de posiciones de Garden."
           },
           "items": [
             {
               "text": {
-                "en": "Keep the seed at the crop-appropriate depth and label the identity separately from related types.",
-                "es": "Mantén la semilla a la profundidad apropiada del cultivo y etiqueta la identidad por separado de tipos relacionados."
+                "en": "Exact sowing depth remains unestablished by the reviewed crop guide; consult the actual packet when available.",
+                "es": "Etiqueta la identidad por separado de tipos relacionados; la profundidad exacta sigue pendiente hasta revisar el paquete o una guía específica."
               },
-              "evidenceType": "source_backed",
-              "confidence": "medium",
-              "sourceIds": [
-                "illinois-caraway-wave3"
-              ]
+              "evidenceType": "needs_validation",
+              "confidence": "pending",
+              "sourceIds": []
             }
           ],
           "evidenceType": "source_backed",
@@ -2496,12 +2487,12 @@
           },
           "icon": "⏳",
           "short": {
-            "en": "Use temperature and moisture as the first checks",
-            "es": "Usa temperatura y humedad como primeras comprobaciones"
+            "en": "Slow emergence is reported; exact days and temperature remain unknown",
+            "es": "Se describe una emergencia lenta; los días exactos y la temperatura siguen desconocidos"
           },
           "guidance": {
-            "en": "The reviewed Caraway evidence supports crop-level conditions but not a guaranteed packet-specific day count. Keep the medium moist without chronic saturation.",
-            "es": "La evidencia revisada de Alcaravea respalda condiciones a nivel de cultivo, pero no un número de días garantizado para el paquete. Mantén el medio húmedo sin saturación crónica."
+            "en": "Illinois Extension calls Caraway seed slow to germinate and advises keeping the seedbed moist. The source gives no exact emergence window, temperature, or light/dark requirement, so those values remain unresolved.",
+            "es": "Illinois Extension indica que la semilla de alcaravea germina lentamente y aconseja mantener húmedo el semillero. La fuente no da una ventana exacta de emergencia, temperatura ni requisito de luz/oscuridad; esos valores siguen sin resolverse."
           },
           "items": [
             {
@@ -2564,20 +2555,20 @@
           },
           "icon": "🪴",
           "short": {
-            "en": "Move by visible establishment, not only by days",
-            "es": "Avanza por establecimiento visible, no solo por días"
+            "en": "Mark establishment in place; do not assume a transplant stage",
+            "es": "Registra el establecimiento en su sitio; no supongas una etapa de trasplante"
           },
           "guidance": {
-            "en": "A stable root zone, active growth, and true leaves are better transition signals than an invented universal calendar. The mature plant profile begins after this checkpoint.",
-            "es": "Una zona radicular estable, crecimiento activo y hojas verdaderas son mejores señales que un calendario universal inventado. El perfil de planta madura empieza después de este punto."
+            "en": "Because Illinois Extension says Caraway is difficult to transplant successfully, direct-sown seedlings should normally establish in their final position. Use visible active growth and a stable root zone as the handoff from seed-starting guidance to established-plant care, not as a command to move the plant.",
+            "es": "Como Illinois Extension indica que la alcaravea es difícil de trasplantar con éxito, las plántulas sembradas directamente normalmente se establecen en su posición final. Usa el crecimiento activo visible y una zona radicular estable como transición de la guía de semilla a los cuidados de la planta establecida, no como una instrucción de moverla."
           },
           "items": [
             {
               "text": {
-                "en": "Treat packet transplant instructions as identity-specific when available.",
-                "es": "Trata las instrucciones de trasplante del paquete como específicas de la identidad cuando estén disponibles."
+                "en": "Only move a plant when the actual growing method requires it and a suitable identity-specific instruction supports the move.",
+                "es": "Mueve la planta solo cuando el método real de cultivo lo requiera y exista una instrucción adecuada y específica para la identidad."
               },
-              "evidenceType": "source_backed",
+              "evidenceType": "garden_adaptation",
               "confidence": "medium",
               "sourceIds": [
                 "illinois-caraway-wave3"

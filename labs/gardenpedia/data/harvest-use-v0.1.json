@@ -19,6 +19,12 @@
       "url": "https://extension.usu.edu/yardandgarden/research/basil-in-the-garden",
       "type": "extension"
     },
+    "usu-mint": {
+      "publisher": "Utah State University Extension",
+      "title": "How to Grow Mint in Your Garden",
+      "url": "https://extension.usu.edu/yardandgarden/research/Mint-in-the-garden",
+      "type": "extension"
+    },
     "illinois-fresh-herbs": {
       "publisher": "University of Illinois Extension",
       "title": "Using Fresh Herbs in the Kitchen",
@@ -192,9 +198,267 @@
       "title": "Fenugreek — Extension Gardener Plant Toolbox",
       "url": "https://plants.ces.ncsu.edu/plants/trigonella-foenum-graecum/common-name/fenugreek/",
       "type": "extension"
+    },
+    "ncsu-ocimum-basilicum-2026": {
+      "publisher": "North Carolina State Extension Gardener Plant Toolbox",
+      "title": "Ocimum basilicum — Extension Gardener Plant Toolbox",
+      "url": "https://plants.ces.ncsu.edu/plants/ocimum-basilicum/",
+      "type": "extension"
+    },
+    "parkseed-cinnamon-basil-2026": {
+      "publisher": "Park Seed",
+      "title": "'Cinnamon' Basil Seeds",
+      "url": "https://www.parkseed.com/products/cinnamon-basil-seeds-00275-pk-p1",
+      "type": "product_reference"
+    },
+    "omafra-fenugreek-500": {
+      "publisher": "Ontario Ministry of Agriculture, Food and Agribusiness (OMAFRA)",
+      "title": "Fenugreek — Specialty Crop Profile",
+      "url": "https://omafra.gov.on.ca/CropOp/en/herbs/culinary/fenu.html",
+      "type": "horticulture_reference"
+    },
+    "ucanr-fenugreek-2026": {
+      "publisher": "UC Master Gardeners of Santa Clara County",
+      "title": "Fenugreek",
+      "url": "https://ucanr.edu/site/uc-master-gardeners-santa-clara-county/fenugreek?sharebar=share",
+      "type": "extension"
+    },
+    "uvm-asian-flavors-fenugreek-2021": {
+      "publisher": "University of Vermont Extension",
+      "title": "Spice Up Your Garden With Asian Flavors",
+      "url": "https://www.uvm.edu/extension/news/spice-your-garden-asian-flavors",
+      "type": "extension"
+    },
+    "johnnys-sweet-thai-basil": {
+      "publisher": "Johnny's Selected Seeds",
+      "title": "Sweet Thai Basil",
+      "url": "https://www.johnnyseeds.com/herbs/basil/asian-basil/sweet-thai-basil-seed-945.30.html",
+      "type": "grower_reference"
+    },
+    "johnnys-basil-type-comparison-2026": {
+      "publisher": "Johnny's Selected Seeds",
+      "title": "Hydroponic & Container Basil Guide — Type Comparison",
+      "url": "https://www.johnnyseeds.com/on/demandware.static/-/Library-Sites-JSSSharedLibrary/default/dw59f75592/assets/information/hydroponic-container-basil-guide-brochure-pdf.pdf",
+      "type": "grower_reference"
+    },
+    "johnnys-italian-large-leaf-basil-2026": {
+      "publisher": "Johnny's Selected Seeds",
+      "title": "Italian Large Leaf Basil — Organic Varieties",
+      "url": "https://prod-na02.johnnyseeds.com/herbs/basil/italian-large-leaf-basil/",
+      "type": "grower_reference"
+    },
+    "usu-cilantro-garden-2026": {
+      "publisher": "Utah State University Extension",
+      "title": "Cilantro/Coriander in the Garden",
+      "url": "https://extension.usu.edu/yardandgarden/research/cilantro-coriander-in-the-garden",
+      "type": "extension"
+    },
+    "ufifas-mexican-tarragon-2026": {
+      "publisher": "University of Florida IFAS Extension",
+      "title": "Mexican Tarragon",
+      "url": "https://gardeningsolutions.ifas.ufl.edu/plants/edibles/vegetables/mexican-tarragon/",
+      "type": "extension"
+    },
+    "umn-edamame-home-gardens-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing beans in home gardens — soybean/edamame section",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-beans",
+      "type": "extension"
+    },
+    "umn-onions-home-gardens-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing onions in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-onions",
+      "type": "extension"
+    },
+    "illinois-onion-home-garden-2026": {
+      "publisher": "University of Illinois Extension",
+      "title": "Onion — Home Vegetable Gardening",
+      "url": "https://extension.illinois.edu/gardening/onion",
+      "type": "extension"
+    },
+    "illinois-leek-culinary-2021": {
+      "publisher": "University of Illinois Extension",
+      "title": "Use leeks in your autumn meals",
+      "url": "https://extension.illinois.edu/blogs/live-well-eat-well/2021-11-10-use-leeks-your-autumn-meals",
+      "type": "extension"
+    },
+    "udel-onion-cultivars-2026": {
+      "publisher": "University of Delaware Cooperative Extension",
+      "title": "Onions",
+      "url": "https://www.udel.edu/academics/colleges/canr/cooperative-extension/fact-sheets/onions/",
+      "type": "extension"
+    },
+    "iastate-onion-storage-2025": {
+      "publisher": "Iowa State University Extension and Outreach",
+      "title": "My onions don't store well. Why?",
+      "url": "https://yardandgarden.extension.iastate.edu/faq/my-onions-dont-store-well-why",
+      "type": "extension"
+    },
+    "rhs-allium-cepa-white-lisbon-2026": {
+      "publisher": "Royal Horticultural Society",
+      "title": "Allium cepa 'White Lisbon'",
+      "url": "https://www.rhs.org.uk/plants/112442/allium-cepa-white-lisbon/details",
+      "type": "horticulture_reference"
+    },
+    "osu-green-bunching-onion-2010": {
+      "publisher": "Oregon State University Extension Service",
+      "title": "Onions, Green Bunching",
+      "url": "https://horticulture.oregonstate.edu/oregon-vegetables/onions-green-bunching",
+      "type": "extension"
+    },
+    "ucanr-onion-home-garden-2010": {
+      "publisher": "University of California Agriculture and Natural Resources — UC Davis Vegetable Research and Information Center",
+      "title": "Onion — Home Vegetable Gardening",
+      "url": "https://ucanr.edu/sites/default/files/2010-07/27013.pdf",
+      "type": "extension"
+    },
+    "wisc-leeks-home-gardens-2026": {
+      "publisher": "University of Wisconsin–Madison Extension",
+      "title": "Leeks",
+      "url": "https://hort.extension.wisc.edu/articles/leeks/",
+      "type": "extension"
+    },
+    "umd-anise-pimpinella-2023": {
+      "publisher": "University of Maryland Extension",
+      "title": "Anise — Pimpinella anisum",
+      "url": "https://extension.umd.edu/resource/anise",
+      "type": "extension"
+    },
+    "iastate-herbs-growing-harvesting-2026": {
+      "publisher": "Iowa State University Extension and Outreach",
+      "title": "Growing, Harvesting, and Drying Herbs",
+      "url": "https://yardandgarden.extension.iastate.edu/how-to/growing-harvesting-and-drying-herbs",
+      "type": "extension"
+    },
+    "prosea-pimpinella-anisum-2016": {
+      "publisher": "Plant Resources of South-East Asia (PROSEA), hosted by Pl@ntUse",
+      "title": "Pimpinella anisum",
+      "url": "https://plantuse.plantnet.org/en/Pimpinella_anisum_(PROSEA)",
+      "type": "horticulture_reference"
+    },
+    "ncsu-pimpinella-anisum-wave4": {
+      "publisher": "North Carolina State Extension Gardener Plant Toolbox",
+      "title": "Anise — Pimpinella anisum",
+      "url": "https://plants.ces.ncsu.edu/plants/pimpinella-anisum/common-name/anise/",
+      "type": "extension"
+    },
+    "ncsu-sweet-marjoram-2026": {
+      "publisher": "North Carolina State Extension Gardener Plant Toolbox",
+      "title": "Marjoram — Origanum majorana",
+      "url": "https://plants.ces.ncsu.edu/plants/origanum-majorana/common-name/marjoram/",
+      "type": "extension"
+    },
+    "umd-chervil-500": {
+      "publisher": "University of Maryland Extension",
+      "title": "Chervil",
+      "url": "https://extension.umd.edu/resource/chervil",
+      "type": "extension"
+    },
+    "umn-parsley-home-gardens-2026": {
+      "publisher": "University of Minnesota Extension",
+      "title": "Growing parsley in home gardens",
+      "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-parsley",
+      "type": "extension"
+    },
+    "illinois-summer-savory-wave2": {
+      "publisher": "University of Illinois Extension",
+      "title": "Summer Savory",
+      "url": "https://extension.illinois.edu/herbs/savory-summer",
+      "type": "extension"
+    },
+    "illinois-corn-home-garden-2026": {
+      "publisher": "University of Illinois Extension",
+      "title": "Corn — Home Vegetable Gardening",
+      "url": "https://extension.illinois.edu/gardening/corn",
+      "type": "extension"
+    },
+    "illinois-preparing-corn-2026": {
+      "publisher": "University of Illinois Extension",
+      "title": "Preparing Corn",
+      "url": "https://extension.illinois.edu/gardening/preparing-corn",
+      "type": "extension"
     }
   },
   "plants": {
+    "anise": {
+      "edibleParts": {"en": "Aromatic leaves and seeds used as flavoring", "es": "Hojas aromáticas y semillas usadas como condimento"},
+      "bestUse": {
+        "en": "NC State Extension and University of Maryland Extension describe the leaves as a garnish or seasoning for salads, soups and sauces, while crushed seeds flavor cakes and other baked goods. Iowa State also lists beverages, meats and poultry as leaf uses. These are culinary examples, not medicinal guidance; the sources do not establish a universal storage duration.",
+        "es": "NC State Extension y University of Maryland Extension describen las hojas como guarnición o condimento para ensaladas, sopas y salsas, y las semillas molidas como saborizante para pasteles y otros productos horneados. Iowa State también enumera bebidas, carnes y aves como usos de las hojas. Son ejemplos culinarios, no indicaciones medicinales; las fuentes no establecen una duración universal de almacenamiento."
+      },
+      "quickUses": {
+        "en": ["Leaves in soups, sauces or salads", "Crushed seed in baked goods", "Crushed seed with fruit, cheese or bread"],
+        "es": ["Hojas en sopas, salsas o ensaladas", "Semillas molidas en productos horneados", "Semillas molidas con fruta, queso o pan"]
+      },
+      "methods": [
+        {
+          "id": "dry-seed-spice",
+          "icon": "🌾",
+          "status": "possible",
+          "title": {"en": "Dry harvested seed spice", "es": "Secar la semilla cosechada"},
+          "summary": {"en": "Dry fully before storage; the sources give different color cues for seed harvest.", "es": "Seca por completo antes de guardar; las fuentes difieren en el color para cosechar."},
+          "steps": {
+            "en": ["Iowa State's home-herb guide says to harvest seed heads when they turn brown, then wash, drain, and air-dry them thoroughly. PROSEA's crop account gives a different grey-green fruit-maturity cue and notes uneven ripening, so neither color cue is presented as universal.", "PROSEA recommends cool, dark, airtight storage after drying; no universal storage duration is established."],
+            "es": ["La guía de hierbas de Iowa State indica cosechar las cabezas cuando se tornen marrones, lavarlas, escurrirlas y secarlas completamente al aire. La descripción agrícola de PROSEA usa una señal distinta de fruto gris verdoso y señala la maduración desigual; no se presenta ninguno de los dos colores como universal.", "PROSEA recomienda almacenamiento fresco, oscuro y hermético después del secado; no se establece una duración universal."]
+          },
+          "sourceIds": ["iastate-herbs-growing-harvesting-2026", "prosea-pimpinella-anisum-2016"]
+        }
+      ],
+      "referenceSourceIds": ["ncsu-pimpinella-anisum-wave4", "umd-anise-pimpinella-2023", "iastate-herbs-growing-harvesting-2026", "prosea-pimpinella-anisum-2016"]
+    },
+    "lemon-balm": {
+      "edibleParts": {"en": "Aromatic leaves", "es": "Hojas aromáticas"},
+      "bestUse": {
+        "en": "Iowa State lists lemon balm leaves for herbal tea and as a garnish for iced tea; it also gives uses in lettuce or fruit salads and pesto. Fresh leaves can be picked as needed; collect foliage before flowering when the goal is drying or freezing.",
+        "es": "Iowa State enumera las hojas de toronjil para infusiones y como guarnición de té helado; también menciona ensaladas de lechuga o fruta y pesto. Las hojas frescas pueden recogerse según se necesiten; cosecha antes de la floración si el objetivo es secar o congelar."
+      },
+      "quickUses": {
+        "en": ["Herbal tea", "Garnish for iced tea", "Lettuce or fruit salads", "Pesto"],
+        "es": ["Infusión de hierbas", "Guarnición para té helado", "Ensaladas de lechuga o fruta", "Pesto"]
+      },
+      "methods": [
+        {
+          "id": "dry-leaves",
+          "icon": "🌬️",
+          "status": "good",
+          "title": {"en": "Dry the leaves", "es": "Secar las hojas"},
+          "summary": {"en": "Harvest before flowering; Iowa State documents bunch or tray drying.", "es": "Cosecha antes de florecer; Iowa State documenta secado en ramos o bandejas."},
+          "steps": {
+            "en": ["Harvest leaves before flowering when drying is the goal.", "Iowa State describes hanging small herb bunches or drying leaves on trays; dry fully before storing. Its general herb guidance—not a lemon-balm-specific test—says to store completely dry material airtight, away from heat and light."],
+            "es": ["Cosecha las hojas antes de la floración cuando quieras secarlas.", "Iowa State describe colgar ramos pequeños o secar las hojas en bandejas; sécalas por completo antes de guardarlas. Su guía general de hierbas —no una prueba específica del toronjil— indica almacenar el material totalmente seco en un recipiente hermético, lejos del calor y la luz."]
+          },
+          "sourceIds": ["iastate-herbs-growing-harvesting-2026"]
+        }
+      ],
+      "referenceSourceIds": ["iastate-herbs-growing-harvesting-2026"]
+    },
+    "marjoram": {
+      "edibleParts": {"en": "Leaves; NC State also lists flowers as edible", "es": "Hojas; NC State también indica que las flores son comestibles"},
+      "bestUse": {
+        "en": "Sweet marjoram seasons soups, stews, sauces, dressings, vegetables and meats. Iowa State especially mentions green beans, potato salad and egg dishes. The herb is milder and sweeter than oregano in the NC State description; use that as a source-specific flavor comparison, not a guarantee for every harvest.",
+        "es": "La mejorana dulce sazona sopas, guisos, salsas, aderezos, verduras y carnes. Iowa State menciona especialmente ejotes, ensalada de papa y platillos con huevo. En la descripción de NC State, esta hierba es más suave y dulce que el orégano; tómalo como comparación de sabor de esa fuente, no como garantía para toda cosecha."
+      },
+      "quickUses": {
+        "en": ["Green beans and other vegetables", "Potato salad", "Egg dishes", "Soups, sauces and meat dishes"],
+        "es": ["Ejotes y otras verduras", "Ensalada de papa", "Platillos con huevo", "Sopas, salsas y carnes"]
+      },
+      "methods": [
+        {
+          "id": "dry-or-freeze",
+          "icon": "🌬️",
+          "status": "possible",
+          "title": {"en": "Dry or freeze", "es": "Secar o congelar"},
+          "summary": {"en": "Iowa State lists both options; it does not give a marjoram-specific freezer procedure.", "es": "Iowa State indica ambas opciones; no ofrece un procedimiento de congelación específico para la mejorana."},
+          "steps": {
+            "en": ["Cut stems just before flowering as described in Iowa State's sweet-marjoram entry; a second crop may form.", "Iowa State says marjoram can be dried or frozen. For air drying, its general herb guidance describes small bundles or tray drying; follow a validated food-preservation process for any freezing method."],
+            "es": ["Corta los tallos justo antes de la floración, como indica la entrada de mejorana dulce de Iowa State; puede formarse una segunda cosecha.", "Iowa State señala que la mejorana se puede secar o congelar. Para secado al aire, su guía general de hierbas describe ramos pequeños o bandejas; sigue un proceso de conservación de alimentos validado para congelar."]
+          },
+          "sourceIds": ["iastate-herbs-growing-harvesting-2026"]
+        }
+      ],
+      "referenceSourceIds": ["ncsu-sweet-marjoram-2026", "iastate-herbs-growing-harvesting-2026"]
+    },
     "genovese-basil": {
       "edibleParts": {
         "en": "Leaves and tender tips",
@@ -939,8 +1203,8 @@
         "es": "Hojas y tallos tiernos"
       },
       "bestUse": {
-        "en": "Use fresh for bright aroma; freezing or quick drying are sensible when you have extra.",
-        "es": "Úsala fresca por su aroma; congelar o secar rápidamente son opciones sensatas si sobra."
+        "en": "USU Extension documents mint leaves and stems for fresh use, drying, and freezing. Aroma and flavor vary greatly among mint types, so this genus-level profile does not promise a particular taste or culinary variety.",
+        "es": "USU Extension documenta el uso fresco, secado y congelación de hojas y tallos de menta. El aroma y el sabor varían mucho entre tipos, por lo que esta ficha a nivel de género no promete un sabor ni una variedad culinaria concreta."
       },
       "quickUses": {
         "en": [
@@ -966,19 +1230,19 @@
             "es": "Usar fresco"
           },
           "summary": {
-            "en": "Best when fresh character matters.",
-            "es": "Mejor cuando importa el carácter fresco."
+            "en": "USU recommends harvesting tender young leaves and stems for their stronger flavor; it does not assign a single flavor to all Mentha types.",
+            "es": "USU recomienda cosechar hojas y tallos jóvenes y tiernos por su sabor más intenso; no asigna un único sabor a todos los tipos de Mentha."
           },
           "steps": {
             "en": [
-              "Rinse as needed, dry gently and use the edible portion while fresh."
+              "Harvest leaves and stems once the established plant is about 3–4 inches tall; use tender young growth fresh. USU recommends cutting stems with clean scissors or a sharp knife and harvesting on a dry day."
             ],
             "es": [
-              "Enjuaga cuando corresponda, seca con cuidado y usa la parte comestible mientras está fresca."
+              "Cosecha hojas y tallos cuando la planta establecida mida alrededor de 3–4 pulgadas; usa frescos los brotes jóvenes y tiernos. USU recomienda cortar los tallos con tijeras limpias o un cuchillo afilado y cosechar en un día seco."
             ]
           },
           "sourceIds": [
-            "psu-herbs-home"
+            "usu-mint"
           ]
         },
         {
@@ -990,20 +1254,21 @@
             "es": "Congelar"
           },
           "summary": {
-            "en": "Useful for flavor; texture softens after thawing.",
-            "es": "Útil para conservar sabor; la textura se ablanda al descongelar."
+            "en": "USU's mint guide recommends freezing chopped leaves with water in ice-cube trays; Penn State notes that frozen herbs are best used in cooked dishes because texture softens.",
+            "es": "La guía de USU para menta recomienda congelar las hojas picadas con agua en bandejas para hielo; Penn State señala que las hierbas congeladas se aprovechan mejor en platillos cocidos porque la textura se ablanda."
           },
           "steps": {
             "en": [
-              "Wash, drain and pat dry.",
-              "Freeze in small portions; use mainly in cooked dishes after freezing."
+              "Chop the mint leaves, place them in an ice-cube tray with water, and freeze; USU does not specify a storage duration.",
+              "Use the frozen portions mainly in cooked dishes; Penn State cautions that thawed herbs lose fresh texture."
             ],
             "es": [
-              "Lava, escurre y seca con cuidado.",
-              "Congela en porciones pequeñas; después úsala principalmente en preparaciones cocidas."
+              "Pica las hojas de menta, colócalas en una bandeja para hielo con agua y congélalas; USU no especifica una duración de almacenamiento.",
+              "Usa las porciones congeladas principalmente en platillos cocidos; Penn State advierte que las hierbas descongeladas pierden textura fresca."
             ]
           },
           "sourceIds": [
+            "usu-mint",
             "nchfp-freezing-herbs"
           ]
         },
@@ -1016,20 +1281,21 @@
             "es": "Secar"
           },
           "summary": {
-            "en": "A practical long-term option when this herb dries well.",
-            "es": "Una opción práctica a largo plazo cuando esta hierba se seca bien."
+            "en": "USU gives a mint-specific drying method and says dried mint may be stored airtight for up to one year; actual quality still depends on complete drying and storage conditions.",
+            "es": "USU ofrece un método de secado específico para menta e indica que puede guardarse herméticamente hasta un año; la calidad real depende de que se seque por completo y de las condiciones de almacenamiento."
           },
           "steps": {
             "en": [
-              "Use healthy plant material and dry with good airflow.",
-              "Store only when fully dry, airtight, cool and dark."
+              "Harvest mature stems and leaves and hang them upside down in a hot, shaded place until brittle, or dry the leaves on a screen in the shade.",
+              "Once brittle and fully dry, store the mint in an airtight container; USU reports up to one year, not a guaranteed shelf life for every home."
             ],
             "es": [
-              "Usa material vegetal sano y seca con buena circulación de aire.",
-              "Guarda solo cuando esté completamente seco, hermético, fresco y oscuro."
+              "Cosecha tallos y hojas desarrollados y cuélgalos boca abajo en un lugar cálido y sombreado hasta que estén quebradizos, o seca las hojas sobre una malla a la sombra.",
+              "Cuando estén quebradizos y completamente secos, guarda la menta en un recipiente hermético; USU indica hasta un año, no una vida útil garantizada para todos los hogares."
             ]
           },
           "sourceIds": [
+            "usu-mint",
             "nchfp-herbs"
           ]
         }
@@ -1245,8 +1511,8 @@
         "es": "Hojas y tallos tiernos"
       },
       "bestUse": {
-        "en": "Use fresh when texture matters; freezing preserves cooking utility, while drying is also supported for sturdy herbs.",
-        "es": "Úsalo fresco cuando importe la textura; congelar conserva su utilidad para cocinar y el secado también está respaldado para hierbas resistentes."
+        "en": "Use parsley fresh for the best quality. UMN describes flat-leaf parsley as more strongly and sweetly flavored than curly parsley; this is type-level context, not a proven flavor measurement for the catalog's Italian Giant selection.",
+        "es": "Usa el perejil fresco para obtener la mejor calidad. UMN describe el perejil de hoja plana como de sabor más intenso y dulce que el rizado; es contexto del tipo, no una medición de sabor demostrada para la selección Italian Giant del catálogo."
       },
       "quickUses": {
         "en": [
@@ -1272,19 +1538,21 @@
             "es": "Usar fresco"
           },
           "summary": {
-            "en": "Best when fresh character matters.",
-            "es": "Mejor cuando importa el carácter fresco."
+            "en": "Fresh parsley has the best quality; harvest only what you need.",
+            "es": "El perejil fresco ofrece la mejor calidad; cosecha solo lo necesario."
           },
           "steps": {
             "en": [
-              "Rinse as needed, dry gently and use the edible portion while fresh."
+              "Cut outer stalks close to the ground; taking only the tops can reduce continued productivity.",
+              "Rinse as needed and use fresh in dishes as a garnish or flavoring."
             ],
             "es": [
-              "Enjuaga cuando corresponda, seca con cuidado y usa la parte comestible mientras está fresca."
+              "Corta los tallos exteriores cerca del suelo; cortar solo las puntas puede reducir la productividad continua.",
+              "Enjuaga cuando corresponda y úsalo fresco en platillos como guarnición o condimento."
             ]
           },
           "sourceIds": [
-            "psu-herbs-home"
+            "umn-parsley-home-gardens-2026"
           ]
         },
         {
@@ -1347,8 +1615,8 @@
         "es": "Hojas; las flores también son comestibles cuando están correctamente identificadas"
       },
       "bestUse": {
-        "en": "Use fresh for texture and mild onion character; freeze extras for cooked use.",
-        "es": "Úsalo fresco por textura y sabor suave a cebolla; congela el excedente para cocinar."
+        "en": "Use the leaves fresh for mild onion flavor in eggs, soups, salads, butter, cheese, dips or spreads; the lavender flowers can garnish soups and salads.",
+        "es": "Usa las hojas frescas por su sabor suave a cebolla en huevos, sopas, ensaladas, mantequilla, queso, salsas o untables; las flores lavanda pueden adornar sopas y ensaladas."
       },
       "quickUses": {
         "en": [
@@ -1379,14 +1647,16 @@
           },
           "steps": {
             "en": [
-              "Rinse as needed, dry gently and use the edible portion while fresh."
+              "Once established, snip leaves near the base; NC State gives about 6 inches of plant height as a point when harvest may begin.",
+              "Add the leaves to eggs, soups, salads, butter, cheese, dips or spreads; use flowers as a garnish only when the plant is correctly identified."
             ],
             "es": [
-              "Enjuaga cuando corresponda, seca con cuidado y usa la parte comestible mientras está fresca."
+              "Una vez establecida, corta las hojas cerca de la base; NC State indica unas 6 pulgadas de altura de la planta como referencia para comenzar la cosecha.",
+              "Añade las hojas a huevos, sopas, ensaladas, mantequilla, queso, salsas o untables; usa las flores como adorno solo si identificaste correctamente la planta."
             ]
           },
           "sourceIds": [
-            "csu-edible-flowers"
+            "ncsu-allium-schoenoprasum-2026"
           ]
         },
         {
@@ -1419,12 +1689,12 @@
     },
     "dill-bouquet": {
       "edibleParts": {
-        "en": "Leaves and stems; flowers are edible when correctly identified",
-        "es": "Hojas y tallos; las flores son comestibles cuando están correctamente identificadas"
+        "en": "Aromatic leaves, tender stems, flower heads and mature seeds",
+        "es": "Hojas aromáticas, tallos tiernos, cabezuelas florales y semillas maduras"
       },
       "bestUse": {
-        "en": "Fresh dill is excellent; freezing whole stems or chopped portions is strongly practical for surplus.",
-        "es": "El eneldo fresco es excelente; congelar tallos enteros o porciones picadas es muy práctico para excedentes."
+        "en": "Use fresh foliage near the start of flowering and add it after cooking for the most distinct flavor. For surplus, freezing is an option, but Extension sources differ on how well dill flavor survives it.",
+        "es": "Usa el follaje fresco cerca del inicio de la floración y añádelo después de cocinar para conservar mejor su sabor. Para excedentes, congelar es una opción, aunque las fuentes de Extension difieren sobre cuánto conserva el sabor del eneldo."
       },
       "quickUses": {
         "en": [
@@ -1455,14 +1725,17 @@
           },
           "steps": {
             "en": [
-              "Rinse as needed, dry gently and use the edible portion while fresh."
+              "Harvest established foliage near the beginning of flowering, when USU says dill flavor is strongest.",
+              "Add fresh dill after cooking; high heat can diminish its flavor."
             ],
             "es": [
-              "Enjuaga cuando corresponda, seca con cuidado y usa la parte comestible mientras está fresca."
+              "Cosecha el follaje establecido cerca del inicio de la floración, cuando USU indica que el sabor del eneldo es más intenso.",
+              "Añade el eneldo fresco después de cocinar; el calor alto puede disminuir su sabor."
             ]
           },
           "sourceIds": [
-            "csu-edible-flowers"
+            "usu-dill",
+            "iastate-dill-fennel-2026"
           ]
         },
         {
@@ -1474,21 +1747,22 @@
             "es": "Congelar"
           },
           "summary": {
-            "en": "Useful for flavor; texture softens after thawing.",
-            "es": "Útil para conservar sabor; la textura se ablanda al descongelar."
+            "en": "Possible for surplus, but sources differ about flavor retention.",
+            "es": "Posible para excedentes, pero las fuentes difieren sobre la conservación del sabor."
           },
           "steps": {
             "en": [
               "Wash, drain and pat dry.",
-              "Freeze in small portions; use mainly in cooked dishes after freezing."
+              "USU recommends freezing dill to preserve its distinct flavor; Penn State says dill is best fresh and that flavor is lost upon freezing. Treat freezing as an option with this source conflict, not a guaranteed quality-preserving method."
             ],
             "es": [
               "Lava, escurre y seca con cuidado.",
-              "Congela en porciones pequeñas; después úsala principalmente en preparaciones cocidas."
+              "USU recomienda congelar el eneldo para conservar su sabor distintivo; Penn State indica que es mejor fresco y que pierde sabor al congelarse. Trata la congelación como una opción con este conflicto entre fuentes, no como método que garantice la calidad."
             ]
           },
           "sourceIds": [
-            "psu-freezing-herbs-2025"
+            "usu-dill",
+            "psu-dill-2026"
           ]
         }
       ]
@@ -1538,7 +1812,8 @@
             ]
           },
           "sourceIds": [
-            "csu-edible-flowers"
+            "csu-edible-flowers",
+            "illinois-fresh-herbs"
           ]
         }
       ]
@@ -1782,27 +2057,27 @@
     },
     "thai-basil": {
       "edibleParts": {
-        "en": "Leaves and tender tips",
-        "es": "Hojas y puntas tiernas"
+        "en": "Leaves and tender tips; edible flowers are documented for Johnny's Sweet Thai selection",
+        "es": "Hojas y puntas tiernas; Johnny's documenta flores comestibles para su selección Sweet Thai"
       },
       "bestUse": {
-        "en": "Use fresh for the best texture and aroma. If you need longer storage, freezing generally preserves a fresher basil character than air-drying.",
-        "es": "Úsala fresca para conservar mejor textura y aroma. Si necesitas guardarla por más tiempo, congelar suele conservar un carácter más parecido a la albahaca fresca que secarla al aire."
+        "en": "Use fresh when the anise-clove character is wanted; Johnny's describes Sweet Thai leaves and flowers as ingredients or garnishes for Thai dishes, drinks, salads, soups, pasta and desserts.",
+        "es": "Úsala fresca cuando busques sus notas de anís y clavo; Johnny's describe las hojas y flores de Sweet Thai como ingredientes o guarnición para platos tailandeses, bebidas, ensaladas, sopas, pasta y postres."
       },
       "quickUses": {
         "en": [
-          "Pasta and sauces",
-          "Pizza",
+          "Thai dishes",
+          "Drinks and desserts",
           "Salads",
-          "Sandwiches",
-          "Pesto"
+          "Soups and pasta",
+          "Edible-flower garnish"
         ],
         "es": [
-          "Pasta y salsas",
-          "Pizza",
+          "Platos tailandeses",
+          "Bebidas y postres",
           "Ensaladas",
-          "Sándwiches",
-          "Pesto"
+          "Sopas y pasta",
+          "Guarnición con flores comestibles"
         ]
       },
       "methods": [
@@ -1815,21 +2090,21 @@
             "es": "Usar fresca"
           },
           "summary": {
-            "en": "Best overall quality.",
-            "es": "Mejor calidad general."
+            "en": "Fresh use preserves the type's distinctive aromatic character.",
+            "es": "El uso fresco conserva el carácter aromático distintivo del tipo."
           },
           "steps": {
             "en": [
               "Harvest clean, healthy leaves or tender tips.",
-              "Use soon after cutting when aroma and texture are strongest."
+              "Use the fresh leaves in Thai dishes or the documented garnish uses; Sweet Thai product guidance also identifies the flowers as edible."
             ],
             "es": [
               "Cosecha hojas o puntas tiernas sanas y limpias.",
-              "Úsala pronto después del corte, cuando aroma y textura están en su mejor punto."
+              "Usa las hojas frescas en platos tailandeses o como guarnición en los usos documentados; la guía del producto Sweet Thai también identifica sus flores como comestibles."
             ]
           },
           "sourceIds": [
-            "umn-basil-2026"
+            "johnnys-sweet-thai-basil"
           ]
         },
         {
@@ -1921,23 +2196,21 @@
         "es": "Hojas y puntas tiernas"
       },
       "bestUse": {
-        "en": "Use fresh for the best texture and aroma. If you need longer storage, freezing generally preserves a fresher basil character than air-drying.",
-        "es": "Úsala fresca para conservar mejor textura y aroma. Si necesitas guardarla por más tiempo, congelar suele conservar un carácter más parecido a la albahaca fresca que secarla al aire."
+        "en": "Harvest the type's large, pointed, durable leaves for fresh or cooked culinary use; Johnny's describes a sweet aroma with anise and cinnamon notes and lists pesto among product uses.",
+        "es": "Cosecha sus hojas grandes, puntiagudas y duraderas para usarlas frescas o cocinadas; Johnny's describe un aroma dulce con notas de anís y canela e incluye pesto entre los usos del producto."
       },
       "quickUses": {
         "en": [
           "Pasta and sauces",
-          "Pizza",
           "Salads",
-          "Sandwiches",
-          "Pesto"
+          "Pesto (listed product use)",
+          "Fresh culinary leaves"
         ],
         "es": [
           "Pasta y salsas",
-          "Pizza",
           "Ensaladas",
-          "Sándwiches",
-          "Pesto"
+          "Pesto (uso indicado para el producto)",
+          "Hojas frescas para cocinar"
         ]
       },
       "methods": [
@@ -1950,21 +2223,22 @@
             "es": "Usar fresca"
           },
           "summary": {
-            "en": "Best overall quality.",
-            "es": "Mejor calidad general."
+            "en": "Use the large aromatic leaves fresh or in cooking.",
+            "es": "Usa sus hojas aromáticas grandes frescas o en preparaciones cocinadas."
           },
           "steps": {
             "en": [
               "Harvest clean, healthy leaves or tender tips.",
-              "Use soon after cutting when aroma and texture are strongest."
+              "The type guide describes large pointed, wrinkled, durable leaves with sweet anise-cinnamon notes; the specific product category lists culinary and pesto uses."
             ],
             "es": [
               "Cosecha hojas o puntas tiernas sanas y limpias.",
-              "Úsala pronto después del corte, cuando aroma y textura están en su mejor punto."
+              "La guía del tipo describe hojas grandes, puntiagudas, arrugadas y duraderas, con notas dulces de anís y canela; la categoría del producto incluye usos culinarios y pesto."
             ]
           },
           "sourceIds": [
-            "umn-basil-2026"
+            "johnnys-basil-type-comparison-2026",
+            "johnnys-italian-large-leaf-basil-2026"
           ]
         },
         {
@@ -2050,14 +2324,31 @@
         }
       ]
     },
+    "purple-basil": {
+      "edibleParts": {"en":"Fragrant leaves; exact cultivar is not represented","es":"Hojas aromáticas; no se representa el cultivar exacto"},
+      "bestUse": {"en":"Use the leaves as culinary basil where the actual selection is identified as edible. NC State lists soups, stews and other meat dishes for sweet basil; purple-leaf forms may also be grown ornamentally, and flavor varies by cultivar.","es":"Usa las hojas como albahaca culinaria cuando la selección concreta esté identificada como comestible. NC State menciona sopas, guisos y otros platos de carne para la albahaca dulce; las formas de hoja púrpura también pueden cultivarse como ornamentales y el sabor varía según el cultivar."},
+      "quickUses": {"en":["Soups","Stews","Other meat dishes"],"es":["Sopas","Guisos","Otros platos de carne"]},
+      "methods": [
+        {"id":"fresh-leaves","icon":"🌿","status":"possible","title":{"en":"Use the leaves fresh","es":"Usar las hojas frescas"},"summary":{"en":"Culinary use is supported at sweet-basil species scope; exact purple-cultivar flavor is unresolved.","es":"El uso culinario está respaldado para la albahaca dulce a nivel de especie; el sabor del cultivar púrpura exacto no está resuelto."},"steps":{"en":["NC State describes fragrant edible sweet-basil leaves for soups, stews and other meat dishes.","Because this catalog identity does not name a purple cultivar, do not promise a particular aroma or flavor profile."],"es":["NC State describe las hojas aromáticas y comestibles de la albahaca dulce para sopas, guisos y otros platos de carne.","Como esta identidad del catálogo no nombra un cultivar púrpura, no prometas un perfil concreto de aroma o sabor."]},"sourceIds":["ncsu-ocimum-basilicum-2026"]}
+      ]
+    },
+    "cinnamon-basil": {
+      "edibleParts": {"en":"Leaves; Park Seed's named 'Cinnamon' selection is used as a culinary herb","es":"Hojas; la selección 'Cinnamon' nombrada de Park Seed se usa como hierba culinaria"},
+      "bestUse": {"en":"Park Seed describes a spicy-sweet flavor for its named 'Cinnamon' product and lists baked goods, pasta, salads, jams, oils and vinegars. Treat these as product-scoped examples, not a guarantee for every cinnamon-basil seed selection.","es":"Park Seed describe un sabor especiado-dulce para su producto 'Cinnamon' y menciona productos horneados, pasta, ensaladas, mermeladas, aceites y vinagres. Son ejemplos ligados al producto, no una garantía para toda selección de albahaca canela."},
+      "quickUses": {"en":["Baked goods","Pasta","Salads","Jams, oils or vinegars (named product examples)"],"es":["Productos horneados","Pasta","Ensaladas","Mermeladas, aceites o vinagres (ejemplos del producto nombrado)"]},
+      "methods": [
+        {"id":"culinary-leaves","icon":"🌿","status":"possible","title":{"en":"Use aromatic leaves","es":"Usar las hojas aromáticas"},"summary":{"en":"The spicy-sweet flavor and uses are described for Park Seed's named 'Cinnamon' product.","es":"El sabor especiado-dulce y los usos se describen para el producto 'Cinnamon' nombrado de Park Seed."},"steps":{"en":["Use fresh leaves in the product-listed examples such as pasta, salads or baked goods.","The catalog represents a broader cinnamon-basil type, so the exact product flavor may vary."],"es":["Usa las hojas frescas en ejemplos indicados para el producto, como pasta, ensaladas o productos horneados.","El catálogo representa un tipo más amplio de albahaca canela, por lo que el sabor del producto exacto puede variar."]},"sourceIds":["parkseed-cinnamon-basil-2026"]},
+        {"id":"preserve-product-harvest","icon":"🌬️","status":"possible","title":{"en":"Dry or freeze a larger harvest","es":"Secar o congelar una cosecha mayor"},"summary":{"en":"One named-product guide describes options shortly before flowering; do not treat its timing as universal.","es":"Una guía de producto nombrado describe opciones poco antes de la floración; no trates su momento como universal."},"steps":{"en":["Park Seed's 'Cinnamon' product suggests drying the whole plant in a cool, dark place or promptly freezing cut stems with leaves attached when harvested just before flowering.","This is supplier guidance for that named product, not a universal schedule for every cinnamon-basil type."],"es":["La guía del producto 'Cinnamon' de Park Seed sugiere secar la planta entera en un lugar fresco y oscuro o congelar pronto tallos cortados con sus hojas cuando se cosechan justo antes de florecer.","Es una recomendación del proveedor para ese producto nombrado, no un calendario universal para todo tipo de albahaca canela."]},"sourceIds":["parkseed-cinnamon-basil-2026"]}
+      ]
+    },
     "curled-chervil": {
       "edibleParts": {
-        "en": "Leaves and tender stems; flowers are edible when correctly identified",
-        "es": "Hojas y tallos tiernos; las flores son comestibles cuando están correctamente identificadas"
+        "en": "Leaves and tender stems",
+        "es": "Hojas y tallos tiernos"
       },
       "bestUse": {
-        "en": "Prioritize fresh use for its delicate character; Gardenpedia does not force a preservation method without stronger crop-specific guidance.",
-        "es": "Prioriza el uso fresco por su carácter delicado; Gardenpedia no fuerza un método de conservación sin una guía más específica."
+        "en": "Use the delicate leaves fresh just before flowering; Maryland Extension lists soups, salads, sauces, egg dishes and cheese soufflés.",
+        "es": "Usa las delicadas hojas frescas justo antes de la floración; Maryland Extension menciona sopas, ensaladas, salsas, platillos con huevo y soufflés de queso."
       },
       "quickUses": {
         "en": [
@@ -2088,14 +2379,17 @@
           },
           "steps": {
             "en": [
-              "Rinse as needed, dry gently and use the edible portion while fresh."
+              "Pick leaves just before the flower buds open, then rinse and dry them gently.",
+              "Add to salads, soups, sauces, egg dishes or cheese soufflés."
             ],
             "es": [
-              "Enjuaga cuando corresponda, seca con cuidado y usa la parte comestible mientras está fresca."
+              "Cosecha las hojas justo antes de que abran los botones florales; luego enjuágalas y sécalas con cuidado.",
+              "Añádelas a ensaladas, sopas, salsas, platillos con huevo o soufflés de queso."
             ]
           },
           "sourceIds": [
-            "csu-edible-flowers"
+            "umd-chervil-500",
+            "johnnys-chervil"
           ]
         }
       ]
@@ -2106,8 +2400,8 @@
         "es": "Hojas y flores"
       },
       "bestUse": {
-        "en": "Use fresh for crisp texture and onion-garlic character; freeze extras for cooked dishes.",
-        "es": "Úsalos frescos por textura y sabor a cebolla-ajo; congela el excedente para platos cocidos."
+        "en": "Use the leaves like chives or green onions in salads, eggs, soups, stews and stir-fries; the white flowers are also edible.",
+        "es": "Usa las hojas como cebollino o cebolla de verdeo en ensaladas, huevos, sopas, guisos y salteados; las flores blancas también son comestibles."
       },
       "quickUses": {
         "en": [
@@ -2138,14 +2432,14 @@
           },
           "steps": {
             "en": [
-              "Rinse as needed, dry gently and use the edible portion while fresh."
+              "Harvest green leaves and use them similarly to chives or green onions in salads, egg dishes, soups, stews or stir-fries."
             ],
             "es": [
-              "Enjuaga cuando corresponda, seca con cuidado y usa la parte comestible mientras está fresca."
+              "Cosecha las hojas verdes y úsalas de manera similar al cebollino o la cebolla de verdeo en ensaladas, huevos, sopas, guisos o salteados."
             ]
           },
           "sourceIds": [
-            "csu-edible-flowers"
+            "uwmadison-garlic-chives-2010"
           ]
         },
         {
@@ -2460,48 +2754,74 @@
         "es": "Partes verdes (hierba/especia) y semillas maduras (condimento)"
       },
       "bestUse": {
-        "en": "The green parts and mature seeds have distinct uses. NC State describes the green parts as a maple-like flavoring and the seeds as a strongly aromatic, spicy condiment; it does not specify a universal harvest date or recipe.",
-        "es": "Las partes verdes y las semillas maduras tienen usos distintos. NC State describe las partes verdes como un aromatizante de sabor parecido al arce y las semillas como un condimento de aroma intenso y especiado; no fija una fecha universal de cosecha ni una receta."
+        "en": "Use young shoots and leaves as a vegetable or dried seasoning; use mature seeds as a condiment. Extension sources distinguish the leafy crop from seed production and do not set one universal home-harvest date.",
+        "es": "Usa los brotes tiernos y las hojas como verdura o condimento seco; las semillas maduras se usan como especia. Las fuentes de Extension distinguen el cultivo de hojas de la producción de semilla y no fijan una fecha doméstica universal de cosecha."
       },
       "quickUses": {
         "en": [
-          "Curries (seeds)",
-          "Cheese",
-          "Pickles",
-          "Syrup"
+          "Young shoots and leaves as a vegetable",
+          "Dried leaves for seasoning",
+          "Seeds in curries and chutneys",
+          "Seeds as a ground condiment",
+          "Green parts as a flavoring"
         ],
         "es": [
-          "Curry (semillas)",
-          "Quesos",
-          "Encurtidos",
-          "Jarabes"
+          "Brotes tiernos y hojas como verdura",
+          "Hojas secas para sazonar",
+          "Semillas en curry y chutney",
+          "Semillas molidas como condimento",
+          "Partes verdes como aromatizante"
         ]
       },
       "methods": [
         {
-          "id": "herb-and-condiment-use",
+          "id": "young-greens",
           "icon": "🌿",
           "status": "possible",
-          "title": {
-            "en": "Use as herb or condiment",
-            "es": "Usar como hierba o condimento"
-          },
+          "title": {"en":"Use young greens","es":"Usar los brotes y hojas tiernas"},
           "summary": {
-            "en": "The source distinguishes green-part flavoring from mature-seed seasoning.",
-            "es": "La fuente distingue el uso aromatizante de las partes verdes del condimento de semillas maduras."
+            "en": "Young shoots and leaves can be eaten fresh as a vegetable or dried for seasoning.",
+            "es": "Los brotes tiernos y las hojas pueden comerse frescos como verdura o secarse para sazonar."
           },
           "steps": {
             "en": [
-              "Use green parts as an herb/spice or flavoring; the source does not prescribe a specific harvest stage for home use.",
-              "Use mature seeds as a condiment. NC State lists curries, cheese and syrup among example flavoring uses."
+              "UC Master Gardeners recommend harvesting young shoots and leaves for vegetable use; the source does not set a universal home-garden size threshold.",
+              "The Extension sources also describe dried green parts as seasoning; follow a food-safe drying method from an appropriate preservation source rather than assuming a drying time."
             ],
             "es": [
-              "Usa las partes verdes como hierba/especia o aromatizante; la fuente no prescribe una etapa específica de cosecha para el hogar.",
-              "Usa las semillas maduras como condimento. NC State menciona curry, queso y jarabe entre los ejemplos de uso."
+              "UC Master Gardeners recomienda cosechar brotes tiernos y hojas para usarlos como verdura; la fuente no fija un tamaño doméstico universal de cosecha.",
+              "Las fuentes de Extension también describen las partes verdes secas como condimento; sigue un método seguro de secado alimentario en una fuente de conservación adecuada, sin suponer un tiempo de secado."
             ]
           },
           "sourceIds": [
-            "ncsu-trigonella-foenum-graecum-500"
+            "ucanr-fenugreek-2026",
+            "uvm-asian-flavors-fenugreek-2021",
+            "omafra-fenugreek-500"
+          ]
+        },
+        {
+          "id": "mature-seeds",
+          "icon": "🌱",
+          "status": "possible",
+          "title": {"en":"Use mature seeds","es":"Usar semillas maduras"},
+          "summary": {
+            "en": "Seed harvest is a separate crop goal from taking fenugreek greens.",
+            "es": "Cosechar semilla es un objetivo distinto de cosechar hojas de fenogreco."
+          },
+          "steps": {
+            "en": [
+              "If seed is the goal, allow the plant to regrow and flower, then harvest mature pods; Ontario's 105–140-day figure is regional field guidance, not a guaranteed home date.",
+              "Use the mature seeds as a condiment in curries or chutneys. University of Vermont Extension notes that soaking overnight can temper seed bitterness."
+            ],
+            "es": [
+              "Si buscas semilla, permite que la planta rebrote y florezca; después cosecha las vainas maduras. El rango de 105–140 días de Ontario es una referencia regional de campo, no una fecha doméstica garantizada.",
+              "Usa las semillas maduras como condimento en curry o chutney. University of Vermont Extension señala que dejarlas en remojo durante la noche puede atenuar su amargor."
+            ]
+          },
+          "sourceIds": [
+            "omafra-fenugreek-500",
+            "ucanr-fenugreek-2026",
+            "uvm-asian-flavors-fenugreek-2021"
           ]
         }
       ]
@@ -3848,12 +4168,495 @@
         "illinois-flower-uses"
       ],
       "culinaryStatus": "ornamental_or_unresolved"
+    },
+    "santo-cilantro": {
+      "edibleParts": {
+        "en": "Leaves and tender stems; mature seeds are coriander",
+        "es": "Hojas y tallos tiernos; las semillas maduras son coriandro"
+      },
+      "bestUse": {
+        "en": "Use the leaves fresh when possible; the mature dry seeds are a separate coriander harvest.",
+        "es": "Usa las hojas frescas cuando sea posible; las semillas secas maduras son una cosecha distinta de coriandro."
+      },
+      "quickUses": {
+        "en": ["Fresh leaves for salsa, soups, or garnish", "Mature seeds as coriander"],
+        "es": ["Hojas frescas para salsa, sopas o guarnición", "Semillas maduras como coriandro"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["usu-cilantro-garden-2026"]
+    },
+    "mexican-tarragon": {
+      "edibleParts": {
+        "en": "Aromatic leaves; flowers can garnish salads",
+        "es": "Hojas aromáticas; las flores pueden adornar ensaladas"
+      },
+      "bestUse": {
+        "en": "Use the leaves fresh and add them near the end of cooking; UF/IFAS says freezing or storage in vinegar is preferable for longer keeping.",
+        "es": "Usa las hojas frescas y añádelas casi al final de la cocción; UF/IFAS recomienda congelarlas o conservarlas en vinagre para guardarlas más tiempo."
+      },
+      "quickUses": {
+        "en": ["Seasoning for cooked dishes", "Flavor drinks or tea", "Yellow flowers as salad garnish"],
+        "es": ["Condimento para platos cocidos", "Aromatizar bebidas o infusiones", "Flores amarillas como adorno de ensalada"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["ufifas-mexican-tarragon-2026"]
+    },
+    "edamame": {
+      "edibleParts": {
+        "en": "Green soybean seeds; do not eat the hairy pods",
+        "es": "Semillas verdes de soja; no comas las vainas vellosas"
+      },
+      "bestUse": {
+        "en": "Harvest plump green pods and boil them before shelling; do not eat raw soybeans.",
+        "es": "Cosecha las vainas verdes llenas y hiérvelas antes de desgranarlas; no consumas la soja cruda."
+      },
+      "quickUses": {
+        "en": ["Boiled and shelled green soybeans"],
+        "es": ["Granos verdes de soja hervidos y desgranados"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["umn-edamame-home-gardens-2026"],
+      "safetyNote": {
+        "en": "UMN Extension says not to eat raw soybeans and to cook the beans in the pod before shelling. The hairy pods are not eaten.",
+        "es": "UMN Extension indica que no se debe comer soja cruda y que los granos deben cocinarse dentro de la vaina antes de desgranarlos. Las vainas vellosas no se comen."
+      }
+    },
+    "yellow-onion": {
+      "edibleParts": {
+        "en": "Mature bulb",
+        "es": "Bulbo maduro"
+      },
+      "bestUse": {
+        "en": "Illinois Extension describes onions as versatile raw or cooked. If storing mature bulbs, wait for the tops to fall naturally and cure them fully; the yellow color label alone does not establish a particular storage life.",
+        "es": "Illinois Extension describe la cebolla como versátil, cruda o cocida. Si vas a almacenar bulbos maduros, espera a que los tallos caigan de forma natural y cúralos por completo; la etiqueta de color amarillo no establece por sí sola una duración de almacenamiento."
+      },
+      "quickUses": {
+        "en": ["Raw in salads or as a topping", "Soups and stews", "Stir-fries and cooked vegetable dishes"],
+        "es": ["Cruda en ensaladas o como complemento", "Sopas y guisos", "Salteados y platos de verduras cocidas"]
+      },
+      "methods": [
+        {
+          "id": "cure-dry-bulbs",
+          "icon": "🌬️",
+          "status": "good",
+          "title": {"en": "Cure bulbs for dry storage", "es": "Cura los bulbos para almacenarlos secos"},
+          "summary": {"en": "Curing is for mature bulbs intended for storage; it is not a flavor or storage-life guarantee for this color class.", "es": "El curado es para bulbos maduros que se desean almacenar; no garantiza sabor ni duración de almacenamiento para esta clase de color."},
+          "steps": {
+            "en": ["Harvest when the tops mature and fall naturally; do not break them early.", "Cure in a warm, dry, well-ventilated place until the neck is tight and outer scales are dry.", "Store only sound, fully dry bulbs in a cool, dry place and check them for softening or rot."],
+            "es": ["Cosecha cuando los tallos maduren y caigan de forma natural; no los quiebres antes.", "Cura los bulbos en un lugar cálido, seco y bien ventilado hasta que el cuello quede firme y las escamas exteriores secas.", "Almacena solo bulbos sanos y completamente secos en un lugar fresco y seco; revísalos para detectar ablandamiento o pudrición."]
+          },
+          "sourceIds": ["umn-onions-home-gardens-2026", "illinois-onion-home-garden-2026"]
+        }
+      ],
+      "referenceSourceIds": ["umn-onions-home-gardens-2026", "illinois-onion-home-garden-2026"]
+    },
+    "red-onion": {
+      "edibleParts": {
+        "en": "Mature bulb",
+        "es": "Bulbo maduro"
+      },
+      "bestUse": {
+        "en": "Illinois Extension describes onions as versatile raw or cooked. If storing mature bulbs, wait for the tops to fall naturally and cure them fully; the red color label alone does not establish a particular flavor or storage life.",
+        "es": "Illinois Extension describe la cebolla como versátil, cruda o cocida. Si vas a almacenar bulbos maduros, espera a que los tallos caigan de forma natural y cúralos por completo; la etiqueta de color rojo no establece por sí sola un sabor ni una duración de almacenamiento."
+      },
+      "quickUses": {
+        "en": ["Raw in salads or as a topping", "Soups and stews", "Stir-fries and cooked vegetable dishes"],
+        "es": ["Cruda en ensaladas o como complemento", "Sopas y guisos", "Salteados y platos de verduras cocidas"]
+      },
+      "methods": [
+        {
+          "id": "cure-dry-bulbs",
+          "icon": "🌬️",
+          "status": "good",
+          "title": {"en": "Cure bulbs for dry storage", "es": "Cura los bulbos para almacenarlos secos"},
+          "summary": {"en": "Curing is for mature bulbs intended for storage; it is not a flavor or storage-life guarantee for this color class.", "es": "El curado es para bulbos maduros que se desean almacenar; no garantiza sabor ni duración de almacenamiento para esta clase de color."},
+          "steps": {
+            "en": ["Harvest when the tops mature and fall naturally; do not break them early.", "Cure in a warm, dry, well-ventilated place until the neck is tight and outer scales are dry.", "Store only sound, fully dry bulbs in a cool, dry place and check them for softening or rot."],
+            "es": ["Cosecha cuando los tallos maduren y caigan de forma natural; no los quiebres antes.", "Cura los bulbos en un lugar cálido, seco y bien ventilado hasta que el cuello quede firme y las escamas exteriores secas.", "Almacena solo bulbos sanos y completamente secos en un lugar fresco y seco; revísalos para detectar ablandamiento o pudrición."]
+          },
+          "sourceIds": ["umn-onions-home-gardens-2026", "illinois-onion-home-garden-2026"]
+        }
+      ],
+      "referenceSourceIds": ["umn-onions-home-gardens-2026", "illinois-onion-home-garden-2026"]
+    },
+    "leek-american-flag": {
+      "edibleParts": {
+        "en": "White and light-green stalk; Illinois Extension suggests reserving dark-green leaves for broth or stock",
+        "es": "Tallo blanco y verde claro; Illinois Extension sugiere reservar las hojas verde oscuro para caldo"
+      },
+      "bestUse": {
+        "en": "Use the white and light-green stalk raw or cooked. Illinois Extension offers the dark leaves for broth or stock; Wisconsin Extension notes that the white portion is the part generally eaten, so treat leaf use as a broth suggestion rather than a universal culinary convention.",
+        "es": "Usa crudo o cocido el tallo blanco y verde claro. Illinois Extension propone aprovechar las hojas oscuras para caldo; Wisconsin Extension señala que normalmente se consume la parte blanca, así que el uso de las hojas se presenta como sugerencia para caldo y no como una costumbre universal."
+      },
+      "quickUses": {
+        "en": ["Raw in salads", "Cooked in soups and autumn dishes", "Dark leaves for broth or stock"],
+        "es": ["Crudo en ensaladas", "Cocido en sopas y platos otoñales", "Hojas oscuras para caldo"]
+      },
+      "methods": [
+        {
+          "id": "clean-and-prepare",
+          "icon": "🚿",
+          "status": "good",
+          "title": {"en": "Clean between the layers", "es": "Limpia entre las capas"},
+          "summary": {"en": "Soil can collect between leek leaves as the plant grows.", "es": "La tierra puede acumularse entre las hojas mientras crece el puerro."},
+          "steps": {
+            "en": ["Trim the root end; separate or slice the stalk as needed.", "Rinse thoroughly between the layers to remove trapped soil.", "Use the white and light-green portions raw or cooked; reserve dark leaves for broth if desired."],
+            "es": ["Recorta la base de la raíz; separa o corta el tallo según lo necesites.", "Enjuaga bien entre las capas para quitar la tierra atrapada.", "Usa cruda o cocida la parte blanca y verde claro; reserva las hojas oscuras para caldo si quieres."]
+          },
+          "sourceIds": ["illinois-leek-culinary-2021"]
+        }
+      ],
+      "referenceSourceIds": ["illinois-leek-culinary-2021"]
+    },
+    "giant-musselburgh-leek": {
+      "edibleParts": {"en": "Tender white stalk; the dark-green tops are also part of the described leek plant", "es": "Tallo blanco tierno; la ficha también describe las hojas verde oscuro"},
+      "bestUse": {
+        "en": "UW–Madison describes Giant Musselburgh as mild-flavored and notes that leeks are commonly cooked as a vegetable or used in soups and other dishes. Its variety entry identifies tender white stalks; it does not establish a preservation method or storage duration for this seed line.",
+        "es": "UW–Madison describe Giant Musselburgh como de sabor suave y señala que los puerros suelen cocinarse como verdura o usarse en sopas y otros platos. La entrada de la variedad identifica tallos blancos tiernos; no establece método de conservación ni duración de almacenamiento para esta línea."
+      },
+      "quickUses": {
+        "en": ["Cooked as a vegetable", "Soups and other savory dishes"],
+        "es": ["Cocido como verdura", "Sopas y otros platos salados"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["wisc-leeks-home-gardens-2026"]
+    },
+    "king-richard-leek": {
+      "edibleParts": {"en": "Tender white leek stems; young mini-leeks", "es": "Tallos blancos tiernos; mini-puerros jóvenes"},
+      "bestUse": {
+        "en": "UW–Madison describes King Richard as tender and white throughout the season and says it can be grown densely as mini-leeks for garnish, soups or salads. This is a source-specific culinary/use description, not a Garden spacing recommendation.",
+        "es": "UW–Madison describe King Richard como tierno y blanco durante la temporada y señala que puede cultivarse denso como mini-puerro para guarnición, sopas o ensaladas. Es una descripción de uso de esa fuente, no una recomendación de espaciamiento para Garden."
+      },
+      "quickUses": {
+        "en": ["Mini-leeks as garnish", "Soups", "Salads"],
+        "es": ["Mini-puerros como guarnición", "Sopas", "Ensaladas"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["wisc-leeks-home-gardens-2026"]
+    },
+    "walla-walla-onion": {
+      "edibleParts": {"en": "Mature bulb", "es": "Bulbo maduro"},
+      "bestUse": {
+        "en": "Use this sweet, mild onion fresh or cooked. Iowa State classifies Walla Walla as a poor keeper, so do not assume it will store like long-keeping onion cultivars; exact storage life depends on harvest, curing and conditions.",
+        "es": "Usa fresca o cocida esta cebolla dulce y suave. Iowa State clasifica Walla Walla como de poca conservación; no supongas que se almacenará como los cultivares de larga duración. El tiempo exacto depende de la cosecha, el curado y las condiciones."
+      },
+      "quickUses": {
+        "en": ["Fresh in salads or sandwiches", "Grilled or cooked in vegetable dishes", "Soups and stews"],
+        "es": ["Fresca en ensaladas o sándwiches", "A la parrilla o cocida con verduras", "Sopas y guisos"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["udel-onion-cultivars-2026", "iastate-onion-storage-2025", "illinois-onion-home-garden-2026"]
+    },
+    "sweet-spanish-onion": {
+      "edibleParts": {"en": "Mature bulb", "es": "Bulbo maduro"},
+      "bestUse": {
+        "en": "UC Davis describes Sweet Spanish onions as mild and preferred for fresh consumption. Because this catalog identity represents a broad type with more than one color/selection, no single flavor intensity or storage life is assigned.",
+        "es": "UC Davis describe las cebollas Sweet Spanish como suaves y preferidas para consumo fresco. Como esta identidad representa un tipo amplio con más de un color o selección, no se asigna una intensidad de sabor ni una duración de almacenamiento únicas."
+      },
+      "quickUses": {
+        "en": ["Fresh in salads or sandwiches", "Raw toppings", "Cooked vegetable dishes"],
+        "es": ["Fresca en ensaladas o sándwiches", "Como complemento crudo", "Platos de verduras cocidas"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["ucanr-onion-home-garden-2010", "illinois-onion-home-garden-2026"]
+    },
+    "chervil-anthriscus-cerefolium": {
+      "edibleParts": {"en": "Tender leaves", "es": "Hojas tiernas"},
+      "bestUse": {
+        "en": "Iowa State describes chervil leaves as a fresh herb for salads, dressings, soups, egg dishes and cheese soufflés. Its guidance supports culinary use of the species, not a named cultivar flavor claim.",
+        "es": "Iowa State describe las hojas de perifollo como hierba fresca para ensaladas, aderezos, sopas, platillos con huevo y soufflés de queso. La guía respalda el uso culinario de la especie, no un perfil de sabor de un cultivar nombrado."
+      },
+      "quickUses": {
+        "en": ["Salads and dressings", "Soups", "Egg dishes and soufflés"],
+        "es": ["Ensaladas y aderezos", "Sopas", "Platillos con huevo y soufflés"]
+      },
+      "methods": [
+        {
+          "id": "fresh-leaves",
+          "icon": "🌿",
+          "status": "best",
+          "title": {"en": "Use the tender leaves fresh", "es": "Usar frescas las hojas tiernas"},
+          "summary": {"en": "The extension guide lists fresh leaf use and stem-tip picking; harvest timing still depends on flowering development.", "es": "La guía de Extension indica el uso fresco de las hojas y la recolección de puntas; el momento de cosecha sigue dependiendo del desarrollo de la floración."},
+          "steps": {
+            "en": ["Iowa State suggests picking stem tips for fresh use; its guide gives about monthly picking as regional home-herb guidance, not a guaranteed indoor interval.", "Use the leaves in salads, dressings, soups or egg dishes. Maryland Extension advises picking leaves just before buds break and cutting flower stems before bloom when denser foliage is desired."],
+            "es": ["Iowa State sugiere recoger las puntas de los tallos para consumo fresco; su guía indica una recolección aproximadamente mensual como orientación regional de jardín, no como intervalo garantizado en interiores.", "Usa las hojas en ensaladas, aderezos, sopas o platillos con huevo. Maryland Extension aconseja recoger las hojas justo antes de abrirse los botones y cortar los tallos florales antes de la floración cuando se busque un follaje más denso."]
+          },
+          "sourceIds": ["iastate-herbs-growing-harvesting-2026", "umd-chervil-500"]
+        },
+        {
+          "id": "tray-dry-leaves",
+          "icon": "🌬️",
+          "status": "possible",
+          "title": {"en": "Dry leaves on a tray", "es": "Secar las hojas en una bandeja"},
+          "summary": {"en": "Iowa State describes tray drying for chervil harvested before flowering; no storage duration is specified here.", "es": "Iowa State describe el secado en bandeja del perifollo cosechado antes de florecer; aquí no se indica una duración de almacenamiento."},
+          "steps": {
+            "en": ["For dried use, Iowa State advises harvesting the leaves just before blossoms open and spreading them on drying trays.", "Dry fully before storing; the source does not provide a chervil-specific shelf life."],
+            "es": ["Para secarlas, Iowa State aconseja cosechar las hojas justo antes de que se abran las flores y extenderlas en bandejas de secado.", "Sécalas por completo antes de guardarlas; la fuente no establece una vida útil específica para el perifollo."]
+          },
+          "sourceIds": ["iastate-herbs-growing-harvesting-2026"]
+        }
+      ],
+      "referenceSourceIds": ["ncsu-chervil-500", "umd-chervil-500", "iastate-herbs-growing-harvesting-2026"]
+    },
+    "flat-leaf-parsley": {
+      "edibleParts": {"en": "Leaves and young leaf stalks", "es": "Hojas y pecíolos jóvenes"},
+      "bestUse": {
+        "en": "Iowa State describes parsley as a garnish for soups, salads, meat and poultry. University of Minnesota Extension distinguishes Italian flat-leaf parsley from curly types by its stronger, sweeter flavor; that distinction is type-level, not a named-cultivar claim.",
+        "es": "Iowa State describe el perejil como guarnición para sopas, ensaladas, carnes y aves. University of Minnesota Extension distingue el perejil italiano de hoja plana de los tipos rizados por su sabor más intenso y dulce; esa diferencia corresponde al tipo, no a un cultivar nombrado."
+      },
+      "quickUses": {
+        "en": ["Fresh garnish", "Soups and salads", "Meat and poultry dishes"],
+        "es": ["Guarnición fresca", "Sopas y ensaladas", "Platillos de carne y aves"]
+      },
+      "methods": [
+        {
+          "id": "fresh-leaves",
+          "icon": "🌿",
+          "status": "best",
+          "title": {"en": "Use leaves fresh", "es": "Usar las hojas frescas"},
+          "summary": {"en": "Fresh use retains the quality favored by the cited Extension guidance.", "es": "El uso fresco conserva la calidad preferida por la guía de Extension citada."},
+          "steps": {
+            "en": ["Harvest outer stalks near the base as described in the plant profile, and use the leaves in soups, salads or as a garnish.", "Minnesota Extension notes that drying or freezing is possible but flavor is lost; do not infer a universal storage duration."],
+            "es": ["Cosecha los pecíolos exteriores cerca de la base, como indica la ficha de la planta, y usa las hojas en sopas, ensaladas o como guarnición.", "Minnesota Extension señala que es posible secar o congelar, pero se pierde sabor; no se infiere una duración universal de almacenamiento."]
+          },
+          "sourceIds": ["iastate-herbs-growing-harvesting-2026", "umn-parsley-home-gardens-2026"]
+        }
+      ],
+      "referenceSourceIds": ["iastate-herbs-growing-harvesting-2026", "umn-parsley-home-gardens-2026"]
+    },
+    "summer-savory": {
+      "edibleParts": {"en": "Leafy tops and leaves", "es": "Puntas con hojas y hojas"},
+      "bestUse": {
+        "en": "Iowa State lists summer savory for fresh beans, vinegars, soups, stuffing and rice; Illinois Extension also describes fresh or dried leafy tops for soups, meat and vegetable dishes, salads and beans. These are species-level uses for Satureja hortensis, not the named 'Midget' variety.",
+        "es": "Iowa State menciona la ajedrea de verano para ejotes frescos, vinagres, sopas, rellenos y arroz; Illinois Extension también describe las puntas con hojas frescas o secas para sopas, carnes, verduras, ensaladas y frijoles. Son usos a nivel de especie para Satureja hortensis, no para la variedad nombrada 'Midget'."
+      },
+      "quickUses": {
+        "en": ["Fresh beans and vegetables", "Soups and rice", "Vinegars and stuffings"],
+        "es": ["Ejotes y verduras frescas", "Sopas y arroz", "Vinagres y rellenos"]
+      },
+      "methods": [
+        {
+          "id": "fresh-or-dry-leafy-tops",
+          "icon": "🌿",
+          "status": "good",
+          "title": {"en": "Harvest leafy tops for fresh or dried use", "es": "Cosechar puntas con hojas para uso fresco o seco"},
+          "summary": {"en": "Harvest as flower buds appear; Iowa State describes a pre-flowering cut-back and possible second crop, while Illinois gives no universal cut height.", "es": "Cosecha cuando aparecen los botones florales; Iowa State describe un corte antes de florecer y una posible segunda cosecha, mientras Illinois no fija una altura universal."},
+          "steps": {
+            "en": ["Illinois Extension recommends cutting leafy tops as buds appear. Iowa State's species-specific row says to cut back to about 1 inch above ground just before flowering and notes a second crop may form; treat that as its garden guidance, not a guaranteed indoor regrowth schedule.", "Iowa State lists drying or freezing but gives no summer-savory-specific preservation procedure or storage duration. Its general herb drying guidance may be used only as general handling context."],
+            "es": ["Illinois Extension recomienda cortar las puntas con hojas cuando aparecen los botones. La fila específica de Iowa State indica cortar hasta aproximadamente 1 pulgada sobre el suelo justo antes de florecer y señala que puede formarse una segunda cosecha; considéralo una orientación de jardín de esa fuente, no un calendario garantizado de rebrote en interiores.", "Iowa State menciona secar o congelar, pero no ofrece un procedimiento de conservación ni una duración específica para la ajedrea de verano. Su guía general de secado solo sirve como contexto general de manejo."]
+          },
+          "sourceIds": ["iastate-herbs-growing-harvesting-2026", "illinois-summer-savory-wave2"]
+        }
+      ],
+      "referenceSourceIds": ["iastate-herbs-growing-harvesting-2026", "illinois-summer-savory-wave2"]
+    },
+    "celebrity-tomato": {
+      "edibleParts": {"en": "Ripe tomato fruit", "es": "Fruto maduro del tomate"},
+      "bestUse": {
+        "en": "University of Delaware classifies Celebrity as a slicer tomato and lists red, globe-shaped fruit. That supports fresh slicing; it does not make this cultivar exclusive to one recipe or guarantee the same fruit size in every growing context.",
+        "es": "University of Delaware clasifica Celebrity como tomate para rebanar y describe frutos rojos y globosos. Esto respalda el uso en rodajas frescas; no limita el cultivar a una receta ni garantiza el mismo tamaño en todo contexto de cultivo."
+      },
+      "quickUses": {"en": ["Fresh tomato slices"], "es": ["Rodajas frescas de tomate"]},
+      "methods": [
+        {
+          "id": "slice-ripe-celebrity-fruit",
+          "icon": "🍅",
+          "status": "best",
+          "title": {"en": "Use as a fresh slicer", "es": "Usar fresco en rodajas"},
+          "summary": {"en": "The cultivar is listed as a slicer type; harvest by usable color and size, not by a guaranteed date.", "es": "El cultivar aparece como tipo para rebanar; cosecha por color y tamaño aprovechables, no por una fecha garantizada."},
+          "steps": {
+            "en": ["UMN advises harvesting tomatoes when they reach usable size and color; check the fruit and plant rather than treating a regional maturity estimate as a promise.", "Slice the ripe fruit for fresh use. The Delaware entry's red, globe-shaped, 7–8 oz description is source-specific, not a guaranteed size in every garden."],
+            "es": ["UMN recomienda cosechar los tomates cuando alcanzan un tamaño y color aprovechables; revisa el fruto y la planta en vez de tratar una estimación regional como promesa.", "Rebana el fruto maduro para usarlo fresco. La descripción de Delaware —rojo, globoso y de 200–225 g— corresponde a esa fuente, no garantiza el tamaño en todo jardín."]
+          },
+          "sourceIds": ["udel-celebrity-slicer-tomato-2026", "umn-tomatoes-home-gardens-2024"]
+        }
+      ],
+      "referenceSourceIds": ["ufifas-celebrity-tomato-2026", "udel-celebrity-slicer-tomato-2026", "umn-tomatoes-home-gardens-2024"]
+    },
+    "grape-tomato": {
+      "edibleParts": {"en": "Ripe tomato fruit", "es": "Fruto maduro del tomate"},
+      "bestUse": {
+        "en": "Johnny's describes grape tomatoes as bite-size and oblong, commonly used in salads and for snacking. Fruit color, flavor and plant traits vary among the named varieties within this type.",
+        "es": "Johnny's describe los tomates uva como pequeños y oblongos, usados comúnmente en ensaladas y como snack. El color, sabor y porte varían entre las variedades nombradas de este tipo."
+      },
+      "quickUses": {"en": ["Snacking", "Salads"], "es": ["Como snack", "Ensaladas"]},
+      "methods": [
+        {
+          "id": "fresh-grape-tomatoes",
+          "icon": "🍅",
+          "status": "best",
+          "title": {"en": "Serve fresh", "es": "Servir fresco"},
+          "summary": {"en": "Bite-size fruit works well for snacking and salads; color and flavor depend on the selected variety.", "es": "El fruto pequeño funciona bien como snack y en ensaladas; el color y sabor dependen de la variedad elegida."},
+          "steps": {
+            "en": ["Pick when the selected variety reaches its ripe color and usable condition; this type has no single universal color or maturity date.", "Serve whole as a snack or add to salads, as described in the type-level source."],
+            "es": ["Cosecha cuando la variedad elegida alcance su color maduro y condición aprovechable; este tipo no tiene un color ni una fecha universal de madurez.", "Sírvelo entero como snack o agrégalo a ensaladas, como describe la fuente del tipo."]
+          },
+          "sourceIds": ["johnnys-grape-tomato-type-2026"]
+        }
+      ],
+      "referenceSourceIds": ["johnnys-grape-tomato-type-2026"]
+    },
+    "ground-cherry": {
+      "edibleParts": {"en": "Ripe berry-like fruit inside the papery husk", "es": "Fruto maduro tipo baya dentro del cáliz papiráceo"},
+      "bestUse": {
+        "en": "UMN describes ground-cherry fruit as small and sweet and says it can be eaten raw, cooked, or dried. Its guidance covers several Physalis species, including P. pruinosa; it is not a named-cultivar flavor claim.",
+        "es": "UMN describe las cerezas de tierra como frutos pequeños y dulces que pueden comerse crudos, cocidos o secos. La guía abarca varias especies de Physalis, incluida P. pruinosa; no es una afirmación de sabor para un cultivar nombrado."
+      },
+      "quickUses": {"en": ["Eat ripe fruit fresh", "Cook in preserves", "Dry ripe fruit"], "es": ["Comer el fruto maduro fresco", "Cocinarlo en conservas", "Secar el fruto maduro"]},
+      "methods": [
+        {
+          "id": "fresh-ripe-fruit",
+          "icon": "🟡",
+          "status": "best",
+          "title": {"en": "Use fully ripe fruit", "es": "Usar el fruto completamente maduro"},
+          "summary": {"en": "Ripe fruit is sweet and may be eaten raw, cooked, or dried.", "es": "El fruto maduro es dulce y puede comerse crudo, cocido o seco."},
+          "steps": {
+            "en": ["Harvest when the papery husk is dry and fruit begins to drop; the cited crop guide describes this as the ripe stage.", "Remove the husk before eating. The source covers several ground-cherry species, so no cultivar-specific flavor or harvest date is implied."],
+            "es": ["Cosecha cuando el cáliz papiráceo esté seco y el fruto empiece a caer; la guía del cultivo describe esto como la etapa madura.", "Retira el cáliz antes de comer. La fuente abarca varias especies de cereza de tierra, por lo que no se implica un sabor ni una fecha de cosecha de cultivar específico."]
+          },
+          "sourceIds": ["umn-tomatillo-ground-cherry-wave4"]
+        },
+        {
+          "id": "preserve-ground-cherries",
+          "icon": "🫙",
+          "status": "good",
+          "title": {"en": "Store or preserve ripe fruit", "es": "Guardar o conservar el fruto maduro"},
+          "summary": {"en": "The husk helps with short storage; jam, preserves, canning, or freezing are documented options.", "es": "El cáliz ayuda al almacenamiento breve; se documentan mermeladas, conservas, enlatado o congelación."},
+          "steps": {
+            "en": ["UMN says fruit left in its husk keeps for about one to two weeks; this is source guidance, not a guaranteed household shelf life.", "The same guide lists jam/preserves, canning, or freezing. Follow a current tested food-preservation process for canning; no recipe or safety procedure is supplied by this plant profile."],
+            "es": ["UMN indica que el fruto dejado en su cáliz se conserva aproximadamente una o dos semanas; es una referencia de la fuente, no una duración doméstica garantizada.", "La misma guía menciona mermelada/conservas, enlatado o congelación. Para enlatado, sigue un proceso de conservación de alimentos probado y vigente; esta ficha no proporciona receta ni procedimiento de seguridad."]
+          },
+          "sourceIds": ["umn-tomatillo-ground-cherry-wave4"]
+        }
+      ],
+      "referenceSourceIds": ["umn-tomatillo-ground-cherry-wave4"]
+    },
+    "sun-gold-tomato": {
+      "edibleParts": {"en": "Ripe orange cherry tomato fruit", "es": "Fruto maduro anaranjado tipo cherry"},
+      "bestUse": {
+        "en": "Johnny's describes Sun Gold F1 as an exceptionally sweet fresh-market cherry tomato and says its tendency to split precludes shipping. Use the product's orange, ripe fruit fresh; no universal storage time is claimed.",
+        "es": "Johnny's describe Sun Gold F1 como un tomate cherry de mercado fresco excepcionalmente dulce e indica que su tendencia a agrietarse impide enviarlo. Usa fresco el fruto naranja y maduro del producto; no se afirma un tiempo universal de almacenamiento."
+      },
+      "quickUses": {"en": ["Fresh eating", "Snacking"], "es": ["Consumo fresco", "Como snack"]},
+      "methods": [
+        {
+          "id": "fresh-sun-gold-fruit",
+          "icon": "🍅",
+          "status": "best",
+          "title": {"en": "Eat fresh at ripe color", "es": "Comer fresco al alcanzar el color maduro"},
+          "summary": {"en": "Its supplier identifies Sun Gold as a fresh-market tomato; the cultivar is known for sweet orange fruit and a tendency to split.", "es": "El proveedor identifica Sun Gold como tomate de mercado fresco; el cultivar se caracteriza por fruto naranja dulce y tendencia a agrietarse."},
+          "steps": {
+            "en": ["Use the deep orange color described by Johnny's as a ripeness cue; its 57-day figure is a supplier estimate from transplant, not a promise for every environment.", "Harvest sound fruit for fresh eating. Splitting is a documented cultivar limitation, but the source does not establish a household storage duration."],
+            "es": ["Usa el color naranja intenso descrito por Johnny's como señal de madurez; sus 57 días son una estimación del proveedor desde el trasplante, no una promesa para todo ambiente.", "Cosecha frutos sanos para consumo fresco. El agrietamiento es una limitación documentada del cultivar, pero la fuente no establece una duración de almacenamiento doméstico."]
+          },
+          "sourceIds": ["johnnys-sun-gold-wave2"]
+        }
+      ],
+      "referenceSourceIds": ["johnnys-sun-gold-wave2", "umn-tomatoes-home-gardens-2024"]
+    },
+    "tomatillo": {
+      "edibleParts": {"en": "Fleshy fruit inside the papery husk", "es": "Fruto carnoso dentro del cáliz papiráceo"},
+      "bestUse": {
+        "en": "Tomatillos are tart and firm; UMN says cooks usually chop or blend them into sauces and salsas. Wash off the sticky film after removing the husk. This applies to the tomatillo crop, not to an unspecified named variety's flavor profile.",
+        "es": "Los tomatillos son ácidos y firmes; UMN indica que suelen picarse o licuarse para salsas. Después de retirar el cáliz, lava la película pegajosa. Esto corresponde al cultivo de tomatillo, no al perfil de sabor de una variedad sin especificar."
+      },
+      "quickUses": {"en": ["Fresh salsa", "Cooked sauces", "Freeze for later use"], "es": ["Salsa fresca", "Salsas cocidas", "Congelar para usar después"]},
+      "methods": [
+        {
+          "id": "salsa-and-sauces",
+          "icon": "🥣",
+          "status": "best",
+          "title": {"en": "Prepare for salsa or sauce", "es": "Preparar para salsa"},
+          "summary": {"en": "The firm, tart fruit is commonly chopped or blended for fresh or cooked salsa and sauces.", "es": "El fruto firme y ácido suele picarse o licuarse para salsas frescas o cocidas."},
+          "steps": {
+            "en": ["Harvest when fruit fills the husk but is still green and firm for the highest quality and best flavor, as described in the plant profile.", "Remove the husk and wash the sticky film from the fruit before use."],
+            "es": ["Cosecha cuando el fruto llene el cáliz pero aún esté verde y firme para obtener la mejor calidad y sabor, como describe la ficha de la planta.", "Retira el cáliz y lava la película pegajosa antes de usarlo."]
+          },
+          "sourceIds": ["umn-tomatillo-ground-cherry-wave4"]
+        },
+        {
+          "id": "store-or-freeze-tomatillos",
+          "icon": "❄️",
+          "status": "good",
+          "title": {"en": "Store or freeze the harvest", "es": "Guardar o congelar la cosecha"},
+          "summary": {"en": "Keep fruit in its husk in a ventilated setting; remove husks and wash before freezing.", "es": "Guarda el fruto con cáliz en un lugar ventilado; retíralo y lávalo antes de congelar."},
+          "steps": {
+            "en": ["UMN describes months of storage in a cool, well-ventilated place at 50–60°F and about 60% relative humidity; it also gives up to two weeks in a paper bag in the refrigerator. Treat these as source conditions, not an unconditional household guarantee.", "For freezing, remove husks, wash and dry the fruit, freeze in a single layer until solid, then transfer to sealed bags."],
+            "es": ["UMN describe almacenamiento durante meses en un lugar fresco y ventilado a 50–60°F y cerca de 60% de humedad relativa; también indica hasta dos semanas en una bolsa de papel en el refrigerador. Son condiciones de la fuente, no una garantía doméstica incondicional.", "Para congelar, retira los cálices, lava y seca el fruto, congélalo en una sola capa hasta que endurezca y luego pásalo a bolsas cerradas."]
+          },
+          "sourceIds": ["umn-tomatillo-ground-cherry-wave4"]
+        }
+      ],
+      "referenceSourceIds": ["umn-tomatillo-ground-cherry-wave4"]
+    },
+    "sweet-corn-zea-mays": {
+      "edibleParts": {"en": "Immature kernels harvested at the milk stage", "es": "Granos inmaduros cosechados en etapa lechosa"},
+      "bestUse": {
+        "en": "For peak sweetness, cook or process sweet corn soon after harvest. Illinois Extension notes that kernel type affects texture and quality after freezing, so this species-level record does not promise identical results for every unspecified sweet-corn type.",
+        "es": "Para conservar mejor el dulzor, cocina o procesa el maíz dulce poco después de cosecharlo. Illinois Extension señala que el tipo genético del grano afecta la textura y calidad al congelarlo; esta ficha de especie no promete el mismo resultado para todos los tipos de maíz dulce sin especificar."
+      },
+      "quickUses": {
+        "en": ["Boiled or steamed on the cob", "Grilled or roasted", "Kernels in salads, salsa, chili or skillet dishes"],
+        "es": ["Hervido o al vapor en la mazorca", "A la parrilla o asado", "Granos en ensaladas, salsa, chili o salteados"]
+      },
+      "methods": [
+        {
+          "id": "cook-fresh",
+          "icon": "🌽",
+          "status": "best",
+          "title": {"en": "Cook fresh", "es": "Cocinar fresco"},
+          "summary": {"en": "Freshly harvested sweet corn is best used promptly for flavor and texture.", "es": "El maíz dulce recién cosechado se aprovecha mejor pronto por su sabor y textura."},
+          "steps": {
+            "en": ["Use soon after harvest; Illinois Extension notes that sugars decline and starch increases during warm storage.", "Boil, steam, grill, roast or microwave. Avoid overcooking; the source notes that it toughens kernels."],
+            "es": ["Úsalo poco después de cosecharlo; Illinois Extension señala que durante el almacenamiento cálido disminuyen los azúcares y aumenta el almidón.", "Hiérvelo, cuécelo al vapor, ásalo a la parrilla, al horno o en microondas. Evita cocinarlo de más, pues la fuente indica que los granos se endurecen."]
+          },
+          "sourceIds": ["illinois-corn-home-garden-2026", "illinois-preparing-corn-2026"]
+        },
+        {
+          "id": "refrigerate-briefly",
+          "icon": "🧊",
+          "status": "possible",
+          "title": {"en": "Refrigerate briefly", "es": "Refrigerar por poco tiempo"},
+          "summary": {"en": "Refrigeration slows quality loss but does not preserve peak freshness for long.", "es": "La refrigeración ralentiza la pérdida de calidad, pero no mantiene mucho tiempo la frescura máxima."},
+          "steps": {
+            "en": ["If it cannot be cooked or processed promptly, refrigerate the ears as soon as possible in perforated plastic bags.", "Keep the husks on until just before cooking and aim to use within 1–2 days, as Illinois Extension advises; this is a source recommendation, not a guaranteed shelf life."],
+            "es": ["Si no puedes cocinarlo o procesarlo pronto, refrigera las mazorcas cuanto antes en bolsas plásticas perforadas.", "Conserva las hojas hasta justo antes de cocinar y procura usarlo en 1–2 días, como recomienda Illinois Extension; es una indicación de la fuente, no una vida útil garantizada."]
+          },
+          "sourceIds": ["illinois-corn-home-garden-2026"]
+        },
+        {
+          "id": "freeze-kernels",
+          "icon": "❄️",
+          "status": "good",
+          "title": {"en": "Freeze whole kernels", "es": "Congelar los granos"},
+          "summary": {"en": "Freezing is a supported option for preserving surplus sweet corn; follow the Extension blanching and cooling steps.", "es": "Congelar es una opción respaldada para conservar el excedente de maíz dulce; sigue los pasos de escaldado y enfriado de Extension."},
+          "steps": {
+            "en": ["Select tender ears harvested at the milk stage. Blanch on the cob in water for 4 minutes, then cool promptly in ice water for 4 minutes.", "Drain, cut kernels about two-thirds of their depth, and pack in freezer containers leaving 1/2 inch headspace. Illinois Extension notes that sweet-corn kernel types differ in frozen texture; no cultivar-specific outcome is claimed."],
+            "es": ["Elige mazorcas tiernas cosechadas en etapa lechosa. Escáldalas enteras en agua durante 4 minutos y enfríalas de inmediato en agua con hielo durante otros 4 minutos.", "Escurre, corta los granos a aproximadamente dos tercios de su profundidad y envásalos en recipientes para congelador dejando 1/2 pulgada de espacio. Illinois Extension señala que la textura congelada varía entre tipos de maíz dulce; no se afirma un resultado específico de cultivar."]
+          },
+          "sourceIds": ["illinois-preparing-corn-2026", "illinois-corn-home-garden-2026"]
+        }
+      ],
+      "referenceSourceIds": ["illinois-corn-home-garden-2026", "illinois-preparing-corn-2026", "usu-sweet-corn-home-500", "usu-sweet-corn-harvest-2026"]
+    },
+    "white-lisbon-bunching-onion": {
+      "edibleParts": {"en": "Young white stem and green leaves harvested as a salad onion", "es": "Tallo blanco joven y hojas verdes cosechados como cebolla de ensalada"},
+      "bestUse": {
+        "en": "RHS describes White Lisbon as a mild-flavored salad onion. It is represented here as young-harvest Allium cepa, not as the separate species Allium fistulosum.",
+        "es": "RHS describe White Lisbon como una cebolla de ensalada de sabor suave. Aquí se representa como Allium cepa cosechada joven, no como la especie distinta Allium fistulosum."
+      },
+      "quickUses": {
+        "en": ["Sliced in salads", "Fresh garnish"],
+        "es": ["En rodajas en ensaladas", "Guarnición fresca"]
+      },
+      "methods": [],
+      "referenceSourceIds": ["rhs-allium-cepa-white-lisbon-2026", "osu-green-bunching-onion-2010"]
     }
   },
   "catalogCoverage": {
     "version": "0.2",
-    "expectedPlantCount": 41,
-    "coveredPlantCount": 41,
-    "rule": "Every current Library plant has a Harvest Use record. Methods appear only when supported and useful; ornamental/identity-sensitive records may intentionally have no preservation methods."
+    "expectedPlantCount": 501,
+    "coveredPlantCount": 385,
+    "rule": "This is an in-progress coverage audit, not a complete-catalog claim: 385 of 501 published Plant identities currently have Harvest Use records across the base catalog and additive enrichment layer. Methods appear only when supported and useful; ornamental/identity-sensitive records may intentionally have no preservation methods."
   }
 }

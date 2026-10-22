@@ -511,7 +511,7 @@ function firstTemperature(plant, sourceById) {
   );
 }
 
-function buildReference(plant, neighborData, sourceById) {
+function buildReference(plant, neighborData, sourceById, additionalSourceIds = []) {
   const problems = sectionItems(plant, ["problems"], sourceById);
   const recommendations = uniqueStrings([
     ...sectionItems(plant, [
@@ -527,6 +527,7 @@ function buildReference(plant, neighborData, sourceById) {
       .map((pair) => (pair.a === plant.id ? pair.b : pair.a)),
   );
   const sourceIds = uniqueStrings([
+    ...additionalSourceIds,
     ...Object.values(plant.sections || {}).flatMap(
       (section) => section?.sourceIds || [],
     ),
@@ -590,6 +591,12 @@ function buildReference(plant, neighborData, sourceById) {
 
 function buildCatalogManifest(plants, identityAliases) {
   const neighborData = readJson("data/neighbor-profiles.json");
+  const profileEnrichmentByPlant = new Map(
+    readJson("data/plant-profile-enrichment-v1.json").map((profile) => [
+      profile.id,
+      profile,
+    ]),
+  );
   const sourceRecords = [
     "data/sources.json",
     "data/sources-current-gardens.json",
@@ -688,55 +695,78 @@ function buildCatalogManifest(plants, identityAliases) {
     ]);
   }
   const entries = plants
-    .map((plant) => ({
-      libraryPlantId: plant.id,
-      commonName: plant.name,
-      spanishName: plant.spanishName || null,
-      scientificName: plant.scientificName || null,
-      cultivar: publicCultivar(plant),
-      aliases: uniqueStrings([
-        plant.name,
-        plant.spanishName,
-        plant.scientificName,
-        publicCultivar(plant),
-        ...(aliasesByCanonicalId.get(plant.id) || []).flatMap((alias) => [
-          alias.aliasId,
-          alias.aliasName,
-          alias.aliasScientificName,
-        ]),
-        ...(plant.tags || []).filter((tag) => !PUBLIC_TAG_EXCLUSIONS.test(tag)),
-      ]).filter((alias) => !PUBLIC_TAG_EXCLUSIONS.test(alias)),
-      category: plant.category || "uncategorized",
-      status: "active",
-      provenance: uniqueStrings([
-        ...Object.values(plant.sections || {}).flatMap(
+    .map((plant) => {
+      const enrichment = profileEnrichmentByPlant.get(plant.id);
+      const enrichmentSourceIds = uniqueStrings(
+        Object.values(enrichment?.sections || {}).flatMap(
           (section) => section?.sourceIds || [],
         ),
-        ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
-          claim?.status === "known"
-            ? claim.evidence.flatMap((item) => item.sourceIds)
-            : [],
+      );
+      const publicIdentity = {
+        ...plant,
+        ...(typeof enrichment?.scientificName === "string"
+          ? { scientificName: enrichment.scientificName }
+          : {}),
+        ...(typeof enrichment?.variety === "string"
+          ? { variety: enrichment.variety }
+          : {}),
+      };
+      return {
+        libraryPlantId: plant.id,
+        commonName: publicIdentity.name,
+        spanishName: publicIdentity.spanishName || null,
+        scientificName: publicIdentity.scientificName || null,
+        cultivar: publicCultivar(publicIdentity),
+        aliases: uniqueStrings([
+          publicIdentity.name,
+          publicIdentity.spanishName,
+          publicIdentity.scientificName,
+          publicCultivar(publicIdentity),
+          ...(aliasesByCanonicalId.get(plant.id) || []).flatMap((alias) => [
+            alias.aliasId,
+            alias.aliasName,
+            alias.aliasScientificName,
+          ]),
+          ...(plant.tags || []).filter((tag) => !PUBLIC_TAG_EXCLUSIONS.test(tag)),
+        ]).filter((alias) => !PUBLIC_TAG_EXCLUSIONS.test(alias)),
+        category: plant.category || "uncategorized",
+        status: "active",
+        provenance: uniqueStrings([
+          ...enrichmentSourceIds,
+          ...Object.values(plant.sections || {}).flatMap(
+            (section) => section?.sourceIds || [],
+          ),
+          ...Object.values(plant.lifeCapabilities || {}).flatMap((claim) =>
+            claim?.status === "known"
+              ? claim.evidence.flatMap((item) => item.sourceIds)
+              : [],
+          ),
+        ]).filter((id) => knownSourceIds.has(id)),
+        guidanceProfile: neighborData.profiles?.[plant.id] || null,
+        ...(Object.hasOwn(plant, "compatibilityProfile")
+          ? {
+              compatibilityProfile: validateCompatibilityProfile(
+                plant.compatibilityProfile,
+                knownSourceIds,
+              ),
+            }
+          : {}),
+        ...(Object.hasOwn(plant, "lifeCapabilities")
+          ? {
+              lifeCapabilities: validateGardenpediaLifeCapabilities(
+                plant.lifeCapabilities,
+                knownSourceIds,
+              ),
+            }
+          : {}),
+        reference: buildReference(
+          plant,
+          neighborData,
+          sourceById,
+          enrichmentSourceIds,
         ),
-      ]).filter((id) => knownSourceIds.has(id)),
-      guidanceProfile: neighborData.profiles?.[plant.id] || null,
-      ...(Object.hasOwn(plant, "compatibilityProfile")
-        ? {
-            compatibilityProfile: validateCompatibilityProfile(
-              plant.compatibilityProfile,
-              knownSourceIds,
-            ),
-          }
-        : {}),
-      ...(Object.hasOwn(plant, "lifeCapabilities")
-        ? {
-            lifeCapabilities: validateGardenpediaLifeCapabilities(
-              plant.lifeCapabilities,
-              knownSourceIds,
-            ),
-          }
-        : {}),
-      reference: buildReference(plant, neighborData, sourceById),
-    }))
+      };
+    })
     .sort((a, b) => a.libraryPlantId.localeCompare(b.libraryPlantId));
   const identityDigest = crypto
     .createHash("sha256")
@@ -835,13 +865,33 @@ function writeGeneratedPlantProfileIndex(allPlants, catalogManifest) {
       ).filter(Boolean),
     );
   };
-  const publicMetric = (metric, translatedMetric) =>
-    !/germination|sowing|seed|germinaci[oó]n|siembra|semillas?|owned|user zero|inventory|purchase|garden position|yCube/i.test(
-      [metric, translatedMetric]
-        .flatMap((item) => [item?.label, item?.value, item?.note])
-        .filter(Boolean)
-        .join(" "),
-    );
+  const publicMetric = (metric, translatedMetric) => {
+    const labels = [metric?.label, translatedMetric?.label]
+      .flatMap((value) =>
+        typeof value === "string"
+          ? [value]
+          : value && typeof value === "object"
+            ? Object.values(value)
+            : [],
+      )
+      .filter((value) => typeof value === "string")
+      .join(" ");
+    const allFields = [metric, translatedMetric]
+      .flatMap((item) => [item?.label, item?.value, item?.note])
+      .flatMap((value) =>
+        typeof value === "string"
+          ? [value]
+          : value && typeof value === "object"
+            ? Object.values(value)
+            : [],
+      )
+      .filter((value) => typeof value === "string")
+      .join(" ");
+    const seedStageMetric =
+      /germination|sowing|emergence|seedling|seed packet|seed type|seed form|seed storage|seed treatment|transplant|germinaci[oó]n|siembra|emergencia|pl[aá]ntula|paquete de semillas|tipo de semilla|forma de semilla|almacenamiento de semillas|tratamiento de semillas|trasplante/i;
+    const privateMetric = /owned|user zero|inventory|purchase|garden position|yCube/i;
+    return !seedStageMetric.test(labels) && !privateMetric.test(allFields);
+  };
   const profiles = Object.fromEntries(
     publicPlants.map((plant) => {
       const translated = translations.get(plant.id) || {};

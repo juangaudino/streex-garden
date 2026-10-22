@@ -1,6 +1,487 @@
 [
-  {"id":"mexican-snowball-echeveria-elegans","name":"Mexican Snowball Echeveria","spanishName":"Echeveria bola de nieve","scientificName":"Echeveria elegans","variety":null,"category":"ornamentals","emoji":"🪴","tags":["Mexican snowball","Mexican gem","white Mexican rose","Echeveria elegans","echeveria bola de nieve"],"summary":"A small rosette-forming Mexican succulent commonly grown in containers. NC State Extension describes leaf/offset propagation and warns that overwatering is a frequent problem; this is the species Echeveria elegans, not an unnamed retail hybrid.","metrics":[],"sections":{"identity":{"short":"Accepted species Echeveria elegans","guidance":"Kew accepts Echeveria elegans Rose and places it in Crassulaceae. NC State lists Mexican snowball, Mexican gem and white Mexican rose as common names. No cultivar or hybrid is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-echeveria-elegans-wave55","ncsu-echeveria-elegans-wave55"]},"growth":{"short":"Rosette-forming succulent perennial","guidance":"NC State describes tight rosette clumps and container or rock-garden use in its regional profile. Its dimensions and sun exposure are not generalized to every indoor site or hybrid Echeveria.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echeveria-elegans-wave55"]},"cultivation":{"short":"Use bright conditions and a freely draining medium","guidance":"NC State recommends well-drained soil and reports full sun to partial shade for this species in North Carolina. The source identifies overwatering as a common problem; these soil-culture recommendations do not establish hydroponic compatibility.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echeveria-elegans-wave55"]},"propagation":{"short":"Offsets, leaves and cuttings are documented","guidance":"NC State lists leaf cuttings and division of offsets as propagation strategies. Seed-grown plants are not needed to preserve a named cultivar here because none is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-echeveria-elegans-wave55"]}},"compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Container and rock-garden guidance does not establish hydroponic suitability."},"growthHabits":{"status":"known","value":["clumping","mounded"],"evidence":[{"sourceIds":["ncsu-echeveria-elegans-wave55"],"evidenceType":"source_backed","confidence":"medium","taxonomicScope":{"level":"species","taxon":"Echeveria elegans"},"note":"NC State describes rosette clumps and a clumping/mounding habit."}]},"matureSize":{"height":{"status":"unknown","reason":"No single indoor mature dimension selected."},"spread":{"status":"unknown","reason":"Regional species dimensions are not a standardized indoor footprint."}},"spacing":{"status":"unknown","reason":"Landscape/container spacing is not a Garden pod count."},"light":{"status":"unknown","reason":"Outdoor full-sun/partial-shade guidance is not an indoor grow-light tier."}}},
-  {"id":"zebra-haworthiopsis-attenuata","name":"Zebra Haworthiopsis","spanishName":"Haworthia cebra","scientificName":"Haworthiopsis attenuata","variety":null,"category":"ornamentals","emoji":"🪴","tags":["zebra plant","zebra haworthia","Haworthia attenuata","Haworthiopsis attenuata","haworthia cebra"],"summary":"A slow-growing South African succulent often called zebra haworthia. The accepted name is Haworthiopsis attenuata; Haworthia attenuata is a synonym, and the similar H. fasciata is a separate species.","metrics":[],"sections":{"identity":{"short":"Accepted name Haworthiopsis attenuata","guidance":"Kew accepts Haworthiopsis attenuata and lists Haworthia attenuata among its synonyms. NC State notes that the species is commonly confused in commerce with H. fasciata, which is distinct; the profile follows the accepted species name.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-haworthiopsis-attenuata-wave55","ncsu-haworthiopsis-attenuata-wave55"]},"growth":{"short":"Slow-growing succulent perennial","guidance":"NC State describes a slow-growing succulent perennial from South Africa and notes that correctly identified H. attenuata has raised bumps around the leaf surfaces, unlike the smooth upper leaf face of H. fasciata. This is a recognition distinction, not a cultivar claim.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-haworthiopsis-attenuata-wave55"]},"cultivation":{"short":"Container-friendly, with drainage more important than a wet schedule","guidance":"NC State recommends a well-draining cactus or succulent mix. This soil/container guidance does not support a hydroponic recipe or a fixed watering interval.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-haworthiopsis-attenuata-wave55"]},"propagation":{"short":"Seed propagation is possible; offsets preserve the plant form","guidance":"NC State describes offsets as the practical propagation route for Haworthiopsis. The propagation classification prioritizes vegetative offsets; no germination protocol was selected for this catalog profile.","evidenceType":"source_backed","confidence":"medium","sourceIds":["ncsu-haworthiopsis-attenuata-wave55"]}},"compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Succulent potting-mix guidance does not establish hydroponic suitability."},"growthHabits":{"status":"unknown","reason":"No controlled compatibility habit value selected from the cited profile."},"matureSize":{"height":{"status":"unknown","reason":"No indoor mature size selected."},"spread":{"status":"unknown","reason":"No standardized indoor footprint established."}},"spacing":{"status":"unknown","reason":"Container culture is not a Garden pod count."},"light":{"status":"unknown","reason":"Regional houseplant light guidance is not normalized to a measured grow-light tier."}}},
-  {"id":"burros-tail-sedum-morganianum","name":"Burro's Tail","spanishName":"Cola de burro","scientificName":"Sedum morganianum","variety":null,"category":"ornamentals","emoji":"🪴","tags":["burro's tail","donkey's tail","lamb's tail","Sedum morganianum","cola de burro"],"summary":"A Mexican trailing succulent with fragile, fleshy leaves, suited to a hanging container when space allows. NC State documents easy leaf and stem propagation; handle gently and avoid wet, poorly drained conditions.","metrics":[],"sections":{"identity":{"short":"Accepted species Sedum morganianum","guidance":"Kew accepts Sedum morganianum, native to parts of Mexico. NC State lists burro's tail, donkey's tail and lamb's tail as common names; this identity is not a generic Sedum profile.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-sedum-morganianum-wave55","ncsu-sedum-morganianum-wave55"]},"growth":{"short":"Trailing stems with easily detached leaves","guidance":"NC State describes trailing stems reaching up to 24 inches in its profile and notes that leaves detach easily. That size is source-reported and not an indoor guarantee; use a hanging container only where the trailing stems can be protected from handling.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sedum-morganianum-wave55"]},"cultivation":{"short":"Allow the growing medium to dry between waterings","guidance":"NC State advises a bright interior position, well-drained soil, shallow pots and allowing soil to dry between waterings, with reduced winter watering. These regional houseplant directions are not evidence for a nutrient solution or system compatibility.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sedum-morganianum-wave55"]},"propagation":{"short":"Detached leaves and stem cuttings root readily","guidance":"NC State reports that cuttings and dropped leaves root readily. This supports vegetative propagation for preserving a known plant form; no seed-starting protocol is needed for the represented propagation route.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sedum-morganianum-wave55"]}},"compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Houseplant soil care does not establish hydroponic suitability."},"growthHabits":{"status":"known","value":["trailing"],"evidence":[{"sourceIds":["ncsu-sedum-morganianum-wave55"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Sedum morganianum"},"note":"NC State describes pendulous trailing stems."}]},"matureSize":{"height":{"status":"unknown","reason":"NC State reports stem length, not a standardized mature plant height."},"spread":{"status":"unknown","reason":"No consistent indoor footprint established."}},"spacing":{"status":"unknown","reason":"Hanging container guidance is not Garden pod spacing."},"light":{"status":"unknown","reason":"Window/partial-sun advice is not a quantified indoor light tier."}}},
-  {"id":"common-houseleek-sempervivum-tectorum","name":"Common Houseleek","spanishName":"Siempreviva mayor","scientificName":"Sempervivum tectorum","variety":null,"category":"ornamentals","emoji":"🪴","tags":["common houseleek","hens and chicks","roof houseleek","Sempervivum tectorum","siempreviva mayor"],"summary":"A cold-hardy European rosette succulent that produces offsets. NC State supports dry, well-drained outdoor culture and division; Kew confirms the accepted species and distinguishes its synonyms.","metrics":[],"sections":{"identity":{"short":"Accepted species Sempervivum tectorum","guidance":"Kew accepts Sempervivum tectorum and lists Sedum tectorum as a synonym. NC State uses common houseleek, hens and chicks and roof houseleek; no cultivar or hybrid is assigned.","evidenceType":"source_backed","confidence":"high","sourceIds":["kew-sempervivum-tectorum-wave55","ncsu-sempervivum-tectorum-wave55"]},"growth":{"short":"Succulent rosettes spread by offsets","guidance":"NC State describes offsets that form around the mother plant and a horizontal, spreading habit. Species identity is retained rather than treating every retail 'hens and chicks' plant as this species.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sempervivum-tectorum-wave55"]},"cultivation":{"short":"Full sun and sharply drained outdoor soil","guidance":"NC State describes full sun, well-drained sandy or gravelly soils, and some tolerance of light shade and drought in its regional landscape profile. This is not an indoor hydroponic recommendation.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sempervivum-tectorum-wave55"]},"propagation":{"short":"Division of offsets is an established route","guidance":"NC State lists division and seed among propagation strategies and describes offsets as readily produced. For maintaining a particular rosette appearance, division keeps the parent plant's identity more directly than seed; no named cultivar is claimed.","evidenceType":"source_backed","confidence":"high","sourceIds":["ncsu-sempervivum-tectorum-wave55"]}},"compatibilityProfile":{"profileVersion":1,"hydroponicSuitability":{"status":"unknown","reason":"Outdoor rock-garden guidance does not establish hydroponic suitability."},"growthHabits":{"status":"known","value":["spreading"],"evidence":[{"sourceIds":["ncsu-sempervivum-tectorum-wave55"],"evidenceType":"source_backed","confidence":"high","taxonomicScope":{"level":"species","taxon":"Sempervivum tectorum"},"note":"NC State describes offsets and a horizontal, spreading form."}]},"matureSize":{"height":{"status":"unknown","reason":"No indoor dimension selected."},"spread":{"status":"unknown","reason":"No standardized indoor footprint established."}},"spacing":{"status":"unknown","reason":"Outdoor rock-garden placement is not a Garden pod count."},"light":{"status":"unknown","reason":"Outdoor sun exposure is not an indoor grow-light tier."}}}
+  {
+    "id": "mexican-snowball-echeveria-elegans",
+    "name": "Mexican Snowball Echeveria",
+    "spanishName": "Echeveria bola de nieve",
+    "scientificName": "Echeveria elegans",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "Mexican snowball",
+      "Mexican gem",
+      "white Mexican rose",
+      "Echeveria elegans",
+      "echeveria bola de nieve"
+    ],
+    "summary": "A rosette-forming Mexican succulent grown in containers or rock gardens. Pale, fleshy leaves form clumps; seasonal flower stalks rise above the rosettes, while overwatering is a more common cultivation problem than a documented disease.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species Echeveria elegans",
+        "guidance": "Kew accepts Echeveria elegans Rose and places it in Crassulaceae. NC State lists Mexican snowball, Mexican gem and white Mexican rose as common names. No cultivar or hybrid is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-echeveria-elegans-wave55",
+          "ncsu-echeveria-elegans-wave55"
+        ]
+      },
+      "growth": {
+        "short": "Slow-growing rosette clumps send up seasonal flower stalks",
+        "guidance": "NC State describes tight rosette clumps of pale green-blue or silvery-green fleshy leaves and rates the species as slow-growing with low maintenance. Long flower stalks rise above the rosettes; no cultivar or unnamed retail hybrid is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-echeveria-elegans-wave55"
+        ]
+      },
+      "cultivation": {
+        "short": "Use bright conditions and a freely draining medium",
+        "guidance": "NC State says this species is commonly kept as a houseplant in shallow containers in North Carolina and also suits rock gardens or containers on sunny, dry decks and patios. It recommends well-drained soil and reports full sun to partial shade; its trait table lists USDA hardiness zones 9a–11b. These are regional container/landscape conditions, not a measured indoor grow-light tier or evidence of hydroponic compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-echeveria-elegans-wave55"
+        ]
+      },
+      "flowering": {
+        "short": "Pink tubular flowers recur on tall stalks",
+        "guidance": "NC State describes long slender stalks with clusters of about five to seven pink tubular flowers tipped yellow. Its narrative places flowering from late winter into summer, while its trait table lists winter and spring and notes that the plant blooms multiple times during its life. Treat these as regional source descriptions, not a fixed calendar. The same table lists bees, butterflies and hummingbirds among the wildlife attracted; this is a documented landscape trait, not a guarantee of visits.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-echeveria-elegans-wave55"
+        ]
+      },
+      "problems": {
+        "short": "Avoid persistently wet soil and monitor for common pests",
+        "guidance": "NC State identifies overwatering as the most common problem and recommends dry, well-drained soil. It advises monitoring for mealybugs, aphids and vine weevils, while reporting no significant diseases; these are monitoring cues, not a diagnosis or resistance claim.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-echeveria-elegans-wave55"
+        ]
+      },
+      "propagation": {
+        "short": "Offsets, leaves and cuttings are documented",
+        "guidance": "NC State lists leaf cuttings and division of offsets as propagation strategies. Seed-grown plants are not needed to preserve a named cultivar here because none is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-echeveria-elegans-wave55"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Container and rock-garden guidance does not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "clumping",
+          "mounded"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-echeveria-elegans-wave55"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "medium",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Echeveria elegans"
+            },
+            "note": "NC State describes rosette clumps and a clumping/mounding habit."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No single indoor mature dimension selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "Regional species dimensions are not a standardized indoor footprint."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Landscape/container spacing is not a Garden pod count."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor full-sun/partial-shade guidance is not an indoor grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "zebra-haworthiopsis-attenuata",
+    "name": "Zebra Haworthiopsis",
+    "spanishName": "Haworthia cebra",
+    "scientificName": "Haworthiopsis attenuata",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "zebra plant",
+      "zebra haworthia",
+      "Haworthia attenuata",
+      "Haworthiopsis attenuata",
+      "haworthia cebra"
+    ],
+    "summary": "A slow-growing South African rosette succulent suited to a bright indoor position and sharply drained potting mix. Raised bumps across the leaves help distinguish Haworthiopsis attenuata from the similar H. fasciata; NC State also documents useful stress signs and household safety context.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted name Haworthiopsis attenuata",
+        "guidance": "Kew accepts Haworthiopsis attenuata and lists Haworthia attenuata among its synonyms. NC State notes that the species is commonly confused in commerce with H. fasciata, which is distinct; the profile follows the accepted species name.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-haworthiopsis-attenuata-wave55",
+          "ncsu-haworthiopsis-attenuata-wave55"
+        ]
+      },
+      "growth": {
+        "short": "Compact clumping rosettes; check leaf bumps for identity",
+        "guidance": "NC State describes a slow-growing, stemless succulent forming compact star-shaped rosettes and clumps. Its plant profile reports 4–12 inches tall and 6 inches–2 feet wide; those source-reported dimensions are not a guaranteed indoor footprint. Raised bumps across the leaves distinguish H. attenuata from the smooth upper leaf face of H. fasciata.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-haworthiopsis-attenuata-wave55"
+        ]
+      },
+      "cultivation": {
+        "short": "Bright indirect light, warm room conditions and soil that dries between waterings",
+        "guidance": "NC State recommends a well-draining cactus/succulent mix, bright indirect light (while noting some low-light tolerance), and allowing soil to dry between waterings. It gives 60–80°F as a favorable temperature range, says typical household humidity is tolerated, and advises avoiding cold drafts and temperatures below 50°F. Low-light tolerance does not establish a Garden X grow-light tier or hydroponic suitability.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-haworthiopsis-attenuata-wave55"
+        ]
+      },
+      "maintenance": {
+        "short": "Offsets are practical; flower stalks rise above the rosette",
+        "guidance": "NC State describes offsets as the practical propagation route and notes tubular pink flowers in clusters on long, slender stalks. It also lists leaf cuttings and rare seed propagation, but gives no seed-starting protocol here; no germination parameters are inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-haworthiopsis-attenuata-wave55"
+        ]
+      },
+      "problems": {
+        "short": "Watch for rot, leaf spotting, pests and light-related changes",
+        "guidance": "NC State advises monitoring for scale and mealybugs. Excessively wet soil can cause root rot; wet soil or water left on leaves can contribute to leaf spot/fungal disease. Fading patterns may indicate inadequate light, while direct sun can scorch leaves. These signs guide inspection but are not diagnoses by themselves. NC State describes the plant as non-toxic to people and pets.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-haworthiopsis-attenuata-wave55"
+        ]
+      },
+      "propagation": {
+        "short": "Offsets are practical; leaf cuttings and seed are also reported",
+        "guidance": "NC State describes separating pups/offsets as the practical route, lists leaf cuttings, and notes that seed propagation is rare. The cited page does not provide a seed-starting protocol, so no germination instructions are added.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-haworthiopsis-attenuata-wave55"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Succulent potting-mix guidance does not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "clumping"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-haworthiopsis-attenuata-wave55"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Haworthiopsis attenuata"
+            },
+            "note": "NC State describes compact clumping rosettes."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No indoor mature size selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No standardized indoor footprint established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Container culture is not a Garden pod count."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Regional houseplant light guidance is not normalized to a measured grow-light tier."
+      }
+    }
+  },
+  {
+    "id": "burros-tail-sedum-morganianum",
+    "name": "Burro's Tail",
+    "spanishName": "Cola de burro",
+    "scientificName": "Sedum morganianum",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "burro's tail",
+      "donkey's tail",
+      "lamb's tail",
+      "Sedum morganianum",
+      "cola de burro"
+    ],
+    "summary": "A Mexican trailing succulent with fragile, fleshy leaves and terminal summer flower clusters. A hanging container can display its stems, but the foliage breaks easily; bright conditions, sharp drainage and gentle handling matter more than a fixed indoor size.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species Sedum morganianum",
+        "guidance": "Kew accepts Sedum morganianum, native to parts of Mexico. NC State lists burro's tail, donkey's tail and lamb's tail as common names; this identity is not a generic Sedum profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-sedum-morganianum-wave55",
+          "ncsu-sedum-morganianum-wave55"
+        ]
+      },
+      "growth": {
+        "short": "Trailing stems with fragile leaves and summer flowers",
+        "guidance": "NC State describes trailing stems up to 24 inches in its description, fleshy blue-green leaves that detach if handled, and terminal pink or red flower clusters in summer. It says flowering is rare as a houseplant; the stem length is source-reported, not a guaranteed indoor plant height. RHS describes stems to 30 cm or longer and spring/summer flowers; these are source-specific descriptions, not a promised indoor height or bloom schedule.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
+        ]
+      },
+      "cultivation": {
+        "short": "Allow the growing medium to dry between waterings",
+        "guidance": "NC State advises a bright interior position, well-drained soil, a shallow pot and allowing the soil to dry between waterings, with less water in winter. RHS's under-glass advice instead specifies bright filtered light, loam-based compost with added grit, free watering during active growth and sparing winter water. Keep those source contexts visible rather than collapsing them into one universal schedule; both emphasize drainage and seasonal restraint. Neither establishes a nutrient-solution recipe or system compatibility.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
+        ]
+      },
+      "problems": {
+        "short": "Protect fragile leaves and avoid wet, poorly drained conditions",
+        "guidance": "NC State reports that leaves break off when manipulated and lists occasional slugs and snails outdoors. RHS also lists possible vine-weevil grubs, scale, mealybugs and fungal or bacterial crown/root rots. Wet or poorly drained conditions and overwatering can lead to problems; inspect the plant and medium rather than treating one symptom as a diagnosis or assuming every listed pest is present.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
+        ]
+      },
+      "care": {
+        "short": "No routine pruning is required; protect trailing stems during handling",
+        "guidance": "RHS says pruning is not required. Because the fleshy leaves detach readily, handle the trailing stems gently when moving or tending the plant; NC State notes that detached leaves can root. This does not imply a need to shape or regularly cut the plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-sedum-morganianum-2026",
+          "ncsu-sedum-morganianum-wave55"
+        ]
+      },
+      "propagation": {
+        "short": "Detached leaves and stem cuttings root readily",
+        "guidance": "NC State reports that cuttings and dropped leaves root readily. This supports vegetative propagation for preserving a known plant form; no seed-starting protocol is needed for the represented propagation route.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sedum-morganianum-wave55"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Houseplant soil care does not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "trailing"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-sedum-morganianum-wave55"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Sedum morganianum"
+            },
+            "note": "NC State describes pendulous trailing stems."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "NC State reports stem length, not a standardized mature plant height."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No consistent indoor footprint established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Hanging container guidance is not Garden pod spacing."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Window/partial-sun advice is not a quantified indoor light tier."
+      }
+    }
+  },
+  {
+    "id": "common-houseleek-sempervivum-tectorum",
+    "name": "Common Houseleek",
+    "spanishName": "Siempreviva mayor",
+    "scientificName": "Sempervivum tectorum",
+    "variety": null,
+    "category": "ornamentals",
+    "emoji": "🪴",
+    "tags": [
+      "common houseleek",
+      "hens and chicks",
+      "roof houseleek",
+      "Sempervivum tectorum",
+      "siempreviva mayor"
+    ],
+    "summary": "A European succulent that forms colonies of rosettes through offsets. Its flowering cycle is important to recognize: the flowering mother rosette dies afterward while offsets continue the colony; sharp drainage helps prevent crown rot.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Accepted species Sempervivum tectorum",
+        "guidance": "Kew accepts Sempervivum tectorum and lists Sedum tectorum as a synonym. NC State uses common houseleek, hens and chicks and roof houseleek; no cultivar or hybrid is assigned.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "kew-sempervivum-tectorum-wave55",
+          "ncsu-sempervivum-tectorum-wave55"
+        ]
+      },
+      "growth": {
+        "short": "Offsets spread the colony; a flowering mother rosette later dies",
+        "guidance": "NC State describes a horizontal colony of rosettes connected by offsets. Individual rosettes flower on an upright stalk and die after blooming; surrounding offsets continue the colony. This is the documented lifecycle of Sempervivum tectorum, not a claim that the whole colony dies at once.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sempervivum-tectorum-wave55"
+        ]
+      },
+      "cultivation": {
+        "short": "Full sun and sharply drained outdoor soil",
+        "guidance": "NC State describes full sun, well-drained sandy or gravelly soils, and some tolerance of light shade and drought in its regional landscape profile. This is not an indoor hydroponic recommendation.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sempervivum-tectorum-wave55"
+        ]
+      },
+      "maintenance": {
+        "short": "Remove the spent mother rosette after flowering",
+        "guidance": "NC State says individual rosettes die after bloom and should be removed from the garden at that time. Check for healthy offsets around the spent rosette; the source does not prescribe a fixed removal date before flowering.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sempervivum-tectorum-wave55"
+        ]
+      },
+      "problems": {
+        "short": "Overwatering can cause crown rot",
+        "guidance": "NC State identifies crown rot as a risk from overwatering and advises allowing plants to dry between waterings. The source does not provide a universal watering interval; drainage and local conditions matter.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sempervivum-tectorum-wave55"
+        ]
+      },
+      "propagation": {
+        "short": "Division of offsets is an established route",
+        "guidance": "NC State lists division and seed among propagation strategies and describes offsets as readily produced. For maintaining a particular rosette appearance, division keeps the parent plant's identity more directly than seed; no named cultivar is claimed.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-sempervivum-tectorum-wave55"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "Outdoor rock-garden guidance does not establish hydroponic suitability."
+      },
+      "growthHabits": {
+        "status": "known",
+        "value": [
+          "spreading"
+        ],
+        "evidence": [
+          {
+            "sourceIds": [
+              "ncsu-sempervivum-tectorum-wave55"
+            ],
+            "evidenceType": "source_backed",
+            "confidence": "high",
+            "taxonomicScope": {
+              "level": "species",
+              "taxon": "Sempervivum tectorum"
+            },
+            "note": "NC State describes offsets and a horizontal, spreading form."
+          }
+        ]
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "No indoor dimension selected."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "No standardized indoor footprint established."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "Outdoor rock-garden placement is not a Garden pod count."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "Outdoor sun exposure is not an indoor grow-light tier."
+      }
+    }
+  }
 ]

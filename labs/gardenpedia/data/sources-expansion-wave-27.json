@@ -23,7 +23,7 @@
     "accessed": "2026-10-16",
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 27",
-    "claimKinds": ["cultivation", "growth", "harvest", "problems"]
+    "claimKinds": ["cultivation", "growth", "harvest", "problems", "flowering"]
   },
   {
     "id": "kew-rubus-idaeus-wave27",
@@ -50,6 +50,32 @@
     "license": null,
     "provenance": "Gardenpedia Labs catalog expansion Wave 27",
     "claimKinds": ["cultivation", "growth", "harvest", "propagation", "problems"]
+  },
+  {
+    "id": "psu-brambles-harvest-postharvest-2026",
+    "publisher": "Penn State Extension",
+    "title": "Planting, Nutrition, Harvest-Postharvest Care of Brambles in Home Gardens",
+    "url": "https://extension.psu.edu/planting-nutrition-harvest-postharvest-care-of-brambles-in-home-gardens",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Home-garden bramble crop-group harvest and postharvest handling; easy-detachment cue, gentle picking, shallow containers, frequent harvest and prompt refrigeration; not a cultivar-specific maturity calendar or guaranteed household shelf life",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["cultivation", "harvest", "uses", "problems"]
+  },
+  {
+    "id": "psu-bramble-anthracnose-home-2026",
+    "publisher": "Penn State Extension",
+    "title": "Anthracnose in Home Plantings of Brambles",
+    "url": "https://extension.psu.edu/anthracnose-in-home-plantings-of-brambles",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Home-planting anthracnose symptoms and sanitation for brambles; disease can affect red raspberry but severity is not implied for every plant or cultivar",
+    "accessed": "2026-10-18",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["problems", "maintenance"]
   },
   {
     "id": "kew-ficus-carica-wave27",

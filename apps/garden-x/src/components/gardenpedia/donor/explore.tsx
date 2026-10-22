@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Check, ChevronRight, Search, Sprout, Sun } from "lucide-react";
+import { Check, ChevronDown, ChevronRight, Search, Sprout } from "lucide-react";
 
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
 import { hasPersistedGardenpediaSession, useGardenpediaAuth } from "../gardenpedia-auth";
@@ -40,19 +40,21 @@ const COPY = {
     description:
       "Explora identidades con datos canónicos, procedencia visible y estados de evidencia explícitos.",
     sheets: "fichas públicas",
+    seedProfiles: "perfiles de semillas",
     evidenceLegend: "Leyenda de evidencia",
     backed: "Respaldado por fuente",
     adapted: "Adaptación de Garden",
     pending: "Necesita validación",
     search: "Busca albahaca, basil, lechuga…",
     type: "Tipo",
-    light: "Luz",
+    filters: "Filtros",
     inventory: "Inventario",
     publicCatalog: "Catálogo público",
     privateInventory: "Mis semillas (requiere acceso)",
     privateUnavailable: "Disponible solo en Mi jardín",
     knowledge: "Mapa de calidad del conocimiento",
     knowledgeSub: "Unidades de evidencia evaluadas por categoría",
+    catalogQuality: "Calidad y fuentes del catálogo",
     catalog: "Catálogo Gardenpedia",
     ordered: "Ordenadas por identidad canónica · ES/EN",
     varieties: "identidades",
@@ -81,19 +83,21 @@ const COPY = {
     description:
       "Explore canonical identities with visible provenance and explicit evidence states.",
     sheets: "public profiles",
+    seedProfiles: "Seed Profiles V0",
     evidenceLegend: "Evidence legend",
     backed: "Source-backed",
     adapted: "Garden adaptation",
     pending: "Needs validation",
     search: "Search basil, lettuce, tomato…",
     type: "Type",
-    light: "Light",
+    filters: "Filters",
     inventory: "Inventory",
     publicCatalog: "Public catalog",
     privateInventory: "My seeds (access required)",
     privateUnavailable: "Available only in My Garden",
     knowledge: "Knowledge Quality Map",
     knowledgeSub: "Assessed evidence units by catalog category",
+    catalogQuality: "Catalog quality and sources",
     catalog: "Gardenpedia catalog",
     ordered: "Ordered by canonical identity · EN/ES",
     varieties: "identities",
@@ -126,27 +130,6 @@ const categoryLabels: Record<string, string> = {
   legumes: "Legumbres",
   "cover crops": "Cultivos de cobertura",
 };
-
-const lightLabels: Record<string, string> = {
-  all: "Toda luz",
-  high: "Luz alta",
-  medium: "Luz media",
-  low: "Luz baja",
-};
-
-function lightLabel(level: string, language: GardenpediaLanguage) {
-  if (language === "en") {
-    return (
-      {
-        all: "Any light",
-        high: "High light",
-        medium: "Medium light",
-        low: "Low light",
-      }[level] ?? level
-    );
-  }
-  return lightLabels[level] ?? level;
-}
 
 function inventoryLabel(state: string, language: GardenpediaLanguage) {
   if (language === "en") {
@@ -212,7 +195,6 @@ function categoryLabel(category: string, language: GardenpediaLanguage) {
           all: "All",
           herbs: "Herbs",
           "leafy greens": "Leafy greens",
-          fruiting: "Fruiting",
           fruits: "Fruit",
           fruiting: "Fruiting crops",
           alliums: "Alliums",
@@ -296,7 +278,7 @@ export function GardenLibrary({
   const [view, setView] = useState<View>(initialView);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("all");
-  const [light, setLight] = useState("all");
+  const light = "all";
   const [inventory, setInventory] = useState("all");
   const [visiblePlantCount, setVisiblePlantCount] = useState(PLANT_PAGE_SIZE);
   const [advisorIds, setAdvisorIds] = useState<string[] | null>(null);
@@ -459,7 +441,6 @@ export function GardenLibrary({
               onAdvisorClear={() => setAdvisorIds(null)}
               onCategoryChange={setCategory}
               onInventoryChange={setInventory}
-              onLightChange={setLight}
               onQueryChange={setQuery}
               language={language}
               copy={copy}
@@ -512,7 +493,6 @@ function LibraryView({
   onAdvisorClear,
   onCategoryChange,
   onInventoryChange,
-  onLightChange,
   onQueryChange,
   language,
   copy,
@@ -533,7 +513,6 @@ function LibraryView({
   onAdvisorClear: () => void;
   onCategoryChange: (value: string) => void;
   onInventoryChange: (value: string) => void;
-  onLightChange: (value: string) => void;
   onQueryChange: (value: string) => void;
   language: GardenpediaLanguage;
   copy: (typeof COPY)[GardenpediaLanguage];
@@ -549,24 +528,26 @@ function LibraryView({
 }) {
   return (
     <div className="animate-rise">
-      <div className="mt-5 grid gap-5 lg:grid-cols-12">
-        <section className="glass-panel p-5 sm:p-7 lg:col-span-7">
+      <div className="mt-4 grid gap-4 sm:mt-5 sm:gap-5 lg:grid-cols-12">
+        <section className="glass-panel p-4 sm:p-7 lg:col-span-7">
           <p className="eyebrow">{copy.growGuide}</p>
-          <h2 className="mt-2 max-w-xl font-display text-3xl font-bold leading-tight sm:text-4xl">
+          <h2 className="mt-1.5 max-w-xl font-display text-2xl font-bold leading-tight sm:mt-2 sm:text-4xl">
             {copy.title}
           </h2>
-          <p className="mt-4 max-w-xl text-sm leading-7 text-muted-foreground">
+          <p className="mt-2 max-w-xl text-sm leading-6 text-muted-foreground sm:mt-4 sm:leading-7">
             {copy.description}
           </p>
-          <div className="mt-5 flex flex-wrap gap-2 text-xs text-muted-foreground">
-            <span className="glass-soft px-3 py-1.5">
+          <div className="mt-3 hidden flex-wrap items-center gap-x-2 gap-y-1 text-xs text-muted-foreground sm:mt-5 sm:flex">
+            <span>
               {donorPlants.length} {copy.sheets}
             </span>
-            <span className="glass-soft px-3 py-1.5">{seedProfileCount} Seed Profiles V0</span>
-            <span className="glass-soft px-3 py-1.5">Garden X public</span>
+            <span aria-hidden="true">·</span>
+            <span>
+              {seedProfileCount} {copy.seedProfiles}
+            </span>
           </div>
         </section>
-        <section className="glass-panel p-5 sm:p-7 lg:col-span-5">
+        <section className="glass-panel hidden p-5 sm:p-7 lg:col-span-5 lg:block">
           <div className="flex items-center justify-between gap-4">
             <h3 className="font-display text-sm font-semibold">{copy.evidenceLegend}</h3>
             <span className="text-xs text-muted-foreground">
@@ -593,7 +574,7 @@ function LibraryView({
         </section>
       </div>
 
-      <section className="glass-panel mt-5 p-4">
+      <section className="glass-panel mt-4 p-3.5 sm:mt-5 sm:p-4">
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
             <label className="glass-soft flex min-h-11 flex-1 items-center gap-3 px-4">
@@ -619,47 +600,37 @@ function LibraryView({
               ) : null}
             </div>
           </div>
-          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <div
-              className="flex flex-wrap items-center gap-2"
-              aria-label="Filtrar por tipo de cultivo"
-            >
-              <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                {copy.type}
+          <p className="text-xs text-muted-foreground sm:hidden">
+            {donorPlants.length} {copy.sheets} · {seedProfileCount} {copy.seedProfiles}
+          </p>
+          <details className="gardenpedia-filter-disclosure group lg:hidden">
+            <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-3 rounded-md border border-border/70 bg-background/40 px-3 text-sm font-semibold marker:content-none [&::-webkit-details-marker]:hidden">
+              <span>
+                {copy.filters} · {categoryLabel(category, language)}
               </span>
-              {categories.map((item) => (
-                <Button
-                  key={item}
-                  size="sm"
-                  variant={category === item ? "default" : "outline"}
-                  onClick={() => onCategoryChange(item)}
-                  className="rounded-full shadow-none"
-                >
-                  {categoryLabel(item, language)}
-                </Button>
-              ))}
-            </div>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <div className="flex flex-wrap items-center gap-2" aria-label="Filtrar por luz">
-                <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  <Sun className="size-3" aria-hidden="true" /> {copy.light}
+              <ChevronDown
+                aria-hidden="true"
+                className="size-4 shrink-0 transition-transform group-open:rotate-180"
+              />
+            </summary>
+            <div className="mt-3 space-y-4 border-t border-border/60 pt-3">
+              <div className="flex flex-wrap items-center gap-2" aria-label={copy.type}>
+                <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  {copy.type}
                 </span>
-                {(["all", "high", "medium", "low"] as const).map((item) => (
+                {categories.map((item) => (
                   <Button
                     key={item}
                     size="sm"
-                    variant={light === item ? "default" : "outline"}
-                    onClick={() => onLightChange(item)}
+                    variant={category === item ? "default" : "outline"}
+                    onClick={() => onCategoryChange(item)}
                     className="rounded-full shadow-none"
                   >
-                    {lightLabel(item, language)}
+                    {categoryLabel(item, language)}
                   </Button>
                 ))}
               </div>
-              <div
-                className="flex flex-wrap items-center gap-2"
-                aria-label="Filtrar por estado del inventario"
-              >
+              <div className="flex flex-wrap items-center gap-2" aria-label={copy.inventory}>
                 <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                   <Sprout className="size-3" aria-hidden="true" /> {copy.inventory}
                 </span>
@@ -678,50 +649,87 @@ function LibraryView({
                 ))}
               </div>
             </div>
+          </details>
+          <div className="hidden flex-col gap-3 lg:flex">
+            <div className="flex flex-wrap items-center gap-2" aria-label={copy.type}>
+              <span className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                {copy.type}
+              </span>
+              {categories.map((item) => (
+                <Button
+                  key={item}
+                  size="sm"
+                  variant={category === item ? "default" : "outline"}
+                  onClick={() => onCategoryChange(item)}
+                  className="rounded-full shadow-none"
+                >
+                  {categoryLabel(item, language)}
+                </Button>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center gap-2" aria-label={copy.inventory}>
+              <span className="flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                <Sprout className="size-3" aria-hidden="true" /> {copy.inventory}
+              </span>
+              {(["all", "owned"] as const).map((item) => (
+                <Button
+                  key={item}
+                  size="sm"
+                  variant={inventory === item ? "default" : "outline"}
+                  disabled={item === "owned"}
+                  title={item === "owned" ? copy.privateUnavailable : undefined}
+                  onClick={() => onInventoryChange(item)}
+                  className="rounded-full shadow-none"
+                >
+                  {inventoryLabel(item, language)}
+                </Button>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="quality-map mt-5 overflow-hidden p-5 sm:p-6">
-        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <details className="gardenpedia-evidence-disclosure group glass-panel mt-3 p-4 lg:hidden">
+        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3 font-semibold marker:content-none [&::-webkit-details-marker]:hidden">
+          <span>{copy.catalogQuality}</span>
+          <ChevronDown
+            aria-hidden="true"
+            className="size-4 shrink-0 transition-transform group-open:rotate-180"
+          />
+        </summary>
+        <div className="mt-4 space-y-5 border-t border-border/60 pt-4">
           <div>
-            <p className="eyebrow text-quality-foreground/60">Evidence health · v0.1</p>
-            <h3 className="mt-1 font-display text-xl font-semibold text-quality-foreground">
-              {copy.knowledge}
-            </h3>
-            <p className="mt-1 text-xs text-quality-foreground/60">{copy.knowledgeSub}</p>
-          </div>
-          <span className="text-xs text-quality-foreground/70">
-            {(() => {
-              const backed = donorPlants.reduce((total, plant) => total + plant.evidence.backed, 0);
-              const assessed = donorPlants.reduce(
-                (total, plant) => total + plant.evidence.assessed,
-                0,
-              );
-              return `${backed}/${assessed} ${language === "es" ? "unidades respaldadas" : "source-backed units"}`;
-            })()}
-          </span>
-        </div>
-        <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
-          {evidenceGroups.map((group) => (
-            <div key={group.family} className={cn("quality-cell", `quality-${group.level}`)}>
-              <p className="font-display text-sm font-semibold text-quality-foreground">
-                {categoryLabel(group.family, language)}
-              </p>
-              <p className="mt-1 text-[11px] text-quality-foreground/60">
-                {group.count} {language === "es" ? "identidades" : "identities"} · {group.backed}/
-                {group.assessed}
-              </p>
-              <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-quality-foreground/10">
-                <div
-                  className="h-full rounded-full bg-current"
-                  style={{ width: `${group.score}%` }}
-                />
-              </div>
+            <div className="flex items-center justify-between gap-3">
+              <h3 className="font-display text-sm font-semibold">{copy.evidenceLegend}</h3>
+              <span className="text-xs text-muted-foreground">
+                {donorPlants.length} {copy.sheets}
+              </span>
             </div>
-          ))}
+            <div className="mt-3 space-y-3">
+              <EvidenceRow
+                tone="high"
+                label={copy.backed}
+                value={`${donorPlants.reduce((total, plant) => total + plant.evidence.backed, 0)} ${language === "es" ? "unidades" : "units"}`}
+              />
+              <EvidenceRow
+                tone="medium"
+                label={copy.adapted}
+                value={`${donorPlants.reduce((total, plant) => total + plant.evidence.adapted, 0)} ${language === "es" ? "unidades" : "units"}`}
+              />
+              <EvidenceRow
+                tone="low"
+                label={copy.pending}
+                value={`${donorPlants.reduce((total, plant) => total + plant.evidence.pending, 0)} ${language === "es" ? "unidades" : "units"}`}
+              />
+            </div>
+          </div>
+          <EvidenceQualityMap evidenceGroups={evidenceGroups} language={language} copy={copy} />
         </div>
-      </section>
+      </details>
+
+      <div className="mt-5 hidden lg:block">
+        <EvidenceQualityMap evidenceGroups={evidenceGroups} language={language} copy={copy} />
+      </div>
 
       <section className="mt-7">
         <div className="mb-4 flex items-end justify-between gap-4">
@@ -811,6 +819,62 @@ function LibraryView({
         )}
       </section>
     </div>
+  );
+}
+
+function EvidenceQualityMap({
+  evidenceGroups,
+  language,
+  copy,
+}: {
+  evidenceGroups: {
+    family: string;
+    count: number;
+    backed: number;
+    assessed: number;
+    score: number;
+    level: string;
+  }[];
+  language: GardenpediaLanguage;
+  copy: (typeof COPY)[GardenpediaLanguage];
+}) {
+  const backed = donorPlants.reduce((total, plant) => total + plant.evidence.backed, 0);
+  const assessed = donorPlants.reduce((total, plant) => total + plant.evidence.assessed, 0);
+
+  return (
+    <section className="quality-map overflow-hidden p-5 sm:p-6">
+      <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
+        <div>
+          <p className="eyebrow text-quality-foreground/60">Evidence health · v0.1</p>
+          <h3 className="mt-1 font-display text-lg font-semibold text-quality-foreground sm:text-xl">
+            {copy.knowledge}
+          </h3>
+          <p className="mt-1 text-xs text-quality-foreground/60">{copy.knowledgeSub}</p>
+        </div>
+        <span className="text-xs text-quality-foreground/70">
+          {backed}/{assessed} {language === "es" ? "unidades respaldadas" : "source-backed units"}
+        </span>
+      </div>
+      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-6">
+        {evidenceGroups.map((group) => (
+          <div key={group.family} className={cn("quality-cell", `quality-${group.level}`)}>
+            <p className="font-display text-sm font-semibold text-quality-foreground">
+              {categoryLabel(group.family, language)}
+            </p>
+            <p className="mt-1 text-[11px] text-quality-foreground/60">
+              {group.count} {language === "es" ? "identidades" : "identities"} · {group.backed}/
+              {group.assessed}
+            </p>
+            <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-quality-foreground/10">
+              <div
+                className="h-full rounded-full bg-current"
+                style={{ width: `${group.score}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
 

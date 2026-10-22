@@ -1166,5 +1166,106 @@
       "identity",
       "uses"
     ]
+  },
+  {
+    "id": "usu-miniature-carnation-cut-flower-2025",
+    "publisher": "Utah State University Extension",
+    "title": "Miniature Carnation Cut Flower Production in Utah",
+    "url": "https://extension.usu.edu/productionhort/research/miniature-carnation-cut-flower-production-in-utah",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Peer-reviewed Utah cut-flower guidance for Dianthus caryophyllus miniature/spray carnations: crop identity and form, outdoor soil cultivation, germination, establishment, irrigation, pests, diseases, flowering and cut-flower harvest. Does not identify the Etsy seller's seed lot, cultivar, dwarf habit, hydroponic suitability, or universal performance outside its stated production context.",
+    "taxonomicScope": {
+      "level": "species",
+      "taxon": "Dianthus caryophyllus"
+    },
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs identity and plant-profile review; trade-type bridge is explicit and lot identity remains unverified",
+    "claimKinds": [
+      "identity",
+      "growth",
+      "cultivation",
+      "maintenance",
+      "problems",
+      "harvest"
+    ]
+  },
+  {
+    "id": "ucdavis-miniature-carnation-postharvest-2004",
+    "publisher": "University of California, Davis, Postharvest Research and Extension Center",
+    "title": "Carnation, Miniature Carnation",
+    "url": "https://postharvest.ucdavis.edu/produce-facts-sheets/carnation-miniature-carnation",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Postharvest reference identifies carnation as Dianthus caryophyllus and miniature carnations as spray carnations; supports the commercial flower-type crosswalk, not the identity or genetics of a specific seed listing or lot.",
+    "taxonomicScope": {
+      "level": "species",
+      "taxon": "Dianthus caryophyllus"
+    },
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs identity cross-check for miniature/spray carnation trade type",
+    "claimKinds": [
+      "identity",
+      "harvest",
+      "storage"
+    ]
+  },
+  {
+    "id": "etsy-tintintin-mixed-mini-carnations-2026",
+    "publisher": "TinTinTinFlowers via Etsy",
+    "title": "Mixed Mini Carnations Seeds — Dianthus Seeds",
+    "url": "https://www.etsy.com/listing/1736875170/30-seeds-mixed-mini-carnations-dianthus",
+    "type": "product_reference",
+    "tier": 3,
+    "scope": "Exact public marketplace listing: seller markets a 30-seed mixed mini-carnation product as Dianthus and describes fragrant blooms. Supports only the seller's product wording and claims; it does not name a species, cultivar, dwarf plant habit, height, breeder, or seed-lot verification.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs user-supplied product provenance cross-checked against the public listing; no private ownership data published",
+    "claimKinds": [
+      "identity",
+      "product_claim",
+      "flavor_or_fragrance"
+    ]
+  },
+  {
+    "id": "lowes-ferry-jolly-jester-product-public-2026",
+    "publisher": "Lowe's (Ferry-Morse product listing)",
+    "title": "Ferry-Morse A Marigold Jolly Jester — model 661863.249.0925",
+    "url": "https://www.lowes.com/pd/Ferry-Morse-A-MARIGOLD-JOLLY-JESTER/5016802449",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Retail listing identifies the named Ferry-Morse Jolly Jester model as Tagetes erecta and reports full sun, 20-inch mature height, and an estimated 70–90 days to bloom. These are claims for this model, not proof that every product sold as Jolly Jester is the same line or cultivar.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs public product-scope verification",
+    "claimKinds": ["identity", "taxonomy", "growth", "cultivation", "flowering"]
+  },
+  {
+    "id": "homegrown-hg15h-italian-oregano-amazon-2026",
+    "publisher": "HOME GROWN (product listing on Amazon)",
+    "title": "HOME GROWN 15 Culinary Herb Seeds — ASIN B07JCFWJ98 / model HG15H",
+    "url": "https://www.amazon.com/dp/B07JCFWJ98",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "The product listing identifies the 15-herb assortment and names an Italian oregano packet; its included variety guide labels Oregano: Italian as Origanum vulgare 'Italian'. This supports the seller's taxon declaration for this specific product, not formal cultivar registration or genetic verification of an individual lot. Other products sold as Italian oregano may refer to different Origanum taxa.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs product identity reconciliation",
+    "claimKinds": ["identity", "taxonomy", "product"]
+  },
+  {
+    "id": "johnsons-jolly-jester-seeds-2026",
+    "publisher": "Johnsons Seeds",
+    "title": "Marigold (French) Jolly Jester Seeds — SKU 11462",
+    "url": "https://johnsons-seeds.com/products/marigold-french-jolly-jester-seeds",
+    "type": "product_reference",
+    "tier": 2,
+    "scope": "Seed supplier lists its Jolly Jester product as Tagetes patula, 125 seeds, half-hardy annual, full sun, and reports approximately 75 cm height and June–October flowering. Product-specific supplier claims; it does not authenticate the separate Ferry-Morse model or the catalog's represented line.",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Labs Jolly Jester product-conflict review",
+    "claimKinds": ["identity", "taxonomy", "cultivation", "growth", "flowering"]
   }
 ]

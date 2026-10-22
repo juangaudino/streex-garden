@@ -2773,62 +2773,115 @@ export const gardenPlantProfileCatalog = {
   },
   "fragrant-dwarf-dianthus-mix": {
     "summary": {
-      "en": "This catalog entry represents an unresolved mixed dwarf Dianthus type. D. chinensis is contextual evidence only and is not assigned as the canonical identity.",
-      "es": "Esta ficha representa una mezcla de Dianthus enana cuya especie exacta no está resuelta. D. chinensis es evidencia contextual y no se asigna como identidad canónica."
+      "en": "A miniature-flowered spray form of Dianthus caryophyllus, grown for multiple smaller blooms along cut stems. ‘Miniature’ describes the flower form, not a verified dwarf plant habit; no cultivar or fixed plant dimensions are assigned.",
+      "es": "Forma de flor miniatura tipo spray de Dianthus caryophyllus, cultivada por sus flores pequeñas múltiples en tallos de corte. «Miniatura» describe la forma floral, no un porte enano verificado; no se asignan cultivar ni dimensiones fijas."
     },
     "metrics": {
       "en": [
         {
-          "label": "Identity",
-          "value": "Dianthus spp.",
-          "note": "Exact species unresolved"
+          "label": "Accepted species",
+          "value": "Dianthus caryophyllus L.",
+          "note": "No cultivar assigned"
         },
         {
-          "label": "Use",
-          "value": "Flowering / ornamental",
-          "note": "Exact species pending; container suitability not established"
+          "label": "Flower form",
+          "value": "Miniature / spray",
+          "note": "Trade form; not a claim that the whole plant is dwarf"
+        },
+        {
+          "label": "Outdoor light",
+          "value": "Full to partial sun",
+          "note": "USU cut-flower soil guidance; not an indoor grow-light tier"
         },
         {
           "label": "Hydro pH / EC",
-          "value": "Pending",
-          "note": "Do not map carnation targets to unresolved dwarf mix"
+          "value": "Not established",
+          "note": "No applicable identity-specific hydroponic target"
         }
       ],
       "es": [
         {
-          "label": "Identidad",
-          "value": "Dianthus spp.",
-          "note": "Especie exacta no resuelta"
+          "label": "Tipo botánico comercial",
+          "value": "Dianthus caryophyllus L.",
+          "note": "Correspondencia mini/spray; lote no autenticado de forma independiente"
         },
         {
-          "label": "Uso",
-          "value": "Floración / ornamental",
-          "note": "Especie exacta pendiente; aptitud para maceta no establecida"
+          "label": "Tipo de producto",
+          "value": "Mezcla de claveles miniatura/spray",
+          "note": "Términos del vendedor; sin cultivar ni composición identificados"
+        },
+        {
+          "label": "Luz exterior",
+          "value": "Sol pleno a parcial",
+          "note": "Guía de cultivo de flor de corte en suelo de USU; no es nivel de lámpara interior"
         },
         {
           "label": "pH / EC hidro",
-          "value": "Pendiente",
-          "note": "No mapear clavel a una mezcla enana sin resolver"
+          "value": "No establecido",
+          "note": "No hay un objetivo hidropónico aplicable a esta identidad"
         }
       ]
     },
     "sections": {
-      "thinning": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "ncsu-dianthus-chinensis"
+          "usu-miniature-carnation-cut-flower-2025",
+          "ucdavis-miniature-carnation-postharvest-2004"
         ],
         "en": {
-          "short": "Thin by vigor after identity and emergence are observed",
-          "guidance": "For a compact flowering position, reduce severe crowding while preserving the strongest seedlings. Do not copy outdoor spacing literally.",
+          "short": "Miniature/spray carnations are a flower form of D. caryophyllus",
+          "guidance": "This is a general plant identity, not a representation of the owner's purchased seed lot. Utah State University Extension identifies carnation as Dianthus caryophyllus and describes miniature/vintage carnations as spray forms with multiple smaller blooms per stem. ‘Miniature’ refers to the flowers and spray presentation; it does not establish a dwarf whole-plant habit. No cultivar, fixed color mix, or cultivar-specific dimensions are assigned. A marketplace listing for mixed mini carnations is retained only as an example of commercial wording, not as this plant's provenance.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Ralea por vigor tras observar emergencia",
-          "guidance": "Reduce hacinamiento fuerte conservando las plántulas más vigorosas; no copies spacing exterior.",
+          "short": "El clavel miniatura es un tipo comercial spray de D. caryophyllus",
+          "guidance": "El anuncio de Etsy de TinTinTinFlowers dice «Mixed Mini Carnations Seeds — Dianthus Seeds» y describe flores fragantes, pero no identifica especie, cultivar, obtentor ni porte enano. USU identifica el clavel como Dianthus caryophyllus y define los claveles miniatura/vintage como formas spray con varias flores menores por tallo. Por ello, la asignación de especie es una correspondencia documentada de tipo comercial, no una prueba genética ni una garantía sobre el lote del vendedor. La palabra anterior «enana» no está respaldada como rasgo de tamaño de la planta.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "thinning": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "usu-miniature-carnation-cut-flower-2025"
+        ],
+        "en": {
+          "short": "For USU's seedling-cell method, keep the strongest seedling per cell",
+          "guidance": "USU advises sowing 2–3 seeds per cell and thinning to the strongest seedling after emergence in its Utah transplant-production method. This is a nursery-stage practice for that cut-flower context, not a final outdoor spacing or indoor pod count for this unidentified mix.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "En el método de bandeja de USU, conserva la plántula más fuerte por celda",
+          "guidance": "USU aconseja sembrar 2–3 semillas por celda y aclarar a la plántula más fuerte después de la emergencia en su método de producción de trasplantes en Utah. Es una práctica de vivero para ese contexto de flor de corte, no una distancia final exterior ni un conteo de pods interiores para esta mezcla no identificada.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "cultivation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "usu-miniature-carnation-cut-flower-2025"
+        ],
+        "en": {
+          "short": "Outdoor soil: full to partial sun and well-drained loam",
+          "guidance": "USU Extension gives loamy, well-drained soil and full to partial sun as optimal conditions for its carnation cut-flower crop; it notes that afternoon relief from heat can help while full sun is tolerated. These are outdoor soil-production recommendations, with Utah regional context. They do not establish indoor lamp intensity, container dimensions, or hydroponic suitability for this seed mix.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Exterior en suelo: sol pleno a parcial y suelo franco bien drenado",
+          "guidance": "USU Extension recomienda suelo franco y bien drenado, y sol pleno a parcial para su cultivo de clavel de flor de corte; indica que el alivio del calor por la tarde puede ayudar, aunque tolera pleno sol. Son recomendaciones para producción exterior en suelo, con contexto regional de Utah. No establecen intensidad de lámpara interior, dimensiones de recipiente ni aptitud hidropónica para esta mezcla.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -2836,81 +2889,63 @@ export const gardenPlantProfileCatalog = {
       },
       "pruning": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "ncsu-dianthus-chinensis"
+          "usu-miniature-carnation-cut-flower-2025"
         ],
         "en": {
-          "short": "Deadheading can support repeat bloom in Dianthus context",
-          "guidance": "NC State notes deadheading and trimming after heavy bloom for D. chinensis. Apply this only if the observed plant matches that growth pattern; do not assume this catalog entry is D. chinensis.",
+          "short": "Cut stems above a leaf set; the cut can branch",
+          "guidance": "For cut-flower harvest, USU recommends clean, sharp shears and cutting directly above a set of leaves; stems can branch from that point. This is a harvest cut in the documented production context, not evidence that this unnamed mix needs routine pinching or a particular pruning schedule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Deadheading puede favorecer refloración en contexto Dianthus",
-          "guidance": "NC State recomienda retirar flores pasadas y recortar tras una floración intensa para D. chinensis. Aplícalo solo si la planta observada coincide con ese patrón; no asumas que esta ficha corresponde a D. chinensis.",
+          "short": "Corta los tallos sobre un nudo de hojas; el corte puede ramificarse",
+          "guidance": "Para la cosecha de flor de corte, USU recomienda tijeras limpias y afiladas y cortar el tallo justo sobre un conjunto de hojas; desde ahí pueden ramificarse nuevos tallos. Es un corte de cosecha en el contexto documentado, no evidencia de que esta mezcla sin nombre requiera pinzado rutinario o un calendario de poda.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "harvest": {
-        "evidenceType": "garden_adaptation",
+        "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-dianthus-chinensis"
+          "usu-miniature-carnation-cut-flower-2025",
+          "ucdavis-miniature-carnation-postharvest-2004"
         ],
         "en": {
-          "short": "Ornamental flower; no food-harvest guidance",
-          "guidance": "Garden should treat this as an ornamental flowering crop, not an edible harvest crop.",
+          "short": "For spray stems, wait until one bloom is open and other buds begin opening",
+          "guidance": "USU's miniature-carnation cut-flower guidance calls the spray-carnation harvest stage ‘paint brush’: at least one bloom on the stem is fully open and one to three other buds are beginning to open. Use clean shears and place cut stems promptly in clean water. This is a cut-flower harvest cue for the USU production context, not a promised number of stems, vase life, or date for this listing.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Flor ornamental; sin guía de cosecha alimentaria",
-          "guidance": "Garden la trata como cultivo ornamental de floración.",
+          "short": "En tallos spray, espera a que abra una flor y comiencen a abrir otros botones",
+          "guidance": "La guía de flor de corte de USU llama «paint brush» a la etapa de cosecha del clavel spray: al menos una flor del tallo está completamente abierta y uno a tres botones adicionales empiezan a abrir. Usa tijeras limpias y coloca pronto los tallos en agua limpia. Es una señal de cosecha para el contexto de producción de USU, no una promesa de cantidad de tallos, vida en florero ni fecha para este anuncio.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
       "flowering": {
-        "evidenceType": "garden_adaptation",
-        "confidence": "medium",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "ncsu-dianthus-chinensis"
+          "usu-miniature-carnation-cut-flower-2025"
         ],
         "en": {
-          "short": "Flowering is the primary target stage",
-          "guidance": "Track buds, first bloom and bloom cycles. Deadheading decisions should depend on the actual plant and resolved identity.",
+          "short": "Spray form carries multiple smaller blooms along a stem",
+          "guidance": "USU distinguishes spray carnations by their multiple smaller blooms per stem and describes a sweet, spicy, clove-like scent for miniature/vintage carnations. Flower color, exact bloom count, repeat-flowering pattern, and cultivar-specific timing vary and are not fixed here.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La floración es la etapa objetivo",
-          "guidance": "Registra botones, primera flor y ciclos de floración. Las decisiones de deadheading dependen de la planta real.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "hydroponics": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [],
-        "en": {
-          "short": "No accepted exact hydro target yet",
-          "guidance": "OSU has a hydroponic carnation range, but this unresolved dwarf Dianthus entry is not confirmed as a carnation cultivar. Garden therefore leaves EC/pH pending rather than collapsing genus and crop type.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Sin objetivo hidro exacto aceptado",
-          "guidance": "No uses el rango hidropónico de clavel de OSU: esta identidad enana de Dianthus no está confirmada como un cultivar de clavel.",
+          "short": "La forma spray tiene varias flores menores por tallo; los detalles de la mezcla se desconocen",
+          "guidance": "USU distingue los claveles spray por llevar varias flores menores en un tallo y describe un aroma especiado parecido al clavo en claveles miniatura/vintage. El vendedor de Etsy también califica las flores como fragantes. Ninguna fuente establece los colores exactos, número de flores, refloración ni calendario de este lote; registra lo observado al crecer, sin trasladar datos de un cultivar Chabaud nombrado.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -2918,20 +2953,20 @@ export const gardenPlantProfileCatalog = {
       },
       "problems": {
         "evidenceType": "source_backed",
-        "confidence": "medium",
+        "confidence": "high",
         "sourceIds": [
-          "ncsu-dianthus-chinensis"
+          "usu-miniature-carnation-cut-flower-2025"
         ],
         "en": {
-          "short": "Avoid chronic crown/root saturation",
-          "guidance": "Dianthus chinensis context is susceptible to crown/root problems with poor drainage. In hydro, use this as a caution signal rather than a diagnosis.",
+          "short": "Avoid saturated soil; inspect for rot and common cut-flower pests",
+          "guidance": "USU warns that overwatering and saturated soils can lead to root rot, and lists aphids, caterpillars, grasshoppers, and spider mites among risks in its Utah cut-flower context. These are monitoring concerns, not a diagnosis or a cultivar-specific susceptibility claim; inspect symptoms and growing conditions before treatment. No hydroponic disease claim is established.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Evita saturación crónica de corona y raíz",
-          "guidance": "D. chinensis es susceptible a problemas de corona/raíz con mal drenaje; úsalo como cautela, no como diagnóstico.",
+          "short": "Evita suelo saturado; vigila pudrición y plagas comunes de flor de corte",
+          "guidance": "USU advierte que el exceso de riego y los suelos saturados pueden causar pudrición de raíces, y enumera pulgones, orugas, saltamontes y ácaros entre los riesgos de su contexto de flor de corte en Utah. Son motivos de vigilancia, no un diagnóstico ni susceptibilidad específica de cultivar; revisa síntomas y condiciones antes de tratar. No se establece una afirmación de enfermedad hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -33347,8 +33382,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Routine pruning is not required",
-          "guidance": "RHS states that no pruning is required. Do not remove healthy leaves solely because the traps have temporarily lost visible mucilage; check moisture and recent handling first.",
+          "short": "No requiere poda rutinaria",
+          "guidance": "RHS indica que no hace falta podar. No retires hojas sanas solo porque las trampas hayan perdido temporalmente el mucílago visible; revisa primero la humedad y si hubo manipulación reciente.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -34369,8 +34404,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "El pinzado ayuda a conservar una forma más tupida",
-          "guidance": "NC State recomienda pinzar para conservar una forma más tupida. Es una pauta de cultivo a nivel de especie y no establece un calendario fijo de poda.",
+          "short": "Pinza para ramificar; recorta si se vuelve larguirucha",
+          "guidance": "NC State recomienda pinzar para conservar una forma más tupida. RHS indica que no necesita poda rutinaria, pero si el crecimiento se vuelve larguirucho recomienda recortar aproximadamente la mitad para favorecer una forma más tupida y posiblemente otra tanda de flores. Son opciones a nivel de especie para situaciones distintas, no un calendario fijo ni una respuesta específica de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -34390,8 +34425,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Monitor for common pests and moisture-related disease",
-          "guidance": "RHS lists wishbone flower as potentially susceptible to slugs, snails and aphids, as well as root rot and powdery mildews. Treat these as monitoring concerns, not a diagnosis or a claim that every plant is susceptible; the reviewed sources do not establish a Torenia-specific treatment protocol.",
+          "short": "Vigila plagas comunes y enfermedades relacionadas con la humedad",
+          "guidance": "RHS indica posible susceptibilidad a babosas, caracoles y pulgones, además de pudrición radicular y oídios. Tómalos como aspectos para monitorear, no como diagnóstico ni como afirmación de que todas las plantas sean susceptibles; las fuentes revisadas no establecen un protocolo de tratamiento específico para Torenia.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -35320,8 +35355,8 @@ export const gardenPlantProfileCatalog = {
   },
   "white-carolina-pineberry": {
     "summary": {
-      "en": "White Carolina is a supplier-listed pineberry name within Fragaria × ananassa. A US plant patent documents White Carolina as an unpatented white-fruited breeding parent, but does not authenticate current retail stock as the same clone. Pineberry-type fruit is pale when ripe; pollination claims for marketed White Carolina plants conflict.",
-      "es": "White Carolina es un nombre de pineberry comercializado dentro de Fragaria × ananassa. Una patente estadounidense documenta White Carolina como progenitor de mejora no patentado de fruto blanco, pero no autentica las plantas que hoy venden los viveros como el mismo clon. Las afirmaciones comerciales sobre polinización se contradicen."
+      "en": "White Carolina is a marketed name for a white-fruited pineberry, represented here at Fragaria × ananassa / pineberry-type scope rather than as an authenticated historic clone. The berries ripen pale with red achenes. Grow it like a garden strawberry and place a compatible red-fruited cultivar nearby as a cautious pollination measure; cultivar-specific size, stock lineage, and pollination requirements vary or remain unverified.",
+      "es": "White Carolina es un nombre comercializado para una pineberry de fruto blanco; aquí se representa a nivel de Fragaria × ananassa / tipo pineberry, no como clon histórico autenticado. Las bayas maduran pálidas y con aquenios rojos. Cultívala como una fresa de jardín y coloca cerca un cultivar compatible de fruto rojo como medida prudente de polinización; el tamaño específico, la línea del material y los requisitos de polinización varían o siguen sin verificarse."
     },
     "metrics": {
       "en": [],
@@ -35335,18 +35370,19 @@ export const gardenPlantProfileCatalog = {
           "kew-fragaria-ananassa-500",
           "eberts-white-carolina-500",
           "raintree-white-carolina-2026",
-          "uspp34612-white-carolina-parent-2022"
+          "uspp34612-white-carolina-parent-2022",
+          "usda-grin-white-carolina-pi551681-2026"
         ],
         "en": {
           "short": "Supplier-listed name with a historical breeding record; retail stock not authenticated",
-          "guidance": "Kew accepts Fragaria × ananassa as the garden-strawberry hybrid. Ebert's Greenhouse and Raintree Nursery market White Carolina pineberry plants under that hybrid. US plant patent USPP34612 documents White Carolina/White Pine as an unpatented, white-fruited Fragaria × ananassa parent of QBC-1, supporting historical use of the name in strawberry breeding. It does not register White Carolina or prove that current nursery stocks are clonal matches to the patent's parent. The patent gives inconsistent USDA PI numbers in separate passages; neither is assigned here.",
+          "guidance": "Kew accepts Fragaria × ananassa as the garden-strawberry hybrid. Ebert's Greenhouse and Raintree Nursery market White Carolina pineberry plants under that hybrid. USDA GRIN records accession PI 551681 (accession 1446653) as 'White Carolina' under Fragaria × ananassa and currently lists it as not available. US plant patent USPP34612 documents White Carolina/White Pine as an unpatented white-fruited parent of QBC-1: paragraphs [0005] and [0043] give PI 551681, while paragraph [0017] prints PI 555681. The official GRIN record supports 551681 as the accession associated with the historic name; the patent's isolated 555681 reference is a document inconsistency, not a second accession assignment. Neither source registers White Carolina or proves that current nursery stocks are clonal matches to that historic accession.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Nombre comercial con antecedente de mejora; el material actual no está autenticado",
-          "guidance": "Kew acepta Fragaria × ananassa como híbrido de fresa de jardín. Ebert's Greenhouse y Raintree Nursery comercializan White Carolina como pineberry de ese híbrido. La patente estadounidense USPP34612 documenta White Carolina/White Pine como progenitor no patentado de fruto blanco de Fragaria × ananassa para QBC-1, lo que respalda el uso histórico del nombre en mejora de fresas. No registra White Carolina ni demuestra que el material actual de los viveros sea un clon del progenitor de la patente. El documento da números USDA PI distintos en pasajes separados; aquí no se asigna ninguno.",
+          "guidance": "Kew acepta Fragaria × ananassa como híbrido de fresa de jardín. Ebert's Greenhouse y Raintree Nursery comercializan White Carolina como pineberry de ese híbrido. USDA GRIN registra PI 551681 (accesión 1446653) como 'White Carolina' dentro de Fragaria × ananassa y actualmente la indica como no disponible. La patente estadounidense USPP34612 documenta White Carolina/White Pine como progenitor no patentado de fruto blanco de QBC-1: los párrafos [0005] y [0043] indican PI 551681, mientras [0017] imprime PI 555681. El registro oficial de GRIN respalda 551681 como accesión asociada al nombre histórico; la mención aislada de 555681 en la patente es una inconsistencia documental, no la asignación de una segunda accesión. Ninguna de estas fuentes registra White Carolina ni demuestra que el material actual de los viveros sea un clon de esa accesión histórica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -35405,14 +35441,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Use achene color, not white flesh alone, as a ripeness cue",
-          "guidance": "Illinois Extension describes ripe pineberries as white to blush with bright-red achenes; the achenes changing from green to red are a more reliable maturity cue than softness. Harvest gently with a twist or pinch. This is pineberry-type guidance, not a White Carolina-specific harvest date.",
+          "guidance": "Illinois Extension describes ripe pineberries as white to blush with bright-red achenes; the achenes changing from green to red are a more reliable maturity cue than softness. Harvest gently with a twist or pinch and refrigerate until use. This is pineberry-type guidance, not a White Carolina-specific harvest date or storage-life promise.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Usa el color de los aquenios, no solo la pulpa blanca, para reconocer madurez",
-          "guidance": "Illinois Extension describe las pineberries maduras como blancas a rosadas con aquenios rojos; el cambio de los aquenios de verde a rojo es una señal más fiable de madurez que la textura blanda. Cosecha con un giro o pellizco suave. Es orientación del tipo pineberry, no una fecha específica de White Carolina.",
+          "guidance": "Illinois Extension describe las pineberries maduras como blancas a rosadas con aquenios rojos; el cambio de los aquenios de verde a rojo es una señal más fiable de madurez que la textura blanda. Cosecha con un giro o pellizco suave y refrigéralas hasta consumirlas. Es orientación del tipo pineberry, no una fecha específica de White Carolina ni una promesa de conservación.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -35444,47 +35480,65 @@ export const gardenPlantProfileCatalog = {
         }
       },
       "propagation": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
+          "illinois-pineberry-500",
           "mizzou-pineberry-2015",
           "eberts-white-carolina-500"
         ],
         "en": {
-          "short": "Buy pineberry plants, not seed, to retain the white-fruit type; stock identity remains unverified",
-          "guidance": "University of Missouri Extension lists White Carolina among marketed pineberry cultivars and advises purchasing plants rather than seed to maintain white-fruit character. This is pineberry-type propagation guidance; it does not authenticate current White Carolina retail stock or supply a cultivar-specific vegetative propagation protocol. Ebert's product page reports numerous runners for its White Carolina listing, but no independent source reviewed here verifies that behavior for the selection represented in this catalog.",
+          "short": "Start with a nursery transplant; seed may not retain the white-fruit type",
+          "guidance": "University of Illinois and Missouri Extension advise starting pineberries from reputable transplants rather than seed because open pollination means seedlings may not come true to type. Missouri lists White Carolina among marketed pineberry cultivars. This supports the pineberry type, not clonal authentication of a particular supplier's White Carolina stock. Ebert's reports runners for its listing, but that seller-specific trait is not generalized to this profile.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La propagación específica del cultivar no está verificada",
-          "guidance": "La ficha comercial de Ebert's informa numerosos estolones en su White Carolina, pero ninguna fuente independiente revisada confirma ese comportamiento para la selección representada en este catálogo. Ninguna fuente establece un protocolo de semilla específico para este cultivar; no se infiere uno a partir del tipo pineberry.",
+          "short": "Empieza con un trasplante de vivero; la semilla puede no conservar el fruto blanco",
+          "guidance": "Illinois Extension y University of Missouri Extension recomiendan iniciar las pineberries con trasplantes de origen fiable y no con semillas, porque la polinización abierta puede hacer que las plántulas no reproduzcan fielmente el tipo. Missouri incluye White Carolina entre los cultivares de pineberry comercializados. Esto respalda el tipo pineberry, pero no autentica clonalmente el material White Carolina de un proveedor concreto. Ebert's informa estolones en su ficha, pero ese rasgo propio del vendedor no se generaliza aquí.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
-      "needsValidation": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
+      "uses": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "illinois-pineberry-500",
-          "eberts-white-carolina-500",
-          "raintree-white-carolina-2026",
-          "walters-white-carolina-pollination-2026",
-          "uspp34612-white-carolina-parent-2022"
+          "illinois-pineberry-500"
         ],
         "en": {
-          "short": "Supplier stocks are not authenticated as the historic line; pollination claims conflict",
-          "guidance": "The patent documents a historical, unpatented White Carolina/White Pine breeding parent but does not authenticate current nursery stock as that same clone. Illinois Extension describes pineberries as self-sterile, and Ebert's says its White Carolina listing needs pollen from another strawberry. Raintree labels its listing self-fertile but still recommends one everbearing partner per five plants; Walters Gardens independently gives that same product-level recommendation. The practical value of a partner is supported, but whether the catalog's current stock strictly requires one remains unresolved. Ebert's runner report and seller size ranges remain product-page claims. The patent also prints different USDA PI numbers in separate passages, so no accession is assigned.",
+          "short": "Edible white-to-blush berries; pineapple notes are not universal",
+          "guidance": "Illinois Extension describes pineberries as edible strawberries marketed for a pineapple-like flavor or aroma, while noting that people do not all perceive that flavor. Treat this as the fruit's culinary context, not a guaranteed flavor profile for every White Carolina plant. Do not confuse normal pale ripe pineberry fruit with albinism in red-fruited strawberries, which Illinois Extension associates with unfavorable growing conditions and poor flavor.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "No se autenticó el material comercial como la línea histórica; hay conflicto sobre polinización",
-          "guidance": "La patente documenta un progenitor histórico White Carolina/White Pine no patentado, pero no autentica las plantas que venden actualmente los viveros como ese mismo clon. Illinois Extension describe las pineberries como autoincompatibles y Ebert's dice que su producto White Carolina necesita polen de otra fresa. Raintree llama autofértil a su producto, pero aun así recomienda una pareja de producción continua por cada cinco plantas; Walters Gardens da de forma independiente esa misma recomendación para White Carolina. El beneficio práctico de una pareja tiene respaldo, pero sigue sin resolverse si el stock actual del catálogo la necesita obligatoriamente. Los estolones informados por Ebert's y los rangos de tamaño comercial siguen siendo afirmaciones del vendedor. La patente también imprime números USDA PI distintos en pasajes separados, por lo que no se asigna un número de acceso.",
+          "short": "Bayas comestibles blancas a rosadas; la nota a piña no es universal",
+          "guidance": "Illinois Extension describe las pineberries como fresas comestibles comercializadas por su sabor o aroma parecido a la piña, aunque señala que no todas las personas lo perciben. Es contexto culinario del fruto, no una promesa de sabor para cada planta White Carolina. No confundas el color pálido normal de una pineberry madura con el albinismo de fresas rojas, que Illinois Extension relaciona con condiciones desfavorables de cultivo y mal sabor.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "problems": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "illinois-pineberry-500"
+        ],
+        "en": {
+          "short": "Watch for common strawberry pests and diseases",
+          "guidance": "Illinois Extension says pineberries can be susceptible to the same problems as garden strawberries, including leaf spot and scorch, root rots, red stele, anthracnose, gray mold, viruses, spider mites, aphids, leafrollers, slugs, nematodes, and strawberry weevils. This is a monitoring list for the pineberry type, not a diagnosis or a claim that every problem is present; identify the cause before choosing a treatment. Birds may also take fruit, although Illinois Extension notes the pale color may make it less noticeable to them.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Vigila las plagas y enfermedades comunes de la fresa",
+          "guidance": "Illinois Extension indica que las pineberries pueden sufrir los mismos problemas que las fresas de jardín, entre ellos manchas y quemaduras foliares, pudriciones de raíz, estela roja, antracnosis, moho gris, virus, ácaros, pulgones, enrolladores de hojas, babosas, nematodos y gorgojos de la fresa. Es una lista de vigilancia para el tipo pineberry, no un diagnóstico ni una afirmación de que todos los problemas estén presentes; identifica la causa antes de elegir un tratamiento. Las aves también pueden comer los frutos, aunque Illinois Extension señala que el color pálido quizá las haga menos visibles.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40636,8 +40690,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Tallos verdes y blancos sin formar un bulbo",
-          "guidance": "UMN describe los scallions de A. fistulosum como tallos verdes y blancos que no forman bulbo. Esta descripción a nivel de especie no se aplica a toda cebolla de verdeo, que también puede ser A. cepa inmadura.",
+          "short": "Tallos verdes y blancos sin bulbo; puede formar mata perenne",
+          "guidance": "UMN describe los scallions de A. fistulosum como tallos verdes y blancos que no forman bulbo. UC ANR señala que la especie puede formar una mata perenne. Esta descripción a nivel de especie no se aplica a toda cebolla de verdeo, que también puede ser A. cepa inmadura.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40700,8 +40754,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Cosecha las cebollas de verdeo cuando alcancen un tamaño útil",
-          "guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojando el suelo antes si hace falta para evitar que se quiebren. No se asigna un número fijo de días a este perfil sin cultivar especificado.",
+          "short": "Cosecha al tamaño útil o según necesites sabor a cebolla",
+          "guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojar el suelo antes si hace falta para evitar que se quiebren. Para matas perennes de jardín, UC ANR recomienda cosechar cuando las hojas alcanzan unos 6–13 mm de diámetro y se desea sabor a cebolla. Son contextos de huerto exterior, no una promesa fija de días a cosecha ni una regla de tamaño hidropónico.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40721,8 +40775,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Divide mature clumps and manage flower stalks to match your goal",
-          "guidance": "UC ANR describes digging and dividing established clumps in fall, then replanting them. It advises removing flower stalks before bloom when the goal is multiplying the clump rather than flowering; this is a management choice, not evidence that flowering is disease or failure. Keep soil moist but not wet and weed regularly, especially while plants are small. The advice is for outdoor garden clumps.",
+          "short": "Divide matas establecidas y maneja los tallos florales según tu objetivo",
+          "guidance": "UC ANR describe desenterrar y dividir las matas establecidas en otoño para replantarlas. Aconseja retirar los tallos florales antes de abrirse cuando el objetivo es multiplicar la mata en vez de favorecer la floración; es una decisión de manejo, no evidencia de enfermedad o fallo. Mantén el suelo húmedo, pero no empapado, y controla malezas con frecuencia, sobre todo cuando las plantas son pequeñas. Es una guía para matas de jardín exterior.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40742,8 +40796,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Established clumps can be divided; seed-starting is covered separately",
-          "guidance": "UC ANR documents division of mature Allium fistulosum clumps as a way to replant them. This is vegetative propagation of an established plant; the separate Seed Profile covers the seed-to-established-plant stage.",
+          "short": "Las matas establecidas se pueden dividir; la siembra se trata aparte",
+          "guidance": "UC ANR documenta la división de matas maduras de Allium fistulosum para replantarlas. Es propagación vegetativa de una planta establecida; el Perfil de Semilla separado cubre la etapa desde semilla hasta planta establecida.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -40763,8 +40817,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "Flower stalk removal depends on whether you want a larger clump or flowers",
-          "guidance": "UC ANR notes that flower stalks can be cut before bloom when the growing goal is clump multiplication. It does not provide a flowering calendar or describe a cultivar-specific floral display; flowering itself is not automatically a problem.",
+          "short": "Retirar el tallo floral depende de si buscas una mata mayor o flores",
+          "guidance": "UC ANR señala que se pueden cortar los tallos florales antes de que abran cuando el objetivo de cultivo es multiplicar la mata. No proporciona un calendario de floración ni describe una exhibición floral específica de cultivar; florecer no es automáticamente un problema.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -42813,6 +42867,27 @@ export const gardenPlantProfileCatalog = {
           "avoid": "",
           "context": ""
         }
+      },
+      "uses": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-sorrel-growing-500"
+        ],
+        "en": {
+          "short": "Tangy young leaves suit salads and cooked dishes",
+          "guidance": "The RHS says sorrel leaves add a refreshing citrus tang to salads, soups, sauces and other dishes; young leaves can also be cooked like spinach. Older leaves may become tough and bitter. Its shared culinary notes cover several garden sorrels, while this profile's plant identity remains Rumex acetosa; no medicinal use or cultivar-specific flavor is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las hojas jóvenes ácidas sirven para ensaladas y platos cocinados",
+          "guidance": "La RHS indica que las hojas de acedera aportan un toque cítrico a ensaladas, sopas, salsas y otros platos; las hojas jóvenes también pueden cocinarse como espinacas. Las hojas más viejas pueden ponerse duras y amargas. Las notas culinarias compartidas se refieren a varias acederas de jardín, mientras que la identidad de esta ficha sigue siendo Rumex acetosa; no se infiere uso medicinal ni un sabor específico de cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
       }
     }
   },
@@ -42927,6 +43002,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "El frío, la sequía y algunas plagas foliares son riesgos documentados",
           "guidance": "UF/IFAS informa sensibilidad a las heladas, pérdida de calidad y floración bajo estrés hídrico, además de posibles manchas foliares, caracoles y nematodos. Son riesgos reportados por la fuente, no un diagnóstico ni una afirmación de que afecten a todas las plantas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "uses": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "uf-ifas-malabar-spinach-500"
+        ],
+        "en": {
+          "short": "Leaves and tender stems are harvested as a leafy vegetable",
+          "guidance": "UF/IFAS describes Malabar spinach as a vegetable and identifies Basella alba as one of the forms preferred for dietary use, distinct from the typically ornamental B. rubra. This entry is B. alba; the source's food-use scope does not support medicinal claims or transfer claims about other Basella species to this plant.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las hojas y los tallos tiernos se cosechan como verdura de hoja",
+          "guidance": "UF/IFAS describe la espinaca de Malabar como verdura e identifica Basella alba como una de las formas preferidas para uso alimentario, distinta de B. rubra, que suele ser ornamental. Esta ficha representa B. alba; el alcance de uso alimentario de la fuente no respalda afirmaciones medicinales ni permite trasladar a esta planta datos de otras especies de Basella.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -46024,6 +46120,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Exceso de agua, acame y apertura de vainas secas son señales útiles",
           "guidance": "Montana State University Extension advierte que el riego excesivo puede matar las plantas de lenteja y recomienda detenerlo cuando las vainas empiezan a secarse. UW–Madison describe tallos débiles que pueden acamarse y vainas que pueden abrirse al madurar. Son riesgos generales del cultivo; las notas de acame y apertura de vainas provienen de producción de campo. No establecen un diagnóstico de enfermedad, una resistencia ni un tratamiento para una planta doméstica.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "uses": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "msu-lentils-home-garden-2026"
+        ],
+        "en": {
+          "short": "Green pods may be shelled; mature seed is used in cooked dishes",
+          "guidance": "Montana State University Extension says green lentil pods can be harvested and eaten like shell peas; mature dried lentils are prepared for soups, stews, salads, purees and other dishes. Cooking times vary with variety and desired texture, so this species-level profile does not assign a single recipe or culinary trait to an unspecified seed class.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las vainas verdes se desgranan; la semilla madura se cocina en distintos platos",
+          "guidance": "Montana State University Extension indica que las vainas verdes pueden cosecharse y comerse como guisantes tiernos; las lentejas secas maduras se preparan en sopas, guisos, ensaladas, purés y otros platos. El tiempo de cocción varía según la variedad y la textura deseada, por lo que esta ficha a nivel de especie no asigna una receta ni un rasgo culinario único a una clase de semilla no especificada.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -49345,25 +49462,23 @@ export const gardenPlantProfileCatalog = {
           "umn-rhubarb-home-wave29"
         ],
         "en": {
-          "short": "Water through summer, control weeds and divide aging crowns",
-          "guidance": "UMN recommends thorough watering during the growing season, including after harvest, and careful weed control while plants establish. Divide older crowns in early spring as growth begins if the center becomes less productive; each division needs viable buds. Remove emerging flower stalks to redirect resources to vegetative growth. Leave healthy leaves in place after harvest so the crown can rebuild reserves.",
+          "short": "Water through summer and control weeds around the crown",
+          "guidance": "UMN recommends thorough watering during the growing season, including after harvest, and careful weed control while plants establish. Remove emerging flower stalks to redirect resources to vegetative growth. Leave healthy leaves in place after harvest so the crown can rebuild reserves.",
           "items": [
             "Water thoroughly during active growth, including after the main harvest.",
             "Control weeds carefully around the crown, particularly while the planting establishes.",
-            "Remove flower stalks as they appear when the aim is sustained vegetative growth.",
-            "Consider dividing an older, less productive crown in early spring; retain viable buds on each division."
+            "Remove flower stalks as they appear when the aim is sustained vegetative growth."
           ],
           "avoid": "",
           "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
         },
         "es": {
-          "short": "Riega durante el verano, controla malezas y divide coronas viejas",
-          "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Divide coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad; cada división necesita yemas viables. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas.",
+          "short": "Riega durante el verano y controla las malezas alrededor de la corona",
+          "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas.",
           "items": [
             "Riega bien durante el crecimiento, también después de la cosecha principal.",
             "Controla malezas con cuidado alrededor de la corona, especialmente durante el establecimiento.",
-            "Retira los tallos florales al aparecer si buscas mantener el crecimiento vegetativo.",
-            "Considera dividir una corona vieja y poco productiva a principios de primavera, conservando yemas viables en cada división."
+            "Retira los tallos florales al aparecer si buscas mantener el crecimiento vegetativo."
           ],
           "avoid": "",
           "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
@@ -49424,6 +49539,33 @@ export const gardenPlantProfileCatalog = {
             "Separa inmediatamente los pecíolos comestibles de las láminas foliares tóxicas.",
             "Lava y corta los tallos; cocínalos en salsas, tartas, conservas u otras preparaciones ácidas.",
             "No utilices el color rojo o verde como prueba de seguridad alimentaria."
+          ],
+          "avoid": "",
+          "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ],
+        "en": {
+          "short": "Divide an older, less productive crown in early spring",
+          "guidance": "UMN recommends dividing older crowns in early spring as growth begins when the center becomes less productive. Each division needs viable buds. This is crown division guidance; no seed-starting protocol is inferred here.",
+          "items": [
+            "Consider dividing an older, less productive crown in early spring as growth begins.",
+            "Retain viable buds on each division."
+          ],
+          "avoid": "",
+          "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+        },
+        "es": {
+          "short": "Divide una corona vieja y poco productiva a principios de primavera",
+          "guidance": "UMN recomienda dividir coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad. Cada división necesita yemas viables. Esta es una indicación de división de corona; aquí no se infiere un protocolo de siembra.",
+          "items": [
+            "Considera dividir una corona vieja y poco productiva a principios de primavera, cuando empieza el crecimiento.",
+            "Conserva yemas viables en cada división."
           ],
           "avoid": "",
           "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
@@ -50012,6 +50154,28 @@ export const gardenPlantProfileCatalog = {
           "avoid": "",
           "context": ""
         }
+      },
+      "uses": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-bottle-gourd-wave30",
+          "tokyo-food-safety-bottle-gourd-wave30"
+        ],
+        "en": {
+          "short": "Young fruit may be eaten; mature hard shells can be reused",
+          "guidance": "NC State Extension describes young bottle-gourd fruit as edible and mature hardened shells as material for containers, instruments or decoration; it also lists seeds, leaves, flowers and young stems as edible parts. Tokyo's food-safety center warns that some bottle-gourd fruit can become strongly bitter and cause poisoning. Never consume fruit with strong, unusual bitterness; this type-level use note does not identify a particular edible cultivar or override that safety warning.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "El fruto joven puede comerse; la cáscara madura puede reutilizarse",
+          "guidance": "NC State Extension describe el fruto joven como comestible y la cáscara madura y endurecida como material para recipientes, instrumentos o decoración; también enumera semillas, hojas, flores y tallos jóvenes como partes comestibles. El centro de seguridad alimentaria de Tokio advierte que algunos frutos pueden volverse muy amargos y causar intoxicación. Nunca consumas frutos con amargor fuerte e inusual; esta nota de uso a nivel de tipo no identifica un cultivar comestible específico ni invalida esa advertencia.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
       }
     }
   },
@@ -50254,27 +50418,6 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "ufifas-waterleaf-wave31"
-        ],
-        "en": {
-          "short": "Stem cuttings are a practical propagation route",
-          "guidance": "UF/IFAS describes 5–8 inch mature-stem cuttings planted directly into prepared beds as a practical crop-level propagation method. This regional method is not a seed-starting protocol.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Los esquejes de tallo son una vía práctica de propagación",
-          "guidance": "UF/IFAS describe esquejes de 5–8 pulgadas de tallos maduros, plantados directamente en camas preparadas, como método práctico de propagación del cultivo. Es una guía regional y no un protocolo de siembra.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "problems": {
         "evidenceType": "source_backed",
         "confidence": "medium",
@@ -50313,6 +50456,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Las flores rosadas producen cápsulas pequeñas; la floración no fija un calendario de cultivo",
           "guidance": "UF/IFAS describe flores rosadas y bisexuales que se autopolinizan principalmente, con algo de polinización cruzada; informa que el fruto madura aproximadamente dos semanas después de la floración. Es contexto reproductivo a nivel de especie, no una garantía de producción de semilla ni un calendario doméstico de cosecha. El inicio y la germinación se mantienen en el perfil de semilla.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ufifas-waterleaf-wave31"
+        ],
+        "en": {
+          "short": "Stem cuttings are a practical propagation route",
+          "guidance": "UF/IFAS describes 5–8 inch mature-stem cuttings planted directly into prepared beds as a practical crop-level propagation method. This regional method is not a seed-starting protocol.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los esquejes de tallo son una vía práctica de propagación",
+          "guidance": "UF/IFAS describe esquejes de 5–8 pulgadas de tallos maduros, plantados directamente en camas preparadas, como método práctico de propagación del cultivo. Es una guía regional y no un protocolo de siembra.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -50578,27 +50742,6 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-cuban-oregano-wave32"
-        ],
-        "en": {
-          "short": "Stem cuttings are an easy documented propagation route",
-          "guidance": "NC State Extension says Cuban oregano is very easy to propagate from stem cuttings and can also be divided in spring. This supports vegetative propagation, not a claim that seed propagation is biologically impossible.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Los esquejes de tallo y la división están documentados",
-          "guidance": "NC State Extension indica que se propaga fácilmente con esquejes de tallo y también puede dividirse en primavera. Esto respalda propagación vegetativa, no afirma que sea biológicamente imposible propagarla por semilla.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "care": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -50658,6 +50801,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "El daño por frío es un riesgo documentado",
           "guidance": "UF/IFAS identifica el orégano cubano como sensible a heladas y recomienda macetas que puedan trasladarse en climas fríos. Esto respalda protegerlo de la congelación, pero no establece una temperatura mínima exacta ni garantiza desempeño en sistemas interiores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-cuban-oregano-wave32"
+        ],
+        "en": {
+          "short": "Stem cuttings are an easy documented propagation route",
+          "guidance": "NC State Extension says Cuban oregano is very easy to propagate from stem cuttings and can also be divided in spring. This supports vegetative propagation, not a claim that seed propagation is biologically impossible.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los esquejes de tallo y la división están documentados",
+          "guidance": "NC State Extension indica que se propaga fácilmente con esquejes de tallo y también puede dividirse en primavera. Esto respalda propagación vegetativa, no afirma que sea biológicamente imposible propagarla por semilla.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -50746,15 +50910,36 @@ export const gardenPlantProfileCatalog = {
           "ncsu-oxalis-triangularis-wave33"
         ],
         "en": {
-          "short": "Reduce watering during dormancy; divide rhizomes to propagate",
-          "guidance": "NC State Extension describes reducing watering when the plant enters dormancy and says rhizome division or detached scale leaves can produce new plants. Its source also lists seed as a propagation strategy, but does not provide a sowing or germination protocol.",
+          "short": "Reduce watering while the plant is dormant",
+          "guidance": "NC State Extension recommends reducing watering when this plant enters dormancy. Hot or dry conditions can trigger seasonal dormancy; leaf closure at night or when disturbed is normal behavior, not by itself a watering problem.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Reduce el riego durante dormancia; divide rizomas para propagar",
-          "guidance": "NC State Extension describe reducir el riego durante la dormancia e indica que la división del rizoma o sus escamas puede producir plantas nuevas. También menciona semilla, pero no ofrece instrucciones de siembra ni germinación.",
+          "short": "Reduce el riego mientras la planta está en dormancia",
+          "guidance": "NC State Extension recomienda reducir el riego cuando esta planta entra en dormancia. El calor o la sequedad pueden desencadenar dormancia estacional; el cierre nocturno de las hojas o al tocarlas es un comportamiento normal y no indica por sí solo un problema de riego.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-oxalis-triangularis-wave33"
+        ],
+        "en": {
+          "short": "Rhizome division is documented; seed method details are absent",
+          "guidance": "NC State Extension lists rhizome division and detached scale leaves as vegetative propagation routes, and also lists seed. Its profile does not provide sowing or germination instructions, so no seed-starting parameters are assigned.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se documenta la división de rizomas; faltan detalles de siembra",
+          "guidance": "NC State Extension enumera la división del rizoma y las escamas desprendidas como vías de propagación vegetativa; también menciona semilla. La ficha no ofrece instrucciones de siembra o germinación, así que no se asignan parámetros para iniciar semillas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -50885,15 +51070,36 @@ export const gardenPlantProfileCatalog = {
           "ncsu-syngonium-podophyllum-wave33"
         ],
         "en": {
-          "short": "Prune stems to retain a bushier juvenile form",
-          "guidance": "Cutting stems as they begin to develop can retain the arrowhead foliage and a more shrub-like habit. NC State Extension says repotting every few years and trimming the root system can help keep the plant manageable. It also lists division, layering and stem cuttings as propagation routes; this is not a cultivar-specific pruning calendar.",
+          "short": "Prune to retain juvenile foliage; repot only as needed",
+          "guidance": "Cutting stems as they begin to develop can retain the arrowhead foliage and a more shrub-like habit. NC State Extension says repotting every few years and trimming the root system can help keep the plant manageable. This is not a cultivar-specific pruning calendar.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Poda tallos para conservar la forma juvenil",
-          "guidance": "Cortar los tallos cuando comienzan a desarrollarse puede conservar el follaje en forma de flecha y un porte más arbustivo. NC State Extension indica que trasplantar cada pocos años y recortar raíces puede ayudar a mantener la planta manejable. También enumera división, acodo y esquejes de tallo como métodos de propagación; no es un calendario de poda para un cultivar específico.",
+          "short": "Poda para conservar el follaje juvenil; trasplanta cuando sea necesario",
+          "guidance": "Cortar los tallos cuando comienzan a desarrollarse puede conservar el follaje en forma de flecha y un porte más arbustivo. NC State Extension indica que trasplantar cada pocos años y recortar raíces puede ayudar a mantener la planta manejable. Esto no es un calendario de poda para un cultivar específico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-syngonium-podophyllum-wave33"
+        ],
+        "en": {
+          "short": "Division, layering and stem cuttings are listed",
+          "guidance": "NC State Extension lists division, layering and stem cuttings as propagation routes for Syngonium podophyllum. The consulted profile does not provide a detailed step-by-step protocol or timing for these methods, so none is inferred here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se enumeran división, acodo y esquejes de tallo",
+          "guidance": "NC State Extension enumera división, acodo y esquejes de tallo como vías de propagación de Syngonium podophyllum. La ficha consultada no ofrece pasos detallados ni calendario para estos métodos, así que no se infieren aquí.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -51136,6 +51342,27 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-scindapsus-pictus-wave33"
+        ],
+        "en": {
+          "short": "Outdoor summer flowers are possible; indoor plants rarely bloom",
+          "guidance": "NC State Extension says outdoor plants may produce tiny, insignificant flowers in summer, followed by small berries, while indoor plants rarely flower or fruit. The source does not establish an indoor flowering schedule or conditions that guarantee blooms.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "En exterior puede florecer en verano; rara vez florece dentro de casa",
+          "guidance": "NC State Extension indica que las plantas de exterior pueden producir flores diminutas y poco llamativas en verano, seguidas de bayas pequeñas, mientras que las plantas de interior rara vez florecen o fructifican. La fuente no establece un calendario de floración interior ni condiciones que garanticen flores.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "maintenance": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -51143,15 +51370,36 @@ export const gardenPlantProfileCatalog = {
           "ncsu-scindapsus-pictus-wave33"
         ],
         "en": {
-          "short": "Pinch stems to keep the plant tidy; stem cuttings propagate it",
-          "guidance": "NC State Extension says pinching stems helps keep the plant tidy and documents stem cuttings as a propagation method. This does not claim a seed protocol or cultivar-specific pruning response.",
+          "short": "Pinch stems to keep the plant tidy",
+          "guidance": "NC State Extension says pinching stems helps keep the plant tidy. This entry does not assign a cultivar-specific pruning response.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Guía los tallos en soporte o déjalos colgar; pinza para ordenar",
-          "guidance": "NC State Extension indica que puede guiarse en una estaca vertical o dejarse colgar, y que pinzar los tallos ayuda a mantenerla ordenada. También documenta esquejes de tallo; no afirma un protocolo de semilla ni una respuesta específica de cultivar.",
+          "short": "Pinza los tallos para mantener la planta ordenada",
+          "guidance": "NC State Extension indica que pinzar los tallos ayuda a mantener la planta ordenada. Esta ficha no asigna una respuesta de poda específica para un cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-scindapsus-pictus-wave33"
+        ],
+        "en": {
+          "short": "Stem cuttings are the documented vegetative method",
+          "guidance": "NC State Extension says Scindapsus pictus may be propagated by stem cuttings. The reference does not specify a seed-starting protocol, rooting medium, timing, or success rate.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los esquejes de tallo son el método vegetativo documentado",
+          "guidance": "NC State Extension indica que Scindapsus pictus puede propagarse mediante esquejes de tallo. La referencia no especifica un protocolo de siembra, medio de enraizamiento, plazo ni tasa de éxito.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -51275,21 +51523,21 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
+      "propagation": {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "ncsu-pilea-peperomioides-wave33"
         ],
         "en": {
-          "short": "Separate offsets or use stem cuttings in active growth",
+          "short": "Offsets or stem cuttings during active growth",
           "guidance": "NC State Extension documents offsets or pups and stem cuttings, with propagation best during spring or early summer active growth. This is vegetative propagation guidance; no seed germination protocol is provided.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Separa hijuelos o usa esquejes durante el crecimiento activo",
+          "short": "Hijuelos o esquejes de tallo durante el crecimiento activo",
           "guidance": "NC State Extension documenta hijuelos y esquejes de tallo, y sitúa la mejor propagación en primavera o inicios de verano durante el crecimiento activo. Es propagación vegetativa; no se ofrece un protocolo de germinación.",
           "items": [],
           "avoid": "",
@@ -51599,8 +51847,8 @@ export const gardenPlantProfileCatalog = {
   },
   "birds-nest-fern-asplenium-nidus": {
     "summary": {
-      "en": "A tropical evergreen epiphytic fern with broad strap-shaped fronds forming a central nest. NC State Extension describes humid, moist, porous growing conditions and notes reproduction by spores; a practical home propagation protocol is not supplied by the selected source.",
-      "es": "Helecho epífito tropical siempreverde cuyas frondas anchas en forma de cinta crean un nido central. NC State Extension describe condiciones de cultivo húmedas y porosas y menciona reproducción por esporas; la fuente seleccionada no ofrece un protocolo práctico de propagación doméstica."
+      "en": "A tropical evergreen epiphytic fern with broad strap-shaped fronds forming a central nest. NC State Extension confirms reproduction by spores; Iowa State provides a general fern-spore sowing method, but not a species-specific schedule or guarantee for this fern.",
+      "es": "Helecho epífito tropical siempreverde cuyas frondas anchas en forma de cinta crean un nido central. NC State Extension confirma su reproducción por esporas; Iowa State ofrece un método general de siembra para esporas de helechos, pero no un calendario ni una garantía específicos para esta especie."
     },
     "metrics": {
       "en": [],
@@ -51708,6 +51956,28 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Inspecciona plagas y enfermedades foliares; en general no se reportan problemas graves",
           "guidance": "NC State Extension informa que no hay problemas graves en general, pero enumera babosas, caracoles, escamas, cochinillas, enfermedades bacterianas foliares y nematodos. También señala sensibilidad a insecticidas químicos. Son precauciones de monitoreo, no una afirmación de resistencia ni un diagnóstico a partir de un solo síntoma.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-asplenium-nidus-wave34",
+          "iastate-growing-ferns-spores-wave34"
+        ],
+        "en": {
+          "short": "Sow mature spores on a clean, moist surface; expect a slow fern life cycle",
+          "guidance": "NC State Extension confirms that Asplenium nidus reproduces by spores. For a general fern method, Iowa State recommends collecting mature dark spores, sprinkling them on the surface of clean, moist growing medium without covering them, then keeping the container covered, humid and in bright indirect light. Its general guidance gives 65–75°F (18–24°C) and says germination may take 2–8 weeks depending on species; tiny fern plants develop only after the gametophyte stage. Transplant after several fronds form. These timings and steps are general fern guidance, not a validated A. nidus-specific protocol or guarantee.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Siembra esporas maduras sobre una superficie limpia y húmeda; el ciclo del helecho es lento",
+          "guidance": "NC State Extension confirma que Asplenium nidus se reproduce por esporas. Para un método general de helechos, Iowa State recomienda recolectar esporas maduras y oscuras, espolvorearlas sobre la superficie de un medio de cultivo limpio y húmedo sin cubrirlas, y mantener el recipiente tapado, húmedo y con luz brillante indirecta. Su guía general indica 65–75 °F (18–24 °C) y señala que la germinación puede tardar de 2 a 8 semanas según la especie; las plantitas aparecen después de la fase de gametofito. Trasplanta cuando se formen varias frondas. Estos pasos y tiempos son orientación general para helechos, no un protocolo ni una garantía validados específicamente para A. nidus.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -52023,7 +52293,7 @@ export const gardenPlantProfileCatalog = {
   "dumbcane-dieffenbachia-seguine": {
     "summary": {
       "en": "An upright tropical foliage houseplant with large patterned leaves. NC State Extension describes indirect-light container care and vegetative propagation, and warns that its sap and ingestion can cause serious harm; no named retail cultivar is implied.",
-      "es": "Planta tropical erguida de interior, apreciada por sus hojas grandes y estampadas. NC State Extension describe cuidados en contenedor con luz indirecta y propagación vegetativa, y advierte que la savia y la ingestión pueden causar daños graves; no se implica un cultivar comercial específico."
+      "es": "Planta tropical erguida de interior, apreciada por sus hojas grandes y estampadas. NC State Extension describe cuidados en contenedor con luz indirecta y propagación vegetativa; Iowa State aporta un método general de esquejes de tallo. La savia y la ingestión pueden causar daños graves; no se implica un cultivar comercial específico."
     },
     "metrics": {
       "en": [],
@@ -52102,14 +52372,36 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Protect from cold drafts and handle sap cautiously",
-          "guidance": "The extension source recommends protection from cold drafts and direct sunlight and describes division or stem/root cuttings as propagation methods. Use gloves and wash after handling as the source advises; do not treat pruning or propagation as risk-free.",
+          "guidance": "NC State Extension recommends protecting the plant from cold drafts and direct sun. Its sap and tissues can irritate or injure; wear gloves and wash after handling. Do not treat pruning or propagation as risk-free.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Protégela de corrientes frías y manipula la savia con cuidado",
-          "guidance": "La extensión recomienda protegerla de corrientes frías y del sol directo, y describe división o esquejes de tallo/raíz como métodos vegetativos. Aconseja usar guantes y lavarse después de manipularla; poda y propagación no deben tratarse como actividades sin riesgo.",
+          "guidance": "NC State Extension recomienda protegerla de corrientes frías y del sol directo. La savia y los tejidos pueden irritar o causar lesiones; usa guantes y lávate después de manipularla. No trates la poda ni la propagación como actividades sin riesgo.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-dieffenbachia-seguine-wave35",
+          "iastate-houseplant-cane-cuttings-2025-wave35"
+        ],
+        "en": {
+          "short": "Cane sections can root; keep toxic sap away from skin and eyes",
+          "guidance": "NC State Extension lists division, root cuttings and stem cuttings. Iowa State specifically includes Dieffenbachia among plants propagated by cane sections: cut 2–3-inch pieces with at least two nodes, remove leaves, lay sections on moist rooting medium with the top near the surface, and keep them warm, humid and in bright indirect light. Iowa State reports roots and shoots in about 8–10 weeks for this general cane method, not a guarantee for every D. seguine cultivar. Wear gloves and avoid sap contact; the source does not characterize propagation as safe for children or pets.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Los segmentos de tallo pueden enraizar; evita el contacto de la savia con piel y ojos",
+          "guidance": "NC State Extension enumera división y esquejes de raíz o tallo. Iowa State incluye Dieffenbachia entre las plantas que se propagan por segmentos de tallo: corta piezas de 2–3 pulgadas con al menos dos nudos, quita las hojas, coloca los segmentos sobre un medio húmedo de enraizamiento con la parte superior cerca de la superficie y mantenlos cálidos, húmedos y con luz brillante indirecta. Iowa State indica unas 8–10 semanas para que aparezcan raíces y brotes mediante este método general; no es garantía para todo cultivar de D. seguine. Usa guantes y evita el contacto con la savia; la fuente no presenta la propagación como segura para niños o mascotas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -53509,8 +53801,8 @@ export const gardenPlantProfileCatalog = {
   },
   "florist-kalanchoe-kalanchoe-blossfeldiana": {
     "summary": {
-      "en": "Kew accepts Kalanchoe blossfeldiana. NC State Extension describes a compact flowering succulent with cultivar-dependent flower colors, a rest period of long uninterrupted darkness for bloom scheduling, and stem or leaf cutting propagation. This profile does not assign a named cultivar or color.",
-      "es": "Kew acepta Kalanchoe blossfeldiana. NC State Extension describe una suculenta compacta de floración, con colores que varían según el cultivar, un periodo de oscuridad larga e ininterrumpida que favorece la programación de la floración y propagación por esquejes de tallo u hoja. No se asignan cultivar ni color."
+      "en": "Kew accepts Kalanchoe blossfeldiana. NC State Extension describes a compact flowering succulent with cultivar-dependent colors and a long-night bloom cue. Iowa State provides general succulent stem- and leaf-cutting methods that include Kalanchoe; no named cultivar or color is assigned.",
+      "es": "Kew acepta Kalanchoe blossfeldiana. NC State Extension describe una suculenta compacta de floración con colores dependientes del cultivar y un estímulo floral basado en noches largas. Iowa State ofrece métodos generales de esquejes de tallo y hoja que incluyen Kalanchoe; no se asignan cultivar ni color."
     },
     "metrics": {
       "en": [],
@@ -53589,14 +53881,36 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Deadhead spent flowers; prevent prolonged wetness",
-          "guidance": "NC State recommends removing spent flowers to encourage additional bloom and notes that overwatering can lead to root or stem rot. It lists stem and leaf cuttings as propagation methods; no seed protocol is supplied in this profile.",
+          "guidance": "NC State recommends removing spent flowers to encourage additional bloom and notes that overwatering can lead to root or stem rot. Propagation methods are described separately; no seed protocol is supplied in this profile.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Retira las flores marchitas y evita que permanezca demasiado húmeda",
-          "guidance": "NC State recomienda quitar las flores marchitas para fomentar más floración y advierte que el exceso de riego puede causar pudrición de raíz o tallo. Enumera esquejes de tallo y hoja como métodos de propagación; aquí no se ofrece protocolo de semilla.",
+          "guidance": "NC State recomienda quitar las flores marchitas para fomentar más floración y advierte que el exceso de riego puede causar pudrición de raíz o tallo. Los métodos de propagación se describen por separado; no se ofrece aquí un protocolo de semilla.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-kalanchoe-blossfeldiana-wave37",
+          "iastate-how-propagate-succulents-2023-wave37"
+        ],
+        "en": {
+          "short": "Stem and whole-leaf cuttings are documented vegetative methods",
+          "guidance": "NC State lists stem and leaf cuttings. Iowa State's general succulent guide specifically includes Kalanchoe for both methods: for a stem cutting, remove lower leaves and allow the cut end to callus for several days before setting it in well-drained cactus mix or perlite; for a leaf cutting, remove the whole leaf cleanly, lay it on slightly damp well-drained medium with its base at the surface, and keep the medium damp but not wet. New roots and shoots may form over several weeks. These are group-level succulent methods, not a cultivar-specific timetable or guarantee, and they are vegetative rather than seed propagation.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se documentan esquejes vegetativos de tallo y de hoja completa",
+          "guidance": "NC State enumera esquejes de tallo y hoja. La guía general de Iowa State sobre suculentas incluye específicamente Kalanchoe para ambos métodos: en un esqueje de tallo, quita las hojas inferiores y deja cicatrizar el corte varios días antes de colocarlo en mezcla para cactus o perlita con buen drenaje; para un esqueje foliar, retira la hoja completa, colócala sobre medio húmedo pero no mojado y deja la base en la superficie. Las raíces y brotes pueden aparecer en varias semanas. Son métodos generales para suculentas, no un calendario ni una garantía para un cultivar específico; son propagación vegetativa, no por semilla.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -53888,14 +54202,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Prune lightly for shape in late autumn or winter",
-          "guidance": "NC State recommends light shaping and size pruning in late autumn or winter and warns that heavy shearing can reduce longevity. It lists stem cuttings as a propagation strategy; the source does not establish a seed-starting protocol for this houseplant use.",
+          "guidance": "NC State recommends light shaping and size pruning in late autumn or winter and warns that heavy shearing can reduce longevity.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Poda ligera para dar forma a fines de otoño o invierno",
-          "guidance": "NC State recomienda poda ligera para dar forma y controlar tamaño a fines de otoño o invierno, y advierte que el recorte intenso puede reducir la longevidad. Enumera esquejes de tallo como método de propagación; la fuente no establece protocolo de siembra para su uso común como planta de interior.",
+          "guidance": "NC State recomienda poda ligera para dar forma y controlar tamaño a fines de otoño o invierno, y advierte que el recorte intenso puede reducir la longevidad.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -53938,6 +54252,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Las flores diminutas quedan dentro de la estructura carnosa del higo",
           "guidance": "NC State indica que flores y frutos aparecen tanto en crecimiento nuevo como antiguo. Su descripción botánica explica que las flores unisexuales diminutas quedan dentro de un receptáculo carnoso tipo higo y son polinizadas por avispas de los higos; esto describe la biología de la especie, no promete fructificación en interior ni establece un calendario de cuidados.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ficus-benjamina-wave37"
+        ],
+        "en": {
+          "short": "Stem cuttings are listed; no seed-starting protocol is established",
+          "guidance": "NC State lists stem cuttings as a propagation strategy. The source does not establish a seed-starting protocol for this houseplant use.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se mencionan esquejes de tallo; no hay protocolo de siembra establecido",
+          "guidance": "NC State enumera los esquejes de tallo como estrategia de propagación. La fuente no establece un protocolo de siembra para su uso común como planta de interior.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -54040,27 +54375,6 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-strelitzia-reginae-wave38"
-        ],
-        "en": {
-          "short": "Division is listed; no seed-starting protocol is supplied",
-          "guidance": "NC State lists division as a propagation strategy. The consulted species profile does not give seed-sowing or germination instructions, so seed requirements remain undocumented here rather than being treated as impossible.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Se menciona la división; no se proporciona protocolo para iniciar desde semilla",
-          "guidance": "NC State enumera la división como estrategia de propagación. La ficha consultada no ofrece instrucciones de siembra o germinación; por eso los requisitos de semilla quedan sin documentar y no se consideran imposibles.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "problems": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -54077,6 +54391,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Evita el medio encharcado y que las mascotas ingieran la planta",
           "guidance": "NC State advierte sobre el riesgo de pudrición de raíces en suelo mal drenado y señala características tóxicas de baja gravedad para mascotas y caballos. Plant Toolbox también informa náuseas leves, vómitos o somnolencia si las personas ingieren frutos o semillas. Mantén el material vegetal fuera del alcance de niños y mascotas; esta advertencia de la fuente no sustituye consejo médico o veterinario individual.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-strelitzia-reginae-wave38"
+        ],
+        "en": {
+          "short": "Division is listed; no seed-starting protocol is supplied",
+          "guidance": "NC State lists division as a propagation strategy. The consulted species profile does not give seed-sowing or germination instructions, so seed requirements remain undocumented here rather than being treated as impossible.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se menciona la división; no se proporciona protocolo para iniciar desde semilla",
+          "guidance": "NC State enumera la división como estrategia de propagación. La ficha consultada no ofrece instrucciones de siembra o germinación; por eso los requisitos de semilla quedan sin documentar y no se consideran imposibles.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -54186,15 +54521,15 @@ export const gardenPlantProfileCatalog = {
           "ncsu-ceropegia-woodii-wave38"
         ],
         "en": {
-          "short": "Layering, stem cuttings and seed are listed propagation routes",
-          "guidance": "NC State lists layering, seed and stem cuttings, and notes that aerial tubercles root when they touch soil. Trailing stems suit a hanging pot or can be trained on a small trellis; the plant tolerates crowding, so repot only when necessary. A vegetative route can retain a selected plant form; the page provides no detailed seed protocol, so no germination parameters are asserted.",
+          "short": "Train trailing stems and repot only when necessary",
+          "guidance": "NC State notes that trailing stems suit a hanging pot or can be trained on a small trellis. The plant tolerates crowding, so repot only when necessary.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Se documentan acodo, esquejes de tallo y propagación por semilla",
-          "guidance": "NC State enumera acodo, semilla y esquejes de tallo, y señala que los tubérculos aéreos enraízan cuando tocan el suelo. Los tallos colgantes funcionan en macetas suspendidas o pueden guiarse por un pequeño enrejado; la planta tolera estar apretada, así que conviene trasplantar solo cuando sea necesario. La propagación vegetativa puede conservar una forma seleccionada; la página no ofrece un protocolo detallado de germinación, así que no se agregan parámetros.",
+          "short": "Guía los tallos colgantes y trasplanta solo cuando sea necesario",
+          "guidance": "NC State indica que los tallos colgantes funcionan en macetas suspendidas o pueden guiarse por un pequeño enrejado. La planta tolera estar apretada, así que conviene trasplantar solo cuando sea necesario.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -54216,6 +54551,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Vigila crecimiento estirado, quemaduras y pudrición",
           "guidance": "NC State relaciona hojas muy separadas con luz insuficiente, hojas quemadas con exceso de sol y amarillamiento o pudrición con problemas de riego. Son indicios contextuales, no un diagnóstico por sí solos.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ceropegia-woodii-wave38"
+        ],
+        "en": {
+          "short": "Layering, stem cuttings and seed are listed methods",
+          "guidance": "NC State lists layering, seed and stem cuttings, and notes that aerial tubercles root when they touch soil. A vegetative route can retain a selected plant form; the page provides no detailed seed protocol, so no germination parameters are asserted.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se documentan acodo, esquejes de tallo y propagación por semilla",
+          "guidance": "NC State enumera acodo, semilla y esquejes de tallo, y señala que los tubérculos aéreos enraízan cuando tocan el suelo. La propagación vegetativa puede conservar una forma seleccionada; la página no ofrece un protocolo detallado de germinación, así que no se agregan parámetros.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -54276,6 +54632,27 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-curio-rowleyanus-wave38"
+        ],
+        "en": {
+          "short": "Cinnamon-scented summer flowers are uncommon indoors",
+          "guidance": "NC State describes small white, daisy-like summer flowers with a cinnamon scent and notes that indoor plants rarely flower. Flowering is therefore possible but is not an expected indoor schedule or a measure of care quality.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Las flores estivales con aroma a canela son poco frecuentes en interior",
+          "guidance": "NC State describe flores pequeñas, blancas y parecidas a margaritas, con aroma a canela, que aparecen en verano; señala que las plantas de interior rara vez florecen. La floración es posible, pero la fuente no establece un calendario esperado en interior ni la presenta como medida de calidad del cuidado.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -54297,21 +54674,21 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
+      "propagation": {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "ncsu-curio-rowleyanus-wave38"
         ],
         "en": {
-          "short": "Stem cuttings are the quick, documented renewal method",
+          "short": "Stem cuttings are the quick, documented propagation method",
           "guidance": "NC State describes 3–5 inch stem cuttings with several nodes covered in potting mix as a quick propagation approach; it calls leaf-only propagation slower and less reliable. Seeds are produced after flowering, but no seed-start protocol is given here.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Los esquejes de tallo son el método rápido y documentado para renovarla",
+          "short": "Los esquejes de tallo son el método rápido y documentado de propagación",
           "guidance": "NC State describe esquejes de tallo de 3–5 pulgadas, cubriendo varios nudos con mezcla para macetas, como método rápido. Considera más lenta y menos confiable la propagación a partir de una hoja sola. Después de florecer puede producir semillas, pero la página no da un protocolo de siembra.",
           "items": [],
           "avoid": "",
@@ -54394,6 +54771,27 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-peperomia-caperata-wave38"
+        ],
+        "en": {
+          "short": "Cream-white spikes may appear in summer and autumn",
+          "guidance": "NC State describes small flowers arranged on cream-to-white spikes about 2–3 inches long, with flowering listed in summer and fall. The source describes the species and multiple cultivars; these flowers do not identify a particular foliage cultivar.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Pueden aparecer espigas crema o blancas en verano y otoño",
+          "guidance": "NC State describe flores pequeñas agrupadas en espigas color crema a blanco de unos 5–8 cm, con floración indicada en verano y otoño. La fuente trata la especie y enumera varios cultivares; estas flores no identifican un cultivar de follaje específico.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
       "cultivation": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -54415,21 +54813,21 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
+      "propagation": {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "ncsu-peperomia-caperata-wave38"
         ],
         "en": {
-          "short": "Spring leaf or stem-tip cuttings are documented",
+          "short": "Spring leaf or stem-tip cuttings are documented propagation methods",
           "guidance": "NC State recommends leaf or stem-tip cuttings in spring. This species-level vegetative guidance does not provide a seed germination protocol, and seedlings should not be assumed to retain a selected cultivar's leaf pattern.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Se documentan esquejes de hoja o de punta de tallo en primavera",
+          "short": "Se documentan esquejes de hoja o de punta de tallo como métodos de propagación en primavera",
           "guidance": "NC State recomienda esquejes de hoja o de punta de tallo en primavera. Esta orientación vegetativa para la especie no ofrece protocolo de germinación; tampoco se debe asumir que las plántulas conserven el patrón de un cultivar elegido.",
           "items": [],
           "avoid": "",
@@ -54533,27 +54931,6 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-kalanchoe-tomentosa-wave38"
-        ],
-        "en": {
-          "short": "Leaf cuttings or offshoots are the documented alternatives",
-          "guidance": "NC State describes leaf cuttings or offshoots as propagation approaches and notes that this fuzzy-leaved species is more difficult to propagate than some succulents. No seed-sowing protocol is supplied by the consulted profile.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Esquejes de hoja o hijuelos son las alternativas documentadas",
-          "guidance": "NC State describe esquejes de hoja o hijuelos como métodos de propagación y señala que esta especie vellosa es más difícil de propagar que algunas otras suculentas. La ficha consultada no ofrece un protocolo de siembra.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "safety": {
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -54591,6 +54968,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Hojas arrugadas o blandas pueden indicar estrés por agua",
           "guidance": "NC State relaciona las hojas arrugadas con falta de agua y las hojas o tallos amarillos y blandos con exceso de agua; también menciona cochinillas y ácaros. Son señales posibles, no un diagnóstico sin revisar la planta y su entorno.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-kalanchoe-tomentosa-wave38"
+        ],
+        "en": {
+          "short": "Leaf cuttings or offshoots are the documented alternatives",
+          "guidance": "NC State describes leaf cuttings or offshoots as propagation approaches and notes that this fuzzy-leaved species is more difficult to propagate than some succulents. No seed-sowing protocol is supplied by the consulted profile.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Esquejes de hoja o hijuelos son las alternativas documentadas",
+          "guidance": "NC State describe esquejes de hoja o hijuelos como métodos de propagación y señala que esta especie vellosa es más difícil de propagar que algunas otras suculentas. La ficha consultada no ofrece un protocolo de siembra.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -54673,27 +55071,6 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         }
       },
-      "maintenance": {
-        "evidenceType": "source_backed",
-        "confidence": "medium",
-        "sourceIds": [
-          "ncsu-aglaonema-genus-wave39"
-        ],
-        "en": {
-          "short": "Division or stem cuttings are documented for the genus",
-          "guidance": "NC State lists division and stem cuttings for Aglaonema at genus level. A cultivar-specific propagation protocol is not established here.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Se documentan división o esquejes de tallo para el género",
-          "guidance": "NC State enumera la división y los esquejes de tallo para Aglaonema a nivel de género. Aquí no se establece un protocolo específico para cultivar.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
       "problems": {
         "evidenceType": "source_backed",
         "confidence": "medium",
@@ -54731,6 +55108,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "Mantén el material vegetal fuera del alcance de niños y mascotas",
           "guidance": "NC State señala toxicidad y riesgos por contacto o ingestión para Aglaonema. Mantén el material vegetal lejos de niños y mascotas; es información a nivel de género y no cuantifica el riesgo de exposición de un cultivar concreto.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-aglaonema-genus-wave39"
+        ],
+        "en": {
+          "short": "Division or stem cuttings are documented for the genus",
+          "guidance": "NC State lists division and stem cuttings for Aglaonema at genus level. A cultivar-specific propagation protocol is not established here.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se documentan división o esquejes de tallo para el género",
+          "guidance": "NC State enumera la división y los esquejes de tallo para Aglaonema a nivel de género. Aquí no se establece un protocolo específico para cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -55118,15 +55516,15 @@ export const gardenPlantProfileCatalog = {
           "ncsu-dracaena-surculosa-wave39"
         ],
         "en": {
-          "short": "Trim overgrown winter stems or propagate by division/cuttings",
-          "guidance": "NC State says overgrown stems may be cut back in winter to rejuvenate the plant and maintain desired height, and lists tip/stem cuttings or division for propagation. It also advises avoiding an oversized pot because roots prefer a snug container; no exact pot-size ratio is stated.",
+          "short": "Prune overgrown winter stems; keep the pot appropriately snug",
+          "guidance": "NC State says overgrown stems may be cut back in winter to rejuvenate the plant and maintain desired height. It also advises avoiding an oversized pot because roots prefer a snug container; no exact pot-size ratio is stated.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Recorta en invierno los tallos alargados o propaga por división o esquejes",
-          "guidance": "NC State indica que se pueden recortar en invierno los tallos demasiado largos para rejuvenecer la planta y controlar su altura, y enumera esquejes apicales o de tallo y división. También recomienda evitar una maceta demasiado grande porque las raíces prefieren un recipiente ajustado; no especifica una proporción exacta.",
+          "short": "Poda los tallos alargados en invierno y conserva una maceta ajustada",
+          "guidance": "NC State indica que se pueden recortar en invierno los tallos demasiado largos para rejuvenecer la planta y controlar su altura. También recomienda evitar una maceta demasiado grande porque las raíces prefieren un recipiente ajustado; no especifica una proporción exacta.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -55148,6 +55546,27 @@ export const gardenPlantProfileCatalog = {
         "es": {
           "short": "El exceso de riego puede pudrir las raíces; mantén la planta lejos de personas y mascotas",
           "guidance": "NC State advierte que el agua estancada y el exceso de riego pueden causar pudrición de raíces, y que las cochinillas de raíz pueden frenar el crecimiento. Su Plant Toolbox clasifica la planta como tóxica si la ingieren personas, gatos o perros; mantén el material vegetal fuera del alcance de niños y mascotas. No se afirma resistencia a enfermedades.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "propagation": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-dracaena-surculosa-wave39"
+        ],
+        "en": {
+          "short": "Tip or stem cuttings and division are listed methods",
+          "guidance": "NC State lists tip or stem cuttings and division as propagation methods. This profile does not add a step-by-step protocol beyond the source's documented methods.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Se documentan división o esquejes apicales y de tallo",
+          "guidance": "NC State enumera esquejes apicales o de tallo y división como métodos de propagación. Esta ficha no añade un protocolo paso a paso más allá de los métodos documentados por la fuente.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -57225,7 +57644,7 @@ export const gardenPlantProfileCatalog = {
   "norfolk-island-pine-araucaria-heterophylla": {
     "summary": {
       "en": "Araucaria heterophylla is an accepted Norfolk Island tree also sold as a living indoor conifer. The houseplant remains a tree that can outgrow a room; NC State's indoor temperature, light and watering notes differ from its outdoor landscape dimensions.",
-      "es": "Araucaria heterophylla es una conífera de ramas escalonadas, apreciada como planta de interior. NC State recomienda luz brillante y temperaturas interiores frescas a templadas; poca luz puede causar pérdida de ramas inferiores. La ficha no supone que sea un pino verdadero ni asigna cultivar."
+      "es": "Araucaria heterophylla es una conífera de ramas escalonadas cultivada como planta de interior. Las guías describen temperatura, riego y humedad en contextos distintos; poca luz o suelo muy seco pueden contribuir al pardeamiento y la pérdida de ramas inferiores. No se supone que sea un pino verdadero ni se asigna cultivar."
     },
     "metrics": {
       "en": [],
@@ -57279,18 +57698,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-araucaria-heterophylla-wave42"
+          "ncsu-araucaria-heterophylla-wave42",
+          "iastate-norfolk-island-pine-care-2023"
         ],
         "en": {
-          "short": "Give it a bright position and avoid waterlogged soil",
-          "guidance": "NC State describes bright indoor placement, regular watering from spring through autumn while avoiding overly wet soil, and sparing winter watering. Its cited 55–65 °F bright-room preference is source-specific; it is not converted to a universal temperature target for all rooms or systems.",
+          "short": "Bright indoor placement, drained soil and steady but not excessive moisture",
+          "guidance": "NC State describes bright indoor placement, regular watering from spring through autumn while avoiding overly wet soil, and sparing winter watering. Iowa State advises watering thoroughly when the soil surface feels dry and discarding runoff. The sources give somewhat different room-temperature ranges (NC State about 55–65 °F; Iowa State 55–70 °F); retain those as source-specific contexts, not one universal target. Both describe indoor pot culture, not calibrated grow-light or hydroponic parameters.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Ubicación interior luminosa y temperatura moderada",
-          "guidance": "NC State recomienda luz brillante para plantas de interior y un ambiente fresco a templado, aproximadamente 55–65 °F. Esta orientación cualitativa no equivale a una intensidad calibrada de lámpara.",
+          "short": "Interior luminoso, suelo drenado y humedad sin exceso",
+          "guidance": "NC State recomienda luz brillante, riego regular de primavera a otoño evitando el suelo demasiado mojado y menos riego en invierno. Iowa State aconseja regar a fondo cuando la superficie del suelo se sienta seca y desechar el drenaje sobrante. Las fuentes dan rangos de temperatura algo distintos (NC State: unos 55–65 °F; Iowa State: 55–70 °F); se mantienen como contextos de cada fuente, no como un único objetivo universal. Ambas tratan plantas en maceta, no parámetros calibrados de lámpara o hidroponía.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -57300,18 +57720,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-araucaria-heterophylla-wave42"
+          "ncsu-araucaria-heterophylla-wave42",
+          "iastate-norfolk-island-pine-care-2023"
         ],
         "en": {
-          "short": "Plan for continuing vertical growth and lower-branch decline risk",
-          "guidance": "NC State notes indoor plants may reach about 9 feet and that prolonged very-low-light placement can lead to leaf drop and loss of lower branches. The profile does not prescribe topping or pruning, which could alter its characteristic form.",
+          "short": "Rotate the pot regularly; plan for continuing vertical growth",
+          "guidance": "NC State notes indoor plants may reach about 9 feet and that prolonged very-low-light placement can lead to leaf drop and loss of lower branches. Iowa State recommends rotating the pot weekly to reduce one-sided growth toward a window; it also describes dilute fertilizer every 2–4 weeks from spring to early fall. These are indoor houseplant practices, not a fertilizer recipe for nutrient solution. The profile does not prescribe topping, which could alter the characteristic form.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Evita la luz interior muy baja",
-          "guidance": "NC State advierte que la luz interior muy baja puede causar la pérdida de ramas inferiores. No se ofrece un intervalo de poda que permita recuperar ramas perdidas.",
+          "short": "Gira la maceta con regularidad y considera su crecimiento vertical",
+          "guidance": "NC State indica que puede alcanzar unos 9 pies en interior y que la luz muy baja prolongada puede provocar caída de hojas y pérdida de ramas inferiores. Iowa State recomienda girar la maceta cada semana para reducir el crecimiento inclinado hacia una ventana; también describe fertilizante diluido cada 2–4 semanas desde primavera hasta comienzos de otoño. Es cuidado de planta en maceta, no una receta nutritiva para solución hidropónica. No se recomienda cortar la punta, pues cambiaría su forma característica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -57342,18 +57763,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-araucaria-heterophylla-wave42"
+          "ncsu-araucaria-heterophylla-wave42",
+          "iastate-norfolk-island-pine-care-2023"
         ],
         "en": {
-          "short": "Watch for scale and avoid persistent overwatering",
-          "guidance": "NC State identifies scale, sooty mold and leaf spot as possible issues and warns that overly wet soil is unsuitable. It does not establish a pest-free or disease-resistant status.",
+          "short": "Brown tips and lower-branch loss can signal indoor stress",
+          "guidance": "NC State identifies scale, sooty mold and leaf spot as possible issues and warns that overly wet soil is unsuitable. Iowa State associates browning branch tips or loss of lower branches with low humidity, insufficient light or excessively dry soil. Treat these as cues to review the conditions, not as a single-cause diagnosis or a promise that lost branches will regrow. Neither source establishes pest-free or disease-resistant status.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La pérdida de ramas inferiores puede señalar luz insuficiente",
-          "guidance": "La fuente vincula luz interior muy baja con pérdida de ramas inferiores. Es una señal para revisar el ambiente, no un diagnóstico exclusivo ni una garantía de recuperación.",
+          "short": "Puntas marrones o caída de ramas inferiores pueden señalar estrés interior",
+          "guidance": "NC State identifica escamas, fumagina y manchas foliares como posibles problemas y advierte que el suelo demasiado húmedo no es adecuado. Iowa State relaciona puntas marrones o pérdida de ramas inferiores con baja humedad, luz insuficiente o suelo excesivamente seco. Son señales para revisar las condiciones, no un diagnóstico de causa única ni una promesa de que las ramas perdidas vuelvan a crecer. Ninguna fuente establece ausencia de plagas o resistencia a enfermedades.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -66557,8 +66979,8 @@ export const gardenPlantProfileCatalog = {
           "context": ""
         },
         "es": {
-          "short": "White spring flowers, autumn color and fruit that may persist",
-          "guidance": "UMN describes showy white flower clusters about 2–3 inches across with pink anthers in spring. The deciduous foliage changes from green to red, orange and purple in autumn; dark fruit may persist into winter and feed wildlife. These are seasonal cues from UMN's Minnesota species profile, not fixed dates or traits assigned to an unnamed cultivar.",
+          "short": "Flores blancas primaverales; follaje otoñal y frutos persistentes",
+          "guidance": "La Extensión de Minnesota describe racimos vistosos de flores blancas de unos 5–8 cm, con anteras rosadas, en primavera. El follaje caducifolio cambia del verde a tonos rojos, naranjas y morados en otoño; los frutos oscuros pueden persistir hasta el invierno y alimentar a la fauna. Son señales estacionales del perfil de especie de Minnesota, no fechas fijas ni rasgos asignados a un cultivar sin identificar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -68640,7 +69062,7 @@ export const gardenPlantProfileCatalog = {
   "burros-tail-sedum-morganianum": {
     "summary": {
       "en": "A Mexican trailing succulent with fragile, fleshy leaves and terminal summer flower clusters. A hanging container can display its stems, but the foliage breaks easily; bright conditions, sharp drainage and gentle handling matter more than a fixed indoor size.",
-      "es": "Una suculenta mexicana colgante de hojas carnosas y frágiles y racimos florales terminales en verano. Una maceta suspendida luce sus tallos, pero las hojas se desprenden con facilidad; importan más la luz abundante, el drenaje rápido y la manipulación cuidadosa que una medida interior fija."
+      "es": "Una suculenta mexicana colgante, de hojas carnosas y frágiles y flores terminales en primavera y verano. Sus tallos lucen en una maceta suspendida, pero las hojas se desprenden con facilidad; importan la luz abundante, el drenaje y la manipulación cuidadosa, no una medida interior fija."
     },
     "metrics": {
       "en": [],
@@ -68673,18 +69095,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-sedum-morganianum-wave55"
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
         ],
         "en": {
           "short": "Trailing stems with fragile leaves and summer flowers",
-          "guidance": "NC State describes trailing stems up to 24 inches in its description, fleshy blue-green leaves that detach if handled, and terminal pink or red flower clusters in summer. It says flowering is rare as a houseplant; the stem length is source-reported, not a guaranteed indoor plant height.",
+          "guidance": "NC State describes trailing stems up to 24 inches in its description, fleshy blue-green leaves that detach if handled, and terminal pink or red flower clusters in summer. It says flowering is rare as a houseplant; the stem length is source-reported, not a guaranteed indoor plant height. RHS describes stems to 30 cm or longer and spring/summer flowers; these are source-specific descriptions, not a promised indoor height or bloom schedule.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Tallos colgantes, hojas frágiles y flores de verano",
-          "guidance": "NC State describe tallos colgantes de hasta 61 cm en su descripción, hojas carnosas verde azuladas que se desprenden al manipularlas y racimos florales terminales rosados o rojos en verano. Señala que rara vez florece como planta de interior; la longitud es un dato de la fuente, no una altura interior garantizada.",
+          "guidance": "NC State describe tallos colgantes de hasta 61 cm, hojas carnosas verde azuladas que se desprenden al manipularlas y racimos terminales rosados o rojos en verano; señala que rara vez florece como planta de interior. RHS describe tallos de 30 cm o más y floración en primavera/verano. Son descripciones de cada fuente, no una altura interior ni un calendario de floración garantizados.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -68694,18 +69117,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-sedum-morganianum-wave55"
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
         ],
         "en": {
           "short": "Allow the growing medium to dry between waterings",
-          "guidance": "NC State advises a bright interior position, well-drained soil, shallow pots and allowing soil to dry between waterings, with reduced winter watering. These regional houseplant directions are not evidence for a nutrient solution or system compatibility.",
+          "guidance": "NC State advises a bright interior position, well-drained soil, a shallow pot and allowing the soil to dry between waterings, with less water in winter. RHS's under-glass advice instead specifies bright filtered light, loam-based compost with added grit, free watering during active growth and sparing winter water. Keep those source contexts visible rather than collapsing them into one universal schedule; both emphasize drainage and seasonal restraint. Neither establishes a nutrient-solution recipe or system compatibility.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Deja secar el sustrato entre riegos",
-          "guidance": "NC State aconseja un interior luminoso, sustrato bien drenado, maceta poco profunda y dejar secar el suelo entre riegos, reduciendo el riego en invierno. La guía regional de interior no demuestra uso en solución nutritiva ni compatibilidad con sistemas.",
+          "guidance": "NC State aconseja un interior luminoso, sustrato bien drenado, maceta poco profunda y dejar secar el suelo entre riegos, reduciendo el agua en invierno. La guía de RHS para cultivo bajo vidrio indica luz filtrada brillante, compost franco con gravilla, riego libre durante el crecimiento activo y escaso en invierno. Mantén visibles esos contextos en lugar de fundirlos en un calendario universal; ambas fuentes destacan el drenaje y el ajuste estacional. Ninguna establece una receta nutritiva ni compatibilidad con sistemas.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -68715,18 +69139,41 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-sedum-morganianum-wave55"
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
         ],
         "en": {
           "short": "Protect fragile leaves and avoid wet, poorly drained conditions",
-          "guidance": "NC State reports that leaves break off when manipulated and lists occasional slugs and snails outdoors. Wet or poorly drained conditions and overwatering can lead to pest/disease problems; inspect the growing medium and plant rather than treating a single symptom as a diagnosis.",
+          "guidance": "NC State reports that leaves break off when manipulated and lists occasional slugs and snails outdoors. RHS also lists possible vine-weevil grubs, scale, mealybugs and fungal or bacterial crown/root rots. Wet or poorly drained conditions and overwatering can lead to problems; inspect the plant and medium rather than treating one symptom as a diagnosis or assuming every listed pest is present.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Protege las hojas frágiles y evita suelo húmedo sin drenaje",
-          "guidance": "NC State informa que las hojas se desprenden al manipularlas y menciona babosas y caracoles ocasionales en exterior. El suelo húmedo o mal drenado y el exceso de riego pueden favorecer problemas de plagas o enfermedades; revisa el sustrato y la planta en vez de tratar un síntoma aislado como diagnóstico.",
+          "guidance": "NC State informa que las hojas se desprenden al manipularlas y menciona babosas y caracoles ocasionales en exterior. RHS también enumera posibles larvas de gorgojo de la vid, escamas, cochinillas y pudriciones fúngicas o bacterianas de corona/raíz. El sustrato mojado, mal drenado o con exceso de riego puede favorecer problemas; inspecciona planta y medio en vez de tratar un síntoma aislado como diagnóstico o asumir que toda plaga listada está presente.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "care": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-sedum-morganianum-2026",
+          "ncsu-sedum-morganianum-wave55"
+        ],
+        "en": {
+          "short": "No routine pruning is required; protect trailing stems during handling",
+          "guidance": "RHS says pruning is not required. Because the fleshy leaves detach readily, handle the trailing stems gently when moving or tending the plant; NC State notes that detached leaves can root. This does not imply a need to shape or regularly cut the plant.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "No requiere poda rutinaria; protege los tallos al manipularla",
+          "guidance": "RHS indica que no requiere poda. Como las hojas carnosas se desprenden con facilidad, manipula con cuidado los tallos colgantes al mover o atender la planta; NC State señala que las hojas desprendidas pueden enraizar. Esto no implica necesidad de dar forma ni cortar regularmente.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -76779,8 +77226,8 @@ export const gardenPlantProfileCatalog = {
   },
   "blue-false-indigo-baptisia-australis": {
     "summary": {
-      "en": "A long-lived North American native perennial with blue pea-like flowers and a deep taproot. It supports pollinators but is difficult to transplant once established.",
-      "es": "Una perenne nativa de Norteamérica y larga vida, con flores azules papilionadas y raíz pivotante profunda. Aporta valor para polinizadores, pero es difícil de trasplantar una vez establecida."
+      "en": "A long-lived North American native perennial with blue spring flower spikes, clover-like foliage and inflated seed pods used in dried arrangements. Its deep taproot makes established plants difficult to move, and it can take several seasons to mature.",
+      "es": "Una perenne nativa de Norteamérica y larga vida, con espigas florales azules de primavera, follaje trifoliado y vainas infladas útiles en arreglos secos. Su raíz profunda dificulta mover plantas establecidas y puede tardar varias temporadas en madurar."
     },
     "metrics": {
       "en": [],
@@ -76812,18 +77259,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-baptisia-australis-wave61"
+          "ncsu-baptisia-australis-wave61",
+          "iastate-baptisia-false-indigo-2023"
         ],
         "en": {
-          "short": "Clumping perennial with a deep taproot",
-          "guidance": "NC State reports about 3–4 ft tall and 2–4 ft wide in garden settings; the taproot supports drought tolerance but makes transplanting difficult.",
+          "short": "Large clump-forming perennial with a slow establishment period",
+          "guidance": "NC State reports about 3–4 ft tall and 2–4 ft wide in its garden account. Iowa State's Iowa guide gives about 4 ft tall and 4–5 ft wide for the species and notes that attractive mature specimens may take 3–5 years to develop. Keep these regional descriptions distinct; neither guarantees an individual plant's dimensions. The deep root system supports drought tolerance after establishment but makes moving the plant difficult.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Perenne en mata con una raíz pivotante profunda",
-          "guidance": "La fuente informa unos 90–120 cm de alto y 60–120 cm de ancho en jardines regionales; la raíz pivotante aporta tolerancia a sequía, pero dificulta el trasplante.",
+          "short": "Perenne grande en mata; su establecimiento es lento",
+          "guidance": "NC State informa unos 90–120 cm de alto y 60–120 cm de ancho en su referencia de jardín. Iowa State da cerca de 120 cm de alto y 120–150 cm de ancho para la especie e indica que puede tardar 3–5 años en formar ejemplares ornamentales maduros. Mantén separados los datos regionales; ninguno garantiza las dimensiones de una planta concreta. La raíz profunda favorece la tolerancia a sequía después del establecimiento, pero dificulta moverla.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -76833,18 +77281,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-baptisia-australis-wave61"
+          "ncsu-baptisia-australis-wave61",
+          "iastate-baptisia-false-indigo-2023"
         ],
         "en": {
-          "short": "Full sun to part shade in well-drained soil",
-          "guidance": "The source describes average well-drained soils and drought tolerance. Shaded plants may become leggy or droop; these are regional landscape observations.",
+          "short": "Full sun and well-drained soil; part shade may reduce flowering",
+          "guidance": "Both extension sources favor full sun and well-drained soil; NC State allows part shade, while Iowa State notes that part-shade plants may become leggy and flower less. Water regularly during dry weather in the first growing season, then mainly during prolonged dry spells once established. Iowa State notes that Baptisia fixes nitrogen and generally does not need fertilizer in fertile soil. These are outdoor landscape recommendations, not indoor or hydroponic instructions.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Sol pleno a sombra parcial en suelo bien drenado",
-          "guidance": "NC State describe suelos promedio bien drenados y tolerancia a sequía. En sombra puede volverse alargada o caer; son observaciones de cultivo exterior regional.",
+          "guidance": "Ambas extensiones favorecen el sol pleno y el suelo bien drenado; NC State admite sombra parcial, e Iowa State señala que allí puede volverse alargada y florecer menos. Riega durante periodos secos de la primera temporada y, una vez establecida, principalmente en sequías prolongadas. Iowa State indica que Baptisia fija nitrógeno y normalmente no necesita fertilizante en suelo fértil. Son recomendaciones para paisaje exterior, no para interior ni hidroponía.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -76854,18 +77303,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-baptisia-australis-wave61"
+          "ncsu-baptisia-australis-wave61",
+          "iastate-baptisia-false-indigo-2023"
         ],
         "en": {
-          "short": "Seed and stem cuttings are listed",
-          "guidance": "NC State lists seeds or stem cuttings, while warning that the deep taproot makes transplanting difficult. Germination conditions are not provided in this record.",
+          "short": "Seedlings mature slowly; leave established deep roots undisturbed",
+          "guidance": "NC State lists seed and stem-cutting propagation. Iowa State reports seedlings may take 3–5 years to flower, that offspring from named cultivars will not necessarily match the parent, and that division is usually not recommended because of the deep root system. It describes collecting stem cuttings in spring while shoots are still relatively soft. Neither source provides a complete germination protocol here, so sowing depth, pretreatment and timing remain unspecified.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Se enumeran semillas y esquejes de tallo",
-          "guidance": "La fuente enumera semillas y esquejes de tallo y advierte que la raíz pivotante dificulta el trasplante. No ofrece condiciones de germinación.",
+          "guidance": "NC State enumera semillas y esquejes de tallo. Iowa State indica que las plántulas pueden tardar 3–5 años en florecer, que la descendencia de cultivares nombrados no necesariamente conserva las características del progenitor y que normalmente no se recomienda dividir por la raíz profunda. Describe esquejes de tallo en primavera, cuando los brotes aún son relativamente suaves. Estas fuentes no dan un protocolo completo de germinación; no se inventan profundidad, tratamiento ni calendario.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -76875,18 +77325,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-baptisia-australis-wave61"
+          "ncsu-baptisia-australis-wave61",
+          "iastate-baptisia-false-indigo-2023"
         ],
         "en": {
-          "short": "Ornamental flowers and seed pods; pollinator host",
-          "guidance": "The source describes blue flowers attractive to insects and seed pods useful as dried ornament. It also reports low-severity toxicity if parts are eaten; do not use as food.",
+          "short": "Spring flowers and mature pods are ornamental, not food",
+          "guidance": "The blue, pea-like spring flower spikes support ornamental and pollinator-garden use. Iowa State describes the inflated pods as useful in dried floral arrangements; NC State reports low-severity toxicity if plant parts are eaten in quantity. Do not present flowers or pods as edible. Keep decorative use distinct from food safety.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Flores y vainas ornamentales; planta hospedera de polinizadores",
-          "guidance": "La referencia describe flores azules y vainas ornamentales secas. También informa toxicidad leve si se ingieren partes en cantidad; no usar como alimento.",
+          "short": "Flores de primavera y vainas maduras son ornamentales, no alimento",
+          "guidance": "Las espigas azules papilionadas de primavera aportan valor ornamental y para jardines de polinizadores. Iowa State describe las vainas infladas como útiles en arreglos secos; NC State informa toxicidad leve si se ingieren partes en cantidad. No presentes las flores ni las vainas como comestibles y mantén separado el uso decorativo de la seguridad alimentaria.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -76896,18 +77347,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-baptisia-australis-wave61"
+          "ncsu-baptisia-australis-wave61",
+          "iastate-baptisia-false-indigo-2023"
         ],
         "en": {
-          "short": "Ingestion is unsafe; major pest or disease problems are not reported",
-          "guidance": "NC State reports low-severity poisoning characteristics if plant parts are eaten in quantity and no major insect or disease problems for this species. Keep it away from children and pets; do not use it as food. The absence of major listed problems is not a guarantee of pest-free growth.",
+          "short": "Occasional rabbit browsing, foliar disease and alkaline-soil chlorosis",
+          "guidance": "Iowa State says rabbits may occasionally browse Baptisia; leaf spots and powdery mildew are usually minor, while highly alkaline soil can cause yellow-green chlorosis. Plants may also flop or develop open centers, especially in part shade. NC State reports no major insect or disease problems in its account. These are occasional or regional signals, not guaranteed susceptibility or a diagnosis; ingestion is unsafe, so do not use the plant as food.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La ingestión es insegura; no se reportan problemas importantes de plagas o enfermedades",
-          "guidance": "NC State informa toxicidad de baja severidad si se ingieren partes en cantidad y no reporta problemas importantes de insectos o enfermedades para esta especie. Mantenla lejos de niños y mascotas y no la uses como alimento. La ausencia de problemas importantes reportados no garantiza que nunca aparezcan.",
+          "short": "Vigila mordisqueo ocasional, enfermedades foliares y clorosis en suelo alcalino",
+          "guidance": "Iowa State indica que los conejos pueden mordisquearla ocasionalmente; manchas foliares y mildiu suelen ser menores, mientras que suelos muy alcalinos pueden causar clorosis amarillo-verdosa. También señala que la planta puede volcarse o abrirse, especialmente en sombra parcial. NC State no reporta problemas importantes de insectos o enfermedades en su ficha. Son señales ocasionales o regionales, no susceptibilidades garantizadas ni un diagnóstico; la ingestión es insegura y no debe usarse como alimento.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -76917,18 +77369,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-baptisia-australis-wave61"
+          "ncsu-baptisia-australis-wave61",
+          "iastate-baptisia-false-indigo-2023"
         ],
         "en": {
-          "short": "Prune after flowering only if seed pods are unwanted or shaping is needed",
-          "guidance": "NC State recommends pruning after flowering when seed pods are not desired and for shaping. If the ornamental pods are wanted, leave the stems; the deep taproot makes established plants difficult to move.",
+          "short": "Clear dead growth in late fall or early spring; retain pods if desired",
+          "guidance": "Iowa State describes annual removal of dead plant debris in late fall or early spring as the typical established-plant task. After flowering, leave stems if you want the inflated pods for dried arrangements; otherwise, NC State advises pruning after bloom when pods are unwanted or shaping is needed. Mature plants are long-lived and should not be routinely divided or moved because of their deep roots.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Poda tras la floración solo si no quieres vainas o necesitas darle forma",
-          "guidance": "NC State recomienda podar después de florecer cuando no se desean vainas o para dar forma. Si quieres conservar las vainas ornamentales, deja los tallos; la raíz pivotante dificulta mover plantas establecidas.",
+          "short": "Retira restos muertos a fines de otoño o inicio de primavera; conserva vainas si las quieres",
+          "guidance": "Iowa State describe como tarea anual típica retirar restos muertos a fines de otoño o comienzos de primavera. Después de florecer, deja los tallos si quieres vainas infladas para arreglos secos; de lo contrario, NC State aconseja podar tras la floración cuando no se desean vainas o hace falta dar forma. Las plantas maduras son longevas y no conviene dividirlas o moverlas rutinariamente por sus raíces profundas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "flowering": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "iastate-baptisia-false-indigo-2023"
+        ],
+        "en": {
+          "short": "Blue-violet, lupine-like spikes appear in spring",
+          "guidance": "Iowa State describes spring flower spikes rising above clover-like foliage and lists blue-violet flowers for Baptisia australis. Timing and size are a regional garden reference, not a fixed calendar for every climate. Some Baptisia cultivars may not produce seed pods, but no cultivar is assigned to this identity.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Espigas azul-violeta, similares a lupinos, aparecen en primavera",
+          "guidance": "Iowa State describe espigas florales primaverales que sobresalen sobre el follaje trifoliado y registra flores azul-violeta para Baptisia australis. La época y el tamaño son referencias regionales, no un calendario fijo para todo clima. Algunos cultivares de Baptisia pueden no formar vainas, pero aquí no se asigna cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -78081,15 +78555,15 @@ export const gardenPlantProfileCatalog = {
           "fao-cassava-processing-ch5-wave62"
         ],
         "en": {
-          "short": "Starchy roots are the main food harvest; safe processing depends on type",
-          "guidance": "UF/IFAS identifies the roots as the principal food product and notes that harvested roots deteriorate quickly. It warns that cassava contains cyanogenic compounds and must not be eaten raw. FAO documents cultivar/environment variation and says taste does not reliably indicate cyanide content. Its processing chapter documents regional, multi-step methods for specific products, combining operations such as peeling, grating, soaking/fermentation, pressing/washing, and heat treatment or drying; sequences and efficacy depend on product and process. These technical examples are not a home recipe for this unidentified type. A complete type-appropriate safe-processing protocol remains unknown.",
+          "short": "Roots are a food crop only after verified, type-appropriate processing",
+          "guidance": "UF/IFAS identifies the roots as the principal food product and notes that they deteriorate quickly after harvest. FAO documents cyanogenic compounds throughout cassava, substantial variety and growing-condition differences, and says bitterness is not a reliable safety test; simple boiling may not remove enough cyanide. FAO's processing chapters describe distinct, multi-step methods for particular foods and regions, not one universal home recipe. This species-level profile does not identify a sweet/bitter type or validate a process for any specific root. Do not eat roots or leaves raw, and do not consume an unidentified plant using a generic recipe; use only authoritative preparation guidance matched to the identified variety and intended product.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Las raíces ricas en almidón son la cosecha principal; el procesamiento seguro depende del tipo",
-          "guidance": "UF/IFAS identifica las raíces como producto alimentario principal y señala que se deterioran rápidamente tras la cosecha. FAO documenta variación entre cultivares y condiciones de cultivo; el sabor dulce o amargo no predice de forma fiable el cianuro. Las raíces y hojas no deben comerse crudas. El capítulo técnico de FAO describe procesos regionales de varias etapas para productos específicos, con combinaciones y secuencias que importan; no son una receta universal para el hogar ni para esta yuca sin tipo identificado. Un proceso completo de preparación segura apropiado para el tipo sigue sin establecerse.",
+          "short": "Las raíces solo son alimento tras un procesamiento verificado y adecuado al tipo",
+          "guidance": "UF/IFAS identifica las raíces como el principal producto alimentario y señala que se deterioran rápidamente tras la cosecha. FAO documenta compuestos cianogénicos en toda la yuca, diferencias importantes entre variedades y condiciones de cultivo, y advierte que el sabor amargo no es una prueba fiable de seguridad; hervir de forma simple puede no retirar suficiente cianuro. Los capítulos técnicos de FAO describen procesos distintos, de varias etapas, para alimentos y regiones concretos, no una receta doméstica universal. Esta ficha a nivel de especie no identifica un tipo dulce/amargo ni valida un proceso para una raíz específica. No comas raíces ni hojas crudas ni consumas una planta no identificada aplicando una receta genérica; usa únicamente orientación autorizada de preparación que corresponda a la variedad identificada y al producto deseado.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -78105,39 +78579,15 @@ export const gardenPlantProfileCatalog = {
           "fao-cassava-cyanogenic-guidance-wave62"
         ],
         "en": {
-          "short": "Raw roots are unsafe; do not use taste to infer cyanogenic risk",
-          "guidance": "NC State Extension warns that raw cassava roots are highly toxic and lists red spider mites as a problem to watch for. UF/IFAS distinguishes lower- and higher-cyanogenic types; FAO notes that bitterness is not a reliable indicator of cyanide content and that simple boiling is not always reliable. This profile does not identify the plant's type: do not eat roots or leaves raw or assume a generic method makes an unknown type safe. Confirm the pest before treatment.",
+          "short": "Cyanide risk varies; frost and spider mites are also concerns",
+          "guidance": "NC State Extension warns that raw cassava roots are highly toxic and lists red spider mites as a problem to watch for. UF/IFAS distinguishes lower- and higher-cyanogenic types; FAO documents variation and warns that bitterness and simple boiling do not reliably establish safety. This entry identifies the species, not a low-cyanogen cultivar: do not eat roots or leaves raw or assume a generic method makes an unknown type safe. Protect the tropical shrub from frost and confirm a pest before treatment.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Las raíces crudas son tóxicas; el sabor no indica el riesgo",
-          "guidance": "NC State Extension advierte que las raíces crudas de yuca son muy tóxicas y menciona los ácaros rojos como problema a vigilar. UF/IFAS distingue tipos con menor y mayor contenido cianogénico. FAO advierte que el sabor no es un indicador fiable y que hervir de forma simple no siempre es suficiente. Esta ficha no determina qué tipo tienes: no comas raíces ni hojas crudas ni supongas que un método genérico vuelve seguro un tipo desconocido. Confirma la plaga antes de tratarla.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        }
-      },
-      "needsValidation": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": [
-          "ufifas-cassava-wave62",
-          "ncsu-cassava-plant-toolbox-2026",
-          "fao-cassava-cyanogenic-guidance-wave62",
-          "fao-cassava-processing-ch5-wave62"
-        ],
-        "en": {
-          "short": "The represented plant's cyanogenic type and safe preparation are unknown",
-          "guidance": "UF/IFAS distinguishes lower- and higher-cyanogenic cassava types. FAO reports substantial cultivar/environment variation and says taste does not directly indicate cyanide content. Its technical processing chapter describes product- and region-specific multi-step processing rather than one universal method. The public identity names only the species, so neither taste nor a generic boiling instruction resolves its food-safety status. A complete type-appropriate processing protocol remains unavailable for this record; keep the issue unresolved and do not improvise.",
-          "items": [],
-          "avoid": "",
-          "context": ""
-        },
-        "es": {
-          "short": "Se desconocen el tipo cianogénico y la preparación segura",
-          "guidance": "UF/IFAS distingue tipos de yuca con menor y mayor contenido cianogénico. FAO documenta variación según cultivar y ambiente, y señala que ni el sabor ni una ebullición simple permiten resolver por sí solos el riesgo. Su capítulo técnico muestra que los procesos tradicionales dependen del producto y combinan varias etapas; no proporciona una receta universal para esta planta sin tipo identificado. La identidad pública solo especifica la especie: no indica tipo ni cultivar, y no hay un proceso completo de preparación apropiado para este material. Mantén la incertidumbre y no improvises.",
+          "short": "El riesgo de cianuro varía; también preocupan las heladas y los ácaros",
+          "guidance": "NC State Extension advierte que las raíces crudas de yuca son muy tóxicas y menciona los ácaros rojos como problema a vigilar. UF/IFAS distingue tipos con menor y mayor contenido cianogénico; FAO documenta variación y advierte que ni el sabor amargo ni hervir de forma simple establecen la seguridad. Esta entrada identifica la especie, no un cultivar de bajo contenido cianogénico: no comas raíces ni hojas crudas ni supongas que un método genérico vuelve seguro un tipo desconocido. Protege el arbusto tropical de las heladas y confirma la plaga antes de tratarla.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -81661,8 +82111,8 @@ export const gardenPlantProfileCatalog = {
   },
   "italian-oregano": {
     "summary": {
-      "en": "The trade name Italian oregano does not uniquely resolve the taxon: public sources associate it with both Origanum × majoricum and an Italian type of O. vulgare. The product represented by this identity remains unconfirmed, so species-specific cultivation claims are withheld.",
-      "es": "El nombre comercial orégano italiano no resuelve por sí solo el taxón: fuentes públicas lo asocian tanto con Origanum × majoricum como con un tipo italiano de O. vulgare. El producto representado por esta identidad sigue sin confirmarse, por lo que se retienen las afirmaciones de cultivo específicas de especie."
+      "en": "The matched HOME GROWN 15-herb kit listing identifies its Italian oregano packet as Origanum vulgare ‘Italian’. This is the seller's product designation, not a verified formal cultivar; other products using the trade name Italian oregano may represent different Origanum taxa.",
+      "es": "La ficha coincidente del kit HOME GROWN de 15 hierbas identifica su paquete de orégano italiano como Origanum vulgare ‘Italian’. Es la designación comercial del vendedor, no un cultivar formal verificado; otros productos con el nombre orégano italiano pueden corresponder a otros taxones de Origanum."
     },
     "metrics": {
       "en": [],
@@ -81670,26 +82120,27 @@ export const gardenPlantProfileCatalog = {
     },
     "sections": {
       "identity": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
         "sourceIds": [
+          "homegrown-hg15h-italian-oregano-amazon-2026",
+          "homegrown-hg10h-italian-oregano-2025-public",
           "kew-powo-origanum-majoricum-2026-public",
           "usda-grin-origanum-majoricum-2026-public",
           "ufifas-italian-oregano-2023-public",
           "udel-oregano-2024-public",
-          "homegrown-hg10h-italian-oregano-2025-public",
           "rhs-oregano-genus-growing-guide-2026-public"
         ],
         "en": {
-          "short": "Italian oregano trade name; product identity still unresolved",
-          "guidance": "Kew accepts Origanum × majoricum, and USDA GRIN lists Italian oregano among its common names; UF/IFAS also uses Italian oregano for this hybrid. University of Delaware Extension, however, lists ‘Italian’ as an oregano cultivar/type under O. vulgare. A retail listing for a HOME GROWN 10-herb set (MPN HG10H) assigns the trade name to O. × majoricum, but that product-specific listing cannot be mapped to this catalog identity without matching product/packet evidence. RHS also notes that oregano and marjoram names are often confused across Origanum species. Keep the published taxonomy unresolved as Origanum spp.; do not transfer Greek-oregano cultivation data to it.",
+          "short": "Matched Home Grown packet is seller-listed as Origanum vulgare ‘Italian’",
+          "guidance": "The matched public product is the HOME GROWN 15-herb kit listing (ASIN B07JCFWJ98; model HG15H). That listing names the Italian oregano packet, and its included variety guide identifies it as Origanum vulgare ‘Italian’. This resolves the represented product's seller-declared species, but ‘Italian’ is not treated here as a formally registered cultivar and no genetic lot test is claimed. Other products use Italian oregano for Origanum × majoricum; the HOME GROWN 10-herb HG10H listing is one distinct product example and must not be conflated with this 15-herb kit. General RHS and Extension care is kept at its stated crop scope; the Greek-oregano germination reference remains a comparison rather than an exact packet protocol.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Nombre comercial orégano italiano; identidad del producto aún sin resolver",
-          "guidance": "Kew acepta Origanum × majoricum y USDA GRIN incluye orégano italiano entre sus nombres comunes; UF/IFAS también usa ese nombre para el híbrido. Sin embargo, University of Delaware Extension enumera ‘Italian’ como cultivar/tipo de orégano bajo O. vulgare. Una ficha comercial de un surtido HOME GROWN de 10 hierbas (MPN HG10H) asigna el nombre comercial a O. × majoricum, pero esa ficha específica no puede vincularse a esta identidad del catálogo sin evidencia coincidente del producto/paquete. RHS también advierte que los nombres de orégano y mejorana se confunden entre especies de Origanum. Se conserva la taxonomía publicada como Origanum spp. sin resolver; no se transfiere a esta identidad la guía de cultivo de orégano griego.",
+          "short": "El paquete Home Grown coincidente figura como Origanum vulgare ‘Italian’",
+          "guidance": "El producto público coincidente es el kit HOME GROWN de 15 hierbas (ASIN B07JCFWJ98; modelo HG15H). La ficha nombra el paquete de orégano italiano y la guía de variedades incluida lo identifica como Origanum vulgare ‘Italian’. Esto resuelve la especie declarada por el vendedor para el producto representado, pero aquí ‘Italian’ no se considera un cultivar formalmente registrado ni se afirma que exista una prueba genética del lote. Otros productos usan orégano italiano para Origanum × majoricum; el listado HOME GROWN HG10H de 10 hierbas es un producto distinto y no debe confundirse con este kit de 15 hierbas. El manejo general de RHS y Extension conserva el alcance indicado por cada fuente; la referencia de germinación de orégano griego sigue siendo comparativa, no un protocolo exacto para este paquete.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -81703,14 +82154,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Oregano forms a clump; size depends on the type",
-          "guidance": "The RHS general oregano guide describes a clump-forming plant, usually 30–60 cm tall and wide depending on variety. Because this catalog's Italian oregano product is not taxonomically resolved, treat that range as general oregano context, not a measured dimension or promise for this identity.",
+          "guidance": "The RHS general oregano guide describes a clump-forming plant, usually 30–60 cm tall and wide depending on variety. This is general oregano context, not a measured dimension or product-specific guarantee for the seller-listed O. vulgare ‘Italian’ selection.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "El orégano forma un macizo; el tamaño depende del tipo",
-          "guidance": "La guía general de RHS describe el orégano como una planta que forma macizos, normalmente de 30–60 cm de alto y ancho según la variedad. Como el producto de orégano italiano de este catálogo no tiene identidad taxonómica resuelta, considera ese rango contexto general del orégano, no una medida ni garantía para esta identidad.",
+          "guidance": "La guía general de RHS describe el orégano como una planta que forma macizos, normalmente de 30–60 cm de alto y ancho según la variedad. Es contexto general de orégano, no una medida ni garantía específica del producto para la selección O. vulgare ‘Italian’ declarada por el vendedor.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -81724,14 +82175,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Sunny placement and free-draining soil are the general oregano baseline",
-          "guidance": "RHS describes oregano as sun-loving and recommends free-draining soil; it also notes that damp, heavy soil can lead to root problems and that containers need drainage and closer watering checks during dry spells. This is general oregano advice, not a confirmed species-specific prescription for this unresolved packet identity. It does not establish indoor grow-light needs or hydroponic compatibility.",
+          "guidance": "RHS describes oregano as sun-loving and recommends free-draining soil; damp, heavy soil can cause root problems, while containers need drainage and closer moisture checks during dry spells. This is general oregano guidance, not a product trial for the seller-listed O. vulgare ‘Italian’ selection. It does not establish indoor grow-light needs or hydroponic compatibility.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "Sol y suelo con buen drenaje son la referencia general para el orégano",
-          "guidance": "RHS describe el orégano como una planta de sol y recomienda suelo con buen drenaje; también señala que los suelos pesados y húmedos pueden causar problemas radiculares y que las macetas necesitan drenaje y revisiones de humedad más frecuentes durante periodos secos. Es una pauta general para orégano, no una prescripción específica confirmada para este paquete de identidad sin resolver. No establece requisitos de luz artificial ni compatibilidad hidropónica.",
+          "guidance": "RHS describe el orégano como una planta de sol y recomienda suelo con buen drenaje; los suelos pesados y húmedos pueden causar problemas radiculares, mientras que las macetas necesitan drenaje y revisiones de humedad más frecuentes durante periodos secos. Es una guía general para orégano, no un ensayo del producto para la selección O. vulgare ‘Italian’ declarada por el vendedor. No establece requisitos de luz artificial ni compatibilidad hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -81745,14 +82196,14 @@ export const gardenPlantProfileCatalog = {
         ],
         "en": {
           "short": "Regular sprig harvest encourages bushier growth in RHS oregano guidance",
-          "guidance": "RHS recommends regularly snipping young leafy sprigs to encourage bushier growth, trimming established oregano in late spring to remove dead or straggly stems, and cutting faded flower stems. These are general oregano practices from the RHS growing context; the exact calendar and response of the unresolved Italian oregano product are not established.",
+          "guidance": "RHS recommends regularly snipping young leafy sprigs to encourage bushier growth, trimming established oregano in late spring to remove dead or straggly stems, and cutting faded flower stems. These are general oregano practices from the RHS context; exact timing and response have not been tested specifically for the seller-listed O. vulgare ‘Italian’ selection.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
           "short": "La cosecha regular de brotes favorece un crecimiento más tupido según RHS",
-          "guidance": "RHS recomienda cortar con regularidad brotes jóvenes con hojas para favorecer un crecimiento más tupido, recortar el orégano establecido a finales de primavera para quitar tallos muertos o desordenados y cortar los tallos florales marchitos. Son prácticas generales para orégano en el contexto de cultivo de RHS; no se han establecido el calendario exacto ni la respuesta del producto de orégano italiano sin resolver.",
+          "guidance": "RHS recomienda cortar con regularidad brotes jóvenes con hojas para favorecer un crecimiento más tupido, recortar el orégano establecido a finales de primavera para quitar tallos muertos o desordenados y cortar los tallos florales marchitos. Son prácticas generales para orégano en el contexto de RHS; el calendario y la respuesta no se han probado específicamente para la selección O. vulgare ‘Italian’ declarada por el vendedor.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -82143,32 +82594,53 @@ export const gardenPlantProfileCatalog = {
   },
   "marigold-jolly-jester": {
     "summary": {
-      "en": "Jolly Jester is a marigold trade name recorded under both Tagetes patula and T. erecta in seed listings. NC State Extension supports general French-marigold care, but the exact line represented here remains unresolved; no single cultivar size is assigned.",
-      "es": "Jolly Jester es un nombre comercial de caléndula registrado bajo Tagetes patula y T. erecta en listados de semillas. NC State Extension respalda el cuidado general de la caléndula francesa, pero la línea exacta representada aquí sigue sin resolverse; no se asigna un tamaño único de cultivar."
+      "en": "This Gardenpedia entry follows the Ferry-Morse Jolly Jester product model 661863.249.0925, listed as Tagetes erecta. NC State Extension supplies species-level African-marigold care; product-specific size and bloom timing remain labeled as seller claims.",
+      "es": "Esta ficha de Gardenpedia sigue el modelo de producto Jolly Jester 661863.249.0925 de Ferry-Morse, listado como Tagetes erecta. NC State Extension aporta cuidados de caléndula africana a nivel de especie; el tamaño y el plazo de floración propios del producto se mantienen identificados como afirmaciones del vendedor."
     },
     "metrics": {
-      "en": [],
-      "es": []
+      "en": [
+        {
+          "label": "Listed mature height",
+          "value": "20 in",
+          "note": "Lowe's listing for Ferry-Morse model 661863.249.0925; product claim, not an independent trial"
+        },
+        {
+          "label": "Listed flowering window",
+          "value": "70–90 days",
+          "note": "Seller estimate for the named product; do not treat as a guaranteed calendar"
+        }
+      ],
+      "es": [
+        {
+          "label": "Altura adulta publicada",
+          "value": "51 cm",
+          "note": "Listado de Lowe's para el modelo Ferry-Morse 661863.249.0925; dato comercial, no ensayo independiente"
+        },
+        {
+          "label": "Plazo de floración publicado",
+          "value": "70–90 días",
+          "note": "Estimación del vendedor para el producto; no es un calendario garantizado"
+        }
+      ]
     },
     "sections": {
       "identity": {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "ncsu-tagetes-patula-public",
-          "impecta-jolly-jester-tagetes-patula-2013",
-          "nargs-seedex-jolly-jester-tagetes-erecta-2026"
+          "lowes-ferry-jolly-jester-product-public-2026",
+          "ncsu-tagetes-erecta-wave49"
         ],
         "en": {
-          "short": "Current record carries a T. patula packet label; trade listings vary",
-          "guidance": "The current Gardenpedia record carries a Tagetes patula packet label. Impecta's 2013 seed catalog also lists a striped Jolly Jester under T. patula, while the 2025–2026 NARGS Seed Exchange lists an offering under T. erecta. These entries document their respective listings; they do not prove the offerings are the same line. NC State Extension's French-marigold guidance remains species-level and does not establish cultivar-specific habit or performance.",
+          "short": "Selected product: Ferry-Morse Jolly Jester, model 661863.249.0925",
+          "guidance": "Lowe's product listing identifies this Ferry-Morse Jolly Jester model as Tagetes erecta. This profile adopts that exact product reference as requested; it does not claim every seed sold under the Jolly Jester name belongs to the same line. Other suppliers publish different Jolly Jester products under T. patula, so those records are not merged here. The commercial name is not treated as proof of formal cultivar registration.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "El registro actual lleva etiqueta T. patula; los listados comerciales varían",
-          "guidance": "El registro actual de Gardenpedia lleva una etiqueta de paquete Tagetes patula. El catálogo de semillas de Impecta de 2013 también incluye una Jolly Jester rayada bajo T. patula, mientras que el Seed Exchange 2025–2026 de NARGS registra una oferta bajo T. erecta. Estas entradas documentan sus respectivos listados; no prueban que sean la misma línea. La guía de caléndula francesa de NC State Extension sigue siendo de nivel de especie y no establece porte ni rendimiento específicos del cultivar.",
+          "short": "Producto elegido: Ferry-Morse Jolly Jester, modelo 661863.249.0925",
+          "guidance": "El listado de Lowe's identifica este modelo Jolly Jester de Ferry-Morse como Tagetes erecta. Esta ficha adopta esa referencia de producto exacta, según lo solicitado; no afirma que todas las semillas vendidas como Jolly Jester pertenezcan a la misma línea. Otros proveedores publican productos Jolly Jester distintos bajo T. patula, por lo que no se combinan aquí. El nombre comercial no se considera prueba de registro formal de cultivar.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -82176,20 +82648,21 @@ export const gardenPlantProfileCatalog = {
       },
       "growth": {
         "evidenceType": "source_backed",
-        "confidence": "high",
+        "confidence": "medium",
         "sourceIds": [
-          "ncsu-tagetes-patula-public"
+          "lowes-ferry-jolly-jester-product-public-2026",
+          "ncsu-tagetes-erecta-wave49"
         ],
         "en": {
-          "short": "Species-level French marigolds are compact bushy annuals",
-          "guidance": "NC State Extension describes T. patula as generally 6–12 inches tall and 6–18 inches wide. Those are species-level ranges and are not asserted as Jolly Jester measurements.",
+          "short": "The seller lists 20 in; NC State gives broader T. erecta species ranges",
+          "guidance": "Lowe's lists a 20-inch mature height for its Ferry-Morse model. NC State Extension gives 1–4 ft tall and 1–2 ft wide for T. erecta across cultivars and contexts. Keep the product figure separate from the broad species range; neither is a guarantee for every growing condition, and no unsupported spread is assigned to this exact product.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Las caléndulas francesas a nivel de especie son anuales compactas y arbustivas",
-          "guidance": "NC State Extension describe T. patula con rangos generales de 6–12 pulgadas de alto y 6–18 de ancho. Son rangos de especie y no se afirman como medidas de Jolly Jester.",
+          "short": "El vendedor indica 20 pulgadas; NC State aporta rangos más amplios para T. erecta",
+          "guidance": "Lowe's indica 20 pulgadas de altura adulta para su modelo Ferry-Morse. NC State Extension da 1–4 pies de alto y 1–2 pies de ancho para T. erecta entre distintos cultivares y contextos. Mantén separado el dato del producto del rango amplio de especie; ninguno garantiza el resultado de cualquier cultivo y no se asigna una extensión sin respaldo para este producto exacto.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -82199,18 +82672,19 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-tagetes-patula-public"
+          "lowes-ferry-jolly-jester-product-public-2026",
+          "ncsu-tagetes-erecta-wave49"
         ],
         "en": {
-          "short": "Sun to partial shade; evenly moist, well-drained soil",
-          "guidance": "NC State Extension recommends full sun to partial shade and average, evenly moist but well-drained soil for T. patula. This general garden advice does not establish hydroponic compatibility or a pod count for Jolly Jester.",
+          "short": "Full sun and evenly moist, well-drained soil",
+          "guidance": "The product listing specifies full sun. NC State Extension describes full sun as the best bloom exposure, with light afternoon shade tolerated, and recommends evenly moist, well-drained soil. These are outdoor soil/container conditions; they do not establish indoor grow-light tiers or hydroponic suitability.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Sol a sombra parcial; suelo uniformemente húmedo y bien drenado",
-          "guidance": "NC State Extension recomienda para T. patula sol pleno a sombra parcial y suelo promedio, uniformemente húmedo y bien drenado. Esta orientación general de jardín no establece compatibilidad hidropónica ni número de pods para Jolly Jester.",
+          "short": "Sol pleno y suelo uniformemente húmedo con buen drenaje",
+          "guidance": "El listado del producto indica sol pleno. NC State Extension describe el sol pleno como la mejor exposición para florecer, aunque tolera sombra ligera por la tarde, y recomienda suelo uniformemente húmedo y bien drenado. Son condiciones para exterior y suelo/maceta; no establecen niveles de lámpara interior ni aptitud hidropónica.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -82220,21 +82694,40 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "ncsu-tagetes-patula-public",
-          "rohrer-jolly-jester-2026-public",
-          "agrisupply-ferry-jolly-jester-2026-public",
-          "moreveg-jolly-jester-2026-public"
+          "lowes-ferry-jolly-jester-product-public-2026",
+          "ncsu-tagetes-erecta-wave49"
         ],
         "en": {
-          "short": "Sellers describe striped yellow-and-red flowers; deadheading is general species guidance",
-          "guidance": "Rohrer Seeds describes a maroon-and-yellow pinwheel pattern, while Agri Supply's Ferry-Morse listing and MoreVeg describe contrasting yellow/red or yellow/deep-red petals. These are commercial product descriptions, not verified traits across all Jolly Jester offerings. NC State Extension recommends deadheading Tagetes patula to prolong bloom; this species-level instruction is kept separate from product claims.",
+          "short": "Yellow and red-burgundy striped flowers; seller estimates 70–90 days",
+          "guidance": "Ferry-Morse product imagery and the Lowe's listing describe contrasting yellow and red-burgundy flowers; Lowe's estimates 70–90 days to bloom. NC State describes T. erecta as a long-season flowering annual. Treat the number as a seller estimate, not a promise tied to a universal start date.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "Vendedores describen flores amarillas y rojas rayadas; el despunte es guía general de la especie",
-          "guidance": "Rohrer Seeds describen un patrón de aspas color granate y amarillo, mientras que el listado Ferry-Morse de Agri Supply y MoreVeg describen pétalos contrastantes amarillos/rojos o amarillo y rojo oscuro. Son descripciones comerciales, no rasgos verificados en todas las ofertas Jolly Jester. NC State Extension recomienda retirar flores marchitas de Tagetes patula para prolongar la floración; esta instrucción a nivel de especie se mantiene separada de las afirmaciones de producto.",
+          "short": "Flores rayadas amarillas y rojo burdeos; el vendedor estima 70–90 días",
+          "guidance": "Las imágenes de Ferry-Morse y el listado de Lowe's describen flores contrastantes amarillas y rojo burdeos; Lowe's estima 70–90 días hasta la floración. NC State describe T. erecta como anual de floración prolongada. El número es una estimación comercial, no una promesa contada desde una fecha universal.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      },
+      "maintenance": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-tagetes-erecta-wave49"
+        ],
+        "en": {
+          "short": "Deadhead spent blooms; stake only if stems need support",
+          "guidance": "NC State Extension recommends promptly removing spent flowers; heavy flower heads can bend or snap stems. Taller African marigolds may need staking, and pinching young stems can encourage branching. Apply staking according to observed growth rather than assume the selected 20-inch product needs it.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Retira flores marchitas; coloca tutor solo si los tallos lo necesitan",
+          "guidance": "NC State Extension recomienda retirar pronto las flores marchitas; las cabezuelas pesadas pueden doblar o quebrar tallos. Las caléndulas africanas más altas pueden necesitar tutor y pinzar tallos jóvenes puede favorecer la ramificación. Decide el tutor según el crecimiento observado, sin asumir que el producto de 20 pulgadas lo requiere.",
           "items": [],
           "avoid": "",
           "context": ""
@@ -82244,43 +82737,39 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-tagetes-patula-public"
+          "ncsu-tagetes-erecta-wave49"
         ],
         "en": {
-          "short": "Sap may cause phototoxic skin irritation",
-          "guidance": "NC State Extension warns that sap on broken skin followed by sunlight can cause redness, burning, or blisters; the flower aroma may irritate the nose and eyes. This is a handling caution for the species, not a claim unique to Jolly Jester.",
+          "short": "Watch for wet-soil/root issues, flower rot, and common pests",
+          "guidance": "NC State lists botrytis, leaf spot, Phytophthora, powdery mildew and other rots, as well as thrips, slugs and spider mites. Remove rotting blooms and avoid persistently wet soil; these are monitoring cues, not a diagnosis or a claim that this product is unusually susceptible.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La savia puede causar irritación cutánea fototóxica",
-          "guidance": "NC State Extension advierte que la savia sobre piel lastimada seguida de exposición al sol puede causar enrojecimiento, ardor o ampollas; el aroma floral puede irritar nariz y ojos. Es una precaución de manejo para la especie, no una afirmación exclusiva de Jolly Jester.",
+          "short": "Vigila problemas por suelo húmedo, pudrición floral y plagas comunes",
+          "guidance": "NC State enumera botritis, manchas foliares, Phytophthora, oídio y otras pudriciones, además de trips, babosas y arañuelas. Retira flores podridas y evita el suelo persistentemente húmedo; son señales de vigilancia, no un diagnóstico ni una afirmación de susceptibilidad inusual de este producto.",
           "items": [],
           "avoid": "",
           "context": ""
         }
       },
-      "needsValidation": {
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
+      "safety": {
+        "evidenceType": "source_backed",
+        "confidence": "high",
         "sourceIds": [
-          "agrisupply-ferry-jolly-jester-2026-public",
-          "rohrer-jolly-jester-2026-public",
-          "moreveg-jolly-jester-2026-public",
-          "impecta-jolly-jester-tagetes-patula-2013",
-          "nargs-seedex-jolly-jester-tagetes-erecta-2026"
+          "ncsu-tagetes-erecta-wave49"
         ],
         "en": {
-          "short": "Jolly Jester line and mature size remain unresolved",
-          "guidance": "Seed listings differ: Impecta's 2013 catalog places its striped Jolly Jester under Tagetes patula, while the 2025–2026 NARGS Seed Exchange lists a T. erecta offering at 75 cm. Current seller pages also vary: Agri Supply's Ferry-Morse listing gives 6–10 inches, Rohrer Seeds gives 24 inches and labels its product T. erecta, and MoreVeg reports up to 65 cm without naming a botanical taxon. These sources describe their own listings and cannot establish which botanical line or mature dimensions belong to the unspecified material represented by this catalog record. Preserve the uncertainty; do not combine the offerings as one cultivar profile.",
+          "short": "Sap can irritate broken skin in sunlight",
+          "guidance": "NC State Extension warns that sap contacting broken skin followed by sunlight can cause redness, burning or blisters; flower aroma may irritate nose and eyes. Avoid skin/eye contact and wash after handling. This is a species-level caution, not a product-specific toxicology test.",
           "items": [],
           "avoid": "",
           "context": ""
         },
         "es": {
-          "short": "La línea Jolly Jester y su tamaño adulto siguen sin resolverse",
-          "guidance": "Los listados de semillas difieren: el catálogo de Impecta de 2013 clasifica su Jolly Jester rayada bajo Tagetes patula, mientras que el Seed Exchange 2025–2026 de NARGS ofrece una T. erecta de 75 cm. Las páginas comerciales actuales también varían: el listado Ferry-Morse de Agri Supply indica 6–10 pulgadas, Rohrer Seeds indica 24 pulgadas y etiqueta su producto como T. erecta, y MoreVeg informa hasta 65 cm sin nombrar un taxón botánico. Estas fuentes describen sus propios listados y no establecen qué línea botánica ni qué dimensiones adultas corresponden al material no especificado de este registro. Conserva la incertidumbre; no combines las ofertas en una sola ficha de cultivar.",
+          "short": "La savia puede irritar piel lesionada con exposición solar",
+          "guidance": "NC State Extension advierte que la savia sobre piel lesionada seguida de exposición solar puede causar enrojecimiento, ardor o ampollas; el aroma floral puede irritar nariz y ojos. Evita el contacto con piel y ojos y lávate tras manipularla. Es una precaución a nivel de especie, no un ensayo toxicológico de este producto.",
           "items": [],
           "avoid": "",
           "context": ""

@@ -517,6 +517,13 @@
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": ["msu-lentils-home-garden-2026", "uwisc-lentil-500"]
+      },
+      "uses": {
+        "short": "Green pods may be shelled; mature seed is used in cooked dishes",
+        "guidance": "Montana State University Extension says green lentil pods can be harvested and eaten like shell peas; mature dried lentils are prepared for soups, stews, salads, purees and other dishes. Cooking times vary with variety and desired texture, so this species-level profile does not assign a single recipe or culinary trait to an unspecified seed class.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["msu-lentils-home-garden-2026"]
       }
     },
     "compatibilityProfile": {

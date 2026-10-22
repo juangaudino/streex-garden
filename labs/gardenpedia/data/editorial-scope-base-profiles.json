@@ -1206,46 +1206,58 @@
     "fragrant-dwarf-dianthus-mix": {
       "source": "plants-expansion-batch-b1.json",
       "sections": {
+        "identity": {
+          "context": {
+            "en": "The seller listing names Dianthus mini carnations; species is mapped from university definitions of miniature/spray carnation, not verified genetically for this seed lot.",
+            "es": "El anuncio del vendedor nombra mini claveles Dianthus; la especie se vincula mediante definiciones universitarias de clavel mini/spray, no se verifica genéticamente para este lote."
+          }
+        },
         "germination": {
           "context": {
-            "en": "Identity-specific evidence is still pending.",
-            "es": "Sigue pendiente la evidencia específica de esta identidad."
+            "en": "USU's timing and light guidance is a Utah production reference, not a verified protocol for the seller's seed lot.",
+            "es": "El tiempo y la guía de luz de USU son una referencia de producción en Utah, no un protocolo verificado para el lote del vendedor."
           }
         },
         "thinning": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Seedling-cell thinning is specific to USU's transplant production method; it is not final spacing or a Garden pod count.",
+            "es": "El aclarado en celdas corresponde al método de trasplantes de USU; no es distancia final ni conteo de pods Garden."
+          }
+        },
+        "cultivation": {
+          "context": {
+            "en": "Full-to-partial sun and drained loam are outdoor Utah cut-flower soil guidance, not indoor light or hydroponic evidence.",
+            "es": "Sol pleno a parcial y suelo franco drenado son guía de suelo exterior para flor de corte en Utah, no evidencia de luz interior o hidroponía."
           }
         },
         "pruning": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "A cut above a leaf set is documented for cut-flower harvest; routine pinching of this unnamed mix is not established.",
+            "es": "El corte sobre un nudo de hojas está documentado para cosecha de flor; no se establece pinzado rutinario para esta mezcla sin nombre."
           }
         },
         "harvest": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "The paint-brush stage is a spray-carnation cut-flower cue in USU production, not a home harvest-date guarantee.",
+            "es": "La etapa paint-brush es una señal de corte para clavel spray en producción USU, no una fecha garantizada de cosecha doméstica."
           }
         },
         "flowering": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Spray describes multiple smaller flowers per stem; it does not establish compact whole-plant habit, color mix, or timing.",
+            "es": "Spray describe varias flores pequeñas por tallo; no establece porte compacto de la planta, mezcla de colores ni calendario."
           }
         },
         "hydroponics": {
           "context": {
-            "en": "Identity-specific evidence is still pending.",
-            "es": "Sigue pendiente la evidencia específica de esta identidad."
+            "en": "No applicable Garden system performance, pod count, EC, or pH evidence is available.",
+            "es": "No hay evidencia aplicable sobre desempeño en sistemas Garden, cantidad de pods, EC o pH."
           }
         },
         "problems": {
           "context": {
-            "en": "Follow the documented crop, cultivar, and growing context; do not extrapolate.",
-            "es": "Respeta el contexto documentado de cultivo, cultivar y sistema; no extrapoles."
+            "en": "Root-rot and pest notes are cut-flower monitoring concerns, not diagnoses or cultivar-specific resistance claims.",
+            "es": "Las notas de pudrición y plagas son alertas de vigilancia para flor de corte, no diagnósticos ni afirmaciones de resistencia varietal."
           }
         }
       }

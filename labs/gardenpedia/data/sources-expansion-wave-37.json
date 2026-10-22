@@ -91,6 +91,19 @@
     "claimKinds": ["identity", "growth", "cultivation", "propagation", "maintenance", "problems", "safety"]
   },
   {
+    "id": "iastate-how-propagate-succulents-2023-wave37",
+    "publisher": "Iowa State University Extension and Outreach",
+    "title": "How to Propagate Succulents",
+    "url": "https://yardandgarden.extension.iastate.edu/how-to/how-propagate-succulents",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "General succulent propagation method; specifically lists Kalanchoe for stem and leaf cuttings and describes callusing, well-drained media, leaf orientation and moisture; not a cultivar-specific schedule or guarantee",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia Plant Profile completion research",
+    "claimKinds": ["propagation"]
+  },
+  {
     "id": "kew-heptapleurum-arboricola-wave37",
     "publisher": "Royal Botanic Gardens, Kew — Plants of the World Online",
     "title": "Heptapleurum arboricola — Plants of the World Online",

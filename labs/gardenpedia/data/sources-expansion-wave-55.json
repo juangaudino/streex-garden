@@ -109,6 +109,19 @@
     ]
   },
   {
+    "id": "rhs-sedum-morganianum-2026",
+    "publisher": "Royal Horticultural Society",
+    "title": "Sedum morganianum — RHS Plant Profile",
+    "url": "https://www.rhs.org.uk/plants/16969/sedum-morganianum/details",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "Species-level trailing growth and flowering, under-glass substrate/light/watering and seasonal care, no-pruning guidance, and listed pests/diseases; UK hardiness context not generalized",
+    "accessed": "2026-10-21",
+    "license": null,
+    "provenance": "Gardenpedia 500 content research",
+    "claimKinds": ["growth", "flowering", "cultivation", "care", "problems"]
+  },
+  {
     "id": "kew-sempervivum-tectorum-wave55",
     "publisher": "Royal Botanic Gardens, Kew",
     "title": "Sempervivum tectorum — Plants of the World Online",

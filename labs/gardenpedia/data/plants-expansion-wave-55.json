@@ -270,28 +270,41 @@
       },
       "growth": {
         "short": "Trailing stems with fragile leaves and summer flowers",
-        "guidance": "NC State describes trailing stems up to 24 inches in its description, fleshy blue-green leaves that detach if handled, and terminal pink or red flower clusters in summer. It says flowering is rare as a houseplant; the stem length is source-reported, not a guaranteed indoor plant height.",
+        "guidance": "NC State describes trailing stems up to 24 inches in its description, fleshy blue-green leaves that detach if handled, and terminal pink or red flower clusters in summer. It says flowering is rare as a houseplant; the stem length is source-reported, not a guaranteed indoor plant height. RHS describes stems to 30 cm or longer and spring/summer flowers; these are source-specific descriptions, not a promised indoor height or bloom schedule.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-sedum-morganianum-wave55"
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
         ]
       },
       "cultivation": {
         "short": "Allow the growing medium to dry between waterings",
-        "guidance": "NC State advises a bright interior position, well-drained soil, shallow pots and allowing soil to dry between waterings, with reduced winter watering. These regional houseplant directions are not evidence for a nutrient solution or system compatibility.",
+        "guidance": "NC State advises a bright interior position, well-drained soil, a shallow pot and allowing the soil to dry between waterings, with less water in winter. RHS's under-glass advice instead specifies bright filtered light, loam-based compost with added grit, free watering during active growth and sparing winter water. Keep those source contexts visible rather than collapsing them into one universal schedule; both emphasize drainage and seasonal restraint. Neither establishes a nutrient-solution recipe or system compatibility.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
-          "ncsu-sedum-morganianum-wave55"
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
         ]
       },
       "problems": {
         "short": "Protect fragile leaves and avoid wet, poorly drained conditions",
-        "guidance": "NC State reports that leaves break off when manipulated and lists occasional slugs and snails outdoors. Wet or poorly drained conditions and overwatering can lead to pest/disease problems; inspect the growing medium and plant rather than treating a single symptom as a diagnosis.",
+        "guidance": "NC State reports that leaves break off when manipulated and lists occasional slugs and snails outdoors. RHS also lists possible vine-weevil grubs, scale, mealybugs and fungal or bacterial crown/root rots. Wet or poorly drained conditions and overwatering can lead to problems; inspect the plant and medium rather than treating one symptom as a diagnosis or assuming every listed pest is present.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "ncsu-sedum-morganianum-wave55",
+          "rhs-sedum-morganianum-2026"
+        ]
+      },
+      "care": {
+        "short": "No routine pruning is required; protect trailing stems during handling",
+        "guidance": "RHS says pruning is not required. Because the fleshy leaves detach readily, handle the trailing stems gently when moving or tending the plant; NC State notes that detached leaves can root. This does not imply a need to shape or regularly cut the plant.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "rhs-sedum-morganianum-2026",
           "ncsu-sedum-morganianum-wave55"
         ]
       },

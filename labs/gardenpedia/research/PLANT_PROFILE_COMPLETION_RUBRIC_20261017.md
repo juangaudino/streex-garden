@@ -2100,3 +2100,127 @@ Alaska Nasturtium, Cassava, Fragrant Dwarf Dianthus Mix, Italian Oregano,
 Jolly Jester Marigold, and White Carolina Pineberry; their specific identity,
 type, or material cultivation/safety conflicts remain open and were not
 cosmetically promoted.
+
+## Product-provenance follow-up — 2026-10-21
+
+The owner supplied an image matching the HOME GROWN 15-herb seed kit (ASIN
+B07JCFWJ98 / model HG15H) and its Italian Oregano packet. The public product
+listing's included variety guide identifies that packet as *Origanum vulgare*
+'Italian'. Gardenpedia records this as the seller's species designation for
+the matched product; it does not treat 'Italian' as a formally registered
+cultivar or claim genetic verification of an individual lot. This separates
+the 15-herb kit from the different HOME GROWN HG10H listing for
+*O. × majoricum*. Italian Oregano moves from pending to partial: the represented
+product's seller-declared identity is now traceable, while exact packet
+germination, hydroponic fit, and whole-profile review remain open.
+
+The owner also supplied search-result images showing Ferry-Morse Jolly Jester
+and White Carolina Pineberry. The Jolly Jester image was used only as a lead:
+public product pages identify a Ferry-Morse Jolly Jester model as
+*Tagetes erecta*, while Johnsons lists its separate Jolly Jester product as
+*T. patula*. Neither source establishes which line the catalog record
+represents, so the conflict and partial status remain. The White Carolina
+image is a search-generated summary, not a product label or independent
+source; it does not authenticate current stock or change the existing
+provenance disposition. Current disposition after the oregano product match:
+495 complete, 5 partial, and 1 pending.
+
+## Owner decisions and profile-scope closure — 2026-10-21
+
+The owner confirmed that Alaska Nasturtium may remain partial and does not
+represent an owned product. The miniature/spray carnation record is a generic
+species-level *Dianthus caryophyllus* profile, not the owner's purchased Etsy
+seed mix; no dwarf habit or named cultivar is assigned. The owner selected the
+HOME GROWN HG15H seller-declared *Origanum vulgare* identity for Italian
+Oregano and the Ferry-Morse Jolly Jester model 661863.249.0925 listing as
+*Tagetes erecta*. Other products sold under those trade names remain separate
+and are not merged. Public EN/ES Plant Profiles and the inventory now reflect
+those scopes; packet-specific germination and hydroponic suitability remain
+unknown where they belong. The current inventory records 498 complete and 3
+partial (Alaska Nasturtium, Cassava, and White Carolina Pineberry), with no
+pending identities. Cassava retains a source-backed food-safety gap because
+the represented type and a product-appropriate processing method are unknown.
+White Carolina remains partial for current-stock/provenance and pollination
+uncertainty; general pineberry guidance is not presented as proof of a specific
+clone. These dispositions do not claim all profiles have identical sections or
+the same evidence density as Genovese Basil.
+
+## Species/type-scope completion review — 2026-10-21
+
+Cassava was re-gated at the represented *Manihot esculenta* species scope. Its
+food-safety section now gives the actionable boundary supported by FAO and
+UF/IFAS: raw roots/leaves are not safe, cyanogenic risk varies, taste and
+simple boiling do not establish safety, and no generic preparation recipe is
+offered. The profile directs users to authoritative guidance matched to an
+identified variety and intended product. Since this public species entry does
+not claim a particular edible lot or cultivar, the unknown type is recorded as
+a limitation, not an unresolved editorial task. It is complete at species
+scope; no consumption method has been invented.
+
+White Carolina Pineberry was re-gated at marketed pineberry-type scope, in line
+with the owner's identification. The profile adds source-backed fruit use,
+post-harvest handling, propagation guidance from Illinois and Missouri
+Extension, and the Illinois Extension strawberry pest/disease monitoring
+context. It retains the distinction between a marketed name and the historical
+USDA accession, and keeps supplier pollination differences visible while
+recommending a compatible red-fruited partner only as a cautious measure. This
+does not establish a clonal match, universal pollination ratio, seller-specific
+dimensions, or hydroponic fit. Current inventory: 500 complete and one partial
+(Alaska Nasturtium, intentionally retained per owner decision), zero pending.
+Completion means the scoped public profile is useful and evidence-aware, not
+that every identity has the same depth or section count as Genovese Basil.
+
+## Culinary/use depth follow-up — 2026-10-21
+
+Added a distinct bilingual `uses` section to Common Sorrel from RHS group-level
+culinary guidance, Malabar Spinach (*Basella alba*) from UF/IFAS while keeping
+it distinct from ornamental *B. rubra*, and Lentil from Montana State
+University Extension. These additions give actionable edible-use context
+without adding medicinal/nutrition claims or a one-size-fits-all recipe. Their
+inventory and structural gap rows now reflect the extra sourced section.
+
+## Ornamental propagation depth follow-up — 2026-10-21
+
+Bird's Nest Fern now includes a practical spore-sowing outline: NC State
+Extension establishes reproduction by spores for *Asplenium nidus*, while
+Iowa State's method is explicitly general fern guidance, not a validated
+species-specific timeline or success guarantee. The bilingual profile keeps
+that distinction visible. Dumbcane now separates cane-cutting propagation from
+care and safety, using Iowa State's general method with its cultivar boundary
+and sap hazard explicit. Florist Kalanchoe now has practical stem- and
+whole-leaf cutting methods from Iowa State's succulent guide, which names
+Kalanchoe; timing remains a general estimate, not a cultivar guarantee. No
+edible-use or hydroponic claims were added to fill section-count gaps.
+
+## Published bilingual-content QA — 2026-10-21
+
+A check of every generated public Plant Profile found six prose sections
+falling back to English in ES because the later translation overlay omitted
+previously reviewed translations. Restored Cape Sundew pruning, Wishbone
+Flower problems, three Bunching Onion management/development sections, and
+Black Chokeberry flowering. The overlay also now retains the newer Bunching
+Onion growth/harvest guidance and Cassava safety guidance. White Carolina's
+Spanish identity now matches the documented historical PI 551681 association
+and the patent's inconsistent PI 555681 reference while preserving the lack
+of authentication for current retail stock. A regression check covers prose
+translations across all 501 generated profiles.
+
+Miniature Carnation and Mini Sweet Bell Pepper have null cultivar fields:
+miniature/spray and mini sweet pepper remain documented horticultural types
+in their profiles, rather than being published as named cultivars. Existing
+catalog privacy assertions are preserved.
+
+## Propagation/maintenance distinction follow-up — 2026-10-21
+
+Reviewed nine profiles where source-backed propagation guidance was embedded in
+the maintenance section. Waterleaf, Cuban Oregano, Bird of Paradise, Panda
+Plant, and Philippine Evergreen now expose that existing evidence under a
+bilingual `propagation` section. Rhubarb, Weeping Fig, String of Hearts, and
+Gold Dust Dracaena retain their distinct watering/pruning/training/container
+care under `maintenance` and have a separate `propagation` section. Existing
+source IDs and their species/genus/regional scope were retained; no seed
+protocol, cultivar behavior, or new factual claim was inferred. EN/ES
+translation overlays, generated public profiles, and both 501-row review
+inventories were synchronized. Alaska Nasturtium remains the sole partial
+identity by owner decision; this semantic cleanup did not change profile gate
+statuses.

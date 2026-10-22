@@ -63,49 +63,65 @@
     }
   },
   "fragrant-dwarf-dianthus-mix": {
-    "summary": "Esta ficha representa una mezcla de Dianthus enana cuya especie exacta no está resuelta. D. chinensis es evidencia contextual y no se asigna como identidad canónica.",
+    "summary": "Forma de flor miniatura tipo spray de Dianthus caryophyllus, cultivada por sus flores pequeñas múltiples en tallos de corte. «Miniatura» describe la forma floral, no un porte enano verificado; no se asignan cultivar ni dimensiones fijas.",
     "metrics": [
       {
-        "label": "Identidad",
-        "note": "Especie exacta no resuelta"
+        "label": "Especie aceptada",
+        "value": "Dianthus caryophyllus L.",
+        "note": "Sin cultivar asignado"
       },
       {
-        "label": "Uso",
-      "note": "Especie exacta pendiente; aptitud para maceta no establecida"
+        "label": "Forma floral",
+        "value": "Miniatura / spray",
+        "note": "Forma comercial; no significa que toda la planta sea enana"
+      },
+      {
+        "label": "Luz exterior",
+        "value": "Sol pleno a parcial",
+        "note": "Guía de cultivo de flor de corte en suelo de USU; no es nivel de lámpara interior"
       },
       {
         "label": "pH / EC hidro",
-        "note": "No mapear clavel a una mezcla enana sin resolver"
+        "value": "No establecido",
+        "note": "No hay un objetivo hidropónico aplicable a esta identidad"
       }
     ],
     "sections": {
+      "identity": {
+        "short": "El clavel miniatura es un tipo comercial spray de D. caryophyllus",
+        "guidance": "El anuncio de Etsy de TinTinTinFlowers dice «Mixed Mini Carnations Seeds — Dianthus Seeds» y describe flores fragantes, pero no identifica especie, cultivar, obtentor ni porte enano. USU identifica el clavel como Dianthus caryophyllus y define los claveles miniatura/vintage como formas spray con varias flores menores por tallo. Por ello, la asignación de especie es una correspondencia documentada de tipo comercial, no una prueba genética ni una garantía sobre el lote del vendedor. La palabra anterior «enana» no está respaldada como rasgo de tamaño de la planta."
+      },
       "germination": {
-        "short": "Tiempo específico de esta identidad no establecido",
-        "guidance": "No se ha establecido una ventana precisa de germinación para esta mezcla de identidad no resuelta. La propagación por semilla está documentada para D. chinensis, pero eso no resuelve esta ficha."
+        "short": "Consultar protocolo de semilla cuando se verifique el lote",
+        "guidance": "Esta ficha de planta no convierte una receta general de clavel en un protocolo verificado para el lote del vendedor. Los 7–14 días a 65–72 °F y la indicación de que no hace falta luz para germinar corresponden al método de producción de clavel miniatura de USU en Utah, no a una garantía de cultivar o lote. El tiempo de emergencia y las instrucciones específicas del paquete siguen pendientes; las instrucciones del vendedor no se tratan como validación independiente."
       },
       "thinning": {
-        "short": "Ralea por vigor tras observar emergencia",
-        "guidance": "Reduce hacinamiento fuerte conservando las plántulas más vigorosas; no copies spacing exterior."
+        "short": "En el método de bandeja de USU, conserva la plántula más fuerte por celda",
+        "guidance": "USU aconseja sembrar 2–3 semillas por celda y aclarar a la plántula más fuerte después de la emergencia en su método de producción de trasplantes en Utah. Es una práctica de vivero para ese contexto de flor de corte, no una distancia final exterior ni un conteo de pods interiores para esta mezcla no identificada."
+      },
+      "cultivation": {
+        "short": "Exterior en suelo: sol pleno a parcial y suelo franco bien drenado",
+        "guidance": "USU Extension recomienda suelo franco y bien drenado, y sol pleno a parcial para su cultivo de clavel de flor de corte; indica que el alivio del calor por la tarde puede ayudar, aunque tolera pleno sol. Son recomendaciones para producción exterior en suelo, con contexto regional de Utah. No establecen intensidad de lámpara interior, dimensiones de recipiente ni aptitud hidropónica para esta mezcla."
       },
       "pruning": {
-        "short": "Deadheading puede favorecer refloración en contexto Dianthus",
-        "guidance": "NC State recomienda retirar flores pasadas y recortar tras una floración intensa para D. chinensis. Aplícalo solo si la planta observada coincide con ese patrón; no asumas que esta ficha corresponde a D. chinensis."
+        "short": "Corta los tallos sobre un nudo de hojas; el corte puede ramificarse",
+        "guidance": "Para la cosecha de flor de corte, USU recomienda tijeras limpias y afiladas y cortar el tallo justo sobre un conjunto de hojas; desde ahí pueden ramificarse nuevos tallos. Es un corte de cosecha en el contexto documentado, no evidencia de que esta mezcla sin nombre requiera pinzado rutinario o un calendario de poda."
       },
       "harvest": {
-        "short": "Flor ornamental; sin guía de cosecha alimentaria",
-        "guidance": "Garden la trata como cultivo ornamental de floración."
+        "short": "En tallos spray, espera a que abra una flor y comiencen a abrir otros botones",
+        "guidance": "La guía de flor de corte de USU llama «paint brush» a la etapa de cosecha del clavel spray: al menos una flor del tallo está completamente abierta y uno a tres botones adicionales empiezan a abrir. Usa tijeras limpias y coloca pronto los tallos en agua limpia. Es una señal de cosecha para el contexto de producción de USU, no una promesa de cantidad de tallos, vida en florero ni fecha para este anuncio."
       },
       "flowering": {
-        "short": "La floración es la etapa objetivo",
-        "guidance": "Registra botones, primera flor y ciclos de floración. Las decisiones de deadheading dependen de la planta real."
+        "short": "La forma spray tiene varias flores menores por tallo; los detalles de la mezcla se desconocen",
+        "guidance": "USU distingue los claveles spray por llevar varias flores menores en un tallo y describe un aroma especiado parecido al clavo en claveles miniatura/vintage. El vendedor de Etsy también califica las flores como fragantes. Ninguna fuente establece los colores exactos, número de flores, refloración ni calendario de este lote; registra lo observado al crecer, sin trasladar datos de un cultivar Chabaud nombrado."
       },
       "hydroponics": {
-        "short": "Sin objetivo hidro exacto aceptado",
-        "guidance": "No uses el rango hidropónico de clavel de OSU: esta identidad enana de Dianthus no está confirmada como un cultivar de clavel."
+        "short": "No se establecen aptitud ni objetivos hidropónicos",
+        "guidance": "Las fuentes respaldan la identidad comercial mini/spray y el cultivo exterior para flor de corte, no el desempeño en un sistema Garden ni un objetivo aplicable de solución nutritiva. Mantén sin establecer aptitud hidropónica, EC, pH, número de pods y distancia de sistema; no transfieras una fórmula ornamental de invernadero o flor de corte al calculador."
       },
       "problems": {
-        "short": "Evita saturación crónica de corona y raíz",
-        "guidance": "D. chinensis es susceptible a problemas de corona/raíz con mal drenaje; úsalo como cautela, no como diagnóstico."
+        "short": "Evita suelo saturado; vigila pudrición y plagas comunes de flor de corte",
+        "guidance": "USU advierte que el exceso de riego y los suelos saturados pueden causar pudrición de raíces, y enumera pulgones, orugas, saltamontes y ácaros entre los riesgos de su contexto de flor de corte en Utah. Son motivos de vigilancia, no un diagnóstico ni susceptibilidad específica de cultivar; revisa síntomas y condiciones antes de tratar. No se establece una afirmación de enfermedad hidropónica."
       }
     }
   },

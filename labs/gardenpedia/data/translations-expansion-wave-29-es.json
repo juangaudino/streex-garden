@@ -157,13 +157,12 @@
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       },
       "maintenance": {
-        "short": "Riega durante el verano, controla malezas y divide coronas viejas",
-        "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Divide coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad; cada división necesita yemas viables. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas.",
+        "short": "Riega durante el verano y controla las malezas alrededor de la corona",
+        "guidance": "UMN recomienda riego profundo durante el crecimiento, incluso después de cosechar, y controlar malezas con cuidado durante el establecimiento. Retira los tallos florales emergentes para favorecer el crecimiento vegetativo. Conserva las hojas sanas tras la cosecha para reponer reservas.",
         "items": [
           "Riega bien durante el crecimiento, también después de la cosecha principal.",
           "Controla malezas con cuidado alrededor de la corona, especialmente durante el establecimiento.",
-          "Retira los tallos florales al aparecer si buscas mantener el crecimiento vegetativo.",
-          "Considera dividir una corona vieja y poco productiva a principios de primavera, conservando yemas viables en cada división."
+          "Retira los tallos florales al aparecer si buscas mantener el crecimiento vegetativo."
         ],
         "avoid": [
           "Retirar hojas sanas después de cosechar cuando la corona necesita recuperar reservas."
@@ -224,6 +223,15 @@
         ],
         "avoid": [
           "Suponer que solo son comestibles los tallos rojos."
+        ],
+        "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
+      },
+      "propagation": {
+        "short": "Divide una corona vieja y poco productiva a principios de primavera",
+        "guidance": "UMN recomienda dividir coronas viejas a principios de primavera, cuando empieza el crecimiento, si el centro pierde productividad. Cada división necesita yemas viables. Esta es una indicación de división de corona; aquí no se infiere un protocolo de siembra.",
+        "items": [
+          "Considera dividir una corona vieja y poco productiva a principios de primavera, cuando empieza el crecimiento.",
+          "Conserva yemas viables en cada división."
         ],
         "context": "Estas indicaciones se limitan a la especie, cultivo o producto de las fuentes; verifica clima y cultivar."
       }

@@ -591,14 +591,10 @@ function buildReference(plant, neighborData, sourceById, additionalSourceIds = [
 
 function buildCatalogManifest(plants, identityAliases) {
   const neighborData = readJson("data/neighbor-profiles.json");
-  const enrichmentSourceIdsByPlant = new Map(
+  const profileEnrichmentByPlant = new Map(
     readJson("data/plant-profile-enrichment-v1.json").map((profile) => [
       profile.id,
-      uniqueStrings(
-        Object.values(profile.sections || {}).flatMap(
-          (section) => section?.sourceIds || [],
-        ),
-      ),
+      profile,
     ]),
   );
   const sourceRecords = [
@@ -700,18 +696,32 @@ function buildCatalogManifest(plants, identityAliases) {
   }
   const entries = plants
     .map((plant) => {
-      const enrichmentSourceIds = enrichmentSourceIdsByPlant.get(plant.id) || [];
+      const enrichment = profileEnrichmentByPlant.get(plant.id);
+      const enrichmentSourceIds = uniqueStrings(
+        Object.values(enrichment?.sections || {}).flatMap(
+          (section) => section?.sourceIds || [],
+        ),
+      );
+      const publicIdentity = {
+        ...plant,
+        ...(typeof enrichment?.scientificName === "string"
+          ? { scientificName: enrichment.scientificName }
+          : {}),
+        ...(typeof enrichment?.variety === "string"
+          ? { variety: enrichment.variety }
+          : {}),
+      };
       return {
         libraryPlantId: plant.id,
-        commonName: plant.name,
-        spanishName: plant.spanishName || null,
-        scientificName: plant.scientificName || null,
-        cultivar: publicCultivar(plant),
+        commonName: publicIdentity.name,
+        spanishName: publicIdentity.spanishName || null,
+        scientificName: publicIdentity.scientificName || null,
+        cultivar: publicCultivar(publicIdentity),
         aliases: uniqueStrings([
-          plant.name,
-          plant.spanishName,
-          plant.scientificName,
-          publicCultivar(plant),
+          publicIdentity.name,
+          publicIdentity.spanishName,
+          publicIdentity.scientificName,
+          publicCultivar(publicIdentity),
           ...(aliasesByCanonicalId.get(plant.id) || []).flatMap((alias) => [
             alias.aliasId,
             alias.aliasName,

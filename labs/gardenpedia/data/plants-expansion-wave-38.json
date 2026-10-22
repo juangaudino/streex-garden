@@ -55,18 +55,18 @@
           "ncsu-strelitzia-reginae-wave38"
         ]
       },
-      "maintenance": {
-        "short": "Division is listed; no seed-starting protocol is supplied",
-        "guidance": "NC State lists division as a propagation strategy. The consulted species profile does not give seed-sowing or germination instructions, so seed requirements remain undocumented here rather than being treated as impossible.",
+      "problems": {
+        "short": "Avoid waterlogged media and keep pets from eating plant material",
+        "guidance": "NC State notes root rot risk in poorly drained soil and low-severity poison characteristics affecting pets and horses. Its Plant Toolbox also reports mild nausea, vomiting or drowsiness if fruit or seeds are ingested by people. Keep plant material away from children and pets; this source-level warning is not individualized medical or veterinary advice.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
           "ncsu-strelitzia-reginae-wave38"
         ]
       },
-      "problems": {
-        "short": "Avoid waterlogged media and keep pets from eating plant material",
-        "guidance": "NC State notes root rot risk in poorly drained soil and low-severity poison characteristics affecting pets and horses. Its Plant Toolbox also reports mild nausea, vomiting or drowsiness if fruit or seeds are ingested by people. Keep plant material away from children and pets; this source-level warning is not individualized medical or veterinary advice.",
+      "propagation": {
+        "short": "Division is listed; no seed-starting protocol is supplied",
+        "guidance": "NC State lists division as a propagation strategy. The consulted species profile does not give seed-sowing or germination instructions, so seed requirements remain undocumented here rather than being treated as impossible.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -162,8 +162,8 @@
         ]
       },
       "maintenance": {
-        "short": "Layering, stem cuttings and seed are listed propagation routes",
-        "guidance": "NC State lists layering, seed and stem cuttings, and notes that aerial tubercles root when they touch soil. Trailing stems suit a hanging pot or can be trained on a small trellis; the plant tolerates crowding, so repot only when necessary. A vegetative route can retain a selected plant form; the page provides no detailed seed protocol, so no germination parameters are asserted.",
+        "short": "Train trailing stems and repot only when necessary",
+        "guidance": "NC State notes that trailing stems suit a hanging pot or can be trained on a small trellis. The plant tolerates crowding, so repot only when necessary.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -173,6 +173,15 @@
       "problems": {
         "short": "Watch for stretched growth, scorch and rot",
         "guidance": "NC State associates widely spaced leaves with inadequate light, scorched leaves with excessive sun, and yellowing or root rot with watering problems. These signs are contextual clues, not a diagnosis by themselves.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-ceropegia-woodii-wave38"
+        ]
+      },
+      "propagation": {
+        "short": "Layering, stem cuttings and seed are listed methods",
+        "guidance": "NC State lists layering, seed and stem cuttings, and notes that aerial tubercles root when they touch soil. A vegetative route can retain a selected plant form; the page provides no detailed seed protocol, so no germination parameters are asserted.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -249,6 +258,15 @@
           "ncsu-curio-rowleyanus-wave38"
         ]
       },
+      "flowering": {
+        "short": "Cinnamon-scented summer flowers are uncommon indoors",
+        "guidance": "NC State describes small white, daisy-like summer flowers with a cinnamon scent and notes that indoor plants rarely flower. Flowering is therefore possible but is not an expected indoor schedule or a measure of care quality.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-curio-rowleyanus-wave38"
+        ]
+      },
       "cultivation": {
         "short": "Bright indirect light; prevent both soggy and bone-dry conditions",
         "guidance": "NC State recommends bright indirect indoor light and a well-drained cactus mix or soil amended with sand/perlite. It warns against overwatering and complete drying; temperature and watering frequency depend on the growing environment, so no fixed schedule is supplied.",
@@ -258,8 +276,8 @@
           "ncsu-curio-rowleyanus-wave38"
         ]
       },
-      "maintenance": {
-        "short": "Stem cuttings are the quick, documented renewal method",
+      "propagation": {
+        "short": "Stem cuttings are the quick, documented propagation method",
         "guidance": "NC State describes 3–5 inch stem cuttings with several nodes covered in potting mix as a quick propagation approach; it calls leaf-only propagation slower and less reliable. Seeds are produced after flowering, but no seed-start protocol is given here.",
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -345,6 +363,15 @@
           "ncsu-peperomia-caperata-wave38"
         ]
       },
+      "flowering": {
+        "short": "Cream-white spikes may appear in summer and autumn",
+        "guidance": "NC State describes small flowers arranged on cream-to-white spikes about 2–3 inches long, with flowering listed in summer and fall. The source describes the species and multiple cultivars; these flowers do not identify a particular foliage cultivar.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-peperomia-caperata-wave38"
+        ]
+      },
       "cultivation": {
         "short": "Filtered medium light and a porous mix that dries between watering",
         "guidance": "NC State says medium filtered light is ideal, the plant tolerates low light for several months, and the growing mix should dry between waterings. It warns that waterlogged or extremely dry soil and drafts can stress plants; bright fluorescent office lighting is described by the source but does not imply a specific Garden X device fit.",
@@ -354,8 +381,8 @@
           "ncsu-peperomia-caperata-wave38"
         ]
       },
-      "maintenance": {
-        "short": "Spring leaf or stem-tip cuttings are documented",
+      "propagation": {
+        "short": "Spring leaf or stem-tip cuttings are documented propagation methods",
         "guidance": "NC State recommends leaf or stem-tip cuttings in spring. This species-level vegetative guidance does not provide a seed germination protocol, and seedlings should not be assumed to retain a selected cultivar's leaf pattern.",
         "evidenceType": "source_backed",
         "confidence": "high",
@@ -466,15 +493,6 @@
           "ncsu-kalanchoe-tomentosa-wave38"
         ]
       },
-      "maintenance": {
-        "short": "Leaf cuttings or offshoots are the documented alternatives",
-        "guidance": "NC State describes leaf cuttings or offshoots as propagation approaches and notes that this fuzzy-leaved species is more difficult to propagate than some succulents. No seed-sowing protocol is supplied by the consulted profile.",
-        "evidenceType": "source_backed",
-        "confidence": "high",
-        "sourceIds": [
-          "ncsu-kalanchoe-tomentosa-wave38"
-        ]
-      },
       "safety": {
         "short": "Keep away from children and pets that may ingest it",
         "guidance": "NC State marks the plant as poisonous if ingested and advises keeping it out of reach of children and pets. The summary preserves that warning without adding medical treatment advice.",
@@ -487,6 +505,15 @@
       "problems": {
         "short": "Shriveling and mushy leaves can indicate water stress",
         "guidance": "NC State associates wrinkling with underwatering and yellow/mushy leaves or stems with overwatering; it also lists mealybugs and spider mites. These are possible signs, not a diagnosis without examining the plant and conditions.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "ncsu-kalanchoe-tomentosa-wave38"
+        ]
+      },
+      "propagation": {
+        "short": "Leaf cuttings or offshoots are the documented alternatives",
+        "guidance": "NC State describes leaf cuttings or offshoots as propagation approaches and notes that this fuzzy-leaved species is more difficult to propagate than some succulents. No seed-sowing protocol is supplied by the consulted profile.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [

@@ -1395,19 +1395,20 @@
       "white strawberry",
       "fresa blanca"
     ],
-    "summary": "White Carolina is a supplier-listed pineberry name within Fragaria × ananassa. A US plant patent documents White Carolina as an unpatented white-fruited breeding parent, but does not authenticate current retail stock as the same clone. Pineberry-type fruit is pale when ripe; pollination claims for marketed White Carolina plants conflict.",
+    "summary": "White Carolina is a marketed name for a white-fruited pineberry, represented here at Fragaria × ananassa / pineberry-type scope rather than as an authenticated historic clone. The berries ripen pale with red achenes. Grow it like a garden strawberry and place a compatible red-fruited cultivar nearby as a cautious pollination measure; cultivar-specific size, stock lineage, and pollination requirements vary or remain unverified.",
     "metrics": [],
     "sections": {
       "identity": {
         "short": "Supplier-listed name with a historical breeding record; retail stock not authenticated",
-        "guidance": "Kew accepts Fragaria × ananassa as the garden-strawberry hybrid. Ebert's Greenhouse and Raintree Nursery market White Carolina pineberry plants under that hybrid. US plant patent USPP34612 documents White Carolina/White Pine as an unpatented, white-fruited Fragaria × ananassa parent of QBC-1, supporting historical use of the name in strawberry breeding. It does not register White Carolina or prove that current nursery stocks are clonal matches to the patent's parent. The patent gives inconsistent USDA PI numbers in separate passages; neither is assigned here.",
+        "guidance": "Kew accepts Fragaria × ananassa as the garden-strawberry hybrid. Ebert's Greenhouse and Raintree Nursery market White Carolina pineberry plants under that hybrid. USDA GRIN records accession PI 551681 (accession 1446653) as 'White Carolina' under Fragaria × ananassa and currently lists it as not available. US plant patent USPP34612 documents White Carolina/White Pine as an unpatented white-fruited parent of QBC-1: paragraphs [0005] and [0043] give PI 551681, while paragraph [0017] prints PI 555681. The official GRIN record supports 551681 as the accession associated with the historic name; the patent's isolated 555681 reference is a document inconsistency, not a second accession assignment. Neither source registers White Carolina or proves that current nursery stocks are clonal matches to that historic accession.",
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
           "kew-fragaria-ananassa-500",
           "eberts-white-carolina-500",
           "raintree-white-carolina-2026",
-          "uspp34612-white-carolina-parent-2022"
+          "uspp34612-white-carolina-parent-2022",
+          "usda-grin-white-carolina-pi551681-2026"
         ]
       },
       "cultivation": {
@@ -1428,7 +1429,7 @@
       },
       "harvest": {
         "short": "Use achene color, not white flesh alone, as a ripeness cue",
-        "guidance": "Illinois Extension describes ripe pineberries as white to blush with bright-red achenes; the achenes changing from green to red are a more reliable maturity cue than softness. Harvest gently with a twist or pinch. This is pineberry-type guidance, not a White Carolina-specific harvest date.",
+        "guidance": "Illinois Extension describes ripe pineberries as white to blush with bright-red achenes; the achenes changing from green to red are a more reliable maturity cue than softness. Harvest gently with a twist or pinch and refrigerate until use. This is pineberry-type guidance, not a White Carolina-specific harvest date or storage-life promise.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": ["illinois-pineberry-500"]
@@ -1441,18 +1442,25 @@
         "sourceIds": ["illinois-pineberry-500", "walters-white-carolina-pollination-2026", "eberts-white-carolina-500", "raintree-white-carolina-2026", "uconn-strawberries-2026"]
       },
       "propagation": {
-        "short": "Buy pineberry plants, not seed, to retain the white-fruit type; stock identity remains unverified",
-        "guidance": "University of Missouri Extension lists White Carolina among marketed pineberry cultivars and advises purchasing plants rather than seed to maintain white-fruit character. This is pineberry-type propagation guidance; it does not authenticate current White Carolina retail stock or supply a cultivar-specific vegetative propagation protocol. Ebert's product page reports numerous runners for its White Carolina listing, but no independent source reviewed here verifies that behavior for the selection represented in this catalog.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": ["mizzou-pineberry-2015", "eberts-white-carolina-500"]
+        "short": "Start with a nursery transplant; seed may not retain the white-fruit type",
+        "guidance": "University of Illinois and Missouri Extension advise starting pineberries from reputable transplants rather than seed because open pollination means seedlings may not come true to type. Missouri lists White Carolina among marketed pineberry cultivars. This supports the pineberry type, not clonal authentication of a particular supplier's White Carolina stock. Ebert's reports runners for its listing, but that seller-specific trait is not generalized to this profile.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-pineberry-500", "mizzou-pineberry-2015", "eberts-white-carolina-500"]
       },
-      "needsValidation": {
-        "short": "Supplier stocks are not authenticated as the historic line; pollination claims conflict",
-        "guidance": "The patent documents a historical, unpatented White Carolina/White Pine breeding parent but does not authenticate current nursery stock as that same clone. Illinois Extension describes pineberries as self-sterile, and Ebert's says its White Carolina listing needs pollen from another strawberry. Raintree labels its listing self-fertile but still recommends one everbearing partner per five plants; Walters Gardens independently gives that same product-level recommendation. The practical value of a partner is supported, but whether the catalog's current stock strictly requires one remains unresolved. Ebert's runner report and seller size ranges remain product-page claims. The patent also prints different USDA PI numbers in separate passages, so no accession is assigned.",
-        "evidenceType": "needs_validation",
-        "confidence": "pending",
-        "sourceIds": ["illinois-pineberry-500", "eberts-white-carolina-500", "raintree-white-carolina-2026", "walters-white-carolina-pollination-2026", "uspp34612-white-carolina-parent-2022"]
+      "uses": {
+        "short": "Edible white-to-blush berries; pineapple notes are not universal",
+        "guidance": "Illinois Extension describes pineberries as edible strawberries marketed for a pineapple-like flavor or aroma, while noting that people do not all perceive that flavor. Treat this as the fruit's culinary context, not a guaranteed flavor profile for every White Carolina plant. Do not confuse normal pale ripe pineberry fruit with albinism in red-fruited strawberries, which Illinois Extension associates with unfavorable growing conditions and poor flavor.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-pineberry-500"]
+      },
+      "problems": {
+        "short": "Watch for common strawberry pests and diseases",
+        "guidance": "Illinois Extension says pineberries can be susceptible to the same problems as garden strawberries, including leaf spot and scorch, root rots, red stele, anthracnose, gray mold, viruses, spider mites, aphids, leafrollers, slugs, nematodes, and strawberry weevils. This is a monitoring list for the pineberry type, not a diagnosis or a claim that every problem is present; identify the cause before choosing a treatment. Birds may also take fruit, although Illinois Extension notes the pale color may make it less noticeable to them.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": ["illinois-pineberry-500"]
       }
     },
     "compatibilityProfile": {

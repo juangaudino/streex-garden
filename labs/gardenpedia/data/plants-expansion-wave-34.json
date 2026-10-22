@@ -262,7 +262,7 @@
       "epiphyte",
       "fern"
     ],
-    "summary": "A tropical evergreen epiphytic fern with broad strap-shaped fronds forming a central nest. NC State Extension describes humid, moist, porous growing conditions and notes reproduction by spores; a practical home propagation protocol is not supplied by the selected source.",
+    "summary": "A tropical evergreen epiphytic fern with broad strap-shaped fronds forming a central nest. NC State Extension confirms reproduction by spores; Iowa State provides a general fern-spore sowing method, but not a species-specific schedule or guarantee for this fern.",
     "metrics": [],
     "sections": {
       "identity": {
@@ -309,6 +309,16 @@
         "confidence": "high",
         "sourceIds": [
           "ncsu-asplenium-nidus-wave34"
+        ]
+      },
+      "propagation": {
+        "short": "Sow mature spores on a clean, moist surface; expect a slow fern life cycle",
+        "guidance": "NC State Extension confirms that Asplenium nidus reproduces by spores. For a general fern method, Iowa State recommends collecting mature dark spores, sprinkling them on the surface of clean, moist growing medium without covering them, then keeping the container covered, humid and in bright indirect light. Its general guidance gives 65–75°F (18–24°C) and says germination may take 2–8 weeks depending on species; tiny fern plants develop only after the gametophyte stage. Transplant after several fronds form. These timings and steps are general fern guidance, not a validated A. nidus-specific protocol or guarantee.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "ncsu-asplenium-nidus-wave34",
+          "iastate-growing-ferns-spores-wave34"
         ]
       }
     },

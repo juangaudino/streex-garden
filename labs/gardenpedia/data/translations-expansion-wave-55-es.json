@@ -58,7 +58,7 @@
     }
   },
   "burros-tail-sedum-morganianum": {
-    "summary": "Una suculenta mexicana colgante de hojas carnosas y frágiles y racimos florales terminales en verano. Una maceta suspendida luce sus tallos, pero las hojas se desprenden con facilidad; importan más la luz abundante, el drenaje rápido y la manipulación cuidadosa que una medida interior fija.",
+    "summary": "Una suculenta mexicana colgante, de hojas carnosas y frágiles y flores terminales en primavera y verano. Sus tallos lucen en una maceta suspendida, pero las hojas se desprenden con facilidad; importan la luz abundante, el drenaje y la manipulación cuidadosa, no una medida interior fija.",
     "sections": {
       "identity": {
         "short": "Especie aceptada Sedum morganianum",
@@ -66,19 +66,23 @@
       },
       "growth": {
         "short": "Tallos colgantes, hojas frágiles y flores de verano",
-        "guidance": "NC State describe tallos colgantes de hasta 61 cm en su descripción, hojas carnosas verde azuladas que se desprenden al manipularlas y racimos florales terminales rosados o rojos en verano. Señala que rara vez florece como planta de interior; la longitud es un dato de la fuente, no una altura interior garantizada."
+        "guidance": "NC State describe tallos colgantes de hasta 61 cm, hojas carnosas verde azuladas que se desprenden al manipularlas y racimos terminales rosados o rojos en verano; señala que rara vez florece como planta de interior. RHS describe tallos de 30 cm o más y floración en primavera/verano. Son descripciones de cada fuente, no una altura interior ni un calendario de floración garantizados."
       },
       "cultivation": {
         "short": "Deja secar el sustrato entre riegos",
-        "guidance": "NC State aconseja un interior luminoso, sustrato bien drenado, maceta poco profunda y dejar secar el suelo entre riegos, reduciendo el riego en invierno. La guía regional de interior no demuestra uso en solución nutritiva ni compatibilidad con sistemas."
+        "guidance": "NC State aconseja un interior luminoso, sustrato bien drenado, maceta poco profunda y dejar secar el suelo entre riegos, reduciendo el agua en invierno. La guía de RHS para cultivo bajo vidrio indica luz filtrada brillante, compost franco con gravilla, riego libre durante el crecimiento activo y escaso en invierno. Mantén visibles esos contextos en lugar de fundirlos en un calendario universal; ambas fuentes destacan el drenaje y el ajuste estacional. Ninguna establece una receta nutritiva ni compatibilidad con sistemas."
       },
       "problems": {
         "short": "Protege las hojas frágiles y evita suelo húmedo sin drenaje",
-        "guidance": "NC State informa que las hojas se desprenden al manipularlas y menciona babosas y caracoles ocasionales en exterior. El suelo húmedo o mal drenado y el exceso de riego pueden favorecer problemas de plagas o enfermedades; revisa el sustrato y la planta en vez de tratar un síntoma aislado como diagnóstico."
+        "guidance": "NC State informa que las hojas se desprenden al manipularlas y menciona babosas y caracoles ocasionales en exterior. RHS también enumera posibles larvas de gorgojo de la vid, escamas, cochinillas y pudriciones fúngicas o bacterianas de corona/raíz. El sustrato mojado, mal drenado o con exceso de riego puede favorecer problemas; inspecciona planta y medio en vez de tratar un síntoma aislado como diagnóstico o asumir que toda plaga listada está presente."
       },
       "propagation": {
         "short": "Las hojas desprendidas y esquejes de tallo pueden enraizar",
         "guidance": "NC State informa que los esquejes y hojas caídas enraízan con facilidad. La propagación vegetativa permite continuar la forma de la planta; no se necesita inferir un protocolo de siembra por semilla."
+      },
+      "care": {
+        "short": "No requiere poda rutinaria; protege los tallos al manipularla",
+        "guidance": "RHS indica que no requiere poda. Como las hojas carnosas se desprenden con facilidad, manipula con cuidado los tallos colgantes al mover o atender la planta; NC State señala que las hojas desprendidas pueden enraizar. Esto no implica necesidad de dar forma ni cortar regularmente."
       }
     }
   },

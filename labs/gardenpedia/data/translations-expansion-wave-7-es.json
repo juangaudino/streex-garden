@@ -347,11 +347,11 @@
     }
   },
   "white-carolina-pineberry": {
-    "summary": "White Carolina es un nombre de pineberry comercializado dentro de Fragaria × ananassa. Una patente estadounidense documenta White Carolina como progenitor de mejora no patentado de fruto blanco, pero no autentica las plantas que hoy venden los viveros como el mismo clon. Las afirmaciones comerciales sobre polinización se contradicen.",
+    "summary": "White Carolina es un nombre comercializado para una pineberry de fruto blanco; aquí se representa a nivel de Fragaria × ananassa / tipo pineberry, no como clon histórico autenticado. Las bayas maduran pálidas y con aquenios rojos. Cultívala como una fresa de jardín y coloca cerca un cultivar compatible de fruto rojo como medida prudente de polinización; el tamaño específico, la línea del material y los requisitos de polinización varían o siguen sin verificarse.",
     "sections": {
       "identity": {
         "short": "Nombre comercial con antecedente de mejora; el material actual no está autenticado",
-        "guidance": "Kew acepta Fragaria × ananassa como híbrido de fresa de jardín. Ebert's Greenhouse y Raintree Nursery comercializan White Carolina como pineberry de ese híbrido. La patente estadounidense USPP34612 documenta White Carolina/White Pine como progenitor no patentado de fruto blanco de Fragaria × ananassa para QBC-1, lo que respalda el uso histórico del nombre en mejora de fresas. No registra White Carolina ni demuestra que el material actual de los viveros sea un clon del progenitor de la patente. El documento da números USDA PI distintos en pasajes separados; aquí no se asigna ninguno."
+        "guidance": "Kew acepta Fragaria × ananassa como híbrido de fresa de jardín. Ebert's Greenhouse y Raintree Nursery comercializan White Carolina como pineberry de ese híbrido. USDA GRIN registra PI 551681 (accesión 1446653) como 'White Carolina' dentro de Fragaria × ananassa y actualmente la indica como no disponible. La patente estadounidense USPP34612 documenta White Carolina/White Pine como progenitor no patentado de fruto blanco de QBC-1: los párrafos [0005] y [0043] indican PI 551681, mientras [0017] imprime PI 555681. El registro oficial de GRIN respalda 551681 como accesión asociada al nombre histórico; la mención aislada de 555681 en la patente es una inconsistencia documental, no la asignación de una segunda accesión. Ninguna de estas fuentes registra White Carolina ni demuestra que el material actual de los viveros sea un clon de esa accesión histórica."
       },
       "cultivation": {
         "short": "Pineberry es un tipo de fresa de jardín de fruto blanco",
@@ -363,19 +363,23 @@
       },
       "harvest": {
         "short": "Usa el color de los aquenios, no solo la pulpa blanca, para reconocer madurez",
-        "guidance": "Illinois Extension describe las pineberries maduras como blancas a rosadas con aquenios rojos; el cambio de los aquenios de verde a rojo es una señal más fiable de madurez que la textura blanda. Cosecha con un giro o pellizco suave. Es orientación del tipo pineberry, no una fecha específica de White Carolina."
+        "guidance": "Illinois Extension describe las pineberries maduras como blancas a rosadas con aquenios rojos; el cambio de los aquenios de verde a rojo es una señal más fiable de madurez que la textura blanda. Cosecha con un giro o pellizco suave y refrigéralas hasta consumirlas. Es orientación del tipo pineberry, no una fecha específica de White Carolina ni una promesa de conservación."
       },
       "pollination": {
         "short": "Una fresa roja compatible es una pareja de polinización precautoria",
         "guidance": "Illinois Extension recomienda un cultivar de jardín compatible y de fruto rojo para muchas pineberries, con una proporción general de tres pineberries por una fresa común. Para su producto White Carolina, Walters Gardens recomienda una variedad everbearing (de producción continua) por cada cinco plantas para favorecer la polinización y el desempeño en el paisaje. Raintree también recomienda una pareja everbearing con esa proporción, aunque llama autofértil a su producto; Ebert's afirma que se necesita polen de otra fresa. Por tanto, las fuentes coinciden en que una pareja puede ayudar, pero discrepan sobre si es obligatoria y no establecen una proporción universal. Como adaptación de Garden mientras el material representado aquí siga sin autenticarse, cultiva cerca una fresa roja compatible si priorizas el cuajado; no trates ninguna proporción como regla universal ni como compatibilidad verificada para este stock del catálogo."
       },
       "propagation": {
-        "short": "La propagación específica del cultivar no está verificada",
-        "guidance": "La ficha comercial de Ebert's informa numerosos estolones en su White Carolina, pero ninguna fuente independiente revisada confirma ese comportamiento para la selección representada en este catálogo. Ninguna fuente establece un protocolo de semilla específico para este cultivar; no se infiere uno a partir del tipo pineberry."
+        "short": "Empieza con un trasplante de vivero; la semilla puede no conservar el fruto blanco",
+        "guidance": "Illinois Extension y University of Missouri Extension recomiendan iniciar las pineberries con trasplantes de origen fiable y no con semillas, porque la polinización abierta puede hacer que las plántulas no reproduzcan fielmente el tipo. Missouri incluye White Carolina entre los cultivares de pineberry comercializados. Esto respalda el tipo pineberry, pero no autentica clonalmente el material White Carolina de un proveedor concreto. Ebert's informa estolones en su ficha, pero ese rasgo propio del vendedor no se generaliza aquí."
       },
-      "needsValidation": {
-        "short": "No se autenticó el material comercial como la línea histórica; hay conflicto sobre polinización",
-        "guidance": "La patente documenta un progenitor histórico White Carolina/White Pine no patentado, pero no autentica las plantas que venden actualmente los viveros como ese mismo clon. Illinois Extension describe las pineberries como autoincompatibles y Ebert's dice que su producto White Carolina necesita polen de otra fresa. Raintree llama autofértil a su producto, pero aun así recomienda una pareja de producción continua por cada cinco plantas; Walters Gardens da de forma independiente esa misma recomendación para White Carolina. El beneficio práctico de una pareja tiene respaldo, pero sigue sin resolverse si el stock actual del catálogo la necesita obligatoriamente. Los estolones informados por Ebert's y los rangos de tamaño comercial siguen siendo afirmaciones del vendedor. La patente también imprime números USDA PI distintos en pasajes separados, por lo que no se asigna un número de acceso."
+      "uses": {
+        "short": "Bayas comestibles blancas a rosadas; la nota a piña no es universal",
+        "guidance": "Illinois Extension describe las pineberries como fresas comestibles comercializadas por su sabor o aroma parecido a la piña, aunque señala que no todas las personas lo perciben. Es contexto culinario del fruto, no una promesa de sabor para cada planta White Carolina. No confundas el color pálido normal de una pineberry madura con el albinismo de fresas rojas, que Illinois Extension relaciona con condiciones desfavorables de cultivo y mal sabor."
+      },
+      "problems": {
+        "short": "Vigila las plagas y enfermedades comunes de la fresa",
+        "guidance": "Illinois Extension indica que las pineberries pueden sufrir los mismos problemas que las fresas de jardín, entre ellos manchas y quemaduras foliares, pudriciones de raíz, estela roja, antracnosis, moho gris, virus, ácaros, pulgones, enrolladores de hojas, babosas, nematodos y gorgojos de la fresa. Es una lista de vigilancia para el tipo pineberry, no un diagnóstico ni una afirmación de que todos los problemas estén presentes; identifica la causa antes de elegir un tratamiento. Las aves también pueden comer los frutos, aunque Illinois Extension señala que el color pálido quizá las haga menos visibles."
       }
     }
   }

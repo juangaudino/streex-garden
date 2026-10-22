@@ -647,12 +647,12 @@
         "short": "Pleno sol; mantén el suelo uniformemente húmedo y controla las malezas entre plántulas"
       },
       "growth": {
-        "guidance": "UMN describe los scallions de A. fistulosum como tallos verdes y blancos que no forman bulbo. Esta descripción a nivel de especie no se aplica a toda cebolla de verdeo, que también puede ser A. cepa inmadura.",
-        "short": "Tallos verdes y blancos sin formar un bulbo"
+        "guidance": "UMN describe los scallions de A. fistulosum como tallos verdes y blancos que no forman bulbo. UC ANR señala que la especie puede formar una mata perenne. Esta descripción a nivel de especie no se aplica a toda cebolla de verdeo, que también puede ser A. cepa inmadura.",
+        "short": "Tallos verdes y blancos sin bulbo; puede formar mata perenne"
       },
       "harvest": {
-        "guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojando el suelo antes si hace falta para evitar que se quiebren. No se asigna un número fijo de días a este perfil sin cultivar especificado.",
-        "short": "Cosecha las cebollas de verdeo cuando alcancen un tamaño útil"
+        "guidance": "UMN recomienda cosechar arrancando los scallions al alcanzar un tamaño útil y aflojar el suelo antes si hace falta para evitar que se quiebren. Para matas perennes de jardín, UC ANR recomienda cosechar cuando las hojas alcanzan unos 6–13 mm de diámetro y se desea sabor a cebolla. Son contextos de huerto exterior, no una promesa fija de días a cosecha ni una regla de tamaño hidropónico.",
+        "short": "Cosecha al tamaño útil o según necesites sabor a cebolla"
       },
       "care": {
         "short": "Mantén humedad estable y controla las malezas con cuidado",
@@ -661,6 +661,18 @@
       "problems": {
         "short": "El amarilleo y el marchitamiento requieren diagnóstico",
         "guidance": "UMN enumera la mosca de la cebolla como una posible causa de amarilleo y marchitamiento en scallions, además de varias pudriciones posibles. Son posibilidades del grupo de cultivo, no un diagnóstico de esta identidad; revisa raíces y tallos y busca orientación diagnóstica local antes de tratar."
+      },
+      "maintenance": {
+        "short": "Divide matas establecidas y maneja los tallos florales según tu objetivo",
+        "guidance": "UC ANR describe desenterrar y dividir las matas establecidas en otoño para replantarlas. Aconseja retirar los tallos florales antes de abrirse cuando el objetivo es multiplicar la mata en vez de favorecer la floración; es una decisión de manejo, no evidencia de enfermedad o fallo. Mantén el suelo húmedo, pero no empapado, y controla malezas con frecuencia, sobre todo cuando las plantas son pequeñas. Es una guía para matas de jardín exterior."
+      },
+      "propagation": {
+        "short": "Las matas establecidas se pueden dividir; la siembra se trata aparte",
+        "guidance": "UC ANR documenta la división de matas maduras de Allium fistulosum para replantarlas. Es propagación vegetativa de una planta establecida; el Perfil de Semilla separado cubre la etapa desde semilla hasta planta establecida."
+      },
+      "flowering": {
+        "short": "Retirar el tallo floral depende de si buscas una mata mayor o flores",
+        "guidance": "UC ANR señala que se pueden cortar los tallos florales antes de que abran cuando el objetivo de cultivo es multiplicar la mata. No proporciona un calendario de floración ni describe una exhibición floral específica de cultivar; florecer no es automáticamente un problema."
       }
     }
   },
@@ -992,12 +1004,12 @@
         "guidance": "La guía productiva de UF/IFAS para el sur de Florida informa una madurez de las raíces de yuca de unos 8–12 meses después de plantar. También describe cortar las plantas unas dos semanas antes de cosechar como práctica de producción regional. Trata ambos datos como guía para el cultivo de Florida, no como calendario universal para huertos domésticos ni como señal de cosecha específica de cultivar; la fuente no da una prueba visual de madurez para este tipo no identificado."
       },
       "harvestUse": {
-        "guidance": "UF/IFAS identifica las raíces como producto alimentario principal y señala que se deterioran rápidamente tras la cosecha. FAO documenta variación entre cultivares y condiciones de cultivo; el sabor dulce o amargo no predice de forma fiable el cianuro. Las raíces y hojas no deben comerse crudas. El capítulo técnico de FAO describe procesos regionales de varias etapas para productos específicos, con combinaciones y secuencias que importan; no son una receta universal para el hogar ni para esta yuca sin tipo identificado. Un proceso completo de preparación segura apropiado para el tipo sigue sin establecerse.",
-        "short": "Las raíces ricas en almidón son la cosecha principal; el procesamiento seguro depende del tipo"
+        "guidance": "UF/IFAS identifica las raíces como el principal producto alimentario y señala que se deterioran rápidamente tras la cosecha. FAO documenta compuestos cianogénicos en toda la yuca, diferencias importantes entre variedades y condiciones de cultivo, y advierte que el sabor amargo no es una prueba fiable de seguridad; hervir de forma simple puede no retirar suficiente cianuro. Los capítulos técnicos de FAO describen procesos distintos, de varias etapas, para alimentos y regiones concretos, no una receta doméstica universal. Esta ficha a nivel de especie no identifica un tipo dulce/amargo ni valida un proceso para una raíz específica. No comas raíces ni hojas crudas ni consumas una planta no identificada aplicando una receta genérica; usa únicamente orientación autorizada de preparación que corresponda a la variedad identificada y al producto deseado.",
+        "short": "Las raíces solo son alimento tras un procesamiento verificado y adecuado al tipo"
       },
       "problems": {
-        "short": "Las raíces crudas son tóxicas; el sabor no indica el riesgo",
-        "guidance": "NC State Extension advierte que las raíces crudas de yuca son muy tóxicas y menciona los ácaros rojos como problema a vigilar. UF/IFAS distingue tipos con menor y mayor contenido cianogénico. FAO advierte que el sabor no es un indicador fiable y que hervir de forma simple no siempre es suficiente. Esta ficha no determina qué tipo tienes: no comas raíces ni hojas crudas ni supongas que un método genérico vuelve seguro un tipo desconocido. Confirma la plaga antes de tratarla."
+        "short": "El riesgo de cianuro varía; también preocupan las heladas y los ácaros",
+        "guidance": "NC State Extension advierte que las raíces crudas de yuca son muy tóxicas y menciona los ácaros rojos como problema a vigilar. UF/IFAS distingue tipos con menor y mayor contenido cianogénico; FAO documenta variación y advierte que ni el sabor amargo ni hervir de forma simple establecen la seguridad. Esta entrada identifica la especie, no un cultivar de bajo contenido cianogénico: no comas raíces ni hojas crudas ni supongas que un método genérico vuelve seguro un tipo desconocido. Protege el arbusto tropical de las heladas y confirma la plaga antes de tratarla."
       },
       "needsValidation": {
         "short": "Se desconocen el tipo cianogénico y la preparación segura",
@@ -1330,6 +1342,10 @@
       "problems": {
         "short": "La desecación, la manipulación y algunas plagas alteran el aspecto",
         "guidance": "SANBI señala que secarse puede causar decaimiento y menor mucílago; trasplantar o tocar las hojas también puede reducir temporalmente el rocío hasta que aparezca follaje nuevo. Enumera pulgones, cochinillas y trips que deforman el crecimiento nuevo y desaconseja insecticidas a base de jabón. Estas señales invitan a revisar las condiciones, no a diagnosticar solo por apariencia."
+      },
+      "pruning": {
+        "short": "No requiere poda rutinaria",
+        "guidance": "RHS indica que no hace falta podar. No retires hojas sanas solo porque las trampas hayan perdido temporalmente el mucílago visible; revisa primero la humedad y si hubo manipulación reciente."
       }
     }
   },
@@ -1452,8 +1468,12 @@
         "guidance": "NC State enumera la semilla como estrategia de propagación de la especie. La fuente seleccionada no indica profundidad, temperatura ni tiempo de germinación."
       },
       "pruning": {
-        "short": "El pinzado ayuda a conservar una forma más tupida",
-        "guidance": "NC State recomienda pinzar para conservar una forma más tupida. Es una pauta de cultivo a nivel de especie y no establece un calendario fijo de poda."
+        "short": "Pinza para ramificar; recorta si se vuelve larguirucha",
+        "guidance": "NC State recomienda pinzar para conservar una forma más tupida. RHS indica que no necesita poda rutinaria, pero si el crecimiento se vuelve larguirucho recomienda recortar aproximadamente la mitad para favorecer una forma más tupida y posiblemente otra tanda de flores. Son opciones a nivel de especie para situaciones distintas, no un calendario fijo ni una respuesta específica de cultivar."
+      },
+      "problems": {
+        "short": "Vigila plagas comunes y enfermedades relacionadas con la humedad",
+        "guidance": "RHS indica posible susceptibilidad a babosas, caracoles y pulgones, además de pudrición radicular y oídios. Tómalos como aspectos para monitorear, no como diagnóstico ni como afirmación de que todas las plantas sean susceptibles; las fuentes revisadas no establecen un protocolo de tratamiento específico para Torenia."
       }
     }
   },
@@ -1623,12 +1643,16 @@
         "short": "Hierba perenne pequeña con hojas acorazonadas y muy surcadas",
         "guidance": "NC State describe una hierba tropical perenne, erecta y tupida que suele cultivarse como planta de interior y que alcanza hasta unas 8 pulgadas en los trópicos. El follaje oscuro arrugado y las espigas florales color crema son característicos; los colores varían según cultivar."
       },
+      "flowering": {
+        "short": "Pueden aparecer espigas crema o blancas en verano y otoño",
+        "guidance": "NC State describe flores pequeñas agrupadas en espigas color crema a blanco de unos 5–8 cm, con floración indicada en verano y otoño. La fuente trata la especie y enumera varios cultivares; estas flores no identifican un cultivar de follaje específico."
+      },
       "cultivation": {
         "short": "Luz media filtrada y mezcla porosa que se seca entre riegos",
         "guidance": "NC State señala que la luz media filtrada es ideal y que la planta tolera luz baja durante varios meses; la mezcla debe secarse entre riegos. Advierte que el suelo empapado o extremadamente seco y las corrientes frías pueden estresarla. La referencia a iluminación fluorescente de oficina no implica compatibilidad con un dispositivo Garden X específico."
       },
-      "maintenance": {
-        "short": "Se documentan esquejes de hoja o de punta de tallo en primavera",
+      "propagation": {
+        "short": "Se documentan esquejes de hoja o de punta de tallo como métodos de propagación en primavera",
         "guidance": "NC State recomienda esquejes de hoja o de punta de tallo en primavera. Esta orientación vegetativa para la especie no ofrece protocolo de germinación; tampoco se debe asumir que las plántulas conserven el patrón de un cultivar elegido."
       },
       "problems": {
@@ -1651,10 +1675,6 @@
         "short": "Luz brillante indirecta y mezcla para suculentas de drenaje rápido",
         "guidance": "NC State recomienda luz indirecta brillante, mezcla para cactus/suculentas bien drenada y dejar secar la tierra entre riegos. Señala sensibilidad al calor extremo, preferencia por baja humedad y sensibilidad al frío; sus zonas y temperaturas exteriores son regionales y no una prescripción de luz artificial interior."
       },
-      "maintenance": {
-        "short": "Esquejes de hoja o hijuelos son las alternativas documentadas",
-        "guidance": "NC State describe esquejes de hoja o hijuelos como métodos de propagación y señala que esta especie vellosa es más difícil de propagar que algunas otras suculentas. La ficha consultada no ofrece un protocolo de siembra."
-      },
       "safety": {
         "short": "Mantenla fuera del alcance de niños y mascotas que puedan ingerirla",
         "guidance": "NC State advierte que es tóxica por ingestión y recomienda mantenerla fuera del alcance de niños y mascotas. Se conserva la advertencia sin agregar indicaciones de tratamiento médico."
@@ -1662,6 +1682,10 @@
       "problems": {
         "short": "Hojas arrugadas o blandas pueden indicar estrés por agua",
         "guidance": "NC State relaciona las hojas arrugadas con falta de agua y las hojas o tallos amarillos y blandos con exceso de agua; también menciona cochinillas y ácaros. Son señales posibles, no un diagnóstico sin revisar la planta y su entorno."
+      },
+      "propagation": {
+        "short": "Esquejes de hoja o hijuelos son las alternativas documentadas",
+        "guidance": "NC State describe esquejes de hoja o hijuelos como métodos de propagación y señala que esta especie vellosa es más difícil de propagar que algunas otras suculentas. La ficha consultada no ofrece un protocolo de siembra."
       }
     }
   },
@@ -1679,10 +1703,6 @@
         "short": "Guía de interior a nivel de género: luz indirecta y riego según la estación",
         "guidance": "La guía de NC State para el género describe luz difusa o indirecta, mezcla húmeda pero bien drenada desde primavera hasta otoño y menos riego en invierno. Señala sensibilidad al frío y un rango diurno preferido de 70–80 °F. Estas recomendaciones siguen siendo de género; no establecen un nivel medido de luz artificial, aptitud hidropónica ni requisitos exactos para cada cultivar."
       },
-      "maintenance": {
-        "short": "Se documentan división o esquejes de tallo para el género",
-        "guidance": "NC State enumera la división y los esquejes de tallo para Aglaonema a nivel de género. Aquí no se establece un protocolo específico para cultivar."
-      },
       "problems": {
         "short": "Vigila pudrición de raíz, plagas y hojas marrones en ambientes secos o con corrientes",
         "guidance": "NC State informa que el exceso de riego puede causar pudrición de raíces, enumera pulgones, cochinillas, ácaros y escamas para vigilar, y señala que el aire muy seco o las corrientes pueden hacer que las hojas se tornen marrones. Son riesgos a nivel de género, no un diagnóstico ni una afirmación de resistencia de cultivar."
@@ -1690,6 +1710,10 @@
       "safety": {
         "short": "Mantén el material vegetal fuera del alcance de niños y mascotas",
         "guidance": "NC State señala toxicidad y riesgos por contacto o ingestión para Aglaonema. Mantén el material vegetal lejos de niños y mascotas; es información a nivel de género y no cuantifica el riesgo de exposición de un cultivar concreto."
+      },
+      "propagation": {
+        "short": "Se documentan división o esquejes de tallo para el género",
+        "guidance": "NC State enumera la división y los esquejes de tallo para Aglaonema a nivel de género. Aquí no se establece un protocolo específico para cultivar."
       }
     }
   },
@@ -1827,10 +1851,6 @@
         "short": "Luz brillante indirecta; aclimátalo gradualmente después de moverlo",
         "guidance": "NC State dice que crece mejor con luz brillante indirecta, pero es muy sensible a cambios de luz; moverla puede causar caída de hojas mientras se adapta. Recomienda mezcla de cultivo para macetas basada en suelo y riego suficiente para evitar que se seque por completo. Es guía de recipiente, no protocolo hidropónico."
       },
-      "maintenance": {
-        "short": "Poda ligera para dar forma a fines de otoño o invierno",
-        "guidance": "NC State recomienda poda ligera para dar forma y controlar tamaño a fines de otoño o invierno, y advierte que el recorte intenso puede reducir la longevidad. Enumera esquejes de tallo como método de propagación; la fuente no establece protocolo de siembra para su uso común como planta de interior."
-      },
       "problems": {
         "short": "Los cambios ambientales pueden provocar caída de hojas; vigila plagas comunes",
         "guidance": "NC State menciona la caída de hojas tras cambios de luz o ubicación y enumera escamas, pulgones, cochinillas, trips y ácaros como plagas posibles. Una hoja caída tras mover la planta no debe diagnosticarse automáticamente como problema de nutrientes."
@@ -1838,6 +1858,14 @@
       "flowering": {
         "short": "Las flores diminutas quedan dentro de la estructura carnosa del higo",
         "guidance": "NC State indica que flores y frutos aparecen tanto en crecimiento nuevo como antiguo. Su descripción botánica explica que las flores unisexuales diminutas quedan dentro de un receptáculo carnoso tipo higo y son polinizadas por avispas de los higos; esto describe la biología de la especie, no promete fructificación en interior ni establece un calendario de cuidados."
+      },
+      "propagation": {
+        "short": "Se mencionan esquejes de tallo; no hay protocolo de siembra establecido",
+        "guidance": "NC State enumera los esquejes de tallo como estrategia de propagación. La fuente no establece un protocolo de siembra para su uso común como planta de interior."
+      },
+      "maintenance": {
+        "short": "Poda ligera para dar forma a fines de otoño o invierno",
+        "guidance": "NC State recomienda poda ligera para dar forma y controlar tamaño a fines de otoño o invierno, y advierte que el recorte intenso puede reducir la longevidad."
       }
     }
   },
@@ -1859,13 +1887,17 @@
         "short": "Luz brillante indirecta y mezcla bien drenada que se seca entre riegos",
         "guidance": "NC State recomienda luz indirecta brillante, sustrato arenoso y bien drenado y dejar que se seque por completo entre riegos, con menos agua durante la dormancia invernal. El exceso de sol puede quemar las hojas y el exceso de agua causar pudrición de raíces."
       },
-      "maintenance": {
-        "short": "Se documentan acodo, esquejes de tallo y propagación por semilla",
-        "guidance": "NC State enumera acodo, semilla y esquejes de tallo, y señala que los tubérculos aéreos enraízan cuando tocan el suelo. Los tallos colgantes funcionan en macetas suspendidas o pueden guiarse por un pequeño enrejado; la planta tolera estar apretada, así que conviene trasplantar solo cuando sea necesario. La propagación vegetativa puede conservar una forma seleccionada; la página no ofrece un protocolo detallado de germinación, así que no se agregan parámetros."
-      },
       "problems": {
         "short": "Vigila crecimiento estirado, quemaduras y pudrición",
         "guidance": "NC State relaciona hojas muy separadas con luz insuficiente, hojas quemadas con exceso de sol y amarillamiento o pudrición con problemas de riego. Son indicios contextuales, no un diagnóstico por sí solos."
+      },
+      "propagation": {
+        "short": "Se documentan acodo, esquejes de tallo y propagación por semilla",
+        "guidance": "NC State enumera acodo, semilla y esquejes de tallo, y señala que los tubérculos aéreos enraízan cuando tocan el suelo. La propagación vegetativa puede conservar una forma seleccionada; la página no ofrece un protocolo detallado de germinación, así que no se agregan parámetros."
+      },
+      "maintenance": {
+        "short": "Guía los tallos colgantes y trasplanta solo cuando sea necesario",
+        "guidance": "NC State indica que los tallos colgantes funcionan en macetas suspendidas o pueden guiarse por un pequeño enrejado. La planta tolera estar apretada, así que conviene trasplantar solo cuando sea necesario."
       }
     }
   },
@@ -1879,12 +1911,16 @@
         "short": "Suculenta colgante con hojas en forma de cuentas",
         "guidance": "NC State describe tallos colgantes con hojas esféricas como guisantes y una ventana epidérmica translúcida que participa en la fotosíntesis. La página da rangos contradictorios para la longitud colgante: la descripción indica 1–2 pies y la sección de identificación rápida 1–3 pies; se conservan como estimaciones de la fuente, sin elegir una medida interior garantizada. La forma colgante cambia las dimensiones aparentes."
       },
+      "flowering": {
+        "short": "Las flores estivales con aroma a canela son poco frecuentes en interior",
+        "guidance": "NC State describe flores pequeñas, blancas y parecidas a margaritas, con aroma a canela, que aparecen en verano; señala que las plantas de interior rara vez florecen. La floración es posible, pero la fuente no establece un calendario esperado en interior ni la presenta como medida de calidad del cuidado."
+      },
       "cultivation": {
         "short": "Luz brillante indirecta; evita tanto el encharcamiento como la sequedad extrema",
         "guidance": "NC State recomienda luz indirecta brillante en interior y una mezcla para cactus bien drenada o tierra combinada con arena/perlita. Advierte contra el exceso de riego y contra dejar secar por completo el sustrato; la frecuencia depende del ambiente, así que no se prescribe un calendario fijo."
       },
-      "maintenance": {
-        "short": "Los esquejes de tallo son el método rápido y documentado para renovarla",
+      "propagation": {
+        "short": "Los esquejes de tallo son el método rápido y documentado de propagación",
         "guidance": "NC State describe esquejes de tallo de 3–5 pulgadas, cubriendo varios nudos con mezcla para macetas, como método rápido. Considera más lenta y menos confiable la propagación a partir de una hoja sola. Después de florecer puede producir semillas, pero la página no da un protocolo de siembra."
       },
       "problems": {
@@ -1978,6 +2014,10 @@
       "propagation": {
         "short": "En producción frutícola, Aronia se propaga por semilla o esquejes",
         "guidance": "University of Wisconsin–Madison Extension indica que Aronia se propaga comúnmente por semilla o esquejes. Es orientación de producción frutícola, no un protocolo doméstico completo; aquí no se infieren calendarios de siembra ni de esquejado."
+      },
+      "flowering": {
+        "short": "Flores blancas primaverales; follaje otoñal y frutos persistentes",
+        "guidance": "La Extensión de Minnesota describe racimos vistosos de flores blancas de unos 5–8 cm, con anteras rosadas, en primavera. El follaje caducifolio cambia del verde a tonos rojos, naranjas y morados en otoño; los frutos oscuros pueden persistir hasta el invierno y alimentar a la fauna. Son señales estacionales del perfil de especie de Minnesota, no fechas fijas ni rasgos asignados a un cultivar sin identificar."
       }
     }
   },
@@ -2620,28 +2660,32 @@
         "guidance": "NC State identifica Blue False Indigo como Baptisia australis, de Fabaceae; hay otras especies e híbridos de Baptisia, ninguno asignado aquí."
       },
       "growth": {
-        "short": "Perenne en mata con una raíz pivotante profunda",
-        "guidance": "La fuente informa unos 90–120 cm de alto y 60–120 cm de ancho en jardines regionales; la raíz pivotante aporta tolerancia a sequía, pero dificulta el trasplante."
+        "short": "Perenne grande en mata; su establecimiento es lento",
+        "guidance": "NC State informa unos 90–120 cm de alto y 60–120 cm de ancho en su referencia de jardín. Iowa State da cerca de 120 cm de alto y 120–150 cm de ancho para la especie e indica que puede tardar 3–5 años en formar ejemplares ornamentales maduros. Mantén separados los datos regionales; ninguno garantiza las dimensiones de una planta concreta. La raíz profunda favorece la tolerancia a sequía después del establecimiento, pero dificulta moverla."
       },
       "cultivation": {
         "short": "Sol pleno a sombra parcial en suelo bien drenado",
-        "guidance": "NC State describe suelos promedio bien drenados y tolerancia a sequía. En sombra puede volverse alargada o caer; son observaciones de cultivo exterior regional."
+        "guidance": "Ambas extensiones favorecen el sol pleno y el suelo bien drenado; NC State admite sombra parcial, e Iowa State señala que allí puede volverse alargada y florecer menos. Riega durante periodos secos de la primera temporada y, una vez establecida, principalmente en sequías prolongadas. Iowa State indica que Baptisia fija nitrógeno y normalmente no necesita fertilizante en suelo fértil. Son recomendaciones para paisaje exterior, no para interior ni hidroponía."
       },
       "propagation": {
         "short": "Se enumeran semillas y esquejes de tallo",
-        "guidance": "La fuente enumera semillas y esquejes de tallo y advierte que la raíz pivotante dificulta el trasplante. No ofrece condiciones de germinación."
+        "guidance": "NC State enumera semillas y esquejes de tallo. Iowa State indica que las plántulas pueden tardar 3–5 años en florecer, que la descendencia de cultivares nombrados no necesariamente conserva las características del progenitor y que normalmente no se recomienda dividir por la raíz profunda. Describe esquejes de tallo en primavera, cuando los brotes aún son relativamente suaves. Estas fuentes no dan un protocolo completo de germinación; no se inventan profundidad, tratamiento ni calendario."
       },
       "harvestUse": {
-        "short": "Flores y vainas ornamentales; planta hospedera de polinizadores",
-        "guidance": "La referencia describe flores azules y vainas ornamentales secas. También informa toxicidad leve si se ingieren partes en cantidad; no usar como alimento."
+        "short": "Flores de primavera y vainas maduras son ornamentales, no alimento",
+        "guidance": "Las espigas azules papilionadas de primavera aportan valor ornamental y para jardines de polinizadores. Iowa State describe las vainas infladas como útiles en arreglos secos; NC State informa toxicidad leve si se ingieren partes en cantidad. No presentes las flores ni las vainas como comestibles y mantén separado el uso decorativo de la seguridad alimentaria."
       },
       "problems": {
-        "short": "La ingestión es insegura; no se reportan problemas importantes de plagas o enfermedades",
-        "guidance": "NC State informa toxicidad de baja severidad si se ingieren partes en cantidad y no reporta problemas importantes de insectos o enfermedades para esta especie. Mantenla lejos de niños y mascotas y no la uses como alimento. La ausencia de problemas importantes reportados no garantiza que nunca aparezcan."
+        "short": "Vigila mordisqueo ocasional, enfermedades foliares y clorosis en suelo alcalino",
+        "guidance": "Iowa State indica que los conejos pueden mordisquearla ocasionalmente; manchas foliares y mildiu suelen ser menores, mientras que suelos muy alcalinos pueden causar clorosis amarillo-verdosa. También señala que la planta puede volcarse o abrirse, especialmente en sombra parcial. NC State no reporta problemas importantes de insectos o enfermedades en su ficha. Son señales ocasionales o regionales, no susceptibilidades garantizadas ni un diagnóstico; la ingestión es insegura y no debe usarse como alimento."
       },
       "care": {
-        "short": "Poda tras la floración solo si no quieres vainas o necesitas darle forma",
-        "guidance": "NC State recomienda podar después de florecer cuando no se desean vainas o para dar forma. Si quieres conservar las vainas ornamentales, deja los tallos; la raíz pivotante dificulta mover plantas establecidas."
+        "short": "Retira restos muertos a fines de otoño o inicio de primavera; conserva vainas si las quieres",
+        "guidance": "Iowa State describe como tarea anual típica retirar restos muertos a fines de otoño o comienzos de primavera. Después de florecer, deja los tallos si quieres vainas infladas para arreglos secos; de lo contrario, NC State aconseja podar tras la floración cuando no se desean vainas o hace falta dar forma. Las plantas maduras son longevas y no conviene dividirlas o moverlas rutinariamente por sus raíces profundas."
+      },
+      "flowering": {
+        "short": "Espigas azul-violeta, similares a lupinos, aparecen en primavera",
+        "guidance": "Iowa State describe espigas florales primaverales que sobresalen sobre el follaje trifoliado y registra flores azul-violeta para Baptisia australis. La época y el tamaño son referencias regionales, no un calendario fijo para todo clima. Algunos cultivares de Baptisia pueden no formar vainas, pero aquí no se asigna cultivar."
       }
     }
   },
@@ -2793,6 +2837,34 @@
       }
     }
   },
+  "dumbcane-dieffenbachia-seguine": {
+    "sections": {
+      "identity": {
+        "short": "Especie aceptada: Dieffenbachia seguine",
+        "guidance": "Kew acepta Dieffenbachia seguine dentro de Araceae. NC State Extension enumera dumbcane y spotted dumbcane entre sus nombres comunes y explica que varios nombres antiguos de Dieffenbachia ahora se ubican en D. seguine. No se representa un cultivar comercial específico."
+      },
+      "growth": {
+        "short": "Planta foliar erguida y con pocas ramas",
+        "guidance": "NC State Extension describe una perenne siempreverde de hojas grandes y variegadas, forma erguida y pocas ramas, con dimensiones de paisaje/contenedor de 3–8 pies de alto y 2–3 pies de ancho. Esas dimensiones no se presentan como objetivo para sistemas compactos de interior."
+      },
+      "cultivation": {
+        "short": "Luz indirecta, ambiente cálido y sustrato drenante",
+        "guidance": "NC State Extension recomienda suelo suelto, fértil y bien drenado, luz indirecta, temperaturas moderadas y humedad alta. Indica regar a fondo y dejar secar por completo la pulgada superficial antes de volver a regar. Es guía para cultivo en maceta, no parámetro hidropónico."
+      },
+      "maintenance": {
+        "short": "Protégela de corrientes frías y manipula la savia con cuidado",
+        "guidance": "NC State Extension recomienda protegerla de corrientes frías y del sol directo. La savia y los tejidos pueden irritar o causar lesiones; usa guantes y lávate después de manipularla. No trates la poda ni la propagación como actividades sin riesgo."
+      },
+      "problems": {
+        "short": "La toxicidad es una consideración importante en el hogar",
+        "guidance": "NC State Extension advierte que la ingestión puede causar entumecimiento e inflamación, y que el contacto con savia puede irritar la piel y dañar los ojos. También enumera plagas y enfermedades de raíz y hojas para vigilar. Mantén la planta fuera del alcance de niños y mascotas; es una precaución basada en la fuente, no consejo médico individual."
+      },
+      "propagation": {
+        "short": "Los segmentos de tallo pueden enraizar; evita el contacto de la savia con piel y ojos",
+        "guidance": "NC State Extension enumera división y esquejes de raíz o tallo. Iowa State incluye Dieffenbachia entre las plantas que se propagan por segmentos de tallo: corta piezas de 2–3 pulgadas con al menos dos nudos, quita las hojas, coloca los segmentos sobre un medio húmedo de enraizamiento con la parte superior cerca de la superficie y mantenlos cálidos, húmedos y con luz brillante indirecta. Iowa State indica unas 8–10 semanas para que aparezcan raíces y brotes mediante este método general; no es garantía para todo cultivar de D. seguine. Usa guantes y evita el contacto con la savia; la fuente no presenta la propagación como segura para niños o mascotas."
+      }
+    }
+  },
   "florist-kalanchoe-kalanchoe-blossfeldiana": {
     "sections": {
       "identity": {
@@ -2809,7 +2881,11 @@
       },
       "maintenance": {
         "short": "Retira las flores marchitas y evita que permanezca demasiado húmeda",
-        "guidance": "NC State recomienda quitar las flores marchitas para fomentar más floración y advierte que el exceso de riego puede causar pudrición de raíz o tallo. Enumera esquejes de tallo y hoja como métodos de propagación; aquí no se ofrece protocolo de semilla."
+        "guidance": "NC State recomienda quitar las flores marchitas para fomentar más floración y advierte que el exceso de riego puede causar pudrición de raíz o tallo. Los métodos de propagación se describen por separado; no se ofrece aquí un protocolo de semilla."
+      },
+      "propagation": {
+        "short": "Se documentan esquejes vegetativos de tallo y de hoja completa",
+        "guidance": "NC State enumera esquejes de tallo y hoja. La guía general de Iowa State sobre suculentas incluye específicamente Kalanchoe para ambos métodos: en un esqueje de tallo, quita las hojas inferiores y deja cicatrizar el corte varios días antes de colocarlo en mezcla para cactus o perlita con buen drenaje; para un esqueje foliar, retira la hoja completa, colócala sobre medio húmedo pero no mojado y deja la base en la superficie. Las raíces y brotes pueden aparecer en varias semanas. Son métodos generales para suculentas, no un calendario ni una garantía para un cultivar específico; son propagación vegetativa, no por semilla."
       },
       "safety": {
         "short": "Mantenla fuera del alcance de niños y mascotas que puedan ingerirla",
@@ -2835,13 +2911,13 @@
         "short": "Ubicación luminosa y soleada; conserva bien drenado el sustrato de la maceta",
         "guidance": "NC State recomienda un sitio interior soleado y bien iluminado, con suelo fértil y bien drenado, riego y fertilización regulares en primavera y verano y condiciones más secas en invierno. La recomendación de temperatura nocturna de 55–65 °F pertenece al contexto de la fuente, no es un punto de ajuste universal para interiores."
       },
-      "maintenance": {
-        "short": "Se menciona la división; no se proporciona protocolo para iniciar desde semilla",
-        "guidance": "NC State enumera la división como estrategia de propagación. La ficha consultada no ofrece instrucciones de siembra o germinación; por eso los requisitos de semilla quedan sin documentar y no se consideran imposibles."
-      },
       "problems": {
         "short": "Evita el medio encharcado y que las mascotas ingieran la planta",
         "guidance": "NC State advierte sobre el riesgo de pudrición de raíces en suelo mal drenado y señala características tóxicas de baja gravedad para mascotas y caballos. Plant Toolbox también informa náuseas leves, vómitos o somnolencia si las personas ingieren frutos o semillas. Mantén el material vegetal fuera del alcance de niños y mascotas; esta advertencia de la fuente no sustituye consejo médico o veterinario individual."
+      },
+      "propagation": {
+        "short": "Se menciona la división; no se proporciona protocolo para iniciar desde semilla",
+        "guidance": "NC State enumera la división como estrategia de propagación. La ficha consultada no ofrece instrucciones de siembra o germinación; por eso los requisitos de semilla quedan sin documentar y no se consideran imposibles."
       }
     }
   },
@@ -2891,13 +2967,17 @@
         "short": "Luz brillante indirecta; evita sol directo y encharcamiento",
         "guidance": "NC State recomienda luz brillante sin sol directo y mantener el suelo húmedo durante el crecimiento activo, evitando encharcamientos y exceso de riego. Indica que demasiada luz puede causar pardeamiento o caída de hojas y muy poca puede reducir la intensidad del color; son señales cualitativas, no umbrales calibrados de luz interior. Para colocarla en maceta en un patio durante el verano, aconseja llevarla al interior cuando las noches bajen de 50 °F."
       },
-      "maintenance": {
-        "short": "Recorta en invierno los tallos alargados o propaga por división o esquejes",
-        "guidance": "NC State indica que se pueden recortar en invierno los tallos demasiado largos para rejuvenecer la planta y controlar su altura, y enumera esquejes apicales o de tallo y división. También recomienda evitar una maceta demasiado grande porque las raíces prefieren un recipiente ajustado; no especifica una proporción exacta."
-      },
       "problems": {
         "short": "El exceso de riego puede pudrir las raíces; mantén la planta lejos de personas y mascotas",
         "guidance": "NC State advierte que el agua estancada y el exceso de riego pueden causar pudrición de raíces, y que las cochinillas de raíz pueden frenar el crecimiento. Su Plant Toolbox clasifica la planta como tóxica si la ingieren personas, gatos o perros; mantén el material vegetal fuera del alcance de niños y mascotas. No se afirma resistencia a enfermedades."
+      },
+      "propagation": {
+        "short": "Se documentan división o esquejes apicales y de tallo",
+        "guidance": "NC State enumera esquejes apicales o de tallo y división como métodos de propagación. Esta ficha no añade un protocolo paso a paso más allá de los métodos documentados por la fuente."
+      },
+      "maintenance": {
+        "short": "Poda los tallos alargados en invierno y conserva una maceta ajustada",
+        "guidance": "NC State indica que se pueden recortar en invierno los tallos demasiado largos para rejuvenecer la planta y controlar su altura. También recomienda evitar una maceta demasiado grande porque las raíces prefieren un recipiente ajustado; no especifica una proporción exacta."
       }
     }
   },
@@ -3799,19 +3879,24 @@
   "fragrant-dwarf-dianthus-mix": {
     "metrics": [
       {
-        "label": "Identidad",
-        "value": "Dianthus spp.",
-        "note": "Especie exacta no resuelta"
+        "label": "Tipo botánico comercial",
+        "value": "Dianthus caryophyllus L.",
+        "note": "Correspondencia mini/spray; lote no autenticado de forma independiente"
       },
       {
-        "label": "Uso",
-        "value": "Floración / ornamental",
-        "note": "Especie exacta pendiente; aptitud para maceta no establecida"
+        "label": "Tipo de producto",
+        "value": "Mezcla de claveles miniatura/spray",
+        "note": "Términos del vendedor; sin cultivar ni composición identificados"
+      },
+      {
+        "label": "Luz exterior",
+        "value": "Sol pleno a parcial",
+        "note": "Guía de cultivo de flor de corte en suelo de USU; no es nivel de lámpara interior"
       },
       {
         "label": "pH / EC hidro",
-        "value": "Pendiente",
-        "note": "No mapear clavel a una mezcla enana sin resolver"
+        "value": "No establecido",
+        "note": "No hay un objetivo hidropónico aplicable a esta identidad"
       }
     ]
   },

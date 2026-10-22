@@ -58,7 +58,7 @@
     }
   },
   "birds-nest-fern-asplenium-nidus": {
-    "summary": "Helecho epífito tropical siempreverde cuyas frondas anchas en forma de cinta crean un nido central. NC State Extension describe condiciones de cultivo húmedas y porosas y menciona reproducción por esporas; la fuente seleccionada no ofrece un protocolo práctico de propagación doméstica.",
+    "summary": "Helecho epífito tropical siempreverde cuyas frondas anchas en forma de cinta crean un nido central. NC State Extension confirma su reproducción por esporas; Iowa State ofrece un método general de siembra para esporas de helechos, pero no un calendario ni una garantía específicos para esta especie.",
     "sections": {
       "identity": {
         "short": "Especie aceptada: Asplenium nidus",
@@ -79,6 +79,10 @@
       "problems": {
         "short": "Inspecciona plagas y enfermedades foliares; en general no se reportan problemas graves",
         "guidance": "NC State Extension informa que no hay problemas graves en general, pero enumera babosas, caracoles, escamas, cochinillas, enfermedades bacterianas foliares y nematodos. También señala sensibilidad a insecticidas químicos. Son precauciones de monitoreo, no una afirmación de resistencia ni un diagnóstico a partir de un solo síntoma."
+      },
+      "propagation": {
+        "short": "Siembra esporas maduras sobre una superficie limpia y húmeda; el ciclo del helecho es lento",
+        "guidance": "NC State Extension confirma que Asplenium nidus se reproduce por esporas. Para un método general de helechos, Iowa State recomienda recolectar esporas maduras y oscuras, espolvorearlas sobre la superficie de un medio de cultivo limpio y húmedo sin cubrirlas, y mantener el recipiente tapado, húmedo y con luz brillante indirecta. Su guía general indica 65–75 °F (18–24 °C) y señala que la germinación puede tardar de 2 a 8 semanas según la especie; las plantitas aparecen después de la fase de gametofito. Trasplanta cuando se formen varias frondas. Estos pasos y tiempos son orientación general para helechos, no un protocolo ni una garantía validados específicamente para A. nidus."
       }
     }
   },

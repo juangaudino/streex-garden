@@ -334,8 +334,8 @@
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       },
       "maintenance": {
-        "short": "Water through summer, control weeds and divide aging crowns",
-        "guidance": "UMN recommends thorough watering during the growing season, including after harvest, and careful weed control while plants establish. Divide older crowns in early spring as growth begins if the center becomes less productive; each division needs viable buds. Remove emerging flower stalks to redirect resources to vegetative growth. Leave healthy leaves in place after harvest so the crown can rebuild reserves.",
+        "short": "Water through summer and control weeds around the crown",
+        "guidance": "UMN recommends thorough watering during the growing season, including after harvest, and careful weed control while plants establish. Remove emerging flower stalks to redirect resources to vegetative growth. Leave healthy leaves in place after harvest so the crown can rebuild reserves.",
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
@@ -344,8 +344,7 @@
         "items": [
           "Water thoroughly during active growth, including after the main harvest.",
           "Control weeds carefully around the crown, particularly while the planting establishes.",
-          "Remove flower stalks as they appear when the aim is sustained vegetative growth.",
-          "Consider dividing an older, less productive crown in early spring; retain viable buds on each division."
+          "Remove flower stalks as they appear when the aim is sustained vegetative growth."
         ],
         "avoid": [
           "Removing healthy leaves after harvest when they are needed to replenish the crown."
@@ -388,6 +387,20 @@
         "avoid": [
           "Using leaf blades or roots as food.",
           "Confusing the leaf stalk (petiole) with the leaf blade."
+        ],
+        "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
+      },
+      "propagation": {
+        "short": "Divide an older, less productive crown in early spring",
+        "guidance": "UMN recommends dividing older crowns in early spring as growth begins when the center becomes less productive. Each division needs viable buds. This is crown division guidance; no seed-starting protocol is inferred here.",
+        "evidenceType": "source_backed",
+        "confidence": "high",
+        "sourceIds": [
+          "umn-rhubarb-home-wave29"
+        ],
+        "items": [
+          "Consider dividing an older, less productive crown in early spring as growth begins.",
+          "Retain viable buds on each division."
         ],
         "context": "This advice is limited to the cited species, crop or product scope; check local climate and cultivar."
       }

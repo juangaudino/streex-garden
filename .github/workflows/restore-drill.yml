@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       snapshot_date:
-        description: 'Snapshot UTC to restore (YYYY-MM-DD)'
+        description: 'Snapshot id from the backup manifest'
         required: true
-        default: '2026-09-08'
+        default: ''
         type: string
       confirmation:
-        description: 'Type RESTORE-YYYY-MM-DD to confirm the isolated drill'
+        description: 'Type RESTORE-<snapshot-id> to confirm the isolated drill'
         required: true
         type: string
 
@@ -19,18 +19,17 @@ permissions:
 jobs:
   restore:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 90
     env:
       SNAPSHOT_DATE: ${{ inputs.snapshot_date }}
       CONFIRMATION: ${{ inputs.confirmation }}
       RESTORE_TARGET_SUPABASE_DB_URL: ${{ secrets.RESTORE_TARGET_SUPABASE_DB_URL }}
-      RESTORE_TARGET_STORAGE_S3_ACCESS_KEY_ID: ${{ secrets.RESTORE_TARGET_STORAGE_S3_ACCESS_KEY_ID }}
-      RESTORE_TARGET_STORAGE_S3_SECRET_ACCESS_KEY: ${{ secrets.RESTORE_TARGET_STORAGE_S3_SECRET_ACCESS_KEY }}
-      RESTORE_TARGET_STORAGE_S3_ENDPOINT: ${{ secrets.RESTORE_TARGET_STORAGE_S3_ENDPOINT }}
-      RESTORE_TARGET_STORAGE_S3_REGION: ${{ secrets.RESTORE_TARGET_STORAGE_S3_REGION }}
-      R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
-      R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-      R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+      RESTORE_TARGET_PROJECT_REF: ${{ vars.RESTORE_TARGET_PROJECT_REF }}
+      SUPABASE_CONFIG_READ_TOKEN: ${{ secrets.SUPABASE_CONFIG_READ_TOKEN }}
+      BACKUP_R2_ACCESS_KEY_ID: ${{ secrets.BACKUP_R2_ACCESS_KEY_ID }}
+      BACKUP_R2_SECRET_ACCESS_KEY: ${{ secrets.BACKUP_R2_SECRET_ACCESS_KEY }}
+      BACKUP_R2_ENDPOINT: ${{ secrets.BACKUP_R2_ENDPOINT }}
+      BACKUP_R2_BUCKET: ${{ vars.BACKUP_R2_BUCKET }}
     steps:
       - uses: actions/checkout@v5
       - name: Install restore tools
@@ -39,65 +38,138 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          set +x
+          [[ "$SNAPSHOT_DATE" =~ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}-[0-9]{2}-[0-9]{2}Z-[0-9]+-[0-9]+$ ]]
           test "$CONFIRMATION" = "RESTORE-$SNAPSHOT_DATE"
           test -n "$RESTORE_TARGET_SUPABASE_DB_URL"
+          test -n "$SUPABASE_CONFIG_READ_TOKEN"
+          [[ "$RESTORE_TARGET_PROJECT_REF" =~ ^[a-z0-9]{20}$ ]]
+          [[ "$RESTORE_TARGET_SUPABASE_DB_URL" == *"$RESTORE_TARGET_PROJECT_REF"* ]]
           case "$RESTORE_TARGET_SUPABASE_DB_URL" in
-            *sabulxbfdimoqnbgnmso*) echo 'Refusing to restore into the production project.'; exit 1 ;;
+            *sabulxbfdimoqnbgnmso*|*fnhggqqnkhkrfwmnsqmy*) echo 'Refusing to restore into an OLD or Production project.'; exit 1 ;;
           esac
+          test "$BACKUP_R2_BUCKET" = 'streex-garden-backups'
+          test -n "$BACKUP_R2_ACCESS_KEY_ID"
+          test -n "$BACKUP_R2_SECRET_ACCESS_KEY"
+          test -n "$BACKUP_R2_ENDPOINT"
 
           workdir="$(mktemp -d)"
           trap 'rm -rf "$workdir"' EXIT
           cat > "$workdir/rclone.conf" <<EOF
-          [r2]
+          [backup]
           type = s3
           provider = Cloudflare
-          access_key_id = $R2_ACCESS_KEY_ID
-          secret_access_key = $R2_SECRET_ACCESS_KEY
-          endpoint = $R2_ENDPOINT
+          access_key_id = $BACKUP_R2_ACCESS_KEY_ID
+          secret_access_key = $BACKUP_R2_SECRET_ACCESS_KEY
+          endpoint = $BACKUP_R2_ENDPOINT
           region = auto
-          acl = private
           no_check_bucket = true
-          [restore]
-          type = s3
-          provider = Other
-          access_key_id = $RESTORE_TARGET_STORAGE_S3_ACCESS_KEY_ID
-          secret_access_key = $RESTORE_TARGET_STORAGE_S3_SECRET_ACCESS_KEY
-          endpoint = $RESTORE_TARGET_STORAGE_S3_ENDPOINT
-          region = $RESTORE_TARGET_STORAGE_S3_REGION
-          force_path_style = true
           EOF
+          chmod 600 "$workdir/rclone.conf"
           export RCLONE_CONFIG="$workdir/rclone.conf"
+          python3 "$GITHUB_WORKSPACE/scripts/write-libpq-service.py" restore "$workdir/pg_service.conf" RESTORE_TARGET_SUPABASE_DB_URL
+          cp "$GITHUB_WORKSPACE/scripts/garden-backup-fingerprint.sh" "$workdir/fingerprint.sh"
 
-          rclone copy "r2:streex-garden-backups/database/$SNAPSHOT_DATE" "$workdir/database"
-          rclone copy "r2:streex-garden-backups/manifests/$SNAPSHOT_DATE" "$workdir/manifest"
-          test -s "$workdir/database/database.dump"
-          test -s "$workdir/manifest/storage-manifest.json"
+          prefix="backup:$BACKUP_R2_BUCKET/snapshots/$SNAPSHOT_DATE"
+          mkdir -p "$workdir/snapshot"
+          rclone copyto "$prefix/database.dump" "$workdir/snapshot/database.dump"
+          rclone copyto "$prefix/database.dump.sha256" "$workdir/snapshot/database.dump.sha256"
+          rclone copyto "$prefix/backup-manifest.json" "$workdir/snapshot/backup-manifest.json"
+          rclone copyto "$prefix/auth-config.json" "$workdir/snapshot/auth-config.json"
+          rclone copyto "$prefix/auth-config.sha256" "$workdir/snapshot/auth-config.sha256"
+          test -s "$workdir/snapshot/database.dump"
+          test -s "$workdir/snapshot/database.dump.sha256"
+          test -s "$workdir/snapshot/backup-manifest.json"
+          test -s "$workdir/snapshot/auth-config.json"
+          test -s "$workdir/snapshot/auth-config.sha256"
+          (cd "$workdir/snapshot" && sha256sum --check database.dump.sha256)
+          (cd "$workdir/snapshot" && sha256sum --check auth-config.sha256)
+          jq -e --arg auth_sha "$(awk '{print $1}' "$workdir/snapshot/auth-config.sha256")" \
+            '.auth_config_sha256 == $auth_sha' "$workdir/snapshot/backup-manifest.json" >/dev/null
+          jq -e --arg snapshot "$SNAPSHOT_DATE" \
+            '.snapshot == $snapshot and .source_project_ref == "fnhggqqnkhkrfwmnsqmy" and .source_media_bucket == "garden-x-production-media"' \
+            "$workdir/snapshot/backup-manifest.json" >/dev/null
+          curl --fail --silent --show-error --max-time 30 \
+            -H "Authorization: Bearer $SUPABASE_CONFIG_READ_TOKEN" \
+            -H 'Accept: application/json' \
+            "https://api.supabase.com/v1/projects/$RESTORE_TARGET_PROJECT_REF/config/auth" \
+            -o "$workdir/target-auth-config.raw.json"
+          jq -S . "$workdir/target-auth-config.raw.json" | sha256sum | awk '{print $1}' > "$workdir/target-auth-config.sha256"
+          if ! test "$(awk '{print $1}' "$workdir/snapshot/auth-config.sha256")" = "$(cat "$workdir/target-auth-config.sha256")"; then
+            echo 'Isolated restore target Auth project settings do not match the independent snapshot.'
+            exit 1
+          fi
+          rclone copy "$prefix/media" "$workdir/restored-media"
+          rclone check --download --one-way "$prefix/media" "$workdir/restored-media"
+          jq -S '[.media_objects[] | {Path, Size}] | sort_by(.Path)' \
+            "$workdir/snapshot/backup-manifest.json" > "$workdir/expected-media.json"
+          rclone lsjson --recursive "$workdir/restored-media" | \
+            jq -S '[.[] | select(.IsDir != true) | {Path, Size}] | sort_by(.Path)' > "$workdir/restored-media.json"
+          diff -u "$workdir/expected-media.json" "$workdir/restored-media.json"
 
-          docker run --rm --network host postgres:17 \
-            psql "$RESTORE_TARGET_SUPABASE_DB_URL" --set ON_ERROR_STOP=1 \
+          docker run --rm --network host \
+            -v "$workdir:/restore" \
+            -e PGSERVICEFILE=/restore/pg_service.conf \
+            -e PGSERVICE=restore \
+            postgres:17 \
+            psql service=restore --set ON_ERROR_STOP=1 \
               --command "drop schema if exists garden cascade;"
 
           set +e
           docker run --rm --network host \
             -v "$workdir:/restore" \
+            -e PGSERVICEFILE=/restore/pg_service.conf \
+            -e PGSERVICE=restore \
             postgres:17 \
-            sh -ec "pg_restore --list /restore/database/database.dump | grep -v 'EVENT TRIGGER' > /restore/restore.list && pg_restore --use-list=/restore/restore.list --dbname \"$RESTORE_TARGET_SUPABASE_DB_URL\" --no-owner --no-privileges /restore/database/database.dump" \
+            sh -ec "pg_restore --list /restore/snapshot/database.dump | grep -v 'EVENT TRIGGER' > /restore/restore.list && pg_restore --use-list=/restore/restore.list --dbname=service=restore --no-owner /restore/snapshot/database.dump" \
             > "$workdir/pg-restore.log" 2>&1
           pg_restore_status=$?
           set -e
           if [ "$pg_restore_status" -ne 0 ]; then
-            echo 'pg_restore emitted expected platform-object conflicts; domain verification follows.'
-            cat "$workdir/pg-restore.log"
+            echo 'pg_restore reported conflicts; continuing only to compare the restored schema, privileges, row fingerprints, and media bytes with the snapshot.'
           fi
 
-          rclone mkdir "restore:garden-originals"
-          rclone copy "r2:streex-garden-backups/storage/$SNAPSHOT_DATE/garden-originals" "restore:garden-originals"
-          rclone lsjson --recursive "restore:garden-originals" > "$workdir/restored-storage-manifest.json"
+          docker run --rm --network host \
+            -v "$workdir:/restore" \
+            -e PGSERVICEFILE=/restore/pg_service.conf \
+            -e PGSERVICE=restore \
+            postgres:17 \
+            pg_dump service=restore --schema-only --schema=garden --schema=auth --no-owner \
+              --file=/restore/restored-domain-schema.sql
+          sed -e '/^-- PostgreSQL database dump$/d' \
+            -e '/^-- Dumped from database version /d' \
+            -e '/^-- Dumped by pg_dump version /d' \
+            -e '/^-- Dump completed on /d' \
+            "$workdir/restored-domain-schema.sql" | sha256sum | awk '{print $1}' > "$workdir/restored-domain-schema.sha256"
+          if ! jq -e --arg schema_sha256 "$(cat "$workdir/restored-domain-schema.sha256")" \
+            '.domain_schema_sha256 == $schema_sha256' "$workdir/snapshot/backup-manifest.json" >/dev/null; then
+            echo 'Restored garden/auth schema or privilege fingerprint does not match the snapshot.'
+            exit 1
+          fi
 
-          jq -S '[.[] | {Path, Size}] | sort_by(.Path)' "$workdir/manifest/storage-manifest.json" > "$workdir/source-files.json"
-          jq -S '[.[] | {Path, Size}] | sort_by(.Path)' "$workdir/restored-storage-manifest.json" > "$workdir/restored-files.json"
-          diff -u "$workdir/source-files.json" "$workdir/restored-files.json"
-
-          docker run --rm --network host postgres:17 \
-            psql "$RESTORE_TARGET_SUPABASE_DB_URL" --no-align --tuples-only --set ON_ERROR_STOP=1 \
-              --command "select 'gardens=' || count(*) from garden.gardens union all select 'photos=' || count(*) from garden.photos union all select 'storage_objects=' || count(*) from storage.objects where bucket_id = 'garden-originals';"
+          docker run --rm --network host \
+            -v "$workdir:/restore" \
+            -e PGSERVICEFILE=/restore/pg_service.conf \
+            -e PGSERVICE=restore \
+            postgres:17 \
+            psql service=restore --no-align --tuples-only --set ON_ERROR_STOP=1 \
+              --command "select json_build_object('gardens',(select count(*) from garden.gardens),'photos',(select count(*) from garden.photos),'auth_users',(select count(*) from auth.users));" \
+              > "$workdir/restored-domain-counts.json"
+          if ! jq -e --slurpfile actual "$workdir/restored-domain-counts.json" \
+            '.domain_counts == $actual[0]' "$workdir/snapshot/backup-manifest.json" >/dev/null; then
+            echo 'Restored garden/auth table counts do not match the snapshot.'
+            exit 1
+          fi
+          docker run --rm --network host \
+            -v "$workdir:/restore" \
+            -e PGSERVICEFILE=/restore/pg_service.conf \
+            -e PGSERVICE=restore \
+            postgres:17 bash /restore/fingerprint.sh restore /restore/pg_service.conf /restore/restored-domain-tables.tsv
+          jq -Rn '[inputs | split("\t") | {table:.[0], rows:(.[1]|tonumber), sha256:.[2]}]' \
+            < "$workdir/restored-domain-tables.tsv" > "$workdir/restored-domain-tables.json"
+          if ! jq -e --slurpfile actual "$workdir/restored-domain-tables.json" \
+            '.domain_tables == $actual[0]' "$workdir/snapshot/backup-manifest.json" >/dev/null; then
+            echo 'Restored garden/auth row fingerprints do not match the snapshot.'
+            exit 1
+          fi
+          echo 'Isolated garden/auth row fingerprints, counts, and restored media manifest match the snapshot.'

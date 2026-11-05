@@ -31,6 +31,7 @@ export type Mode = "recipe" | "target" | "adjust" | "topup";
 export type Provenance = "official" | "garden" | "measured" | "user";
 export type Evidence = Lowercase<EvidenceState>;
 export type EcUnit = "mS" | "uS";
+export type CalculatorCropStage = "UNSPECIFIED" | "SEEDLING" | "MIXED";
 export type CalculatorPlant = {
   id: string;
   emoji: string;
@@ -232,6 +233,7 @@ export type SavedSystem = {
   id: string;
   name: string;
   crops: Record<string, number>;
+  cropStages?: Record<string, CalculatorCropStage> | undefined;
   liters: number;
   productId: string;
   water: { label: Record<Lang, string>; ec: number };
@@ -249,6 +251,7 @@ export type SavedSystem = {
   capacityLiters?: number | null | undefined;
   waterAdded?: (number | null) | undefined;
   dosingResolutionMl?: number | undefined;
+  correctionFraction?: number | undefined;
   sourceEcKnown?: boolean | undefined;
 };
 
@@ -268,6 +271,10 @@ export function loadSavedSystems(): SavedSystem[] {
         id: item.id!,
         name: item.name!,
         crops: item.crops ?? {},
+        ...(item.cropStages ? { cropStages: item.cropStages } : {}),
+        ...(item.correctionFraction !== undefined
+          ? { correctionFraction: item.correctionFraction }
+          : {}),
         liters: item.liters ?? 1,
         productId: item.productId ?? "gh-flora",
         water: item.water ?? { label: { es: "Agua de origen", en: "Source water" }, ec: 0 },
@@ -302,6 +309,7 @@ export type CalcInput = {
   invalidFields?: string[] | undefined;
   mode: Mode;
   crops: Record<string, number>;
+  cropStages?: Record<string, CalculatorCropStage> | undefined;
   liters: number;
   productId: string;
   stageId: string;
@@ -315,6 +323,7 @@ export type CalcInput = {
   round: number;
   calibrationObservations?: CalibrationObservation[] | undefined;
   dosingResolutionMl?: number | undefined;
+  correctionFraction?: number | undefined;
 };
 
 export type CalcResult =
@@ -486,15 +495,24 @@ function evidenceLabel(state: EvidenceState): Evidence {
   return state.toLowerCase() as Evidence;
 }
 
-export function contextFor(crops: Record<string, number>, productId: string): CropContext[] {
+export function contextFor(
+  crops: Record<string, number>,
+  productId: string,
+  cropStages: Record<string, CalculatorCropStage> = {},
+): CropContext[] {
   const system = productId === "aerogarden" ? "COUNTERTOP_POD" : "GENERAL_HYDROPONIC";
-  return Object.keys(crops).map((id) => ({
-    cropIdentity: resolveNutrientCropIdentity(id) ?? id,
-    // A manufacturer feeding step is not evidence of plant phenology.
-    phenologicalStage: "UNSPECIFIED",
-    hydroponicSystem: system,
-    measurementScope: "NUTRIENT_SOLUTION",
-  }));
+  return Object.keys(crops).flatMap((id): CropContext[] =>
+    (cropStages[id] === "MIXED"
+      ? (["UNSPECIFIED", "SEEDLING"] as const)
+      : ([cropStages[id] ?? "UNSPECIFIED"] as const)
+    ).map((stage) => ({
+      cropIdentity: resolveNutrientCropIdentity(id) ?? id,
+      // A manufacturer feeding step is not evidence of plant phenology.
+      phenologicalStage: stage,
+      hydroponicSystem: system,
+      measurementScope: "NUTRIENT_SOLUTION",
+    })),
+  );
 }
 
 function noteFor(state: EvidenceState): Record<Lang, string> {
@@ -691,6 +709,19 @@ function presentationMessage(message: string, lang: Lang): string {
     ["el EC que mediste", "the EC you measured"],
     ["cuántos litros quedan", "the actual liters remaining"],
     ["cuánta agua añadiste", "the replacement water amount"],
+    ["cuánta agua planeas añadir", "how much water you plan to add"],
+    [
+      "Registra una calibración específica de este producto para calcular la dosis de nutrientes.",
+      "A product-specific calibration is required to calculate nutrient addition.",
+    ],
+    [
+      "La primera dosis parcial es una estrategia experimental; mezcla, espera una lectura estable y vuelve a medir antes de continuar.",
+      "A partial first dose is an experimental operating policy; mix, stabilize and remeasure before continuing.",
+    ],
+    [
+      "La mezcla lineal de EC es una aproximación; vuelve a medir después de mezclar.",
+      "This linear EC mixing model is an approximation; remeasure after mixing.",
+    ],
     [
       "No hay evidencia EC aplicable y comparable para todos los cultivos. Elige un objetivo explícito solo si puedes justificarlo.",
       "No applicable comparable crop EC evidence is available.",
@@ -779,7 +810,7 @@ function calculateResult(input: CalcInput): CalcResult {
     return engineNeeds(
       "Use finite non-negative EC measurements and positive volume/target values.",
     );
-  const contexts = contextFor(input.crops, input.productId);
+  const contexts = contextFor(input.crops, input.productId, input.cropStages);
   const compatibility = calculatePolycultureRange(contexts, CROP_EVIDENCE);
   const range = rangeFor(contexts);
   if (input.mode !== "recipe" && contexts.length === 0) {
@@ -960,7 +991,10 @@ function calculateResult(input: CalcInput): CalcResult {
       reservoirVolumeL: input.currentLiters,
       reservoirCapacityL: input.capacityLiters ?? undefined,
       calibration: calibrationModel,
-      policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl },
+      policy: {
+        dosingEquipmentResolutionMl: input.dosingResolutionMl,
+        firstStepFraction: input.correctionFraction,
+      },
     });
     if (!correction.ok || !correction.value)
       return engineNeeds(correction.errors[0]?.message ?? "No se pudo calcular la corrección.", {
@@ -976,9 +1010,15 @@ function calculateResult(input: CalcInput): CalcResult {
               input.productId,
               input.stageId,
               input.pods,
-              value.doseMl,
+              value.firstStepDoseMl ?? value.doseMl,
               calibrationModel,
-            ) ?? [{ label: "Mezcla nutritiva", amount: value.doseMl, unit: "mL" as const }])
+            ) ?? [
+              {
+                label: "Mezcla nutritiva",
+                amount: value.firstStepDoseMl ?? value.doseMl,
+                unit: "mL" as const,
+              },
+            ])
           : [];
     return {
       kind: "ok",
@@ -1000,11 +1040,14 @@ function calculateResult(input: CalcInput): CalcResult {
       ],
       compatibility,
       warnings: correction.warnings.map((item) => item.message),
-      expectedEc: {
-        kind: "calculated",
-        min: targetValue,
-        max: targetValue,
-      },
+      expectedEc:
+        value.firstStepDoseMl === undefined
+          ? {
+              kind: "calculated",
+              min: targetValue,
+              max: targetValue,
+            }
+          : undefined,
     };
   }
 
@@ -1085,6 +1128,27 @@ function applicableCalibration(
     // Old observations without actual per-component amounts cannot prove a mixture.
     observations: matching,
   });
+}
+
+export function calibrationUsage(
+  input: Pick<CalcInput, "productId" | "stageId" | "liters" | "pods" | "calibrationObservations">,
+): { used: number; recorded: number } {
+  const identity = productIdentity(input.productId);
+  const signature = recipeSignatureFor(input.productId, input.stageId, input.liters, input.pods);
+  const recorded = input.calibrationObservations?.length ?? 0;
+  if (!identity || !signature) return { used: 0, recorded };
+  const observations = input.calibrationObservations ?? [];
+  const matching = observations.filter(
+    (item) => item.recipeContextSignature === signature && item.componentDosesMl,
+  );
+  const latest = matching.at(-1);
+  const model = buildCalibrationModel({
+    productIdentity: identity,
+    formulationVersion: identity.formulationVersion,
+    recipeSignature: latest?.componentRatioOrRecipeSignature ?? signature,
+    observations: matching,
+  });
+  return { used: model.value?.observations.length ?? 0, recorded };
 }
 
 export function recordActualDoses(input: {

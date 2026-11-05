@@ -17,6 +17,7 @@ import {
   CALCULATOR_STAGES,
   buildCropEvidenceCoverage,
   calculateGardenResult,
+  calibrationUsage,
   hasApplicableCropNutrientEvidence,
   loadSavedSystems,
   persistSavedSystems,
@@ -26,6 +27,35 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("reports which observations actually apply to the latest measured component ratio", () => {
+    const base = {
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1.0,
+    };
+    const first = recordActualDoses({ ...base, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
+    const second = recordActualDoses({
+      ...base,
+      actualDoses: { micro: "8", gro: "6", bloom: "4" },
+    });
+    const different = recordActualDoses({
+      ...base,
+      actualDoses: { micro: "5", gro: "3", bloom: "2" },
+    });
+    const sameUsage = calibrationUsage({
+      ...base,
+      calibrationObservations: [first.value!, second.value!],
+    });
+    const mixedUsage = calibrationUsage({
+      ...base,
+      calibrationObservations: [first.value!, second.value!, different.value!],
+    });
+    expect(sameUsage).toEqual({ used: 2, recorded: 2 });
+    expect(mixedUsage).toEqual({ used: 1, recorded: 3 });
+  });
   it("uses the complete canonical identity catalog", () => {
     expect(donorPlants.length).toBeGreaterThanOrEqual(500);
     expect(CALCULATOR_PLANTS).toHaveLength(donorPlants.length);
@@ -447,6 +477,40 @@ describe("Gardenpedia Calculator V1 integration", () => {
     if (nutrient.kind === "needs") expect(nutrient.calibrationRequired).toBe(true);
   });
 
+  it("uses crop evidence for mixed systems and refuses to infer a seedling range", () => {
+    const base = {
+      mode: "target" as const,
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    };
+    const shared = calculateGardenResult({
+      ...base,
+      crops: { "bibb-lettuce": 1, "genovese-basil": 1 },
+    });
+    expect(shared.compatibility?.status).toBe("COMMON_OPTIMUM_RANGE");
+    expect(shared.range).toMatchObject({ min: 1.2, max: 1.6 });
+    const conflict = calculateGardenResult({
+      ...base,
+      crops: { "bibb-lettuce": 1, "cherry-tomato": 1 },
+    });
+    expect(conflict.compatibility?.status).toBe("NO_COMMON_OPTIMUM_RANGE");
+    const seedlings = calculateGardenResult({
+      ...base,
+      crops: { "bibb-lettuce": 2 },
+      cropStages: { "bibb-lettuce": "MIXED" },
+    });
+    expect(seedlings.compatibility?.status).toBe("INSUFFICIENT");
+    expect(seedlings.range).toBeUndefined();
+  });
+
   it("changes correction and top-up outputs when measured reservoir state changes", () => {
     const observation = recordActualDoses({
       productId: "gh-flora",
@@ -480,6 +544,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
       mode: "adjust",
       currentEc: 1.0,
     });
+    const partial = calculateGardenResult({
+      ...base,
+      mode: "adjust",
+      currentEc: 0.8,
+      correctionFraction: 0.5,
+    });
     const topupSmall = calculateGardenResult({
       ...base,
       mode: "topup",
@@ -494,6 +564,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
     });
     expect(correctionLow.kind).toBe("ok");
     expect(correctionHigh.kind).toBe("ok");
+    expect(partial.kind).toBe("ok");
+    if (partial.kind === "ok" && correctionLow.kind === "ok") {
+      expect(partial.doses[0]!.amount).toBeCloseTo(correctionLow.doses[0]!.amount / 2);
+      expect(partial.expectedEc).toBeUndefined();
+      expect(partial.warnings?.some((warning) => warning.includes("parcial"))).toBe(true);
+    }
     expect(topupSmall.kind).toBe("ok");
     expect(topupLarge.kind).toBe("ok");
     if (

@@ -30,6 +30,7 @@ import {
   CALCULATOR_PLANTS,
   CALCULATOR_PRODUCTS,
   calculateGardenResult,
+  calibrationUsage,
   calculatorSourceUrl,
   loadSavedSystems,
   manufacturerDoseDefaults,
@@ -37,6 +38,7 @@ import {
   recipeStageLabel,
   recordActualDoses,
   type CalcResult,
+  type CalculatorCropStage,
   type EcUnit,
   type Evidence,
   type Lang,
@@ -74,6 +76,10 @@ const T = {
     currentLitersBeforeTopup: "Litros antes de rellenar",
     currentEcBeforeTopup: "EC antes de rellenar",
     waterAdded: "Agua que vas a añadir",
+    fillToCapacity: "Calcular agua hasta la capacidad",
+    correctionStep: "Primera dosis de corrección",
+    correctionStepNote:
+      "Estrategia ajustable, no una regla científica. Mezcla y vuelve a medir antes de continuar.",
     more: "Más ajustes",
     unit: "Unidad EC",
     sourceEc: "EC del agua de origen",
@@ -144,7 +150,7 @@ const T = {
     calibrationSave: "Guardar calibración",
     calibrationInvalid: "Revisa las mediciones y las dosis reales antes de guardar.",
     calibrationStorageError: "No se pudo guardar la calibración en este dispositivo.",
-    learned: (n: number) => `Garden ajustó este sistema · ${n} lecturas`,
+    learned: (n: number) => `${n} lecturas aplicables a esta mezcla`,
     learnedNew:
       "Medición guardada. Garden usará la respuesta de esta mezcla; vuelve a medir después de dosificar.",
     round: "Ronda",
@@ -189,6 +195,10 @@ const T = {
     currentLitersBeforeTopup: "Liters before top-up",
     currentEcBeforeTopup: "EC before top-up",
     waterAdded: "Water to add",
+    fillToCapacity: "Calculate water to capacity",
+    correctionStep: "First correction dose",
+    correctionStepNote:
+      "Adjustable strategy, not a scientific rule. Mix and measure again before continuing.",
     more: "More settings",
     unit: "EC unit",
     sourceEc: "Source-water EC",
@@ -258,7 +268,7 @@ const T = {
     calibrationSave: "Save calibration",
     calibrationInvalid: "Check the measurements and actual doses before saving.",
     calibrationStorageError: "Calibration could not be saved on this device.",
-    learned: (n: number) => `Garden tuned this system · ${n} readings`,
+    learned: (n: number) => `${n} readings apply to this mixture`,
     learnedNew:
       "Measurement saved. Garden will use this mixture's response; remeasure after dosing.",
     round: "Round",
@@ -336,7 +346,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [plantQuery, setPlantQuery] = useState("");
   const [mode, setMode] = useState<Mode>("recipe");
   const [crops, setCrops] = useState(sys.crops);
+  const [cropStages, setCropStages] = useState<Record<string, CalculatorCropStage>>(
+    sys.cropStages ?? {},
+  );
   const [liters, setLiters] = useState(sys.liters);
+  const [volumeInput, setVolumeInput] = useState(String(sys.liters));
   const [productId, setProductId] = useState(sys.productId);
   const [stageId, setStageId] = useState(QUICK.stageId);
   const [pods, setPods] = useState(QUICK.pods);
@@ -353,23 +367,29 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [calibrationError, setCalibrationError] = useState("");
   const [saveError, setSaveError] = useState("");
   const [dosingResolutionInput, setDosingResolutionInput] = useState("0.5");
+  const [correctionStepInput, setCorrectionStepInput] = useState("50");
   const dosingResolutionMl = parseDecimalInput(dosingResolutionInput) ?? 0;
   const [round, setRound] = useState(1);
-  const [learnedCount, setLearnedCount] = useState(
-    sys.calibration?.readings ?? sys.calibrationObservations?.length ?? 0,
-  );
   const [justLearned, setJustLearned] = useState(false);
   const [calibrationObservations, setCalibrationObservations] = useState<
     import("@/lib/garden-nutrient-engine-v1").CalibrationObservation[]
   >(() => loadQuickCalibrationObservations());
 
   const product = CALCULATOR_PRODUCTS.find((p) => p.id === productId) ?? CALCULATOR_PRODUCTS[0]!;
+  const calibrationCounts = calibrationUsage({
+    productId,
+    stageId,
+    liters,
+    pods,
+    calibrationObservations,
+  });
 
   const pick = (selection: SavedSystem) => {
     if (sys.id === "quick")
       quickDraft.current = {
         ...sys,
         crops,
+        cropStages,
         liters,
         productId,
         stageId,
@@ -382,6 +402,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         capacityLiters: parseDecimalInput(capacityInput),
         waterAdded: parseDecimalInput(waterAdded),
         dosingResolutionMl,
+        correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
         water: { ...sys.water, ec: sourceEc },
         sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
         calibrationObservations,
@@ -389,7 +410,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     const s = selection.id === "quick" ? quickDraft.current : selection;
     setSys(s);
     setCrops(s.crops);
+    setCropStages(s.cropStages ?? {});
     setLiters(s.liters);
+    setVolumeInput(String(s.liters));
     setProductId(s.productId);
     setStageId(s.stageId);
     setPods(s.pods);
@@ -408,11 +431,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setCapacityInput(s.capacityLiters == null ? "" : String(s.capacityLiters));
     setWaterAdded(s.waterAdded == null ? "" : String(s.waterAdded));
     setDosingResolutionInput(String(s.dosingResolutionMl ?? 0.5));
+    setCorrectionStepInput(String((s.correctionFraction ?? 0.5) * 100));
     setRound(1);
     const observations =
       s.id === "quick" ? loadQuickCalibrationObservations() : (s.calibrationObservations ?? []);
     setCalibrationObservations(observations);
-    setLearnedCount(s.calibration?.readings ?? observations.length);
     setJustLearned(false);
     setCalibrationOpen(true);
   };
@@ -426,6 +449,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       id: sys.id === "quick" ? localId : sys.id,
       name: saveName.trim(),
       crops: { ...crops },
+      cropStages: { ...cropStages },
       liters,
       productId,
       stageId,
@@ -441,6 +465,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       capacityLiters: parseDecimalInput(capacityInput),
       waterAdded: parseDecimalInput(waterAdded),
       dosingResolutionMl,
+      correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
       calibration: calibrationObservations.length
         ? { learned: 0, readings: calibrationObservations.length }
         : undefined,
@@ -515,11 +540,10 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     observation: import("@/lib/garden-nutrient-engine-v1").CalibrationObservation,
   ) => {
     const nextObservations = [...calibrationObservations, observation];
-    setCalibrationObservations(nextObservations);
-    setLearnedCount(nextObservations.length);
     const snapshot: SavedSystem = {
       ...sys,
       crops: { ...crops },
+      cropStages: { ...cropStages },
       liters,
       productId,
       stageId,
@@ -535,9 +559,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       capacityLiters: parseDecimalInput(capacityInput),
       waterAdded: parseDecimalInput(waterAdded),
       dosingResolutionMl,
+      correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
       calibration: { learned: 0, readings: nextObservations.length },
     };
-    setSys(snapshot);
     if (sys.id === "quick") {
       try {
         window.localStorage.setItem(
@@ -558,6 +582,8 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       }
       setSavedSystems(nextSystems);
     }
+    setCalibrationObservations(nextObservations);
+    setSys(snapshot);
     setCalibrationOpen(false);
     setCalibrationError("");
     setJustLearned(true);
@@ -579,6 +605,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         language: lang,
         mode,
         crops,
+        cropStages,
         liters,
         productId,
         stageId,
@@ -592,19 +619,33 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         round,
         calibrationObservations,
         dosingResolutionMl,
+        correctionFraction: (parseDecimalInput(correctionStepInput) ?? 0) / 100,
         invalidFields: [
+          ...((mode === "recipe" && product.basis === "liters") || mode === "target"
+            ? parseDecimalInput(volumeInput) === null || (parseDecimalInput(volumeInput) ?? 0) <= 0
+              ? [t.volume]
+              : []
+            : []),
           ...(mode !== "recipe" && parseDecimalInput(sourceEcInput) === null ? [t.sourceEc] : []),
           ...(targetEdited && (userTarget === null || userTarget <= 0) && mode !== "recipe"
             ? [t.targetEc]
             : []),
           ...(dosingResolutionMl <= 0 ? [t.dosing] : []),
+          ...(mode === "adjust" &&
+          ((parseDecimalInput(correctionStepInput) ?? 0) <= 0 ||
+            (parseDecimalInput(correctionStepInput) ?? 0) > 100)
+            ? [t.correctionStep]
+            : []),
         ],
       }),
     [
       lang,
       mode,
       crops,
+      cropStages,
       liters,
+      volumeInput,
+      product.basis,
       productId,
       stageId,
       pods,
@@ -617,6 +658,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       round,
       calibrationObservations,
       dosingResolutionMl,
+      correctionStepInput,
       sourceEcInput,
       targetEdited,
       t,
@@ -723,13 +765,38 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     />
                   )}
                   {mode === "topup" && (
-                    <Field
-                      label={t.waterAdded}
-                      suffix="L"
-                      value={waterAdded}
-                      onChange={setWaterAdded}
-                      placeholder="3.5"
-                    />
+                    <div>
+                      <Field
+                        label={t.waterAdded}
+                        suffix="L"
+                        value={waterAdded}
+                        onChange={setWaterAdded}
+                        placeholder="1.0"
+                      />
+                      <button
+                        type="button"
+                        className="mt-2 text-xs underline"
+                        disabled={
+                          parseDecimalInput(capacityInput) === null ||
+                          parseDecimalInput(currentLiters) === null ||
+                          (parseDecimalInput(capacityInput) ?? 0) <
+                            (parseDecimalInput(currentLiters) ?? 0)
+                        }
+                        onClick={() => {
+                          const capacity = parseDecimalInput(capacityInput);
+                          const current = parseDecimalInput(currentLiters);
+                          if (capacity !== null && current !== null && capacity >= current)
+                            setWaterAdded(String(Number((capacity - current).toFixed(6))));
+                        }}
+                      >
+                        {t.fillToCapacity}
+                      </button>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {lang === "es"
+                          ? "Si necesitas nutrientes, deja espacio para su volumen o reduce el agua."
+                          : "If nutrients are needed, leave room for their volume or reduce the water."}
+                      </p>
+                    </div>
                   )}
                   <Field
                     label={mode === "topup" ? t.currentEcBeforeTopup : t.currentEc}
@@ -743,6 +810,17 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     highlight={mode === "adjust"}
                     className={mode === "adjust" ? "sm:col-span-3" : ""}
                   />
+                  {mode === "adjust" && (
+                    <div>
+                      <Field
+                        label={t.correctionStep}
+                        suffix="%"
+                        value={correctionStepInput}
+                        onChange={setCorrectionStepInput}
+                      />
+                      <p className="mt-1 text-xs text-muted-foreground">{t.correctionStepNote}</p>
+                    </div>
+                  )}
                 </div>
               )}
               {mode !== "recipe" || product.basis === "liters" ? (
@@ -759,8 +837,31 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           <span className="text-lg" aria-hidden>
                             {c.emoji}
                           </span>
-                          <span className="min-w-0 flex-1 truncate text-sm font-medium">
-                            {c.name[lang]}
+                          <span className="min-w-0 flex-1 text-sm font-medium">
+                            <span className="block truncate">{c.name[lang]}</span>
+                            <select
+                              aria-label={`${lang === "es" ? "Etapa de" : "Stage of"} ${c.name[lang]}`}
+                              value={cropStages[id] ?? "UNSPECIFIED"}
+                              onChange={(event) =>
+                                setCropStages({
+                                  ...cropStages,
+                                  [id]: event.target.value as CalculatorCropStage,
+                                })
+                              }
+                              className="max-w-full bg-transparent text-xs font-normal"
+                            >
+                              <option value="UNSPECIFIED">
+                                {lang === "es" ? "Etapa no especificada" : "Stage unspecified"}
+                              </option>
+                              <option value="SEEDLING">
+                                {lang === "es" ? "Plántula" : "Seedling"}
+                              </option>
+                              <option value="MIXED">
+                                {lang === "es"
+                                  ? "Plántulas y otras etapas"
+                                  : "Seedlings and other stages"}
+                              </option>
+                            </select>
                           </span>
                           <Stepper
                             value={crops[id]!}
@@ -771,6 +872,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                             onClick={() => {
                               const { [id]: _, ...r } = crops;
                               setCrops(r);
+                              setCropStages((current) => {
+                                const next = { ...current };
+                                delete next[id];
+                                return next;
+                              });
                             }}
                             className="grid h-8 w-8 place-items-center text-muted-foreground"
                           >
@@ -780,6 +886,13 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       );
                     })}
                   </ul>
+                  {Object.keys(crops).length > 0 && (
+                    <p className="mt-2 text-xs text-muted-foreground">
+                      {lang === "es"
+                        ? "Indica si hay plántulas: la edad en días no determina por sí sola una etapa ni un EC adecuado."
+                        : "Indicate whether seedlings are present: age in days alone does not determine stage or a suitable EC."}
+                    </p>
+                  )}
                   <button
                     type="button"
                     onClick={() => {
@@ -856,21 +969,40 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 <Block title={t.volume}>
                   <div className="flex flex-wrap gap-1.5">
                     {LITERS.map((l) => (
-                      <Chip key={l} active={liters === l} onClick={() => setLiters(l)}>
+                      <Chip
+                        key={l}
+                        active={liters === l && parseDecimalInput(volumeInput) === l}
+                        onClick={() => {
+                          setLiters(l);
+                          setVolumeInput(String(l));
+                        }}
+                      >
                         {l} L
                       </Chip>
                     ))}
                     <Input
                       type="number"
                       inputMode="decimal"
-                      min={0.5}
-                      step={0.5}
+                      min={0.001}
+                      step="any"
                       aria-label={t.volume}
-                      value={liters}
-                      onChange={(e) => setLiters(Math.max(0.1, Number(e.target.value) || 0.1))}
+                      value={volumeInput}
+                      onChange={(e) => {
+                        setVolumeInput(e.target.value);
+                        const value = parseDecimalInput(e.target.value);
+                        if (value !== null && value > 0) setLiters(value);
+                      }}
                       className="h-10 w-20"
                     />
+                    <span className="self-center text-sm">L</span>
                   </div>
+                  {parseDecimalInput(volumeInput) !== null &&
+                    (parseDecimalInput(volumeInput) ?? 0) > 0 && (
+                      <p className="mt-2 text-xs text-muted-foreground">
+                        {lang === "es" ? "Equivale a" : "Equivalent to"}{" "}
+                        {Number(((parseDecimalInput(volumeInput) ?? 0) * 1000).toFixed(3))} mL
+                      </p>
+                    )}
                 </Block>
               ) : null}
 
@@ -1004,6 +1136,20 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
 
             {/* Result */}
             <section className="space-y-4" aria-live="polite">
+              {mode !== "recipe" && calibrationObservations.length > 0 && (
+                <p className="text-xs text-muted-foreground">
+                  {lang === "es"
+                    ? `Calibración: ${calibrationCounts.used} de ${calibrationCounts.recorded} lecturas guardadas se aplican a esta formulación y proporción. Proporciones distintas no se mezclan.`
+                    : `Calibration: ${calibrationCounts.used} of ${calibrationCounts.recorded} saved readings apply to this formulation and ratio. Different ratios are not combined.`}
+                </p>
+              )}
+              {result.compatibility?.status === "NO_COMMON_OPTIMUM_RANGE" && (
+                <p className="rounded-lg border border-amber-500/60 p-3 text-sm">
+                  {lang === "es"
+                    ? "Los rangos publicados no se solapan. Considera separar los cultivos; un objetivo elegido no convierte esos rangos en compatibles."
+                    : "The reported ranges do not overlap. Consider separating the crops; a selected target does not make the ranges overlap."}
+                </p>
+              )}
               {result.kind === "needs" ? (
                 <div className="glass-panel p-6">
                   <p className="eyebrow">{t.now}</p>
@@ -1011,13 +1157,6 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   {result.message ? (
                     <p className="mt-3 text-sm text-muted-foreground">{result.message}</p>
                   ) : null}
-                  {result.compatibility?.status === "NO_COMMON_OPTIMUM_RANGE" && (
-                    <p className="mt-3 text-sm">
-                      {lang === "es"
-                        ? "Los rangos publicados no se solapan. Separa los cultivos o define un objetivo explícito; Garden no inventa un rango común."
-                        : "The reported ranges do not overlap. Separate the crops or select an explicit target; Garden does not invent a common range."}
-                    </p>
-                  )}
                   {result.calibrationRequired && product.basis === "liters" && (
                     <Button
                       className="mt-4 h-11 w-full"
@@ -1259,7 +1398,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         system={sys}
                         productId={productId}
                         recommendedDoses={result.doses}
-                        learnedCount={learnedCount}
+                        learnedCount={calibrationCounts.used}
                         justLearned={justLearned}
                         requireMeasuredBaseline={mode === "recipe" || mode === "topup"}
                         onLearn={(ec, actualDoses, baseline) => {

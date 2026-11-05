@@ -22,6 +22,38 @@ describe("Calculator real control interactions", () => {
   beforeEach(() => window.localStorage.clear());
   afterEach(() => cleanup());
 
+  it("accepts a small single-plant volume and calculates planned water to capacity", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    const volume = screen.getByLabelText("Reservoir volume") as HTMLInputElement;
+    await user.clear(volume);
+    await user.type(volume, "0.25");
+    expect(volume.value).toBe("0.25");
+    await user.click(screen.getByRole("tab", { name: "Top up" }));
+    await user.type(screen.getByLabelText(/^Reservoir capacity/), "3.5");
+    await user.type(screen.getByLabelText(/^Liters before top-up/), "2.5");
+    await user.click(screen.getByRole("button", { name: "Calculate water to capacity" }));
+    expect((screen.getByLabelText(/^Water to add/) as HTMLInputElement).value).toBe("1");
+  });
+
+  it("keeps a seedling indication with a saved local system", async () => {
+    const user = userEvent.setup();
+    const first = render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.selectOptions(screen.getByLabelText("Stage of Genovese Basil"), "MIXED");
+    await user.click(screen.getByRole("button", { name: "Save as system" }));
+    await user.type(screen.getByRole("textbox", { name: "System name" }), "Seedlings");
+    await user.click(screen.getByRole("button", { name: /^Save$/ }));
+    first.unmount();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByText("Seedlings", { exact: true }));
+    expect((screen.getByLabelText("Stage of Genovese Basil") as HTMLSelectElement).value).toBe(
+      "MIXED",
+    );
+  });
+
   it("restores target, mode, measured state, source water, equipment and actual calibration after reload", async () => {
     const user = userEvent.setup();
     const first = render(<CalculatorPage language="en" />);

@@ -240,7 +240,18 @@ export function calculatePolycultureRange(
   observations: EvidenceObservation[] = CROP_EVIDENCE,
 ): PolycultureRange {
   const unique = Array.from(
-    new Map(contexts.map((context) => [context.cropIdentity, context])).values(),
+    new Map(
+      contexts.map((context) => [
+        JSON.stringify([
+          context.cropIdentity,
+          context.cultivar ?? null,
+          context.phenologicalStage ?? "UNSPECIFIED",
+          context.hydroponicSystem ?? "UNKNOWN",
+          context.measurementScope ?? "UNKNOWN",
+        ]),
+        context,
+      ]),
+    ).values(),
   );
   const cropRanges = unique.map((context) => selectCropRange(context, observations).ec);
   const valid = cropRanges.filter((range) => range.ec && range.evidenceState !== "CONFLICTING");
@@ -922,9 +933,16 @@ export function buildCalibrationModel(input: {
       [],
     );
   const factor = median(ratios);
+  // Compare observations at a common one-liter volume. Raw EC per mL
+  // naturally differs across reservoirs even when the response is identical.
+  const normalizedFactor = median(
+    applicable.map((item) => (item.deltaEc * item.reservoirVolumeL) / item.doseAppliedMl),
+  );
   const potentialOutlierIds = applicable
     .filter(
-      (item) => Math.abs(item.deltaEc / item.doseAppliedMl - factor) > Math.max(factor * 0.5, 0.05),
+      (item) =>
+        Math.abs((item.deltaEc * item.reservoirVolumeL) / item.doseAppliedMl - normalizedFactor) >
+        Math.max(normalizedFactor * 0.5, 0.05),
     )
     .map((item) => item.id);
   const model: CalibrationModel = {

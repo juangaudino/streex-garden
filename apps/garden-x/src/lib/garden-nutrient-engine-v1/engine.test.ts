@@ -58,6 +58,47 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("does not flag equal calibrated responses as outliers merely because tank volumes differ", () => {
+    const { product, observations } = calibrationInput();
+    const sample = observations[0]!;
+    const scaled = [
+      {
+        ...sample,
+        id: "one-liter",
+        reservoirVolumeL: 1,
+        doseAppliedMl: 1,
+        deltaEc: 1,
+        resultingEc: sample.baselineEc + 1,
+      },
+      {
+        ...sample,
+        id: "ten-liters",
+        reservoirVolumeL: 10,
+        doseAppliedMl: 1,
+        deltaEc: 0.1,
+        resultingEc: sample.baselineEc + 0.1,
+      },
+    ];
+    const result = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: sample.componentRatioOrRecipeSignature,
+      observations: scaled,
+    });
+    expect(result.value?.potentialOutlierIds).toEqual([]);
+    expect(result.value?.observations).toHaveLength(2);
+  });
+  it("preserves different stages of the same crop regardless of input order", () => {
+    const seedling: CropContext = { ...basil, phenologicalStage: "SEEDLING" };
+    for (const contexts of [
+      [basil, seedling],
+      [seedling, basil],
+    ]) {
+      const result = calculatePolycultureRange(contexts);
+      expect(result.status).toBe("INSUFFICIENT");
+      expect(result.cropRanges).toHaveLength(2);
+    }
+  });
   it("does not apply unspecified crop evidence to an explicit seedling stage", () => {
     const result = calculateFreshTargetEc({
       contexts: [{ ...basil, phenologicalStage: "SEEDLING" }],

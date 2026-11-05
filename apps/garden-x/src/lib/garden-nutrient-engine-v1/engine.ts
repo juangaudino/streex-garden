@@ -1043,7 +1043,7 @@ export function calculateEcCorrection(input: {
   targetEc: number;
   reservoirVolumeL: number;
   reservoirCapacityL?: number | undefined;
-  calibration: CalibrationModel;
+  calibration?: CalibrationModel | undefined;
   policy?: EnginePolicy | undefined;
 }): EngineResult<CorrectionResult> {
   const warnings: EngineWarning[] = [];
@@ -1072,29 +1072,9 @@ export function calculateEcCorrection(input: {
       ],
       [],
     );
-  const factorAtVolume = calibrationResponseAtVolume(input.calibration, input.reservoirVolumeL);
-  if (!Number.isFinite(factorAtVolume) || factorAtVolume <= 0)
-    return result(
-      undefined,
-      [],
-      [
-        error(
-          "CALIBRATION_INVALID",
-          "A measured positive response is required for this solution volume.",
-        ),
-      ],
-      [],
-    );
   const claims: Claim[] = [
     claim("current-ec", "Measured current EC", "USER_SELECTED", [], { value: currentEc }),
     claim("target-ec", "Selected EC target", "USER_SELECTED", [], { value: input.targetEc }),
-    claim(
-      "calibration-factor",
-      "Calibration factor",
-      "USER_CALIBRATION",
-      input.calibration.observations.map((item) => item.id),
-      { value: factorAtVolume },
-    ),
   ];
   if (input.dilutionWaterEc)
     claims.push(
@@ -1127,7 +1107,7 @@ export function calculateEcCorrection(input: {
         mode: "EC_CORRECTION",
         direction: "NO_CHANGE",
         requiresRemeasurement: true,
-        evidenceState: input.calibration.evidenceState,
+        evidenceState: input.calibration?.evidenceState ?? "INSUFFICIENT",
         warnings,
         claims,
       },
@@ -1135,44 +1115,32 @@ export function calculateEcCorrection(input: {
       [],
       claims,
     );
-  const doseMl = Math.abs(difference) / factorAtVolume;
-  if (!Number.isFinite(doseMl))
-    return result(
-      undefined,
-      [],
-      [error("ARITHMETIC_OVERFLOW", "These values exceed numeric calculation limits.")],
-      [],
-    );
-  if (
-    doseMl < input.calibration.validCalibrationRange.minDoseMl ||
-    doseMl > input.calibration.validCalibrationRange.maxDoseMl ||
-    input.reservoirVolumeL < input.calibration.validCalibrationRange.minVolumeL ||
-    input.reservoirVolumeL > input.calibration.validCalibrationRange.maxVolumeL
-  )
-    warnings.push(
-      warning(
-        "CALIBRATION_EXTRAPOLATION",
-        "The correction dose is outside the validated calibration range.",
-        ["calibration-factor"],
-        "ENGINE_INFERENCE",
-      ),
-    );
-  const resolution = input.policy?.dosingEquipmentResolutionMl;
-  if (resolution !== undefined && doseMl > 0 && doseMl < resolution)
-    warnings.push(
-      warning(
-        "DOSE_BELOW_EQUIPMENT_RESOLUTION",
-        "The required dose is positive but below the configured dosing resolution.",
-        ["current-ec", "target-ec"],
-      ),
-    );
   if (difference < 0) {
+    if (!input.dilutionWaterEc)
+      return result(
+        undefined,
+        [],
+        [
+          error(
+            "SOURCE_WATER_EC_REQUIRED",
+            "Measure the dilution water EC before calculating dilution.",
+          ),
+        ],
+        claims,
+      );
     const dilutionWaterEc = input.dilutionWaterEc
       ? toMsPerCm(
           input.dilutionWaterEc.value,
           input.dilutionWaterEc.unit === "pH" ? "mS/cm" : input.dilutionWaterEc.unit,
         )
       : 0;
+    if (!Number.isFinite(dilutionWaterEc) || dilutionWaterEc < 0)
+      return result(
+        undefined,
+        [],
+        [error("INVALID_SOURCE_WATER_EC", "Source water EC must be finite and non-negative.")],
+        claims,
+      );
     if (
       input.dilutionWaterEc &&
       (input.dilutionWaterEc.context.scope !== "SOURCE_WATER" ||
@@ -1226,13 +1194,20 @@ export function calculateEcCorrection(input: {
         ],
         claims,
       );
+    warnings.push(
+      warning(
+        "LINEAR_MIXING_APPROXIMATION",
+        "This linear EC mixing model is an approximation; remeasure after mixing.",
+        ["current-ec", "target-ec", "correction-source-water-ec"],
+      ),
+    );
     return result(
       {
         mode: "EC_CORRECTION",
         direction: "ADD_WATER",
         waterMl,
         requiresRemeasurement: true,
-        evidenceState: input.calibration.evidenceState,
+        evidenceState: input.calibration?.evidenceState ?? "INSUFFICIENT",
         warnings,
         claims: [
           ...claims,
@@ -1248,6 +1223,71 @@ export function calculateEcCorrection(input: {
       claims,
     );
   }
+  if (!input.calibration)
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "CALIBRATION_REQUIRED",
+          "A product-specific calibration is required to calculate nutrient addition.",
+        ),
+      ],
+      claims,
+    );
+  const factorAtVolume = calibrationResponseAtVolume(input.calibration, input.reservoirVolumeL);
+  if (!Number.isFinite(factorAtVolume) || factorAtVolume <= 0)
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "CALIBRATION_INVALID",
+          "A measured positive response is required for this solution volume.",
+        ),
+      ],
+      claims,
+    );
+  claims.push(
+    claim(
+      "calibration-factor",
+      "Calibration factor",
+      "USER_CALIBRATION",
+      input.calibration.observations.map((item) => item.id),
+      { value: factorAtVolume },
+    ),
+  );
+  const doseMl = difference / factorAtVolume;
+  if (!Number.isFinite(doseMl))
+    return result(
+      undefined,
+      [],
+      [error("ARITHMETIC_OVERFLOW", "These values exceed numeric calculation limits.")],
+      claims,
+    );
+  if (
+    doseMl < input.calibration.validCalibrationRange.minDoseMl ||
+    doseMl > input.calibration.validCalibrationRange.maxDoseMl ||
+    input.reservoirVolumeL < input.calibration.validCalibrationRange.minVolumeL ||
+    input.reservoirVolumeL > input.calibration.validCalibrationRange.maxVolumeL
+  )
+    warnings.push(
+      warning(
+        "CALIBRATION_EXTRAPOLATION",
+        "The correction dose is outside the validated calibration range.",
+        ["calibration-factor"],
+        "ENGINE_INFERENCE",
+      ),
+    );
+  const resolution = input.policy?.dosingEquipmentResolutionMl;
+  if (resolution !== undefined && doseMl > 0 && doseMl < resolution)
+    warnings.push(
+      warning(
+        "DOSE_BELOW_EQUIPMENT_RESOLUTION",
+        "The required dose is positive but below the configured dosing resolution.",
+        ["current-ec", "target-ec"],
+      ),
+    );
   const fraction = input.policy?.firstStepFraction;
   const firstStepDoseMl = fraction && fraction > 0 && fraction < 1 ? doseMl * fraction : undefined;
   if (firstStepDoseMl !== undefined)

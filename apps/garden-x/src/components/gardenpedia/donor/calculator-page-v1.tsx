@@ -71,7 +71,9 @@ const T = {
     feedingEvent: "Evento de alimentación",
     currentEc: "EC que mediste",
     currentLiters: "Litros que quedan",
-    waterAdded: "Agua añadida",
+    currentLitersBeforeTopup: "Litros antes de rellenar",
+    currentEcBeforeTopup: "EC antes de rellenar",
+    waterAdded: "Agua que vas a añadir",
     more: "Más ajustes",
     unit: "Unidad EC",
     sourceEc: "EC del agua de origen",
@@ -123,7 +125,7 @@ const T = {
     needLabels: {
       currentEc: "el EC que mediste",
       currentLiters: "cuántos litros quedan",
-      waterAdded: "cuánta agua añadiste",
+      waterAdded: "cuánta agua vas a añadir",
     },
     learnTitle: "¿Qué obtuviste?",
     learnBody:
@@ -184,7 +186,9 @@ const T = {
     feedingEvent: "Feeding event",
     currentEc: "EC you measured",
     currentLiters: "Liters remaining",
-    waterAdded: "Water added",
+    currentLitersBeforeTopup: "Liters before top-up",
+    currentEcBeforeTopup: "EC before top-up",
+    waterAdded: "Water to add",
     more: "More settings",
     unit: "EC unit",
     sourceEc: "Source-water EC",
@@ -236,7 +240,7 @@ const T = {
     needLabels: {
       currentEc: "the EC you measured",
       currentLiters: "how many liters remain",
-      waterAdded: "how much water you added",
+      waterAdded: "how much water you plan to add",
     },
     learnTitle: "What did you get?",
     learnBody: "Tell Garden what you measured and actually added. It tunes this system.",
@@ -711,7 +715,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   )}
                   {(mode === "topup" || mode === "adjust") && (
                     <Field
-                      label={t.currentLiters}
+                      label={mode === "topup" ? t.currentLitersBeforeTopup : t.currentLiters}
                       suffix="L"
                       value={currentLiters}
                       onChange={setCurrentLiters}
@@ -728,7 +732,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     />
                   )}
                   <Field
-                    label={t.currentEc}
+                    label={mode === "topup" ? t.currentEcBeforeTopup : t.currentEc}
                     suffix={unitLabel}
                     value={currentEc}
                     onChange={(v) => {

@@ -947,11 +947,7 @@ function calculateResult(input: CalcInput): CalcResult {
       targetPresentation,
     );
   const calibration = applicableCalibration(input, identity, signature);
-  if (!calibration.ok || !calibration.value)
-    return engineNeeds("Registra una medición real para calibrar este producto y receta exactos.", {
-      ...targetPresentation,
-      calibrationRequired: true,
-    });
+  const calibrationModel = calibration.ok ? calibration.value : undefined;
 
   if (input.mode === "adjust") {
     if (input.currentEc === null) return engineNeeds("el EC que mediste", targetPresentation);
@@ -963,14 +959,14 @@ function calculateResult(input: CalcInput): CalcResult {
       targetEc: targetValue,
       reservoirVolumeL: input.currentLiters,
       reservoirCapacityL: input.capacityLiters ?? undefined,
-      calibration: calibration.value,
+      calibration: calibrationModel,
       policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl },
     });
     if (!correction.ok || !correction.value)
-      return engineNeeds(
-        correction.errors[0]?.message ?? "No se pudo calcular la corrección.",
-        targetPresentation,
-      );
+      return engineNeeds(correction.errors[0]?.message ?? "No se pudo calcular la corrección.", {
+        ...targetPresentation,
+        calibrationRequired: correction.errors.some((item) => item.code === "CALIBRATION_REQUIRED"),
+      });
     const value = correction.value;
     const doses =
       value.direction === "ADD_WATER" && value.waterMl !== undefined
@@ -981,7 +977,7 @@ function calculateResult(input: CalcInput): CalcResult {
               input.stageId,
               input.pods,
               value.doseMl,
-              calibration.value,
+              calibrationModel,
             ) ?? [{ label: "Mezcla nutritiva", amount: value.doseMl, unit: "mL" as const }])
           : [];
     return {
@@ -999,7 +995,9 @@ function calculateResult(input: CalcInput): CalcResult {
       evidence: evidenceLabel(combineEvidence([evidenceState, value.evidenceState])),
       evidenceNote: noteFor(combineEvidence([evidenceState, value.evidenceState])),
       outsideEvidence,
-      sources: [...new Set([...sources, ...calibration.value.claims.map((claim) => claim.label)])],
+      sources: [
+        ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
+      ],
       compatibility,
       warnings: correction.warnings.map((item) => item.message),
       expectedEc: {
@@ -1012,7 +1010,8 @@ function calculateResult(input: CalcInput): CalcResult {
 
   if (input.currentEc === null) return engineNeeds("el EC que mediste", targetPresentation);
   if (input.currentLiters === null) return engineNeeds("cuántos litros quedan", targetPresentation);
-  if (input.waterAdded === null) return engineNeeds("cuánta agua añadiste", targetPresentation);
+  if (input.waterAdded === null)
+    return engineNeeds("cuánta agua planeas añadir", targetPresentation);
   if (input.capacityLiters === null)
     return engineNeeds("Reservoir capacity is required before adding water.", targetPresentation);
   const topup = calculateTopUpMaintenance({
@@ -1022,7 +1021,7 @@ function calculateResult(input: CalcInput): CalcResult {
     currentEc: makeMeasurement(input.currentEc),
     replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),
     targetEc: targetValue,
-    calibration: calibration.value,
+    calibration: calibrationModel,
   });
   if (!topup.ok || !topup.value)
     return engineNeeds(topup.errors[0]?.message ?? "No se pudo calcular el relleno.", {
@@ -1049,7 +1048,7 @@ function calculateResult(input: CalcInput): CalcResult {
             input.stageId,
             input.pods,
             value.nutrientDoseMl,
-            calibration.value,
+            calibrationModel,
           ) ?? [{ label: "Mezcla nutritiva", amount: value.nutrientDoseMl, unit: "mL" as const }])
         : value.dilutionWaterMl
           ? [{ label: "Water", amount: value.dilutionWaterMl / 1000, unit: "L" as const }]
@@ -1060,7 +1059,9 @@ function calculateResult(input: CalcInput): CalcResult {
     evidence: evidenceLabel(combineEvidence([evidenceState, value.evidenceState])),
     evidenceNote: noteFor(combineEvidence([evidenceState, value.evidenceState])),
     outsideEvidence,
-    sources: [...new Set([...sources, ...calibration.value.claims.map((claim) => claim.label)])],
+    sources: [
+      ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
+    ],
     compatibility,
     warnings: topup.warnings.map((item) => item.message),
     expectedEc: { kind: "calculated", min: targetValue, max: targetValue },

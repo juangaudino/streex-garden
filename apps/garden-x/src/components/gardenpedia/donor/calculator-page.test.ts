@@ -423,6 +423,30 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
 
+  it("allows water-only correction and top-up without pretending nutrient calibration is needed", () => {
+    const base = {
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentLiters: 3,
+      capacityLiters: 5,
+      waterAdded: 0.5,
+      userTarget: 1.2,
+      round: 1,
+    };
+    const dilute = calculateGardenResult({ ...base, mode: "adjust", currentEc: 1.4 });
+    expect(dilute.kind).toBe("ok");
+    if (dilute.kind === "ok") expect(dilute.action).toBe("dilute");
+    const topup = calculateGardenResult({ ...base, mode: "topup", currentEc: 1.4 });
+    expect(topup.kind).toBe("ok");
+    const nutrient = calculateGardenResult({ ...base, mode: "adjust", currentEc: 0.8 });
+    expect(nutrient.kind).toBe("needs");
+    if (nutrient.kind === "needs") expect(nutrient.calibrationRequired).toBe(true);
+  });
+
   it("changes correction and top-up outputs when measured reservoir state changes", () => {
     const observation = recordActualDoses({
       productId: "gh-flora",

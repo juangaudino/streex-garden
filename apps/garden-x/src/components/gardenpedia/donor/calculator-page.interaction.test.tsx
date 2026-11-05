@@ -90,14 +90,14 @@ describe("Calculator real control interactions", () => {
     render(<CalculatorPage language="en" />);
     await user.click(screen.getByRole("tab", { name: "Top up" }));
     await user.type(screen.getByLabelText(/^Reservoir capacity/), "4");
-    await user.type(screen.getByLabelText(/^Liters remaining/), "3");
-    await user.type(screen.getByLabelText(/^Water added/), "1");
-    await user.type(screen.getByLabelText(/^EC you measured/), "0.80");
+    await user.type(screen.getByLabelText(/^Liters before top-up/), "3");
+    await user.type(screen.getByLabelText(/^Water to add/), "1");
+    await user.type(screen.getByLabelText(/^EC before top-up/), "0.80");
     await user.clear(screen.getByRole("textbox", { name: "Target EC" }));
     await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.20");
     await user.click(screen.getByText("More settings", { exact: true }));
     await user.click(screen.getByRole("button", { name: /^µS\/cm$/ }));
-    expect((screen.getByLabelText(/^EC you measured/) as HTMLInputElement).value).toBe("800");
+    expect((screen.getByLabelText(/^EC before top-up/) as HTMLInputElement).value).toBe("800");
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
       "1200",
     );
@@ -161,11 +161,11 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
       "1.20",
     );
-    await user.clear(screen.getByLabelText(/^Liters remaining/));
-    await user.type(screen.getByLabelText(/^Liters remaining/), "3.0");
-    await user.type(screen.getByLabelText(/^Water added/), "0.25");
-    await user.clear(screen.getByLabelText(/^EC you measured/));
-    await user.type(screen.getByLabelText(/^EC you measured/), "0.80");
+    await user.clear(screen.getByLabelText(/^Liters before top-up/));
+    await user.type(screen.getByLabelText(/^Liters before top-up/), "3.0");
+    await user.type(screen.getByLabelText(/^Water to add/), "0.25");
+    await user.clear(screen.getByLabelText(/^EC before top-up/));
+    await user.type(screen.getByLabelText(/^EC before top-up/), "0.80");
     await waitFor(() => expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0));
   });
 });

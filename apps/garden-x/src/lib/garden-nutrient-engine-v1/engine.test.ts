@@ -339,6 +339,38 @@ describe("Garden Nutrient Engine V1", () => {
     if (result.value?.direction === "ADD_WATER") expect(result.value.waterMl).toBeCloseTo(10000);
   });
 
+  it("calculates hold and dilution without nutrient calibration, but still requires measured water and capacity", () => {
+    const base = {
+      currentEc: measurement(1.4, "NUTRIENT_SOLUTION"),
+      targetEc: 1.2,
+      reservoirVolumeL: 3,
+      reservoirCapacityL: 5,
+    };
+    expect(
+      calculateEcCorrection({ ...base, currentEc: measurement(1.2, "NUTRIENT_SOLUTION") }).value
+        ?.direction,
+    ).toBe("NO_CHANGE");
+    expect(calculateEcCorrection(base).errors[0]?.code).toBe("SOURCE_WATER_EC_REQUIRED");
+    const diluted = calculateEcCorrection({
+      ...base,
+      dilutionWaterEc: measurement(0.2, "SOURCE_WATER"),
+    });
+    expect(diluted.value?.direction).toBe("ADD_WATER");
+    expect(diluted.value?.waterMl).toBeCloseTo(600);
+    expect(diluted.warnings.some((item) => item.code === "CALIBRATION_EXTRAPOLATION")).toBe(false);
+    expect(
+      calculateEcCorrection({
+        ...base,
+        reservoirCapacityL: 3.2,
+        dilutionWaterEc: measurement(0.2, "SOURCE_WATER"),
+      }).errors[0]?.code,
+    ).toBe("DILUTION_EXCEEDS_CAPACITY");
+    expect(
+      calculateEcCorrection({ ...base, currentEc: measurement(0.8, "NUTRIENT_SOLUTION") }).errors[0]
+        ?.code,
+    ).toBe("CALIBRATION_REQUIRED");
+  });
+
   it("blocks top-up when current volume is missing and checks reservoir capacity", () => {
     const missing = calculateTopUpMaintenance({
       nominalVolumeL: 10,

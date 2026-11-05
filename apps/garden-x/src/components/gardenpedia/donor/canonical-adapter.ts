@@ -69,6 +69,7 @@ export type DonorGuideSection = {
   context?: string | undefined;
   backing: DonorBacking;
   confidence: DonorConfidence;
+  sourceIds?: readonly string[];
   sources: DonorSourceRef[];
 };
 
@@ -78,6 +79,7 @@ export type DonorHarvestOption = {
   title: string;
   lead: string;
   steps: string[];
+  sourceIds: readonly string[];
   sources: DonorSourceRef[];
 };
 
@@ -564,6 +566,7 @@ function section(
       : [],
     backing,
     confidence,
+    sourceIds: [],
     sources: sourceRefs(entry),
   };
 }
@@ -611,6 +614,9 @@ function harvestDetail(entry: GardenLibraryEntry, language: "en" | "es") {
       title,
       lead: method.summary[locale] || method.summary.en || "",
       steps,
+      sourceIds: method.sourceIds.filter((sourceId) =>
+        Boolean(harvestSources[sourceId] || entry.reference.sources.some((source) => source.id === sourceId)),
+      ),
       sources: sourceRefs,
     };
   });
@@ -722,6 +728,7 @@ export function buildDonorPlantDetail(
       context: value.context,
       backing: guide.evidenceType === "garden_adaptation" ? "garden" : "source",
       confidence: confidenceLabel(guide.confidence),
+      sourceIds: guide.sourceIds ?? [],
       sources: resolvedSources,
     } satisfies DonorGuideSection;
   });
@@ -763,6 +770,7 @@ export function buildDonorPlantDetail(
       context: localized.context || localizedContext || undefined,
       backing,
       confidence,
+      sourceIds: guide.sourceIds,
       sources: sourceRefsForIds(entry, guide.sourceIds),
     } satisfies DonorGuideSection;
   });
@@ -875,7 +883,7 @@ export function buildDonorPlantDetail(
 export const canonicalEntries = gardenLibraryManifest.entries.filter(
   (entry) => entry.status === "active",
 );
-export const donorPlants = toDonorPlants(canonicalEntries);
+export const donorPlants = toDonorPlants(canonicalEntries as readonly GardenLibraryEntry[]);
 export const donorPlantsById = new Map(donorPlants.map((plant) => [plant.id, plant]));
 const canonicalIdByAlias = new Map<string, string>(
   gardenLibraryManifest.identityAliases.map((alias) => [alias.aliasId, alias.canonicalPlantId]),

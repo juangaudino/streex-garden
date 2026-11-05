@@ -138,6 +138,12 @@ verify_jwt = false
 [functions.garden-ai]
 verify_jwt = true
 
+# Visitor requests enter through the Vercel server route, which calls this
+# function with the existing server-only service-role JWT. Keep platform JWT
+# verification enabled; the handler also compares the exact server credential.
+[functions.gardenpedia-ask]
+verify_jwt = true
+
 # Authenticated owner media and short-lived, revocable guest media tickets are
 # checked inside the gateway; platform JWT verification would reject guests.
 [functions.garden-media]

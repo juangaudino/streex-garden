@@ -92,6 +92,20 @@ export const GARDEN_AI_ASK_JSON_SCHEMA: Record<string, unknown> = {
   },
 }
 
+export const GARDENPEDIA_ASK_SCHEMA_VERSION = 'gardenpedia_ask_v1'
+export const GARDENPEDIA_ASK_JSON_SCHEMA: Record<string, unknown> = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['schema_version', 'answer_type', 'answer', 'cited_evidence_ids', 'follow_up_question'],
+  properties: {
+    schema_version: { type: 'string', enum: [GARDENPEDIA_ASK_SCHEMA_VERSION] },
+    answer_type: { enum: ['answer', 'insufficient_evidence', 'needs_clarification'] },
+    answer: { type: 'string', minLength: 1, maxLength: 1800 },
+    cited_evidence_ids: { type: 'array', uniqueItems: true, maxItems: 8, items: { type: 'string', minLength: 1, maxLength: 220 } },
+    follow_up_question: { anyOf: [{ type: 'string', maxLength: 240 }, { type: 'null' }] },
+  },
+}
+
 const record = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null && !Array.isArray(value)
 const nonEmpty = (value: unknown): value is string => typeof value === 'string' && value.trim().length > 0
 const internalUserCopy = /(?:\bnot_yet\b|\bpossible_(?:not_yet|evaluate|ready|not_applicable)\b|\binsufficient_evidence\b|\b(?:plant_instance_id|grow_cycle_id|storage_path|context_schema_version)\b|\b[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\b)/i
@@ -122,6 +136,12 @@ export function validateAiCheckProposal(value: unknown): Record<string, unknown>
 
 export function validateAskGardenAnswer(value: unknown): Record<string, unknown> | null {
   if (!record(value) || value.schema_version !== GARDEN_AI_ASK_SCHEMA_VERSION || !['answer', 'insufficient_evidence', 'needs_clarification'].includes(String(value.answer_type)) || !nonEmpty(value.answer) || !Array.isArray(value.confirmed_facts) || !Array.isArray(value.suggested_next_actions)) return null
+  return value
+}
+
+export function validateGardenpediaAskAnswer(value: unknown, evidenceIds: ReadonlySet<string>): Record<string, unknown> | null {
+  if (!record(value) || value.schema_version !== GARDENPEDIA_ASK_SCHEMA_VERSION || !['answer', 'insufficient_evidence', 'needs_clarification'].includes(String(value.answer_type)) || !nonEmpty(value.answer) || value.answer.length > 1800 || !Array.isArray(value.cited_evidence_ids) || value.cited_evidence_ids.length > 8 || value.cited_evidence_ids.some((id) => typeof id !== 'string' || !evidenceIds.has(id)) || new Set(value.cited_evidence_ids).size !== value.cited_evidence_ids.length || (value.follow_up_question !== null && value.follow_up_question !== undefined && (typeof value.follow_up_question !== 'string' || value.follow_up_question.length > 240))) return null
+  if (value.answer_type === 'answer' && value.cited_evidence_ids.length === 0) return null
   return value
 }
 

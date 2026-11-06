@@ -27,6 +27,92 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("requires an identified A+B formulation and actual measurements, never an invented recipe", () => {
+    const base = {
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "ab",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: 0.8,
+      currentLiters: 3,
+      capacityLiters: 5,
+      waterAdded: 0.5,
+      userTarget: 1.2,
+      round: 1,
+    };
+    const named = {
+      ...base,
+      customAbManufacturer: "Test manufacturer",
+      customAbName: "Test nutrient A+B",
+      customAbVersion: "Label v1",
+    };
+    expect(calculateGardenResult({ ...named, mode: "recipe" }).kind).toBe("needs");
+    expect(calculateGardenResult({ ...base, mode: "target" }).kind).toBe("needs");
+    const observation = recordActualDoses({
+      ...named,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { a: "4", b: "2" },
+    });
+    expect(observation.ok).toBe(true);
+    expect(
+      recordActualDoses({
+        ...named,
+        baselineEc: 0.2,
+        resultingEc: 1,
+        actualDoses: { a: "4", b: "0" },
+      }).ok,
+    ).toBe(false);
+    const uncalibrated = calculateGardenResult({ ...named, mode: "target" });
+    expect(uncalibrated.kind === "needs" && uncalibrated.calibrationRequired).toBe(true);
+    const result = calculateGardenResult({
+      ...named,
+      mode: "target",
+      calibrationObservations: [observation.value!],
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.doses.map((dose) => dose.label)).toEqual(["Parte A", "Parte B"]);
+      expect(result.doses[0]!.amount / result.doses[1]!.amount).toBeCloseTo(2);
+    }
+    for (const mode of ["adjust", "topup"] as const) {
+      const calculated = calculateGardenResult({
+        ...named,
+        mode,
+        calibrationObservations: [observation.value!],
+      });
+      expect(calculated.kind).toBe("ok");
+      if (calculated.kind === "ok")
+        expect(calculated.doses.filter((dose) => dose.unit === "mL")).toHaveLength(2);
+    }
+    const moreVolume = calculateGardenResult({
+      ...named,
+      liters: 8,
+      mode: "target",
+      calibrationObservations: [observation.value!],
+    });
+    if (result.kind === "ok" && moreVolume.kind === "ok")
+      expect(moreVolume.doses[0]!.amount).toBeCloseTo(result.doses[0]!.amount * 2);
+    else throw new Error("Expected calibrated A+B targets");
+    const changedVersion = calculateGardenResult({
+      ...named,
+      customAbVersion: "Label v2",
+      mode: "target",
+      calibrationObservations: [observation.value!],
+    });
+    expect(changedVersion.kind === "needs" && changedVersion.calibrationRequired).toBe(true);
+    const changedManufacturer = calculateGardenResult({
+      ...named,
+      customAbManufacturer: "Other manufacturer",
+      mode: "target",
+      calibrationObservations: [observation.value!],
+    });
+    expect(changedManufacturer.kind === "needs" && changedManufacturer.calibrationRequired).toBe(
+      true,
+    );
+  });
   it("reports which observations actually apply to the latest measured component ratio", () => {
     const base = {
       productId: "gh-flora",

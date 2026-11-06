@@ -87,7 +87,7 @@ export const Route = createFileRoute("/api/gardenpedia/ask")({
         if (!history) return json({ error: "invalid_history" }, 400);
 
         const supabaseUrl = process.env["VITE_SUPABASE_URL"];
-        const serviceRoleKey = process.env["GARDEN_LABS_SUPABASE_SERVICE_ROLE_KEY"];
+        const serviceRoleKey = process.env["GARDENPEDIA_ASK_SERVICE_ROLE_KEY"];
         if (supabaseUrl !== canonicalSupabaseUrl || !serviceRoleKey) {
           return json({ error: "ask_unavailable" }, 503);
         }

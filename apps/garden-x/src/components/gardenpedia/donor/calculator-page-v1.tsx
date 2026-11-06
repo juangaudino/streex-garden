@@ -40,6 +40,7 @@ import {
   recordActualDoses,
   resolveNutrientCropIdentity,
   type CalcResult,
+  type CalculatorAdditionalStage,
   type CalculatorCropStage,
   type EcUnit,
   type Evidence,
@@ -376,6 +377,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [cropStages, setCropStages] = useState<Record<string, CalculatorCropStage>>(
     sys.cropStages ?? {},
   );
+  const [cropAdditionalStages, setCropAdditionalStages] = useState<
+    Record<string, CalculatorAdditionalStage[]>
+  >(sys.cropAdditionalStages ?? {});
   const [cropSowingAgeDays, setCropSowingAgeDays] = useState<Record<string, string>>(
     sys.cropSowingAgeDays ?? {},
   );
@@ -427,6 +431,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         ...sys,
         crops,
         cropStages,
+        cropAdditionalStages,
         cropSowingAgeDays,
         liters,
         productId,
@@ -452,6 +457,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setSys(s);
     setCrops(s.crops);
     setCropStages(s.cropStages ?? {});
+    setCropAdditionalStages(s.cropAdditionalStages ?? {});
     setCropSowingAgeDays(s.cropSowingAgeDays ?? {});
     setLiters(s.liters);
     setVolumeInput(String(s.liters));
@@ -496,6 +502,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       name: saveName.trim(),
       crops: { ...crops },
       cropStages: { ...cropStages },
+      cropAdditionalStages: { ...cropAdditionalStages },
       cropSowingAgeDays: { ...cropSowingAgeDays },
       liters,
       productId,
@@ -594,6 +601,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       ...sys,
       crops: { ...crops },
       cropStages: { ...cropStages },
+      cropAdditionalStages: { ...cropAdditionalStages },
       cropSowingAgeDays: { ...cropSowingAgeDays },
       liters,
       productId,
@@ -660,6 +668,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         mode,
         crops,
         cropStages,
+        cropAdditionalStages,
         liters,
         productId,
         customAbManufacturer,
@@ -703,6 +712,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       mode,
       crops,
       cropStages,
+      cropAdditionalStages,
       liters,
       volumeInput,
       product.basis,
@@ -905,7 +915,15 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           </span>
                           <Stepper
                             value={crops[id]!}
-                            onChange={(v) => setCrops({ ...crops, [id]: v })}
+                            onChange={(v) => {
+                              setCrops({ ...crops, [id]: v });
+                              if (v <= 1)
+                                setCropAdditionalStages((current) => {
+                                  const next = { ...current };
+                                  delete next[id];
+                                  return next;
+                                });
+                            }}
                           />
                           <button
                             aria-label={lang === "es" ? "Quitar" : "Remove"}
@@ -913,6 +931,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                               const { [id]: _, ...r } = crops;
                               setCrops(r);
                               setCropStages((current) => {
+                                const next = { ...current };
+                                delete next[id];
+                                return next;
+                              });
+                              setCropAdditionalStages((current) => {
                                 const next = { ...current };
                                 delete next[id];
                                 return next;
@@ -930,12 +953,18 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           <select
                             aria-label={`${lang === "es" ? "Etapa de" : "Stage of"} ${c.name[lang]}`}
                             value={cropStages[id] ?? "UNSPECIFIED"}
-                            onChange={(event) =>
+                            onChange={(event) => {
                               setCropStages({
                                 ...cropStages,
                                 [id]: event.target.value as CalculatorCropStage,
-                              })
-                            }
+                              });
+                              setCropAdditionalStages((current) => ({
+                                ...current,
+                                [id]: (current[id] ?? []).filter(
+                                  (stage) => stage !== event.target.value,
+                                ),
+                              }));
+                            }}
                             className="col-span-full w-full min-w-0 bg-transparent text-xs font-normal"
                           >
                             <option value="UNSPECIFIED">
@@ -959,6 +988,59 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                                 : "Seedlings and other stages"}
                             </option>
                           </select>
+                          {crops[id]! > 1 && (
+                            <details className="col-span-full text-xs text-muted-foreground">
+                              <summary className="cursor-pointer font-medium">
+                                {lang === "es"
+                                  ? "¿Hay otras etapas de esta planta?"
+                                  : "Other stages of this plant?"}
+                              </summary>
+                              <p className="mt-2">
+                                {lang === "es"
+                                  ? "Selecciona las etapas observadas en las demás plantas de esta variedad."
+                                  : "Select the stages observed in the other plants of this variety."}
+                              </p>
+                              <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
+                                {(
+                                  [
+                                    ["SEEDLING", lang === "es" ? "Plántula" : "Seedling"],
+                                    [
+                                      "VEGETATIVE",
+                                      lang === "es"
+                                        ? "Crecimiento vegetativo"
+                                        : "Vegetative growth",
+                                    ],
+                                    ["FLOWERING", lang === "es" ? "Floración" : "Flowering"],
+                                    ["FRUITING", lang === "es" ? "Fructificación" : "Fruiting"],
+                                  ] as [CalculatorAdditionalStage, string][]
+                                )
+                                  .filter(
+                                    ([stage]) =>
+                                      stage !== cropStages[id] &&
+                                      !(cropStages[id] === "MIXED" && stage === "SEEDLING"),
+                                  )
+                                  .map(([stage, label]) => (
+                                    <label key={stage} className="flex items-center gap-2">
+                                      <input
+                                        type="checkbox"
+                                        checked={(cropAdditionalStages[id] ?? []).includes(stage)}
+                                        onChange={(event) =>
+                                          setCropAdditionalStages((current) => ({
+                                            ...current,
+                                            [id]: event.target.checked
+                                              ? [...(current[id] ?? []), stage]
+                                              : (current[id] ?? []).filter(
+                                                  (item) => item !== stage,
+                                                ),
+                                          }))
+                                        }
+                                      />
+                                      {label}
+                                    </label>
+                                  ))}
+                              </div>
+                            </details>
+                          )}
                           <label className="col-span-full flex items-center gap-2 text-xs text-muted-foreground">
                             {lang === "es"
                               ? "Días desde la siembra (opcional)"

@@ -33,6 +33,7 @@ export type Evidence = Lowercase<EvidenceState>;
 export type EcUnit = "mS" | "uS";
 export type CalculatorCropStage =
   "UNSPECIFIED" | "SEEDLING" | "VEGETATIVE" | "FLOWERING" | "FRUITING" | "MIXED";
+export type CalculatorAdditionalStage = Exclude<CalculatorCropStage, "UNSPECIFIED" | "MIXED">;
 export type CalculatorPlant = {
   id: string;
   emoji: string;
@@ -235,6 +236,7 @@ export type SavedSystem = {
   name: string;
   crops: Record<string, number>;
   cropStages?: Record<string, CalculatorCropStage> | undefined;
+  cropAdditionalStages?: Record<string, CalculatorAdditionalStage[]> | undefined;
   cropSowingAgeDays?: Record<string, string> | undefined;
   liters: number;
   productId: string;
@@ -277,6 +279,7 @@ export function loadSavedSystems(): SavedSystem[] {
         name: item.name!,
         crops: item.crops ?? {},
         ...(item.cropStages ? { cropStages: item.cropStages } : {}),
+        ...(item.cropAdditionalStages ? { cropAdditionalStages: item.cropAdditionalStages } : {}),
         ...(item.cropSowingAgeDays ? { cropSowingAgeDays: item.cropSowingAgeDays } : {}),
         ...(item.correctionFraction !== undefined
           ? { correctionFraction: item.correctionFraction }
@@ -319,6 +322,7 @@ export type CalcInput = {
   mode: Mode;
   crops: Record<string, number>;
   cropStages?: Record<string, CalculatorCropStage> | undefined;
+  cropAdditionalStages?: Record<string, CalculatorAdditionalStage[]> | undefined;
   liters: number;
   productId: string;
   customAbManufacturer?: string | undefined;
@@ -529,13 +533,18 @@ export function contextFor(
   crops: Record<string, number>,
   productId: string,
   cropStages: Record<string, CalculatorCropStage> = {},
+  cropAdditionalStages: Record<string, CalculatorAdditionalStage[]> = {},
 ): CropContext[] {
   const system = productId === "aerogarden" ? "COUNTERTOP_POD" : "GENERAL_HYDROPONIC";
   return Object.keys(crops).flatMap((id): CropContext[] =>
-    (cropStages[id] === "MIXED"
-      ? (["UNSPECIFIED", "SEEDLING"] as const)
-      : ([cropStages[id] ?? "UNSPECIFIED"] as const)
-    ).map((stage) => ({
+    [
+      ...new Set([
+        ...(cropStages[id] === "MIXED"
+          ? (["UNSPECIFIED", "SEEDLING"] as const)
+          : ([cropStages[id] ?? "UNSPECIFIED"] as const)),
+        ...(crops[id]! > 1 ? (cropAdditionalStages[id] ?? []) : []),
+      ]),
+    ].map((stage) => ({
       cropIdentity: resolveNutrientCropIdentity(id) ?? id,
       // A manufacturer feeding step is not evidence of plant phenology.
       phenologicalStage: stage,
@@ -774,6 +783,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "Add at least one plant to apply crop EC evidence.",
     ],
     [
+      "Hay más etapas distintas que plantas de una variedad. Ajusta la cantidad de plantas o las etapas seleccionadas.",
+      "There are more distinct stages than plants of a variety. Adjust the plant count or selected stages.",
+    ],
+    [
       "Registra una medición real en este producto y receta para calcular una dosis por EC.",
       "Record a real measurement of this product and mixture to calculate EC-based doses.",
     ],
@@ -886,6 +899,19 @@ function presentationMessage(message: string, lang: Lang): string {
 function calculateResult(input: CalcInput): CalcResult {
   if (input.invalidFields?.length) return { kind: "needs", missing: input.invalidFields };
   if (
+    Object.entries(input.crops).some(([id, count]) => {
+      const primary = input.cropStages?.[id] ?? "UNSPECIFIED";
+      const stages = new Set([
+        ...(primary === "MIXED" ? ["UNSPECIFIED", "SEEDLING"] : [primary]),
+        ...(input.cropAdditionalStages?.[id] ?? []),
+      ]);
+      return stages.size > count;
+    })
+  )
+    return engineNeeds(
+      "Hay más etapas distintas que plantas de una variedad. Ajusta la cantidad de plantas o las etapas seleccionadas.",
+    );
+  if (
     ![
       input.liters,
       input.sourceEc,
@@ -902,7 +928,12 @@ function calculateResult(input: CalcInput): CalcResult {
     return engineNeeds(
       "Use finite non-negative EC measurements and positive volume/target values.",
     );
-  const contexts = contextFor(input.crops, input.productId, input.cropStages);
+  const contexts = contextFor(
+    input.crops,
+    input.productId,
+    input.cropStages,
+    input.cropAdditionalStages,
+  );
   const compatibility = calculatePolycultureRange(contexts, CROP_EVIDENCE);
   const range = rangeFor(contexts);
   if (input.mode !== "recipe" && contexts.length === 0) {

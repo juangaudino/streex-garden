@@ -18,6 +18,7 @@ import {
   buildCropEvidenceCoverage,
   calculateGardenResult,
   calibrationUsage,
+  contextFor,
   hasApplicableCropNutrientEvidence,
   loadSavedSystems,
   persistSavedSystems,
@@ -27,6 +28,44 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("keeps different observed stages of the same crop as separate evidence contexts", () => {
+    const contexts = contextFor(
+      { "bibb-lettuce": 2 },
+      "gh-flora",
+      { "bibb-lettuce": "VEGETATIVE" },
+      { "bibb-lettuce": ["SEEDLING"] },
+    );
+    expect(contexts.map((item) => item.phenologicalStage)).toEqual(["VEGETATIVE", "SEEDLING"]);
+    expect(contexts.every((item) => item.cropIdentity === "lettuce")).toBe(true);
+    expect(
+      contextFor(
+        { "bibb-lettuce": 1 },
+        "gh-flora",
+        { "bibb-lettuce": "VEGETATIVE" },
+        { "bibb-lettuce": ["SEEDLING"] },
+      ),
+    ).toHaveLength(1);
+    const invalid = calculateGardenResult({
+      language: "en",
+      mode: "recipe",
+      crops: { "bibb-lettuce": 2 },
+      cropStages: { "bibb-lettuce": "VEGETATIVE" },
+      cropAdditionalStages: { "bibb-lettuce": ["SEEDLING", "FLOWERING"] },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(invalid.kind).toBe("needs");
+    if (invalid.kind === "needs")
+      expect(invalid.message).toContain("more distinct stages than plants");
+  });
   it("preserves the warning when a user chooses a target with no supported crop range", () => {
     const observation = recordActualDoses({
       productId: "gh-flora",

@@ -125,6 +125,32 @@ describe("Calculator real control interactions", () => {
     );
   });
 
+  it("saves and restores different observed stages for two plants of the same variety", async () => {
+    const user = userEvent.setup();
+    const view = render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Bibb Lettuce");
+    await user.click(screen.getByRole("option", { name: /Bibb Lettuce/ }));
+    await user.click(screen.getByRole("button", { name: "+" }));
+    await user.selectOptions(screen.getByLabelText("Stage of Bibb Lettuce"), "VEGETATIVE");
+    await user.click(screen.getByText("Other stages of this plant?"));
+    await user.click(screen.getByRole("checkbox", { name: "Seedling" }));
+    expect(screen.getByRole("alert").textContent).toMatch(/not enough applicable EC evidence/i);
+    await user.click(screen.getByRole("button", { name: "Save as system" }));
+    await user.type(screen.getByRole("textbox", { name: "System name" }), "Mixed lettuce");
+    await user.click(screen.getByRole("button", { name: /^Save$/ }));
+    view.unmount();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByText("Mixed lettuce", { exact: true }));
+    expect((screen.getByLabelText("Stage of Bibb Lettuce") as HTMLSelectElement).value).toBe(
+      "VEGETATIVE",
+    );
+    await user.click(screen.getByText("Other stages of this plant?"));
+    expect((screen.getByRole("checkbox", { name: "Seedling" }) as HTMLInputElement).checked).toBe(
+      true,
+    );
+  });
+
   it("shows the sourced sowing-age reference without converting days into a stage or dose", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

@@ -57,16 +57,20 @@ export function HomeJournalView() {
   const photoById = (id?: string) => store.photos.find((p) => p.id === id);
   const activePlants = store.plants.filter((plant) => !plant.cycleClosed);
   const visibleGardens = store.gardens.filter((garden) => !garden.archived);
+  const plantById = new Map<string, (typeof activePlants)[number]>();
+  for (const plant of [...activePlants, ...(store.historicalPlants ?? [])]) {
+    if (!plantById.has(plant.id)) plantById.set(plant.id, plant);
+  }
+  const gardenById = new Map<string, (typeof visibleGardens)[number]>();
+  for (const garden of visibleGardens) {
+    if (!gardenById.has(garden.id)) gardenById.set(garden.id, garden);
+  }
   const recent = projectHomeRecentActivity(store.events).flatMap((event): HomeRecentActivity[] => {
     if (event.plantId) {
-      const plant =
-        activePlants.find((item) => item.id === event.plantId) ??
-        store.historicalPlants?.find((item) => item.id === event.plantId);
+      const plant = plantById.get(event.plantId);
       return plant ? [{ event, plantName: plant.name, plantId: plant.id, gardenId: null }] : [];
     }
-    const garden = event.gardenId
-      ? visibleGardens.find((item) => item.id === event.gardenId)
-      : undefined;
+    const garden = event.gardenId ? gardenById.get(event.gardenId) : undefined;
     return garden
       ? [
           {

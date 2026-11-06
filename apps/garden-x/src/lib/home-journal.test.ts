@@ -67,6 +67,21 @@ const photo = (
 });
 
 describe("Journal Home selectors", () => {
+  it("groups photos once while finding the same-cycle pair for many plants", () => {
+    let plantIdReads = 0;
+    const plants = Array.from({ length: 80 }, (_, index) => plant(`plant-${index}`));
+    const photos = plants.flatMap((item) => [
+      photo(item.id, `before-${item.id}`, "2026-09-01T12:00:00Z"),
+      photo(item.id, `after-${item.id}`, "2026-09-08T12:00:00Z"),
+    ]).map((item) => {
+      const id = item.plantId;
+      return { ...item, get plantId() { plantIdReads++; return id; } };
+    });
+    const pairs = selectHomeMeaningfulChangePairs(plants, photos, []);
+    expect(pairs).toHaveLength(plants.length);
+    expect(pairs.every((pair) => pair.before.plantId === pair.plant.id && pair.after.plantId === pair.plant.id)).toBe(true);
+    expect(plantIdReads).toBeLessThanOrEqual(photos.length * 4);
+  });
   it("prefers the newest eligible recorded fact in the 14-day window and breaks ties by stable plant ID", () => {
     const now = new Date(2026, 8, 27, 15);
     const plants = [plant("z"), plant("a"), plant("closed", { cycleClosed: true })];

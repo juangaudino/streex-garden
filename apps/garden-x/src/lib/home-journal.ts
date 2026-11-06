@@ -147,11 +147,17 @@ export function selectHomeMeaningfulChangePairs(
   events: PlantEvent[],
 ): HomeMeaningfulChangePair[] {
   const eventById = new Map(events.map((event) => [event.id, event]));
+  const photosByPlant = new Map<string, Photo[]>();
+  for (const photo of photos) {
+    const group = photosByPlant.get(photo.plantId);
+    if (group) group.push(photo);
+    else photosByPlant.set(photo.plantId, [photo]);
+  }
   const pairs = plants.flatMap((plant) => {
     const growCycleId = plant.backendGrowCycleId;
     if (!growCycleId || plant.cycleClosed) return [];
     const byPath = new Map<string, { photo: Photo; timestamp: number }>();
-    for (const photo of photos) {
+    for (const photo of photosByPlant.get(plant.id) ?? []) {
       if (
         photo.plantId !== plant.id ||
         photo.backendGrowCycleId !== growCycleId ||

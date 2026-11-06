@@ -280,15 +280,13 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         setHydration("ready");
         return;
       }
-      const [{ state: next }, derivedResults, summaryResults] = await Promise.all([
-        loadGardenState(),
+      const optionalResults = Promise.allSettled([
         loadMeaningfulChangeResults(),
         loadGardenSummaryResults(),
       ]);
+      const { state: next } = await loadGardenState();
       if (sequence !== refreshSequence.current) return;
       setState(next);
-      setMeaningfulChanges(derivedResults);
-      setGardenSummaries(summaryResults);
       hasSuccessfulSnapshot.current = true;
       setHydration("ready");
       const user = sessionData.session.user;
@@ -296,7 +294,14 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         ...current,
         profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
       }));
-      if (reason === "mutation") scheduleGardenSummaryGeneration(next, summaryResults, preferences.language);
+      void optionalResults.then(([derivedResults, summaryResults]) => {
+        if (sequence !== refreshSequence.current) return;
+        if (derivedResults.status === "fulfilled") setMeaningfulChanges(derivedResults.value);
+        if (summaryResults.status === "fulfilled") {
+          setGardenSummaries(summaryResults.value);
+          if (reason === "mutation") scheduleGardenSummaryGeneration(next, summaryResults.value, preferences.language);
+        }
+      });
     })();
     refreshInFlight.current = run;
     run.catch(() => {
@@ -317,6 +322,16 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         const user = session.user;
         if (photoCacheUserId.current && photoCacheUserId.current !== user.id) {
           void clearPersistentPhotoCache(photoCacheUserId.current);
+          ++refreshSequence.current;
+          refreshInFlight.current = null;
+          hasSuccessfulSnapshot.current = false;
+          setState(emptyState);
+          setMeaningfulChanges([]);
+          setGardenSummaries([]);
+          setCareInspection(null);
+          if (summaryGenerationTimer.current !== null) clearTimeout(summaryGenerationTimer.current);
+          summaryGenerationTimer.current = null;
+          pendingSummaryGeneration.current = null;
         }
         photoCacheUserId.current = user.id;
         setPersistentPhotoCacheUserId(user.id);
@@ -330,6 +345,8 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         }));
         void refreshFromBackend("auth").catch(() => undefined);
       } else {
+        ++refreshSequence.current;
+        refreshInFlight.current = null;
         if (photoCacheUserId.current) void clearPersistentPhotoCache(photoCacheUserId.current);
         photoCacheUserId.current = null;
         setPersistentPhotoCacheUserId(null);

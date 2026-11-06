@@ -121,6 +121,20 @@ describe("Record a Moment canonical temporal propagation", () => {
     vi.unstubAllGlobals();
   });
 
+  it("starts independent garden snapshot requests before the bootstrap finishes", async () => {
+    let release!: (value: { data: object; error: null }) => void;
+    const bootstrap = new Promise<{ data: object; error: null }>((resolve) => { release = resolve; });
+    rpc.mockImplementation((name: string) => name === "garden_x_get_bootstrap" ? bootstrap : Promise.resolve({ data: [], error: null }));
+    const loading = loadGardenState();
+    expect(rpc.mock.calls.map(([name]) => name)).toEqual([
+      "garden_x_get_bootstrap", "garden_get_system_maintenance_events", "garden_x_get_saved_films", "garden_x_get_historical_photos", "garden_x_get_invalidated_event_photos",
+    ]);
+    release({ data: {}, error: null });
+    const { state } = await loading;
+    expect(state.gardens).toEqual([]);
+    expect(state.photos).toEqual([]);
+  });
+
   it("keeps observation and its photo on the selected effective date", async () => {
     await persistMoment(plant, event("note"), photo);
     const observation = rpc.mock.calls.find(([name]) => name === "garden_x_create_observation");

@@ -31,7 +31,8 @@ export type Mode = "recipe" | "target" | "adjust" | "topup";
 export type Provenance = "official" | "garden" | "measured" | "user";
 export type Evidence = Lowercase<EvidenceState>;
 export type EcUnit = "mS" | "uS";
-export type CalculatorCropStage = "UNSPECIFIED" | "SEEDLING" | "MIXED";
+export type CalculatorCropStage =
+  "UNSPECIFIED" | "SEEDLING" | "VEGETATIVE" | "FLOWERING" | "FRUITING" | "MIXED";
 export type CalculatorPlant = {
   id: string;
   emoji: string;
@@ -234,6 +235,7 @@ export type SavedSystem = {
   name: string;
   crops: Record<string, number>;
   cropStages?: Record<string, CalculatorCropStage> | undefined;
+  cropSowingAgeDays?: Record<string, string> | undefined;
   liters: number;
   productId: string;
   customAbManufacturer?: string | undefined;
@@ -275,6 +277,7 @@ export function loadSavedSystems(): SavedSystem[] {
         name: item.name!,
         crops: item.crops ?? {},
         ...(item.cropStages ? { cropStages: item.cropStages } : {}),
+        ...(item.cropSowingAgeDays ? { cropSowingAgeDays: item.cropSowingAgeDays } : {}),
         ...(item.correctionFraction !== undefined
           ? { correctionFraction: item.correctionFraction }
           : {}),

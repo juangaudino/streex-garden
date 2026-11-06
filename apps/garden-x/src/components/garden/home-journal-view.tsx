@@ -23,6 +23,7 @@ import {
 import { PageHeader } from "@/components/garden/shell";
 import { SectionTitle, eventIcons } from "@/components/garden/atoms";
 import { PhotoImage } from "@/components/garden/photo-image";
+import { useJournalEntry } from "@/components/garden/journal-entry-context";
 import { ui } from "@/lib/ui-copy";
 import type { PlantEvent } from "@/lib/garden-data";
 
@@ -34,6 +35,7 @@ type HomeRecentActivity = {
 };
 export function HomeJournalView() {
   const store = useGarden();
+  const openJournalEntry = useJournalEntry();
   const isSpanish = store.language === "es";
   const [showAllRecent, setShowAllRecent] = useState(false);
   if (store.hydration === "loading") {
@@ -105,6 +107,15 @@ export function HomeJournalView() {
         />
       </div>
 
+      <div className="mb-5 flex flex-wrap gap-2 px-5 sm:px-8 lg:px-12">
+        <Link to="/gardens" className="inline-flex min-h-11 items-center gap-2 rounded-full border border-border bg-card px-4 text-sm font-medium">
+          <Leaf className="h-4 w-4" aria-hidden="true" /> {isSpanish ? "Ver mis jardines" : "View my gardens"}
+        </Link>
+        <button type="button" onClick={() => openJournalEntry()} className="inline-flex min-h-11 items-center gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground">
+          <Camera className="h-4 w-4" aria-hidden="true" /> {isSpanish ? "Registrar un momento" : "Record a moment"}
+        </button>
+      </div>
+
       {/* Highlighted plant */}
       <section className="px-5 sm:px-8 lg:px-12">
         <Link
@@ -112,7 +123,7 @@ export function HomeJournalView() {
           params={{ plantId: hero.id }}
           className="press group relative block overflow-hidden rounded-[1.75rem] shadow-lift"
         >
-          <div className="relative aspect-[4/5] sm:aspect-[16/9]">
+          <div className="relative aspect-[4/3] sm:aspect-[16/9]">
             {heroPhoto ? (
               <PhotoImage
                 photo={heroPhoto}

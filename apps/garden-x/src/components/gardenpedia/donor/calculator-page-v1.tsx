@@ -19,6 +19,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { gardenSeedAgeReferences } from "@/generated/garden-seed-profile-index";
 import {
   Dialog,
   DialogContent,
@@ -349,6 +350,13 @@ function localizedComponent(label: string, lang: Lang) {
   return lang === "en" ? label.replace(/^Parte ([AB])$/, "Part $1") : label;
 }
 
+type SeedAgeReference = {
+  value: { en: string; es: string };
+  note: { en?: string; es?: string } | null;
+  sources: readonly { id: string; title: string; url: string }[];
+};
+const seedAgeReferences: Readonly<Record<string, SeedAgeReference>> = gardenSeedAgeReferences;
+
 /* ---------------------------------------------------------------- page */
 
 export function CalculatorPage({ language = "es" }: { language?: Lang }) {
@@ -366,6 +374,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [crops, setCrops] = useState(sys.crops);
   const [cropStages, setCropStages] = useState<Record<string, CalculatorCropStage>>(
     sys.cropStages ?? {},
+  );
+  const [cropSowingAgeDays, setCropSowingAgeDays] = useState<Record<string, string>>(
+    sys.cropSowingAgeDays ?? {},
   );
   const [liters, setLiters] = useState(sys.liters);
   const [volumeInput, setVolumeInput] = useState(String(sys.liters));
@@ -415,6 +426,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         ...sys,
         crops,
         cropStages,
+        cropSowingAgeDays,
         liters,
         productId,
         customAbManufacturer,
@@ -439,6 +451,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setSys(s);
     setCrops(s.crops);
     setCropStages(s.cropStages ?? {});
+    setCropSowingAgeDays(s.cropSowingAgeDays ?? {});
     setLiters(s.liters);
     setVolumeInput(String(s.liters));
     setProductId(s.productId);
@@ -482,6 +495,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       name: saveName.trim(),
       crops: { ...crops },
       cropStages: { ...cropStages },
+      cropSowingAgeDays: { ...cropSowingAgeDays },
       liters,
       productId,
       customAbManufacturer,
@@ -579,6 +593,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       ...sys,
       crops: { ...crops },
       cropStages: { ...cropStages },
+      cropSowingAgeDays: { ...cropSowingAgeDays },
       liters,
       productId,
       customAbManufacturer,
@@ -879,47 +894,29 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       return (
                         <li
                           key={id}
-                          className="flex items-center gap-3 rounded-md bg-background/50 px-3 py-1.5"
+                          className="grid grid-cols-[auto_minmax(0,1fr)_auto_auto] items-center gap-x-2 gap-y-1 rounded-md bg-background/50 px-3 py-2"
                         >
                           <span className="text-lg" aria-hidden>
                             {c.emoji}
                           </span>
-                          <span className="min-w-0 flex-1 text-sm font-medium">
-                            <span className="block truncate">{c.name[lang]}</span>
-                            <select
-                              aria-label={`${lang === "es" ? "Etapa de" : "Stage of"} ${c.name[lang]}`}
-                              value={cropStages[id] ?? "UNSPECIFIED"}
-                              onChange={(event) =>
-                                setCropStages({
-                                  ...cropStages,
-                                  [id]: event.target.value as CalculatorCropStage,
-                                })
-                              }
-                              className="max-w-full bg-transparent text-xs font-normal"
-                            >
-                              <option value="UNSPECIFIED">
-                                {lang === "es" ? "Etapa no especificada" : "Stage unspecified"}
-                              </option>
-                              <option value="SEEDLING">
-                                {lang === "es" ? "Plántula" : "Seedling"}
-                              </option>
-                              <option value="MIXED">
-                                {lang === "es"
-                                  ? "Plántulas y otras etapas"
-                                  : "Seedlings and other stages"}
-                              </option>
-                            </select>
+                          <span className="min-w-0 break-words text-sm font-medium">
+                            {c.name[lang]}
                           </span>
                           <Stepper
                             value={crops[id]!}
                             onChange={(v) => setCrops({ ...crops, [id]: v })}
                           />
                           <button
-                            aria-label="Quitar"
+                            aria-label={lang === "es" ? "Quitar" : "Remove"}
                             onClick={() => {
                               const { [id]: _, ...r } = crops;
                               setCrops(r);
                               setCropStages((current) => {
+                                const next = { ...current };
+                                delete next[id];
+                                return next;
+                              });
+                              setCropSowingAgeDays((current) => {
                                 const next = { ...current };
                                 delete next[id];
                                 return next;
@@ -929,6 +926,100 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           >
                             <X className="h-4 w-4" />
                           </button>
+                          <select
+                            aria-label={`${lang === "es" ? "Etapa de" : "Stage of"} ${c.name[lang]}`}
+                            value={cropStages[id] ?? "UNSPECIFIED"}
+                            onChange={(event) =>
+                              setCropStages({
+                                ...cropStages,
+                                [id]: event.target.value as CalculatorCropStage,
+                              })
+                            }
+                            className="col-span-full w-full min-w-0 bg-transparent text-xs font-normal"
+                          >
+                            <option value="UNSPECIFIED">
+                              {lang === "es" ? "Etapa no especificada" : "Stage unspecified"}
+                            </option>
+                            <option value="SEEDLING">
+                              {lang === "es" ? "Plántula" : "Seedling"}
+                            </option>
+                            <option value="VEGETATIVE">
+                              {lang === "es" ? "Crecimiento vegetativo" : "Vegetative growth"}
+                            </option>
+                            <option value="FLOWERING">
+                              {lang === "es" ? "Floración" : "Flowering"}
+                            </option>
+                            <option value="FRUITING">
+                              {lang === "es" ? "Fructificación" : "Fruiting"}
+                            </option>
+                            <option value="MIXED">
+                              {lang === "es"
+                                ? "Plántulas y otras etapas"
+                                : "Seedlings and other stages"}
+                            </option>
+                          </select>
+                          <label className="col-span-full flex items-center gap-2 text-xs text-muted-foreground">
+                            {lang === "es"
+                              ? "Días desde la siembra (opcional)"
+                              : "Days since sowing (optional)"}
+                            <input
+                              type="number"
+                              min="0"
+                              step="1"
+                              inputMode="numeric"
+                              className="ml-auto h-10 w-20 rounded border border-input bg-background px-2 text-sm"
+                              aria-label={`${lang === "es" ? "Días desde la siembra de" : "Days since sowing of"} ${c.name[lang]}`}
+                              value={cropSowingAgeDays[id] ?? ""}
+                              onChange={(event) => {
+                                const value = event.target.value;
+                                if (value === "" || /^\d{1,5}$/.test(value))
+                                  setCropSowingAgeDays({ ...cropSowingAgeDays, [id]: value });
+                              }}
+                            />
+                          </label>
+                          {cropSowingAgeDays[id] !== undefined && cropSowingAgeDays[id] !== "" && (
+                            <div className="col-span-full text-xs text-muted-foreground">
+                              {seedAgeReferences[id] ? (
+                                <>
+                                  <p>
+                                    {lang === "es"
+                                      ? "Referencia publicada de germinación"
+                                      : "Published germination reference"}
+                                    : {seedAgeReferences[id].value[lang]}
+                                    {seedAgeReferences[id].note?.[lang]
+                                      ? ` · ${seedAgeReferences[id].note[lang]}`
+                                      : ""}
+                                  </p>
+                                  <p>
+                                    {seedAgeReferences[id].sources.map((source, index) => (
+                                      <span key={source.id}>
+                                        {index ? " · " : ""}
+                                        <a
+                                          className="underline"
+                                          href={source.url}
+                                          target="_blank"
+                                          rel="noreferrer"
+                                        >
+                                          {source.title}
+                                        </a>
+                                      </span>
+                                    ))}
+                                  </p>
+                                </>
+                              ) : (
+                                <p>
+                                  {lang === "es"
+                                    ? "No hay una referencia de germinación respaldada para esta identidad."
+                                    : "No supported germination reference is available for this identity."}
+                                </p>
+                              )}
+                              <p>
+                                {lang === "es"
+                                  ? "Es una referencia desde la siembra, no una etapa confirmada ni una dosis. Selecciona la etapa observada arriba."
+                                  : "This is a reference from sowing, not a confirmed stage or dose. Select the observed stage above."}
+                              </p>
+                            </div>
+                          )}
                         </li>
                       );
                     })}
@@ -954,7 +1045,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
               ) : null}
 
               <Block title={t.product}>
-                <div className="grid grid-cols-3 gap-1.5">
+                <div className="grid grid-cols-2 gap-1.5 min-[420px]:grid-cols-3">
                   {CALCULATOR_PRODUCTS.map((p) => (
                     <Chip
                       key={p.id}
@@ -1059,21 +1150,23 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           {l} L
                         </Chip>
                       ))}
-                      <Input
-                        type="number"
-                        inputMode="decimal"
-                        min={0.001}
-                        step="any"
-                        aria-label={t.volume}
-                        value={volumeInput}
-                        onChange={(e) => {
-                          setVolumeInput(e.target.value);
-                          const value = parseDecimalInput(e.target.value);
-                          if (value !== null && value > 0) setLiters(value);
-                        }}
-                        className="h-10 w-20"
-                      />
-                      <span className="self-center text-sm">L</span>
+                      <div className="inline-flex items-center gap-1">
+                        <Input
+                          type="number"
+                          inputMode="decimal"
+                          min={0.001}
+                          step="any"
+                          aria-label={t.volume}
+                          value={volumeInput}
+                          onChange={(e) => {
+                            setVolumeInput(e.target.value);
+                            const value = parseDecimalInput(e.target.value);
+                            if (value !== null && value > 0) setLiters(value);
+                          }}
+                          className="h-10 w-20"
+                        />
+                        <span className="text-sm">L</span>
+                      </div>
                     </div>
                     {parseDecimalInput(volumeInput) !== null &&
                       (parseDecimalInput(volumeInput) ?? 0) > 0 && (

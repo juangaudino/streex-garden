@@ -661,13 +661,19 @@ function inferRectangularLevels(
 }
 
 export async function loadGardenState(): Promise<{ state: GardenState; index: BackendIndex }> {
-  const { data, error } = await getSupabaseClient().rpc("garden_x_get_bootstrap");
+  const client = getSupabaseClient();
+  const [bootstrapResponse, systemMaintenanceResponse, filmsResponse, historicalResponse, invalidatedEventPhotosResponse] = await Promise.all([
+    client.rpc("garden_x_get_bootstrap"),
+    client.rpc("garden_get_system_maintenance_events"),
+    client.rpc("garden_x_get_saved_films"),
+    client.rpc("garden_x_get_historical_photos"),
+    client.rpc("garden_x_get_invalidated_event_photos"),
+  ]);
+  const { data, error } = bootstrapResponse;
   if (error) throw new Error(error.message);
   const b = data as Bootstrap;
-  const systemMaintenanceResponse = await getSupabaseClient().rpc("garden_get_system_maintenance_events");
   if (systemMaintenanceResponse.error) throw new Error(systemMaintenanceResponse.error.message);
   const systemMaintenance = (systemMaintenanceResponse.data ?? []) as BootstrapEvent[];
-  const filmsResponse = await getSupabaseClient().rpc("garden_x_get_saved_films");
   if (filmsResponse.error) throw new Error(filmsResponse.error.message);
   const savedFilms = (filmsResponse.data ?? []) as Array<{
     id: string;
@@ -677,18 +683,19 @@ export async function loadGardenState(): Promise<{ state: GardenState; index: Ba
     music: string;
     created_at: string;
   }>;
-  const historicalResponse = await getSupabaseClient().rpc("garden_x_get_historical_photos");
   if (historicalResponse.error) throw new Error(historicalResponse.error.message);
-  const invalidatedEventPhotosResponse = await getSupabaseClient().rpc(
-    "garden_x_get_invalidated_event_photos",
-  );
   if (invalidatedEventPhotosResponse.error)
     throw new Error(invalidatedEventPhotosResponse.error.message);
+  const seenPhotoIds = new Set<string>();
   const allPhotos = [
     ...(b.photos ?? []),
     ...((historicalResponse.data ?? []) as BootstrapPhoto[]),
     ...((invalidatedEventPhotosResponse.data ?? []) as BootstrapPhoto[]),
-  ].filter((photo, index, list) => list.findIndex((item) => item.id === photo.id) === index);
+  ].filter((photo) => {
+    if (seenPhotoIds.has(photo.id)) return false;
+    seenPhotoIds.add(photo.id);
+    return true;
+  });
 
   const gardens: Garden[] = (b.gardens ?? []).map((g) => {
     const backendPositions = (g.positions ?? []).map((p) => ({

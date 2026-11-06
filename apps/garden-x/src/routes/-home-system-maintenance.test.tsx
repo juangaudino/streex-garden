@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import type { Photo } from "@/lib/garden-data";
 import { HomeJournalView } from "@/components/garden/home-journal-view";
 
-const mocks = vi.hoisted(() => ({ store: {} as Record<string, unknown> }));
+const mocks = vi.hoisted(() => ({ store: {} as Record<string, unknown>, openJournal: vi.fn() }));
 
 vi.mock("@tanstack/react-router", async (importOriginal) => {
   const actual = await importOriginal<typeof import("@tanstack/react-router")>();
@@ -40,6 +40,7 @@ vi.mock("@tanstack/react-router", async (importOriginal) => {
   };
 });
 vi.mock("@/lib/garden-store", () => ({ useGarden: () => mocks.store }));
+vi.mock("@/components/garden/journal-entry-context", () => ({ useJournalEntry: () => mocks.openJournal }));
 vi.mock("@/components/garden/shell", () => ({
   PageHeader: ({ title, subtitle }: { title: string; subtitle: string }) => (
     <header data-testid="home-ready">
@@ -75,6 +76,7 @@ function HomeRoute() {
 afterEach(() => {
   cleanup();
   mocks.store = {};
+  mocks.openJournal.mockReset();
 });
 
 describe("Home recent activity", () => {
@@ -123,6 +125,9 @@ describe("Home recent activity", () => {
     render(<HomeRoute />);
 
     await screen.findByTestId("home-ready");
+    expect(screen.getByRole("link", { name: "View my gardens" })).toBeTruthy();
+    fireEvent.click(screen.getByRole("button", { name: "Record a moment" }));
+    expect(mocks.openJournal).toHaveBeenCalledOnce();
     expect(screen.queryByText("Water + nutrients")).toBeNull();
   });
 

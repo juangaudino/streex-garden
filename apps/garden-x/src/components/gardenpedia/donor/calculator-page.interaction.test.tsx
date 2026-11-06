@@ -57,6 +57,23 @@ describe("Calculator real control interactions", () => {
     );
   });
 
+  it("shows the sourced sowing-age reference without converting days into a stage or dose", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.type(screen.getByLabelText("Days since sowing of Genovese Basil"), "15");
+    expect(screen.getByText(/Published germination reference: 5–10 days/)).toBeTruthy();
+    expect(screen.getByRole("link", { name: "Genovese Basil Seed" }).getAttribute("href")).toMatch(
+      /^https:/,
+    );
+    expect((screen.getByLabelText("Stage of Genovese Basil") as HTMLSelectElement).value).toBe(
+      "UNSPECIFIED",
+    );
+    expect(screen.getByText(/not a confirmed stage or dose/)).toBeTruthy();
+  });
+
   it("offers measured AeroGarden calibration to an anonymous visitor before EC dosing", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

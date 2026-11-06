@@ -375,7 +375,7 @@ export function CompareScreen({
         ))}
       </div>
 
-      {context.length ? <div className="mt-10 px-5 sm:px-8 lg:px-12"><div className="surface p-5"><div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3"><h2 className="font-display text-lg">{ui(language, "recordedBetweenMoments")}</h2><ProvenanceTag kind="recorded" /></div><div className="flex flex-wrap gap-2">{context.map((event) => <span key={event.id} className="rounded-full bg-secondary px-3 py-1.5 text-xs">{formatDate(event.daysAgo)} · {event.title}</span>)}</div></div></div> : null}
+      {context.length ? <div className="mt-10 px-5 sm:px-8 lg:px-12"><div className="surface p-5"><div className="mb-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3"><h2 className="font-display text-lg">{ui(language, "recordedBetweenMoments")}</h2><ProvenanceTag kind="recorded" /></div><div className="flex flex-wrap gap-2">{context.map((event) => <Link key={event.id} to="/plants/$plantId/" params={{ plantId: plant.id }} search={{ tab: "Timeline", focusPhotoId: undefined, focusEventId: event.id }} className="rounded-full bg-secondary px-3 py-1.5 text-xs">{formatDate(event.daysAgo)} · {event.title}</Link>)}</div></div></div> : null}
 
       {/* deltas */}
       <div className="mt-10 grid gap-4 px-5 sm:px-8 lg:grid-cols-2 lg:px-12">

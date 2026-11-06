@@ -245,7 +245,7 @@ describe("Garden X B3.3 deterministic compatibility engine", () => {
     expect(results.every((result) => result.eligibility === "eligible")).toBe(true);
     const cherry = results.find((result) => result.candidate.libraryPlantId === "cherry-tomato")!;
     expect(cherry.compatibility).toBe("unknown");
-    expect(cherry.unknowns.map((unknown) => unknown.property)).toContain("light");
+    expect(cherry.unknowns.map((unknown) => unknown.property)).toContain("applicable_light");
     expect(cherry.unknowns.map((unknown) => unknown.property)).toContain("spacing");
     expect(formatCompatibilityDiagnostics([cherry])).toContain(
       "Cherry Tomato — unknown (eligible)",

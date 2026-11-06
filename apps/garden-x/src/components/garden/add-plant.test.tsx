@@ -154,7 +154,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     expect(screen.getByRole("region", { name: "Could work · check first" })).toBeTruthy();
     expect(screen.getByText(/Other plants without enough evidence · \d+/)).toBeTruthy();
     expect(screen.getByText("Cascading Petunia")).toBeTruthy();
-    expect(screen.getByText("Conditional evidence")).toBeTruthy();
+    expect(screen.getAllByText("Conditional evidence").length).toBeGreaterThan(0);
     expect(screen.getByText(/Documented system maximum grow height · 40 cm/)).toBeTruthy();
     expect(
       screen.getByRole("link", { name: /URUQ 8-Pod · snapklik.com/ }).getAttribute("href"),

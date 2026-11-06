@@ -51,7 +51,7 @@ vi.mock("@/lib/garden-backend", () => ({
   reportPhotoMediaDiagnostic: mocks.reportPhotoMediaDiagnostic,
   requestMeaningfulChange: mocks.requestMeaningfulChange,
 }));
-vi.mock("@/lib/garden-logic", () => ({
+vi.mock("@/lib/garden-logic", async (importOriginal) => ({
   ageLabel: (value: number) => `age-${value}`,
   comparePhotos: () => ({
     days: 10,
@@ -60,7 +60,7 @@ vi.mock("@/lib/garden-logic", () => ({
     confidence: "moderate",
     deltas: [],
   }),
-  eventsBetween: () => [],
+  eventsBetween: (await importOriginal<typeof import("@/lib/garden-logic")>()).eventsBetween,
   formatDate: (value: number) => `date-${value}`,
   plantPhotos: (photos: Photo[], plantId: string) =>
     photos.filter((photo) => photo.plantId === plantId),

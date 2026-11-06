@@ -27,6 +27,42 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("preserves the warning when a user chooses a target with no supported crop range", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    const result = calculateGardenResult({
+      language: "en",
+      mode: "target",
+      crops: { "cascading-petunia": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: 1.2,
+      round: 1,
+      calibrationObservations: [observation.value!],
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.target?.value).toBe(1.2);
+      expect(
+        result.warnings?.some((message) =>
+          /could not establish a common applicable crop evidence range/i.test(message),
+        ),
+      ).toBe(true);
+    }
+  });
   it("explains source water at or above target before asking for calibration", () => {
     const base = {
       mode: "target" as const,

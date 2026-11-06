@@ -1333,6 +1333,33 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     : "Applicable sources report conflicting ranges. Garden cannot automatically choose a target for this combination."}
                 </p>
               )}
+              {result.compatibility?.status === "INSUFFICIENT" &&
+                result.compatibility.evidenceState !== "CONFLICTING" &&
+                Object.keys(crops).length > 0 && (
+                  <div role="alert" className="rounded-lg border border-amber-500/60 p-3 text-sm">
+                    <p>
+                      {lang === "es"
+                        ? "No hay evidencia de EC aplicable suficiente para todas las plantas o etapas elegidas. Una dosis calculada no confirma que el objetivo sea adecuado para ellas."
+                        : "There is not enough applicable EC evidence for every selected plant or stage. A calculated dose does not confirm that the target is suitable for them."}
+                    </p>
+                    <p className="mt-2">
+                      {[
+                        ...new Set(
+                          result.compatibility.cropRanges
+                            .filter((crop) => !crop.ec || crop.evidenceState === "INSUFFICIENT")
+                            .flatMap((crop) =>
+                              Object.keys(crops).filter(
+                                (id) =>
+                                  (resolveNutrientCropIdentity(id) ?? id) === crop.cropIdentity,
+                              ),
+                            ),
+                        ),
+                      ]
+                        .map(cropName)
+                        .join(", ")}
+                    </p>
+                  </div>
+                )}
               {result.compatibility?.status === "NO_COMMON_OPTIMUM_RANGE" && (
                 <div className="rounded-lg border border-amber-500/60 p-3 text-sm">
                   <p>

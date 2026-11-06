@@ -43,6 +43,17 @@ describe("Calculator real control interactions", () => {
     ).toContain("extension.okstate.edu");
   });
 
+  it("visibly identifies a plant without applicable EC evidence", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Cascading Petunia");
+    await user.click(screen.getByRole("option", { name: /Cascading Petunia/ }));
+    expect(screen.getByRole("alert").textContent).toMatch(
+      /not enough applicable EC evidence.*Cascading Petunia/i,
+    );
+  });
+
   it("preserves actual amounts already entered when the calibration sample volume changes", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

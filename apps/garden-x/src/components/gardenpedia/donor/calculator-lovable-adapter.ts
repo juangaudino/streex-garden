@@ -815,6 +815,14 @@ function presentationMessage(message: string, lang: Lang): string {
       "The reported optimum ranges do not overlap.",
     ],
     [
+      "El objetivo elegido está fuera del rango de evidencia aplicable; se conserva sin modificar.",
+      "The user-selected target is outside the applicable evidence range; it is preserved and not silently replaced.",
+    ],
+    [
+      "Se conserva el objetivo elegido, pero Garden no pudo establecer un rango de evidencia común aplicable a los cultivos.",
+      "The user-selected target is preserved, but Garden could not establish a common applicable crop evidence range.",
+    ],
+    [
       "El agua de origen ya supera el objetivo; añadir nutrientes no puede reducir su EC.",
       "Source-water EC is already above the selected fresh-solution target; nutrient dosing cannot lower it.",
     ],
@@ -1053,7 +1061,7 @@ function calculateResult(input: CalcInput): CalcResult {
       ),
       sources: [...new Set([...sources, ...calibration.value.claims.map((claim) => claim.label)])],
       expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
-      warnings: dose.warnings.map((item) => item.message),
+      warnings: [...targetEngine.warnings, ...dose.warnings].map((item) => item.message),
     };
   }
 
@@ -1141,7 +1149,7 @@ function calculateResult(input: CalcInput): CalcResult {
         ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
       ],
       compatibility,
-      warnings: correction.warnings.map((item) => item.message),
+      warnings: [...targetEngine.warnings, ...correction.warnings].map((item) => item.message),
       expectedEc:
         value.firstStepDoseMl === undefined
           ? {
@@ -1208,7 +1216,7 @@ function calculateResult(input: CalcInput): CalcResult {
       ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
     ],
     compatibility,
-    warnings: topup.warnings.map((item) => item.message),
+    warnings: [...targetEngine.warnings, ...topup.warnings].map((item) => item.message),
     expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
   };
 }

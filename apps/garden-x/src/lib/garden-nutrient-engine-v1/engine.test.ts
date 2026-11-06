@@ -472,6 +472,34 @@ describe("Garden Nutrient Engine V1", () => {
     );
   });
 
+  it("checks the actual next correction dose against the available reservoir capacity", () => {
+    const { product, observations } = calibrationInput();
+    const calibration = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: "micro:gro:bloom=1:1:1",
+      observations,
+    }).value!;
+    const base = {
+      currentEc: measurement(0.4, "NUTRIENT_SOLUTION"),
+      targetEc: 0.8,
+      reservoirVolumeL: 10,
+      calibration,
+    };
+    const full = calculateEcCorrection({ ...base, reservoirCapacityL: 10 });
+    expect(full.errors[0]?.code).toBe("CORRECTION_EXCEEDS_CAPACITY");
+    const staged = calculateEcCorrection({
+      ...base,
+      reservoirCapacityL: 10.0025,
+      policy: { firstStepFraction: 0.25 },
+    });
+    expect(staged.ok).toBe(true);
+    expect(staged.value?.firstStepDoseMl).toBeCloseTo(1);
+    expect(staged.value?.requiresRemeasurement).toBe(true);
+    const tooLarge = calculateEcCorrection({ ...base, reservoirCapacityL: 10.0025 });
+    expect(tooLarge.errors[0]?.code).toBe("CORRECTION_EXCEEDS_CAPACITY");
+  });
+
   it("uses measured source-water EC for correction dilution", () => {
     const { product, observations } = calibrationInput();
     const calibration = buildCalibrationModel({

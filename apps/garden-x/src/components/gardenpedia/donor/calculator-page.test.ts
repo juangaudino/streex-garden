@@ -816,6 +816,39 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
 
+  it("explains when a correction dose would overflow the actual reservoir", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(observation.ok).toBe(true);
+    const result = calculateGardenResult({
+      language: "es",
+      mode: "adjust",
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: 0.8,
+      currentLiters: 4,
+      capacityLiters: 4,
+      waterAdded: null,
+      userTarget: 1.2,
+      round: 1,
+      correctionFraction: 0.5,
+      calibrationObservations: [observation.value!],
+    });
+    expect(result.kind).toBe("needs");
+    if (result.kind === "needs") expect(result.message).toContain("superaría la capacidad");
+  });
+
   it("keeps unsupported AeroGarden states explicit instead of interpolating", () => {
     const result = calculateGardenResult({
       mode: "recipe",

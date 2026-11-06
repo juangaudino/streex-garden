@@ -827,6 +827,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "The top-up would exceed known reservoir capacity.",
     ],
     [
+      "La siguiente dosis de nutrientes superaría la capacidad del tanque. Deja espacio suficiente y recalcula con el volumen restante medido.",
+      "The next nutrient dose would exceed reservoir capacity. Leave enough room and recalculate with the measured remaining volume.",
+    ],
+    [
       "Deja espacio para el concentrado además del agua de reposición; las cantidades calculadas superan la capacidad conocida.",
       "Leave room for the nutrient stock as well as replacement water; the calculated additions exceed known capacity.",
     ],

@@ -336,8 +336,12 @@ describe("Calculator real control interactions", () => {
     );
     await user.type(screen.getByLabelText(/^EC you measured/), "0.80");
     await waitFor(() => expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0));
+    await user.click(screen.getByText("More settings", { exact: true }));
+    await user.type(screen.getByLabelText(/^Reservoir capacity/), "4");
+    expect(screen.getByText(/next nutrient dose would exceed reservoir capacity/i)).toBeTruthy();
 
     await user.click(screen.getByRole("tab", { name: "Top up" }));
+    await user.clear(screen.getByLabelText(/^Reservoir capacity/));
     await user.type(screen.getByLabelText(/^Reservoir capacity/), "4");
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
       "1.20",

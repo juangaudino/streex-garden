@@ -1323,6 +1323,22 @@ export function calculateEcCorrection(input: {
     );
   const fraction = input.policy?.firstStepFraction;
   const firstStepDoseMl = fraction && fraction > 0 && fraction < 1 ? doseMl * fraction : undefined;
+  const nextDoseMl = firstStepDoseMl ?? doseMl;
+  if (
+    input.reservoirCapacityL !== undefined &&
+    input.reservoirVolumeL + nextDoseMl / MILLIS_PER_LITER > input.reservoirCapacityL
+  )
+    return result(
+      undefined,
+      warnings,
+      [
+        error(
+          "CORRECTION_EXCEEDS_CAPACITY",
+          "The next nutrient dose would exceed reservoir capacity. Leave enough room and recalculate with the measured remaining volume.",
+        ),
+      ],
+      claims,
+    );
   if (firstStepDoseMl !== undefined)
     warnings.push(
       warning(

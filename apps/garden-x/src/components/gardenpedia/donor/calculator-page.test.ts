@@ -707,6 +707,48 @@ describe("Gardenpedia Calculator V1 integration", () => {
     if (result.kind === "needs") expect(result.message).toContain("will not interpolate");
   });
 
+  it("requires measured AeroGarden calibration and uses it for EC-based workflows", () => {
+    const base = {
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "aerogarden",
+      stageId: "feeding-1",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: 0.8,
+      currentLiters: 3,
+      capacityLiters: 5,
+      waterAdded: 0.5,
+      userTarget: 1.2,
+      round: 1,
+    };
+    const uncalibrated = calculateGardenResult({ ...base, mode: "target" });
+    expect(uncalibrated.kind).toBe("needs");
+    if (uncalibrated.kind === "needs") expect(uncalibrated.calibrationRequired).toBe(true);
+    const observation = recordActualDoses({
+      productId: "aerogarden",
+      stageId: "feeding-1",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { single: "4" },
+    });
+    expect(observation.ok).toBe(true);
+    for (const mode of ["target", "adjust", "topup"] as const) {
+      const result = calculateGardenResult({
+        ...base,
+        mode,
+        calibrationObservations: [observation.value!],
+      });
+      expect(result.kind).toBe("ok");
+      if (result.kind === "ok")
+        expect(
+          result.doses.some((dose) => dose.label === "Liquid Plant Food" && dose.amount > 0),
+        ).toBe(true);
+    }
+  });
+
   it("differentiates supported AeroGarden feeding events without asking for volume", () => {
     const run = (stageId: string) =>
       calculateGardenResult({

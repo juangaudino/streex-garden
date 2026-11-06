@@ -20,7 +20,10 @@ vi.mock("@/components/ui/dialog", () => {
 
 describe("Calculator real control interactions", () => {
   beforeEach(() => window.localStorage.clear());
-  afterEach(() => cleanup());
+  afterEach(() => {
+    cleanup();
+    vi.restoreAllMocks();
+  });
 
   it("accepts a small single-plant volume and calculates planned water to capacity", async () => {
     const user = userEvent.setup();
@@ -52,6 +55,49 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByLabelText("Stage of Genovese Basil") as HTMLSelectElement).value).toBe(
       "MIXED",
     );
+  });
+
+  it("offers measured AeroGarden calibration to an anonymous visitor before EC dosing", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.click(screen.getByRole("button", { name: "AeroGarden" }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    expect(screen.getByRole("button", { name: "Calibrate this product" })).toBeTruthy();
+    await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
+    await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    const amount = screen.getByLabelText(/^Liquid Plant Food/);
+    expect((amount as HTMLInputElement).value).toBe("");
+    await user.clear(amount);
+    await user.type(amount, "4");
+    await user.click(screen.getByRole("button", { name: "Save calibration" }));
+    await waitFor(() =>
+      expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
+    );
+    expect(screen.getAllByText("Liquid Plant Food").length).toBeGreaterThan(0);
+  });
+
+  it("can calculate for an anonymous visitor when browser storage is unavailable", async () => {
+    const user = userEvent.setup();
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
+      throw new Error("unavailable");
+    });
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
+    await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    await user.click(screen.getByRole("button", { name: "Save calibration" }));
+    await waitFor(() =>
+      expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
+    );
+    expect(screen.getByRole("alert").textContent).toContain("in memory only");
   });
 
   it("restores target, mode, measured state, source water, equipment and actual calibration after reload", async () => {

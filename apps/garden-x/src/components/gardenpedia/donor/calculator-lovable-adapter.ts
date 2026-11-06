@@ -205,7 +205,7 @@ export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
     id: "ab",
     name: "A + B",
     basis: "liters",
-    available: false,
+    available: true,
     recipeStages: [],
     parts: [
       { id: "a", label: "Parte A" },
@@ -236,6 +236,9 @@ export type SavedSystem = {
   cropStages?: Record<string, CalculatorCropStage> | undefined;
   liters: number;
   productId: string;
+  customAbManufacturer?: string | undefined;
+  customAbName?: string | undefined;
+  customAbVersion?: string | undefined;
   water: { label: Record<Lang, string>; ec: number };
   meter: string;
   stageId: string;
@@ -277,6 +280,9 @@ export function loadSavedSystems(): SavedSystem[] {
           : {}),
         liters: item.liters ?? 1,
         productId: item.productId ?? "gh-flora",
+        ...(item.customAbManufacturer ? { customAbManufacturer: item.customAbManufacturer } : {}),
+        ...(item.customAbName ? { customAbName: item.customAbName } : {}),
+        ...(item.customAbVersion ? { customAbVersion: item.customAbVersion } : {}),
         water: item.water ?? { label: { es: "Agua de origen", en: "Source water" }, ec: 0 },
         meter: item.meter ?? "—",
         stageId: item.stageId ?? "feeding-2",
@@ -312,6 +318,9 @@ export type CalcInput = {
   cropStages?: Record<string, CalculatorCropStage> | undefined;
   liters: number;
   productId: string;
+  customAbManufacturer?: string | undefined;
+  customAbName?: string | undefined;
+  customAbVersion?: string | undefined;
   stageId: string;
   pods: number;
   sourceEc: number;
@@ -594,11 +603,52 @@ function combineEvidence(states: EvidenceState[]): EvidenceState {
   return "HIGH";
 }
 
-function productIdentity(productId: string) {
+function productIdentity(
+  productId: string,
+  customAbName?: string,
+  customAbVersion?: string,
+  customAbManufacturer?: string,
+) {
+  if (productId === "ab") {
+    const manufacturer = customAbManufacturer?.trim();
+    const name = customAbName?.trim();
+    const version = customAbVersion?.trim();
+    if (!manufacturer || !name || !version) return undefined;
+    return {
+      manufacturer,
+      productFamily: "A+B",
+      exactProduct: name,
+      formulationVersion: version,
+    };
+  }
   return MANUFACTURER_RECIPES.find((recipe) => RECIPE_IDS[productId] === recipe.id)?.product;
 }
 
-function recipeSignatureFor(productId: string, stageId: string, liters: number, pods: number) {
+function recipeSignatureFor(
+  productId: string,
+  stageId: string,
+  liters: number,
+  pods: number,
+  customAbName?: string,
+  customAbVersion?: string,
+  customAbManufacturer?: string,
+) {
+  if (productId === "ab") {
+    const identity = productIdentity(
+      productId,
+      customAbName,
+      customAbVersion,
+      customAbManufacturer,
+    );
+    return identity
+      ? JSON.stringify([
+          "user-ab",
+          identity.manufacturer,
+          identity.exactProduct,
+          identity.formulationVersion,
+        ])
+      : undefined;
+  }
   const recipeId = RECIPE_IDS[productId];
   if (!recipeId) return undefined;
   const stage = stageForId(stageId, productId);
@@ -666,6 +716,11 @@ function actualDoseTotal(doses: Record<string, string>): number | undefined {
 
 export function calculateGardenResult(input: CalcInput): CalcResult {
   const calculated = calculateResult(input);
+  if (calculated.kind === "ok" && input.productId === "ab")
+    calculated.warnings = [
+      ...(calculated.warnings ?? []),
+      "User-identified formulation and measured ratio; no manufacturer recipe is implied. Follow the manufacturer's mixing instructions.",
+    ];
   if (
     calculated.kind === "ok" &&
     calculated.doses.some((dose) => !Number.isFinite(dose.amount) || dose.amount < 0)
@@ -706,6 +761,14 @@ function presentationMessage(message: string, lang: Lang): string {
       "Record a real measurement to calibrate this exact product and mixture.",
     ],
     ["Selecciona un objetivo EC para continuar.", "Select an EC target to continue."],
+    [
+      "Formulación identificada por ti y proporción medida; no es una receta del fabricante. Sigue sus instrucciones de mezcla.",
+      "User-identified formulation and measured ratio; no manufacturer recipe is implied. Follow the manufacturer's mixing instructions.",
+    ],
+    [
+      "No existe una receta oficial para esta formulación exacta.",
+      "No official recipe is available for this exact formulation.",
+    ],
     ["el EC que mediste", "the EC you measured"],
     ["cuántos litros quedan", "the actual liters remaining"],
     ["cuánta agua añadiste", "the replacement water amount"],
@@ -895,8 +958,21 @@ function calculateResult(input: CalcInput): CalcResult {
         targetPresentation,
       );
     }
-    const identity = productIdentity(input.productId);
-    const signature = recipeSignatureFor(input.productId, input.stageId, input.liters, input.pods);
+    const identity = productIdentity(
+      input.productId,
+      input.customAbName,
+      input.customAbVersion,
+      input.customAbManufacturer,
+    );
+    const signature = recipeSignatureFor(
+      input.productId,
+      input.stageId,
+      input.liters,
+      input.pods,
+      input.customAbName,
+      input.customAbVersion,
+      input.customAbManufacturer,
+    );
     if (!identity || !signature) {
       return {
         kind: "needs",
@@ -962,8 +1038,21 @@ function calculateResult(input: CalcInput): CalcResult {
 
   if (targetValue === undefined)
     return engineNeeds("Selecciona un objetivo EC para continuar.", targetPresentation);
-  const identity = productIdentity(input.productId);
-  const signature = recipeSignatureFor(input.productId, input.stageId, input.liters, input.pods);
+  const identity = productIdentity(
+    input.productId,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
+  const signature = recipeSignatureFor(
+    input.productId,
+    input.stageId,
+    input.liters,
+    input.pods,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
   if (!identity || !signature)
     return engineNeeds(
       "Este producto necesita una calibración exacta antes de corregir o rellenar.",
@@ -1123,10 +1212,33 @@ function applicableCalibration(
 }
 
 export function calibrationUsage(
-  input: Pick<CalcInput, "productId" | "stageId" | "liters" | "pods" | "calibrationObservations">,
+  input: Pick<
+    CalcInput,
+    | "productId"
+    | "stageId"
+    | "liters"
+    | "pods"
+    | "calibrationObservations"
+    | "customAbName"
+    | "customAbVersion"
+    | "customAbManufacturer"
+  >,
 ): { used: number; recorded: number } {
-  const identity = productIdentity(input.productId);
-  const signature = recipeSignatureFor(input.productId, input.stageId, input.liters, input.pods);
+  const identity = productIdentity(
+    input.productId,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
+  const signature = recipeSignatureFor(
+    input.productId,
+    input.stageId,
+    input.liters,
+    input.pods,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
   const recorded = input.calibrationObservations?.length ?? 0;
   if (!identity || !signature) return { used: 0, recorded };
   const observations = input.calibrationObservations ?? [];
@@ -1145,6 +1257,9 @@ export function calibrationUsage(
 
 export function recordActualDoses(input: {
   productId: string;
+  customAbManufacturer?: string | undefined;
+  customAbName?: string | undefined;
+  customAbVersion?: string | undefined;
   stageId: string;
   liters: number;
   pods: number;
@@ -1152,8 +1267,21 @@ export function recordActualDoses(input: {
   resultingEc: number;
   actualDoses: Record<string, string>;
 }): EngineResult<CalibrationObservation> {
-  const identity = productIdentity(input.productId);
-  const signature = recipeSignatureFor(input.productId, input.stageId, input.liters, input.pods);
+  const identity = productIdentity(
+    input.productId,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
+  const signature = recipeSignatureFor(
+    input.productId,
+    input.stageId,
+    input.liters,
+    input.pods,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
   const doseAppliedMl = actualDoseTotal(input.actualDoses);
   const components = CALCULATOR_PRODUCTS.find((item) => item.id === input.productId)?.parts ?? [];
   if (
@@ -1175,6 +1303,18 @@ export function recordActualDoses(input: {
   const componentDosesMl = Object.fromEntries(
     components.map((part) => [part.id, Number(input.actualDoses[part.id]!.replace(",", "."))]),
   );
+  if (input.productId === "ab" && Object.values(componentDosesMl).some((amount) => amount <= 0))
+    return {
+      ok: false,
+      warnings: [],
+      errors: [
+        {
+          code: "BOTH_COMPONENTS_REQUIRED",
+          message: "The actual positive amounts of both A and B are required.",
+        },
+      ],
+      claims: [],
+    };
   const measuredSignature = components
     .map((part) => `${part.id}:${(componentDosesMl[part.id]! / doseAppliedMl).toPrecision(12)}`)
     .sort()

@@ -100,6 +100,35 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByRole("alert").textContent).toContain("in memory only");
   });
 
+  it("calibrates an identified A+B product using the user's actual component doses", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.click(screen.getByRole("button", { name: "A + B" }));
+    await user.type(screen.getByLabelText("A+B manufacturer"), "Test manufacturer");
+    await user.type(screen.getByLabelText("Exact A+B product name"), "Test product");
+    await user.type(screen.getByLabelText("Exact formulation or version"), "V1");
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
+    await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    const a = screen.getByLabelText(/^Part A/);
+    const b = screen.getByLabelText(/^Part B/);
+    expect((a as HTMLInputElement).value).toBe("");
+    expect((b as HTMLInputElement).value).toBe("");
+    await user.type(a, "4");
+    await user.type(b, "2");
+    await user.click(screen.getByRole("button", { name: "Save calibration" }));
+    await waitFor(() =>
+      expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
+    );
+    await user.clear(screen.getByLabelText("Exact formulation or version"));
+    await user.type(screen.getByLabelText("Exact formulation or version"), "V2");
+    expect(screen.getByRole("button", { name: "Calibrate this product" })).toBeTruthy();
+  });
+
   it("restores target, mode, measured state, source water, equipment and actual calibration after reload", async () => {
     const user = userEvent.setup();
     const first = render(<CalculatorPage language="en" />);

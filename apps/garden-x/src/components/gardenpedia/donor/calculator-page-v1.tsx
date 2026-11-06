@@ -69,6 +69,11 @@ const T = {
     pods: "Capacidad del modelo (pods)",
     podGroupsHint: "Grupos verificados: 6, 7 y 9 pods",
     product: "Nutriente",
+    customAbManufacturer: "Fabricante del producto A+B",
+    customAbName: "Nombre exacto del producto A+B",
+    customAbVersion: "Formulación o versión exacta",
+    customAbNote:
+      "Identificado por ti. No hay receta oficial cargada: mide las dosis reales de A y B para calibrar y sigue las instrucciones del fabricante para mezclarlos.",
     stage: "Etapa de la receta",
     feedingEvent: "Evento de alimentación",
     currentEc: "EC que mediste",
@@ -190,6 +195,11 @@ const T = {
     pods: "Model capacity (pods)",
     podGroupsHint: "Verified groups: 6, 7, and 9 pods",
     product: "Nutrient",
+    customAbManufacturer: "A+B manufacturer",
+    customAbName: "Exact A+B product name",
+    customAbVersion: "Exact formulation or version",
+    customAbNote:
+      "Identified by you. No official recipe is loaded: measure the actual A and B doses to calibrate and follow the manufacturer's mixing instructions.",
     stage: "Recipe stage",
     feedingEvent: "Feeding event",
     currentEc: "EC you measured",
@@ -335,6 +345,10 @@ const QUICK: SavedSystem = {
   unit: "mS",
 };
 
+function localizedComponent(label: string, lang: Lang) {
+  return lang === "en" ? label.replace(/^Parte ([AB])$/, "Part $1") : label;
+}
+
 /* ---------------------------------------------------------------- page */
 
 export function CalculatorPage({ language = "es" }: { language?: Lang }) {
@@ -356,6 +370,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [liters, setLiters] = useState(sys.liters);
   const [volumeInput, setVolumeInput] = useState(String(sys.liters));
   const [productId, setProductId] = useState(sys.productId);
+  const [customAbManufacturer, setCustomAbManufacturer] = useState(sys.customAbManufacturer ?? "");
+  const [customAbName, setCustomAbName] = useState(sys.customAbName ?? "");
+  const [customAbVersion, setCustomAbVersion] = useState(sys.customAbVersion ?? "");
   const [stageId, setStageId] = useState(QUICK.stageId);
   const [pods, setPods] = useState(QUICK.pods);
   const [unit, setUnit] = useState<EcUnit>("mS");
@@ -383,6 +400,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const product = CALCULATOR_PRODUCTS.find((p) => p.id === productId) ?? CALCULATOR_PRODUCTS[0]!;
   const calibrationCounts = calibrationUsage({
     productId,
+    customAbManufacturer,
+    customAbName,
+    customAbVersion,
     stageId,
     liters,
     pods,
@@ -397,6 +417,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         cropStages,
         liters,
         productId,
+        customAbManufacturer,
+        customAbName,
+        customAbVersion,
         stageId,
         pods,
         unit,
@@ -419,6 +442,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setLiters(s.liters);
     setVolumeInput(String(s.liters));
     setProductId(s.productId);
+    setCustomAbManufacturer(s.customAbManufacturer ?? "");
+    setCustomAbName(s.customAbName ?? "");
+    setCustomAbVersion(s.customAbVersion ?? "");
     setStageId(s.stageId);
     setPods(s.pods);
     setUnit(s.unit);
@@ -458,6 +484,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       cropStages: { ...cropStages },
       liters,
       productId,
+      customAbManufacturer,
+      customAbName,
+      customAbVersion,
       stageId,
       pods,
       unit,
@@ -552,6 +581,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       cropStages: { ...cropStages },
       liters,
       productId,
+      customAbManufacturer,
+      customAbName,
+      customAbVersion,
       stageId,
       pods,
       unit,
@@ -614,6 +646,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         cropStages,
         liters,
         productId,
+        customAbManufacturer,
+        customAbName,
+        customAbVersion,
         stageId,
         pods,
         sourceEc,
@@ -627,6 +662,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         dosingResolutionMl,
         correctionFraction: (parseDecimalInput(correctionStepInput) ?? 0) / 100,
         invalidFields: [
+          ...(productId === "ab" && !customAbManufacturer.trim() ? [t.customAbManufacturer] : []),
+          ...(productId === "ab" && !customAbName.trim() ? [t.customAbName] : []),
+          ...(productId === "ab" && !customAbVersion.trim() ? [t.customAbVersion] : []),
           ...((mode === "recipe" && product.basis === "liters") || mode === "target"
             ? parseDecimalInput(volumeInput) === null || (parseDecimalInput(volumeInput) ?? 0) <= 0
               ? [t.volume]
@@ -653,6 +691,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       volumeInput,
       product.basis,
       productId,
+      customAbManufacturer,
+      customAbName,
+      customAbVersion,
       stageId,
       pods,
       sourceEc,
@@ -928,6 +969,35 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     </Chip>
                   ))}
                 </div>
+                {productId === "ab" && (
+                  <div className="mt-3 grid gap-2">
+                    <label className="text-xs">
+                      {t.customAbManufacturer}
+                      <Input
+                        aria-label={t.customAbManufacturer}
+                        value={customAbManufacturer}
+                        onChange={(event) => setCustomAbManufacturer(event.target.value)}
+                      />
+                    </label>
+                    <label className="text-xs">
+                      {t.customAbName}
+                      <Input
+                        aria-label={t.customAbName}
+                        value={customAbName}
+                        onChange={(event) => setCustomAbName(event.target.value)}
+                      />
+                    </label>
+                    <label className="text-xs">
+                      {t.customAbVersion}
+                      <Input
+                        aria-label={t.customAbVersion}
+                        value={customAbVersion}
+                        onChange={(event) => setCustomAbVersion(event.target.value)}
+                      />
+                    </label>
+                    <p className="text-xs text-muted-foreground">{t.customAbNote}</p>
+                  </div>
+                )}
                 {mode === "recipe" && product.hasRecipeStages && (
                   <div className="mt-3 space-y-2">
                     <select
@@ -1202,6 +1272,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       onSave={(baselineEc, resultingEc, actualDoses, sampleVolumeL) => {
                         const observation = recordActualDoses({
                           productId,
+                          customAbManufacturer,
+                          customAbName,
+                          customAbVersion,
                           stageId,
                           liters: sampleVolumeL,
                           pods,
@@ -1271,13 +1344,17 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     ) : (
                       <>
                         <p className="mt-4 text-xs font-semibold text-muted-foreground">
-                          {t.order}
+                          {productId === "ab"
+                            ? lang === "es"
+                              ? "Cantidades · sigue las instrucciones de mezcla del fabricante"
+                              : "Amounts · follow the manufacturer's mixing instructions"
+                            : t.order}
                         </p>
                         <ol className="mt-2 divide-y divide-border/70">
                           {result.doses.map((d, i) => (
                             <li key={d.label} className="flex items-center gap-3 py-3">
                               <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-primary/40 text-xs font-bold">
-                                {i + 1}
+                                {productId === "ab" ? "•" : i + 1}
                               </span>
                               <span className="min-w-0 flex-1 truncate text-sm font-medium">
                                 {d.label === "Replacement water"
@@ -1288,7 +1365,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                                     ? lang === "es"
                                       ? "Agua"
                                       : "Water"
-                                    : d.label}
+                                    : localizedComponent(d.label, lang)}
                               </span>
                               <span className="font-display text-3xl font-bold tabular-nums">
                                 {d.amount > 0 && d.amount < 0.005 ? "<0.01" : d.amount.toFixed(2)}
@@ -1413,6 +1490,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       <LearnCard
                         key={`${sys.id}-${mode}-${round}-${unit}`}
                         t={t}
+                        lang={lang}
                         unitLabel={unitLabel}
                         system={sys}
                         productId={productId}
@@ -1425,6 +1503,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           const measuredMs = unit === "uS" ? measured / 1000 : measured;
                           const observation = recordActualDoses({
                             productId,
+                            customAbManufacturer,
+                            customAbName,
+                            customAbVersion,
                             stageId,
                             liters:
                               mode === "adjust"
@@ -1843,7 +1924,7 @@ function CalibrationCard({
   const sampleVolumeL = parseDecimalInput(sampleVolumeInput) ?? 0;
   const defaults = useMemo(
     () =>
-      product.basis === "pods"
+      product.basis === "pods" || product.id === "ab"
         ? []
         : manufacturerDoseDefaults({ productId: product.id, stageId, liters: sampleVolumeL, pods }),
     [product.id, product.basis, stageId, sampleVolumeL, pods],
@@ -1921,7 +2002,7 @@ function CalibrationCard({
           {product.parts.map((part) => (
             <Field
               key={part.id}
-              label={part.label}
+              label={localizedComponent(part.label, lang)}
               suffix="mL"
               value={actualDoses[part.id] ?? ""}
               onChange={(value) => setActualDoses((current) => ({ ...current, [part.id]: value }))}
@@ -1949,6 +2030,7 @@ function CalibrationCard({
 
 function LearnCard({
   t,
+  lang,
   unitLabel,
   system,
   productId,
@@ -1961,6 +2043,7 @@ function LearnCard({
   canLoop,
 }: {
   t: Copy;
+  lang: Lang;
   unitLabel: string;
   system: SavedSystem;
   productId: string;
@@ -2048,7 +2131,7 @@ function LearnCard({
             {product.parts.map((part) => (
               <Field
                 key={part.id}
-                label={part.label}
+                label={localizedComponent(part.label, lang)}
                 suffix="mL"
                 value={actualDoses[part.id] ?? ""}
                 onChange={(value) =>

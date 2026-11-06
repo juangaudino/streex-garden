@@ -25,6 +25,19 @@ describe("Calculator real control interactions", () => {
     vi.restoreAllMocks();
   });
 
+  it("explains the individual reported ranges when shared crops have no common range", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    for (const name of ["Bibb Lettuce", "Cherry Tomato"]) {
+      await user.click(screen.getByRole("button", { name: "Add plant" }));
+      await user.type(screen.getByPlaceholderText("Search plant…"), name);
+      await user.click(screen.getByText(name, { exact: true }).closest("button")!);
+    }
+    expect(screen.getByText(/reported ranges do not overlap/i)).toBeTruthy();
+    expect(screen.getByText(/Bibb Lettuce: 1\.20–1\.80 mS\/cm/)).toBeTruthy();
+    expect(screen.getByText(/Cherry Tomato: 2\.00–4\.00 mS\/cm/)).toBeTruthy();
+  });
+
   it("preserves actual amounts already entered when the calibration sample volume changes", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

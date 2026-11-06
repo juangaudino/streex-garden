@@ -486,10 +486,14 @@ export function calculateFreshTargetEcDose(input: {
   calibration: CalibrationModel;
   policy?: EnginePolicy | undefined;
 }): EngineResult<FreshTargetDoseResult> {
-  const sourceEc = toMsPerCm(
-    input.sourceWaterEc.value,
-    input.sourceWaterEc.unit === "pH" ? "mS/cm" : input.sourceWaterEc.unit,
-  );
+  if (input.sourceWaterEc.unit === "pH")
+    return result(
+      undefined,
+      [],
+      [error("EC_UNIT_REQUIRED", "Source-water conductivity must be measured in mS/cm or uS/cm.")],
+      [],
+    );
+  const sourceEc = toMsPerCm(input.sourceWaterEc.value, input.sourceWaterEc.unit);
   const claims: Claim[] = [
     claim("fresh-source-water-ec", "Measured source-water EC", "USER_SELECTED", [], {
       value: sourceEc,
@@ -1064,11 +1068,15 @@ export function calculateEcCorrection(input: {
   calibration?: CalibrationModel | undefined;
   policy?: EnginePolicy | undefined;
 }): EngineResult<CorrectionResult> {
+  if (input.currentEc.unit === "pH" || input.dilutionWaterEc?.unit === "pH")
+    return result(
+      undefined,
+      [],
+      [error("EC_UNIT_REQUIRED", "Conductivity measurements must use mS/cm or uS/cm, not pH.")],
+      [],
+    );
   const warnings: EngineWarning[] = [];
-  const currentEc = toMsPerCm(
-    input.currentEc.value,
-    input.currentEc.unit === "pH" ? "mS/cm" : input.currentEc.unit,
-  );
+  const currentEc = toMsPerCm(input.currentEc.value, input.currentEc.unit);
   if (
     ![currentEc, input.targetEc, input.reservoirVolumeL].every(Number.isFinite) ||
     currentEc < 0 ||
@@ -1097,10 +1105,7 @@ export function calculateEcCorrection(input: {
   if (input.dilutionWaterEc)
     claims.push(
       claim("correction-source-water-ec", "Dilution source-water EC", "USER_SELECTED", [], {
-        value: toMsPerCm(
-          input.dilutionWaterEc.value,
-          input.dilutionWaterEc.unit === "pH" ? "mS/cm" : input.dilutionWaterEc.unit,
-        ),
+        value: toMsPerCm(input.dilutionWaterEc.value, input.dilutionWaterEc.unit),
       }),
     );
   if (
@@ -1147,10 +1152,7 @@ export function calculateEcCorrection(input: {
         claims,
       );
     const dilutionWaterEc = input.dilutionWaterEc
-      ? toMsPerCm(
-          input.dilutionWaterEc.value,
-          input.dilutionWaterEc.unit === "pH" ? "mS/cm" : input.dilutionWaterEc.unit,
-        )
+      ? toMsPerCm(input.dilutionWaterEc.value, input.dilutionWaterEc.unit)
       : 0;
     if (!Number.isFinite(dilutionWaterEc) || dilutionWaterEc < 0)
       return result(
@@ -1362,10 +1364,14 @@ export function calculateTopUpMaintenance(input: {
   calibration?: CalibrationModel | undefined;
   policy?: EnginePolicy | undefined;
 }): EngineResult<TopUpResult> {
-  const currentEc = toMsPerCm(
-    input.currentEc.value,
-    input.currentEc.unit === "pH" ? "mS/cm" : input.currentEc.unit,
-  );
+  if (input.currentEc.unit === "pH" || input.replacementWaterEc?.unit === "pH")
+    return result(
+      undefined,
+      [],
+      [error("EC_UNIT_REQUIRED", "Conductivity measurements must use mS/cm or uS/cm, not pH.")],
+      [],
+    );
+  const currentEc = toMsPerCm(input.currentEc.value, input.currentEc.unit);
   if (
     ![currentEc, input.targetEc, input.nominalVolumeL, input.replacementWaterL].every(
       Number.isFinite,
@@ -1393,10 +1399,7 @@ export function calculateTopUpMaintenance(input: {
     }),
   ];
   const replacementWaterEc = input.replacementWaterEc
-    ? toMsPerCm(
-        input.replacementWaterEc.value,
-        input.replacementWaterEc.unit === "pH" ? "mS/cm" : input.replacementWaterEc.unit,
-      )
+    ? toMsPerCm(input.replacementWaterEc.value, input.replacementWaterEc.unit)
     : 0;
   if (!Number.isFinite(replacementWaterEc) || replacementWaterEc < 0)
     return result(
@@ -1455,6 +1458,18 @@ export function calculateTopUpMaintenance(input: {
       undefined,
       [],
       [error("RESERVOIR_CAPACITY_EXCEEDED", "The top-up would exceed known reservoir capacity.")],
+      claims,
+    );
+  if (input.replacementWaterL > 0 && !input.replacementWaterEc)
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "SOURCE_WATER_EC_REQUIRED",
+          "Measure the replacement water EC before calculating the top-up.",
+        ),
+      ],
       claims,
     );
   if (
@@ -1636,10 +1651,26 @@ export function evaluateSourceWater(input: {
   sourceToTargetRatio?: number | undefined;
   targetMinusSource?: number | undefined;
 }> {
-  const sourceEc = toMsPerCm(
-    input.sourceEc.value,
-    input.sourceEc.unit === "pH" ? "mS/cm" : input.sourceEc.unit,
-  );
+  if (input.sourceEc.unit === "pH")
+    return result(
+      undefined,
+      [],
+      [error("EC_UNIT_REQUIRED", "Source-water conductivity must be measured in mS/cm or uS/cm.")],
+      [],
+    );
+  const sourceEc = toMsPerCm(input.sourceEc.value, input.sourceEc.unit);
+  if (!Number.isFinite(sourceEc) || sourceEc < 0 || !Number.isFinite(input.targetEc))
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "INVALID_SOURCE_WATER_EC",
+          "Source-water EC must be finite and non-negative, and the target must be finite.",
+        ),
+      ],
+      [],
+    );
   const claims = [
     claim("source-water-ec", "Measured source-water EC", "USER_SELECTED", [], { value: sourceEc }),
     claim("target-ec", "Selected target EC", "USER_SELECTED", [], { value: input.targetEc }),

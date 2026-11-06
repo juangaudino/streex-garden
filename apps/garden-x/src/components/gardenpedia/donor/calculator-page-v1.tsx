@@ -38,6 +38,7 @@ import {
   persistSavedSystems,
   recipeStageLabel,
   recordActualDoses,
+  resolveNutrientCropIdentity,
   type CalcResult,
   type CalculatorCropStage,
   type EcUnit,
@@ -1326,11 +1327,26 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 </p>
               )}
               {result.compatibility?.status === "NO_COMMON_OPTIMUM_RANGE" && (
-                <p className="rounded-lg border border-amber-500/60 p-3 text-sm">
-                  {lang === "es"
-                    ? "Los rangos publicados no se solapan. Considera separar los cultivos; un objetivo elegido no convierte esos rangos en compatibles."
-                    : "The reported ranges do not overlap. Consider separating the crops; a selected target does not make the ranges overlap."}
-                </p>
+                <div className="rounded-lg border border-amber-500/60 p-3 text-sm">
+                  <p>
+                    {lang === "es"
+                      ? "Los rangos publicados no se solapan. Considera separar los cultivos; un objetivo elegido no convierte esos rangos en compatibles."
+                      : "The reported ranges do not overlap. Consider separating the crops; a selected target does not make the ranges overlap."}
+                  </p>
+                  <ul className="mt-2 space-y-1">
+                    {result.compatibility.cropRanges.map((crop, index) => {
+                      const selected = Object.keys(crops).filter(
+                        (id) => (resolveNutrientCropIdentity(id) ?? id) === crop.cropIdentity,
+                      );
+                      return crop.ec ? (
+                        <li key={`${crop.cropIdentity}-${index}`}>
+                          {selected.map(cropName).join(", ") || crop.cropIdentity}:{" "}
+                          {fmtEc(crop.ec.min)}–{fmtEc(crop.ec.max)} {unitLabel}
+                        </li>
+                      ) : null;
+                    })}
+                  </ul>
+                </div>
               )}
               {result.kind === "needs" ? (
                 <div className="glass-panel p-6">
@@ -1525,8 +1541,12 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           <p className="font-medium">
                             {lang === "es" ? "Compatibilidad de cultivos" : "Crop compatibility"}:{" "}
                             {result.compatibility.status === "INSUFFICIENT"
-                              ? "INSUFFICIENT_EVIDENCE"
-                              : result.compatibility.status}
+                              ? lang === "es"
+                                ? "Evidencia insuficiente"
+                                : "Insufficient evidence"
+                              : result.compatibility.status === "NO_COMMON_OPTIMUM_RANGE"
+                                ? t.noCommon
+                                : t.common}
                           </p>
                         )}
                         {result.range && (
@@ -2036,12 +2056,16 @@ function CalibrationCard({
       previousRecipe.current = recipe;
       editedParts.current.clear();
     }
-    setActualDoses((current) => Object.fromEntries(product.parts.map((part) => [
-      part.id,
-      editedParts.current.has(part.id)
-        ? (current[part.id] ?? "")
-        : (defaults.find((item) => item.id === part.id)?.amount.toFixed(2) ?? ""),
-    ])));
+    setActualDoses((current) =>
+      Object.fromEntries(
+        product.parts.map((part) => [
+          part.id,
+          editedParts.current.has(part.id)
+            ? (current[part.id] ?? "")
+            : (defaults.find((item) => item.id === part.id)?.amount.toFixed(2) ?? ""),
+        ]),
+      ),
+    );
   }, [defaults, product, stageId]);
 
   const submit = () => {
@@ -2306,7 +2330,9 @@ function Field({
   autoComplete?: string;
 }) {
   return (
-    <label className={cn("block w-full min-w-0 max-w-full text-xs text-muted-foreground", className)}>
+    <label
+      className={cn("block w-full min-w-0 max-w-full text-xs text-muted-foreground", className)}
+    >
       {label}
       <span
         className={cn(

@@ -58,6 +58,78 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("never treats a pH reading as conductivity in dosing or water evaluation", () => {
+    const { product, observations } = calibrationInput();
+    const calibration = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: observations[0]!.componentRatioOrRecipeSignature,
+      observations,
+    }).value!;
+    const solutionPh: UserMeasurement = { ...measurement(6, "NUTRIENT_SOLUTION"), unit: "pH" };
+    const waterPh: UserMeasurement = { ...measurement(6, "SOURCE_WATER"), unit: "pH" };
+    expect(
+      calculateFreshTargetEcDose({
+        sourceWaterEc: waterPh,
+        targetEc: 1.2,
+        reservoirVolumeL: 4,
+        calibration,
+      }).errors[0]?.code,
+    ).toBe("EC_UNIT_REQUIRED");
+    expect(
+      calculateEcCorrection({ currentEc: solutionPh, targetEc: 1.2, reservoirVolumeL: 4 }).errors[0]
+        ?.code,
+    ).toBe("EC_UNIT_REQUIRED");
+    expect(
+      calculateEcCorrection({
+        currentEc: measurement(1.5, "NUTRIENT_SOLUTION"),
+        dilutionWaterEc: waterPh,
+        targetEc: 1.2,
+        reservoirVolumeL: 4,
+      }).errors[0]?.code,
+    ).toBe("EC_UNIT_REQUIRED");
+    expect(
+      calculateTopUpMaintenance({
+        currentVolumeL: 2.5,
+        nominalVolumeL: 4,
+        replacementWaterL: 1,
+        currentEc: solutionPh,
+        replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
+        targetEc: 1.2,
+      }).errors[0]?.code,
+    ).toBe("EC_UNIT_REQUIRED");
+    expect(
+      calculateTopUpMaintenance({
+        currentVolumeL: 2.5,
+        nominalVolumeL: 4,
+        replacementWaterL: 1,
+        currentEc: measurement(1.2, "NUTRIENT_SOLUTION"),
+        replacementWaterEc: waterPh,
+        targetEc: 1.2,
+      }).errors[0]?.code,
+    ).toBe("EC_UNIT_REQUIRED");
+    expect(evaluateSourceWater({ sourceEc: waterPh, targetEc: 1.2 }).errors[0]?.code).toBe(
+      "EC_UNIT_REQUIRED",
+    );
+  });
+
+  it("requires measured source-water EC for a top-up that adds water", () => {
+    const base = {
+      currentVolumeL: 2.5,
+      nominalVolumeL: 4,
+      replacementWaterL: 1,
+      currentEc: measurement(1.2, "NUTRIENT_SOLUTION"),
+      targetEc: 1.2,
+    };
+    expect(calculateTopUpMaintenance(base).errors[0]?.code).toBe("SOURCE_WATER_EC_REQUIRED");
+    expect(calculateTopUpMaintenance({ ...base, replacementWaterL: 0 }).ok).toBe(true);
+    expect(
+      calculateTopUpMaintenance({
+        ...base,
+        replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
+      }).errors.some((item) => item.code === "SOURCE_WATER_EC_REQUIRED"),
+    ).toBe(false);
+  });
   it("does not flag equal calibrated responses as outliers merely because tank volumes differ", () => {
     const { product, observations } = calibrationInput();
     const sample = observations[0]!;
@@ -445,6 +517,7 @@ describe("Garden Nutrient Engine V1", () => {
       currentEc: measurement(1, "NUTRIENT_SOLUTION"),
       targetEc: 1.2,
       calibration: model.value,
+      replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
     });
     expect(result.value?.approximation).toBe(true);
     expect(result.warnings.some((item) => item.code === "LINEAR_MIXING_APPROXIMATION")).toBe(true);

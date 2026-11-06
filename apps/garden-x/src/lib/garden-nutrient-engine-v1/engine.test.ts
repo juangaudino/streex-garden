@@ -254,6 +254,51 @@ describe("Garden Nutrient Engine V1", () => {
     expect(selectApplicable([unknown], basil)).toHaveLength(0);
   });
 
+  it("does not combine unknown or unrequested measurement contexts into a crop target", () => {
+    const ec = CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!;
+    const root = { ...ec, id: "root", measurementScope: "ROOT_ZONE" as const };
+    const unknown = {
+      ...ec,
+      id: "unknown",
+      measurementScope: "UNKNOWN" as const,
+      scopeBasis: "UNKNOWN" as const,
+    };
+    for (const measurementScope of [undefined, "UNKNOWN"] as const) {
+      const context = { ...basil, measurementScope };
+      expect(selectApplicable([ec, root, unknown], context)).toHaveLength(0);
+      const result = calculateFreshTargetEc({
+        contexts: [context],
+        observations: [ec, root, unknown],
+      });
+      expect(result.ok).toBe(false);
+      expect(result.value).toBeUndefined();
+    }
+  });
+
+  it("does not apply system-specific evidence when the growing system is unknown", () => {
+    const ec = CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!;
+    const nft = { ...ec, id: "nft-only", hydroponicSystem: "NFT" as const };
+    expect(selectApplicable([ec, nft], basil).map((item) => item.id)).toEqual([ec.id]);
+    expect(
+      selectApplicable([ec, nft], { ...basil, hydroponicSystem: "NFT" }).map((item) => item.id),
+    ).toEqual([ec.id, nft.id]);
+  });
+
+  it("never intersects ranges across different measurement scopes in a mixed planting", () => {
+    const tomatoEc = CROP_EVIDENCE.find(
+      (item) => item.cropIdentity === "tomato" && item.metric === "EC",
+    )!;
+    const tomatoRoot = { ...tomatoEc, id: "tomato-root", measurementScope: "ROOT_ZONE" as const };
+    const result = calculatePolycultureRange(
+      [basil, { ...tomato, measurementScope: "ROOT_ZONE" }],
+      [...CROP_EVIDENCE, tomatoRoot],
+    );
+    expect(result.cropRanges.every((item) => item.ec)).toBe(true);
+    expect(result.status).toBe("INSUFFICIENT");
+    expect(result.range).toBeUndefined();
+    expect(result.claims.some((item) => item.id === "polyculture-incompatible-scopes")).toBe(true);
+  });
+
   it("does not create automatic targets from Tier E/F evidence", () => {
     const low: EvidenceObservation = {
       ...CROP_EVIDENCE[0]!,

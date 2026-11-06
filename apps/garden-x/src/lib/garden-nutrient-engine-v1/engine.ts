@@ -103,7 +103,7 @@ export function scopesCompatible(
   left: { scope: MeasurementScope; scopeBasis: ScopeBasis },
   right: { scope: MeasurementScope; scopeBasis: ScopeBasis },
 ): boolean {
-  if (left.scope === "UNKNOWN" || right.scope === "UNKNOWN") return left.scope === right.scope;
+  if (left.scope === "UNKNOWN" || right.scope === "UNKNOWN") return false;
   if (left.scopeBasis === "UNKNOWN" || right.scopeBasis === "UNKNOWN") return false;
   return left.scope === right.scope;
 }
@@ -119,7 +119,8 @@ function stageCompatible(observation: EvidenceObservation, context: CropContext)
 }
 
 function systemCompatible(observation: EvidenceObservation, context: CropContext): boolean {
-  if (!context.hydroponicSystem || context.hydroponicSystem === "UNKNOWN") return true;
+  if (!context.hydroponicSystem || context.hydroponicSystem === "UNKNOWN")
+    return observation.hydroponicSystem === "GENERAL_HYDROPONIC";
   return (
     observation.hydroponicSystem === "GENERAL_HYDROPONIC" ||
     observation.hydroponicSystem === context.hydroponicSystem
@@ -164,6 +165,9 @@ export function selectApplicable(
   observations: EvidenceObservation[],
   context: CropContext,
 ): EvidenceObservation[] {
+  // Without a known requested scope there is no defensible basis for
+  // intersecting source observations or producing an automatic target.
+  if (!context.measurementScope || context.measurementScope === "UNKNOWN") return [];
   return automaticEvidence(
     observations.filter((observation) => {
       if (observation.cropIdentity !== context.cropIdentity) return false;
@@ -254,6 +258,21 @@ export function calculatePolycultureRange(
     ).values(),
   );
   const cropRanges = unique.map((context) => selectCropRange(context, observations).ec);
+  if (new Set(unique.map((context) => context.measurementScope ?? "UNKNOWN")).size > 1)
+    return {
+      status: "INSUFFICIENT",
+      cropRanges,
+      limitingCrops: [],
+      evidenceState: "INSUFFICIENT",
+      claims: [
+        claim(
+          "polyculture-incompatible-scopes",
+          "Crop observations use different measurement scopes and cannot be intersected",
+          "DETERMINISTIC_CALCULATION",
+          cropRanges.flatMap((range) => range.observations.map((item) => item.id)),
+        ),
+      ],
+    };
   const valid = cropRanges.filter((range) => range.ec && range.evidenceState !== "CONFLICTING");
   if (valid.length !== unique.length || valid.length === 0) {
     const hasConflict = cropRanges.some((range) => range.evidenceState === "CONFLICTING");

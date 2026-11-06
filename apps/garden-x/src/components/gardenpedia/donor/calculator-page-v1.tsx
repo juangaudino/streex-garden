@@ -20,6 +20,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { gardenSeedAgeReferences } from "@/generated/garden-seed-profile-index";
+import type { HydroponicSystem } from "@/lib/garden-nutrient-engine-v1/types";
 import {
   Dialog,
   DialogContent,
@@ -374,6 +375,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [plantQuery, setPlantQuery] = useState("");
   const [mode, setMode] = useState<Mode>("recipe");
   const [crops, setCrops] = useState(sys.crops);
+  const [hydroponicSystem, setHydroponicSystem] = useState<HydroponicSystem>(
+    sys.hydroponicSystem ?? "UNKNOWN",
+  );
   const [cropStages, setCropStages] = useState<Record<string, CalculatorCropStage>>(
     sys.cropStages ?? {},
   );
@@ -430,6 +434,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       quickDraft.current = {
         ...sys,
         crops,
+        hydroponicSystem,
         cropStages,
         cropAdditionalStages,
         cropSowingAgeDays,
@@ -456,6 +461,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     const s = selection.id === "quick" ? quickDraft.current : selection;
     setSys(s);
     setCrops(s.crops);
+    setHydroponicSystem(s.hydroponicSystem ?? "UNKNOWN");
     setCropStages(s.cropStages ?? {});
     setCropAdditionalStages(s.cropAdditionalStages ?? {});
     setCropSowingAgeDays(s.cropSowingAgeDays ?? {});
@@ -501,6 +507,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       id: sys.id === "quick" ? localId : sys.id,
       name: saveName.trim(),
       crops: { ...crops },
+      hydroponicSystem,
       cropStages: { ...cropStages },
       cropAdditionalStages: { ...cropAdditionalStages },
       cropSowingAgeDays: { ...cropSowingAgeDays },
@@ -600,6 +607,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     const snapshot: SavedSystem = {
       ...sys,
       crops: { ...crops },
+      hydroponicSystem,
       cropStages: { ...cropStages },
       cropAdditionalStages: { ...cropAdditionalStages },
       cropSowingAgeDays: { ...cropSowingAgeDays },
@@ -667,6 +675,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         language: lang,
         mode,
         crops,
+        hydroponicSystem,
         cropStages,
         cropAdditionalStages,
         liters,
@@ -711,6 +720,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       lang,
       mode,
       crops,
+      hydroponicSystem,
       cropStages,
       cropAdditionalStages,
       liters,
@@ -896,6 +906,46 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   )}
                 </div>
               )}
+              <label className="block text-xs font-medium text-muted-foreground">
+                {lang === "es" ? "Tipo de sistema (opcional)" : "Growing system (optional)"}
+                <select
+                  aria-label={lang === "es" ? "Tipo de sistema" : "Growing system"}
+                  value={hydroponicSystem}
+                  onChange={(event) => setHydroponicSystem(event.target.value as HydroponicSystem)}
+                  className="mt-1 h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm text-foreground"
+                >
+                  <option value="UNKNOWN">
+                    {lang === "es" ? "Sin especificar" : "Unspecified"}
+                  </option>
+                  <option value="KRATKY">Kratky</option>
+                  <option value="DWC">DWC</option>
+                  <option value="NFT">NFT</option>
+                  <option value="DRIP">{lang === "es" ? "Goteo" : "Drip"}</option>
+                  <option value="AEROPONIC">{lang === "es" ? "Aeropónico" : "Aeroponic"}</option>
+                  <option value="COUNTERTOP_POD">
+                    {lang === "es" ? "Sistema de sobremesa con pods" : "Countertop pod system"}
+                  </option>
+                </select>
+                <span className="mt-1 block font-normal">
+                  {lang === "es"
+                    ? "Ayuda a comprobar si una fuente aplica; no cambia por sí solo la receta del fabricante."
+                    : "Helps check whether a source applies; it does not by itself change the manufacturer's recipe."}
+                </span>
+                {hydroponicSystem !== "UNKNOWN" &&
+                  result.compatibility &&
+                  Object.keys(crops).length > 0 &&
+                  !result.compatibility.cropRanges.some((crop) =>
+                    crop.observations.some(
+                      (observation) => observation.hydroponicSystem === hydroponicSystem,
+                    ),
+                  ) && (
+                    <span className="mt-1 block font-normal">
+                      {lang === "es"
+                        ? "No hay un rango específico verificado para este sistema y las plantas o etapas elegidas. Se usa evidencia hidropónica general cuando es aplicable."
+                        : "There is no verified system-specific range for these selected plants or stages. General hydroponic evidence is used when applicable."}
+                    </span>
+                  )}
+              </label>
               {mode !== "recipe" || product.basis === "liters" ? (
                 <Block title={t.plants} hint={`${Object.values(crops).reduce((a, b) => a + b, 0)}`}>
                   <ul className="space-y-1.5">

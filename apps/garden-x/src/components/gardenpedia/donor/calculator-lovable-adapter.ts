@@ -22,6 +22,7 @@ import type {
   CropContext,
   EngineResult,
   EvidenceState,
+  HydroponicSystem,
   MeasurementScope,
   UserMeasurement,
 } from "@/lib/garden-nutrient-engine-v1/types";
@@ -238,6 +239,7 @@ export type SavedSystem = {
   cropStages?: Record<string, CalculatorCropStage> | undefined;
   cropAdditionalStages?: Record<string, CalculatorAdditionalStage[]> | undefined;
   cropSowingAgeDays?: Record<string, string> | undefined;
+  hydroponicSystem?: HydroponicSystem | undefined;
   liters: number;
   productId: string;
   customAbManufacturer?: string | undefined;
@@ -281,6 +283,7 @@ export function loadSavedSystems(): SavedSystem[] {
         ...(item.cropStages ? { cropStages: item.cropStages } : {}),
         ...(item.cropAdditionalStages ? { cropAdditionalStages: item.cropAdditionalStages } : {}),
         ...(item.cropSowingAgeDays ? { cropSowingAgeDays: item.cropSowingAgeDays } : {}),
+        ...(item.hydroponicSystem ? { hydroponicSystem: item.hydroponicSystem } : {}),
         ...(item.correctionFraction !== undefined
           ? { correctionFraction: item.correctionFraction }
           : {}),
@@ -323,6 +326,7 @@ export type CalcInput = {
   crops: Record<string, number>;
   cropStages?: Record<string, CalculatorCropStage> | undefined;
   cropAdditionalStages?: Record<string, CalculatorAdditionalStage[]> | undefined;
+  hydroponicSystem?: HydroponicSystem | undefined;
   liters: number;
   productId: string;
   customAbManufacturer?: string | undefined;
@@ -531,11 +535,11 @@ function evidenceLabel(state: EvidenceState): Evidence {
 
 export function contextFor(
   crops: Record<string, number>,
-  productId: string,
+  _productId: string,
   cropStages: Record<string, CalculatorCropStage> = {},
   cropAdditionalStages: Record<string, CalculatorAdditionalStage[]> = {},
+  hydroponicSystem: HydroponicSystem = "UNKNOWN",
 ): CropContext[] {
-  const system = productId === "aerogarden" ? "COUNTERTOP_POD" : "GENERAL_HYDROPONIC";
   return Object.keys(crops).flatMap((id): CropContext[] =>
     [
       ...new Set([
@@ -548,7 +552,7 @@ export function contextFor(
       cropIdentity: resolveNutrientCropIdentity(id) ?? id,
       // A manufacturer feeding step is not evidence of plant phenology.
       phenologicalStage: stage,
-      hydroponicSystem: system,
+      hydroponicSystem,
       measurementScope: "NUTRIENT_SOLUTION",
     })),
   );
@@ -933,6 +937,7 @@ function calculateResult(input: CalcInput): CalcResult {
     input.productId,
     input.cropStages,
     input.cropAdditionalStages,
+    input.hydroponicSystem,
   );
   const compatibility = calculatePolycultureRange(contexts, CROP_EVIDENCE);
   const range = rangeFor(contexts);

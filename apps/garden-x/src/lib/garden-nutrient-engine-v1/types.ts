@@ -30,7 +30,14 @@ export type StageApplicability =
   "SEEDLING" | "VEGETATIVE" | "FLOWERING" | "FRUITING" | "ALL" | "UNSPECIFIED";
 
 export type HydroponicSystem =
-  "DWC" | "NFT" | "DRIP" | "AEROPONIC" | "COUNTERTOP_POD" | "GENERAL_HYDROPONIC" | "UNKNOWN";
+  | "KRATKY"
+  | "DWC"
+  | "NFT"
+  | "DRIP"
+  | "AEROPONIC"
+  | "COUNTERTOP_POD"
+  | "GENERAL_HYDROPONIC"
+  | "UNKNOWN";
 
 export type SourceClass =
   "MANUFACTURER" | "UNIVERSITY_EXTENSION" | "SPECIALIST_GROWER" | "COMMUNITY" | "OTHER";

@@ -66,6 +66,16 @@ describe("Gardenpedia Calculator V1 integration", () => {
     if (invalid.kind === "needs")
       expect(invalid.message).toContain("more distinct stages than plants");
   });
+
+  it("uses the selected growing system instead of inferring it from the nutrient product", () => {
+    expect(contextFor({ "bibb-lettuce": 1 }, "aerogarden")[0]?.hydroponicSystem).toBe("UNKNOWN");
+    expect(
+      contextFor({ "bibb-lettuce": 1 }, "aerogarden", {}, {}, "KRATKY")[0]?.hydroponicSystem,
+    ).toBe("KRATKY");
+    expect(contextFor({ "bibb-lettuce": 1 }, "gh-flora", {}, {}, "NFT")[0]?.hydroponicSystem).toBe(
+      "NFT",
+    );
+  });
   it("preserves the warning when a user chooses a target with no supported crop range", () => {
     const observation = recordActualDoses({
       productId: "gh-flora",

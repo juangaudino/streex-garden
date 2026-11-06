@@ -128,9 +128,11 @@ describe("Calculator real control interactions", () => {
   it("saves and restores different observed stages for two plants of the same variety", async () => {
     const user = userEvent.setup();
     const view = render(<CalculatorPage language="en" />);
+    await user.selectOptions(screen.getByLabelText("Growing system"), "KRATKY");
     await user.click(screen.getByRole("button", { name: "Add plant" }));
     await user.type(screen.getByPlaceholderText("Search plant…"), "Bibb Lettuce");
     await user.click(screen.getByRole("option", { name: /Bibb Lettuce/ }));
+    expect(screen.getByText(/no verified system-specific range/i)).toBeTruthy();
     await user.click(screen.getByRole("button", { name: "+" }));
     await user.selectOptions(screen.getByLabelText("Stage of Bibb Lettuce"), "VEGETATIVE");
     await user.click(screen.getByText("Other stages of this plant?"));
@@ -142,6 +144,7 @@ describe("Calculator real control interactions", () => {
     view.unmount();
     render(<CalculatorPage language="en" />);
     await user.click(screen.getByText("Mixed lettuce", { exact: true }));
+    expect((screen.getByLabelText("Growing system") as HTMLSelectElement).value).toBe("KRATKY");
     expect((screen.getByLabelText("Stage of Bibb Lettuce") as HTMLSelectElement).value).toBe(
       "VEGETATIVE",
     );

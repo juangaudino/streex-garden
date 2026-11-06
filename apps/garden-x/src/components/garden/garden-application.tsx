@@ -101,8 +101,13 @@ function SignInGate() {
     void getSupabaseClient()
       .auth.signInWithPassword({ email: email.trim(), password })
       .then(({ error: authError }) => {
-        if (authError) setError(ui(language, "signInFailed"));
+        if (authError) {
+          const unavailable = authError.name === "AuthRetryableFetchError" ||
+            authError.status === 0 || authError.status === 429 || (authError.status ?? 0) >= 500;
+          setError(ui(language, unavailable ? "signInUnavailable" : "signInFailed"));
+        }
       })
+      .catch(() => setError(ui(language, "signInUnavailable")))
       .finally(() => setBusy(false));
   };
   return (

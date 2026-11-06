@@ -2027,10 +2027,22 @@ function CalibrationCard({
   const [actualDoses, setActualDoses] = useState<Record<string, string>>(() =>
     Object.fromEntries(defaults.map((part) => [part.id, part.amount.toFixed(2)])),
   );
+  const editedParts = useRef(new Set<string>());
+  const previousRecipe = useRef(`${product.id}:${stageId}`);
 
   useEffect(() => {
-    setActualDoses(Object.fromEntries(defaults.map((part) => [part.id, part.amount.toFixed(2)])));
-  }, [defaults]);
+    const recipe = `${product.id}:${stageId}`;
+    if (previousRecipe.current !== recipe) {
+      previousRecipe.current = recipe;
+      editedParts.current.clear();
+    }
+    setActualDoses((current) => Object.fromEntries(product.parts.map((part) => [
+      part.id,
+      editedParts.current.has(part.id)
+        ? (current[part.id] ?? "")
+        : (defaults.find((item) => item.id === part.id)?.amount.toFixed(2) ?? ""),
+    ])));
+  }, [defaults, product, stageId]);
 
   const submit = () => {
     const before = parseDecimalInput(baseline);
@@ -2098,7 +2110,10 @@ function CalibrationCard({
               label={localizedComponent(part.label, lang)}
               suffix="mL"
               value={actualDoses[part.id] ?? ""}
-              onChange={(value) => setActualDoses((current) => ({ ...current, [part.id]: value }))}
+              onChange={(value) => {
+                editedParts.current.add(part.id);
+                setActualDoses((current) => ({ ...current, [part.id]: value }));
+              }}
               placeholder={defaults.find((item) => item.id === part.id)?.amount.toFixed(2) ?? "—"}
             />
           ))}
@@ -2291,11 +2306,11 @@ function Field({
   autoComplete?: string;
 }) {
   return (
-    <label className={cn("block text-xs text-muted-foreground", className)}>
+    <label className={cn("block w-full min-w-0 max-w-full text-xs text-muted-foreground", className)}>
       {label}
       <span
         className={cn(
-          "mt-1 flex h-12 items-center rounded-md border bg-background/70 px-3",
+          "mt-1 flex h-12 w-full min-w-0 max-w-full items-center rounded-md border bg-background/70 px-3",
           highlight ? "border-primary/50" : "border-input",
         )}
       >
@@ -2306,7 +2321,7 @@ function Field({
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder={placeholder}
-          className="min-w-0 flex-1 bg-transparent font-display text-lg font-semibold text-foreground outline-none"
+          className="w-0 min-w-0 flex-1 bg-transparent font-display text-lg font-semibold text-foreground outline-none"
         />
         {suffix && <span className="shrink-0 text-xs">{suffix}</span>}
       </span>

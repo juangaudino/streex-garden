@@ -25,6 +25,23 @@ describe("Calculator real control interactions", () => {
     vi.restoreAllMocks();
   });
 
+  it("preserves actual amounts already entered when the calibration sample volume changes", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    const micro = screen.getByLabelText(/^FloraMicro/) as HTMLInputElement;
+    await user.clear(micro);
+    await user.type(micro, "1.23");
+    const sample = screen.getByLabelText(/^Actual sample volume/) as HTMLInputElement;
+    await user.clear(sample);
+    await user.type(sample, "2");
+    expect(micro.value).toBe("1.23");
+  });
+
   it("accepts a small single-plant volume and calculates planned water to capacity", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

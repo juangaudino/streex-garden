@@ -24,6 +24,12 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     expect(spanish.some((item) => /pod/i.test(`${item.section} ${item.text}`))).toBe(true);
   });
 
+  it("keeps repeated searches stable and separates the English and Spanish indexes", () => {
+    const first = retrieveGardenpediaEvidence("Genovese basil germination", "en");
+    retrieveGardenpediaEvidence("albahaca genovesa germinación", "es");
+    expect(retrieveGardenpediaEvidence("Genovese basil germination", "en")).toEqual(first);
+  });
+
   it("includes seed-profile evidence when a question is about germination", () => {
     const results = retrieveGardenpediaEvidence("basil seed germination", "en");
 

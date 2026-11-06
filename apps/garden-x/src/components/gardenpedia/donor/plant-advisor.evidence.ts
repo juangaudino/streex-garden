@@ -245,6 +245,17 @@ function buildEvidenceForEntry(
 }
 
 const evidenceCache = new Map<GardenpediaEvidenceLanguage, GardenpediaEvidence[]>();
+type SearchDocument = {
+  record: GardenpediaEvidence;
+  searchable: Set<string>;
+  identity: Set<string>;
+  section: Set<string>;
+};
+const searchCache = new Map<GardenpediaEvidenceLanguage, {
+  documents: SearchDocument[];
+  documentFrequency: Map<string, number>;
+  identityVocabulary: Set<string>;
+}>();
 
 export function retrieveGardenpediaEvidence(
   query: string,
@@ -262,22 +273,28 @@ export function retrieveGardenpediaEvidence(
     evidenceCache.set(language, corpus);
   }
 
-  const tokenizedCorpus = corpus.map((record) => ({
-    record,
-    searchable: new Set(tokens(record.searchText)),
-    identity: new Set(tokens(`${record.plantName} ${record.scientificName}`)),
-    section: new Set(tokens(record.section)),
-  }));
-  const documentFrequency = new Map<string, number>();
-  const identityVocabulary = new Set<string>();
-  for (const { searchable } of tokenizedCorpus) {
-    for (const token of searchable) {
-      documentFrequency.set(token, (documentFrequency.get(token) ?? 0) + 1);
+  let index = searchCache.get(language);
+  if (!index) {
+    const documents = corpus.map((record) => ({
+      record,
+      searchable: new Set(tokens(record.searchText)),
+      identity: new Set(tokens(`${record.plantName} ${record.scientificName}`)),
+      section: new Set(tokens(record.section)),
+    }));
+    const documentFrequency = new Map<string, number>();
+    const identityVocabulary = new Set<string>();
+    for (const { searchable } of documents) {
+      for (const token of searchable) {
+        documentFrequency.set(token, (documentFrequency.get(token) ?? 0) + 1);
+      }
     }
+    for (const { identity } of documents) {
+      for (const token of identity) identityVocabulary.add(token);
+    }
+    index = { documents, documentFrequency, identityVocabulary };
+    searchCache.set(language, index);
   }
-  for (const { identity } of tokenizedCorpus) {
-    for (const token of identity) identityVocabulary.add(token);
-  }
+  const { documents, documentFrequency, identityVocabulary } = index;
   const topicVocabulary = new Set(
     tokens(
       "germination sowing seedling transplant propagation planting harvest pruning pinching flowering fruiting watering irrigation light sunlight shade hydroponics hydroponic nutrients fertilizer soil pests disease temperature spacing",
@@ -295,7 +312,7 @@ export function retrieveGardenpediaEvidence(
   });
   if (!informativeQueryTokens.length) return [];
 
-  return tokenizedCorpus
+  return documents
     .map(({ record, searchable, identity, section }) => {
       const score = informativeQueryTokens.reduce(
         (total, token) =>
@@ -313,4 +330,5 @@ export function retrieveGardenpediaEvidence(
 
 export function clearGardenpediaEvidenceCacheForTests() {
   evidenceCache.clear();
+  searchCache.clear();
 }

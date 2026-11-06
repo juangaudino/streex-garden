@@ -163,6 +163,9 @@ Deno.serve(async (request) => {
     });
   } catch (error) {
     const detail = error instanceof Error ? error.message : "";
+    const providerStatus = detail.match(/^AI provider HTTP (\d{3})/)?.[1] ?? "unknown";
+    const providerCategory = detail.includes("uniqueItems") ? "unsupported_unique_items" : detail.includes("schema") ? "schema" : "other";
+    console.error("gardenpedia_ask_provider_failure", { providerStatus, providerCategory });
     const status = /AI provider HTTP 429/.test(detail) ? 429 : 503;
     return json(
       {

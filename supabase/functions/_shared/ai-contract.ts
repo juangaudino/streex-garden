@@ -101,7 +101,7 @@ export const GARDENPEDIA_ASK_JSON_SCHEMA: Record<string, unknown> = {
     schema_version: { type: 'string', enum: [GARDENPEDIA_ASK_SCHEMA_VERSION] },
     answer_type: { enum: ['answer', 'insufficient_evidence', 'needs_clarification'] },
     answer: { type: 'string', minLength: 1, maxLength: 1800 },
-    cited_evidence_ids: { type: 'array', uniqueItems: true, maxItems: 8, items: { type: 'string', minLength: 1, maxLength: 220 } },
+    cited_evidence_ids: { type: 'array', maxItems: 8, items: { type: 'string', minLength: 1, maxLength: 220 } },
     follow_up_question: { anyOf: [{ type: 'string', maxLength: 240 }, { type: 'null' }] },
   },
 }

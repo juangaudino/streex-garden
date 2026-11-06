@@ -94,6 +94,14 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  ...cropObservation("asparagus-osu", "asparagus", [1.4, 1.8], [6.0, 6.8], "Crop-level reference; not cultivar-specific."),
+  ...cropObservation("broccoli-osu", "broccoli", [2.8, 3.5], [6.0, 6.8], "Crop-level reference; not cultivar-specific."),
+  ...cropObservation("cucumber-osu", "cucumber", [1.7, 2.0], [5.0, 5.5], "Crop-level reference; not cultivar-specific."),
+  ...cropObservation("eggplant-osu", "eggplant", [2.5, 3.5], [6.0, 6.0], "Crop-level reference; not cultivar-specific."),
+  ...cropObservation("okra-osu", "okra", [2.0, 2.4], [6.5, 6.5], "Crop-level reference; not cultivar-specific."),
+  ...cropObservation("pak-choi-osu", "pak-choi", [1.5, 2.0], [7.0, 7.0], "Crop-level reference; not cultivar-specific."),
+  ...cropObservation("rhubarb-osu", "rhubarb", [1.6, 2.0], [5.5, 6.0], "Crop-level reference; not cultivar-specific."),
+  ...cropObservation("zucchini-osu", "zucchini", [1.8, 2.4], [6.0, 6.0], "OSU lists courgettes; this crop-level reference is not cultivar-specific."),
   ...cropObservation(
     "basil-osu",
     "basil",

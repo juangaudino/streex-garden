@@ -280,10 +280,8 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         setHydration("ready");
         return;
       }
-      const optionalResults = Promise.allSettled([
-        loadMeaningfulChangeResults(),
-        loadGardenSummaryResults(),
-      ]);
+      const changesResult = loadMeaningfulChangeResults().then((value) => ({ value }), () => null);
+      const summariesResult = loadGardenSummaryResults().then((value) => ({ value }), () => null);
       const { state: next } = await loadGardenState();
       if (sequence !== refreshSequence.current) return;
       setState(next);
@@ -294,12 +292,15 @@ export function GardenProvider({ children }: { children: ReactNode }) {
         ...current,
         profile: { ...current.profile, email: user.email ?? current.profile.email, signedIn: true },
       }));
-      void optionalResults.then(([derivedResults, summaryResults]) => {
+      void changesResult.then((result) => {
         if (sequence !== refreshSequence.current) return;
-        if (derivedResults.status === "fulfilled") setMeaningfulChanges(derivedResults.value);
-        if (summaryResults.status === "fulfilled") {
-          setGardenSummaries(summaryResults.value);
-          if (reason === "mutation") scheduleGardenSummaryGeneration(next, summaryResults.value, preferences.language);
+        if (result) setMeaningfulChanges(result.value);
+      });
+      void summariesResult.then((result) => {
+        if (sequence !== refreshSequence.current) return;
+        if (result) {
+          setGardenSummaries(result.value);
+          if (reason === "mutation") scheduleGardenSummaryGeneration(next, result.value, preferences.language);
         }
       });
     })();

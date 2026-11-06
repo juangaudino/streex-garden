@@ -69,6 +69,18 @@ describe("Garden independent hydration", () => {
     );
     await waitFor(() => expect(screen.getByText("ready|0|0")).toBeTruthy());
   });
+  it("shows available changes without waiting for a stalled summary", async () => {
+    mocks.changes.mockResolvedValue([{ id: "change" }]);
+    mocks.summaries.mockImplementation(() => new Promise(() => {}));
+    render(<GardenProvider><Probe /></GardenProvider>);
+    await waitFor(() => expect(screen.getByText("ready|1|0")).toBeTruthy());
+  });
+  it("shows an available summary without waiting for stalled changes", async () => {
+    mocks.changes.mockImplementation(() => new Promise(() => {}));
+    mocks.summaries.mockResolvedValue([{ id: "summary" }]);
+    render(<GardenProvider><Probe /></GardenProvider>);
+    await waitFor(() => expect(screen.getByText("ready|0|1")).toBeTruthy());
+  });
   it("does not restore late private analysis after sign-out", async () => {
     let resolve!: (value: unknown[]) => void;
     mocks.changes.mockImplementation(

@@ -212,9 +212,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 0,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 49,
-      INSUFFICIENT: 452,
+      SUPPORTED_DIRECT: 2,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 65,
+      INSUFFICIENT: 434,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -272,6 +272,13 @@ describe("Gardenpedia Calculator V1 integration", () => {
         "INSUFFICIENT",
       );
     }
+  });
+
+  it("uses published crop evidence for cucumber without treating Armenian melon as cucumber", () => {
+    expect(resolveNutrientCropIdentity("cucumber-marketmore")).toBe("cucumber");
+    expect(hasApplicableCropNutrientEvidence("cucumber-marketmore")).toBe(true);
+    expect(resolveNutrientCropIdentity("armenian-cucumber")).toBeUndefined();
+    expect(hasApplicableCropNutrientEvidence("armenian-cucumber")).toBe(false);
   });
 
   it("keeps AeroGarden UI projections aligned with verified groups and feeding events", () => {
@@ -583,6 +590,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
     });
     expect(shared.compatibility?.status).toBe("COMMON_OPTIMUM_RANGE");
     expect(shared.range).toMatchObject({ min: 1.2, max: 1.6 });
+    const cucumberAndLettuce = calculateGardenResult({
+      ...base,
+      crops: { "cucumber-marketmore": 1, "bibb-lettuce": 3 },
+    });
+    expect(cucumberAndLettuce.compatibility?.status).toBe("COMMON_OPTIMUM_RANGE");
+    expect(cucumberAndLettuce.range).toMatchObject({ min: 1.7, max: 1.8 });
     const conflict = calculateGardenResult({
       ...base,
       crops: { "bibb-lettuce": 1, "cherry-tomato": 1 },

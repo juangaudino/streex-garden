@@ -877,7 +877,7 @@ export const canonicalEntries = gardenLibraryManifest.entries.filter(
 );
 export const donorPlants = toDonorPlants(canonicalEntries);
 export const donorPlantsById = new Map(donorPlants.map((plant) => [plant.id, plant]));
-const canonicalIdByAlias = new Map(
+const canonicalIdByAlias = new Map<string, string>(
   gardenLibraryManifest.identityAliases.map((alias) => [alias.aliasId, alias.canonicalPlantId]),
 );
 

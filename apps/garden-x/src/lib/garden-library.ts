@@ -16,7 +16,7 @@ export type CompatibilityEvidence = {
   confidence: "high" | "medium" | "low";
   taxonomicScope:
     | { level: "identity" }
-    | { level: "species" | "genus" | "family"; taxon: string };
+    | { level: "species" | "subspecies" | "genus" | "family"; taxon: string };
   note?: string;
 };
 
@@ -69,7 +69,7 @@ export type CompatibilityProfileV1 = {
     | { status: "compatible" | "incompatible"; evidence: readonly CompatibilityEvidence[] }
     | { status: "conditional"; conditions: readonly { kind: "system_type" | "support" | "container" | "root_space" | "environment" | "other"; description: string }[]; evidence: readonly CompatibilityEvidence[] }
     | { status: "unknown" | "pending"; reason?: string; evidence?: readonly CompatibilityEvidence[] };
-  growthHabits: CompatibilityKnowledge<readonly ("compact" | "upright" | "bushy" | "spreading" | "trailing" | "rosette" | "clumping" | "mounded")[]>;
+  growthHabits: CompatibilityKnowledge<readonly ("compact" | "upright" | "bushy" | "spreading" | "trailing" | "rosette" | "clumping" | "mounded" | "tree" | "shrub" | "arching" | "erect" | "columnar" | "rounded" | "broad")[]>;
   matureSize: {
     height: CompatibilityKnowledge<{ minCm?: number; maxCm?: number; context: CompatibilityContext }>;
     spread: CompatibilityKnowledge<{ minCm?: number; maxCm?: number; context: CompatibilityContext }>;

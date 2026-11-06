@@ -201,6 +201,10 @@ describe("Calculator objective independent validation", () => {
         for (const sourceEc of [0, 0.1, 0.2, 0.35, 0.5, 0.8])
           for (const userTarget of [0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2]) {
             const value = run({ ...calibrated, crops: { [id]: 1 }, liters, sourceEc, userTarget });
+            if (sourceEc === userTarget) {
+              expect(value.kind).toBe("needs");
+              continue;
+            }
             const expected = ((userTarget - sourceEc) * liters * 9) / (0.9 * 4);
             expect(amount(value)).toBeCloseTo(expected, 10);
             if (value.kind === "ok" && expected > 0)

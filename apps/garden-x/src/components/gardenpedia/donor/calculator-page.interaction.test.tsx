@@ -36,6 +36,11 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByText(/reported ranges do not overlap/i)).toBeTruthy();
     expect(screen.getByText(/Bibb Lettuce: 1\.20–1\.80 mS\/cm/)).toBeTruthy();
     expect(screen.getByText(/Cherry Tomato: 2\.00–4\.00 mS\/cm/)).toBeTruthy();
+    expect(
+      screen
+        .getByRole("link", { name: "Oklahoma State University Extension" })
+        .getAttribute("href"),
+    ).toContain("extension.okstate.edu");
   });
 
   it("preserves actual amounts already entered when the calibration sample volume changes", async () => {
@@ -53,6 +58,28 @@ describe("Calculator real control interactions", () => {
     await user.clear(sample);
     await user.type(sample, "2");
     expect(micro.value).toBe("1.23");
+  });
+
+  it("offers optional first-calibration guidance in both languages", async () => {
+    const user = userEvent.setup();
+    const view = render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await user.click(screen.getByText("First calibration?"));
+    expect(screen.getByText(/actual sample volume and measure its EC/)).toBeTruthy();
+    view.unmount();
+    window.localStorage.clear();
+    render(<CalculatorPage language="es" />);
+    await user.click(screen.getByRole("button", { name: "Añadir planta" }));
+    await user.type(screen.getByPlaceholderText("Buscar planta…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Albahaca genovesa/i }));
+    await user.click(screen.getByRole("tab", { name: "Por EC" }));
+    await user.type(screen.getByLabelText(/^EC del agua de origen/), "0.20");
+    await user.click(screen.getByText("¿Primera calibración?"));
+    expect(screen.getByText(/volumen real de la muestra y mide su EC/)).toBeTruthy();
   });
 
   it("accepts a small single-plant volume and calculates planned water to capacity", async () => {

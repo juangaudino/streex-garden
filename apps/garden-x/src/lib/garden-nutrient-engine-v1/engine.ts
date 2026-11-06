@@ -256,15 +256,18 @@ export function calculatePolycultureRange(
   const cropRanges = unique.map((context) => selectCropRange(context, observations).ec);
   const valid = cropRanges.filter((range) => range.ec && range.evidenceState !== "CONFLICTING");
   if (valid.length !== unique.length || valid.length === 0) {
+    const hasConflict = cropRanges.some((range) => range.evidenceState === "CONFLICTING");
     return {
       status: "INSUFFICIENT",
       cropRanges,
       limitingCrops: [],
-      evidenceState: "INSUFFICIENT",
+      evidenceState: hasConflict ? "CONFLICTING" : "INSUFFICIENT",
       claims: [
         claim(
           "polyculture-insufficient",
-          "No comparable EC evidence for every crop and context",
+          hasConflict
+            ? "Comparable EC evidence conflicts for at least one crop and context"
+            : "No comparable EC evidence for every crop and context",
           "DETERMINISTIC_CALCULATION",
           cropRanges.flatMap((range) => range.observations.map((item) => item.id)),
         ),
@@ -483,7 +486,7 @@ export function calculateFreshTargetEcDose(input: {
   sourceWaterEc: UserMeasurement;
   targetEc: number;
   reservoirVolumeL: number;
-  calibration: CalibrationModel;
+  calibration?: CalibrationModel | undefined;
   policy?: EnginePolicy | undefined;
 }): EngineResult<FreshTargetDoseResult> {
   if (input.sourceWaterEc.unit === "pH")
@@ -501,13 +504,6 @@ export function calculateFreshTargetEcDose(input: {
     claim("fresh-target-ec", "Selected fresh-solution EC target", "USER_SELECTED", [], {
       value: input.targetEc,
     }),
-    claim(
-      "fresh-calibration-factor",
-      "Volume-normalized product calibration factor",
-      "USER_CALIBRATION",
-      input.calibration.observations.map((item) => item.id),
-      { value: calibrationResponseAtVolume(input.calibration, input.reservoirVolumeL) },
-    ),
   ];
   if (
     input.sourceWaterEc.context.scope !== "SOURCE_WATER" ||
@@ -557,21 +553,38 @@ export function calculateFreshTargetEcDose(input: {
     );
   if (Math.abs(sourceEc - input.targetEc) < Number.EPSILON)
     return result(
-      {
-        mode: "FRESH_TARGET_EC",
-        direction: "NO_CHANGE",
-        targetEc: input.targetEc,
-        sourceEc,
-        reservoirVolumeL: input.reservoirVolumeL,
-        requiresMeasurement: true,
-        evidenceState: input.calibration.evidenceState,
-        warnings: [],
-        claims,
-      },
+      undefined,
       [],
-      [],
+      [
+        error(
+          "SOURCE_WATER_AT_TARGET",
+          "Source-water EC already equals the selected target. Conductivity does not establish nutrient composition; do not treat this water as a complete nutrient solution.",
+        ),
+      ],
       claims,
     );
+
+  if (!input.calibration)
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "CALIBRATION_REQUIRED",
+          "A product-specific calibration is required to calculate nutrient addition.",
+        ),
+      ],
+      claims,
+    );
+  claims.push(
+    claim(
+      "fresh-calibration-factor",
+      "Volume-normalized product calibration factor",
+      "USER_CALIBRATION",
+      input.calibration.observations.map((item) => item.id),
+      { value: calibrationResponseAtVolume(input.calibration, input.reservoirVolumeL) },
+    ),
+  );
 
   const normalizedFactors = input.calibration.observations
     .filter((item) => item.doseAppliedMl > 0 && item.deltaEc > 0 && item.reservoirVolumeL > 0)

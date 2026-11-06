@@ -27,6 +27,35 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("explains source water at or above target before asking for calibration", () => {
+    const base = {
+      mode: "target" as const,
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      currentEc: 0.8,
+      currentLiters: 3,
+      capacityLiters: 5,
+      waterAdded: 0.5,
+      userTarget: 1.2,
+      round: 1,
+      language: "es" as const,
+    };
+    const equal = calculateGardenResult({ ...base, sourceEc: 1.2 });
+    expect(equal.kind).toBe("needs");
+    if (equal.kind === "needs") {
+      expect(equal.message).toContain("coincide con el objetivo");
+      expect(equal.calibrationRequired).not.toBe(true);
+    }
+    const higher = calculateGardenResult({ ...base, sourceEc: 1.3 });
+    expect(higher.kind).toBe("needs");
+    if (higher.kind === "needs") expect(higher.message).toContain("supera el objetivo");
+    const lower = calculateGardenResult({ ...base, sourceEc: 0.2 });
+    expect(lower.kind === "needs" && lower.calibrationRequired).toBe(true);
+  });
+
   it("requires an identified A+B formulation and actual measurements, never an invented recipe", () => {
     const base = {
       crops: { "genovese-basil": 1 },

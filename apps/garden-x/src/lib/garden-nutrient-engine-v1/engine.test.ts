@@ -58,6 +58,33 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("preserves conflicting credible evidence rather than calling it merely insufficient", () => {
+    const original = CROP_EVIDENCE.find(
+      (item) => item.cropIdentity === "basil" && item.metric === "EC",
+    )!;
+    const contradictory = {
+      ...original,
+      id: "independent-conflicting-basil",
+      observedRange: { min: 2.0, max: 2.5, unit: "mS/cm" as const },
+    };
+    const result = calculatePolycultureRange([basil], [original, contradictory]);
+    expect(result.status).toBe("INSUFFICIENT");
+    expect(result.evidenceState).toBe("CONFLICTING");
+    expect(result.range).toBeUndefined();
+    const automatic = calculateFreshTargetEc({
+      contexts: [basil],
+      observations: [original, contradictory],
+    });
+    expect(automatic.ok).toBe(false);
+    expect(automatic.value).toBeUndefined();
+    const selected = calculateFreshTargetEc({
+      contexts: [basil],
+      observations: [original, contradictory],
+      userSelectedTarget: 1.2,
+    });
+    expect(selected.value?.evidenceState).toBe("CONFLICTING");
+    expect(selected.value?.target.min).toBe(1.2);
+  });
   it("never treats a pH reading as conductivity in dosing or water evaluation", () => {
     const { product, observations } = calibrationInput();
     const calibration = buildCalibrationModel({
@@ -281,6 +308,18 @@ describe("Garden Nutrient Engine V1", () => {
     });
     expect(fourLiters.value?.doseMl).toBeCloseTo(4);
     expect(tenLiters.value?.doseMl).toBeCloseTo(10);
+  });
+
+  it("checks source water against the target before requiring calibration", () => {
+    const run = (ec: number) =>
+      calculateFreshTargetEcDose({
+        sourceWaterEc: measurement(ec, "SOURCE_WATER"),
+        targetEc: 1.2,
+        reservoirVolumeL: 4,
+      });
+    expect(run(1.3).errors[0]?.code).toBe("SOURCE_WATER_ABOVE_TARGET");
+    expect(run(1.2).errors[0]?.code).toBe("SOURCE_WATER_AT_TARGET");
+    expect(run(0.2).errors[0]?.code).toBe("CALIBRATION_REQUIRED");
   });
 
   it("suppresses a starting point when the range is no wider than meter resolution", () => {

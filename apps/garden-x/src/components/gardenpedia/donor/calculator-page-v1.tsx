@@ -1326,6 +1326,13 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     : `Calibration: ${calibrationCounts.used} of ${calibrationCounts.recorded} saved readings apply to this formulation and ratio. Different ratios are not combined.`}
                 </p>
               )}
+              {result.compatibility?.evidenceState === "CONFLICTING" && (
+                <p role="alert" className="rounded-lg border border-amber-500/60 p-3 text-sm">
+                  {lang === "es"
+                    ? "Las fuentes aplicables presentan rangos contradictorios. Garden no determina automáticamente un objetivo para esta combinación."
+                    : "Applicable sources report conflicting ranges. Garden cannot automatically choose a target for this combination."}
+                </p>
+              )}
               {result.compatibility?.status === "NO_COMMON_OPTIMUM_RANGE" && (
                 <div className="rounded-lg border border-amber-500/60 p-3 text-sm">
                   <p>
@@ -1346,6 +1353,23 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       ) : null;
                     })}
                   </ul>
+                  <p className="mt-2 text-xs text-muted-foreground">
+                    {lang === "es" ? "Fuente" : "Source"}:{" "}
+                    {[
+                      ...new Map(
+                        result.compatibility.cropRanges
+                          .flatMap((crop) => crop.observations)
+                          .map((observation) => [observation.source.id, observation.source]),
+                      ).values(),
+                    ].map((source, index) => (
+                      <span key={source.id}>
+                        {index > 0 ? "; " : ""}
+                        <a className="underline" href={source.url} target="_blank" rel="noreferrer">
+                          {source.publisher}
+                        </a>
+                      </span>
+                    ))}
+                  </p>
                 </div>
               )}
               {result.kind === "needs" ? (
@@ -1540,13 +1564,17 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         {result.compatibility && (
                           <p className="font-medium">
                             {lang === "es" ? "Compatibilidad de cultivos" : "Crop compatibility"}:{" "}
-                            {result.compatibility.status === "INSUFFICIENT"
+                            {result.compatibility.evidenceState === "CONFLICTING"
                               ? lang === "es"
-                                ? "Evidencia insuficiente"
-                                : "Insufficient evidence"
-                              : result.compatibility.status === "NO_COMMON_OPTIMUM_RANGE"
-                                ? t.noCommon
-                                : t.common}
+                                ? "Evidencia contradictoria"
+                                : "Conflicting evidence"
+                              : result.compatibility.status === "INSUFFICIENT"
+                                ? lang === "es"
+                                  ? "Evidencia insuficiente"
+                                  : "Insufficient evidence"
+                                : result.compatibility.status === "NO_COMMON_OPTIMUM_RANGE"
+                                  ? t.noCommon
+                                  : t.common}
                           </p>
                         )}
                         {result.range && (
@@ -2082,6 +2110,28 @@ function CalibrationCard({
         <h3 className="font-display text-lg font-semibold">{t.calibrationTitle}</h3>
         <p className="mt-1 text-sm text-muted-foreground">{t.calibrationInstructions}</p>
       </div>
+      <details className="rounded-lg border border-border/70 p-3 text-sm">
+        <summary className="cursor-pointer font-medium">
+          {lang === "es" ? "¿Primera calibración?" : "First calibration?"}
+        </summary>
+        <ol className="mt-2 list-inside list-decimal space-y-2 text-muted-foreground">
+          <li>
+            {lang === "es"
+              ? "Anota el volumen real de la muestra y mide su EC antes de añadir nutrientes."
+              : "Enter the actual sample volume and measure its EC before adding nutrients."}
+          </li>
+          <li>
+            {lang === "es"
+              ? "Añade los componentes siguiendo las instrucciones de mezcla de tu producto. Anota cuánto pusiste realmente de cada uno."
+              : "Add the components following your product's mixing instructions. Record the actual amount of each one."}
+          </li>
+          <li>
+            {lang === "es"
+              ? "Mezcla, espera una lectura estable y vuelve a medir el EC. Introduce ambas lecturas y las cantidades reales abajo."
+              : "Mix, wait for a stable reading and measure EC again. Enter both readings and the actual amounts below."}
+          </li>
+        </ol>
+      </details>
       {product.recipeStages.length > 0 && (
         <label className="block text-xs text-muted-foreground">
           {product.id === "aerogarden" ? t.feedingEvent : t.calibrationStage}

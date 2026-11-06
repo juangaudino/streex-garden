@@ -381,7 +381,7 @@ const RECIPE_IDS = Object.fromEntries(
 ) as Record<string, string | undefined>;
 
 const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
-  "asparagus": "asparagus",
+  asparagus: "asparagus",
   "bok-choy": "pak-choi",
   "broccoli-calabrese": "broccoli",
   "purple-sprouting-broccoli": "broccoli",
@@ -396,7 +396,7 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   "hansel-f1-eggplant": "eggplant",
   "patio-baby-f1-eggplant": "eggplant",
   "okra-abelmoschus-esculentus": "okra",
-  "rhubarb": "rhubarb",
+  rhubarb: "rhubarb",
   "dark-green-zucchini": "zucchini",
   "eight-ball-zucchini": "zucchini",
   "cinnamon-basil": "basil",
@@ -819,6 +819,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "Source-water EC is already above the selected fresh-solution target; nutrient dosing cannot lower it.",
     ],
     [
+      "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa.",
+      "Source-water EC already equals the selected target. Conductivity does not establish nutrient composition; do not treat this water as a complete nutrient solution.",
+    ],
+    [
       "El relleno superaría la capacidad del tanque.",
       "The top-up would exceed known reservoir capacity.",
     ],
@@ -898,7 +902,7 @@ function calculateResult(input: CalcInput): CalcResult {
     meterResolution: 0.1,
   });
   const targetValue = input.userTarget ?? targetEngine.value?.suggestedStartingPoint;
-  const evidenceState = targetEngine.value?.evidenceState ?? "INSUFFICIENT";
+  const evidenceState = targetEngine.value?.evidenceState ?? compatibility.evidenceState;
   const evidenceNote = noteFor(evidenceState);
   const sources = [
     ...new Set([
@@ -994,40 +998,32 @@ function calculateResult(input: CalcInput): CalcResult {
       input.customAbVersion,
       input.customAbManufacturer,
     );
-    if (!identity || !signature) {
-      return {
-        kind: "needs",
-        missing: [],
-        message: "Esta formulación exacta todavía no tiene una calibración compatible.",
-        ...targetPresentation,
-      };
-    }
-    const calibration = applicableCalibration(input, identity, signature);
-    if (!calibration.ok || !calibration.value) {
-      return {
-        kind: "needs",
-        missing: [],
-        message:
-          "Registra una medición real en este producto y receta para calcular una dosis por EC.",
-        calibrationRequired: true,
-        ...targetPresentation,
-      };
-    }
+    const calibration =
+      identity && signature ? applicableCalibration(input, identity, signature) : undefined;
     const dose = calculateFreshTargetEcDose({
       sourceWaterEc: makeSourceWaterMeasurement(input.sourceEc),
       targetEc: targetValue,
       reservoirVolumeL: input.liters,
-      calibration: calibration.value,
+      calibration: calibration?.value,
       policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl },
     });
     if (!dose.ok || !dose.value) {
       return {
         kind: "needs",
         missing: [],
-        message: dose.errors[0]?.message ?? "No se pudo calcular una dosis por EC.",
+        message:
+          dose.errors[0]?.code === "CALIBRATION_REQUIRED"
+            ? identity && signature
+              ? "Registra una medición real en este producto y receta para calcular una dosis por EC."
+              : "Esta formulación exacta todavía no tiene una calibración compatible."
+            : (dose.errors[0]?.message ?? "No se pudo calcular una dosis por EC."),
+        calibrationRequired:
+          dose.errors[0]?.code === "CALIBRATION_REQUIRED" && Boolean(identity && signature),
         ...targetPresentation,
       };
     }
+    if (!calibration?.value)
+      return engineNeeds("No se encontró una calibración aplicable.", targetPresentation);
     const doseValue = dose.value;
     const doses =
       doseValue.doseMl !== undefined

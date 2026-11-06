@@ -150,6 +150,8 @@ const T = {
     calibrationSave: "Guardar calibración",
     calibrationInvalid: "Revisa las mediciones y las dosis reales antes de guardar.",
     calibrationStorageError: "No se pudo guardar la calibración en este dispositivo.",
+    calibrationTemporary:
+      "Esta calibración solo está en memoria. Se perderá si recargas o cambias de sistema.",
     learned: (n: number) => `${n} lecturas aplicables a esta mezcla`,
     learnedNew:
       "Medición guardada. Garden usará la respuesta de esta mezcla; vuelve a medir después de dosificar.",
@@ -268,6 +270,8 @@ const T = {
     calibrationSave: "Save calibration",
     calibrationInvalid: "Check the measurements and actual doses before saving.",
     calibrationStorageError: "Calibration could not be saved on this device.",
+    calibrationTemporary:
+      "This calibration is in memory only. It will be lost if you reload or change systems.",
     learned: (n: number) => `${n} readings apply to this mixture`,
     learnedNew:
       "Measurement saved. Garden will use this mixture's response; remeasure after dosing.",
@@ -365,6 +369,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [sourceEcInput, setSourceEcInput] = useState("");
   const [calibrationOpen, setCalibrationOpen] = useState(true);
   const [calibrationError, setCalibrationError] = useState("");
+  const [calibrationTemporary, setCalibrationTemporary] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [dosingResolutionInput, setDosingResolutionInput] = useState("0.5");
   const [correctionStepInput, setCorrectionStepInput] = useState("50");
@@ -438,6 +443,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
     setCalibrationObservations(observations);
     setJustLearned(false);
     setCalibrationOpen(true);
+    setCalibrationTemporary(false);
   };
   const saveCurrentSystem = () => {
     const localId =
@@ -562,6 +568,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
       correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
       calibration: { learned: 0, readings: nextObservations.length },
     };
+    let persisted = true;
     if (sys.id === "quick") {
       try {
         window.localStorage.setItem(
@@ -569,21 +576,20 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
           JSON.stringify(nextObservations),
         );
       } catch {
-        setCalibrationError(t.calibrationStorageError);
-        return;
+        persisted = false;
       }
     } else {
       const nextSystems = savedSystems.map((item) => (item.id === sys.id ? snapshot : item));
       try {
         persistSavedSystems(nextSystems);
       } catch {
-        setCalibrationError(t.calibrationStorageError);
-        return;
+        persisted = false;
       }
       setSavedSystems(nextSystems);
     }
     setCalibrationObservations(nextObservations);
     setSys(snapshot);
+    setCalibrationTemporary(!persisted);
     setCalibrationOpen(false);
     setCalibrationError("");
     setJustLearned(true);
@@ -944,7 +950,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                 )}
               </Block>
 
-              {mode === "recipe" && product.basis === "pods" ? (
+              {product.basis === "pods" && (
                 <Block title={t.pods}>
                   <div className="space-y-2">
                     <div className="grid grid-cols-3 gap-1.5">
@@ -965,46 +971,49 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     <p className="text-xs text-muted-foreground">{t.podGroupsHint}</p>
                   </div>
                 </Block>
-              ) : mode !== "topup" && mode !== "adjust" ? (
-                <Block title={t.volume}>
-                  <div className="flex flex-wrap gap-1.5">
-                    {LITERS.map((l) => (
-                      <Chip
-                        key={l}
-                        active={liters === l && parseDecimalInput(volumeInput) === l}
-                        onClick={() => {
-                          setLiters(l);
-                          setVolumeInput(String(l));
+              )}
+              {(mode !== "recipe" || product.basis === "liters") &&
+                mode !== "topup" &&
+                mode !== "adjust" && (
+                  <Block title={t.volume}>
+                    <div className="flex flex-wrap gap-1.5">
+                      {LITERS.map((l) => (
+                        <Chip
+                          key={l}
+                          active={liters === l && parseDecimalInput(volumeInput) === l}
+                          onClick={() => {
+                            setLiters(l);
+                            setVolumeInput(String(l));
+                          }}
+                        >
+                          {l} L
+                        </Chip>
+                      ))}
+                      <Input
+                        type="number"
+                        inputMode="decimal"
+                        min={0.001}
+                        step="any"
+                        aria-label={t.volume}
+                        value={volumeInput}
+                        onChange={(e) => {
+                          setVolumeInput(e.target.value);
+                          const value = parseDecimalInput(e.target.value);
+                          if (value !== null && value > 0) setLiters(value);
                         }}
-                      >
-                        {l} L
-                      </Chip>
-                    ))}
-                    <Input
-                      type="number"
-                      inputMode="decimal"
-                      min={0.001}
-                      step="any"
-                      aria-label={t.volume}
-                      value={volumeInput}
-                      onChange={(e) => {
-                        setVolumeInput(e.target.value);
-                        const value = parseDecimalInput(e.target.value);
-                        if (value !== null && value > 0) setLiters(value);
-                      }}
-                      className="h-10 w-20"
-                    />
-                    <span className="self-center text-sm">L</span>
-                  </div>
-                  {parseDecimalInput(volumeInput) !== null &&
-                    (parseDecimalInput(volumeInput) ?? 0) > 0 && (
-                      <p className="mt-2 text-xs text-muted-foreground">
-                        {lang === "es" ? "Equivale a" : "Equivalent to"}{" "}
-                        {Number(((parseDecimalInput(volumeInput) ?? 0) * 1000).toFixed(3))} mL
-                      </p>
-                    )}
-                </Block>
-              ) : null}
+                        className="h-10 w-20"
+                      />
+                      <span className="self-center text-sm">L</span>
+                    </div>
+                    {parseDecimalInput(volumeInput) !== null &&
+                      (parseDecimalInput(volumeInput) ?? 0) > 0 && (
+                        <p className="mt-2 text-xs text-muted-foreground">
+                          {lang === "es" ? "Equivale a" : "Equivalent to"}{" "}
+                          {Number(((parseDecimalInput(volumeInput) ?? 0) * 1000).toFixed(3))} mL
+                        </p>
+                      )}
+                  </Block>
+                )}
 
               {mode !== "recipe" && (
                 <Field
@@ -1050,7 +1059,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   </span>
                 </summary>
                 <div className="grid gap-4 border-t border-border/70 p-4 sm:grid-cols-2">
-                  {mode !== "recipe" && product.basis === "liters" && (
+                  {mode !== "recipe" && product.hasRecipeStages && (
                     <label className="text-xs text-muted-foreground">
                       {t.calibrationStage}
                       <select
@@ -1059,11 +1068,16 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         onChange={(event) => setStageId(event.target.value)}
                         className="mt-1 h-11 w-full rounded-md border border-input bg-background px-3 text-sm"
                       >
-                        {product.recipeStages.map((stage) => (
-                          <option key={stage.id} value={stage.id}>
-                            {recipeStageLabel(stage, product.id, pods, lang)}
-                          </option>
-                        ))}
+                        {product.recipeStages
+                          .filter(
+                            (stage) =>
+                              product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9,
+                          )
+                          .map((stage) => (
+                            <option key={stage.id} value={stage.id}>
+                              {recipeStageLabel(stage, product.id, pods, lang)}
+                            </option>
+                          ))}
                       </select>
                     </label>
                   )}
@@ -1136,6 +1150,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
 
             {/* Result */}
             <section className="space-y-4" aria-live="polite">
+              {calibrationTemporary && (
+                <p role="alert" className="rounded-lg border border-amber-500/60 p-3 text-sm">
+                  {t.calibrationTemporary}
+                </p>
+              )}
               {mode !== "recipe" && calibrationObservations.length > 0 && (
                 <p className="text-xs text-muted-foreground">
                   {lang === "es"
@@ -1157,7 +1176,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                   {result.message ? (
                     <p className="mt-3 text-sm text-muted-foreground">{result.message}</p>
                   ) : null}
-                  {result.calibrationRequired && product.basis === "liters" && (
+                  {result.calibrationRequired && product.available && (
                     <Button
                       className="mt-4 h-11 w-full"
                       onClick={() => {
@@ -1168,7 +1187,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       {t.calibrate}
                     </Button>
                   )}
-                  {calibrationOpen && result.calibrationRequired && product.basis === "liters" && (
+                  {calibrationOpen && result.calibrationRequired && product.available && (
                     <CalibrationCard
                       key={`${productId}-${unit}`}
                       t={t}
@@ -1388,7 +1407,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
 
                   {/* Target control */}
                   {/* Learn / loop */}
-                  {product.basis === "liters" &&
+                  {product.available &&
                     result.action === "add" &&
                     result.doses.some((dose) => dose.unit === "mL" && dose.amount > 0) && (
                       <LearnCard
@@ -1823,8 +1842,11 @@ function CalibrationCard({
   const [sampleVolumeInput, setSampleVolumeInput] = useState(String(liters));
   const sampleVolumeL = parseDecimalInput(sampleVolumeInput) ?? 0;
   const defaults = useMemo(
-    () => manufacturerDoseDefaults({ productId: product.id, stageId, liters: sampleVolumeL, pods }),
-    [product.id, stageId, sampleVolumeL, pods],
+    () =>
+      product.basis === "pods"
+        ? []
+        : manufacturerDoseDefaults({ productId: product.id, stageId, liters: sampleVolumeL, pods }),
+    [product.id, product.basis, stageId, sampleVolumeL, pods],
   );
   const [baseline, setBaseline] = useState("");
   const [resulting, setResulting] = useState("");

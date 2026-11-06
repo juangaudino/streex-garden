@@ -767,10 +767,6 @@ function presentationMessage(message: string, lang: Lang): string {
       "The top-up dose is outside the validated calibration range.",
     ],
     [
-      "AeroGarden por EC no está soportado en esta interfaz todavía. Usa la Receta oficial verificada; Garden no infiere volumen ni respuesta EC.",
-      "AeroGarden EC dosing is not supported by this interface yet. Use the verified manufacturer Recipe; no reservoir volume or response coefficient is inferred.",
-    ],
-    [
       "Usa mediciones EC finitas no negativas, y un volumen y objetivo positivos.",
       "Use finite non-negative EC measurements and positive volume/target values.",
     ],
@@ -788,10 +784,6 @@ function presentationMessage(message: string, lang: Lang): string {
 }
 
 function calculateResult(input: CalcInput): CalcResult {
-  if (input.productId === "aerogarden" && input.mode !== "recipe")
-    return engineNeeds(
-      "AeroGarden EC dosing is not supported by this interface yet. Use the verified manufacturer Recipe; no reservoir volume or response coefficient is inferred.",
-    );
   if (input.invalidFields?.length) return { kind: "needs", missing: input.invalidFields };
   if (
     ![

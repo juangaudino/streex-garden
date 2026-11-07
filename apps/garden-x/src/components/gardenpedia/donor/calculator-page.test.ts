@@ -264,7 +264,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("resolves only explicitly verified Gardenpedia identity mappings", () => {
     expect(resolveNutrientCropIdentity("genovese-basil")).toBe("basil");
-    expect(resolveNutrientCropIdentity("common-mint")).toBeUndefined();
+    expect(resolveNutrientCropIdentity("common-mint")).toBe("mint");
     expect(resolveNutrientCropIdentity("hoja-santa-piper-auritum")).toBeUndefined();
   });
 
@@ -327,8 +327,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 4,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 95,
-      INSUFFICIENT: 402,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 101,
+      INSUFFICIENT: 396,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -364,7 +364,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       classification: "INSUFFICIENT",
     });
     expect(report.rows.find((row) => row.plantId === "common-mint")?.classification).toBe(
-      "INSUFFICIENT",
+      "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
     );
     for (const plantId of [
       "venus-flytrap-dionaea-muscipula",
@@ -403,7 +403,6 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
     for (const id of [
-      "common-mint",
       "cuban-oregano-coleus-amboinicus",
       "mexican-oregano-lippia-origanoides",
       "red-russian-kale",
@@ -526,7 +525,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("keeps an unmapped published identity insufficient instead of guessing a crop", () => {
     const result = calculateGardenResult({
       mode: "recipe",
-      crops: { "common-mint": 1 },
+      crops: { "cascading-petunia": 1 },
       liters: 2,
       productId: "gh-flora",
       stageId: "feeding-2",
@@ -1094,7 +1093,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("keeps unsupported canonical crops insufficient for crop-derived By EC", () => {
     const result = calculateGardenResult({
       mode: "target",
-      crops: { "common-mint": 1 },
+      crops: { "cascading-petunia": 1 },
       liters: 4,
       productId: "gh-flora",
       stageId: "feeding-2",

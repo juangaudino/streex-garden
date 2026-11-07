@@ -390,6 +390,12 @@ const RECIPE_IDS = Object.fromEntries(
 ) as Record<string, string | undefined>;
 
 const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
+  "common-mint": "mint",
+  "cherry-belle-radish": "radish",
+  "crimson-giant-radish": "radish",
+  "french-breakfast-radish": "radish",
+  "english-thyme": "thyme",
+  "german-thyme": "thyme",
   "swiss-chard-rainbow": "chard",
   "kale-dwarf-blue-curled": "kale",
   "lacinato-kale": "kale",
@@ -598,8 +604,8 @@ function noteFor(state: EvidenceState): Record<Lang, string> {
       en: "Applicable evidence is consistent and backed by verified sources.",
     },
     MODERATE: {
-      es: "La evidencia es aplicable, aunque la combinación de cultivos requiere criterio.",
-      en: "The evidence is applicable, although this crop combination requires judgment.",
+      es: "La fuente ofrece una referencia general: la variedad, el producto y las condiciones pueden cambiar la respuesta. Observa tus plantas y vuelve a medir.",
+      en: "The source provides general guidance: cultivar, product and conditions can change the response. Observe your plants and remeasure.",
     },
     LOW: {
       es: "La evidencia aplicable es limitada. Garden conserva la incertidumbre.",
@@ -862,7 +868,7 @@ function presentationMessage(message: string, lang: Lang): string {
     ],
     [
       "Los rangos publicados no se solapan. Define un objetivo explícito o separa los cultivos.",
-      "The reported optimum ranges do not overlap.",
+      "The reported EC ranges do not overlap.",
     ],
     [
       "El objetivo elegido está fuera del rango de evidencia aplicable; se conserva sin modificar.",

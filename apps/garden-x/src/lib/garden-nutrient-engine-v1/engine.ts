@@ -335,13 +335,13 @@ export function calculatePolycultureRange(
       deviation: Math.max(0, commonFloor - range.ec!.max),
     })),
     separationRecommended: true,
-    rationale: "The reported optimum ranges do not overlap.",
+    rationale: "The reported EC ranges do not overlap.",
     evidenceState: valid.some((range) => range.evidenceState === "MODERATE") ? "MODERATE" : "HIGH",
     claims: [
       ...baseClaims,
       claim(
         "no-common-range",
-        "The reported optimum ranges do not overlap",
+        "The reported EC ranges do not overlap",
         "DETERMINISTIC_CALCULATION",
         valid.map((range) => range.cropIdentity),
       ),

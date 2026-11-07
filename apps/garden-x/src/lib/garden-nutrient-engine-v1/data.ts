@@ -1,6 +1,36 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  herbNftStudy: {
+    id: "walters-currey-herb-nft-2019",
+    publisher: "Walters and Currey · Agronomy",
+    title: "Nutrient Solution Strength and Hydroponic Cilantro, Dill, and Parsley",
+    url: "https://doi.org/10.3390/agronomy9070389",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2019",
+    retrievedAt: "2026-11-06",
+  },
+  cilantroOnionCoirStudy: {
+    id: "leal-bezerra-cilantro-onion-coir-2005",
+    publisher: "Leal, Bezerra, Soares and Cordão Terceiro Neto",
+    title: "Nutrient solution concentration for cilantro and bunching onion in coir",
+    url: "https://www.academia.edu/5596883/Efeito_da_concentra%C3%A7%C3%A3o_da_solu%C3%A7%C3%A3o_nutritiva_no_crescimento_da_alface_em_cultivo_hidrop%C3%B4nico_sistema_NFT",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2005",
+    retrievedAt: "2026-11-06",
+  },
+  hydrocropGuide: {
+    id: "hydrocrop-hydrosol-crop-ec-guide",
+    publisher: "Hydrocrop",
+    title: "HydroSol usage directions: hydroponic EC ranges for common crops",
+    url: "https://www.hydrocrop.co.uk/documents/Hydrocrop%20HydroSol%20usage%20directions%20leaflet.pdf",
+    sourceClass: "MANUFACTURER",
+    tier: "C",
+    region: "UK",
+    retrievedAt: "2026-11-06",
+  },
   cafreLeafyHydroponics: {
     id: "cafre-hydroponic-leafy-salads-herbs",
     publisher: "College of Agriculture, Food and Rural Enterprise",
@@ -75,6 +105,26 @@ export const NUTRIENT_SOURCES = {
     retrievedAt: "2026-10-12",
   },
 } satisfies Record<string, SourceRef>;
+
+/** Research observations for the reader; never automatically treated as an optimum or dose. */
+export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["cilantro", "dill-bouquet"],
+    source: NUTRIENT_SOURCES.herbNftStudy,
+    text: {
+      es: "Un estudio en invernadero cultivó cilantro Santo y eneldo Fernleaf en NFT con soluciones de EC 0,5 a 4,0 mS/cm; el crecimiento no cambió significativamente entre los tratamientos. No probó todas las variedades ni establece un rango óptimo para tu sistema.",
+      en: "A greenhouse NFT study grew Santo cilantro and Fernleaf dill at solution ECs of 0.5–4.0 mS/cm; growth did not differ significantly across treatments. It did not test every cultivar or establish an optimum for your system.",
+    },
+  },
+  {
+    plantIds: ["cilantro", "evergreen-bunching-onion-nabuka"],
+    source: NUTRIENT_SOURCES.cilantroOnionCoirStudy,
+    text: {
+      es: "En un ensayo en macetas con fibra de coco, el cilantro Verdão y la cebolla Nebuka tuvieron buenos resultados con solución nutritiva entre 1,6 y 2,2 mS/cm. Es una observación para ese método, no una dosis automática ni una validación para tanques de agua.",
+      en: "In a coir-container trial, Verdão cilantro and Nebuka bunching onion performed well with nutrient solution EC between 1.6 and 2.2 mS/cm. This is evidence for that method, not an automatic dose or validation for water reservoirs.",
+    },
+  },
+] as const;
 
 /** Contextual observation only: it is never an EC target or stage inference. */
 export const CROP_STAGE_REFERENCES = [
@@ -163,6 +213,26 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  ...(
+    [
+      ["radish", 1.6, 2.2],
+      ["thyme", 0.8, 1.6],
+    ] as const
+  ).map(([cropIdentity, min, max]): EvidenceObservation => ({
+    id: `${cropIdentity}-hydrocrop-ec`,
+    metric: "EC",
+    cropIdentity,
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.hydrocropGuide,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes:
+      "Hydrocrop's broad crop-level feed-solution guidance is provided in the context of its HydroSol product. Cultivar, individual system and stage are not specified. It is not proof of an optimum, a product-independent formulation, or a seedling dose.",
+  })),
   cafreEc("chard", 1.8, 2.4),
   cafreEc("kale", 1.8, 3.0),
   cafreEc("mizuna", 0.8, 1.4),

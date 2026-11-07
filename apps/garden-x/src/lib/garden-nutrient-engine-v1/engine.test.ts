@@ -1,6 +1,12 @@
 import { describe, expect, it } from "vitest";
 
-import { AEROGARDEN_RECIPE, CROP_EVIDENCE, FLORA_RECIPE, NUTRIENT_SOURCES } from "./data";
+import {
+  AEROGARDEN_RECIPE,
+  CROP_EVIDENCE,
+  CROP_STUDY_REFERENCES,
+  FLORA_RECIPE,
+  NUTRIENT_SOURCES,
+} from "./data";
 import {
   buildCalibrationModel,
   calculateEcCorrection,
@@ -59,6 +65,38 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("keeps research-only herb observations out of automatic ranges", () => {
+    expect(CROP_STUDY_REFERENCES.some((reference) => reference.plantIds.includes("cilantro"))).toBe(
+      true,
+    );
+    for (const cropIdentity of ["cilantro", "dill-bouquet", "evergreen-bunching-onion-nabuka"]) {
+      expect(
+        selectCropRange({
+          cropIdentity,
+          phenologicalStage: "UNSPECIFIED",
+          measurementScope: "NUTRIENT_SOLUTION",
+        }).ec.ec,
+      ).toBeUndefined();
+    }
+  });
+  it("keeps HydroSol manufacturer crop guidance contextual and excludes seedlings", () => {
+    for (const [cropIdentity, min, max] of [
+      ["radish", 1.6, 2.2],
+      ["thyme", 0.8, 1.6],
+    ] as const) {
+      const context: CropContext = {
+        cropIdentity,
+        phenologicalStage: "UNSPECIFIED",
+        measurementScope: "NUTRIENT_SOLUTION",
+      };
+      const result = selectCropRange(context).ec;
+      expect(result.ec).toEqual({ min, max, unit: "mS/cm" });
+      expect(result.evidenceState).toBe("MODERATE");
+      expect(result.observations[0]?.source.id).toBe("hydrocrop-hydrosol-crop-ec-guide");
+      expect(result.observations[0]?.notes).toContain("not proof of an optimum");
+      expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+    }
+  });
   it("preserves CAFRE graphical crop ranges and does not apply unspecified-stage evidence to seedlings", () => {
     for (const [cropIdentity, min, max] of [
       ["chard", 1.8, 2.4],
@@ -483,7 +521,7 @@ describe("Garden Nutrient Engine V1", () => {
   it("uses NO_COMMON_OPTIMUM_RANGE without inventing incompatible-plants language", () => {
     const result = calculatePolycultureRange([basil, tomato]);
     expect(result.status).toBe("NO_COMMON_OPTIMUM_RANGE");
-    expect(result.rationale).toContain("reported optimum ranges do not overlap");
+    expect(result.rationale).toContain("reported EC ranges do not overlap");
   });
 
   it("does not change a target based on plant counts", () => {

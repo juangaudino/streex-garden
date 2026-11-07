@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { gardenSeedAgeReferences } from "@/generated/garden-seed-profile-index";
 import type { HydroponicSystem } from "@/lib/garden-nutrient-engine-v1/types";
-import { CROP_STAGE_REFERENCES } from "@/lib/garden-nutrient-engine-v1/data";
+import { CROP_STAGE_REFERENCES, CROP_STUDY_REFERENCES } from "@/lib/garden-nutrient-engine-v1/data";
 import {
   Dialog,
   DialogContent,
@@ -113,12 +113,12 @@ const T = {
     expect: "Deberías ver cerca de",
     manufacturerExpected: "EC esperado por el fabricante",
     why: "Por qué y de dónde sale",
-    range: "Rango óptimo reportado",
+    range: "Rango de EC reportado",
     start: "Punto de partida sugerido",
     common: "Rango común",
-    noCommon: "Sin rango óptimo común",
+    noCommon: "Sin rango de EC común",
     noCommonBody: (p: string) =>
-      `${p} tiene el rango óptimo de EC reportado más bajo, así que Garden propone un compromiso operativo cerca de ese rango. No significa que las plantas sean incompatibles.`,
+      `${p} tiene el rango de EC reportado más bajo, así que Garden propone un compromiso operativo cerca de ese rango. No significa que las plantas sean incompatibles.`,
     yourTarget: "Tu objetivo",
     useSuggested: "Usar sugerido",
     outside:
@@ -239,12 +239,12 @@ const T = {
     expect: "You should see about",
     manufacturerExpected: "Manufacturer expected EC",
     why: "Why, and where it comes from",
-    range: "Reported optimum range",
+    range: "Reported EC range",
     start: "Suggested starting point",
     common: "Common range",
-    noCommon: "No common optimum range",
+    noCommon: "No common EC range",
     noCommonBody: (p: string) =>
-      `${p} has the lower reported optimum EC range, so Garden offers an operational compromise near it. This does not mean the plants are incompatible.`,
+      `${p} has the lower reported EC range, so Garden offers an operational compromise near it. This does not mean the plants are incompatible.`,
     yourTarget: "Your target",
     useSuggested: "Use suggested",
     outside:
@@ -1136,6 +1136,29 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                               </a>
                             </details>
                           )}
+                          {CROP_STUDY_REFERENCES.filter((reference) =>
+                            (reference.plantIds as readonly string[]).includes(id),
+                          ).map((reference) => (
+                            <details
+                              key={reference.source.id}
+                              className="col-span-full text-xs text-muted-foreground"
+                            >
+                              <summary className="cursor-pointer font-medium">
+                                {lang === "es"
+                                  ? "Ver estudio hidropónico"
+                                  : "View hydroponic study"}
+                              </summary>
+                              <p className="mt-2">{reference.text[lang]}</p>
+                              <a
+                                className="mt-1 inline-block underline"
+                                href={reference.source.url}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {reference.source.publisher}
+                              </a>
+                            </details>
+                          ))}
                           {crops[id]! > 1 && (
                             <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">

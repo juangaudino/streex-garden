@@ -298,7 +298,7 @@ describe("Garden Nutrient Engine V1", () => {
 
   it("does not intersect incompatible EC or pH measurement scopes", () => {
     const rootZone: EvidenceObservation = {
-      ...CROP_EVIDENCE[0]!,
+      ...CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!,
       id: "basil-root-zone-ec",
       measurementScope: "ROOT_ZONE",
     };
@@ -310,7 +310,7 @@ describe("Garden Nutrient Engine V1", () => {
       ),
     ).toBe(true);
     const rootZonePh: EvidenceObservation = {
-      ...CROP_EVIDENCE[1]!,
+      ...CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "PH")!,
       id: "basil-root-zone-ph",
       measurementScope: "ROOT_ZONE",
     };
@@ -322,7 +322,7 @@ describe("Garden Nutrient Engine V1", () => {
 
   it("does not promote UNKNOWN scope to nutrient solution", () => {
     const unknown: EvidenceObservation = {
-      ...CROP_EVIDENCE[0]!,
+      ...CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!,
       id: "unknown-scope",
       measurementScope: "UNKNOWN",
       scopeBasis: "UNKNOWN",
@@ -377,7 +377,7 @@ describe("Garden Nutrient Engine V1", () => {
 
   it("does not create automatic targets from Tier E/F evidence", () => {
     const low: EvidenceObservation = {
-      ...CROP_EVIDENCE[0]!,
+      ...CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!,
       id: "tier-f",
       source: { ...NUTRIENT_SOURCES.okstateEcPh, id: "reported-f", tier: "F" },
       evidenceState: "LOW",

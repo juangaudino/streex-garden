@@ -390,6 +390,14 @@ const RECIPE_IDS = Object.fromEntries(
 ) as Record<string, string | undefined>;
 
 const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
+  "african-violet-streptocarpus-ionanthus": "african-violet",
+  "golden-acre-cabbage": "cabbage",
+  "red-acre-cabbage": "cabbage",
+  "red-cabbage": "cabbage",
+  "savoy-cabbage": "cabbage",
+  "giant-musselburgh-leek": "leek",
+  "king-richard-leek": "leek",
+  "leek-american-flag": "leek",
   asparagus: "asparagus",
   "bok-choy": "pak-choi",
   "broccoli-calabrese": "broccoli",

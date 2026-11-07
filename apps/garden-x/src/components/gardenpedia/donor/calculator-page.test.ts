@@ -327,8 +327,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 2,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 65,
-      INSUFFICIENT: 434,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 73,
+      INSUFFICIENT: 426,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -393,6 +393,29 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(hasApplicableCropNutrientEvidence("cucumber-marketmore")).toBe(true);
     expect(resolveNutrientCropIdentity("armenian-cucumber")).toBeUndefined();
     expect(hasApplicableCropNutrientEvidence("armenian-cucumber")).toBe(false);
+  });
+
+  it("maps sourced African violet, head cabbage and leek without guessing lookalikes or stages", () => {
+    for (const [id, minimum, maximum] of [
+      ["african-violet-streptocarpus-ionanthus", 1.2, 1.5],
+      ["golden-acre-cabbage", 2.5, 3],
+      ["king-richard-leek", 1.4, 1.8],
+    ] as const) {
+      const automatic = calculateFreshTargetEc({ contexts: contextFor({ [id]: 1 }, "gh-flora") });
+      expect(automatic.value?.target).toMatchObject({ min: minimum, max: maximum });
+      const seedling = calculateFreshTargetEc({
+        contexts: contextFor({ [id]: 1 }, "gh-flora", { [id]: "SEEDLING" }),
+      });
+      expect(seedling.ok).toBe(false);
+    }
+    for (const id of [
+      "false-african-violet-streptocarpus-saxorum",
+      "napa-cabbage",
+      "common-houseleek-sempervivum-tectorum",
+    ]) {
+      expect(resolveNutrientCropIdentity(id)).toBeUndefined();
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    }
   });
 
   it("keeps AeroGarden UI projections aligned with verified groups and feeding events", () => {

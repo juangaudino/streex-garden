@@ -106,6 +106,29 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     );
   });
 
+  it.each([
+    ["¿Cómo cuido mi lechuga Bibb?", "bibb-lettuce", "es"],
+    ["¿Cómo cuido la fresa Monterey?", "monterey-strawberry", "es"],
+    ["How do I grow Tiny Tim tomato?", "tiny-tim-tomato", "en"],
+  ] as const)("prioritizes the named variety for %s", (question, plantId, lang) => {
+    const results = retrieveGardenpediaEvidence(question, lang);
+    expect(results.length).toBeGreaterThan(0);
+    expect(results[0]?.plantId).toBe(plantId);
+    expect(results.every((item) => item.plantId === plantId)).toBe(true);
+  });
+
+  it.each([
+    ["¿Puedo cultivar lechuga Bibb y tomate Tiny Tim juntos?", "es"],
+    ["Can Bibb Lettuce share a system with Tiny Tim Tomato?", "en"],
+  ] as const)("balances evidence for both explicitly named crops: %s", (question, lang) => {
+    const results = retrieveGardenpediaEvidence(question, lang);
+    expect(results.some((item) => item.plantId === "bibb-lettuce")).toBe(true);
+    expect(results.some((item) => item.plantId === "tiny-tim-tomato")).toBe(true);
+    expect(
+      results.every((item) => ["bibb-lettuce", "tiny-tim-tomato"].includes(item.plantId)),
+    ).toBe(true);
+  });
+
   it("never attaches private inventory or machine-instance context", () => {
     const serialized = JSON.stringify(retrieveGardenpediaEvidence("basil hydroponics", "en"));
 

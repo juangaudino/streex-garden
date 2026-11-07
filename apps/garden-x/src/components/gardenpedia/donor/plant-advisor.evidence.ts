@@ -251,11 +251,15 @@ type SearchDocument = {
   identity: Set<string>;
   section: Set<string>;
 };
-const searchCache = new Map<GardenpediaEvidenceLanguage, {
-  documents: SearchDocument[];
-  documentFrequency: Map<string, number>;
-  identityVocabulary: Set<string>;
-}>();
+const searchCache = new Map<
+  GardenpediaEvidenceLanguage,
+  {
+    documents: SearchDocument[];
+    documentFrequency: Map<string, number>;
+    identityVocabulary: Set<string>;
+    distinctIdentityPhrases: Array<{ phrase: string; plantId: string }>;
+  }
+>();
 
 export function retrieveGardenpediaEvidence(
   query: string,
@@ -291,7 +295,21 @@ export function retrieveGardenpediaEvidence(
     for (const { identity } of documents) {
       for (const token of identity) identityVocabulary.add(token);
     }
-    index = { documents, documentFrequency, identityVocabulary };
+    const phraseOwners = new Map<string, Set<string>>();
+    for (const entry of canonicalEntries as readonly GardenLibraryEntry[]) {
+      for (const name of [entry.commonName, entry.spanishName, ...entry.aliases]) {
+        const phrase = normalize(name || "");
+        if (phrase.split(" ").length < 2) continue;
+        const owners = phraseOwners.get(phrase) ?? new Set<string>();
+        owners.add(entry.libraryPlantId);
+        phraseOwners.set(phrase, owners);
+      }
+    }
+    const distinctIdentityPhrases = [...phraseOwners]
+      .filter(([, owners]) => owners.size === 1)
+      .map(([phrase, owners]) => ({ phrase, plantId: [...owners][0]! }))
+      .sort((a, b) => b.phrase.length - a.phrase.length || a.phrase.localeCompare(b.phrase));
+    index = { documents, documentFrequency, identityVocabulary, distinctIdentityPhrases };
     searchCache.set(language, index);
   }
   const { documents, documentFrequency, identityVocabulary } = index;
@@ -312,7 +330,7 @@ export function retrieveGardenpediaEvidence(
   });
   if (!informativeQueryTokens.length) return [];
 
-  return documents
+  const ranked = documents
     .map(({ record, searchable, identity, section }) => {
       const score = informativeQueryTokens.reduce(
         (total, token) =>
@@ -323,9 +341,40 @@ export function retrieveGardenpediaEvidence(
       return { record, score };
     })
     .filter(({ score }) => score > 0)
-    .sort((a, b) => b.score - a.score || a.record.id.localeCompare(b.record.id))
-    .slice(0, Math.max(1, Math.min(limit, 12)))
-    .map(({ record }) => record);
+    .sort((a, b) => b.score - a.score || a.record.id.localeCompare(b.record.id));
+  const resultLimit = Math.max(1, Math.min(limit, 12));
+
+  // Explicitly named, unambiguous multiword identities get balanced evidence.
+  // Do not infer identities from a shared species term or ambiguous alias.
+  const normalizedQuery = ` ${normalize(query)} `;
+  const occupied: Array<{ start: number; end: number }> = [];
+  const namedPlants: string[] = [];
+  for (const { phrase, plantId } of index.distinctIdentityPhrases) {
+    const start = normalizedQuery.indexOf(` ${phrase} `);
+    if (start < 0) continue;
+    const end = start + phrase.length + 2;
+    if (occupied.some((span) => start < span.end && end > span.start)) continue;
+    occupied.push({ start, end });
+    if (!namedPlants.includes(plantId)) namedPlants.push(plantId);
+  }
+  if (namedPlants.length > 1) {
+    const groups = namedPlants.map((plantId) =>
+      ranked.filter(({ record }) => record.plantId === plantId).map(({ record }) => record),
+    );
+    const balanced: GardenpediaEvidence[] = [];
+    for (let rank = 0; balanced.length < resultLimit; rank++) {
+      let added = false;
+      for (const group of groups) {
+        if (group[rank] && balanced.length < resultLimit) {
+          balanced.push(group[rank]!);
+          added = true;
+        }
+      }
+      if (!added) break;
+    }
+    return balanced;
+  }
+  return ranked.slice(0, resultLimit).map(({ record }) => record);
 }
 
 export function clearGardenpediaEvidenceCacheForTests() {

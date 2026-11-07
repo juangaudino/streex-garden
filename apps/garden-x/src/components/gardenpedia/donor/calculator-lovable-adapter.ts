@@ -5,6 +5,7 @@ import {
   calculateFreshTargetEc,
   calculatePolycultureRange,
   calculateTopUpMaintenance,
+  calculateTopUpToCapacity,
   executeFreshRecipe,
   learnFromObservation,
 } from "@/lib/garden-nutrient-engine-v1/engine";
@@ -856,6 +857,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "The next nutrient dose would exceed reservoir capacity. Leave enough room and recalculate with the measured remaining volume.",
     ],
     [
+      "No se puede alcanzar el objetivo dentro de la capacidad disponible con este relleno. Revisa las mediciones o cambia el plan del depósito.",
+      "The target cannot be reached within the available capacity by this top-up. Recheck the measurements or change the reservoir plan.",
+    ],
+    [
       "Deja espacio para el concentrado además del agua de reposición; las cantidades calculadas superan la capacidad conocida.",
       "Leave room for the nutrient stock as well as replacement water; the calculated additions exceed known capacity.",
     ],
@@ -1255,6 +1260,55 @@ function calculateResult(input: CalcInput): CalcResult {
     warnings: [...targetEngine.warnings, ...topup.warnings].map((item) => item.message),
     expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
   };
+}
+
+export function planTopUpToCapacity(
+  input: CalcInput,
+  targetEc: number,
+): { ok: true; waterToAddL: number } | { ok: false; code: string; message: string } {
+  const identity = productIdentity(
+    input.productId,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
+  const signature = recipeSignatureFor(
+    input.productId,
+    input.stageId,
+    input.liters,
+    input.pods,
+    input.customAbName,
+    input.customAbVersion,
+    input.customAbManufacturer,
+  );
+  const calibration =
+    identity && signature ? applicableCalibration(input, identity, signature).value : undefined;
+  if (input.currentLiters === null || input.capacityLiters == null || input.currentEc === null)
+    return {
+      ok: false,
+      code: "MEASUREMENT_REQUIRED",
+      message: "Current volume, capacity and EC are required.",
+    };
+  const plan = calculateTopUpToCapacity({
+    currentVolumeL: input.currentLiters,
+    capacityL: input.capacityLiters,
+    currentEc: makeMeasurement(input.currentEc),
+    replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),
+    targetEc,
+    calibration,
+  });
+  if (!plan.ok || !plan.value) {
+    const error = plan.errors[0];
+    return {
+      ok: false,
+      code: error?.code ?? "PLAN_UNAVAILABLE",
+      message: presentationMessage(
+        error?.message ?? "The top-up plan is unavailable.",
+        input.language ?? "es",
+      ),
+    };
+  }
+  return { ok: true, waterToAddL: plan.value.waterToAddL };
 }
 
 function applicableCalibration(

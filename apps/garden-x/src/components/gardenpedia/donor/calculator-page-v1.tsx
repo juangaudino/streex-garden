@@ -36,6 +36,7 @@ import {
   calculatorSourceUrl,
   loadSavedSystems,
   manufacturerDoseDefaults,
+  planTopUpToCapacity,
   persistSavedSystems,
   recipeStageLabel,
   recordActualDoses,
@@ -400,6 +401,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [currentLiters, setCurrentLiters] = useState<string>("");
   const [capacityInput, setCapacityInput] = useState<string>("");
   const [waterAdded, setWaterAdded] = useState<string>("");
+  const [fillPlanMessage, setFillPlanMessage] = useState("");
   const [userTarget, setUserTarget] = useState<number | null>(null);
   const [targetInput, setTargetInput] = useState("");
   const [targetEdited, setTargetEdited] = useState(false);
@@ -568,11 +570,25 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   };
   const changeMode = (m: Mode) => {
     setMode(m);
+    setFillPlanMessage("");
     setRound(1);
     setJustLearned(false);
   };
 
   const sourceEc = parseDecimalInput(sourceEcInput) ?? 0;
+  useEffect(
+    () => setFillPlanMessage(""),
+    [
+      currentEc,
+      currentLiters,
+      capacityInput,
+      sourceEcInput,
+      userTarget,
+      productId,
+      stageId,
+      calibrationObservations,
+    ],
+  );
   const parseDisplayedEc = useCallback(
     (raw: string) => {
       const parsed = parseDecimalInput(raw);
@@ -853,7 +869,10 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         label={t.waterAdded}
                         suffix="L"
                         value={waterAdded}
-                        onChange={setWaterAdded}
+                        onChange={(value) => {
+                          setWaterAdded(value);
+                          setFillPlanMessage("");
+                        }}
                         placeholder="1.0"
                       />
                       <button
@@ -868,8 +887,60 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         onClick={() => {
                           const capacity = parseDecimalInput(capacityInput);
                           const current = parseDecimalInput(currentLiters);
-                          if (capacity !== null && current !== null && capacity >= current)
+                          const measuredEc = num(currentEc, true);
+                          if (capacity === null || current === null || capacity < current) return;
+                          const simpleWater = () => {
                             setWaterAdded(String(Number((capacity - current).toFixed(6))));
+                            setFillPlanMessage(
+                              lang === "es"
+                                ? "Esta cantidad llena el espacio antes de añadir nutrientes. Introduce las mediciones y una calibración aplicable; después vuelve a calcular para reservarles espacio."
+                                : "This amount fills the space before nutrients. Enter the measurements and an applicable calibration, then calculate again to leave room for them.",
+                            );
+                          };
+                          if (
+                            measuredEc === null ||
+                            parseDecimalInput(sourceEcInput) === null ||
+                            !result.target
+                          ) {
+                            simpleWater();
+                            return;
+                          }
+                          const plan = planTopUpToCapacity(
+                            {
+                              language: lang,
+                              mode: "topup",
+                              crops,
+                              cropStages,
+                              cropAdditionalStages,
+                              hydroponicSystem,
+                              liters,
+                              productId,
+                              customAbManufacturer,
+                              customAbName,
+                              customAbVersion,
+                              stageId,
+                              pods,
+                              sourceEc,
+                              currentEc: measuredEc,
+                              currentLiters: current,
+                              capacityLiters: capacity,
+                              waterAdded: null,
+                              userTarget,
+                              round,
+                              calibrationObservations,
+                            },
+                            result.target.value,
+                          );
+                          if (plan.ok) {
+                            setWaterAdded(String(plan.waterToAddL));
+                            setFillPlanMessage(
+                              lang === "es"
+                                ? "Agua estimada dejando espacio para los nutrientes calibrados. Mezcla y vuelve a medir."
+                                : "Estimated water leaves room for the calibrated nutrients. Mix and remeasure.",
+                            );
+                          } else if (plan.code === "CALIBRATION_REQUIRED") {
+                            simpleWater();
+                          } else setFillPlanMessage(plan.message);
                         }}
                       >
                         {t.fillToCapacity}
@@ -879,6 +950,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           ? "Si necesitas nutrientes, deja espacio para su volumen o reduce el agua."
                           : "If nutrients are needed, leave room for their volume or reduce the water."}
                       </p>
+                      {fillPlanMessage && (
+                        <p role="status" className="mt-1 text-xs text-muted-foreground">
+                          {fillPlanMessage}
+                        </p>
+                      )}
                     </div>
                   )}
                   <Field
@@ -1660,7 +1736,13 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                                     : localizedComponent(d.label, lang)}
                               </span>
                               <span className="font-display text-3xl font-bold tabular-nums">
-                                {d.amount > 0 && d.amount < 0.005 ? "<0.01" : d.amount.toFixed(2)}
+                                {d.unit === "L"
+                                  ? d.amount > 0 && d.amount < 0.000001
+                                    ? "<0.000001"
+                                    : String(Number(d.amount.toFixed(6)))
+                                  : d.amount > 0 && d.amount < 0.005
+                                    ? "<0.01"
+                                    : d.amount.toFixed(2)}
                                 <span className="ml-1 text-sm font-medium text-muted-foreground">
                                   {d.unit}
                                 </span>

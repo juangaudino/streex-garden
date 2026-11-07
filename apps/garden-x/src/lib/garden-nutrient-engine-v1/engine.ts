@@ -1539,6 +1539,10 @@ export function calculateTopUpMaintenance(input: {
   const afterWaterEc =
     (currentEc * input.currentVolumeL + replacementWaterEc * input.replacementWaterL) /
     resultingVolumeL;
+  // Avoid treating floating-point representation noise as a real EC difference.
+  // This is numerical tolerance only, not an assumed meter resolution.
+  const comparisonTolerance =
+    8 * Number.EPSILON * Math.max(1, Math.abs(afterWaterEc), Math.abs(input.targetEc));
   let nutrientDoseMl: number | undefined;
   const warnings: EngineWarning[] = [
     warning(
@@ -1551,7 +1555,7 @@ export function calculateTopUpMaintenance(input: {
       ],
     ),
   ];
-  if (afterWaterEc < input.targetEc) {
+  if (input.targetEc - afterWaterEc > comparisonTolerance) {
     if (!input.calibration)
       return result(
         undefined,
@@ -1610,7 +1614,7 @@ export function calculateTopUpMaintenance(input: {
       );
   }
   let dilutionWaterMl: number | undefined;
-  if (afterWaterEc > input.targetEc) {
+  if (afterWaterEc - input.targetEc > comparisonTolerance) {
     if (replacementWaterEc >= input.targetEc)
       return result(
         undefined,
@@ -1688,6 +1692,96 @@ export function calculateTopUpMaintenance(input: {
     warnings,
     [],
     claims,
+  );
+}
+
+/**
+ * Find a top-up water amount that leaves physical room for the estimated
+ * calibrated nutrient dose. This uses exactly the same linear EC model as
+ * calculateTopUpMaintenance; it is an estimate and requires remeasurement.
+ */
+export function calculateTopUpToCapacity(input: {
+  currentVolumeL: number;
+  capacityL: number;
+  currentEc: UserMeasurement;
+  replacementWaterEc: UserMeasurement;
+  targetEc: number;
+  calibration?: CalibrationModel | undefined;
+}): EngineResult<{ waterToAddL: number; nutrientDoseMl: number; finalVolumeL: number }> {
+  const availableL = input.capacityL - input.currentVolumeL;
+  const base = {
+    currentVolumeL: input.currentVolumeL,
+    nominalVolumeL: input.capacityL,
+    currentEc: input.currentEc,
+    replacementWaterEc: input.replacementWaterEc,
+    targetEc: input.targetEc,
+    calibration: input.calibration,
+  };
+  const fullWater = calculateTopUpMaintenance({ ...base, replacementWaterL: availableL });
+  if (fullWater.ok && fullWater.value)
+    return result(
+      { waterToAddL: availableL, nutrientDoseMl: 0, finalVolumeL: input.capacityL },
+      fullWater.warnings,
+      [],
+      fullWater.value.claims,
+    );
+  // Only solve the case where the original top-up is valid but nutrients
+  // would occupy some of the available space. Preserve all other errors.
+  if (fullWater.errors[0]?.code !== "RESERVOIR_CAPACITY_EXCEEDED" || !input.calibration)
+    return result(undefined, fullWater.warnings, fullWater.errors, fullWater.claims);
+  const factor = calibrationResponseAtVolume(input.calibration, 1);
+  const currentEc = toMsPerCm(input.currentEc.value, input.currentEc.unit as "mS/cm" | "uS/cm");
+  const waterEc = toMsPerCm(
+    input.replacementWaterEc.value,
+    input.replacementWaterEc.unit as "mS/cm" | "uS/cm",
+  );
+  const denominator = MILLIS_PER_LITER * factor + input.targetEc - waterEc;
+  const numerator =
+    MILLIS_PER_LITER * factor * availableL - input.currentVolumeL * (input.targetEc - currentEc);
+  const estimatedWaterL = numerator / denominator;
+  if (
+    !Number.isFinite(estimatedWaterL) ||
+    denominator <= 0 ||
+    estimatedWaterL < 0 ||
+    estimatedWaterL > availableL
+  )
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "CAPACITY_TARGET_UNREACHABLE",
+          "The target cannot be reached within the available capacity by this top-up. Recheck the measurements or change the reservoir plan.",
+        ),
+      ],
+      fullWater.claims,
+    );
+  // Round planned water down to 1 mL. This leaves a small margin at capacity
+  // when component amounts are displayed to two decimal places; it does not
+  // imply that the user's measuring equipment has that resolution.
+  const waterToAddL = Math.floor(estimatedWaterL * 1000) / 1000;
+  const checked = calculateTopUpMaintenance({ ...base, replacementWaterL: waterToAddL });
+  if (!checked.ok || !checked.value)
+    return result(undefined, checked.warnings, checked.errors, checked.claims);
+  const nutrientDoseMl = checked.value.nutrientDoseMl ?? 0;
+  return result(
+    {
+      waterToAddL,
+      nutrientDoseMl,
+      finalVolumeL: input.currentVolumeL + waterToAddL + nutrientDoseMl / MILLIS_PER_LITER,
+    },
+    checked.warnings,
+    [],
+    [
+      ...checked.value.claims,
+      claim(
+        "top-up-capacity-water",
+        "Estimated water leaving room for calibrated nutrients",
+        "DETERMINISTIC_CALCULATION",
+        ["top-up-current-ec", "top-up-source-water-ec", "top-up-dose"],
+        { value: waterToAddL },
+      ),
+    ],
   );
 }
 

@@ -8,6 +8,7 @@ import {
   calculateFreshTargetEc,
   calculatePolycultureRange,
   calculateTopUpMaintenance,
+  calculateTopUpToCapacity,
   executeFreshRecipe,
   evaluateSourceWater,
   getReplacementGuidance,
@@ -156,6 +157,81 @@ describe("Garden Nutrient Engine V1", () => {
         replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
       }).errors.some((item) => item.code === "SOURCE_WATER_EC_REQUIRED"),
     ).toBe(false);
+  });
+
+  it("plans water to leave room for calibrated nutrients instead of overfilling", () => {
+    const { product, observations } = calibrationInput();
+    const calibration = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: "micro:gro:bloom=1:1:1",
+      observations,
+    }).value!;
+    const input = {
+      currentVolumeL: 2.5,
+      capacityL: 3.5,
+      currentEc: measurement(0.8, "NUTRIENT_SOLUTION"),
+      replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
+      targetEc: 1.2,
+      calibration,
+    };
+    const planned = calculateTopUpToCapacity(input);
+    expect(planned.ok).toBe(true);
+    expect(planned.value!.waterToAddL).toBeGreaterThan(0);
+    expect(planned.value!.waterToAddL).toBeLessThan(1);
+    expect(planned.value!.nutrientDoseMl).toBeGreaterThan(0);
+    // Independent balance: calibration response is 1 EC·L/mL, so 0.998 L
+    // of water requires 1.998 mL of nutrients to reach the selected EC.
+    expect(planned.value!.waterToAddL).toBe(0.998);
+    expect(planned.value!.nutrientDoseMl).toBeCloseTo(1.998, 8);
+    expect(planned.value!.finalVolumeL).toBeLessThanOrEqual(3.5);
+    expect(3.5 - planned.value!.finalVolumeL).toBeLessThan(0.0011);
+    const verified = calculateTopUpMaintenance({
+      currentVolumeL: input.currentVolumeL,
+      nominalVolumeL: input.capacityL,
+      replacementWaterL: planned.value!.waterToAddL,
+      currentEc: input.currentEc,
+      replacementWaterEc: input.replacementWaterEc,
+      targetEc: input.targetEc,
+      calibration,
+    });
+    expect(verified.ok).toBe(true);
+    expect(verified.value!.nutrientDoseMl).toBeCloseTo(planned.value!.nutrientDoseMl);
+    expect(calculateTopUpToCapacity({ ...input, calibration: undefined }).errors[0]?.code).toBe(
+      "CALIBRATION_REQUIRED",
+    );
+    expect(
+      calculateTopUpToCapacity({ ...input, currentEc: measurement(3, "NUTRIENT_SOLUTION") })
+        .errors[0]?.code,
+    ).toBe("DILUTION_EXCEEDS_CAPACITY");
+    expect(
+      calculateTopUpToCapacity({
+        ...input,
+        currentVolumeL: 1,
+        capacityL: 1.001,
+        currentEc: measurement(0.1, "NUTRIENT_SOLUTION"),
+        targetEc: 2,
+      }).errors[0]?.code,
+    ).toBe("CAPACITY_TARGET_UNREACHABLE");
+    const waterOnly = calculateTopUpToCapacity({
+      currentVolumeL: 2,
+      capacityL: 4,
+      currentEc: measurement(1, "NUTRIENT_SOLUTION"),
+      replacementWaterEc: measurement(0.5, "SOURCE_WATER"),
+      targetEc: 0.75,
+    });
+    expect(waterOnly.ok).toBe(true);
+    expect(waterOnly.value?.waterToAddL).toBe(2);
+    expect(waterOnly.value?.nutrientDoseMl).toBe(0);
+    const floatingPointWaterOnly = calculateTopUpToCapacity({
+      currentVolumeL: 2,
+      capacityL: 4,
+      currentEc: measurement(0.8, "NUTRIENT_SOLUTION"),
+      replacementWaterEc: measurement(0.4, "SOURCE_WATER"),
+      targetEc: 0.6,
+    });
+    expect(floatingPointWaterOnly.ok).toBe(true);
+    expect(floatingPointWaterOnly.value?.nutrientDoseMl).toBe(0);
   });
   it("does not flag equal calibrated responses as outliers merely because tank volumes differ", () => {
     const { product, observations } = calibrationInput();

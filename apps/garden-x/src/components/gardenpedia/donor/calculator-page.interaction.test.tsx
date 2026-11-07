@@ -392,5 +392,17 @@ describe("Calculator real control interactions", () => {
     await user.clear(screen.getByLabelText(/^EC before top-up/));
     await user.type(screen.getByLabelText(/^EC before top-up/), "0.80");
     await waitFor(() => expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0));
+    await user.click(screen.getByRole("button", { name: "Calculate water to capacity" }));
+    const plannedWater = Number((screen.getByLabelText(/^Water to add/) as HTMLInputElement).value);
+    expect(plannedWater).toBeGreaterThan(0);
+    expect(plannedWater).toBeLessThan(1);
+    expect(plannedWater * 1000).toBeCloseTo(Math.round(plannedWater * 1000));
+    expect(screen.getByText("Replacement water").closest("li")?.textContent).toContain(
+      String(plannedWater),
+    );
+    expect(screen.getByRole("status").textContent).toMatch(
+      /leaves room for the calibrated nutrients/i,
+    );
+    expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0);
   });
 });

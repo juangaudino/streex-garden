@@ -35,6 +35,7 @@ import {
   calculateGardenResult,
   calibrationUsage,
   calculatorSourceUrl,
+  generalCropReferenceForStage,
   loadSavedSystems,
   manufacturerDoseDefaults,
   planTopUpToCapacity,
@@ -1035,6 +1036,11 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       const studies = CROP_STUDY_REFERENCES.filter((reference) =>
                         (reference.plantIds as readonly string[]).includes(id),
                       );
+                      const generalReference = generalCropReferenceForStage(
+                        id,
+                        cropStages[id] ?? "UNSPECIFIED",
+                        hydroponicSystem,
+                      );
                       return (
                         <li
                           key={id}
@@ -1121,6 +1127,39 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                                 : "Seedlings and other stages"}
                             </option>
                           </select>
+                          {generalReference && (
+                            <details className="col-span-full text-xs text-muted-foreground">
+                              <summary className="cursor-pointer font-medium">
+                                {lang === "es"
+                                  ? "Ver referencia general de EC"
+                                  : "View general EC reference"}
+                              </summary>
+                              <p className="mt-2">
+                                {lang === "es"
+                                  ? "La fuente reporta un rango general para este cultivo, pero no indica que corresponda a la etapa seleccionada. No se utiliza como objetivo automático: "
+                                  : "The source reports a general range for this crop, but does not say it applies to the selected stage. It is not used as an automatic target: "}
+                                {unit === "uS"
+                                  ? generalReference.range.min * 1000
+                                  : generalReference.range.min.toFixed(2)}
+                                –
+                                {unit === "uS"
+                                  ? generalReference.range.max * 1000
+                                  : generalReference.range.max.toFixed(2)}{" "}
+                                {unit === "uS" ? "µS/cm" : "mS/cm"}.
+                              </p>
+                              {generalReference.sources.map((source) => (
+                                <a
+                                  key={source.id}
+                                  className="mr-3 mt-1 inline-block underline"
+                                  href={source.url}
+                                  target="_blank"
+                                  rel="noreferrer"
+                                >
+                                  {source.publisher}
+                                </a>
+                              ))}
+                            </details>
+                          )}
                           {stageReference && (
                             <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">

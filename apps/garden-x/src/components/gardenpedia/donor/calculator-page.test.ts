@@ -19,6 +19,7 @@ import {
   calculateGardenResult,
   calibrationUsage,
   contextFor,
+  generalCropReferenceForStage,
   hasApplicableCropNutrientEvidence,
   loadSavedSystems,
   persistSavedSystems,
@@ -28,6 +29,22 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("shows general crop context without promoting it to seedling evidence", () => {
+    expect(generalCropReferenceForStage("bibb-lettuce", "SEEDLING", "DWC")?.range).toMatchObject({
+      min: 1.2,
+      max: 1.8,
+    });
+    expect(generalCropReferenceForStage("bibb-lettuce", "UNSPECIFIED", "DWC")).toBeUndefined();
+    expect(generalCropReferenceForStage("cascading-petunia", "SEEDLING", "DWC")).toBeUndefined();
+    const context = contextFor(
+      { "bibb-lettuce": 1 },
+      "gh-flora",
+      { "bibb-lettuce": "SEEDLING" },
+      {},
+      "DWC",
+    );
+    expect(calculateFreshTargetEc({ contexts: context }).ok).toBe(false);
+  });
   it("keeps different observed stages of the same crop as separate evidence contexts", () => {
     const contexts = contextFor(
       { "bibb-lettuce": 2 },

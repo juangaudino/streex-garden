@@ -8,6 +8,7 @@ import {
   calculateTopUpToCapacity,
   executeFreshRecipe,
   learnFromObservation,
+  selectCropRange,
 } from "@/lib/garden-nutrient-engine-v1/engine";
 import {
   CROP_EVIDENCE,
@@ -526,6 +527,26 @@ export function hasApplicableCropNutrientEvidence(plantId: string): boolean {
 
   const result = calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE);
   return result.status !== "INSUFFICIENT";
+}
+
+/** General context only; never feeds the selected-stage target or dosing engine. */
+export function generalCropReferenceForStage(
+  plantId: string,
+  stage: CalculatorCropStage,
+  hydroponicSystem: HydroponicSystem,
+) {
+  if (stage === "UNSPECIFIED") return undefined;
+  const context: CropContext = {
+    cropIdentity: resolveNutrientCropIdentity(plantId) ?? plantId,
+    phenologicalStage: "UNSPECIFIED",
+    hydroponicSystem,
+    measurementScope: "NUTRIENT_SOLUTION",
+  };
+  const selected = stage === "MIXED" ? "SEEDLING" : stage;
+  if (selectCropRange({ ...context, phenologicalStage: selected }).ec.ec) return undefined;
+  const reference = selectCropRange(context).ec;
+  if (!reference.ec) return undefined;
+  return { range: reference.ec, sources: reference.observations.map((item) => item.source) };
 }
 
 /**

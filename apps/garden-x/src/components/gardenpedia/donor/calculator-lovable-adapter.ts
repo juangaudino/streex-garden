@@ -73,6 +73,18 @@ export const CALCULATOR_PLANTS: CalculatorPlant[] = donorPlants.map((plant) => (
   aliases: plant.tags,
 }));
 
+/** Carnivorous plant profiles stay in Gardenpedia, but are not nutrient recipe inputs. */
+export const CALCULATOR_EXCLUDED_CARNIVOROUS_IDS = new Set([
+  "alice-sundew-drosera-aliciae",
+  "cape-sundew-drosera-capensis",
+  "nepenthes-x-ventrata",
+  "pinguicula-lilac-lollipop",
+  "pinguicula-primuliflora",
+  "pinguicula-weser",
+  "purple-pitcher-plant-sarracenia-purpurea",
+  "venus-flytrap-dionaea-muscipula",
+]);
+
 function spanishRecipeLabel(label: string): string {
   return label
     .replace("Grow week", "Grow · Semana")
@@ -391,6 +403,8 @@ const RECIPE_IDS = Object.fromEntries(
 ) as Record<string, string | undefined>;
 
 const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
+  // Perpetual Spinach is leaf beet / chard, not Spinacia oleracea.
+  "perpetual-spinach": "chard",
   "common-mint": "mint",
   "cherry-belle-radish": "radish",
   "crimson-giant-radish": "radish",
@@ -847,6 +861,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "Add at least one plant to apply crop EC evidence.",
     ],
     [
+      "Esta calculadora de nutrientes no incluye plantas carnívoras. Retíralas de la mezcla para continuar.",
+      "This nutrient calculator does not include carnivorous plants. Remove them from the mixture to continue.",
+    ],
+    [
       "Hay más etapas distintas que plantas de una variedad. Ajusta la cantidad de plantas o las etapas seleccionadas.",
       "There are more distinct stages than plants of a variety. Adjust the plant count or selected stages.",
     ],
@@ -966,6 +984,11 @@ function presentationMessage(message: string, lang: Lang): string {
 
 function calculateResult(input: CalcInput): CalcResult {
   if (input.invalidFields?.length) return { kind: "needs", missing: input.invalidFields };
+  if (Object.keys(input.crops).some((id) => CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(id))) {
+    return engineNeeds(
+      "Esta calculadora de nutrientes no incluye plantas carnívoras. Retíralas de la mezcla para continuar.",
+    );
+  }
   if (
     Object.entries(input.crops).some(([id, count]) => {
       const primary = input.cropStages?.[id] ?? "UNSPECIFIED";

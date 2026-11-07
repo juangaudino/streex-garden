@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it } from "vitest";
 import { gardenLibraryManifest } from "@/generated/garden-library-manifest";
 import harvestUse from "../../../../../../labs/gardenpedia/data/harvest-use-v0.1.json";
 import harvestUseAdditions from "../../../../../../labs/gardenpedia/data/harvest-use-richness-additions.json";
+import { NUTRIENT_SOURCES } from "@/lib/garden-nutrient-engine-v1/data";
 import {
   classifyHarvestEvidence,
   clearGardenpediaEvidenceCacheForTests,
@@ -80,13 +81,18 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     })) {
       harvestSourceUrls.set(id, source.url);
     }
+    const nutrientSourceUrls = new Map(
+      Object.values(NUTRIENT_SOURCES).map((source) => [source.id, source.url]),
+    );
 
     expect(results.length).toBeGreaterThan(0);
     for (const result of results) {
       for (const source of result.sources) {
-        expect(catalogSourceUrls.get(source.id) ?? harvestSourceUrls.get(source.id)).toBe(
-          source.url,
-        );
+        expect(
+          catalogSourceUrls.get(source.id) ??
+            harvestSourceUrls.get(source.id) ??
+            nutrientSourceUrls.get(source.id),
+        ).toBe(source.url);
       }
     }
   });
@@ -127,6 +133,21 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     expect(
       results.every((item) => ["bibb-lettuce", "tiny-tim-tomato"].includes(item.plantId)),
     ).toBe(true);
+  });
+
+  it("retrieves sourced EC evidence for both crops without inventing stage or a dose", () => {
+    const results = retrieveGardenpediaEvidence(
+      "¿Qué EC necesitan la lechuga Bibb y el tomate Tiny Tim?",
+      "es",
+      12,
+    );
+    for (const id of ["bibb-lettuce", "tiny-tim-tomato"]) {
+      const record = results.find((item) => item.plantId === id && item.id.includes(":nutrient:"));
+      expect(record?.evidenceType).toBe("source_backed");
+      expect(record?.sources[0]?.id).toBe("okstate-ecph");
+      expect(record?.text).toContain("la etapa no están especificadas");
+      expect(record?.text).toContain("no una receta, una dosis");
+    }
   });
 
   it("never attaches private inventory or machine-instance context", () => {

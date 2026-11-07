@@ -1,6 +1,8 @@
 import type { GardenLibraryEntry } from "@/lib/garden-library";
 import { buildDonorPlantDetail, canonicalEntries, type DonorBacking } from "./canonical-adapter";
 import { buildSeedProfile, type SeedProfileLanguage } from "./seed-profile-adapter";
+import { CROP_EVIDENCE } from "@/lib/garden-nutrient-engine-v1/data";
+import { resolveNutrientCropIdentity } from "./calculator-lovable-adapter";
 
 export type GardenpediaEvidenceSource = {
   id: string;
@@ -77,7 +79,9 @@ function stem(value: string) {
 function tokens(value: string) {
   return normalize(value)
     .split(/\s+/)
-    .filter((token) => token.length > 2 && !stopWords.has(token))
+    .filter(
+      (token) => (token.length > 2 || token === "ec" || token === "ph") && !stopWords.has(token),
+    )
     .map(stem);
 }
 
@@ -128,6 +132,56 @@ function buildEvidenceForEntry(
   const name = language === "es" ? entry.spanishName || entry.commonName : entry.commonName;
   const records: GardenpediaEvidence[] = [];
   const detail = buildDonorPlantDetail(entry, language);
+
+  // Crop-level reference observations are public; do not turn them into
+  // stage-specific targets, product recipes, or a visitor's private context.
+  const nutrientIdentity =
+    resolveNutrientCropIdentity(entry.libraryPlantId) ?? entry.libraryPlantId;
+  for (const observation of CROP_EVIDENCE) {
+    if (
+      observation.cropIdentity !== nutrientIdentity ||
+      observation.metric !== "EC" ||
+      observation.stageApplicability !== "UNSPECIFIED" ||
+      observation.measurementScope !== "NUTRIENT_SOLUTION" ||
+      observation.scopeBasis === "UNKNOWN" ||
+      observation.verificationStatus !== "VERIFIED" ||
+      !["A", "B", "C", "D"].includes(observation.source.tier) ||
+      !observation.observedRange ||
+      observation.evidenceState === "LOW" ||
+      observation.evidenceState === "INSUFFICIENT" ||
+      observation.evidenceState === "CONFLICTING"
+    )
+      continue;
+    const { min, max } = observation.observedRange;
+    const source = observation.source;
+    const detailContext =
+      source.id === "hydrocrop-hydrosol-crop-ec-guide"
+        ? language === "es"
+          ? " La guía se publicó en el contexto de HydroSol."
+          : " The guidance was published in the context of HydroSol."
+        : source.id === "cafre-hydroponic-leafy-salads-herbs"
+          ? language === "es"
+            ? " Los valores son aproximados, leídos de un gráfico."
+            : " The values are approximate, read from a chart."
+          : "";
+    const section = language === "es" ? "EC de la solución nutritiva" : "Nutrient solution EC";
+    const text =
+      language === "es"
+        ? `La fuente reporta para el cultivo ${nutrientIdentity} un rango general de EC de ${min}–${max} mS/cm en solución nutritiva. La variedad y la etapa no están especificadas por la fuente; el alcance de medición es ${observation.scopeBasis === "STATED" ? "declarado" : "inferido del contexto"}.${detailContext} Es una referencia de cultivo, no una receta, una dosis ni una validación para plántulas o para un sistema concreto.`
+        : `The source reports a general nutrient-solution EC range of ${min}–${max} mS/cm for ${nutrientIdentity}. The source does not specify cultivar or stage; measurement scope is ${observation.scopeBasis === "STATED" ? "stated" : "inferred from context"}.${detailContext} This is crop-level context, not a recipe, dose, or validation for seedlings or a particular system.`;
+    records.push({
+      id: `${entry.libraryPlantId}:nutrient:${observation.id}`,
+      plantId: entry.libraryPlantId,
+      plantName: name,
+      scientificName: entry.scientificName || "",
+      section,
+      text,
+      evidenceType: "source_backed",
+      confidence: observation.evidenceState.toLowerCase(),
+      sources: [{ id: source.id, label: `${source.publisher} · ${source.title}`, url: source.url }],
+      searchText: `${identity} ${section} ${text} hydroponic hydroponics hidroponia nutrients nutrientes conductivity conductividad`,
+    });
+  }
 
   for (const guide of detail.guides) {
     const text = [guide.subtitle, guide.body, ...guide.bullets, guide.avoid, guide.context]
@@ -315,7 +369,7 @@ export function retrieveGardenpediaEvidence(
   const { documents, documentFrequency, identityVocabulary } = index;
   const topicVocabulary = new Set(
     tokens(
-      "germination sowing seedling transplant propagation planting harvest pruning pinching flowering fruiting watering irrigation light sunlight shade hydroponics hydroponic nutrients fertilizer soil pests disease temperature spacing",
+      "ec ph germination sowing seedling transplant propagation planting harvest pruning pinching flowering fruiting watering irrigation light sunlight shade hydroponics hydroponic nutrients fertilizer soil pests disease temperature spacing",
     ),
   );
   const commonTermThreshold = Math.max(5, Math.floor(corpus.length * 0.12));

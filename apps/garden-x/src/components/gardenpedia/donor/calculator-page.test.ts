@@ -13,6 +13,7 @@ import { donorPlants } from "./canonical-adapter";
 import { MODE_TO_ENGINE, recipeSignature } from "./calculator-v1-adapter";
 import {
   CALCULATOR_PLANTS,
+  CALCULATOR_EXCLUDED_CARNIVOROUS_IDS,
   CALCULATOR_PRODUCTS,
   CALCULATOR_STAGES,
   buildCropEvidenceCoverage,
@@ -29,6 +30,29 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it.each(["alice-sundew-drosera-aliciae", "pinguicula-lilac-lollipop", "pinguicula-weser"])(
+    "does not treat %s as zero-EC or produce nutrient doses for a saved carnivorous plant",
+    (plantId) => {
+      expect(CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plantId)).toBe(true);
+      const result = calculateGardenResult({
+        language: "es",
+        mode: "recipe",
+        crops: { [plantId]: 1 },
+        liters: 4,
+        productId: "gh-flora",
+        stageId: "feeding-2",
+        pods: 6,
+        sourceEc: 0.2,
+        currentEc: null,
+        currentLiters: null,
+        waterAdded: null,
+        userTarget: null,
+        round: 1,
+      });
+      expect(result.kind).toBe("needs");
+      if (result.kind === "needs") expect(result.message).toContain("carnívoras");
+    },
+  );
   it("shows general crop context without promoting it to seedling evidence", () => {
     expect(generalCropReferenceForStage("bibb-lettuce", "SEEDLING", "DWC")?.range).toMatchObject({
       min: 1.2,
@@ -343,9 +367,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 5,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 101,
-      INSUFFICIENT: 395,
+      SUPPORTED_DIRECT: 7,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 102,
+      INSUFFICIENT: 392,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -407,6 +431,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("maps CAFRE crop-level observations only to explicitly supported identities", () => {
     for (const [id, crop] of [
       ["swiss-chard-rainbow", "chard"],
+      ["perpetual-spinach", "chard"],
       ["lacinato-kale", "kale"],
       ["mizuna-red-streaks", "mizuna"],
       ["red-mustard-greens", "mustard-greens"],
@@ -419,6 +444,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(resolveNutrientCropIdentity(id)).toBe(crop);
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
+    expect(resolveNutrientCropIdentity("seaside-f1-spinach")).toBe("spinach");
     for (const id of [
       "cuban-oregano-coleus-amboinicus",
       "mexican-oregano-lippia-origanoides",

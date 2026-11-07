@@ -95,6 +95,8 @@ describe("Garden Nutrient Engine V1", () => {
     for (const [cropIdentity, min, max] of [
       ["radish", 1.6, 2.2],
       ["thyme", 0.8, 1.6],
+      ["marjoram", 1.6, 2],
+      ["watercress", 0.4, 1.8],
     ] as const) {
       const context: CropContext = {
         cropIdentity,

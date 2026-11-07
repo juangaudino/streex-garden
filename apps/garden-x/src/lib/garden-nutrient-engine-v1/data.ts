@@ -242,6 +242,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     [
       ["radish", 1.6, 2.2],
       ["thyme", 0.8, 1.6],
+      ["marjoram", 1.6, 2.0],
+      ["watercress", 0.4, 1.8],
     ] as const
   ).map(([cropIdentity, min, max]): EvidenceObservation => ({
     id: `${cropIdentity}-hydrocrop-ec`,

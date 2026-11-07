@@ -25,6 +25,14 @@ describe("Calculator real control interactions", () => {
     vi.restoreAllMocks();
   });
 
+  it("keeps carnivorous plants out of the nutrient picker", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Pinguicula");
+    expect(screen.queryByRole("option", { name: /Pinguicula/i })).toBeNull();
+  });
+
   it("explains the individual reported ranges when shared crops have no common range", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

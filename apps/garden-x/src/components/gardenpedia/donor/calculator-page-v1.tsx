@@ -31,6 +31,7 @@ import {
 } from "@/components/ui/dialog";
 import {
   CALCULATOR_PLANTS,
+  CALCULATOR_EXCLUDED_CARNIVOROUS_IDS,
   CALCULATOR_PRODUCTS,
   calculateGardenResult,
   calibrationUsage,
@@ -2103,6 +2104,7 @@ function PlantPickerResults({
     .replace(/[\u0300-\u036f]/g, "")
     .toLocaleLowerCase();
   const matches = CALCULATOR_PLANTS.filter((plant) => {
+    if (CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id)) return false;
     if (!normalizedQuery) return true;
     return [
       plant.id,

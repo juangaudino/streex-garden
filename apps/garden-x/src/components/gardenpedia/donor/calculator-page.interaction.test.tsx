@@ -168,7 +168,39 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByLabelText("Stage of Genovese Basil") as HTMLSelectElement).value).toBe(
       "UNSPECIFIED",
     );
+    await user.click(screen.getByText("Reference for observing this plant"));
+    expect(screen.getByText(/not a hydroponic dose/i)).toBeTruthy();
+    expect(
+      screen.getByRole("link", { name: "University of Minnesota Extension" }).getAttribute("href"),
+    ).toContain("extension.umn.edu");
     expect(screen.getByText(/not a confirmed stage or dose/)).toBeTruthy();
+  });
+
+  it("offers crop-specific lettuce stage context without assigning a stage from age", async () => {
+    const user = userEvent.setup();
+    const view = render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Bibb Lettuce");
+    await user.click(screen.getByRole("option", { name: /Bibb Lettuce/ }));
+    await user.type(screen.getByLabelText("Days since sowing of Bibb Lettuce"), "15");
+    await user.click(screen.getByText("Reference for observing this plant"));
+    expect(screen.getByText(/3–4 true leaves and roots visible/i)).toBeTruthy();
+    expect(screen.getByText(/not a confirmed stage or a dose/i)).toBeTruthy();
+    expect(
+      screen
+        .getByRole("link", { name: "University of Kentucky Center for Crop Diversification" })
+        .getAttribute("href"),
+    ).toContain("ccd.uky.edu");
+    expect((screen.getByLabelText("Stage of Bibb Lettuce") as HTMLSelectElement).value).toBe(
+      "UNSPECIFIED",
+    );
+    view.unmount();
+    render(<CalculatorPage language="es" />);
+    await user.click(screen.getByRole("button", { name: "Añadir planta" }));
+    await user.type(screen.getByPlaceholderText("Buscar planta…"), "Bibb Lettuce");
+    await user.click(screen.getByRole("option", { name: /Lechuga Bibb/i }));
+    await user.click(screen.getByText("Referencia para observar esta planta"));
+    expect(screen.getByText(/3–4 hojas verdaderas y raíces visibles/i)).toBeTruthy();
   });
 
   it("offers measured AeroGarden calibration to an anonymous visitor before EC dosing", async () => {

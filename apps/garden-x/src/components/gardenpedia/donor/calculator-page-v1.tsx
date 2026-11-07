@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { gardenSeedAgeReferences } from "@/generated/garden-seed-profile-index";
 import type { HydroponicSystem } from "@/lib/garden-nutrient-engine-v1/types";
+import { CROP_STAGE_REFERENCES } from "@/lib/garden-nutrient-engine-v1/data";
 import {
   Dialog,
   DialogContent,
@@ -1028,6 +1029,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     {Object.keys(crops).map((id) => {
                       const c = CALCULATOR_PLANTS.find((x) => x.id === id);
                       if (!c) return null;
+                      const stageReference = CROP_STAGE_REFERENCES.find(
+                        (reference) => reference.cropIdentity === resolveNutrientCropIdentity(id),
+                      );
                       return (
                         <li
                           key={id}
@@ -1114,6 +1118,24 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                                 : "Seedlings and other stages"}
                             </option>
                           </select>
+                          {stageReference && (
+                            <details className="col-span-full text-xs text-muted-foreground">
+                              <summary className="cursor-pointer font-medium">
+                                {lang === "es"
+                                  ? "Referencia para observar esta planta"
+                                  : "Reference for observing this plant"}
+                              </summary>
+                              <p className="mt-2">{stageReference.text[lang]}</p>
+                              <a
+                                className="mt-1 inline-block underline"
+                                href={stageReference.source.url}
+                                target="_blank"
+                                rel="noreferrer"
+                              >
+                                {stageReference.source.publisher}
+                              </a>
+                            </details>
+                          )}
                           {crops[id]! > 1 && (
                             <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">

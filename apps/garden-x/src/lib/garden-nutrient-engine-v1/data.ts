@@ -12,6 +12,26 @@ export const NUTRIENT_SOURCES = {
     documentCode: "HLA-6722",
     retrievedAt: "2026-10-03",
   },
+  kentuckyHydroponicLettuce: {
+    id: "university-kentucky-hydroponic-lettuce-ccd-cp-63",
+    publisher: "University of Kentucky Center for Crop Diversification",
+    title: "Hydroponic Lettuce Production in Controlled Environments",
+    url: "https://ccd.uky.edu/sites/default/files/2026-02/ccd-cp-63_hydrolettuce-updated_accessible.pdf",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "2025",
+    documentCode: "CCD-CP-63",
+    retrievedAt: "2026-11-06",
+  },
+  minnesotaHomeBasil: {
+    id: "university-minnesota-growing-basil-home-gardens",
+    publisher: "University of Minnesota Extension",
+    title: "Growing basil in home gardens",
+    url: "https://extension.umn.edu/garden-and-home/yard-and-garden/yard-and-garden-problems/growing-basil",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-06",
+  },
   generalHydroponicsFlora: {
     id: "general-hydroponics-floraseries-2026-07-07",
     publisher: "General Hydroponics",
@@ -45,6 +65,26 @@ export const NUTRIENT_SOURCES = {
     retrievedAt: "2026-10-12",
   },
 } satisfies Record<string, SourceRef>;
+
+/** Contextual observation only: it is never an EC target or stage inference. */
+export const CROP_STAGE_REFERENCES = [
+  {
+    cropIdentity: "basil",
+    source: NUTRIENT_SOURCES.minnesotaHomeBasil,
+    text: {
+      es: "La Universidad de Minnesota describe la plántula de albahaca por sus dos hojas iniciales y usa 2–3 pares de hojas verdaderas como referencia para aclarar o trasplantar en cultivo de jardín. Esa referencia no confirma la etapa de tu planta ni es una dosis para hidroponía.",
+      en: "The University of Minnesota describes basil seedlings by their two seed leaves and uses 2–3 pairs of true leaves as a reference for thinning or transplanting in garden cultivation. This does not confirm your plant's stage and is not a hydroponic dose.",
+    },
+  },
+  {
+    cropIdentity: "lettuce",
+    source: NUTRIENT_SOURCES.kentuckyHydroponicLettuce,
+    text: {
+      es: "En una guía de lechuga hidropónica en ambiente controlado, la Universidad de Kentucky describe el trasplante cuando hay 3–4 hojas verdaderas y raíces visibles bajo el sustrato, habitualmente 14–21 días tras la siembra. Es una referencia del método, no una etapa confirmada ni una dosis para tu planta.",
+      en: "In its controlled-environment hydroponic lettuce guide, the University of Kentucky describes transplanting when there are 3–4 true leaves and roots visible below the substrate, usually 14–21 days after sowing. This is method-specific context, not a confirmed stage or a dose for your plant.",
+    },
+  },
+] as const;
 
 const source = NUTRIENT_SOURCES.okstateEcPh;
 

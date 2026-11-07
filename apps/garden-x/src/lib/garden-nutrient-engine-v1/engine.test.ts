@@ -65,6 +65,18 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("uses rosemary supplier guidance as a moderate reported range, not a seedling rule", () => {
+    const context: CropContext = {
+      cropIdentity: "rosemary",
+      phenologicalStage: "UNSPECIFIED",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
+    const result = selectCropRange(context).ec;
+    expect(result.ec).toEqual({ min: 1, max: 1.6, unit: "mS/cm" });
+    expect(result.evidenceState).toBe("MODERATE");
+    expect(result.observations[0]?.source.id).toBe("hydroponic-xpress-ec-ph-guide");
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+  });
   it("keeps research-only herb observations out of automatic ranges", () => {
     expect(CROP_STUDY_REFERENCES.some((reference) => reference.plantIds.includes("cilantro"))).toBe(
       true,

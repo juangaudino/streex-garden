@@ -326,9 +326,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 4,
+      SUPPORTED_DIRECT: 5,
       SUPPORTED_VIA_DEFENSIBLE_MAPPING: 101,
-      INSUFFICIENT: 396,
+      INSUFFICIENT: 395,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

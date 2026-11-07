@@ -1,6 +1,16 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  hydroponicXpressGuide: {
+    id: "hydroponic-xpress-ec-ph-guide",
+    publisher: "Hydroponic Xpress",
+    title: "EC / pH Guide",
+    url: "https://www.aquaponicswa.com.au/wp-content/uploads/2024/10/Hydroponic-Xpress-EC-pH-Guide.pdf",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    region: "Australia",
+    retrievedAt: "2026-11-06",
+  },
   herbNftStudy: {
     id: "walters-currey-herb-nft-2019",
     publisher: "Walters and Currey · Agronomy",
@@ -213,6 +223,21 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "rosemary-hydroponic-xpress-ec",
+    metric: "EC",
+    cropIdentity: "rosemary",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.hydroponicXpressGuide,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
+    notes:
+      "Hydroponic Xpress crop-level nutrient-solution guidance; cultivar and individual system are not specified. This is general guidance, not a validated optimum or seedling dose.",
+  },
   ...(
     [
       ["radish", 1.6, 2.2],

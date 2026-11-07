@@ -1032,6 +1032,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                       const stageReference = CROP_STAGE_REFERENCES.find(
                         (reference) => reference.cropIdentity === resolveNutrientCropIdentity(id),
                       );
+                      const studies = CROP_STUDY_REFERENCES.filter((reference) =>
+                        (reference.plantIds as readonly string[]).includes(id),
+                      );
                       return (
                         <li
                           key={id}
@@ -1136,29 +1139,28 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                               </a>
                             </details>
                           )}
-                          {CROP_STUDY_REFERENCES.filter((reference) =>
-                            (reference.plantIds as readonly string[]).includes(id),
-                          ).map((reference) => (
-                            <details
-                              key={reference.source.id}
-                              className="col-span-full text-xs text-muted-foreground"
-                            >
+                          {studies.length > 0 && (
+                            <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">
                                 {lang === "es"
-                                  ? "Ver estudio hidropónico"
-                                  : "View hydroponic study"}
+                                  ? "Ver estudios hidropónicos"
+                                  : "View hydroponic studies"}
                               </summary>
-                              <p className="mt-2">{reference.text[lang]}</p>
-                              <a
-                                className="mt-1 inline-block underline"
-                                href={reference.source.url}
-                                target="_blank"
-                                rel="noreferrer"
-                              >
-                                {reference.source.publisher}
-                              </a>
+                              {studies.map((reference) => (
+                                <div key={reference.source.id}>
+                                  <p className="mt-2">{reference.text[lang]}</p>
+                                  <a
+                                    className="mt-1 inline-block underline"
+                                    href={reference.source.url}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                  >
+                                    {reference.source.publisher}
+                                  </a>
+                                </div>
+                              ))}
                             </details>
-                          ))}
+                          )}
                           {crops[id]! > 1 && (
                             <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">

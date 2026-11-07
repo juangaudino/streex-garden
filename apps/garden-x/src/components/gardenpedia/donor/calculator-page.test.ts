@@ -326,9 +326,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 2,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 73,
-      INSUFFICIENT: 426,
+      SUPPORTED_DIRECT: 4,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 95,
+      INSUFFICIENT: 402,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -373,7 +373,6 @@ describe("Gardenpedia Calculator V1 integration", () => {
       "nepenthes-x-ventrata",
       "tulsi-holy-basil-ocimum-tenuiflorum",
       "common-fenugreek-trigonella-foenum-graecum",
-      "peppermint-mentha-piperita",
       "wishbone-flower-torenia-fournieri",
       "alice-sundew-drosera-aliciae",
       "tennessee-coneflower-echinacea-tennesseensis",
@@ -388,11 +387,56 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
 
+  it("maps CAFRE crop-level observations only to explicitly supported identities", () => {
+    for (const [id, crop] of [
+      ["swiss-chard-rainbow", "chard"],
+      ["lacinato-kale", "kale"],
+      ["mizuna-red-streaks", "mizuna"],
+      ["red-mustard-greens", "mustard-greens"],
+      ["greek-oregano", "oregano"],
+      ["common-chives", "chives"],
+      ["garlic-chives", "chives"],
+      ["peppermint-mentha-piperita", "mint"],
+      ["spearmint", "mint"],
+    ] as const) {
+      expect(resolveNutrientCropIdentity(id)).toBe(crop);
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
+    }
+    for (const id of [
+      "common-mint",
+      "cuban-oregano-coleus-amboinicus",
+      "mexican-oregano-lippia-origanoides",
+      "red-russian-kale",
+    ]) {
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    }
+  });
+
   it("uses published crop evidence for cucumber without treating Armenian melon as cucumber", () => {
     expect(resolveNutrientCropIdentity("cucumber-marketmore")).toBe("cucumber");
     expect(hasApplicableCropNutrientEvidence("cucumber-marketmore")).toBe(true);
     expect(resolveNutrientCropIdentity("armenian-cucumber")).toBeUndefined();
     expect(hasApplicableCropNutrientEvidence("armenian-cucumber")).toBe(false);
+  });
+
+  it("connects reviewed common lettuce, basil, tomato and pepper identities without mapping unrelated crops", () => {
+    for (const [id, crop] of [
+      ["breen-romaine-lettuce", "lettuce"],
+      ["bronze-arrow-lettuce", "lettuce"],
+      ["green-salanova-lettuce", "lettuce"],
+      ["muir-lettuce", "lettuce"],
+      ["pandero-romaine-lettuce", "lettuce"],
+      ["parris-island-romaine", "lettuce"],
+      ["romaine-lettuce", "lettuce"],
+      ["large-red-cherry-tomato", "tomato"],
+      ["basil-ocimum-basilicum", "basil"],
+      ["mini-lunchbox-sweet-pepper", "pepper"],
+    ] as const) {
+      expect(resolveNutrientCropIdentity(id)).toBe(crop);
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
+    }
+    expect(resolveNutrientCropIdentity("celtuce-lactuca-sativa-augustana")).toBeUndefined();
+    expect(hasApplicableCropNutrientEvidence("celtuce-lactuca-sativa-augustana")).toBe(false);
   });
 
   it("maps sourced African violet, head cabbage and leek without guessing lookalikes or stages", () => {

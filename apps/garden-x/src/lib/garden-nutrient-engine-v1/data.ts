@@ -1,6 +1,16 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  cafreLeafyHydroponics: {
+    id: "cafre-hydroponic-leafy-salads-herbs",
+    publisher: "College of Agriculture, Food and Rural Enterprise",
+    title: "Hydroponic production of leafy salads and herbs",
+    url: "https://www.cafre.ac.uk/wp-content/uploads/2020/12/Hydroponic-production-of-leafy-salads-and-herbs.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    region: "Northern Ireland",
+    retrievedAt: "2026-11-06",
+  },
   okstateEcPh: {
     id: "okstate-ecph",
     publisher: "Oklahoma State University Extension",
@@ -88,6 +98,25 @@ export const CROP_STAGE_REFERENCES = [
 
 const source = NUTRIENT_SOURCES.okstateEcPh;
 
+/** Approximate labelled cells from CAFRE appendix 2; no cultivar or stage is specified. */
+function cafreEc(cropIdentity: string, min: number, max: number): EvidenceObservation {
+  return {
+    id: `${cropIdentity}-cafre-ec`,
+    metric: "EC",
+    cropIdentity,
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "INFERRED",
+    source: NUTRIENT_SOURCES.cafreLeafyHydroponics,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes:
+      "Approximate values read from labelled cells in the appendix 2 graphic. The chart does not specify cultivar, growth stage, or individual hydroponic system; nutrient-solution scope is inferred from the guide's context.",
+  };
+}
+
 function cropObservation(
   id: string,
   cropIdentity: string,
@@ -130,10 +159,17 @@ function cropObservation(
 }
 
 /**
- * Only ranges explicitly present in the verified OSU crop table are included.
+ * Ranges are taken from verified crop-level hydroponic sources.
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  cafreEc("chard", 1.8, 2.4),
+  cafreEc("kale", 1.8, 3.0),
+  cafreEc("mizuna", 0.8, 1.4),
+  cafreEc("mustard-greens", 1.2, 2.4),
+  cafreEc("oregano", 1.6, 2.2),
+  cafreEc("mint", 2.2, 2.8),
+  cafreEc("chives", 1.8, 2.2),
   ...cropObservation(
     "african-violet-osu",
     "african-violet",

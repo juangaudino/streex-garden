@@ -59,6 +59,29 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("preserves CAFRE graphical crop ranges and does not apply unspecified-stage evidence to seedlings", () => {
+    for (const [cropIdentity, min, max] of [
+      ["chard", 1.8, 2.4],
+      ["kale", 1.8, 3],
+      ["mizuna", 0.8, 1.4],
+      ["mustard-greens", 1.2, 2.4],
+      ["oregano", 1.6, 2.2],
+      ["mint", 2.2, 2.8],
+      ["chives", 1.8, 2.2],
+    ] as const) {
+      const context: CropContext = {
+        cropIdentity,
+        phenologicalStage: "UNSPECIFIED",
+        measurementScope: "NUTRIENT_SOLUTION",
+      };
+      const result = selectCropRange(context);
+      expect(result.ec.ec).toEqual({ min, max, unit: "mS/cm" });
+      expect(result.ec.evidenceState).toBe("MODERATE");
+      expect(result.ec.observations[0]?.source.id).toBe("cafre-hydroponic-leafy-salads-herbs");
+      expect(result.ec.observations[0]?.scopeBasis).toBe("INFERRED");
+      expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+    }
+  });
   it("preserves conflicting credible evidence rather than calling it merely insufficient", () => {
     const original = CROP_EVIDENCE.find(
       (item) => item.cropIdentity === "basil" && item.metric === "EC",

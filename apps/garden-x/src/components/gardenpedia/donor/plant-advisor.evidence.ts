@@ -1,7 +1,7 @@
 import type { GardenLibraryEntry } from "@/lib/garden-library";
 import { buildDonorPlantDetail, canonicalEntries, type DonorBacking } from "./canonical-adapter";
 import { buildSeedProfile, type SeedProfileLanguage } from "./seed-profile-adapter";
-import { CROP_EVIDENCE } from "@/lib/garden-nutrient-engine-v1/data";
+import { CROP_EVIDENCE, CROP_STUDY_REFERENCES } from "@/lib/garden-nutrient-engine-v1/data";
 import { resolveNutrientCropIdentity } from "./calculator-lovable-adapter";
 
 export type GardenpediaEvidenceSource = {
@@ -137,6 +137,23 @@ function buildEvidenceForEntry(
   // stage-specific targets, product recipes, or a visitor's private context.
   const nutrientIdentity =
     resolveNutrientCropIdentity(entry.libraryPlantId) ?? entry.libraryPlantId;
+  for (const study of CROP_STUDY_REFERENCES) {
+    if (!study.plantIds.some((id: string) => id === entry.libraryPlantId)) continue;
+    const section = language === "es" ? "Estudio hidropónico contextual" : "Contextual hydroponic study";
+    const text = study.text[language];
+    records.push({
+      id: `${entry.libraryPlantId}:nutrient-study:${study.source.id}`,
+      plantId: entry.libraryPlantId,
+      plantName: name,
+      scientificName: entry.scientificName || "",
+      section,
+      text,
+      evidenceType: "source_backed",
+      confidence: "moderate",
+      sources: [{ id: study.source.id, label: `${study.source.publisher} · ${study.source.title}`, url: study.source.url }],
+      searchText: `${identity} ${section} ${text} ec hydroponic hydroponics hidroponia nutrients nutrientes conductivity conductividad`,
+    });
+  }
   for (const observation of CROP_EVIDENCE) {
     if (
       observation.cropIdentity !== nutrientIdentity ||
@@ -155,7 +172,11 @@ function buildEvidenceForEntry(
     const { min, max } = observation.observedRange;
     const source = observation.source;
     const detailContext =
-      source.id === "hydrocrop-hydrosol-crop-ec-guide"
+      source.id === "nsw-asian-vegetables-nft-2011"
+        ? language === "es"
+          ? " La fuente estudió el sistema NFT."
+          : " The source studied NFT."
+        : source.id === "hydrocrop-hydrosol-crop-ec-guide"
         ? language === "es"
           ? " La guía se publicó en el contexto de HydroSol."
           : " The guidance was published in the context of HydroSol."

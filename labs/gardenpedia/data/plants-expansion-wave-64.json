@@ -1,0 +1,350 @@
+[
+  {
+    "id": "basil-dark-opal",
+    "name": "Dark Opal Basil",
+    "spanishName": "Albahaca Dark Opal",
+    "scientificName": "Ocimum basilicum",
+    "variety": "Dark Opal",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "Dark Opal Basil",
+      "Albahaca Dark Opal",
+      "Ocimum basilicum",
+      "Dark Opal"
+    ],
+    "summary": "Commercially described as Dark Opal basil; a named basil, not an inferred identity for other purple plants.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Dark Opal Basil",
+        "guidance": "Commercially described as Dark Opal basil; a named basil, not an inferred identity for other purple plants.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      }
+    }
+  },
+  {
+    "id": "basil-spicy-globe",
+    "name": "Spicy Globe Basil",
+    "spanishName": "Albahaca Spicy Globe",
+    "scientificName": "Ocimum basilicum",
+    "variety": "Spicy Globe",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "Spicy Globe Basil",
+      "Albahaca Spicy Globe",
+      "Ocimum basilicum",
+      "Spicy Globe"
+    ],
+    "summary": "The supplier identifies Spicy Globe as basil; sources differ on fine taxonomy, so the commercial identification is retained without resolving all taxonomic variants.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Spicy Globe Basil",
+        "guidance": "The supplier identifies Spicy Globe as basil; sources differ on fine taxonomy, so the commercial identification is retained without resolving all taxonomic variants.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      }
+    }
+  },
+  {
+    "id": "basil-lemon",
+    "name": "Lemon Basil",
+    "spanishName": "Albahaca limón",
+    "scientificName": "Ocimum × africanum",
+    "variety": "Lemon",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "Lemon Basil",
+      "Albahaca limón",
+      "Ocimum × citriodorum",
+      "Lemon",
+      "Ocimum × citriodorum",
+      "Ocimum x citriodorum"
+    ],
+    "summary": "Lemon basil is a citrus-scented basil; it is not lemon balm (Melissa officinalis). Supplier names may use alternative botanical spellings.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Lemon Basil",
+        "guidance": "Lemon basil is a citrus-scented basil; it is not lemon balm (Melissa officinalis). Supplier names may use alternative botanical spellings. Kew treats Ocimum × citriodorum as a synonym of Ocimum × africanum.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public",
+          "kew-ocimum-africanum-public"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      }
+    }
+  },
+  {
+    "id": "basil-lime",
+    "name": "Lime Basil",
+    "spanishName": "Albahaca lima",
+    "scientificName": "Ocimum × africanum",
+    "variety": "Lime",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "Lime Basil",
+      "Albahaca lima",
+      "Ocimum × citriodorum",
+      "Lime",
+      "Ocimum × citriodorum",
+      "Ocimum x citriodorum"
+    ],
+    "summary": "Lime basil is a commercially named citrus-scented basil; its hydroponic EC response is not established by its supplier identity.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Lime Basil",
+        "guidance": "Lime basil is a commercially named citrus-scented basil; its hydroponic EC response is not established by its supplier identity. Kew treats Ocimum × citriodorum as a synonym of Ocimum × africanum.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public",
+          "kew-ocimum-africanum-public"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      }
+    }
+  },
+  {
+    "id": "butterhead-lettuce-unspecified",
+    "name": "Butterhead Lettuce",
+    "spanishName": "Lechuga tipo butterhead",
+    "scientificName": "Lactuca sativa",
+    "variety": "Butterhead type; cultivar unspecified",
+    "category": "leafy-greens",
+    "emoji": "🌿",
+    "tags": [
+      "Butterhead Lettuce",
+      "Lechuga tipo butterhead",
+      "Lactuca sativa",
+      "Butterhead type; cultivar unspecified"
+    ],
+    "summary": "Butterhead describes a lettuce type; no particular named cultivar is inferred.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Butterhead Lettuce",
+        "guidance": "Butterhead describes a lettuce type; no particular named cultivar is inferred.",
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-butterhead-lettuce-crop-public"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      }
+    }
+  },
+  {
+    "id": "chamomile-unspecified",
+    "name": "Chamomile",
+    "spanishName": "Manzanilla",
+    "scientificName": "Species unresolved",
+    "variety": "Species and cultivar unspecified",
+    "category": "herbs",
+    "emoji": "🌿",
+    "tags": [
+      "Chamomile",
+      "Manzanilla",
+      "Matricaria / Chamaemelum (species unspecified)",
+      "Species and cultivar unspecified"
+    ],
+    "summary": "Chamomile may refer to different plants, including German and Roman chamomile. Species and cultivar remain unconfirmed.",
+    "metrics": [],
+    "sections": {
+      "identity": {
+        "short": "Chamomile",
+        "guidance": "Chamomile may refer to different plants, including German and Roman chamomile. Species and cultivar remain unconfirmed.",
+        "evidenceType": "needs_validation",
+        "confidence": "medium",
+        "sourceIds": [
+          "nccih-chamomile-types-public"
+        ]
+      }
+    },
+    "compatibilityProfile": {
+      "profileVersion": 1,
+      "hydroponicSuitability": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "growthHabits": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "matureSize": {
+        "height": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        },
+        "spread": {
+          "status": "unknown",
+          "reason": "The identity source does not establish this field for the selected cultivar and system."
+        }
+      },
+      "spacing": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      },
+      "light": {
+        "status": "unknown",
+        "reason": "The identity source does not establish this field for the selected cultivar and system."
+      }
+    }
+  }
+]

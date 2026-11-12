@@ -14,7 +14,7 @@ describe("Gardenpedia mobile Library hierarchy", () => {
   it("keeps the catalog counts compact and exposes category filters on demand", () => {
     render(<GardenLibrary language="en" diagnosticOnly />);
 
-    expect(screen.getAllByText("501 public profiles").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("507 public profiles").length).toBeGreaterThan(0);
     expect(screen.getByText("328 Seed Profiles V0")).toBeTruthy();
     expect(screen.queryByText("Garden X public")).toBeNull();
     expect(screen.queryByText("Light")).toBeNull();

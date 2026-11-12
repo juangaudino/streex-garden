@@ -134,6 +134,7 @@ const plantFiles = [
   "data/plants-expansion-wave-61.json",
   "data/plants-expansion-wave-62.json",
   "data/plants-expansion-wave-63.json",
+  "data/plants-expansion-wave-64.json",
   "data/plants-requests.json",
 ];
 
@@ -231,6 +232,7 @@ const dataFiles = [
   "data/sources-expansion-wave-61.json",
   "data/sources-expansion-wave-62.json",
   "data/sources-expansion-wave-63.json",
+  "data/sources-expansion-wave-64.json",
   "data/sources-requests.json",
   "data/translations-es.json",
   "data/translations-owned-seeds-es.json",
@@ -299,6 +301,7 @@ const dataFiles = [
   "data/translations-expansion-wave-61-es.json",
   "data/translations-expansion-wave-62-es.json",
   "data/translations-expansion-wave-63-es.json",
+  "data/translations-expansion-wave-64-es.json",
   "data/translations-requests-es.json",
   "data/visuals.json",
   "data/neighbor-profiles.json",
@@ -666,6 +669,7 @@ function buildCatalogManifest(plants, identityAliases) {
     "data/sources-expansion-wave-61.json",
     "data/sources-expansion-wave-62.json",
     "data/sources-expansion-wave-63.json",
+    "data/sources-expansion-wave-64.json",
     "data/sources-requests.json",
   ].flatMap((file) => filterPublicSources(file));
   const sourceById = new Map(

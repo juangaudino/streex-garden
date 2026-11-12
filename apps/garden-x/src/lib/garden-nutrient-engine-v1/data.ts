@@ -1,6 +1,75 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  papaloNutrientStudy: {
+    id: "juarez-porophyllum-nutrient-poster",
+    publisher: "Juarez-Lopez and colleagues · HortScience conference supplement",
+    title: "Yield of Porophyllum ruderale as a function of nutrient solution concentration",
+    url: "https://bpb-us-w2.wpmucdn.com/u.osu.edu/dist/9/24091/files/2018/02/Page-S353-S354-from-2016-Conference-Supplement-9-2l0ke9g.pdf",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-07",
+  },
+  calendulaHydroponicStudy: {
+    id: "lima-calendula-hydroponic-2019",
+    publisher: "Universidade Estadual do Norte Fluminense Darcy Ribeiro · Thaísa Capato Lima",
+    title: "Production and quality of medicinal plants in hydroponic culture",
+    url: "https://uenf.br/posgraduacao/producao-vegetal/wp-content/uploads/sites/10/2019/07/Tha%C3%ADsa-UENFcorre%C3%A7%C3%B5es-aceitas-final-final-merged-1.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2019",
+    retrievedAt: "2026-11-07",
+  },
+  lavenderHydroponicStudy: {
+    id: "cyprus-lavender-potassium-hydroponic-2017",
+    publisher: "Cyprus University of Technology and collaborators",
+    title: "Optimization of potassium fertilization for lavender growth and essential oil production",
+    url: "https://www.scielo.cl/scielo.php?pid=S0718-95162017000200004&script=sci_arttext",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2017",
+    retrievedAt: "2026-11-07",
+  },
+  sunflowerHydroponicStudy: {
+    id: "brazil-sunflower-hydroponic-salinity-2013",
+    publisher: "Engenharia Agrícola · research authors",
+    title: "Efficiency of water use in sunflower grown in hydroponic system under saline stress",
+    url: "https://www.scielo.br/j/eagri/a/drzQkyw7qHrrfSm9hCtpDxM/?lang=en",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2013",
+    retrievedAt: "2026-11-07",
+  },
+  arugulaEcStudy: {
+    id: "osu-arugula-ec-2021",
+    publisher: "Ohio State University and collaborators · Agronomy",
+    title: "Photosynthesis, Biomass Production, Nutritional Quality, and Flavor-Related Phytochemical Properties of Hydroponic-Grown Arugula under Different Electrical Conductivities",
+    url: "https://doi.org/10.3390/agronomy11071340",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2021",
+    retrievedAt: "2026-11-07",
+  },
+  basilSpeciesNftStudy: {
+    id: "walters-currey-basil-species-nft-2018",
+    publisher: "Walters and Currey · HortScience",
+    title: "Effects of Nutrient Solution Concentration and Daily Light Integral on Growth and Nutrient Concentration of Several Basil Species in Hydroponic Production",
+    url: "https://doi.org/10.21273/HORTSCI13126-18",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2018",
+    retrievedAt: "2026-11-07",
+  },
+  nswAsianGreensNft: {
+    id: "nsw-asian-vegetables-nft-2011",
+    publisher: "New South Wales Department of Primary Industries",
+    title: "Leafy Asian vegetables and their nutrition in hydroponics",
+    url: "https://www.dpi.nsw.gov.au/__data/assets/pdf_file/0007/385576/Leafy-Asian-veg-final-Low-Res.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2011",
+    retrievedAt: "2026-11-07",
+  },
   hydroponicXpressGuide: {
     id: "hydroponic-xpress-ec-ph-guide",
     publisher: "Hydroponic Xpress",
@@ -119,6 +188,62 @@ export const NUTRIENT_SOURCES = {
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
   {
+    plantIds: ["papalo-porophyllum-ruderale"],
+    source: NUTRIENT_SOURCES.papaloNutrientStudy,
+    text: {
+      es: "Un resumen de congreso sobre pápalo en macetas con sustrato comparó solución Steiner a EC de 1,0, 1,5, 2,0 y 2,5 mS/cm; reportó mayor rendimiento a 1,5 a los 53 días desde la siembra. No es un ensayo en tanque ni establece un intervalo o dosis para tus plantas.",
+      en: "A conference abstract on pápalo in substrate pots compared Steiner solution at ECs of 1.0, 1.5, 2.0 and 2.5 mS/cm and reported highest yield at 1.5 at 53 days after sowing. This was not a reservoir trial and does not establish a range or dose for your plants.",
+    },
+  },
+  {
+    plantIds: ["tatsoi", "scarlet-red-tatsoi", "cilantro"],
+    source: NUTRIENT_SOURCES.nswAsianGreensNft,
+    text: {
+      es: "En ensayos NFT, la agencia de agricultura de Nueva Gales del Sur observó buen crecimiento de tatsoi y cilantro con EC de solución nutritiva entre 1,5 y 2,5 mS/cm. No identifica Scarlet Red ni confirma ese intervalo para plántulas o sistemas distintos de NFT.",
+      en: "In NFT trials, the New South Wales agriculture agency observed good tatsoi and cilantro growth at nutrient-solution ECs of 1.5–2.5 mS/cm. It did not identify Scarlet Red and does not validate that range for seedlings or systems other than NFT.",
+    },
+  },
+  {
+    plantIds: ["resina-calendula"],
+    source: NUTRIENT_SOURCES.calendulaHydroponicStudy,
+    text: {
+      es: "Una tesis estudió Calendula officinalis en cultivo hidropónico DFT con varias EC y propuso 0,5–1,6 mS/cm bajo las condiciones de ese ensayo. No identifica la variedad Resin ni valida ese intervalo para plántulas u otros sistemas.",
+      en: "A thesis studied Calendula officinalis in DFT hydroponics at several ECs and proposed 0.5–1.6 mS/cm under its experimental conditions. It did not identify the Resin cultivar or validate this range for seedlings or other systems.",
+    },
+  },
+  {
+    plantIds: ["lavender-vera"],
+    source: NUTRIENT_SOURCES.lavenderHydroponicStudy,
+    text: {
+      es: "Un ensayo en invernadero con Lavandula angustifolia usó una solución nutritiva con EC objetivo de 2,1 mS/cm para estudiar potasio. No comparó rangos de EC para Vera y no establece una dosis para tu sistema.",
+      en: "A greenhouse study of Lavandula angustifolia used a nutrient solution targeted at EC 2.1 mS/cm while studying potassium. It did not compare EC ranges for Vera and does not establish a dose for your system.",
+    },
+  },
+  {
+    plantIds: ["sunflower-american-giant-hybrid", "sunflower-autumn-beauty", "sunflower-helianthus-annuus"],
+    source: NUTRIENT_SOURCES.sunflowerHydroponicStudy,
+    text: {
+      es: "Un estudio hidropónico de girasol sobre estrés salino usó una solución de control de 1,7 mS/cm. Esa condición experimental no identifica estas variedades ni establece un rango recomendado o dosis.",
+      en: "A hydroponic sunflower salt-stress study used a control solution of 1.7 mS/cm. That experimental condition does not identify these cultivars or establish a recommended range or dose.",
+    },
+  },
+  {
+    plantIds: ["arugula", "astro-arugula"],
+    source: NUTRIENT_SOURCES.arugulaEcStudy,
+    text: {
+      es: "Un ensayo hidropónico con rúcula ‘Standard’ comparó EC de 1,2, 1,5, 1,8 y 2,1 mS/cm y propuso 1,5–1,8 según sus criterios de rendimiento y calidad. No ensayó Astro; no confirma un óptimo para esa variedad, plántulas u otros sistemas.",
+      en: "A hydroponic trial of ‘Standard’ arugula compared ECs of 1.2, 1.5, 1.8 and 2.1 mS/cm and proposed 1.5–1.8 based on its yield and quality criteria. It did not test Astro and does not establish an optimum for that cultivar, seedlings or other systems.",
+    },
+  },
+  {
+    plantIds: ["basil-lemon", "basil-lime", "tulsi-holy-basil-ocimum-tenuiflorum"],
+    source: NUTRIENT_SOURCES.basilSpeciesNftStudy,
+    text: {
+      es: "Un ensayo NFT en invernadero comparó albahaca limón ‘Lime’ y albahaca sagrada ‘Holy’ a EC iniciales de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido, aunque sí cambió concentraciones de nutrientes en los tejidos. Son resultados del ensayo, no un rango óptimo ni una pauta para plántulas o cualquier sistema.",
+      en: "A greenhouse NFT trial compared lemon basil ‘Lime’ and holy basil ‘Holy’ at initial ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth, although tissue nutrient concentrations changed. These are trial results, not an optimum range or instructions for seedlings or every system.",
+    },
+  },
+  {
     plantIds: ["cilantro", "dill-bouquet"],
     source: NUTRIENT_SOURCES.herbNftStudy,
     text: {
@@ -223,6 +348,34 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  ...(["tatsoi", "cilantro"] as const).map((cropIdentity): EvidenceObservation => ({
+    id: `${cropIdentity}-nsw-nft-ec`,
+    metric: "EC",
+    cropIdentity,
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "NFT",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.nswAsianGreensNft,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1.5, max: 2.5, unit: "mS/cm" },
+    notes: "Reported from an NFT study; cultivar and plant stage were not specified for this crop. This is not a validated range for seedlings or for a different system.",
+  })),
+  {
+    id: "lemon-balm-hydroponic-xpress-ec",
+    metric: "EC",
+    cropIdentity: "lemon-balm",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.hydroponicXpressGuide,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
+    notes: "Supplier crop-level guidance for lemon balm (Melissa officinalis), not lemon basil. Cultivar and stage are unspecified; not a validated seedling dose.",
+  },
   {
     id: "rosemary-hydroponic-xpress-ec",
     metric: "EC",

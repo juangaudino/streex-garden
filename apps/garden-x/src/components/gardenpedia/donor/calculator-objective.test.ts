@@ -263,6 +263,7 @@ describe("Calculator objective independent validation", () => {
                   ...calibrated,
                   mode: "topup",
                   liters: 10,
+                  capacityLiters: 10,
                   currentLiters,
                   waterAdded,
                   currentEc,

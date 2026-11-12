@@ -79243,6 +79243,206 @@ export const gardenPlantProfileCatalog = {
       }
     }
   },
+  "basil-dark-opal": {
+    "summary": {
+      "en": "Commercially described as Dark Opal basil; a named basil, not an inferred identity for other purple plants.",
+      "es": "Se comercializa como albahaca Dark Opal; es una variedad identificada, no una identidad inferida para otras plantas moradas."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public"
+        ],
+        "en": {
+          "short": "Dark Opal Basil",
+          "guidance": "Commercially described as Dark Opal basil; a named basil, not an inferred identity for other purple plants.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Albahaca Dark Opal",
+          "guidance": "Se comercializa como albahaca Dark Opal; es una variedad identificada, no una identidad inferida para otras plantas moradas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "basil-spicy-globe": {
+    "summary": {
+      "en": "The supplier identifies Spicy Globe as basil; sources differ on fine taxonomy, so the commercial identification is retained without resolving all taxonomic variants.",
+      "es": "El proveedor identifica Spicy Globe como albahaca; las fuentes difieren en su taxonomía fina, por lo que se conserva la identificación comercial sin resolver variantes taxonómicas."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public"
+        ],
+        "en": {
+          "short": "Spicy Globe Basil",
+          "guidance": "The supplier identifies Spicy Globe as basil; sources differ on fine taxonomy, so the commercial identification is retained without resolving all taxonomic variants.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Albahaca Spicy Globe",
+          "guidance": "El proveedor identifica Spicy Globe como albahaca; las fuentes difieren en su taxonomía fina, por lo que se conserva la identificación comercial sin resolver variantes taxonómicas.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "basil-lemon": {
+    "summary": {
+      "en": "Lemon basil is a citrus-scented basil; it is not lemon balm (Melissa officinalis). Supplier names may use alternative botanical spellings.",
+      "es": "La albahaca limón es una albahaca de aroma cítrico; no es melisa (Melissa officinalis). El proveedor puede usar variantes de escritura botánica."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public",
+          "kew-ocimum-africanum-public"
+        ],
+        "en": {
+          "short": "Lemon Basil",
+          "guidance": "Lemon basil is a citrus-scented basil; it is not lemon balm (Melissa officinalis). Supplier names may use alternative botanical spellings. Kew treats Ocimum × citriodorum as a synonym of Ocimum × africanum.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Albahaca limón",
+          "guidance": "La albahaca limón es una albahaca de aroma cítrico; no es melisa (Melissa officinalis). El proveedor puede usar variantes de escritura botánica. Kew considera Ocimum × citriodorum sinónimo de Ocimum × africanum.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "basil-lime": {
+    "summary": {
+      "en": "Lime basil is a commercially named citrus-scented basil; its hydroponic EC response is not established by its supplier identity.",
+      "es": "La albahaca lima es una albahaca comercial de aroma cítrico; la identidad del proveedor no establece su respuesta hidropónica a la EC."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "seed-needs-basil-assortment-public",
+          "kew-ocimum-africanum-public"
+        ],
+        "en": {
+          "short": "Lime Basil",
+          "guidance": "Lime basil is a commercially named citrus-scented basil; its hydroponic EC response is not established by its supplier identity. Kew treats Ocimum × citriodorum as a synonym of Ocimum × africanum.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Albahaca lima",
+          "guidance": "La albahaca lima es una albahaca comercial de aroma cítrico; la identidad del proveedor no establece su respuesta hidropónica a la EC. Kew considera Ocimum × citriodorum sinónimo de Ocimum × africanum.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "butterhead-lettuce-unspecified": {
+    "summary": {
+      "en": "Butterhead describes a lettuce type; no particular named cultivar is inferred.",
+      "es": "Butterhead describe un tipo de lechuga; no se infiere un cultivar concreto."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "source_backed",
+        "confidence": "medium",
+        "sourceIds": [
+          "umn-butterhead-lettuce-crop-public"
+        ],
+        "en": {
+          "short": "Butterhead Lettuce",
+          "guidance": "Butterhead describes a lettuce type; no particular named cultivar is inferred.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Lechuga tipo butterhead",
+          "guidance": "Butterhead describe un tipo de lechuga; no se infiere un cultivar concreto.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
+  "chamomile-unspecified": {
+    "summary": {
+      "en": "Chamomile may refer to different plants, including German and Roman chamomile. Species and cultivar remain unconfirmed.",
+      "es": "Manzanilla puede referirse a plantas distintas, incluidas la manzanilla alemana y la romana. La especie y el cultivar no están confirmados."
+    },
+    "metrics": {
+      "en": [],
+      "es": []
+    },
+    "sections": {
+      "identity": {
+        "evidenceType": "needs_validation",
+        "confidence": "medium",
+        "sourceIds": [
+          "nccih-chamomile-types-public"
+        ],
+        "en": {
+          "short": "Chamomile",
+          "guidance": "Chamomile may refer to different plants, including German and Roman chamomile. Species and cultivar remain unconfirmed.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        },
+        "es": {
+          "short": "Manzanilla",
+          "guidance": "Manzanilla puede referirse a plantas distintas, incluidas la manzanilla alemana y la romana. La especie y el cultivar no están confirmados.",
+          "items": [],
+          "avoid": "",
+          "context": ""
+        }
+      }
+    }
+  },
   "bibb-lettuce": {
     "summary": {
       "en": "Bibb is a butterhead type of Lactuca sativa. The profile separates head and leaf goals from general lettuce-level hydroponic references.",

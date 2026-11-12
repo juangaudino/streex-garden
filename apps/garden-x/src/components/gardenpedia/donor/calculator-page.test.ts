@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { AEROGARDEN_RECIPE, FLORA_RECIPE } from "@/lib/garden-nutrient-engine-v1/data";
+import { AEROGARDEN_RECIPE, CROP_STUDY_REFERENCES, FLORA_RECIPE } from "@/lib/garden-nutrient-engine-v1/data";
 import {
   buildCalibrationModel,
   calculateEcCorrection,
@@ -30,6 +30,48 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("links every crop study to a selectable public identity", () => {
+    const ids = new Set(CALCULATOR_PLANTS.map((plant) => plant.id));
+    for (const reference of CROP_STUDY_REFERENCES)
+      for (const id of reference.plantIds) expect(ids.has(id), `${reference.source.id}: ${id}`).toBe(true);
+  });
+  it("makes named basil, butterhead, and species-unspecified chamomile identities selectable without inventing crop evidence", () => {
+    for (const id of ["basil-dark-opal", "basil-spicy-globe", "basil-lemon", "basil-lime", "butterhead-lettuce-unspecified", "chamomile-unspecified"]) {
+      expect(CALCULATOR_PLANTS.some((plant) => plant.id === id), id).toBe(true);
+    }
+    expect(resolveNutrientCropIdentity("basil-dark-opal")).toBe("basil");
+    expect(resolveNutrientCropIdentity("butterhead-lettuce-unspecified")).toBe("lettuce");
+    for (const id of ["basil-lemon", "basil-lime", "chamomile-unspecified"]) {
+      expect(resolveNutrientCropIdentity(id)).toBeUndefined();
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    }
+  });
+  it("keeps all non-carnivorous catalog identities operable with a user-selected target and matching calibration", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
+      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(observation.ok).toBe(true);
+    const plants = CALCULATOR_PLANTS.filter((plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id));
+    for (const plant of plants) {
+      for (const mode of ["recipe", "target", "adjust", "topup"] as const) {
+        const result = calculateGardenResult({
+          language: "en", mode, crops: { [plant.id]: 1 }, liters: 4, productId: "gh-flora",
+          stageId: "feeding-2", pods: 6, sourceEc: 0.2, currentEc: 0.7,
+          currentLiters: 2, waterAdded: 1, userTarget: 1.2, round: 1,
+          calibrationObservations: [observation.value!],
+        });
+        expect(result.kind, `${plant.id}: ${mode}`).toBe("ok");
+        if (mode !== "recipe" && result.kind === "ok") {
+          expect(result.target?.value).toBe(1.2);
+          if (!hasApplicableCropNutrientEvidence(plant.id)) {
+            expect(result.evidence, `${plant.id}: ${mode}`).toBe("insufficient");
+            expect(result.warnings?.some((warning) => /could not establish a common applicable crop evidence range/i.test(warning)), `${plant.id}: ${mode}`).toBe(true);
+          }
+        }
+      }
+    }
+  });
   it.each(["alice-sundew-drosera-aliciae", "pinguicula-lilac-lollipop", "pinguicula-weser"])(
     "does not treat %s as zero-EC or produce nutrient doses for a saved carnivorous plant",
     (plantId) => {
@@ -368,8 +410,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 7,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 102,
-      INSUFFICIENT: 392,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 105,
+      INSUFFICIENT: 395,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -851,6 +893,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       pods: 6,
       sourceEc: 0.2,
       currentLiters: 3,
+      capacityLiters: 4,
       waterAdded: 0.5,
       userTarget: 1.2,
       round: 1,
@@ -878,6 +921,13 @@ describe("Gardenpedia Calculator V1 integration", () => {
       currentEc: 0.8,
       waterAdded: 0.25,
     });
+    const withoutCapacity = calculateGardenResult({
+      ...base,
+      mode: "topup",
+      currentEc: 0.8,
+      capacityLiters: undefined,
+    });
+    expect(withoutCapacity.kind).toBe("needs");
     const topupLarge = calculateGardenResult({
       ...base,
       mode: "topup",

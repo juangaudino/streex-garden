@@ -65,6 +65,16 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("applies tatsoi and cilantro evidence only to NFT and never to a seedling or unknown system", () => {
+    for (const cropIdentity of ["tatsoi", "cilantro"]) {
+      const context: CropContext = { cropIdentity, phenologicalStage: "UNSPECIFIED", hydroponicSystem: "NFT", measurementScope: "NUTRIENT_SOLUTION" };
+      const observation = selectCropRange(context).ec;
+      expect(observation.ec).toEqual({ min: 1.5, max: 2.5, unit: "mS/cm" });
+      expect(observation.observations[0]?.source.id).toBe("nsw-asian-vegetables-nft-2011");
+      expect(selectCropRange({ ...context, hydroponicSystem: "UNKNOWN" }).ec.ec).toBeUndefined();
+      expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+    }
+  });
   it("uses rosemary supplier guidance as a moderate reported range, not a seedling rule", () => {
     const context: CropContext = {
       cropIdentity: "rosemary",

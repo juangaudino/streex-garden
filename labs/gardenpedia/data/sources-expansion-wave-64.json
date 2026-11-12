@@ -1,0 +1,63 @@
+[
+  {
+    "id": "seed-needs-basil-assortment-public",
+    "publisher": "Seed Needs",
+    "title": "Basil Herb Seed Variety Pack",
+    "url": "https://www.seedneeds.com/products/basil-seed-assortment",
+    "type": "product_reference",
+    "tier": 3,
+    "scope": "Commercial names and supplier-reported botanical names; product descriptions do not establish hydroponic EC or cultivar-specific response",
+    "accessed": "2026-11-07",
+    "license": null,
+    "provenance": "Public plant identity research",
+    "claimKinds": [
+      "identity"
+    ]
+  },
+  {
+    "id": "umn-butterhead-lettuce-crop-public",
+    "publisher": "University of Minnesota Extension",
+    "title": "Growing lettuce, endive and radicchio in home gardens",
+    "url": "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-lettuce-endive-and-radicchio",
+    "type": "university_extension",
+    "tier": 1,
+    "scope": "Butterhead lettuce type; no particular cultivar is inferred",
+    "accessed": "2026-11-07",
+    "license": null,
+    "provenance": "Public plant identity research",
+    "claimKinds": [
+      "identity"
+    ]
+  },
+  {
+    "id": "nccih-chamomile-types-public",
+    "publisher": "National Center for Complementary and Integrative Health",
+    "title": "Chamomile: Usefulness and Safety",
+    "url": "https://www.nccih.nih.gov/health/chamomile/",
+    "type": "horticulture_reference",
+    "tier": 1,
+    "scope": "Chamomile is a common name for different plants; no species is inferred from an unspecified label",
+    "accessed": "2026-11-07",
+    "license": null,
+    "provenance": "Public plant identity research",
+    "claimKinds": [
+      "identity"
+    ]
+  },
+  {
+    "id": "kew-ocimum-africanum-public",
+    "publisher": "Royal Botanic Gardens, Kew",
+    "title": "Ocimum × citriodorum Vis.",
+    "url": "https://powo.science.kew.org/taxon/urn:lsid:ipni.org:names:452906-1",
+    "type": "botanical_taxonomy",
+    "tier": 1,
+    "scope": "Kew synonym and accepted hybrid name; supplier cultivar identification is separate",
+    "accessed": "2026-11-07",
+    "license": null,
+    "provenance": "Public plant identity research",
+    "claimKinds": [
+      "identity",
+      "taxonomy"
+    ]
+  }
+]

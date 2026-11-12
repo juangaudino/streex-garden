@@ -403,6 +403,10 @@ const RECIPE_IDS = Object.fromEntries(
 ) as Record<string, string | undefined>;
 
 const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
+  "basil-dark-opal": "basil",
+  "basil-spicy-globe": "basil",
+  "butterhead-lettuce-unspecified": "lettuce",
+  "scarlet-red-tatsoi": "tatsoi",
   // Perpetual Spinach is leaf beet / chard, not Spinacia oleracea.
   "perpetual-spinach": "chard",
   "common-mint": "mint",
@@ -536,9 +540,6 @@ export function resolveNutrientCropIdentity(plantId: string): string | undefined
  * the legacy calculator's broad category defaults.
  */
 export function hasApplicableCropNutrientEvidence(plantId: string): boolean {
-  if (CROP_EVIDENCE.some((item) => item.cropIdentity === plantId)) return true;
-  if (!resolveNutrientCropIdentity(plantId)) return false;
-
   const result = calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE);
   return result.status !== "INSUFFICIENT";
 }
@@ -572,7 +573,7 @@ export function buildCropEvidenceCoverage(): CropEvidenceCoverageReport {
   const rows = CALCULATOR_PLANTS.map(({ id }) => {
     const evidenceIdentity = resolveNutrientCropIdentity(id);
     const hasDirectEvidence = CROP_EVIDENCE.some((item) => item.cropIdentity === id);
-    if (hasDirectEvidence) {
+    if (hasDirectEvidence && hasApplicableCropNutrientEvidence(id)) {
       return { plantId: id, classification: "SUPPORTED_DIRECT" as const, evidenceIdentity: id };
     }
     if (!evidenceIdentity) return { plantId: id, classification: "INSUFFICIENT" as const };
@@ -1288,11 +1289,11 @@ function calculateResult(input: CalcInput): CalcResult {
   if (input.currentLiters === null) return engineNeeds("cuántos litros quedan", targetPresentation);
   if (input.waterAdded === null)
     return engineNeeds("cuánta agua planeas añadir", targetPresentation);
-  if (input.capacityLiters === null)
+  if (input.capacityLiters == null)
     return engineNeeds("Reservoir capacity is required before adding water.", targetPresentation);
   const topup = calculateTopUpMaintenance({
     currentVolumeL: input.currentLiters,
-    nominalVolumeL: input.capacityLiters ?? input.liters,
+    nominalVolumeL: input.capacityLiters,
     replacementWaterL: input.waterAdded,
     currentEc: makeMeasurement(input.currentEc),
     replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),

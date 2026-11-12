@@ -76,6 +76,7 @@ const plantFiles = [
   "plants-expansion-wave-61.json",
   "plants-expansion-wave-62.json",
   "plants-expansion-wave-63.json",
+  "plants-expansion-wave-64.json",
   "plants-requests.json",
 ];
 const sourceFiles = [
@@ -147,6 +148,7 @@ const sourceFiles = [
   "sources-expansion-wave-61.json",
   "sources-expansion-wave-62.json",
   "sources-expansion-wave-63.json",
+  "sources-expansion-wave-64.json",
   "sources-requests.json",
 ];
 const read = (file) =>
@@ -225,6 +227,7 @@ const wave60Plants = read("plants-expansion-wave-60.json");
 const wave61Plants = read("plants-expansion-wave-61.json");
 const wave62Plants = read("plants-expansion-wave-62.json");
 const wave63Plants = read("plants-expansion-wave-63.json");
+const wave64Plants = read("plants-expansion-wave-64.json");
 const wave1Translations = read("translations-expansion-wave-1-es.json");
 const wave2Translations = read("translations-expansion-wave-2-es.json");
 const wave3Translations = read("translations-expansion-wave-3-es.json");
@@ -288,6 +291,7 @@ const wave60Translations = read("translations-expansion-wave-60-es.json");
 const wave61Translations = read("translations-expansion-wave-61-es.json");
 const wave62Translations = read("translations-expansion-wave-62-es.json");
 const wave63Translations = read("translations-expansion-wave-63-es.json");
+const wave64Translations = read("translations-expansion-wave-64-es.json");
 const wave1SeedProfiles = read("seed-profiles-expansion-wave-1.json");
 const wave2SeedProfiles = read("seed-profiles-expansion-wave-2.json");
 const wave3SeedProfiles = read("seed-profiles-expansion-wave-3.json");
@@ -424,6 +428,7 @@ const wavePlantIds = new Set([
   ...wave61PlantIds,
   ...new Set(wave62Plants.map((plant) => plant.id)),
   ...new Set(wave63Plants.map((plant) => plant.id)),
+  ...new Set(wave64Plants.map((plant) => plant.id)),
 ]);
 for (const aliasId of aliasIds) wavePlantIds.delete(aliasId);
 
@@ -766,6 +771,7 @@ for (const [waveName, waveData, translations] of [
   ["Wave 61", wave61Plants, wave61Translations],
   ["Wave 62", wave62Plants, wave62Translations],
   ["Wave 63", wave63Plants, wave63Translations],
+  ["Wave 64", wave64Plants, wave64Translations],
 ])
   for (const plant of waveData) {
     const translation = translations[plant.id];
@@ -964,7 +970,7 @@ for (const id of [
   if (wave3SeedProfiles.profiles?.[id])
     throw new Error(`Wave 3 must not create a Seed Profile for ${id}`);
 const publicText = JSON.stringify({
-  plants: [...wave1Plants, ...wave2Plants, ...wave3Plants, ...wave4Plants, ...wave5Plants, ...wave6Plants, ...wave7Plants, ...wave8Plants, ...wave9Plants, ...wave10Plants, ...wave11Plants, ...wave12Plants, ...wave13Plants, ...wave14Plants, ...wave15Plants, ...wave16Plants, ...wave17Plants, ...wave18Plants, ...wave19Plants, ...wave20Plants, ...wave21Plants, ...wave22Plants, ...wave23Plants, ...wave24Plants, ...wave25Plants, ...wave26Plants, ...wave27Plants, ...wave28Plants, ...wave29Plants, ...wave30Plants, ...wave31Plants, ...wave32Plants, ...wave33Plants, ...wave34Plants, ...wave35Plants, ...wave36Plants, ...wave37Plants, ...wave38Plants, ...wave39Plants, ...wave40Plants, ...wave41Plants, ...wave42Plants, ...wave43Plants, ...wave44Plants, ...wave45Plants, ...wave46Plants, ...wave47Plants, ...wave48Plants, ...wave49Plants, ...wave50Plants, ...wave51Plants, ...wave52Plants, ...wave53Plants, ...wave54Plants, ...wave55Plants, ...wave56Plants, ...wave57Plants, ...wave58Plants, ...wave59Plants, ...wave60Plants, ...wave61Plants, ...wave62Plants, ...wave63Plants],
+  plants: [...wave1Plants, ...wave2Plants, ...wave3Plants, ...wave4Plants, ...wave5Plants, ...wave6Plants, ...wave7Plants, ...wave8Plants, ...wave9Plants, ...wave10Plants, ...wave11Plants, ...wave12Plants, ...wave13Plants, ...wave14Plants, ...wave15Plants, ...wave16Plants, ...wave17Plants, ...wave18Plants, ...wave19Plants, ...wave20Plants, ...wave21Plants, ...wave22Plants, ...wave23Plants, ...wave24Plants, ...wave25Plants, ...wave26Plants, ...wave27Plants, ...wave28Plants, ...wave29Plants, ...wave30Plants, ...wave31Plants, ...wave32Plants, ...wave33Plants, ...wave34Plants, ...wave35Plants, ...wave36Plants, ...wave37Plants, ...wave38Plants, ...wave39Plants, ...wave40Plants, ...wave41Plants, ...wave42Plants, ...wave43Plants, ...wave44Plants, ...wave45Plants, ...wave46Plants, ...wave47Plants, ...wave48Plants, ...wave49Plants, ...wave50Plants, ...wave51Plants, ...wave52Plants, ...wave53Plants, ...wave54Plants, ...wave55Plants, ...wave56Plants, ...wave57Plants, ...wave58Plants, ...wave59Plants, ...wave60Plants, ...wave61Plants, ...wave62Plants, ...wave63Plants, ...wave64Plants],
   sources: publicSources,
   wave1Translations,
   wave2Translations,
@@ -1029,6 +1035,7 @@ const publicText = JSON.stringify({
   wave61Translations,
   wave62Translations,
   wave63Translations,
+  wave64Translations,
   seedProfiles: [
     wave1SeedProfiles,
     wave2SeedProfiles,

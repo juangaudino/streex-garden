@@ -1,6 +1,27 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  lemonBasilLightStudy: {
+    id: "lemon-basil-light-ec-2023",
+    publisher: "Horticulturae · Universiti Putra Malaysia",
+    title: "Effects of LED irradiance and nutrient solution EC on lemon basil",
+    url: "https://www.mdpi.com/2311-7524/9/4/416",
+    sourceClass: "OTHER", tier: "B", publication: "2023", retrievedAt: "2026-11-12",
+  },
+  bullsBloodNftStudy: {
+    id: "egilla-bulls-blood-beet-nft-2009",
+    publisher: "University of California eScholarship · Jonathan N. Egilla",
+    title: "Yield and mineral element concentration of beetroot in response to nutrient source in hydroponic solution",
+    url: "https://escholarship.org/uc/item/7r10k8zb",
+    sourceClass: "OTHER", tier: "B", publication: "2009", retrievedAt: "2026-11-12",
+  },
+  alyssumSubirrigationReview: {
+    id: "horttechnology-subirrigation-review-2015",
+    publisher: "HortTechnology · American Society for Horticultural Science",
+    title: "Subirrigation: Historical Overview, Challenges, and Future Prospects",
+    url: "https://journals.ashs.org/horttech/downloadpdf/view/journals/horttech/25/3/article-p262.pdf",
+    sourceClass: "OTHER", tier: "B", publication: "2015", retrievedAt: "2026-11-12",
+  },
   coleusFertilizerStudy: {
     id: "ishs-coleus-nitrogen-cultivars",
     publisher: "International Society for Horticultural Science",
@@ -330,6 +351,30 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["basil-lemon"],
+    source: NUTRIENT_SOURCES.lemonBasilLightStudy,
+    text: {
+      es: "Un ensayo de albahaca limón comparó EC de 1,0, 1,8, 2,6 y 3,4 mS/cm bajo dos intensidades de luz roja y azul. A mayor intensidad, algunos resultados mejoraron con 2,6; esto depende de la luz y el sistema ensayados, y no valida un rango ni dosis universales.",
+      en: "A lemon basil trial compared ECs of 1.0, 1.8, 2.6 and 3.4 mS/cm under two red-and-blue light intensities. At higher intensity some outcomes improved at 2.6; this depends on the tested light and system and does not validate a universal range or dose.",
+    },
+  },
+  {
+    plantIds: ["bulls-blood-beet"],
+    source: NUTRIENT_SOURCES.bullsBloodNftStudy,
+    text: {
+      es: "Un ensayo NFT cultivó remolacha Bull’s Blood y comparó dos fuentes nutritivas. Los resultados mostraron diferencias en la raíz y resaltan la importancia de la composición; el resumen no establece un rango óptimo de EC ni una receta para tu sistema.",
+      en: "An NFT trial grew Bull’s Blood beetroot and compared two nutrient sources. Root results differed and highlighted nutrient composition; the abstract does not establish an optimum EC range or recipe for your system.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-sweet-alyssum"],
+    source: NUTRIENT_SOURCES.alyssumSubirrigationReview,
+    text: {
+      es: "Una revisión cita un ensayo de aliso dulce en subirrigación con solución Hoagland. No identifica Tiny Tim ni valida una EC para tanques domésticos; la EC del sustrato y la de la solución se deben distinguir.",
+      en: "A review cites a sweet alyssum subirrigation trial using Hoagland solution. It does not identify Tiny Tim or validate an EC for home reservoirs; substrate EC and solution EC must be distinguished.",
+    },
+  },
   {
     plantIds: ["rainbow-mix-coleus"],
     source: NUTRIENT_SOURCES.coleusFertilizerStudy,

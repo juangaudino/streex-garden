@@ -40,6 +40,15 @@ describe("Gardenpedia Calculator V1 integration", () => {
       for (const id of reference.plantIds)
         expect(ids.has(id), `${reference.source.id}: ${id}`).toBe(true);
   });
+  it("shows tower-specific guidance without applying it as a general crop target", () => {
+    for (const id of ["dill-bouquet", "astro-arugula", "purple-kohlrabi"]) {
+      expect(CROP_STUDY_REFERENCES.some((study) =>
+        study.source.id === "idroponica-facile-home-tower-guide" &&
+        study.plantIds.some((plantId: string) => plantId === id),
+      )).toBe(true);
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    }
+  });
   it("does not reuse common chive evidence for the distinct garlic chive species", () => {
     expect(resolveNutrientCropIdentity("garlic-chives")).toBeUndefined();
     expect(hasApplicableCropNutrientEvidence("garlic-chives")).toBe(false);

@@ -1,6 +1,15 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  idroponicaTowerGuide: {
+    id: "idroponica-facile-home-tower-guide",
+    publisher: "Idroponica Facile",
+    title: "Practical guide to growing in a hydroponic tower",
+    url: "https://www.idroponicafacile.com/pdf/Easy-Home-Growing-Hydroponics-Guide.pdf",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-13",
+  },
   welshOnionKoreaStudy: {
     id: "gangwon-welsh-onion-recirculating-hydroponics-2005",
     publisher: "Gangwon Agricultural Research and Extension Services",
@@ -482,6 +491,14 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["dill-bouquet", "astro-arugula", "purple-kohlrabi"],
+    source: NUTRIENT_SOURCES.idroponicaTowerGuide,
+    text: {
+      es: "Una guía comercial para su torre hidropónica indica referencias generales de EC en solución para eneldo (1,0–1,6), rúcula (1,0–2,0) y colirrábano (1,5–2,5 mS/cm). No identifica Bouquet, Astro ni el colirrábano morado, y no valida estas referencias para otros sistemas o plántulas. Son contexto de esa torre, no objetivos automáticos.",
+      en: "A commercial guide for its hydroponic tower reports general solution EC references for dill (1.0–1.6), rocket (1.0–2.0), and kohlrabi (1.5–2.5 mS/cm). It does not identify Bouquet, Astro, or purple kohlrabi, and does not validate these references for other systems or seedlings. These are tower-specific context, not automatic targets.",
+    },
+  },
   {
     plantIds: ["evergreen-bunching-onion-nabuka", "bunching-onion-allium-fistulosum"],
     source: NUTRIENT_SOURCES.welshOnionKoreaStudy,

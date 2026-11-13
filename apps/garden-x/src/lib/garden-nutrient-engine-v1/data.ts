@@ -1,6 +1,69 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  coleusFertilizerStudy: {
+    id: "ishs-coleus-nitrogen-cultivars",
+    publisher: "International Society for Horticultural Science",
+    title: "Coleus foliar nutrient sufficiency ranges and growth response to nitrogen concentrations",
+    url: "https://ishs.org/ishs-article/1266_10/",
+    sourceClass: "OTHER", tier: "B", retrievedAt: "2026-11-12",
+  },
+  hibiscusMoscheutosGrower: {
+    id: "panam-hibiscus-luna-grower-2023",
+    publisher: "PanAmerican Seed",
+    title: "Hibiscus Luna F1 Series grower facts",
+    url: "https://www.panamseed.com/utility/CultureSheetPDF.aspx?pagename=culture.aspx&txtPHID=033102347&type=Per",
+    sourceClass: "MANUFACTURER", tier: "A", publication: "2023", retrievedAt: "2026-11-12",
+  },
+  delphiniumGrower: {
+    id: "panam-delphinium-dasante-grower",
+    publisher: "PanAmerican Seed",
+    title: "Dasante Blue Delphinium grower facts",
+    url: "https://www.panamseed.com/media/Culture/PAS/DelphiniumDasanteBlue.pdf",
+    sourceClass: "MANUFACTURER", tier: "A", retrievedAt: "2026-11-12",
+  },
+  carnationHydroponicStudy: {
+    id: "carnation-cultivation-gamma-2025",
+    publisher: "Discover Agriculture",
+    title: "Effects of gamma irradiation and cultivation system on growth of carnation",
+    url: "https://link.springer.com/article/10.1007/s44372-025-00375-1",
+    sourceClass: "OTHER", tier: "B", publication: "2025", retrievedAt: "2026-11-12",
+  },
+  chervilVerticalFlorida: {
+    id: "florida-vertical-hydroponic-herbs-2001",
+    publisher: "University of Florida IFAS · Florida State Horticultural Society",
+    title: "Greenhouse production of fresh-cut herbs in vertical hydroponic systems",
+    url: "https://svaec.ifas.ufl.edu/media/svaecifasufledu/docs/pdf/svreports/crops/leafygreens/Fresh-cut-herbs-in-Vertical-hydroponic-Systems.pdf",
+    sourceClass: "OTHER", tier: "B", publication: "2001", retrievedAt: "2026-11-12",
+  },
+  epazoteSandStudy: {
+    id: "epazote-nutrient-sand-2015",
+    publisher: "Journal of Medicinal Plants Research",
+    title: "Extraction of essential oil from inflorescences of Dysphania ambrosioides",
+    url: "https://academicjournals.org/journal/JMPR/article-full-text/26FAE7955993",
+    sourceClass: "OTHER", tier: "B", publication: "2015", retrievedAt: "2026-11-12",
+  },
+  marigoldMicronutrientStudy: {
+    id: "marigold-hydroponic-iron-manganese-2024",
+    publisher: "Scientia Horticulturae",
+    title: "Micronutrient Fe and Mn uptake from peat by marigold and petunia",
+    url: "https://www.sciencedirect.com/science/article/pii/S0304423823008749",
+    sourceClass: "OTHER", tier: "B", publication: "2024", retrievedAt: "2026-11-12",
+  },
+  komatsunaNftThesis: {
+    id: "arkansas-komatsuna-nft-2014",
+    publisher: "University of Arkansas · Leah P. Malvar",
+    title: "Growth and biomass of komatsuna as affected by nutrient solution electrical conductivity",
+    url: "https://scholarworks.uark.edu/hortuht/2/",
+    sourceClass: "OTHER", tier: "B", publication: "2014", retrievedAt: "2026-11-12",
+  },
+  petuniaSubirrigationStudy: {
+    id: "purdue-petunia-fertilizer-ho313",
+    publisher: "Purdue University Extension",
+    title: "Optimal fertilizer concentration for early vs. late flowering petunia varieties",
+    url: "https://www.extension.purdue.edu/extmedia/HO/HO-313-W.pdf",
+    sourceClass: "OTHER", tier: "B", retrievedAt: "2026-11-12",
+  },
   hyssopHydroponicStudy: {
     id: "hyssop-hydroponic-selenium-2022",
     publisher: "Horticulturae",
@@ -268,6 +331,78 @@ export const NUTRIENT_SOURCES = {
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
   {
+    plantIds: ["rainbow-mix-coleus"],
+    source: NUTRIENT_SOURCES.coleusFertilizerStudy,
+    text: {
+      es: "Un estudio comparó concentraciones de nitrógeno en tres cultivares de coleus. No identificó Rainbow Mix ni proporciona una EC de depósito aplicable a esa mezcla.",
+      en: "A study compared nitrogen concentrations for three coleus cultivars. It did not identify Rainbow Mix or provide an applicable reservoir EC for that mixture.",
+    },
+  },
+  {
+    plantIds: ["blush-hibiscus"],
+    source: NUTRIENT_SOURCES.hibiscusMoscheutosGrower,
+    text: {
+      es: "La ficha del productor para Hibiscus moscheutos Luna describe cultivo en sustrato y nutrición por etapas. No identifica Blush ni valida sus medidas de sustrato como EC del tanque.",
+      en: "The grower sheet for Hibiscus moscheutos Luna describes substrate culture and stage-based feeding. It does not identify Blush or validate substrate measurements as reservoir EC.",
+    },
+  },
+  {
+    plantIds: ["delphinium-magic-fountains-dwarf"],
+    source: NUTRIENT_SOURCES.delphiniumGrower,
+    text: {
+      es: "La ficha de Delphinium elatum Dasante Blue describe fertirrigación en sustrato y diferencia la EC del sustrato de la solución. No identifica Magic Fountains ni establece una EC óptima para un tanque.",
+      en: "The grower sheet for Delphinium elatum Dasante Blue describes substrate fertigation and distinguishes substrate from solution EC. It does not identify Magic Fountains or establish an optimum reservoir EC.",
+    },
+  },
+  {
+    plantIds: ["fragrant-dwarf-dianthus-mix"],
+    source: NUTRIENT_SOURCES.carnationHydroponicStudy,
+    text: {
+      es: "Un estudio comparó clavel Dianthus caryophyllus en suelo y cultivo sin suelo con semillas irradiadas. Sus mediciones de EC del suelo no son EC de tanque; no establece un rango para esta mezcla de clavelina.",
+      en: "A study compared Dianthus caryophyllus in soil and soilless cultivation using irradiated seeds. Its soil EC measurements are not reservoir EC; it does not establish a range for this dianthus mix.",
+    },
+  },
+  {
+    plantIds: ["curled-chervil"],
+    source: NUTRIENT_SOURCES.chervilVerticalFlorida,
+    text: {
+      es: "Un ensayo de la Universidad de Florida incluyó perifollo en torres verticales con perlita y solución nutritiva. No establece un rango de EC ni valida esta variedad o un tanque doméstico.",
+      en: "A University of Florida trial included chervil in vertical towers with perlite and nutrient solution. It does not establish an EC range or validate this variety or a home reservoir.",
+    },
+  },
+  {
+    plantIds: ["epazote"],
+    source: NUTRIENT_SOURCES.epazoteSandStudy,
+    text: {
+      es: "Un estudio cultivó epazote en arena gruesa irrigada con solución nutritiva antes de recolectar inflorescencias. No comparó niveles de EC ni establece una dosis para depósitos domésticos.",
+      en: "A study grew epazote in coarse sand irrigated with nutrient solution before harvesting inflorescences. It did not compare EC levels or establish a dose for home reservoirs.",
+    },
+  },
+  {
+    plantIds: ["marigold-jolly-jester"],
+    source: NUTRIENT_SOURCES.marigoldMicronutrientStudy,
+    text: {
+      es: "Un estudio cultivó Tagetes erecta Atlantis Primrose en tanques hidropónicos con distintas condiciones de hierro y manganeso. No probó Jolly Jester ni establece una EC óptima o dosis para esa variedad.",
+      en: "A study grew Tagetes erecta Atlantis Primrose in hydroponic tubs under different iron and manganese conditions. It did not test Jolly Jester or establish an optimum EC or dose for that variety.",
+    },
+  },
+  {
+    plantIds: ["lady-murasaki-komatsuna"],
+    source: NUTRIENT_SOURCES.komatsunaNftThesis,
+    text: {
+      es: "Una tesis probó komatsuna en NFT con EC de 1,0 a 1,8 mS/cm y observó hojas deformadas con valores superiores a 1,2. No identificó Lady Murasaki ni establece una dosis para otra variedad o sistema.",
+      en: "A thesis tested komatsuna in NFT at EC 1.0–1.8 mS/cm and observed leaf cupping above 1.2. It did not identify Lady Murasaki or establish a dose for another variety or system.",
+    },
+  },
+  {
+    plantIds: ["cascading-petunia", "petunia-dwarf-bedding-mixed"],
+    source: NUTRIENT_SOURCES.petuniaSubirrigationStudy,
+    text: {
+      es: "Purdue comparó tres variedades de petunia en macetas con sustrato y subirrigación semanal, usando cinco concentraciones de fertilizante. No estudió estas variedades ni estableció una dosis para un tanque doméstico.",
+      en: "Purdue compared three petunia varieties in substrate-filled pots with weekly subirrigation using five fertilizer concentrations. It did not study these varieties or establish a dose for a home reservoir.",
+    },
+  },
+  {
     plantIds: ["hyssop"],
     source: NUTRIENT_SOURCES.hyssopHydroponicStudy,
     text: {
@@ -396,7 +531,7 @@ export const CROP_STUDY_REFERENCES = [
     },
   },
   {
-    plantIds: ["cilantro", "evergreen-bunching-onion-nabuka"],
+    plantIds: ["cilantro", "evergreen-bunching-onion-nabuka", "bunching-onion-allium-fistulosum"],
     source: NUTRIENT_SOURCES.cilantroOnionCoirStudy,
     text: {
       es: "En un ensayo en macetas con fibra de coco, el cilantro Verdão y la cebolla Nebuka tuvieron buenos resultados con solución nutritiva entre 1,6 y 2,2 mS/cm. Es una observación para ese método, no una dosis automática ni una validación para tanques de agua.",

@@ -361,10 +361,27 @@ export function retrieveGardenpediaEvidence(
 
   let index = searchCache.get(language);
   if (!index) {
+    const identities = new Map(
+      (canonicalEntries as readonly GardenLibraryEntry[]).map((entry) => [
+        entry.libraryPlantId,
+        entry,
+      ]),
+    );
     const documents = corpus.map((record) => ({
       record,
       searchable: new Set(tokens(record.searchText)),
-      identity: new Set(tokens(`${record.plantName} ${record.scientificName}`)),
+      identity: new Set(
+        tokens(
+          [
+            identities.get(record.plantId)?.commonName,
+            identities.get(record.plantId)?.spanishName,
+            record.scientificName,
+            ...(identities.get(record.plantId)?.aliases ?? []),
+          ]
+            .filter(Boolean)
+            .join(" "),
+        ),
+      ),
       section: new Set(tokens(record.section)),
     }));
     const documentFrequency = new Map<string, number>();
@@ -439,7 +456,7 @@ export function retrieveGardenpediaEvidence(
     occupied.push({ start, end });
     if (!namedPlants.includes(plantId)) namedPlants.push(plantId);
   }
-  if (namedPlants.length > 1) {
+  if (namedPlants.length > 0) {
     const groups = namedPlants.map((plantId) =>
       ranked.filter(({ record }) => record.plantId === plantId).map(({ record }) => record),
     );

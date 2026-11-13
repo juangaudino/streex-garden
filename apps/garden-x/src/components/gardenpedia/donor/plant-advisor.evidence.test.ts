@@ -25,6 +25,21 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     expect(spanish.some((item) => /pod/i.test(`${item.section} ${item.text}`))).toBe(true);
   });
 
+  it("finds English plant names while answering in Spanish without assigning an ambiguous cultivar", () => {
+    for (const [query, plantId] of [
+      ["EC garlic chives", "garlic-chives"],
+      ["EC Lemon Basil", "basil-lemon"],
+      ["EC Hyssop", "hyssop"],
+      ["EC Cherry Tomato", "cherry-tomato"],
+    ] as const) {
+      const records = retrieveGardenpediaEvidence(query, "es", 12);
+      expect(
+        records.some((record) => record.plantId === plantId),
+        query,
+      ).toBe(true);
+    }
+  });
+
   it("keeps repeated searches stable and separates the English and Spanish indexes", () => {
     const first = retrieveGardenpediaEvidence("Genovese basil germination", "en");
     retrieveGardenpediaEvidence("albahaca genovesa germinación", "es");

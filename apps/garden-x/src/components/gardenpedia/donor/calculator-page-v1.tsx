@@ -1183,8 +1183,8 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                             <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">
                                 {lang === "es"
-                                  ? "Ver estudios hidropónicos"
-                                  : "View hydroponic studies"}
+                                  ? "Ver fuentes de cultivo"
+                                  : "View cultivation sources"}
                               </summary>
                               {studies.map((reference) => (
                                 <div key={reference.source.id}>

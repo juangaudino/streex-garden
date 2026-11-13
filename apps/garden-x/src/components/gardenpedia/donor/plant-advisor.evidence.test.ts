@@ -181,6 +181,8 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     for (const [query, source] of [
       ["garlic chives hydroponic EC", "chinese-chive-hydroponic-salinity-2022"],
       ["zinnia lilliput hydroponic EC", "can-tho-zinnia-hoagland-2022"],
+      ["epazote EC", "unam-epazote-hydroponic-2013"],
+      ["blue borage EC", "pisa-borage-leaves-hydroponic-2022"],
     ] as const) {
       const result = retrieveGardenpediaEvidence(query, "en", 20);
       expect(

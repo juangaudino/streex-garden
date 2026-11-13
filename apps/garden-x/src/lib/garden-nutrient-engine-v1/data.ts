@@ -1,6 +1,38 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  guanajuatoHerbsStudy: {
+    id: "guanajuato-aromatic-herbs-cultivation-2017",
+    publisher: "Carrillo-Landell y colaboradores · Revista de la Invención Técnica",
+    title:
+      "Determinación de las condiciones de germinación y crecimiento hidropónico de especies aromáticas",
+    url: "https://www.ecorfan.org/taiwan/research_journals/Invencion_Tecnica/vol1num2/Revista_de_Invencion_Tecnica_V1_N2_3.pdf",
+    sourceClass: "OTHER",
+    tier: "C",
+    publication: "2017",
+    retrievedAt: "2026-11-13",
+  },
+  borageLeavesHydroponicStudy: {
+    id: "pisa-borage-leaves-hydroponic-2022",
+    publisher: "University of Pisa · Horticulturae",
+    title: "Seasonal fluctuations of crop yield and quality of borage leaves",
+    url: "https://www.mdpi.com/2311-7524/8/3/253",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2022",
+    retrievedAt: "2026-11-13",
+  },
+  epazoteUnamStudy: {
+    id: "unam-epazote-hydroponic-2013",
+    publisher: "Universidad Nacional Autónoma de México · E. S. Huidobro Medina",
+    title:
+      "Establecimiento del cultivo hidropónico y evaluación de la actividad biológica de epazote",
+    url: "https://tesiunamdocumentos.dgb.unam.mx/ptd2013/octubre/0704155/0704155.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2013",
+    retrievedAt: "2026-11-13",
+  },
   mexicanTarragonIdentity: {
     id: "unam-pericon-tagetes-lucida",
     publisher: "Universidad Nacional Autónoma de México",
@@ -430,6 +462,38 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["epazote", "dill-bouquet"],
+    source: NUTRIENT_SOURCES.guanajuatoHerbsStudy,
+    text: {
+      es: "Un ensayo de Guanajuato incluyó epazote y eneldo en recipientes con distintos sustratos y soluciones nutritivas, con riego por goteo o saturación. No identifica la variedad Bouquet ni establece una EC óptima o una dosis para depósitos de agua.",
+      en: "A Guanajuato trial included epazote and dill in containers with different substrates and nutrient solutions, using drip or saturation irrigation. It does not identify Bouquet or establish an optimum EC or dose for water reservoirs.",
+    },
+  },
+  {
+    plantIds: ["thai-basil"],
+    source: NUTRIENT_SOURCES.nswAsianGreensNft,
+    text: {
+      es: "Un ensayo NFT incluyó albahaca tailandesa Siam Queen en una evaluación de hortalizas. La fuente no identifica la variedad de esta planta; sus resultados no prueban una EC óptima para ella o para otro sistema.",
+      en: "An NFT trial included Siam Queen Thai basil in a leafy-crop evaluation. The source does not identify this plant's cultivar; its results do not establish an optimum EC for it or another system.",
+    },
+  },
+  {
+    plantIds: ["borage-blue"],
+    source: NUTRIENT_SOURCES.borageLeavesHydroponicStudy,
+    text: {
+      es: "Un estudio de hojas de borraja usó solución nutritiva continuamente aireada con EC de 2,75 mS/cm en sus condiciones de invernadero. Como no comparó varios niveles de EC, este valor no demuestra un óptimo ni una dosis para tu sistema.",
+      en: "A study of borage leaves used continuously aerated nutrient solution at EC 2.75 mS/cm under its greenhouse conditions. Because it did not compare EC levels, this value does not establish an optimum or a dose for your system.",
+    },
+  },
+  {
+    plantIds: ["epazote"],
+    source: NUTRIENT_SOURCES.epazoteUnamStudy,
+    text: {
+      es: "Una tesis de la UNAM cultivó epazote en perlita y grava con solución no recirculante y subirrigación. La unidad publicada para la conductividad es ambigua; no se convierte en una EC ni en una dosis para un tanque.",
+      en: "A UNAM thesis grew epazote in perlite and gravel using nonrecirculating solution and subirrigation. Its published conductivity unit is ambiguous, so it is not converted into an EC or dose for a reservoir.",
+    },
+  },
   {
     plantIds: ["mexican-tarragon"],
     source: NUTRIENT_SOURCES.mexicanTarragonIdentity,

@@ -59,5 +59,35 @@
       "identity",
       "taxonomy"
     ]
+  },
+  {
+    "id": "rhs-dark-opal-basil-public",
+    "publisher": "Royal Horticultural Society",
+    "title": "Ocimum basilicum var. purpurascens Dark Opal",
+    "url": "https://www.rhs.org.uk/plants/43433/ocimum-basilicum-var-purpurascens-dark-opal/details",
+    "type": "horticulture_reference",
+    "tier": 2,
+    "scope": "Dark Opal cultivar identification and purple foliage, not hydroponic EC",
+    "accessed": "2026-11-13",
+    "license": null,
+    "provenance": "Public plant identity research",
+    "claimKinds": [
+      "identity"
+    ]
+  },
+  {
+    "id": "unam-dianthus-clavelina-public",
+    "publisher": "Universidad Nacional Autónoma de México",
+    "title": "Dianthus caryophyllus: nombres comunes",
+    "url": "https://tesiunamdocumentos.dgb.unam.mx/ptd2012/mayo/0680297/0680297_A1.pdf",
+    "type": "university_research",
+    "tier": 1,
+    "scope": "Clavelina is a common name used for Dianthus caryophyllus; it is also used for other Dianthus species and does not establish a cultivar or seed-lot identity",
+    "accessed": "2026-11-13",
+    "license": null,
+    "provenance": "Public plant identity research",
+    "claimKinds": [
+      "identity"
+    ]
   }
 ]

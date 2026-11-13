@@ -10,6 +10,7 @@
     "tags": [
       "Dark Opal Basil",
       "Albahaca Dark Opal",
+      "Albahaca morada Dark Opal",
       "Ocimum basilicum",
       "Dark Opal"
     ],
@@ -22,7 +23,8 @@
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "seed-needs-basil-assortment-public"
+          "seed-needs-basil-assortment-public",
+          "rhs-dark-opal-basil-public"
         ]
       }
     },

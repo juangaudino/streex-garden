@@ -2827,6 +2827,7 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "high",
         "sourceIds": [
+          "unam-dianthus-clavelina-public",
           "usu-miniature-carnation-cut-flower-2025",
           "ucdavis-miniature-carnation-postharvest-2004"
         ],
@@ -79257,7 +79258,8 @@ export const gardenPlantProfileCatalog = {
         "evidenceType": "source_backed",
         "confidence": "medium",
         "sourceIds": [
-          "seed-needs-basil-assortment-public"
+          "seed-needs-basil-assortment-public",
+          "rhs-dark-opal-basil-public"
         ],
         "en": {
           "short": "Dark Opal Basil",

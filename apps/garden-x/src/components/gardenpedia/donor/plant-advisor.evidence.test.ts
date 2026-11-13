@@ -40,6 +40,27 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     }
   });
 
+  it("recognizes Spanish cultivation names without promoting a general type to a named cultivar", () => {
+    for (const [query, plantId] of [
+      ["EC Albahaca morada Dark Opal", "basil-dark-opal"],
+      ["EC Clavelina enana fragante", "fragrant-dwarf-dianthus-mix"],
+    ] as const) {
+      const records = retrieveGardenpediaEvidence(query, "es", 12);
+      expect(
+        records.some((record) => record.plantId === plantId),
+        query,
+      ).toBe(true);
+    }
+    const carnation = retrieveGardenpediaEvidence("EC Clavelina enana fragante", "es", 12);
+    expect(
+      carnation.some(
+        (record) =>
+          record.plantId === "fragrant-dwarf-dianthus-mix" &&
+          /no se asigna|no se ha identificado|no identifica/i.test(record.text),
+      ),
+    ).toBe(true);
+  });
+
   it("keeps repeated searches stable and separates the English and Spanish indexes", () => {
     const first = retrieveGardenpediaEvidence("Genovese basil germination", "en");
     retrieveGardenpediaEvidence("albahaca genovesa germinación", "es");

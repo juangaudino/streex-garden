@@ -1051,6 +1051,13 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     "Crop-level reference; not cultivar-specific.",
   ),
   ...cropObservation(
+    "carnation-osu",
+    "carnation",
+    [2.0, 3.5],
+    [6.0, 6.0],
+    "General carnation guidance, not a cultivar-specific validation; the source does not identify miniature or spray forms, plant stage or individual system.",
+  ),
+  ...cropObservation(
     "pepper-osu",
     "pepper",
     [0.8, 1.8],

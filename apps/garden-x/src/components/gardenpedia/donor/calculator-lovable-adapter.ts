@@ -407,6 +407,9 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   "basil-spicy-globe": "basil",
   "butterhead-lettuce-unspecified": "lettuce",
   "scarlet-red-tatsoi": "tatsoi",
+  // This catalog entry identifies miniature/spray D. caryophyllus, not a
+  // confirmed cultivar or the identity of any particular purchased seed lot.
+  "fragrant-dwarf-dianthus-mix": "carnation",
   "hon-tsai-tai": "flowering-choy-sum",
   // Perpetual Spinach is leaf beet / chard, not Spinacia oleracea.
   "perpetual-spinach": "chard",

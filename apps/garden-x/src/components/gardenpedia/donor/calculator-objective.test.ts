@@ -167,6 +167,7 @@ describe("Calculator objective independent validation", () => {
       pepper: [0.8, 1.8, 5.5, 6],
       strawberry: [1.8, 2.2, 6, 6],
       celery: [1.8, 2.4, 6.5, 6.5],
+      carnation: [2, 3.5, 6, 6],
       spinach: [1.8, 2.3, 6, 7],
       parsley: [1.8, 2.2, 6, 6.5],
       sage: [1, 1.6, 5.5, 6.5],
@@ -184,6 +185,17 @@ describe("Calculator objective independent validation", () => {
         expect(value.measurementScope).toBe("NUTRIENT_SOLUTION");
         expect(value.stageApplicability).toBe("UNSPECIFIED");
       }
+  });
+  it("uses the published general carnation reference without treating it as seedling evidence", () => {
+    const crops = { "fragrant-dwarf-dianthus-mix": 1 };
+    const general = calculatePolycultureRange(contextFor(crops, "gh-flora"), CROP_EVIDENCE);
+    expect(general.status).toBe("COMMON_OPTIMUM_RANGE");
+    expect(general.range).toMatchObject({ min: 2, max: 3.5 });
+    const seedling = calculatePolycultureRange(
+      contextFor(crops, "gh-flora", { "fragrant-dwarf-dianthus-mix": "SEEDLING" }),
+      CROP_EVIDENCE,
+    );
+    expect(seedling.status).toBe("INSUFFICIENT");
   });
   it("independently recomputes fresh dosing across nine families, six waters, eight targets and four volumes", () => {
     for (const id of [

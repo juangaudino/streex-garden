@@ -139,7 +139,8 @@ function buildEvidenceForEntry(
     resolveNutrientCropIdentity(entry.libraryPlantId) ?? entry.libraryPlantId;
   for (const study of CROP_STUDY_REFERENCES) {
     if (!study.plantIds.some((id: string) => id === entry.libraryPlantId)) continue;
-    const section = language === "es" ? "Fuente contextual de cultivo" : "Contextual cultivation source";
+    const section =
+      language === "es" ? "Fuente contextual de cultivo" : "Contextual cultivation source";
     const text = study.text[language];
     records.push({
       id: `${entry.libraryPlantId}:nutrient-study:${study.source.id}`,
@@ -150,7 +151,13 @@ function buildEvidenceForEntry(
       text,
       evidenceType: "source_backed",
       confidence: study.source.tier === "C" ? "low" : "moderate",
-      sources: [{ id: study.source.id, label: `${study.source.publisher} · ${study.source.title}`, url: study.source.url }],
+      sources: [
+        {
+          id: study.source.id,
+          label: `${study.source.publisher} · ${study.source.title}`,
+          url: study.source.url,
+        },
+      ],
       searchText: `${identity} ${section} ${text} ec hydroponic hydroponics hidroponia nutrients nutrientes conductivity conductividad`,
     });
   }
@@ -177,14 +184,14 @@ function buildEvidenceForEntry(
           ? " La fuente estudió el sistema NFT."
           : " The source studied NFT."
         : source.id === "hydrocrop-hydrosol-crop-ec-guide"
-        ? language === "es"
-          ? " La guía se publicó en el contexto de HydroSol."
-          : " The guidance was published in the context of HydroSol."
-        : source.id === "cafre-hydroponic-leafy-salads-herbs"
           ? language === "es"
-            ? " Los valores son aproximados, leídos de un gráfico."
-            : " The values are approximate, read from a chart."
-          : "";
+            ? " La guía se publicó en el contexto de HydroSol."
+            : " The guidance was published in the context of HydroSol."
+          : source.id === "cafre-hydroponic-leafy-salads-herbs"
+            ? language === "es"
+              ? " Los valores son aproximados, leídos de un gráfico."
+              : " The values are approximate, read from a chart."
+            : "";
     const section = language === "es" ? "EC de la solución nutritiva" : "Nutrient solution EC";
     const text =
       language === "es"

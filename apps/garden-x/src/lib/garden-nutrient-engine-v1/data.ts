@@ -1,103 +1,162 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  mexicanTarragonIdentity: {
+    id: "unam-pericon-tagetes-lucida",
+    publisher: "Universidad Nacional Autónoma de México",
+    title: "Pericón / hierba anisada",
+    url: "https://www.zaragoza.unam.mx/plantas-medicinales-fesz/pericon/",
+    sourceClass: "OTHER",
+    tier: "B",
+    retrievedAt: "2026-11-12",
+  },
+  chamomileIdentity: {
+    id: "nccih-chamomile-species-context",
+    publisher: "US National Center for Complementary and Integrative Health",
+    title: "Chamomile: Usefulness and Safety",
+    url: "https://www.nccih.nih.gov/health/chamomile/",
+    sourceClass: "OTHER",
+    tier: "B",
+    retrievedAt: "2026-11-12",
+  },
   echinaceaHydroponicsReview: {
     id: "echinacea-agronomy-review-2024",
     publisher: "Plants",
     title: "Echinacea: Bioactive Compounds and Agronomy",
     url: "https://www.mdpi.com/2223-7747/13/9/1235",
-    sourceClass: "OTHER", tier: "C", publication: "2024", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "C",
+    publication: "2024",
+    retrievedAt: "2026-11-12",
   },
   nasturtiumHydroponicSupplier: {
     id: "johnnys-nasturtium-shades-of-green-hydroponic",
     publisher: "Johnny's Selected Seeds",
     title: "Nasturtium Shades of Green shoot seed",
     url: "https://www.johnnyseeds.com/vegetables/shoots/nasturtium-shades-of-green-shoot-seed-3389S.32.html",
-    sourceClass: "OTHER", tier: "C", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-12",
   },
   lemonBasilLightStudy: {
     id: "lemon-basil-light-ec-2023",
     publisher: "Horticulturae · Universiti Putra Malaysia",
     title: "Effects of LED irradiance and nutrient solution EC on lemon basil",
     url: "https://www.mdpi.com/2311-7524/9/4/416",
-    sourceClass: "OTHER", tier: "B", publication: "2023", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2023",
+    retrievedAt: "2026-11-12",
   },
   bullsBloodNftStudy: {
     id: "egilla-bulls-blood-beet-nft-2009",
     publisher: "University of California eScholarship · Jonathan N. Egilla",
-    title: "Yield and mineral element concentration of beetroot in response to nutrient source in hydroponic solution",
+    title:
+      "Yield and mineral element concentration of beetroot in response to nutrient source in hydroponic solution",
     url: "https://escholarship.org/uc/item/7r10k8zb",
-    sourceClass: "OTHER", tier: "B", publication: "2009", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2009",
+    retrievedAt: "2026-11-12",
   },
   alyssumSubirrigationReview: {
     id: "horttechnology-subirrigation-review-2015",
     publisher: "HortTechnology · American Society for Horticultural Science",
     title: "Subirrigation: Historical Overview, Challenges, and Future Prospects",
     url: "https://journals.ashs.org/horttech/downloadpdf/view/journals/horttech/25/3/article-p262.pdf",
-    sourceClass: "OTHER", tier: "B", publication: "2015", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2015",
+    retrievedAt: "2026-11-12",
   },
   coleusFertilizerStudy: {
     id: "ishs-coleus-nitrogen-cultivars",
     publisher: "International Society for Horticultural Science",
-    title: "Coleus foliar nutrient sufficiency ranges and growth response to nitrogen concentrations",
+    title:
+      "Coleus foliar nutrient sufficiency ranges and growth response to nitrogen concentrations",
     url: "https://ishs.org/ishs-article/1266_10/",
-    sourceClass: "OTHER", tier: "B", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    retrievedAt: "2026-11-12",
   },
   hibiscusMoscheutosGrower: {
     id: "panam-hibiscus-luna-grower-2023",
     publisher: "PanAmerican Seed",
     title: "Hibiscus Luna F1 Series grower facts",
     url: "https://www.panamseed.com/utility/CultureSheetPDF.aspx?pagename=culture.aspx&txtPHID=033102347&type=Per",
-    sourceClass: "MANUFACTURER", tier: "A", publication: "2023", retrievedAt: "2026-11-12",
+    sourceClass: "MANUFACTURER",
+    tier: "A",
+    publication: "2023",
+    retrievedAt: "2026-11-12",
   },
   delphiniumGrower: {
     id: "panam-delphinium-dasante-grower",
     publisher: "PanAmerican Seed",
     title: "Dasante Blue Delphinium grower facts",
     url: "https://www.panamseed.com/media/Culture/PAS/DelphiniumDasanteBlue.pdf",
-    sourceClass: "MANUFACTURER", tier: "A", retrievedAt: "2026-11-12",
+    sourceClass: "MANUFACTURER",
+    tier: "A",
+    retrievedAt: "2026-11-12",
   },
   carnationHydroponicStudy: {
     id: "carnation-cultivation-gamma-2025",
     publisher: "Discover Agriculture",
     title: "Effects of gamma irradiation and cultivation system on growth of carnation",
     url: "https://link.springer.com/article/10.1007/s44372-025-00375-1",
-    sourceClass: "OTHER", tier: "B", publication: "2025", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2025",
+    retrievedAt: "2026-11-12",
   },
   chervilVerticalFlorida: {
     id: "florida-vertical-hydroponic-herbs-2001",
     publisher: "University of Florida IFAS · Florida State Horticultural Society",
     title: "Greenhouse production of fresh-cut herbs in vertical hydroponic systems",
     url: "https://svaec.ifas.ufl.edu/media/svaecifasufledu/docs/pdf/svreports/crops/leafygreens/Fresh-cut-herbs-in-Vertical-hydroponic-Systems.pdf",
-    sourceClass: "OTHER", tier: "B", publication: "2001", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2001",
+    retrievedAt: "2026-11-12",
   },
   epazoteSandStudy: {
     id: "epazote-nutrient-sand-2015",
     publisher: "Journal of Medicinal Plants Research",
     title: "Extraction of essential oil from inflorescences of Dysphania ambrosioides",
     url: "https://academicjournals.org/journal/JMPR/article-full-text/26FAE7955993",
-    sourceClass: "OTHER", tier: "B", publication: "2015", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2015",
+    retrievedAt: "2026-11-12",
   },
   marigoldMicronutrientStudy: {
     id: "marigold-hydroponic-iron-manganese-2024",
     publisher: "Scientia Horticulturae",
     title: "Micronutrient Fe and Mn uptake from peat by marigold and petunia",
     url: "https://www.sciencedirect.com/science/article/pii/S0304423823008749",
-    sourceClass: "OTHER", tier: "B", publication: "2024", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2024",
+    retrievedAt: "2026-11-12",
   },
   komatsunaNftThesis: {
     id: "arkansas-komatsuna-nft-2014",
     publisher: "University of Arkansas · Leah P. Malvar",
-    title: "Growth and biomass of komatsuna as affected by nutrient solution electrical conductivity",
+    title:
+      "Growth and biomass of komatsuna as affected by nutrient solution electrical conductivity",
     url: "https://scholarworks.uark.edu/hortuht/2/",
-    sourceClass: "OTHER", tier: "B", publication: "2014", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2014",
+    retrievedAt: "2026-11-12",
   },
   petuniaSubirrigationStudy: {
     id: "purdue-petunia-fertilizer-ho313",
     publisher: "Purdue University Extension",
     title: "Optimal fertilizer concentration for early vs. late flowering petunia varieties",
     url: "https://www.extension.purdue.edu/extmedia/HO/HO-313-W.pdf",
-    sourceClass: "OTHER", tier: "B", retrievedAt: "2026-11-12",
+    sourceClass: "OTHER",
+    tier: "B",
+    retrievedAt: "2026-11-12",
   },
   hyssopHydroponicStudy: {
     id: "hyssop-hydroponic-selenium-2022",
@@ -112,7 +171,8 @@ export const NUTRIENT_SOURCES = {
   purpleKohlrabiStudy: {
     id: "purple-kohlrabi-coir-ec-2024",
     publisher: "Revista Brasileira de Engenharia Agrícola e Ambiental",
-    title: "Production and quality of purple kohlrabi under nutrient solutions of different electrical conductivities",
+    title:
+      "Production and quality of purple kohlrabi under nutrient solutions of different electrical conductivities",
     url: "https://www.scielo.br/j/rbeaa/a/gyJ7sbKqyr883hyNGdP4XJd/?lang=en",
     sourceClass: "OTHER",
     tier: "B",
@@ -122,7 +182,8 @@ export const NUTRIENT_SOURCES = {
   borageSeedStudy: {
     id: "borage-coir-seed-salinity-2019",
     publisher: "PLOS ONE",
-    title: "Effects of the electrical conductivity of a soilless culture system on gamma linolenic acid levels in borage seed oil",
+    title:
+      "Effects of the electrical conductivity of a soilless culture system on gamma linolenic acid levels in borage seed oil",
     url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207106",
     sourceClass: "OTHER",
     tier: "B",
@@ -142,7 +203,8 @@ export const NUTRIENT_SOURCES = {
   zinniaHydroponicStudy: {
     id: "can-tho-zinnia-hoagland-2022",
     publisher: "Can Tho University Journal of Science",
-    title: "Growth and flowering of hydroponic Zinnia at different Hoagland and Arnon nutritional levels",
+    title:
+      "Growth and flowering of hydroponic Zinnia at different Hoagland and Arnon nutritional levels",
     url: "https://demo-ojs.cusc.vn/index.php/ctujsvn/article/view/4368",
     sourceClass: "OTHER",
     tier: "B",
@@ -201,7 +263,8 @@ export const NUTRIENT_SOURCES = {
   lavenderHydroponicStudy: {
     id: "cyprus-lavender-potassium-hydroponic-2017",
     publisher: "Cyprus University of Technology and collaborators",
-    title: "Optimization of potassium fertilization for lavender growth and essential oil production",
+    title:
+      "Optimization of potassium fertilization for lavender growth and essential oil production",
     url: "https://www.scielo.cl/scielo.php?pid=S0718-95162017000200004&script=sci_arttext",
     sourceClass: "OTHER",
     tier: "B",
@@ -221,7 +284,8 @@ export const NUTRIENT_SOURCES = {
   arugulaEcStudy: {
     id: "osu-arugula-ec-2021",
     publisher: "Ohio State University and collaborators · Agronomy",
-    title: "Photosynthesis, Biomass Production, Nutritional Quality, and Flavor-Related Phytochemical Properties of Hydroponic-Grown Arugula under Different Electrical Conductivities",
+    title:
+      "Photosynthesis, Biomass Production, Nutritional Quality, and Flavor-Related Phytochemical Properties of Hydroponic-Grown Arugula under Different Electrical Conductivities",
     url: "https://doi.org/10.3390/agronomy11071340",
     sourceClass: "OTHER",
     tier: "B",
@@ -231,7 +295,8 @@ export const NUTRIENT_SOURCES = {
   basilSpeciesNftStudy: {
     id: "walters-currey-basil-species-nft-2018",
     publisher: "Walters and Currey · HortScience",
-    title: "Effects of Nutrient Solution Concentration and Daily Light Integral on Growth and Nutrient Concentration of Several Basil Species in Hydroponic Production",
+    title:
+      "Effects of Nutrient Solution Concentration and Daily Light Integral on Growth and Nutrient Concentration of Several Basil Species in Hydroponic Production",
     url: "https://doi.org/10.21273/HORTSCI13126-18",
     sourceClass: "OTHER",
     tier: "B",
@@ -365,6 +430,22 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["mexican-tarragon"],
+    source: NUTRIENT_SOURCES.mexicanTarragonIdentity,
+    text: {
+      es: "El estragón mexicano o pericón es Tagetes lucida, distinto del estragón francés. Esta fuente trata su identidad y ambiente terrestre; no establece un rango de EC ni una dosis hidropónica.",
+      en: "Mexican tarragon or pericón is Tagetes lucida, distinct from French tarragon. This source describes its identity and terrestrial habitat; it does not establish a hydroponic EC range or dose.",
+    },
+  },
+  {
+    plantIds: ["chamomile-unspecified"],
+    source: NUTRIENT_SOURCES.chamomileIdentity,
+    text: {
+      es: "Manzanilla puede referirse a especies distintas, incluida la alemana y la romana. La especie de esta entrada no está identificada; la fuente no establece una EC ni dosis hidropónica.",
+      en: "Chamomile can refer to different species, including German and Roman chamomile. The species of this entry is unidentified; the source does not establish a hydroponic EC or dose.",
+    },
+  },
   {
     plantIds: ["tennessee-coneflower-echinacea-tennesseensis"],
     source: NUTRIENT_SOURCES.echinaceaHydroponicsReview,
@@ -574,7 +655,11 @@ export const CROP_STUDY_REFERENCES = [
     },
   },
   {
-    plantIds: ["sunflower-american-giant-hybrid", "sunflower-autumn-beauty", "sunflower-helianthus-annuus"],
+    plantIds: [
+      "sunflower-american-giant-hybrid",
+      "sunflower-autumn-beauty",
+      "sunflower-helianthus-annuus",
+    ],
     source: NUTRIENT_SOURCES.sunflowerHydroponicStudy,
     text: {
       es: "Un estudio hidropónico de girasol sobre estrés salino usó una solución de control de 1,7 mS/cm. Esa condición experimental no identifica estas variedades ni establece un rango recomendado o dosis.",
@@ -702,20 +787,23 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
-  ...(["tatsoi", "cilantro", "flowering-choy-sum"] as const).map((cropIdentity): EvidenceObservation => ({
-    id: `${cropIdentity}-nsw-nft-ec`,
-    metric: "EC",
-    cropIdentity,
-    stageApplicability: "UNSPECIFIED",
-    hydroponicSystem: "NFT",
-    measurementScope: "NUTRIENT_SOLUTION",
-    scopeBasis: "STATED",
-    source: NUTRIENT_SOURCES.nswAsianGreensNft,
-    verificationStatus: "VERIFIED",
-    evidenceState: "MODERATE",
-    observedRange: { min: 1.5, max: 2.5, unit: "mS/cm" },
-    notes: "Reported from an NFT study; cultivar and plant stage were not specified for this crop. This is not a validated range for seedlings or for a different system.",
-  })),
+  ...(["tatsoi", "cilantro", "flowering-choy-sum"] as const).map(
+    (cropIdentity): EvidenceObservation => ({
+      id: `${cropIdentity}-nsw-nft-ec`,
+      metric: "EC",
+      cropIdentity,
+      stageApplicability: "UNSPECIFIED",
+      hydroponicSystem: "NFT",
+      measurementScope: "NUTRIENT_SOLUTION",
+      scopeBasis: "STATED",
+      source: NUTRIENT_SOURCES.nswAsianGreensNft,
+      verificationStatus: "VERIFIED",
+      evidenceState: "MODERATE",
+      observedRange: { min: 1.5, max: 2.5, unit: "mS/cm" },
+      notes:
+        "Reported from an NFT study; cultivar and plant stage were not specified for this crop. This is not a validated range for seedlings or for a different system.",
+    }),
+  ),
   {
     id: "lemon-balm-hydroponic-xpress-ec",
     metric: "EC",
@@ -728,7 +816,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
-    notes: "Supplier crop-level guidance for lemon balm (Melissa officinalis), not lemon basil. Cultivar and stage are unspecified; not a validated seedling dose.",
+    notes:
+      "Supplier crop-level guidance for lemon balm (Melissa officinalis), not lemon basil. Cultivar and stage are unspecified; not a validated seedling dose.",
   },
   {
     id: "rosemary-hydroponic-xpress-ec",

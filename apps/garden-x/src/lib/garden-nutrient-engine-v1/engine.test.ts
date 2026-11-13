@@ -67,7 +67,12 @@ function calibrationInput() {
 describe("Garden Nutrient Engine V1", () => {
   it("applies tatsoi and cilantro evidence only to NFT and never to a seedling or unknown system", () => {
     for (const cropIdentity of ["tatsoi", "cilantro", "flowering-choy-sum"]) {
-      const context: CropContext = { cropIdentity, phenologicalStage: "UNSPECIFIED", hydroponicSystem: "NFT", measurementScope: "NUTRIENT_SOLUTION" };
+      const context: CropContext = {
+        cropIdentity,
+        phenologicalStage: "UNSPECIFIED",
+        hydroponicSystem: "NFT",
+        measurementScope: "NUTRIENT_SOLUTION",
+      };
       const observation = selectCropRange(context).ec;
       expect(observation.ec).toEqual({ min: 1.5, max: 2.5, unit: "mS/cm" });
       expect(observation.observations[0]?.source.id).toBe("nsw-asian-vegetables-nft-2011");
@@ -88,9 +93,11 @@ describe("Garden Nutrient Engine V1", () => {
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
   });
   it("keeps research-only herb observations out of automatic ranges", () => {
-    expect(CROP_STUDY_REFERENCES.some((reference) => reference.plantIds.some((id: string) => id === "cilantro"))).toBe(
-      true,
-    );
+    expect(
+      CROP_STUDY_REFERENCES.some((reference) =>
+        reference.plantIds.some((id: string) => id === "cilantro"),
+      ),
+    ).toBe(true);
     for (const cropIdentity of ["cilantro", "dill-bouquet", "evergreen-bunching-onion-nabuka"]) {
       expect(
         selectCropRange({

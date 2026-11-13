@@ -151,7 +151,11 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
   });
 
   it("retrieves crop studies as contextual observations, without treating them as universal doses", () => {
-    const culantro = retrieveGardenpediaEvidence("¿Qué EC se ha estudiado para culantro?", "es", 12);
+    const culantro = retrieveGardenpediaEvidence(
+      "¿Qué EC se ha estudiado para culantro?",
+      "es",
+      12,
+    );
     const study = culantro.find((item) => item.id.includes("nutrient-study:nguyen-eryngium"));
     expect(study?.plantId).toBe("culantro");
     expect(study?.text).toContain("no un rango validado ni una dosis automática");
@@ -164,7 +168,9 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
       ["zinnia lilliput hydroponic EC", "can-tho-zinnia-hoagland-2022"],
     ] as const) {
       const result = retrieveGardenpediaEvidence(query, "en", 20);
-      expect(result.some((item) => item.sources.some((itemSource) => itemSource.id === source))).toBe(true);
+      expect(
+        result.some((item) => item.sources.some((itemSource) => itemSource.id === source)),
+      ).toBe(true);
     }
   });
 

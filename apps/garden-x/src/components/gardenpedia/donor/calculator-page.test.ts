@@ -1,6 +1,10 @@
 import { describe, expect, it, vi } from "vitest";
 
-import { AEROGARDEN_RECIPE, CROP_STUDY_REFERENCES, FLORA_RECIPE } from "@/lib/garden-nutrient-engine-v1/data";
+import {
+  AEROGARDEN_RECIPE,
+  CROP_STUDY_REFERENCES,
+  FLORA_RECIPE,
+} from "@/lib/garden-nutrient-engine-v1/data";
 import {
   buildCalibrationModel,
   calculateEcCorrection,
@@ -33,19 +37,43 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("links every crop study to a selectable public identity", () => {
     const ids = new Set(CALCULATOR_PLANTS.map((plant) => plant.id));
     for (const reference of CROP_STUDY_REFERENCES)
-      for (const id of reference.plantIds) expect(ids.has(id), `${reference.source.id}: ${id}`).toBe(true);
+      for (const id of reference.plantIds)
+        expect(ids.has(id), `${reference.source.id}: ${id}`).toBe(true);
   });
   it("does not reuse common chive evidence for the distinct garlic chive species", () => {
     expect(resolveNutrientCropIdentity("garlic-chives")).toBeUndefined();
     expect(hasApplicableCropNutrientEvidence("garlic-chives")).toBe(false);
-    expect(CROP_STUDY_REFERENCES.some((study) =>
-      study.plantIds.some((id: string) => id === "garlic-chives") &&
-      study.source.id === "chinese-chive-hydroponic-salinity-2022",
-    )).toBe(true);
+    expect(
+      CROP_STUDY_REFERENCES.some(
+        (study) =>
+          study.plantIds.some((id: string) => id === "garlic-chives") &&
+          study.source.id === "chinese-chive-hydroponic-salinity-2022",
+      ),
+    ).toBe(true);
+  });
+  it("keeps identity sources from becoming nutrient targets for unidentified or distinct crops", () => {
+    for (const id of ["chamomile-unspecified", "mexican-tarragon"]) {
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+      expect(
+        CROP_STUDY_REFERENCES.some((study) =>
+          study.plantIds.some((plantId: string) => plantId === id),
+        ),
+      ).toBe(true);
+    }
   });
   it("makes named basil, butterhead, and species-unspecified chamomile identities selectable without inventing crop evidence", () => {
-    for (const id of ["basil-dark-opal", "basil-spicy-globe", "basil-lemon", "basil-lime", "butterhead-lettuce-unspecified", "chamomile-unspecified"]) {
-      expect(CALCULATOR_PLANTS.some((plant) => plant.id === id), id).toBe(true);
+    for (const id of [
+      "basil-dark-opal",
+      "basil-spicy-globe",
+      "basil-lemon",
+      "basil-lime",
+      "butterhead-lettuce-unspecified",
+      "chamomile-unspecified",
+    ]) {
+      expect(
+        CALCULATOR_PLANTS.some((plant) => plant.id === id),
+        id,
+      ).toBe(true);
     }
     expect(resolveNutrientCropIdentity("basil-dark-opal")).toBe("basil");
     expect(resolveNutrientCropIdentity("butterhead-lettuce-unspecified")).toBe("lettuce");
@@ -56,17 +84,35 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
   it("keeps all non-carnivorous catalog identities operable with a user-selected target and matching calibration", () => {
     const observation = recordActualDoses({
-      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
-      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
     });
     expect(observation.ok).toBe(true);
-    const plants = CALCULATOR_PLANTS.filter((plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id));
+    const plants = CALCULATOR_PLANTS.filter(
+      (plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id),
+    );
     for (const plant of plants) {
       for (const mode of ["recipe", "target", "adjust", "topup"] as const) {
         const result = calculateGardenResult({
-          language: "en", mode, crops: { [plant.id]: 1 }, liters: 4, productId: "gh-flora",
-          stageId: "feeding-2", pods: 6, sourceEc: 0.2, currentEc: 0.7,
-          currentLiters: 2, capacityLiters: 4, waterAdded: 1, userTarget: 1.2, round: 1,
+          language: "en",
+          mode,
+          crops: { [plant.id]: 1 },
+          liters: 4,
+          productId: "gh-flora",
+          stageId: "feeding-2",
+          pods: 6,
+          sourceEc: 0.2,
+          currentEc: 0.7,
+          currentLiters: 2,
+          capacityLiters: 4,
+          waterAdded: 1,
+          userTarget: 1.2,
+          round: 1,
           calibrationObservations: [observation.value!],
         });
         expect(result.kind, `${plant.id}: ${mode}`).toBe("ok");
@@ -74,7 +120,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
           expect(result.target?.value).toBe(1.2);
           if (!hasApplicableCropNutrientEvidence(plant.id)) {
             expect(result.evidence, `${plant.id}: ${mode}`).toBe("insufficient");
-            expect(result.warnings?.some((warning) => /could not establish a common applicable crop evidence range/i.test(warning)), `${plant.id}: ${mode}`).toBe(true);
+            expect(
+              result.warnings?.some((warning) =>
+                /could not establish a common applicable crop evidence range/i.test(warning),
+              ),
+              `${plant.id}: ${mode}`,
+            ).toBe(true);
           }
         }
       }

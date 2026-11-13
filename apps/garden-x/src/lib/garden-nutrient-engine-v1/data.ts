@@ -1,6 +1,16 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  welshOnionKoreaStudy: {
+    id: "gangwon-welsh-onion-recirculating-hydroponics-2005",
+    publisher: "Gangwon Agricultural Research and Extension Services",
+    title: "Year-round water culture of young Welsh onion (Allium fistulosum)",
+    url: "https://ares.gangwon.kr/egf/bp/common/front/18605/download",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2005",
+    retrievedAt: "2026-11-13",
+  },
   bouquetDillDeepFlowStudy: {
     id: "walters-lopez-bouquet-dill-deep-flow-2021",
     publisher: "PLOS ONE · Michigan State University and University of Tennessee",
@@ -472,6 +482,14 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["evergreen-bunching-onion-nabuka", "bunching-onion-allium-fistulosum"],
+    source: NUTRIENT_SOURCES.welshOnionKoreaStudy,
+    text: {
+      es: "En Corea, un estudio hidropónico recirculante de cebolla Allium fistulosum comparó cuatro niveles de EC con una solución específica; sus estimaciones de mayor peso fueron 1,68 y 1,57 mS/cm para dos cultivares ensayados. No se estudió Nebuka ni se estableció un rango óptimo para tu variedad o formulación.",
+      en: "A Korean recirculating hydroponic study of Allium fistulosum compared four EC levels with a specific solution; estimated maximum weights occurred at 1.68 and 1.57 mS/cm for two tested cultivars. Nebuka was not studied and this does not establish an optimum range for your cultivar or formulation.",
+    },
+  },
   {
     plantIds: ["dill-bouquet", "italian-giant-parsley", "watercress"],
     source: NUTRIENT_SOURCES.bouquetDillDeepFlowStudy,

@@ -1,6 +1,13 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  echinaceaHydroponicsReview: {
+    id: "echinacea-agronomy-review-2024",
+    publisher: "Plants",
+    title: "Echinacea: Bioactive Compounds and Agronomy",
+    url: "https://www.mdpi.com/2223-7747/13/9/1235",
+    sourceClass: "OTHER", tier: "C", publication: "2024", retrievedAt: "2026-11-12",
+  },
   nasturtiumHydroponicSupplier: {
     id: "johnnys-nasturtium-shades-of-green-hydroponic",
     publisher: "Johnny's Selected Seeds",
@@ -358,6 +365,14 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["tennessee-coneflower-echinacea-tennesseensis"],
+    source: NUTRIENT_SOURCES.echinaceaHydroponicsReview,
+    text: {
+      es: "Una revisión describe cultivo hidropónico de otras especies de Echinacea, especialmente E. purpurea y E. angustifolia. No valida esos resultados ni una EC óptima para E. tennesseensis.",
+      en: "A review describes hydroponic cultivation of other Echinacea species, especially E. purpurea and E. angustifolia. It does not validate those results or an optimum EC for E. tennesseensis.",
+    },
+  },
   {
     plantIds: ["bush-nasturtium-tropaeolum-minus"],
     source: NUTRIENT_SOURCES.nasturtiumHydroponicSupplier,

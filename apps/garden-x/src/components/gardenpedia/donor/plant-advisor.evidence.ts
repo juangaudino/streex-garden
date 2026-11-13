@@ -139,7 +139,7 @@ function buildEvidenceForEntry(
     resolveNutrientCropIdentity(entry.libraryPlantId) ?? entry.libraryPlantId;
   for (const study of CROP_STUDY_REFERENCES) {
     if (!study.plantIds.some((id: string) => id === entry.libraryPlantId)) continue;
-    const section = language === "es" ? "Estudio hidropónico contextual" : "Contextual hydroponic study";
+    const section = language === "es" ? "Fuente contextual de cultivo" : "Contextual cultivation source";
     const text = study.text[language];
     records.push({
       id: `${entry.libraryPlantId}:nutrient-study:${study.source.id}`,
@@ -149,7 +149,7 @@ function buildEvidenceForEntry(
       section,
       text,
       evidenceType: "source_backed",
-      confidence: "moderate",
+      confidence: study.source.tier === "C" ? "low" : "moderate",
       sources: [{ id: study.source.id, label: `${study.source.publisher} · ${study.source.title}`, url: study.source.url }],
       searchText: `${identity} ${section} ${text} ec hydroponic hydroponics hidroponia nutrients nutrientes conductivity conductividad`,
     });

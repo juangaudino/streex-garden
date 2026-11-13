@@ -1,6 +1,16 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  bouquetDillDeepFlowStudy: {
+    id: "walters-lopez-bouquet-dill-deep-flow-2021",
+    publisher: "PLOS ONE · Michigan State University and University of Tennessee",
+    title: "Modeling growth and development of hydroponically grown dill, parsley, and watercress",
+    url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0248662",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2021",
+    retrievedAt: "2026-11-13",
+  },
   guanajuatoHerbsStudy: {
     id: "guanajuato-aromatic-herbs-cultivation-2017",
     publisher: "Carrillo-Landell y colaboradores · Revista de la Invención Técnica",
@@ -462,6 +472,14 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["dill-bouquet", "italian-giant-parsley", "watercress"],
+    source: NUTRIENT_SOURCES.bouquetDillDeepFlowStudy,
+    text: {
+      es: "Un ensayo cultivó eneldo Bouquet, perejil Giant of Italy y berro en solución profunda aireada a EC 1,56 mS/cm mientras comparaba luz y temperatura. No comparó niveles de EC; ese valor es una condición del ensayo, no un rango óptimo ni una dosis validada para tus plantas.",
+      en: "A trial grew Bouquet dill, Giant of Italy parsley and watercress in aerated deep-flow solution at EC 1.56 mS/cm while comparing light and temperature. It did not compare EC levels; that value is a trial condition, not an optimum range or validated dose for your plants.",
+    },
+  },
   {
     plantIds: ["epazote", "dill-bouquet"],
     source: NUTRIENT_SOURCES.guanajuatoHerbsStudy,

@@ -183,6 +183,7 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
       ["zinnia lilliput hydroponic EC", "can-tho-zinnia-hoagland-2022"],
       ["epazote EC", "unam-epazote-hydroponic-2013"],
       ["blue borage EC", "pisa-borage-leaves-hydroponic-2022"],
+      ["dill bouquet EC", "walters-lopez-bouquet-dill-deep-flow-2021"],
     ] as const) {
       const result = retrieveGardenpediaEvidence(query, "en", 20);
       expect(

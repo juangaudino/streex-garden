@@ -88,7 +88,7 @@ describe("Garden Nutrient Engine V1", () => {
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
   });
   it("keeps research-only herb observations out of automatic ranges", () => {
-    expect(CROP_STUDY_REFERENCES.some((reference) => reference.plantIds.includes("cilantro"))).toBe(
+    expect(CROP_STUDY_REFERENCES.some((reference) => reference.plantIds.some((id: string) => id === "cilantro"))).toBe(
       true,
     );
     for (const cropIdentity of ["cilantro", "dill-bouquet", "evergreen-bunching-onion-nabuka"]) {

@@ -39,7 +39,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(resolveNutrientCropIdentity("garlic-chives")).toBeUndefined();
     expect(hasApplicableCropNutrientEvidence("garlic-chives")).toBe(false);
     expect(CROP_STUDY_REFERENCES.some((study) =>
-      study.plantIds.includes("garlic-chives") &&
+      study.plantIds.some((id: string) => id === "garlic-chives") &&
       study.source.id === "chinese-chive-hydroponic-salinity-2022",
     )).toBe(true);
   });

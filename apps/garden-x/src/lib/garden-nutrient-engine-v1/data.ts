@@ -1,6 +1,16 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  hyssopHydroponicStudy: {
+    id: "hyssop-hydroponic-selenium-2022",
+    publisher: "Horticulturae",
+    title: "Biomass and essential oil of hyssop grown in hydroponics",
+    url: "https://www.mdpi.com/2311-7524/8/11/1037",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2022",
+    retrievedAt: "2026-11-12",
+  },
   purpleKohlrabiStudy: {
     id: "purple-kohlrabi-coir-ec-2024",
     publisher: "Revista Brasileira de Engenharia Agrícola e Ambiental",
@@ -23,9 +33,9 @@ export const NUTRIENT_SOURCES = {
   },
   astroArugulaNftStudy: {
     id: "astro-arugula-nft-inoculation-2025",
-    publisher: "Revista Brasileira de Engenharia Agrícola e Ambiental",
+    publisher: "Frontiers in Plant Science",
     title: "Inoculation and co-inoculation of lettuce and arugula hydroponically",
-    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12040907/",
+    url: "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2025.1547821/full",
     sourceClass: "OTHER",
     tier: "B",
     publication: "2025",
@@ -257,6 +267,14 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["hyssop"],
+    source: NUTRIENT_SOURCES.hyssopHydroponicStudy,
+    text: {
+      es: "Un ensayo de hisopo Lekar trasplantó plantas con cuatro hojas a solución hidropónica y estudió aplicaciones de selenio. No establece un intervalo de EC óptimo ni recomienda añadir selenio a cultivos domésticos.",
+      en: "A trial of Lekar hyssop transplanted plants with four leaves into hydroponic solution and studied selenium treatments. It does not establish an optimum EC range or recommend adding selenium to home crops.",
+    },
+  },
   {
     plantIds: ["purple-kohlrabi"],
     source: NUTRIENT_SOURCES.purpleKohlrabiStudy,

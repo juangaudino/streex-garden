@@ -1,6 +1,13 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  nasturtiumHydroponicSupplier: {
+    id: "johnnys-nasturtium-shades-of-green-hydroponic",
+    publisher: "Johnny's Selected Seeds",
+    title: "Nasturtium Shades of Green shoot seed",
+    url: "https://www.johnnyseeds.com/vegetables/shoots/nasturtium-shades-of-green-shoot-seed-3389S.32.html",
+    sourceClass: "OTHER", tier: "C", retrievedAt: "2026-11-12",
+  },
   lemonBasilLightStudy: {
     id: "lemon-basil-light-ec-2023",
     publisher: "Horticulturae · Universiti Putra Malaysia",
@@ -351,6 +358,14 @@ export const NUTRIENT_SOURCES = {
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
+  {
+    plantIds: ["bush-nasturtium-tropaeolum-minus"],
+    source: NUTRIENT_SOURCES.nasturtiumHydroponicSupplier,
+    text: {
+      es: "El proveedor describe una selección de Tropaeolum minus cultivable en sistemas hidropónicos. No identifica tu selección ni da una EC o dosis para ella.",
+      en: "A supplier describes a Tropaeolum minus selection as suitable for hydroponic systems. It does not identify your selection or provide an EC or dose for it.",
+    },
+  },
   {
     plantIds: ["basil-lemon"],
     source: NUTRIENT_SOURCES.lemonBasilLightStudy,

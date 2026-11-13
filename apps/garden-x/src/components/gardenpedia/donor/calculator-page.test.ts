@@ -35,6 +35,14 @@ describe("Gardenpedia Calculator V1 integration", () => {
     for (const reference of CROP_STUDY_REFERENCES)
       for (const id of reference.plantIds) expect(ids.has(id), `${reference.source.id}: ${id}`).toBe(true);
   });
+  it("does not reuse common chive evidence for the distinct garlic chive species", () => {
+    expect(resolveNutrientCropIdentity("garlic-chives")).toBeUndefined();
+    expect(hasApplicableCropNutrientEvidence("garlic-chives")).toBe(false);
+    expect(CROP_STUDY_REFERENCES.some((study) =>
+      study.plantIds.includes("garlic-chives") &&
+      study.source.id === "chinese-chive-hydroponic-salinity-2022",
+    )).toBe(true);
+  });
   it("makes named basil, butterhead, and species-unspecified chamomile identities selectable without inventing crop evidence", () => {
     for (const id of ["basil-dark-opal", "basil-spicy-globe", "basil-lemon", "basil-lime", "butterhead-lettuce-unspecified", "chamomile-unspecified"]) {
       expect(CALCULATOR_PLANTS.some((plant) => plant.id === id), id).toBe(true);
@@ -58,7 +66,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
         const result = calculateGardenResult({
           language: "en", mode, crops: { [plant.id]: 1 }, liters: 4, productId: "gh-flora",
           stageId: "feeding-2", pods: 6, sourceEc: 0.2, currentEc: 0.7,
-          currentLiters: 2, waterAdded: 1, userTarget: 1.2, round: 1,
+          currentLiters: 2, capacityLiters: 4, waterAdded: 1, userTarget: 1.2, round: 1,
           calibrationObservations: [observation.value!],
         });
         expect(result.kind, `${plant.id}: ${mode}`).toBe("ok");
@@ -409,9 +417,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 7,
+      SUPPORTED_DIRECT: 8,
       SUPPORTED_VIA_DEFENSIBLE_MAPPING: 105,
-      INSUFFICIENT: 395,
+      INSUFFICIENT: 394,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -477,9 +485,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["lacinato-kale", "kale"],
       ["mizuna-red-streaks", "mizuna"],
       ["red-mustard-greens", "mustard-greens"],
+      ["wasabina-mustard-greens", "mustard-greens"],
       ["greek-oregano", "oregano"],
       ["common-chives", "chives"],
-      ["garlic-chives", "chives"],
       ["peppermint-mentha-piperita", "mint"],
       ["spearmint", "mint"],
     ] as const) {

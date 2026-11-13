@@ -158,6 +158,16 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     expect(study?.sources[0]?.url).toMatch(/^https:\/\//);
   });
 
+  it("retrieves the garlic chive and zinnia studies as contextual evidence", () => {
+    for (const [query, source] of [
+      ["garlic chives hydroponic EC", "chinese-chive-hydroponic-salinity-2022"],
+      ["zinnia lilliput hydroponic EC", "can-tho-zinnia-hoagland-2022"],
+    ] as const) {
+      const result = retrieveGardenpediaEvidence(query, "en", 20);
+      expect(result.some((item) => item.sources.some((itemSource) => itemSource.id === source))).toBe(true);
+    }
+  });
+
   it("never attaches private inventory or machine-instance context", () => {
     const serialized = JSON.stringify(retrieveGardenpediaEvidence("basil hydroponics", "en"));
 

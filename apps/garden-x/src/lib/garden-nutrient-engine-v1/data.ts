@@ -1,6 +1,76 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  purpleKohlrabiStudy: {
+    id: "purple-kohlrabi-coir-ec-2024",
+    publisher: "Revista Brasileira de Engenharia Agrícola e Ambiental",
+    title: "Production and quality of purple kohlrabi under nutrient solutions of different electrical conductivities",
+    url: "https://www.scielo.br/j/rbeaa/a/gyJ7sbKqyr883hyNGdP4XJd/?lang=en",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2024",
+    retrievedAt: "2026-11-12",
+  },
+  borageSeedStudy: {
+    id: "borage-coir-seed-salinity-2019",
+    publisher: "PLOS ONE",
+    title: "Effects of the electrical conductivity of a soilless culture system on gamma linolenic acid levels in borage seed oil",
+    url: "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0207106",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2019",
+    retrievedAt: "2026-11-12",
+  },
+  astroArugulaNftStudy: {
+    id: "astro-arugula-nft-inoculation-2025",
+    publisher: "Revista Brasileira de Engenharia Agrícola e Ambiental",
+    title: "Inoculation and co-inoculation of lettuce and arugula hydroponically",
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12040907/",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2025",
+    retrievedAt: "2026-11-12",
+  },
+  zinniaHydroponicStudy: {
+    id: "can-tho-zinnia-hoagland-2022",
+    publisher: "Can Tho University Journal of Science",
+    title: "Growth and flowering of hydroponic Zinnia at different Hoagland and Arnon nutritional levels",
+    url: "https://demo-ojs.cusc.vn/index.php/ctujsvn/article/view/4368",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2022",
+    retrievedAt: "2026-11-12",
+  },
+  fenugreekHydroponicStudy: {
+    id: "fenugreek-selenium-iodine-2023",
+    publisher: "Agriculture",
+    title: "Selenium, iodine, and supplementary blue light enriched fenugreek",
+    url: "https://www.mdpi.com/2077-0472/13/10/2009",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2023",
+    retrievedAt: "2026-11-12",
+  },
+  culantroHydroponicStudy: {
+    id: "nguyen-eryngium-foetidum-hydroponics-2018",
+    publisher: "Nguyen and colleagues · Vietnam National University of Agriculture",
+    title: "Study on the cultivation technique of Eryngium foetidum on hydroponic system",
+    url: "https://scholar.dlu.edu.vn/thuvienso/bitstream/DLU123456789/216924/1/CVv201S112018036.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2018",
+    retrievedAt: "2026-11-07",
+  },
+  garlicChivesHydroponicStudy: {
+    id: "chinese-chive-hydroponic-salinity-2022",
+    publisher: "Frontiers in Nutrition",
+    title: "Mild salinity and hydroponic Chinese chive growth",
+    url: "https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2022.1000271/full",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2022",
+    retrievedAt: "2026-11-12",
+  },
   papaloNutrientStudy: {
     id: "juarez-porophyllum-nutrient-poster",
     publisher: "Juarez-Lopez and colleagues · HortScience conference supplement",
@@ -188,6 +258,62 @@ export const NUTRIENT_SOURCES = {
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
   {
+    plantIds: ["purple-kohlrabi"],
+    source: NUTRIENT_SOURCES.purpleKohlrabiStudy,
+    text: {
+      es: "Un ensayo de colirrábano morado en fibra de coco comparó cinco EC entre 1,31 y 3,75 mS/cm; la producción fue mayor con 1,31. Es un resultado en ese sustrato, no un rango óptimo ni una dosis para un tanque.",
+      en: "A purple kohlrabi trial in coco fiber compared five EC treatments from 1.31 to 3.75 mS/cm; production was highest at 1.31. This is a result for that substrate, not an optimum range or reservoir dose.",
+    },
+  },
+  {
+    plantIds: ["borage-blue"],
+    source: NUTRIENT_SOURCES.borageSeedStudy,
+    text: {
+      es: "Un estudio de borraja para producción de aceite de semillas en fibra de coco comparó soluciones de 2,20, 3,35 y 4,50 mS/cm. No establece una recomendación general para hojas, plántulas o tanques domésticos.",
+      en: "A study of borage for seed-oil production in coco fiber compared solutions at 2.20, 3.35 and 4.50 mS/cm. It does not establish a general recommendation for leaves, seedlings or home reservoirs.",
+    },
+  },
+  {
+    plantIds: ["astro-arugula"],
+    source: NUTRIENT_SOURCES.astroArugulaNftStudy,
+    text: {
+      es: "Un estudio de rúcula Astro en NFT utilizó solución nutritiva a EC 1,5 mS/cm al comparar inoculaciones. Esta condición no es un intervalo óptimo ni una dosis para otros sistemas o etapas.",
+      en: "A study of Astro arugula in NFT used nutrient solution at EC 1.5 mS/cm while comparing inoculations. This condition is not an optimum range or a dose for other systems or stages.",
+    },
+  },
+  {
+    plantIds: ["zinnia-lilliput-mixed"],
+    source: NUTRIENT_SOURCES.zinniaHydroponicStudy,
+    text: {
+      es: "Un ensayo de Zinnia elegans informó buen crecimiento con solución Hoagland a EC de 1,4 y 2,8 mS/cm como tratamientos separados. No identificó Lilliput ni comparó todos los valores intermedios; no establece un rango óptimo ni una dosis para tu sistema.",
+      en: "A Zinnia elegans experiment reported good growth with Hoagland solution at 1.4 and 2.8 mS/cm as separate treatments. It did not identify Lilliput or compare all intermediate values; it establishes neither an optimum range nor a dose for your system.",
+    },
+  },
+  {
+    plantIds: ["common-fenugreek-trigonella-foenum-graecum"],
+    source: NUTRIENT_SOURCES.fenugreekHydroponicStudy,
+    text: {
+      es: "Un estudio de fenogreco en coco y perlita utilizó solución Hoagland y probó suplementos de selenio y yodo. La unidad de EC publicada es ambigua; no se convierte en un rango ni en una dosis para tu sistema.",
+      en: "A fenugreek study in coco coir and perlite used Hoagland solution and tested selenium and iodine supplements. The published EC unit is ambiguous; it is not converted into a range or dose for your system.",
+    },
+  },
+  {
+    plantIds: ["culantro"],
+    source: NUTRIENT_SOURCES.culantroHydroponicStudy,
+    text: {
+      es: "En un ensayo hidropónico de culantro (Eryngium foetidum), una solución SH5 de 1,5 mS/cm produjo mayor crecimiento que los tratamientos de 1,0 y 2,0 mS/cm. Es un resultado de ese ensayo y formulación, no un rango validado ni una dosis automática para tu sistema o sus plántulas.",
+      en: "In a hydroponic culantro (Eryngium foetidum) trial, an SH5 solution at 1.5 mS/cm produced more growth than the 1.0 and 2.0 mS/cm treatments. This is specific to that experiment and formulation, not a validated range or automatic dose for your system or seedlings.",
+    },
+  },
+  {
+    plantIds: ["garlic-chives"],
+    source: NUTRIENT_SOURCES.garlicChivesHydroponicStudy,
+    text: {
+      es: "Un estudio de cebollín de ajo (Allium tuberosum, cultivar 791) utilizó una solución hidropónica de EC 1,4 mS/cm antes de los tratamientos de salinidad. Es una condición experimental, no un intervalo óptimo ni una dosis para otro cultivo o sistema.",
+      en: "A study of garlic chives (Allium tuberosum, cultivar 791) used a hydroponic solution at EC 1.4 mS/cm before salinity treatments. This is an experimental condition, not an optimum range or dose for another crop or system.",
+    },
+  },
+  {
     plantIds: ["papalo-porophyllum-ruderale"],
     source: NUTRIENT_SOURCES.papaloNutrientStudy,
     text: {
@@ -196,11 +322,11 @@ export const CROP_STUDY_REFERENCES = [
     },
   },
   {
-    plantIds: ["tatsoi", "scarlet-red-tatsoi", "cilantro"],
+    plantIds: ["tatsoi", "scarlet-red-tatsoi", "cilantro", "hon-tsai-tai"],
     source: NUTRIENT_SOURCES.nswAsianGreensNft,
     text: {
-      es: "En ensayos NFT, la agencia de agricultura de Nueva Gales del Sur observó buen crecimiento de tatsoi y cilantro con EC de solución nutritiva entre 1,5 y 2,5 mS/cm. No identifica Scarlet Red ni confirma ese intervalo para plántulas o sistemas distintos de NFT.",
-      en: "In NFT trials, the New South Wales agriculture agency observed good tatsoi and cilantro growth at nutrient-solution ECs of 1.5–2.5 mS/cm. It did not identify Scarlet Red and does not validate that range for seedlings or systems other than NFT.",
+      es: "En ensayos NFT, la agencia de agricultura de Nueva Gales del Sur observó buen crecimiento de tatsoi, cilantro y choy sum con EC de solución nutritiva entre 1,5 y 2,5 mS/cm. No identifica Scarlet Red ni Hon Tsai Tai y no confirma ese intervalo para plántulas o sistemas distintos de NFT.",
+      en: "In NFT trials, the New South Wales agriculture agency observed good tatsoi, cilantro and choy sum growth at nutrient-solution ECs of 1.5–2.5 mS/cm. It did not identify Scarlet Red or Hon Tsai Tai and does not validate that range for seedlings or systems other than NFT.",
     },
   },
   {
@@ -348,7 +474,7 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
-  ...(["tatsoi", "cilantro"] as const).map((cropIdentity): EvidenceObservation => ({
+  ...(["tatsoi", "cilantro", "flowering-choy-sum"] as const).map((cropIdentity): EvidenceObservation => ({
     id: `${cropIdentity}-nsw-nft-ec`,
     metric: "EC",
     cropIdentity,

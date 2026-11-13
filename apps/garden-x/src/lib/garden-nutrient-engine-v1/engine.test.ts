@@ -66,7 +66,7 @@ function calibrationInput() {
 
 describe("Garden Nutrient Engine V1", () => {
   it("applies tatsoi and cilantro evidence only to NFT and never to a seedling or unknown system", () => {
-    for (const cropIdentity of ["tatsoi", "cilantro"]) {
+    for (const cropIdentity of ["tatsoi", "cilantro", "flowering-choy-sum"]) {
       const context: CropContext = { cropIdentity, phenologicalStage: "UNSPECIFIED", hydroponicSystem: "NFT", measurementScope: "NUTRIENT_SOLUTION" };
       const observation = selectCropRange(context).ec;
       expect(observation.ec).toEqual({ min: 1.5, max: 2.5, unit: "mS/cm" });

@@ -1,6 +1,15 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  borgmannHydroponicEc: {
+    id: "borgmann-hydroponic-ec-values",
+    publisher: "Borgmann Aquaponik & Hydroponik",
+    title: "pH- and EC-Values",
+    url: "https://helmer-borgmann.ch/po9d/images/documents/pH-Ec-Werte-2022-08-06-en.pdf",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
   lanitexCalendula: {
     id: "lanitex-hydroponic-calendula-guide",
     publisher: "Lanitex Hydro Garden",
@@ -1047,6 +1056,23 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  ...([
+    ["fenugreek", 1.2, 2.4],
+    ["borage", 1.4, 2.2],
+  ] as const).map(([cropIdentity, min, max]): EvidenceObservation => ({
+    id: `${cropIdentity}-borgmann-ec`,
+    metric: "EC",
+    cropIdentity,
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "INFERRED",
+    source: NUTRIENT_SOURCES.borgmannHydroponicEc,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes: "Borgmann's hydroponic crop table lists EC values without units in its table; mS/cm and nutrient-solution scope are inferred from the surrounding hydroponic guidance and conventional scale. Cultivar and stage are unspecified; not a seedling recommendation or guaranteed optimum.",
+  })),
   {
     id: "calendula-lanitex-ec",
     metric: "EC",

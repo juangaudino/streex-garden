@@ -3,8 +3,7 @@ import { ArrowLeft, ArrowUpRight, Minus, Play, Plus } from "lucide-react";
 
 import type { DonorGuideSection, DonorPlantDetail } from "./canonical-adapter";
 import { cn } from "@/lib/utils";
-import { NutrientCalculator } from "./nutrient-calculator";
-import { hasApplicableCropNutrientEvidence } from "./calculator-lovable-adapter";
+import { CALCULATOR_EXCLUDED_CARNIVOROUS_IDS, hasApplicableCropNutrientEvidence } from "./calculator-lovable-adapter";
 
 const categoryLabels: Record<string, string> = {
   herbs: "Hierbas",
@@ -113,11 +112,13 @@ export function DonorPlantDetailPage({
   language = "es",
   onBack,
   onSeedSelect,
+  onOpenCalculator,
 }: {
   detail: DonorPlantDetail;
   language?: "en" | "es";
   onBack?: (() => void) | undefined;
   onSeedSelect?: ((plantId: string) => void) | undefined;
+  onOpenCalculator?: (() => void) | undefined;
 }) {
   const labels = detailLabels[language];
   return (
@@ -157,6 +158,7 @@ export function DonorPlantDetailPage({
           category={detail.category}
           language={language}
           onSeedSelect={onSeedSelect}
+          onOpenCalculator={onOpenCalculator}
         />
       </div>
     </main>
@@ -168,11 +170,13 @@ function FullSheet({
   category,
   language,
   onSeedSelect,
+  onOpenCalculator,
 }: {
   detail: DonorPlantDetail;
   category: string;
   language: "en" | "es";
   onSeedSelect?: ((plantId: string) => void) | undefined;
+  onOpenCalculator?: (() => void) | undefined;
 }) {
   const labels = detailLabels[language];
   return (
@@ -279,31 +283,23 @@ function FullSheet({
 
       {/* Right column */}
       <div className="flex flex-col gap-5 lg:col-span-7 xl:col-span-8">
-        {hasApplicableCropNutrientEvidence(detail.id) ? (
-          <NutrientCalculator
-            plantIds={[detail.id]}
-            defaultLiters={2.5}
-            language={language}
-            eyebrow={language === "es" ? "Herramienta de cultivo" : "Growing tool"}
-            title={labels.calculator}
-            description={`${language === "es" ? detail.spanishName : detail.name}. ${language === "es" ? "Suma las demás plantas que comparten el mismo agua y los litros que tienes." : "Add other plants sharing the water and the liters in your reservoir."}`}
-          />
-        ) : (
           <section className="glass-panel p-5 sm:p-6" role="note">
             <p className="eyebrow text-[10px]">
               {language === "es" ? "Herramienta de cultivo" : "Growing tool"}
             </p>
             <h2 className="mt-1 font-display text-xl font-semibold">
-              {labels.nutrientGuidanceUnavailable}
+              {labels.calculator}
             </h2>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              {labels.nutrientGuidanceUnavailableBody}
+              {CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(detail.id)
+                ? (language === "es" ? "Esta calculadora no está diseñada para plantas carnívoras." : "This calculator is not designed for carnivorous plants.")
+                : hasApplicableCropNutrientEvidence(detail.id)
+                ? (language === "es" ? "Calcula con la evidencia disponible y tus mediciones en la calculadora de Gardenpedia." : "Use available evidence and your measurements in the Gardenpedia calculator.")
+                : labels.nutrientGuidanceUnavailableBody}
             </p>
-            <span className="mt-4 inline-flex rounded-full border border-border px-3 py-1 text-xs font-semibold text-muted-foreground">
-              {labels.insufficientEvidence}
-            </span>
+            {!CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(detail.id) && !hasApplicableCropNutrientEvidence(detail.id) && <span className="mt-4 inline-flex rounded-full border border-border px-3 py-1 text-xs font-semibold text-muted-foreground">{labels.insufficientEvidence}</span>}
+            {onOpenCalculator && !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(detail.id) && <button type="button" onClick={onOpenCalculator} className="mt-4 block rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground">{language === "es" ? "Abrir calculadora" : "Open calculator"}</button>}
           </section>
-        )}
         {detail.timeline && (
           <section className="glass-panel p-5 sm:p-6">
             <p className="eyebrow text-[10px]">
@@ -655,7 +651,7 @@ function GuideAccordion({
           </ul>
           {guide.gardenAdaptation && (
             <aside className="mt-3 rounded-xl border border-accent/25 bg-accent/5 p-3">
-              <p className="eyebrow text-[10px]">{labels.gardenAdaptation}</p>
+              <p className="eyebrow text-[10px]">{detailLabels[language].gardenAdaptation}</p>
               <p className="mt-1 text-sm leading-6">{guide.gardenAdaptation}</p>
             </aside>
           )}

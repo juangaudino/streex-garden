@@ -424,6 +424,8 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   "petunia-dwarf-bedding-mixed": "petunia",
   "lavender-vera": "english-lavender",
   "resina-calendula": "calendula",
+  "common-fenugreek-trigonella-foenum-graecum": "fenugreek",
+  "borage-blue": "borage",
   "basil-dark-opal": "basil",
   "basil-spicy-globe": "basil",
   "butterhead-lettuce-unspecified": "lettuce",

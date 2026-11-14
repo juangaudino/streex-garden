@@ -19,6 +19,14 @@ vi.mock("@/components/ui/dialog", () => {
 });
 
 describe("Calculator real control interactions", () => {
+  it("starts a profile-linked calculation with the selected public plant", () => {
+    render(<CalculatorPage language="en" initialPlantId="common-fenugreek-trigonella-foenum-graecum" />);
+    expect(screen.getByText(/Common Fenugreek/i)).toBeTruthy();
+  });
+  it("does not preselect an excluded carnivorous plant", () => {
+    render(<CalculatorPage language="en" initialPlantId="venus-flytrap-dionaea-muscipula" />);
+    expect(screen.queryByText(/Venus Flytrap/i)).toBeNull();
+  });
   beforeEach(() => window.localStorage.clear());
   afterEach(() => {
     cleanup();

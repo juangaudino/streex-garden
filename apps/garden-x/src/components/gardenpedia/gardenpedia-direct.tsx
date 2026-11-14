@@ -18,6 +18,7 @@ export type GardenpediaSearch = {
   plant?: string;
   seed?: string;
   machine?: string;
+  calculatorPlant?: string;
 };
 
 type GardenpediaNavigation = {
@@ -25,6 +26,7 @@ type GardenpediaNavigation = {
   plant?: string | undefined;
   seed?: string | undefined;
   machine?: string | undefined;
+  calculatorPlant?: string | undefined;
 };
 
 export function GardenpediaDirect({
@@ -134,6 +136,7 @@ export function GardenpediaDirect({
           detail={buildDonorPlantDetail(entry, language)}
           language={language}
           onBack={() => onNavigate({ plant: undefined, view: "library" })}
+          onOpenCalculator={() => onNavigate({ view: "calculator", calculatorPlant: entry.libraryPlantId })}
           onSeedSelect={(seedId) =>
             onNavigate({ seed: seedId, view: "seeds", plant: undefined, machine: undefined })
           }
@@ -158,6 +161,7 @@ export function GardenpediaDirect({
         language={language}
         onLanguageChange={setLanguage}
         initialView={search.view ?? "library"}
+        calculatorPlant={search.view === "calculator" ? search.calculatorPlant : undefined}
         onViewChange={(view) =>
           onNavigate({ view, plant: undefined, seed: undefined, machine: undefined })
         }

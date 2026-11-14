@@ -65,6 +65,16 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("keeps fenugreek and borage supplier values contextual and excludes seedlings", () => {
+    for (const [cropIdentity, min, max] of [["fenugreek", 1.2, 2.4], ["borage", 1.4, 2.2]] as const) {
+      const context: CropContext = { cropIdentity, measurementScope: "NUTRIENT_SOLUTION" };
+      const result = selectCropRange(context).ec;
+      expect(result.ec).toEqual({ min, max, unit: "mS/cm" });
+      expect(result.observations[0]?.scopeBasis).toBe("INFERRED");
+      expect(result.observations[0]?.notes).toContain("mS/cm");
+      expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+    }
+  });
   it("preserves Calendula officinalis guidance separately from Tagetes", () => {
     const context: CropContext = { cropIdentity: "calendula", measurementScope: "NUTRIENT_SOLUTION" };
     const result = selectCropRange(context).ec;

@@ -371,7 +371,7 @@ const seedAgeReferences: Readonly<Record<string, SeedAgeReference>> = gardenSeed
 
 /* ---------------------------------------------------------------- page */
 
-export function CalculatorPage({ language = "es" }: { language?: Lang }) {
+export function CalculatorPage({ language = "es", initialPlantId }: { language?: Lang; initialPlantId?: string | undefined }) {
   const [lang, setLang] = useState<Lang>(language);
   useEffect(() => setLang(language), [language]);
   const t = T[lang];
@@ -383,7 +383,12 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
   const [plantPickerOpen, setPlantPickerOpen] = useState(false);
   const [plantQuery, setPlantQuery] = useState("");
   const [mode, setMode] = useState<Mode>("recipe");
-  const [crops, setCrops] = useState(sys.crops);
+  const [crops, setCrops] = useState<Record<string, number>>(() =>
+    initialPlantId && CALCULATOR_PLANTS.some((plant) => plant.id === initialPlantId) &&
+    !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(initialPlantId)
+      ? { [initialPlantId]: 1 }
+      : sys.crops,
+  );
   const [hydroponicSystem, setHydroponicSystem] = useState<HydroponicSystem>(
     sys.hydroponicSystem ?? "UNKNOWN",
   );

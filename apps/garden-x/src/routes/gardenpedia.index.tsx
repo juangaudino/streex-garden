@@ -24,9 +24,11 @@ function validateSearch(search: Record<string, unknown>): GardenpediaSearch {
   const plant = value("plant");
   const seed = value("seed");
   const machine = value("machine");
+  const calculatorPlant = value("calculatorPlant");
   if (plant) result.plant = plant;
   if (seed) result.seed = seed;
   if (machine) result.machine = machine;
+  if (view === "calculator" && calculatorPlant) result.calculatorPlant = calculatorPlant;
   return result;
 }
 
@@ -51,6 +53,7 @@ function GardenpediaIndex() {
             ...(next.plant ? { plant: next.plant } : {}),
             ...(next.seed ? { seed: next.seed } : {}),
             ...(next.machine ? { machine: next.machine } : {}),
+            ...(next.calculatorPlant ? { calculatorPlant: next.calculatorPlant } : {}),
           },
         });
       }}

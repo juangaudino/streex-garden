@@ -35,6 +35,12 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("resolves fenugreek and blue borage using their own crop types", () => {
+    for (const [id, identity] of [["common-fenugreek-trigonella-foenum-graecum", "fenugreek"], ["borage-blue", "borage"]] as const) {
+      expect(resolveNutrientCropIdentity(id)).toBe(identity);
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
+    }
+  });
   it("maps Resina calendula to species guidance without mapping Tagetes marigold", () => {
     expect(resolveNutrientCropIdentity("resina-calendula")).toBe("calendula");
     expect(hasApplicableCropNutrientEvidence("resina-calendula")).toBe(true);
@@ -496,10 +502,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
 
   it("keeps embedded nutrient guidance insufficient when there is no applicable crop evidence", () => {
-    const fenugreekHasNutrientEvidence = hasApplicableCropNutrientEvidence(
-      "common-fenugreek-trigonella-foenum-graecum",
-    );
-    expect(fenugreekHasNutrientEvidence).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("epazote")).toBe(false);
     expect(hasApplicableCropNutrientEvidence("genovese-basil")).toBe(true);
   });
 
@@ -554,8 +557,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 11,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 120,
-      INSUFFICIENT: 376,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 122,
+      INSUFFICIENT: 374,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -599,7 +602,6 @@ describe("Gardenpedia Calculator V1 integration", () => {
       "pinguicula-primuliflora",
       "nepenthes-x-ventrata",
       "tulsi-holy-basil-ocimum-tenuiflorum",
-      "common-fenugreek-trigonella-foenum-graecum",
       "wishbone-flower-torenia-fournieri",
       "alice-sundew-drosera-aliciae",
       "tennessee-coneflower-echinacea-tennesseensis",

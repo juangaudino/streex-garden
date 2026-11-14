@@ -12,6 +12,7 @@ import {
   type GardenpediaLanguage,
   type GardenpediaSurface,
 } from "./gardenpedia-shell";
+export type { GardenpediaLanguage } from "./gardenpedia-shell";
 import {
   donorPlants,
   normalizeLightFilter,
@@ -260,6 +261,7 @@ export function GardenLibrary({
   onLanguageChange,
   diagnosticOnly = false,
   initialView = "library",
+  calculatorPlant,
   onViewChange,
   onPlantSelect,
   onSeedSelect,
@@ -269,6 +271,7 @@ export function GardenLibrary({
   onLanguageChange?: (language: GardenpediaLanguage) => void;
   diagnosticOnly?: boolean;
   initialView?: View;
+  calculatorPlant?: string | undefined;
   onViewChange?: ((view: View) => void) | undefined;
   onPlantSelect?: ((plant: Plant) => void) | undefined;
   onSeedSelect?: ((id: string) => void) | undefined;
@@ -399,7 +402,7 @@ export function GardenLibrary({
     >
       {view === "calculator" ? (
         CalculatorComponent ? (
-          <CalculatorComponent language={language} />
+          <CalculatorComponent language={language} initialPlantId={calculatorPlant} />
         ) : (
           <DeferredSurface />
         )

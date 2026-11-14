@@ -37,6 +37,7 @@ import {
   calibrationUsage,
   calculatorSourceUrl,
   generalCropReferenceForStage,
+  formatActualDosePrefill,
   loadSavedSystems,
   manufacturerDoseDefaults,
   planTopUpToCapacity,
@@ -2412,7 +2413,7 @@ function CalibrationCard({
   const [baseline, setBaseline] = useState("");
   const [resulting, setResulting] = useState("");
   const [actualDoses, setActualDoses] = useState<Record<string, string>>(() =>
-    Object.fromEntries(defaults.map((part) => [part.id, part.amount.toFixed(2)])),
+    Object.fromEntries(defaults.map((part) => [part.id, formatActualDosePrefill(part.amount)])),
   );
   const editedParts = useRef(new Set<string>());
   const previousRecipe = useRef(`${product.id}:${stageId}`);
@@ -2429,7 +2430,7 @@ function CalibrationCard({
           part.id,
           editedParts.current.has(part.id)
             ? (current[part.id] ?? "")
-            : (defaults.find((item) => item.id === part.id)?.amount.toFixed(2) ?? ""),
+            : formatActualDosePrefill(defaults.find((item) => item.id === part.id)?.amount),
         ]),
       ),
     );
@@ -2527,7 +2528,9 @@ function CalibrationCard({
                 editedParts.current.add(part.id);
                 setActualDoses((current) => ({ ...current, [part.id]: value }));
               }}
-              placeholder={defaults.find((item) => item.id === part.id)?.amount.toFixed(2) ?? "—"}
+              placeholder={
+                formatActualDosePrefill(defaults.find((item) => item.id === part.id)?.amount) || "—"
+              }
             />
           ))}
         </div>
@@ -2585,7 +2588,7 @@ function LearnCard({
     Object.fromEntries(
       product.parts.map((part) => {
         const recommended = recommendedDoses.find((dose) => dose.label === part.label);
-        return [part.id, recommended ? recommended.amount.toFixed(2) : ""];
+        return [part.id, formatActualDosePrefill(recommended?.amount)];
       }),
     ),
   );
@@ -2594,7 +2597,7 @@ function LearnCard({
       Object.fromEntries(
         product.parts.map((part) => {
           const recommended = recommendedDoses.find((dose) => dose.label === part.label);
-          return [part.id, recommended ? recommended.amount.toFixed(2) : ""];
+          return [part.id, formatActualDosePrefill(recommended?.amount)];
         }),
       ),
     );
@@ -2664,7 +2667,11 @@ function LearnCard({
           </div>
           <Button
             className="mt-3 h-11 w-full"
-            disabled={!ec || (requireMeasuredBaseline && parseDecimalInput(baseline) === null)}
+            disabled={
+              !ec ||
+              (requireMeasuredBaseline && parseDecimalInput(baseline) === null) ||
+              product.parts.some((part) => !actualDoses[part.id])
+            }
             onClick={() => onLearn(ec, actualDoses, baseline)}
           >
             {t.learn} <ArrowRight className="h-4 w-4" />

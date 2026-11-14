@@ -93,6 +93,25 @@ describe("Calculator real control interactions", () => {
     expect(micro.value).toBe("1.23");
   });
 
+  it("does not prefill tiny positive calibration doses as zero", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    const sample = screen.getByLabelText(/^Actual sample volume/);
+    await user.clear(sample);
+    await user.type(sample, "0.001");
+    await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
+    await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    for (const name of ["FloraMicro", "FloraGro", "FloraBloom"]) {
+      expect((screen.getByLabelText(new RegExp(`^${name}`)) as HTMLInputElement).value).toBe("");
+    }
+    expect((screen.getByRole("button", { name: "Save calibration" }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
   it("offers optional first-calibration guidance in both languages", async () => {
     const user = userEvent.setup();
     const view = render(<CalculatorPage language="en" />);

@@ -828,6 +828,13 @@ function actualDoseTotal(doses: Record<string, string>): number | undefined {
   return total > 0 ? total : undefined;
 }
 
+/** Never prefill a positive actual dose as zero when two-decimal display rounds it away. */
+export function formatActualDosePrefill(amount: number | undefined): string {
+  if (amount === undefined || !Number.isFinite(amount) || amount < 0) return "";
+  if (amount > 0 && amount < 0.005) return "";
+  return amount.toFixed(2);
+}
+
 export function calculateGardenResult(input: CalcInput): CalcResult {
   const calculated = calculateResult(input);
   if (calculated.kind === "ok" && input.productId === "ab")

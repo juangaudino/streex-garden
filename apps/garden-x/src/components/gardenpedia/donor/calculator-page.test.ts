@@ -80,6 +80,26 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.text.en).toContain("not an automatic range");
     expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
   });
+  it("keeps the coleus grower-page claim visible but out of automatic targets", () => {
+    const reference = CROP_STUDY_REFERENCES.find((study) =>
+      study.source.id === "plant-garden-coleus-hydroponic-guide" &&
+      study.plantIds.some((id: string) => id === "rainbow-mix-coleus"),
+    );
+    expect(reference?.source.tier).toBe("E");
+    expect(reference?.text.en).toContain("1.0–1.6");
+    expect(reference?.text.en).toContain("not a validated automatic target");
+    expect(hasApplicableCropNutrientEvidence("rainbow-mix-coleus")).toBe(false);
+  });
+  it("shows inconsistent hyssop guide values as reported context only", () => {
+    const reference = CROP_STUDY_REFERENCES.find((study) =>
+      study.source.id === "scale-stem-hyssop-hydroponic-guide" &&
+      study.plantIds.some((id: string) => id === "hyssop"),
+    );
+    expect(reference?.source.tier).toBe("E");
+    expect(reference?.text.en).toContain("1.0–1.6");
+    expect(reference?.text.en).toContain("1.0–1.8");
+    expect(hasApplicableCropNutrientEvidence("hyssop")).toBe(false);
+  });
   it("resolves sunflower cultivars and purple kohlrabi to identified crop-level guidance", () => {
     for (const id of ["sunflower-helianthus-annuus", "sunflower-american-giant-hybrid", "sunflower-autumn-beauty"]) {
       expect(resolveNutrientCropIdentity(id)).toBe("sunflower");

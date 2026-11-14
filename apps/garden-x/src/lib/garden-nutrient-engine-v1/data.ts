@@ -276,6 +276,16 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     retrievedAt: "2026-11-12",
   },
+  coleusPlantGardenGuide: {
+    id: "plant-garden-coleus-hydroponic-guide",
+    publisher: "Plant.Garden",
+    title: "Coleus (Ati-ati): Hydroponic Care Guide",
+    url: "https://plant.garden/hydroponic?plant=coleus-ati-ati",
+    sourceClass: "OTHER",
+    tier: "E",
+    region: "Malaysia",
+    retrievedAt: "2026-11-14",
+  },
   hibiscusMoscheutosGrower: {
     id: "panam-hibiscus-luna-grower-2023",
     publisher: "PanAmerican Seed",
@@ -374,6 +384,15 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     publication: "2022",
     retrievedAt: "2026-11-12",
+  },
+  hyssopScaleStemGuide: {
+    id: "scale-stem-hyssop-hydroponic-guide",
+    publisher: "Scale & Stem",
+    title: "Hyssop (Hyssopus officinalis)",
+    url: "https://scaleandstem.com/plants/edible/hyssop/",
+    sourceClass: "OTHER",
+    tier: "E",
+    retrievedAt: "2026-11-14",
   },
   purpleKohlrabiStudy: {
     id: "purple-kohlrabi-coir-ec-2024",
@@ -774,6 +793,14 @@ export const CROP_STUDY_REFERENCES = [
     },
   },
   {
+    plantIds: ["rainbow-mix-coleus"],
+    source: NUTRIENT_SOURCES.coleusPlantGardenGuide,
+    text: {
+      es: "Una guía de Plant.Garden para Plectranthus scutellarioides en Kratky o DWC menciona EC de solución de 1,0–1,6 mS/cm. No identifica Rainbow Mix, etapa, formulación ni evidencia de respaldo; es una referencia reportada, no un objetivo automático validado.",
+      en: "A Plant.Garden guide for Plectranthus scutellarioides in Kratky or DWC reports solution EC of 1.0–1.6 mS/cm. It does not identify Rainbow Mix, stage, formulation, or supporting evidence; this is a reported reference, not a validated automatic target.",
+    },
+  },
+  {
     plantIds: ["blush-hibiscus"],
     source: NUTRIENT_SOURCES.hibiscusMoscheutosGrower,
     text: {
@@ -851,6 +878,14 @@ export const CROP_STUDY_REFERENCES = [
     text: {
       es: "Un ensayo de hisopo Lekar trasplantó plantas con cuatro hojas a solución hidropónica y estudió aplicaciones de selenio. No establece un intervalo de EC óptimo ni recomienda añadir selenio a cultivos domésticos.",
       en: "A trial of Lekar hyssop transplanted plants with four leaves into hydroponic solution and studied selenium treatments. It does not establish an optimum EC range or recommend adding selenium to home crops.",
+    },
+  },
+  {
+    plantIds: ["hyssop"],
+    source: NUTRIENT_SOURCES.hyssopScaleStemGuide,
+    text: {
+      es: "Una guía para Hyssopus officinalis menciona EC hidropónica de 1,0–1,6 mS/cm en su tabla y 1,0–1,8 en sus notas. No explica la diferencia ni aporta evidencia que valide esos valores para tu sistema; se muestran como referencias reportadas, no como objetivo automático.",
+      en: "A Hyssopus officinalis guide lists hydroponic EC of 1.0–1.6 mS/cm in its table and 1.0–1.8 in its notes. It does not explain the difference or provide evidence validating these values for your system; they are reported references, not an automatic target.",
     },
   },
   {

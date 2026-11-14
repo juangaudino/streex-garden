@@ -65,6 +65,13 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("keeps holy basil seedling and growth guidance distinct from maturity", () => {
+    const context: CropContext = { cropIdentity: "holy-basil", measurementScope: "NUTRIENT_SOLUTION" };
+    expect(selectCropRange(context).ec.ec).toBeUndefined();
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 0.7, max: 0.9, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({ min: 0.9, max: 1.2, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "FLOWERING" }).ec.ec).toBeUndefined();
+  });
   it("preserves non-bulbing bunching onion guidance without promoting it to seedlings", () => {
     const context: CropContext = { cropIdentity: "bunching-onion", measurementScope: "NUTRIENT_SOLUTION", phenologicalStage: "UNSPECIFIED" };
     const result = selectCropRange(context).ec;

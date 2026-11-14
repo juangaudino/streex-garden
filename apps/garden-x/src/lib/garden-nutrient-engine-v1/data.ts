@@ -1,6 +1,24 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  groweeLemonBasil: {
+    id: "growee-hydroponic-lemon-basil-guide",
+    publisher: "Growee",
+    title: "How to Grow Hydroponic Basil",
+    url: "https://getgrowee.com/growing-basil-hydroponically/",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
+  letpotHolyBasil: {
+    id: "letpot-hydroponic-holy-basil-guide",
+    publisher: "LetPot",
+    title: "How to Grow Hydroponic Holy Basil",
+    url: "https://letpot.com/en-gb/blogs/indoor-garden/how-to-grow-hydroponic-holy-basil-a-detailed-indoor-gardening-guide",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
   igworksBunchingOnion: {
     id: "igworks-hydroponic-bunching-onion-guide",
     publisher: "IGWorks",
@@ -910,6 +928,14 @@ export const CROP_STUDY_REFERENCES = [
 /** Contextual observation only: it is never an EC target or stage inference. */
 export const CROP_STAGE_REFERENCES = [
   {
+    cropIdentity: "holy-basil",
+    source: NUTRIENT_SOURCES.letpotHolyBasil,
+    text: {
+      es: "Una guía comercial para tulsi describe plántula aproximadamente entre los días 14 y 21 y crecimiento en torno a 42–56 días. Son referencias para sus condiciones; la edad por sí sola no confirma la etapa de tu planta.",
+      en: "A commercial guide describes holy basil seedlings at approximately 14–21 days and growth around 42–56 days. These are references under its conditions; age alone does not confirm your plant's stage.",
+    },
+  },
+  {
     cropIdentity: "basil",
     source: NUTRIENT_SOURCES.minnesotaHomeBasil,
     text: {
@@ -994,6 +1020,37 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "lemon-basil-growee-ec",
+    metric: "EC",
+    cropIdentity: "lemon-basil",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.groweeLemonBasil,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
+    notes: "Growee gives general basil nutrient-solution guidance and explicitly includes lemon basil. Lime basil is mapped by the shared O. × africanum crop identity; this is not cultivar-specific validation or a validated seedling dose.",
+  },
+  ...([
+    ["SEEDLING", 0.7, 0.9],
+    ["VEGETATIVE", 0.9, 1.2],
+  ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
+    id: `holy-basil-letpot-${stageApplicability.toLowerCase()}-ec`,
+    metric: "EC",
+    cropIdentity: "holy-basil",
+    stageApplicability,
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.letpotHolyBasil,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes: "LetPot's guidance for Ocimum tenuiflorum by reported growth stage, converted from µS/cm. The supplier gives a separate maturity range; maturity is not automatically equated with vegetative growth or flowering.",
+  })),
   {
     id: "bunching-onion-igworks-ec",
     metric: "EC",

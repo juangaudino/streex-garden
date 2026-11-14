@@ -32,6 +32,14 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
       expect(seedling?.sources[0]?.id).toBe("letpot-hydroponic-garlic-chives-guide");
     }
   });
+  it("retrieves holy basil stage evidence with its source in both languages", () => {
+    for (const language of ["es", "en"] as const) {
+      const records = retrieveGardenpediaEvidence("EC Tulsi holy basil", language, 30);
+      const observation = records.find((record) => record.id.includes("holy-basil-letpot-seedling-ec"));
+      expect(observation?.text).toMatch(language === "es" ? /plántula/i : /seedling/i);
+      expect(observation?.sources[0]?.id).toBe("letpot-hydroponic-holy-basil-guide");
+    }
+  });
 
   it("finds English plant names while answering in Spanish without assigning an ambiguous cultivar", () => {
     for (const [query, plantId] of [

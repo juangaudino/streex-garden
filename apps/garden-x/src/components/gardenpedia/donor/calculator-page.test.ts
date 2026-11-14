@@ -134,10 +134,21 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
     expect(resolveNutrientCropIdentity("basil-dark-opal")).toBe("basil");
     expect(resolveNutrientCropIdentity("butterhead-lettuce-unspecified")).toBe("lettuce");
-    for (const id of ["basil-lemon", "basil-lime", "chamomile-unspecified"]) {
+    for (const id of ["basil-lemon", "basil-lime"]) {
+      expect(resolveNutrientCropIdentity(id)).toBe("lemon-basil");
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
+    }
+    for (const id of ["chamomile-unspecified"]) {
       expect(resolveNutrientCropIdentity(id)).toBeUndefined();
       expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     }
+  });
+  it("applies holy basil evidence only when the user selects a matching stage", () => {
+    const id = "tulsi-holy-basil-ocimum-tenuiflorum";
+    expect(resolveNutrientCropIdentity(id)).toBe("holy-basil");
+    expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    const seedling = contextFor({ [id]: 1 }, "gh-flora", { [id]: "SEEDLING" })[0]!;
+    expect(selectCropRange(seedling).ec.ec).toEqual({ min: 0.7, max: 0.9, unit: "mS/cm" });
   });
   it("keeps all non-carnivorous catalog identities operable with a user-selected target and matching calibration", () => {
     const observation = recordActualDoses({
@@ -526,8 +537,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 11,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 115,
-      INSUFFICIENT: 381,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 117,
+      INSUFFICIENT: 379,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

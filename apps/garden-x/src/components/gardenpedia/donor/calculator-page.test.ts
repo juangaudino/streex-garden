@@ -47,8 +47,16 @@ describe("Gardenpedia Calculator V1 integration", () => {
         study.source.id === "idroponica-facile-home-tower-guide" &&
         study.plantIds.some((plantId: string) => plantId === id),
       )).toBe(true);
-      if (id === "purple-kohlrabi") expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
+  });
+  it("resolves sunflower cultivars and purple kohlrabi to identified crop-level guidance", () => {
+    for (const id of ["sunflower-helianthus-annuus", "sunflower-american-giant-hybrid", "sunflower-autumn-beauty"]) {
+      expect(resolveNutrientCropIdentity(id)).toBe("sunflower");
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
+    }
+    expect(resolveNutrientCropIdentity("purple-kohlrabi")).toBe("kohlrabi");
+    expect(hasApplicableCropNutrientEvidence("purple-kohlrabi")).toBe(true);
   });
   it("maps Bouquet dill to general grower guidance while retaining seasonal context", () => {
     expect(resolveNutrientCropIdentity("dill-bouquet")).toBe("dill");
@@ -511,9 +519,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 10,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 109,
-      INSUFFICIENT: 388,
+      SUPPORTED_DIRECT: 11,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 113,
+      INSUFFICIENT: 383,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

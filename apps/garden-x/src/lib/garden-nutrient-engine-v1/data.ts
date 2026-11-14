@@ -1,6 +1,24 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  igworksSunflower: {
+    id: "igworks-hydroponic-sunflower-guide",
+    publisher: "IGWorks",
+    title: "Growing Hydroponic Sunflowers",
+    url: "https://igworks.com/blogs/growing-guides/growing-hydroponic-sunflowers",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
+  lanitexKohlrabi: {
+    id: "lanitex-hydroponic-kohlrabi-guide",
+    publisher: "Lanitex Hydro Garden",
+    title: "How to Grow Kohlrabi Hydroponically in Australia",
+    url: "https://lanitexhydrogarden.com.au/blogs/hydroponic-plants/grow-kohlrabi-australia",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
   igworksArugula: {
     id: "igworks-hydroponic-arugula-guide",
     publisher: "IGWorks",
@@ -967,6 +985,37 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "sunflower-igworks-pre-bud-ec",
+    metric: "EC",
+    cropIdentity: "sunflower",
+    stageApplicability: "VEGETATIVE",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.igworksSunflower,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1.2, max: 1.6, unit: "mS/cm" },
+    notes: "The supplier describes this range before flower buds appear. It is not specific to the named cultivar, a seedling, or a particular hydroponic reservoir.",
+  },
+  ...([
+    ["sunflower", 1.2, 1.8, NUTRIENT_SOURCES.igworksSunflower],
+    ["kohlrabi", 1.8, 2.4, NUTRIENT_SOURCES.lanitexKohlrabi],
+  ] as const).map(([cropIdentity, min, max, source]): EvidenceObservation => ({
+    id: `${cropIdentity}-${source.id}-ec`,
+    metric: "EC",
+    cropIdentity,
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes: "General grower guidance for hydroponic nutrient solution, not a cultivar-specific trial or a guarantee for a particular system or stage. The source's own product and growing context may affect results; not a validated seedling dose.",
+  })),
   ...([
     ["arugula", 0.8, 1.4, NUTRIENT_SOURCES.igworksArugula],
     ["cilantro", 1.3, 1.8, NUTRIENT_SOURCES.igworksCilantro],

@@ -65,6 +65,16 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("preserves sunflower and kohlrabi supplier ranges without applying them to seedlings", () => {
+    for (const [cropIdentity, min, max] of [["sunflower", 1.2, 1.8], ["kohlrabi", 1.8, 2.4]] as const) {
+      const context: CropContext = { cropIdentity, phenologicalStage: "UNSPECIFIED", measurementScope: "NUTRIENT_SOLUTION" };
+      const result = selectCropRange(context).ec;
+      expect(result.ec).toEqual({ min, max, unit: "mS/cm" });
+      expect(result.evidenceState).toBe("MODERATE");
+      expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+    }
+    expect(selectCropRange({ cropIdentity: "sunflower", phenologicalStage: "VEGETATIVE", measurementScope: "NUTRIENT_SOLUTION" }).ec.ec).toEqual({ min: 1.2, max: 1.6, unit: "mS/cm" });
+  });
   it("keeps chervil grower guidance separate from seedling guidance", () => {
     const context: CropContext = {
       cropIdentity: "chervil",

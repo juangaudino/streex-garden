@@ -55,10 +55,10 @@ describe("Calculator real control interactions", () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);
     await user.click(screen.getByRole("button", { name: "Add plant" }));
-    await user.type(screen.getByPlaceholderText("Search plant…"), "Cascading Petunia");
-    await user.click(screen.getByRole("option", { name: /Cascading Petunia/ }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Epazote");
+    await user.click(screen.getByRole("option", { name: /Epazote/ }));
     expect(screen.getByRole("alert").textContent).toMatch(
-      /not enough applicable EC evidence.*Cascading Petunia/i,
+      /not enough applicable EC evidence.*Epazote/i,
     );
   });
 
@@ -66,8 +66,8 @@ describe("Calculator real control interactions", () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);
     await user.click(screen.getByRole("button", { name: "Add plant" }));
-    await user.type(screen.getByPlaceholderText("Search plant…"), "Cascading Petunia");
-    await user.click(screen.getByRole("option", { name: /Cascading Petunia/ }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Epazote");
+    await user.click(screen.getByRole("option", { name: /Epazote/ }));
     await user.click(screen.getByRole("tab", { name: "By EC" }));
     expect(screen.getByText(/enter the EC you want to use/i)).toBeTruthy();
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;

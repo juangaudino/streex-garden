@@ -319,7 +319,7 @@ describe("Calculator objective independent validation", () => {
         "COMMON_OPTIMUM_RANGE",
       ],
       [{ "bibb-lettuce": 1, "monterey-strawberry": 1 }, "COMMON_OPTIMUM_RANGE"],
-      [{ "genovese-basil": 1, petunia: 1 }, "INSUFFICIENT"],
+      [{ "genovese-basil": 1, epazote: 1 }, "INSUFFICIENT"],
     ];
     for (const [crops, status] of cases) {
       const a = calculatePolycultureRange(contextFor(crops, "gh-flora")),

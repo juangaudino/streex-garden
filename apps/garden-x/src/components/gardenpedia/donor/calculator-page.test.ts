@@ -35,6 +35,16 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("uses petunia crop guidance and lavender's explicitly selected stage", () => {
+    for (const id of ["cascading-petunia", "petunia-dwarf-bedding-mixed"]) {
+      expect(resolveNutrientCropIdentity(id)).toBe("petunia");
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
+    }
+    expect(resolveNutrientCropIdentity("lavender-vera")).toBe("english-lavender");
+    const mature = contextFor({ "lavender-vera": 1 }, "gh-flora", { "lavender-vera": "MATURE" })[0]!;
+    expect(selectCropRange(mature).ec.ec).toEqual({ min: 1.2, max: 1.5, unit: "mS/cm" });
+    expect(hasApplicableCropNutrientEvidence("lavender-vera")).toBe(false);
+  });
   it("links every crop study to a selectable public identity", () => {
     const ids = new Set(CALCULATOR_PLANTS.map((plant) => plant.id));
     for (const reference of CROP_STUDY_REFERENCES)
@@ -230,7 +240,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       max: 1.8,
     });
     expect(generalCropReferenceForStage("bibb-lettuce", "UNSPECIFIED", "DWC")).toBeUndefined();
-    expect(generalCropReferenceForStage("cascading-petunia", "SEEDLING", "DWC")).toBeUndefined();
+    expect(generalCropReferenceForStage("epazote", "SEEDLING", "DWC")).toBeUndefined();
     const context = contextFor(
       { "bibb-lettuce": 1 },
       "gh-flora",
@@ -301,7 +311,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const result = calculateGardenResult({
       language: "en",
       mode: "target",
-      crops: { "cascading-petunia": 1 },
+      crops: { "epazote": 1 },
       liters: 4,
       productId: "gh-flora",
       stageId: "feeding-2",
@@ -539,8 +549,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 11,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 117,
-      INSUFFICIENT: 379,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 119,
+      INSUFFICIENT: 377,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -739,7 +749,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("keeps an unmapped published identity insufficient instead of guessing a crop", () => {
     const result = calculateGardenResult({
       mode: "recipe",
-      crops: { "cascading-petunia": 1 },
+      crops: { "epazote": 1 },
       liters: 2,
       productId: "gh-flora",
       stageId: "feeding-2",
@@ -1343,7 +1353,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("keeps unsupported canonical crops insufficient for crop-derived By EC", () => {
     const result = calculateGardenResult({
       mode: "target",
-      crops: { "cascading-petunia": 1 },
+      crops: { "epazote": 1 },
       liters: 4,
       productId: "gh-flora",
       stageId: "feeding-2",

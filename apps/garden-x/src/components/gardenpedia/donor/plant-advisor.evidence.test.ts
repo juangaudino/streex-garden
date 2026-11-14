@@ -13,6 +13,14 @@ import {
 describe("Gardenpedia Advisor evidence retrieval", () => {
   beforeEach(() => clearGardenpediaEvidenceCacheForTests());
 
+  it("retrieves lavender maturity guidance without presenting it as a universal dose", () => {
+    const records = retrieveGardenpediaEvidence("EC Lavender Vera", "en", 30);
+    const mature = records.find((record) => record.id.includes("english-lavender-letpot-mature-ec"));
+    expect(mature?.text).toMatch(/maturity/i);
+    expect(mature?.text).toMatch(/not a recipe or universal dose/i);
+    expect(mature?.sources[0]?.id).toBe("letpot-hydroponic-english-lavender-guide");
+  });
+
   it("retrieves bilingual canonical plant knowledge for open questions", () => {
     const english = retrieveGardenpediaEvidence("How should I prune Genovese basil?", "en");
     const spanish = retrieveGardenpediaEvidence("¿Cómo podo la albahaca genovesa?", "es");

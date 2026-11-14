@@ -65,6 +65,15 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("retains petunia and English lavender source context and stage limits", () => {
+    const petunia: CropContext = { cropIdentity: "petunia", measurementScope: "NUTRIENT_SOLUTION" };
+    expect(selectCropRange(petunia).ec.ec).toEqual({ min: 1.2, max: 2.5, unit: "mS/cm" });
+    expect(selectCropRange({ ...petunia, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+    const lavender: CropContext = { cropIdentity: "english-lavender", measurementScope: "NUTRIENT_SOLUTION" };
+    expect(selectCropRange(lavender).ec.ec).toBeUndefined();
+    expect(selectCropRange({ ...lavender, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 0.7, max: 0.9, unit: "mS/cm" });
+    expect(selectCropRange({ ...lavender, phenologicalStage: "MATURE" }).ec.ec).toEqual({ min: 1.2, max: 1.5, unit: "mS/cm" });
+  });
   it("keeps holy basil seedling and growth guidance distinct from maturity", () => {
     const context: CropContext = { cropIdentity: "holy-basil", measurementScope: "NUTRIENT_SOLUTION" };
     expect(selectCropRange(context).ec.ec).toBeUndefined();

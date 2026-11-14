@@ -1,6 +1,24 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  letpotPetunia: {
+    id: "letpot-hydroponic-petunia-guide",
+    publisher: "LetPot",
+    title: "How to Grow Petunia in a Hydroponic Growing System",
+    url: "https://letpot.com/blogs/hydroponics-system-knowledge-and-tips/how-to-grow-petunia-in-a-hydroponic-growing-system",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
+  letpotLavender: {
+    id: "letpot-hydroponic-english-lavender-guide",
+    publisher: "LetPot",
+    title: "How to Grow Hydroponic Lavender",
+    url: "https://letpot.com/en-au/blogs/plant-growing-tips-and-growing-systems-knowledge/how-to-grow-hydroponic-lavender-a-detailed-indoor-gardening-guide",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
   groweeLemonBasil: {
     id: "growee-hydroponic-lemon-basil-guide",
     publisher: "Growee",
@@ -1020,6 +1038,38 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "petunia-letpot-ec",
+    metric: "EC",
+    cropIdentity: "petunia",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.letpotPetunia,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1.2, max: 2.5, unit: "mS/cm" },
+    notes: "General LetPot petunia guidance includes cascading types but does not establish a cultivar-specific response or separate growth-stage range. It is not a validated seedling dose.",
+  },
+  ...([
+    ["SEEDLING", 0.7, 0.9],
+    ["VEGETATIVE", 0.9, 1.2],
+    ["MATURE", 1.2, 1.5],
+  ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
+    id: `english-lavender-letpot-${stageApplicability.toLowerCase()}-ec`,
+    metric: "EC",
+    cropIdentity: "english-lavender",
+    stageApplicability,
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.letpotLavender,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes: "LetPot's stage-specific guidance identifies Lavandula angustifolia, converted from µS/cm. It does not validate the Vera cultivar or a specific reservoir; maturity and flowering are not treated as identical.",
+  })),
   {
     id: "lemon-basil-growee-ec",
     metric: "EC",

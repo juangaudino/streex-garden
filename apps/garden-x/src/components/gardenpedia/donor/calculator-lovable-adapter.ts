@@ -321,7 +321,7 @@ export function loadSavedSystems(): SavedSystem[] {
         currentLiters: item.currentLiters ?? null,
         capacityLiters: item.capacityLiters ?? null,
         waterAdded: item.waterAdded ?? null,
-        dosingResolutionMl: item.dosingResolutionMl ?? 0.5,
+        dosingResolutionMl: item.dosingResolutionMl,
         sourceEcKnown: item.sourceEcKnown ?? true,
       }));
   } catch {
@@ -883,6 +883,12 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
         `Below your dosing resolution (${input.dosingResolutionMl} mL): ${unmeasurable.map((dose) => dose.label).join(", ")}. Use suitable equipment; do not round a required dose to zero.`,
       ];
   }
+  if (calculated.kind === "ok" && input.dosingResolutionMl === undefined &&
+      calculated.doses.some((dose) => dose.unit === "mL" && dose.amount > 0))
+    calculated.warnings = [
+      ...(calculated.warnings ?? []),
+      "Dosing equipment resolution is unknown; check that you can measure each amount accurately.",
+    ];
   const lang = input.language ?? "es";
   if (calculated.kind === "needs" && calculated.message)
     calculated.message = presentationMessage(calculated.message, lang);
@@ -893,6 +899,10 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
 
 function presentationMessage(message: string, lang: Lang): string {
   const pairs: [string, string][] = [
+    [
+      "No se conoce la resolución de tu equipo; comprueba que puedes medir cada cantidad con precisión.",
+      "Dosing equipment resolution is unknown; check that you can measure each amount accurately.",
+    ],
     [
       "Añade al menos una planta para aplicar evidencia EC.",
       "Add at least one plant to apply crop EC evidence.",

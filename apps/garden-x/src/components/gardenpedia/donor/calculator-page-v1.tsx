@@ -423,9 +423,9 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
   const [calibrationError, setCalibrationError] = useState("");
   const [calibrationTemporary, setCalibrationTemporary] = useState(false);
   const [saveError, setSaveError] = useState("");
-  const [dosingResolutionInput, setDosingResolutionInput] = useState("0.5");
+  const [dosingResolutionInput, setDosingResolutionInput] = useState("");
   const [correctionStepInput, setCorrectionStepInput] = useState("50");
-  const dosingResolutionMl = parseDecimalInput(dosingResolutionInput) ?? 0;
+  const dosingResolutionMl = parseDecimalInput(dosingResolutionInput) ?? undefined;
   const [round, setRound] = useState(1);
   const [justLearned, setJustLearned] = useState(false);
   const [calibrationObservations, setCalibrationObservations] = useState<
@@ -502,7 +502,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     setCurrentLiters(s.currentLiters == null ? "" : String(s.currentLiters));
     setCapacityInput(s.capacityLiters == null ? "" : String(s.capacityLiters));
     setWaterAdded(s.waterAdded == null ? "" : String(s.waterAdded));
-    setDosingResolutionInput(String(s.dosingResolutionMl ?? 0.5));
+    setDosingResolutionInput(s.dosingResolutionMl == null ? "" : String(s.dosingResolutionMl));
     setCorrectionStepInput(String((s.correctionFraction ?? 0.5) * 100));
     setRound(1);
     const observations =
@@ -740,7 +740,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
           ...(targetEdited && (userTarget === null || userTarget <= 0) && mode !== "recipe"
             ? [t.targetEc]
             : []),
-          ...(dosingResolutionMl <= 0 ? [t.dosing] : []),
+          ...(dosingResolutionInput.trim() && (dosingResolutionMl === undefined || dosingResolutionMl <= 0) ? [t.dosing] : []),
           ...(mode === "adjust" &&
           ((parseDecimalInput(correctionStepInput) ?? 0) <= 0 ||
             (parseDecimalInput(correctionStepInput) ?? 0) > 100)
@@ -773,6 +773,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
       round,
       calibrationObservations,
       dosingResolutionMl,
+      dosingResolutionInput,
       correctionStepInput,
       sourceEcInput,
       targetEdited,
@@ -1595,6 +1596,9 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                     value={dosingResolutionInput}
                     onChange={setDosingResolutionInput}
                   />
+                  <p className="text-xs text-muted-foreground">
+                    {lang === "es" ? "Opcional: indica la menor cantidad que puedes medir con tu equipo." : "Optional: enter the smallest amount your equipment can measure."}
+                  </p>
                 </div>
               </details>
 

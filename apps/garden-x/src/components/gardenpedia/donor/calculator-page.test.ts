@@ -1394,6 +1394,22 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(loadSavedSystems()).toEqual([]);
   });
 
+  it("warns when dosing equipment precision is unknown rather than assuming a resolution", () => {
+    const input = {
+      mode: "recipe" as const, crops: { "bibb-lettuce": 1 }, liters: 4,
+      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
+      currentEc: null, currentLiters: null, waterAdded: null, userTarget: null, round: 1,
+    };
+    const unknown = calculateGardenResult({ ...input, language: "en" });
+    const known = calculateGardenResult({ ...input, language: "en", dosingResolutionMl: 0.1 });
+    expect(unknown.kind).toBe("ok");
+    expect(known.kind).toBe("ok");
+    if (unknown.kind === "ok" && known.kind === "ok") {
+      expect(unknown.warnings?.join(" ")).toContain("Dosing equipment resolution is unknown");
+      expect(known.warnings?.join(" ")).not.toContain("Dosing equipment resolution is unknown");
+    }
+  });
+
   it("persists and restores local saved-system configuration without a canonical write", () => {
     const storage = new Map<string, string>();
     vi.stubGlobal("window", {
@@ -1425,6 +1441,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     };
     persistSavedSystems([saved]);
     expect(loadSavedSystems()).toEqual([saved]);
+    const { dosingResolutionMl: _resolution, ...withoutResolution } = saved;
+    persistSavedSystems([withoutResolution]);
+    expect(loadSavedSystems()[0]?.dosingResolutionMl).toBeUndefined();
     vi.unstubAllGlobals();
   });
 });

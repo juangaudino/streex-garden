@@ -38,6 +38,8 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
       const observation = records.find((record) => record.id.includes("holy-basil-letpot-seedling-ec"));
       expect(observation?.text).toMatch(language === "es" ? /plántula/i : /seedling/i);
       expect(observation?.sources[0]?.id).toBe("letpot-hydroponic-holy-basil-guide");
+      const mature = records.find((record) => record.id.includes("holy-basil-letpot-mature-ec"));
+      expect(mature?.text).toMatch(language === "es" ? /madurez/i : /maturity/i);
     }
   });
 

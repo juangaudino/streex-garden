@@ -149,6 +149,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     const seedling = contextFor({ [id]: 1 }, "gh-flora", { [id]: "SEEDLING" })[0]!;
     expect(selectCropRange(seedling).ec.ec).toEqual({ min: 0.7, max: 0.9, unit: "mS/cm" });
+    const mature = contextFor({ [id]: 1 }, "gh-flora", { [id]: "MATURE" })[0]!;
+    expect(selectCropRange(mature).ec.ec).toEqual({ min: 1.6, max: 2.1, unit: "mS/cm" });
   });
   it("keeps all non-carnivorous catalog identities operable with a user-selected target and matching calibration", () => {
     const observation = recordActualDoses({

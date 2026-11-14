@@ -36,7 +36,7 @@ export type Provenance = "official" | "garden" | "measured" | "user";
 export type Evidence = Lowercase<EvidenceState>;
 export type EcUnit = "mS" | "uS";
 export type CalculatorCropStage =
-  "UNSPECIFIED" | "SEEDLING" | "VEGETATIVE" | "FLOWERING" | "FRUITING" | "MIXED";
+  "UNSPECIFIED" | "SEEDLING" | "VEGETATIVE" | "MATURE" | "FLOWERING" | "FRUITING" | "MIXED";
 export type CalculatorAdditionalStage = Exclude<CalculatorCropStage, "UNSPECIFIED" | "MIXED">;
 export type CalculatorPlant = {
   id: string;

@@ -1037,6 +1037,7 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
   ...([
     ["SEEDLING", 0.7, 0.9],
     ["VEGETATIVE", 0.9, 1.2],
+    ["MATURE", 1.6, 2.1],
   ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
     id: `holy-basil-letpot-${stageApplicability.toLowerCase()}-ec`,
     metric: "EC",
@@ -1049,7 +1050,7 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "LetPot's guidance for Ocimum tenuiflorum by reported growth stage, converted from µS/cm. The supplier gives a separate maturity range; maturity is not automatically equated with vegetative growth or flowering.",
+    notes: "LetPot's guidance for Ocimum tenuiflorum by reported growth stage, converted from µS/cm. Maturity is not automatically equated with vegetative growth or flowering.",
   })),
   {
     id: "bunching-onion-igworks-ec",
@@ -1116,6 +1117,7 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
   ...([
     ["SEEDLING", 1, 1.3],
     ["VEGETATIVE", 1, 1.5],
+    ["MATURE", 1.5, 1.8],
   ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
     id: `garlic-chives-letpot-${stageApplicability.toLowerCase()}-ec`,
     metric: "EC",
@@ -1128,7 +1130,7 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "LetPot's stage-specific garlic chive guidance, converted from µS/cm; cultivar and reservoir conditions are unspecified. Growth is used only for the vegetative stage and does not imply a maturity or flowering target.",
+    notes: "LetPot's stage-specific garlic chive guidance, converted from µS/cm; cultivar and reservoir conditions are unspecified. Growth and maturity remain distinct and neither implies a flowering target.",
   })),
   {
     id: "chervil-igworks-hydroponic-ec",

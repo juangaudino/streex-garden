@@ -165,7 +165,7 @@ function buildEvidenceForEntry(
     if (
       observation.cropIdentity !== nutrientIdentity ||
       observation.metric !== "EC" ||
-      !["UNSPECIFIED", "SEEDLING", "VEGETATIVE"].includes(observation.stageApplicability) ||
+      !["UNSPECIFIED", "SEEDLING", "VEGETATIVE", "MATURE"].includes(observation.stageApplicability) ||
       observation.measurementScope !== "NUTRIENT_SOLUTION" ||
       observation.scopeBasis === "UNKNOWN" ||
       observation.verificationStatus !== "VERIFIED" ||
@@ -199,8 +199,8 @@ function buildEvidenceForEntry(
         ? `La fuente reporta para el cultivo ${nutrientIdentity} un rango general de EC de ${min}–${max} mS/cm en solución nutritiva. La variedad y la etapa no están especificadas por la fuente; el alcance de medición es ${observation.scopeBasis === "STATED" ? "declarado" : "inferido del contexto"}.${detailContext} Es una referencia de cultivo, no una receta, una dosis ni una validación para plántulas o para un sistema concreto.`
         : `The source reports a general nutrient-solution EC range of ${min}–${max} mS/cm for ${nutrientIdentity}. The source does not specify cultivar or stage; measurement scope is ${observation.scopeBasis === "STATED" ? "stated" : "inferred from context"}.${detailContext} This is crop-level context, not a recipe, dose, or validation for seedlings or a particular system.`
     ) : language === "es"
-      ? `La fuente indica para ${nutrientIdentity} un rango de EC de ${min}–${max} mS/cm en solución nutritiva durante ${stage === "SEEDLING" ? "la etapa de plántula" : "el crecimiento vegetativo"}. La variedad y las condiciones concretas no están especificadas. Es orientación de cultivo para esa etapa, no una receta ni una dosis universal.`
-      : `The source reports a nutrient-solution EC range of ${min}–${max} mS/cm for ${nutrientIdentity} during ${stage === "SEEDLING" ? "the seedling stage" : "vegetative growth"}. Cultivar and specific conditions are not stated. This is stage-specific grower guidance, not a recipe or universal dose.`;
+      ? `La fuente indica para ${nutrientIdentity} un rango de EC de ${min}–${max} mS/cm en solución nutritiva durante ${stage === "SEEDLING" ? "la etapa de plántula" : stage === "MATURE" ? "la madurez" : "el crecimiento vegetativo"}. La variedad y las condiciones concretas no están especificadas. Es orientación de cultivo para esa etapa, no una receta ni una dosis universal.`
+      : `The source reports a nutrient-solution EC range of ${min}–${max} mS/cm for ${nutrientIdentity} during ${stage === "SEEDLING" ? "the seedling stage" : stage === "MATURE" ? "maturity" : "vegetative growth"}. Cultivar and specific conditions are not stated. This is stage-specific grower guidance, not a recipe or universal dose.`;
     records.push({
       id: `${entry.libraryPlantId}:nutrient:${observation.id}`,
       plantId: entry.libraryPlantId,

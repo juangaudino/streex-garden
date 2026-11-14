@@ -1124,6 +1124,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                             <option value="VEGETATIVE">
                               {lang === "es" ? "Crecimiento vegetativo" : "Vegetative growth"}
                             </option>
+                            <option value="MATURE">
+                              {lang === "es" ? "Planta madura" : "Mature plant"}
+                            </option>
                             <option value="FLOWERING">
                               {lang === "es" ? "Floración" : "Flowering"}
                             </option>
@@ -1231,6 +1234,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                                         ? "Crecimiento vegetativo"
                                         : "Vegetative growth",
                                     ],
+                                    ["MATURE", lang === "es" ? "Planta madura" : "Mature plant"],
                                     ["FLOWERING", lang === "es" ? "Floración" : "Flowering"],
                                     ["FRUITING", lang === "es" ? "Fructificación" : "Fruiting"],
                                   ] as [CalculatorAdditionalStage, string][]

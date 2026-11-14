@@ -27,7 +27,7 @@ export type MeasurementScope =
 export type ScopeBasis = "STATED" | "INFERRED" | "UNKNOWN";
 
 export type StageApplicability =
-  "SEEDLING" | "VEGETATIVE" | "FLOWERING" | "FRUITING" | "ALL" | "UNSPECIFIED";
+  "SEEDLING" | "VEGETATIVE" | "MATURE" | "FLOWERING" | "FRUITING" | "ALL" | "UNSPECIFIED";
 
 export type HydroponicSystem =
   | "KRATKY"

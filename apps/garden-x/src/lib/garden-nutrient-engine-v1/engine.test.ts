@@ -70,6 +70,7 @@ describe("Garden Nutrient Engine V1", () => {
     expect(selectCropRange(context).ec.ec).toBeUndefined();
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 0.7, max: 0.9, unit: "mS/cm" });
     expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({ min: 0.9, max: 1.2, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "MATURE" }).ec.ec).toEqual({ min: 1.6, max: 2.1, unit: "mS/cm" });
     expect(selectCropRange({ ...context, phenologicalStage: "FLOWERING" }).ec.ec).toBeUndefined();
   });
   it("preserves non-bulbing bunching onion guidance without promoting it to seedlings", () => {
@@ -138,6 +139,7 @@ describe("Garden Nutrient Engine V1", () => {
     expect(selectCropRange(context).ec.ec).toBeUndefined();
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 1, max: 1.3, unit: "mS/cm" });
     expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({ min: 1, max: 1.5, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "MATURE" }).ec.ec).toEqual({ min: 1.5, max: 1.8, unit: "mS/cm" });
     expect(selectCropRange({ ...context, phenologicalStage: "FLOWERING" }).ec.ec).toBeUndefined();
   });
   it("uses rosemary supplier guidance as a moderate reported range, not a seedling rule", () => {

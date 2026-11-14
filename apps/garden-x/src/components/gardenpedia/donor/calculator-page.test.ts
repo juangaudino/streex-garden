@@ -1287,6 +1287,32 @@ describe("Gardenpedia Calculator V1 integration", () => {
     if (result.kind === "needs") expect(result.message).toContain("will not interpolate");
   });
 
+  it("explains that GH EC dosing uses the measured mixture, not necessarily the official ratio", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
+      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(observation.ok).toBe(true);
+    const input = {
+      language: "en" as const, crops: { "bibb-lettuce": 1 }, liters: 4,
+      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
+      currentEc: 0.7, currentLiters: 2, capacityLiters: 4, waterAdded: 1,
+      userTarget: 1.2, round: 1, calibrationObservations: [observation.value!],
+    };
+    for (const mode of ["target", "adjust", "topup"] as const) {
+      const result = calculateGardenResult({ ...input, mode });
+      expect(result.kind).toBe("ok");
+      if (result.kind === "ok") {
+        expect(result.warnings?.join(" ")).toContain("Component proportions follow your actual calibration mixture");
+        expect(result.doses.find((part) => part.label === "FloraMicro")!.amount /
+          result.doses.find((part) => part.label === "FloraBloom")!.amount).toBeCloseTo(2);
+      }
+    }
+    const official = calculateGardenResult({ ...input, mode: "recipe" });
+    if (official.kind === "ok")
+      expect(official.warnings?.join(" ")).not.toContain("Component proportions follow");
+  });
+
   it("requires measured AeroGarden calibration and uses it for EC-based workflows", () => {
     const base = {
       crops: { "genovese-basil": 1 },

@@ -463,6 +463,8 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByLabelText(/^EC you measured/) as HTMLInputElement).value).toBe("0.8");
     expect(screen.queryByText("To calculate I need")).toBeNull();
     expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
+    const ratioNotice = screen.getByText(/Component proportions follow your actual calibration mixture/i);
+    expect(ratioNotice.closest("details")).toBeNull();
   });
 
   it("persists full Top Up state and converts measured EC when changing units", async () => {

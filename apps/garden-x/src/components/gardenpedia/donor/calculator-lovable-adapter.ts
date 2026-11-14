@@ -871,6 +871,12 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
       ...(calculated.warnings ?? []),
       "User-identified formulation and measured ratio; no manufacturer recipe is implied. Follow the manufacturer's mixing instructions.",
     ];
+  if (calculated.kind === "ok" && input.productId === "gh-flora" && input.mode !== "recipe" &&
+      calculated.doses.some((dose) => dose.unit === "mL" && dose.amount > 0))
+    calculated.warnings = [
+      ...(calculated.warnings ?? []),
+      "Component proportions follow your actual calibration mixture and may differ from the manufacturer's recipe for this stage.",
+    ];
   if (
     calculated.kind === "ok" &&
     calculated.doses.some((dose) => !Number.isFinite(dose.amount) || dose.amount < 0)
@@ -904,6 +910,10 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
 
 function presentationMessage(message: string, lang: Lang): string {
   const pairs: [string, string][] = [
+    [
+      "Las proporciones de los componentes siguen la mezcla que mediste en tu calibración y pueden diferir de la receta del fabricante para esta etapa.",
+      "Component proportions follow your actual calibration mixture and may differ from the manufacturer's recipe for this stage.",
+    ],
     [
       "No se conoce la resolución de tu equipo; comprueba que puedes medir cada cantidad con precisión.",
       "Dosing equipment resolution is unknown; check that you can measure each amount accurately.",

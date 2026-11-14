@@ -1627,6 +1627,13 @@ export function calculateTopUpMaintenance(input: {
   }
   let dilutionWaterMl: number | undefined;
   if (afterWaterEc - input.targetEc > comparisonTolerance) {
+    if (!input.replacementWaterEc)
+      return result(
+        undefined,
+        warnings,
+        [error("SOURCE_WATER_EC_REQUIRED", "Measure the dilution water EC before calculating dilution.")],
+        claims,
+      );
     if (replacementWaterEc >= input.targetEc)
       return result(
         undefined,

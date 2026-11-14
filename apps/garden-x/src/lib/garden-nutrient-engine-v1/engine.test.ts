@@ -243,6 +243,14 @@ describe("Garden Nutrient Engine V1", () => {
     };
     expect(calculateTopUpMaintenance(base).errors[0]?.code).toBe("SOURCE_WATER_EC_REQUIRED");
     expect(calculateTopUpMaintenance({ ...base, replacementWaterL: 0 }).ok).toBe(true);
+    const needsDilution = { ...base, currentEc: measurement(1.5, "NUTRIENT_SOLUTION"), replacementWaterL: 0 };
+    expect(calculateTopUpMaintenance(needsDilution).errors[0]?.code).toBe("SOURCE_WATER_EC_REQUIRED");
+    const measuredDilution = calculateTopUpMaintenance({
+      ...needsDilution,
+      replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
+    });
+    expect(measuredDilution.ok).toBe(true);
+    expect(measuredDilution.value?.dilutionWaterMl).toBeCloseTo(750);
     expect(
       calculateTopUpMaintenance({
         ...base,

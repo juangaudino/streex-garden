@@ -151,27 +151,30 @@ describe("Calculator objective independent validation", () => {
       }
   });
   it("compares AeroGarden with current official group and feeding instructions", () => {
-    for (const pods of [6, 7, 9])
+    for (const pods of [2, 3, 6, 7, 9, 12])
       for (const event of [1, 2, 3, 8]) {
         calculations++;
         const value = executeFreshRecipe({
           recipeId: AEROGARDEN_RECIPE.id,
           podCount: pods,
-          feedingIndex: pods === 9 ? event : 1,
+          feedingIndex: event,
         });
         compare(
           `Aero ${pods} pods feeding ${event}`,
           aeroUrl,
-          pods === 9 && event >= 3 ? 12 : 8,
+          pods === 2 || pods === 3 ? 4 : pods === 12 ? (event >= 3 ? 24 : 16) : pods === 9 && event >= 3 ? 12 : 8,
           value.value!.parts[0]!.ml,
           0,
         );
       }
-    for (const pods of [2, 3, 5, 8, 12]) {
+    for (const pods of [1, 4, 5, 8, 10, 11, 13]) {
       calculations++;
       expect(
         executeFreshRecipe({ recipeId: AEROGARDEN_RECIPE.id, podCount: pods, feedingIndex: 1 }).ok,
       ).toBe(false);
+    }
+    for (const feedingIndex of [0, -1, 1.5]) {
+      expect(executeFreshRecipe({ recipeId: AEROGARDEN_RECIPE.id, podCount: 12, feedingIndex }).errors[0]?.code).toBe("INVALID_FEEDING_INDEX");
     }
   });
   it("checks every stored EC and pH range against the OSU table", () => {

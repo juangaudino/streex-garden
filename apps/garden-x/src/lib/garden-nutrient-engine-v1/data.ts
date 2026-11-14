@@ -481,11 +481,11 @@ export const NUTRIENT_SOURCES = {
     id: "aerogarden-liquid-plant-food",
     publisher: "AeroGarden / ScottsMiracle-Gro",
     title: "Liquid Plant Food (Nutrients) - 3 oz",
-    url: "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html",
+    url: "https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB21710.html",
     sourceClass: "MANUFACTURER",
     tier: "A",
     region: "US",
-    retrievedAt: "2026-10-12",
+    retrievedAt: "2026-11-13",
   },
 } satisfies Record<string, SourceRef>;
 
@@ -1243,6 +1243,15 @@ export const AEROGARDEN_RECIPE: ManufacturerRecipe = {
   components: [{ id: "single", label: "AeroGarden Liquid Plant Food", npk: "4-3-6" }],
   steps: [
     {
+      stage: "POD_GROUP_2_3",
+      feedingIndex: 1,
+      label: "2- and 3-pod gardens: every feeding",
+      doses: { single: 4 },
+      doseUnit: "mL",
+      source: NUTRIENT_SOURCES.aerogardenLiquidFood,
+      epistemic: "MANUFACTURER_INSTRUCTION",
+    },
+    {
       stage: "POD_GROUP_6_7",
       feedingIndex: 1,
       label: "6-pod Harvest feeding",
@@ -1278,14 +1287,23 @@ export const AEROGARDEN_RECIPE: ManufacturerRecipe = {
       source: aero,
       epistemic: "MANUFACTURER_INSTRUCTION",
     },
+    ...([1, 2, 3] as const).map((feedingIndex) => ({
+      stage: "POD_GROUP_12",
+      feedingIndex,
+      label: feedingIndex === 3 ? "12-pod third and later feedings" : `12-pod feeding ${feedingIndex}`,
+      doses: { single: feedingIndex === 3 ? 24 : 16 },
+      doseUnit: "mL" as const,
+      source: NUTRIENT_SOURCES.aerogardenLiquidFood,
+      epistemic: "MANUFACTURER_INSTRUCTION" as const,
+    })),
   ],
   mixingOrder: ["single"],
   source: aero,
   executable: true,
-  podCountGroups: [6, 7, 9],
+  podCountGroups: [2, 3, 6, 7, 9, 12],
   notes: [
     "Pod count is a product-model group, not a crop count.",
-    "2–3 and 12-pod amount details are not persisted here without a directly verified current manufacturer amount.",
+    "Manufacturer product-page guidance; always check the instructions on the user's exact product label.",
   ],
 };
 

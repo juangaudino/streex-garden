@@ -724,16 +724,16 @@ export function executeFreshRecipe(input: {
         [],
       );
     }
-    steps = steps.filter(
-      (step) =>
-        step.stage === `POD_GROUP_${input.podCount === 6 || input.podCount === 7 ? "6_7" : "9"}`,
-    );
+    const group = input.podCount === 2 || input.podCount === 3 ? "2_3" :
+      input.podCount === 6 || input.podCount === 7 ? "6_7" : String(input.podCount);
+    steps = steps.filter((step) => step.stage === `POD_GROUP_${group}`);
   }
   if (input.feedingIndex !== undefined) {
+    if (!Number.isInteger(input.feedingIndex) || input.feedingIndex < 1)
+      return result(undefined, [], [error("INVALID_FEEDING_INDEX", "Feeding index must be a positive integer.")], []);
     const feedingIndex =
-      recipe.podCountGroups && input.podCount === 9 && input.feedingIndex >= 3
-        ? 3
-        : input.feedingIndex;
+      recipe.podCountGroups && [2, 3, 6, 7].includes(input.podCount ?? 0) ? 1 :
+      recipe.podCountGroups && [9, 12].includes(input.podCount ?? 0) && input.feedingIndex >= 3 ? 3 : input.feedingIndex;
     steps = steps.filter((step) => step.feedingIndex === feedingIndex);
   }
   if (steps.length !== 1)

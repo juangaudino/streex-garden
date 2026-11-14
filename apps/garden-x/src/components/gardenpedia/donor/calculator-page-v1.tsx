@@ -76,7 +76,7 @@ const T = {
     volume: "Volumen del tanque",
     capacity: "Capacidad del tanque",
     pods: "Capacidad del modelo (pods)",
-    podGroupsHint: "Grupos verificados: 6, 7 y 9 pods",
+    podGroupsHint: "Modelos indicados por el fabricante: 2, 3, 6, 7, 9 y 12 pods. Revisa la etiqueta de tu producto.",
     product: "Nutriente",
     customAbManufacturer: "Fabricante del producto A+B",
     customAbName: "Nombre exacto del producto A+B",
@@ -204,7 +204,7 @@ const T = {
     volume: "Reservoir volume",
     capacity: "Reservoir capacity",
     pods: "Model capacity (pods)",
-    podGroupsHint: "Verified groups: 6, 7, and 9 pods",
+    podGroupsHint: "Manufacturer-listed models: 2, 3, 6, 7, 9 and 12 pods. Check your product label.",
     product: "Nutrient",
     customAbManufacturer: "A+B manufacturer",
     customAbName: "Exact A+B product name",
@@ -1403,7 +1403,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                     >
                       {product.recipeStages
                         .filter(
-                          (s) => product.id !== "aerogarden" || s.feedingIndex === 1 || pods === 9,
+                          (s) => product.id !== "aerogarden" || s.feedingIndex === 1 || pods === 9 || pods === 12,
                         )
                         .map((s) => (
                           <option key={s.id} value={s.id}>
@@ -1425,7 +1425,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                           active={pods === group}
                           onClick={() => {
                             setPods(group);
-                            if (group !== 9 && ["feeding-2", "feeding-3"].includes(stageId))
+                            if (group !== 9 && group !== 12 && ["feeding-2", "feeding-3"].includes(stageId))
                               setStageId("feeding-1");
                           }}
                         >
@@ -1538,7 +1538,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
                         {product.recipeStages
                           .filter(
                             (stage) =>
-                              product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9,
+                              product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9 || pods === 12,
                           )
                           .map((stage) => (
                             <option key={stage.id} value={stage.id}>
@@ -2483,7 +2483,7 @@ function CalibrationCard({
           >
             {product.recipeStages
               .filter(
-                (stage) => product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9,
+                (stage) => product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9 || pods === 12,
               )
               .map((stage) => (
                 <option key={stage.id} value={stage.id}>

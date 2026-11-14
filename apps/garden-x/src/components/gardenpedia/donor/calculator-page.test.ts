@@ -616,7 +616,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("keeps AeroGarden UI projections aligned with verified groups and feeding events", () => {
     const aero = CALCULATOR_PRODUCTS.find((product) => product.id === "aerogarden");
-    expect(aero?.podGroups).toEqual([6, 7, 9]);
+    expect(aero?.podGroups).toEqual([2, 3, 6, 7, 9, 12]);
     expect(aero?.recipeStages.map((stage) => stage.feedingIndex)).toEqual([1, 2, 3]);
     expect(recipeStageLabel(aero!.recipeStages[0]!, "aerogarden", 6, "en")).toMatch(
       /each feeding/i,
@@ -718,7 +718,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(third.value?.parts[0]?.ml).toBe(12);
     const unsupported = executeFreshRecipe({
       recipeId: AEROGARDEN_RECIPE.id,
-      podCount: 12,
+      podCount: 10,
       feedingIndex: 1,
     });
     expect(unsupported.ok).toBe(false);
@@ -1168,7 +1168,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       liters: 2,
       productId: "aerogarden",
       stageId: "w1",
-      pods: 12,
+      pods: 10,
       sourceEc: 0.2,
       currentEc: null,
       currentLiters: null,

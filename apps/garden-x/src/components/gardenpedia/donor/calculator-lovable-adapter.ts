@@ -149,24 +149,24 @@ export function recipeStageLabel(
   lang: Lang,
 ): string {
   if (productId !== "aerogarden") return stage.label[lang];
-  if (stage.feedingIndex === 1 && pods === 9) {
+  if (stage.feedingIndex === 1 && (pods === 9 || pods === 12)) {
     return lang === "es"
-      ? "Primera alimentación · Bounty · 9 pods"
-      : "First feeding · Bounty · 9 pods";
+      ? `Primera alimentación · ${pods} pods`
+      : `First feeding · ${pods} pods`;
   }
   if (stage.feedingIndex === 2) {
     return lang === "es"
-      ? "Segunda alimentación · Bounty · 9 pods"
-      : "Second feeding · Bounty · 9 pods";
+      ? `Segunda alimentación · ${pods} pods`
+      : `Second feeding · ${pods} pods`;
   }
   if (stage.feedingIndex === 3) {
     return lang === "es"
-      ? "Tercera y siguientes · Bounty · 9 pods"
-      : "Third and later feedings · Bounty · 9 pods";
+      ? `Tercera y siguientes · ${pods} pods`
+      : `Third and later feedings · ${pods} pods`;
   }
   return lang === "es"
-    ? "En cada alimentación · Harvest · 6/7 pods"
-    : "At each feeding · Harvest · 6/7 pods";
+    ? `En cada alimentación · ${pods} pods`
+    : `At each feeding · ${pods} pods`;
 }
 
 export function manufacturerDoseDefaults(input: {
@@ -214,7 +214,7 @@ export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
     recipeId: AEROGARDEN_RECIPE_ID,
     hasRecipeStages: true,
     recipeStages: AEROGARDEN_STAGES,
-    podGroups: [6, 7, 9],
+    podGroups: MANUFACTURER_RECIPES.find((recipe) => recipe.id === AEROGARDEN_RECIPE_ID)?.podCountGroups ?? [],
     available: true,
     parts: [{ id: "single", label: "Liquid Plant Food" }],
   },

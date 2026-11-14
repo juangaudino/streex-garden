@@ -83,8 +83,9 @@ distintas edades; una edad en días es contexto, no confirma por sí sola una et
 - **A+B:** identifica fabricante, producto y formulación. Para cálculo por EC registra
   una calibración real con las cantidades efectivas de ambas partes; cambiar la
   formulación no debe reutilizar silenciosamente la calibración anterior.
-- **AeroGarden:** verifica Receta con un grupo de 6, 7 o 9 pods y la alimentación
-  correspondiente. Los demás grupos no deben recibir cantidades interpoladas. Para
+- **AeroGarden:** verifica Receta con un modelo de 2, 3, 6, 7, 9 o 12 pods y la
+  alimentación correspondiente; comprueba la etiqueta de tu producto. Los demás
+  grupos no deben recibir cantidades interpoladas. Para
   cálculo por EC se necesita una calibración real compatible con el producto.
 - **Visitante e inicio de sesión:** abre la calculadora en ambos contextos y repite
   un recorrido. Comprueba que los sistemas guardados se comportan según lo que la

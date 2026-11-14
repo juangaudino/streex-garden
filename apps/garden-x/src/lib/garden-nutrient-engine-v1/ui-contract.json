@@ -132,7 +132,7 @@
       "conditionalInputs": [
         "calibration when nutrient addition is required",
         "currentVolumeL is never inferred from nominal capacity",
-        "replacementWaterEc is required for a positive replacementWaterL"
+        "replacementWaterEc is required for a positive replacementWaterL or any additional dilution"
       ],
       "derivedValues": [
         "resultingVolumeL",

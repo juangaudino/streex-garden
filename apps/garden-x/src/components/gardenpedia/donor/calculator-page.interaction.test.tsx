@@ -267,6 +267,18 @@ describe("Calculator real control interactions", () => {
     expect(screen.getAllByText("Liquid Plant Food").length).toBeGreaterThan(0);
   });
 
+  it("uses the manufacturer's 3- and 12-pod feeding sequences", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "AeroGarden" }));
+    await user.click(screen.getByRole("button", { name: "3 pods" }));
+    expect(screen.getByText("4.00", { exact: true })).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: "12 pods" }));
+    expect(screen.getByText("16.00", { exact: true })).toBeTruthy();
+    await user.selectOptions(screen.getByLabelText("Feeding event"), "feeding-3");
+    expect(screen.getByText("24.00", { exact: true })).toBeTruthy();
+  });
+
   it("can calculate for an anonymous visitor when browser storage is unavailable", async () => {
     const user = userEvent.setup();
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {

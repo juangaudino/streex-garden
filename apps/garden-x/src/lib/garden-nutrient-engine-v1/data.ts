@@ -1,6 +1,33 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  igworksArugula: {
+    id: "igworks-hydroponic-arugula-guide",
+    publisher: "IGWorks",
+    title: "Growing Hydroponic Arugula",
+    url: "https://igworks.com/blogs/growing-guides/growing-hydroponic-arugula",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
+  igworksCilantro: {
+    id: "igworks-hydroponic-cilantro-guide",
+    publisher: "IGWorks",
+    title: "Growing Hydroponic Cilantro",
+    url: "https://igworks.com/blogs/growing-guides/growing-hydroponic-cilantro",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
+  letpotGarlicChives: {
+    id: "letpot-hydroponic-garlic-chives-guide",
+    publisher: "LetPot",
+    title: "How to Grow Hydroponic Garlic Chives",
+    url: "https://letpot.com/en-au/blogs/plant-growing-tips-and-growing-systems-knowledge/how-to-grow-hydroponic-garlic-chives",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
   igworksDill: {
     id: "igworks-hydroponic-dill-guide",
     publisher: "IGWorks",
@@ -940,6 +967,40 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  ...([
+    ["arugula", 0.8, 1.4, NUTRIENT_SOURCES.igworksArugula],
+    ["cilantro", 1.3, 1.8, NUTRIENT_SOURCES.igworksCilantro],
+  ] as const).map(([cropIdentity, min, max, source]): EvidenceObservation => ({
+    id: `${cropIdentity}-igworks-hydroponic-ec`,
+    metric: "EC",
+    cropIdentity,
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes: "General supplier guidance for hydroponic nutrient solution; no cultivar, growth stage or individual reservoir is specified. Not a validated seedling dose or a guaranteed optimum.",
+  })),
+  ...([
+    ["SEEDLING", 1, 1.3],
+    ["VEGETATIVE", 1, 1.5],
+  ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
+    id: `garlic-chives-letpot-${stageApplicability.toLowerCase()}-ec`,
+    metric: "EC",
+    cropIdentity: "garlic-chives",
+    stageApplicability,
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.letpotGarlicChives,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min, max, unit: "mS/cm" },
+    notes: "LetPot's stage-specific garlic chive guidance, converted from µS/cm; cultivar and reservoir conditions are unspecified. Growth is used only for the vegetative stage and does not imply a maturity or flowering target.",
+  })),
   {
     id: "chervil-igworks-hydroponic-ec",
     metric: "EC",

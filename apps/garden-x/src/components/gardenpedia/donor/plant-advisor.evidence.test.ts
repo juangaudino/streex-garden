@@ -24,6 +24,14 @@ describe("Gardenpedia Advisor evidence retrieval", () => {
     expect(spanish[0]?.plantName.toLocaleLowerCase()).toContain("albahaca");
     expect(spanish.some((item) => /pod/i.test(`${item.section} ${item.text}`))).toBe(true);
   });
+  it("retains the stage and provenance of garlic chive nutrient evidence", () => {
+    for (const language of ["es", "en"] as const) {
+      const records = retrieveGardenpediaEvidence("EC garlic chives", language, 30);
+      const seedling = records.find((record) => record.id.includes("garlic-chives-letpot-seedling-ec"));
+      expect(seedling?.text).toMatch(language === "es" ? /plántula/i : /seedling/i);
+      expect(seedling?.sources[0]?.id).toBe("letpot-hydroponic-garlic-chives-guide");
+    }
+  });
 
   it("finds English plant names while answering in Spanish without assigning an ambiguous cultivar", () => {
     for (const [query, plantId] of [

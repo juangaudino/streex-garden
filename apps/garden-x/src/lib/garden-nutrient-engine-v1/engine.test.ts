@@ -88,8 +88,8 @@ describe("Garden Nutrient Engine V1", () => {
     expect(result.observations[0]?.source.id).toBe("igworks-hydroponic-dill-guide");
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
   });
-  it("applies tatsoi and cilantro evidence only to NFT and never to a seedling or unknown system", () => {
-    for (const cropIdentity of ["tatsoi", "cilantro", "flowering-choy-sum"]) {
+  it("applies system-specific evidence only to NFT and never to a seedling or unknown system", () => {
+    for (const cropIdentity of ["tatsoi", "flowering-choy-sum"]) {
       const context: CropContext = {
         cropIdentity,
         phenologicalStage: "UNSPECIFIED",
@@ -102,6 +102,19 @@ describe("Garden Nutrient Engine V1", () => {
       expect(selectCropRange({ ...context, hydroponicSystem: "UNKNOWN" }).ec.ec).toBeUndefined();
       expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
     }
+  });
+  it("applies cilantro general guidance separately from NFT guidance", () => {
+    const context: CropContext = { cropIdentity: "cilantro", phenologicalStage: "UNSPECIFIED", measurementScope: "NUTRIENT_SOLUTION" };
+    expect(selectCropRange(context).ec.ec).toEqual({ min: 1.3, max: 1.8, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, hydroponicSystem: "NFT" }).ec.ec).toEqual({ min: 1.5, max: 1.8, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+  });
+  it("uses garlic chive stage-specific guidance only for the specified stage", () => {
+    const context: CropContext = { cropIdentity: "garlic-chives", measurementScope: "NUTRIENT_SOLUTION" };
+    expect(selectCropRange(context).ec.ec).toBeUndefined();
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 1, max: 1.3, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({ min: 1, max: 1.5, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "FLOWERING" }).ec.ec).toBeUndefined();
   });
   it("uses rosemary supplier guidance as a moderate reported range, not a seedling rule", () => {
     const context: CropContext = {
@@ -121,7 +134,7 @@ describe("Garden Nutrient Engine V1", () => {
         reference.plantIds.some((id: string) => id === "cilantro"),
       ),
     ).toBe(true);
-    for (const cropIdentity of ["cilantro", "dill-bouquet", "evergreen-bunching-onion-nabuka"]) {
+    for (const cropIdentity of ["dill-bouquet", "evergreen-bunching-onion-nabuka"]) {
       expect(
         selectCropRange({
           cropIdentity,

@@ -12,6 +12,7 @@ import {
   calculateTopUpMaintenance,
   executeFreshRecipe,
   learnFromObservation,
+  selectCropRange,
 } from "@/lib/garden-nutrient-engine-v1/engine";
 import { donorPlants } from "./canonical-adapter";
 import { MODE_TO_ENGINE, recipeSignature } from "./calculator-v1-adapter";
@@ -46,7 +47,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
         study.source.id === "idroponica-facile-home-tower-guide" &&
         study.plantIds.some((plantId: string) => plantId === id),
       )).toBe(true);
-      if (id !== "dill-bouquet") expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+      if (id === "purple-kohlrabi") expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     }
   });
   it("maps Bouquet dill to general grower guidance while retaining seasonal context", () => {
@@ -61,9 +62,30 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(resolveNutrientCropIdentity("curled-chervil")).toBe("chervil");
     expect(hasApplicableCropNutrientEvidence("curled-chervil")).toBe(true);
   });
+  it("uses the selected garlic chive stage in an actionable calibrated preparation", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
+      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(observation.ok).toBe(true);
+    const result = calculateGardenResult({
+      language: "en", mode: "target", crops: { "garlic-chives": 1 },
+      cropStages: { "garlic-chives": "SEEDLING" }, liters: 4, productId: "gh-flora",
+      stageId: "feeding-2", pods: 6, sourceEc: 0.2, currentEc: null,
+      currentLiters: null, waterAdded: null, userTarget: null, round: 1,
+      calibrationObservations: [observation.value!],
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.target?.value).toBeGreaterThan(1);
+      expect(result.doses.length).toBeGreaterThan(0);
+    }
+  });
   it("does not reuse common chive evidence for the distinct garlic chive species", () => {
-    expect(resolveNutrientCropIdentity("garlic-chives")).toBeUndefined();
+    expect(resolveNutrientCropIdentity("garlic-chives")).toBe("garlic-chives");
     expect(hasApplicableCropNutrientEvidence("garlic-chives")).toBe(false);
+    const seedling = contextFor({ "garlic-chives": 1 }, "gh-flora", { "garlic-chives": "SEEDLING" })[0]!;
+    expect(selectCropRange(seedling).ec.ec).toEqual({ min: 1, max: 1.3, unit: "mS/cm" });
     expect(
       CROP_STUDY_REFERENCES.some(
         (study) =>
@@ -489,9 +511,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 8,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 108,
-      INSUFFICIENT: 391,
+      SUPPORTED_DIRECT: 10,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 109,
+      INSUFFICIENT: 388,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

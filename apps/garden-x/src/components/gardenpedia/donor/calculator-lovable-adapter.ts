@@ -409,6 +409,8 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   // for dill generally, not a cultivar-specific measurement.
   "dill-bouquet": "dill",
   "curled-chervil": "chervil",
+  "astro-arugula": "arugula",
+  "garlic-chives": "garlic-chives",
   "basil-dark-opal": "basil",
   "basil-spicy-globe": "basil",
   "butterhead-lettuce-unspecified": "lettuce",

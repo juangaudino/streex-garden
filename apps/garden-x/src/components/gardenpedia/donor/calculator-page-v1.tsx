@@ -98,7 +98,7 @@ const T = {
     sourceEc: "EC del agua de origen",
     targetEc: "EC objetivo",
     targetManualHint:
-      "Escribe el EC que quieres usar. Sin una referencia aplicable, Garden no puede sugerirlo por ti.",
+      "Completa los datos solicitados para ver una referencia disponible, o escribe el EC que quieres usar.",
     meter: "Medidor",
     dosing: "Dosificación",
     syringe: "Jeringa 1 mL",
@@ -226,7 +226,7 @@ const T = {
     sourceEc: "Source-water EC",
     targetEc: "Target EC",
     targetManualHint:
-      "Enter the EC you want to use. Without an applicable reference, Garden cannot suggest one for you.",
+      "Complete the requested inputs to see an available reference, or enter the EC you want to use.",
     meter: "Meter",
     dosing: "Dosing",
     syringe: "1 mL syringe",

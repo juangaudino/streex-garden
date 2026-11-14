@@ -69,7 +69,7 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByPlaceholderText("Search plant…"), "Cascading Petunia");
     await user.click(screen.getByRole("option", { name: /Cascading Petunia/ }));
     await user.click(screen.getByRole("tab", { name: "By EC" }));
-    expect(screen.getByText(/Enter the EC you want to use/)).toBeTruthy();
+    expect(screen.getByText(/enter the EC you want to use/i)).toBeTruthy();
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
     await user.type(target, "1.2");

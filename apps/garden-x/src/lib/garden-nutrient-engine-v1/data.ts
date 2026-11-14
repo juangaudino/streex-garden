@@ -740,6 +740,14 @@ export const CROP_STUDY_REFERENCES = [
     },
   },
   {
+    plantIds: ["bulls-blood-beet"],
+    source: NUTRIENT_SOURCES.hydrocropGuide,
+    text: {
+      es: "Hydrocrop publica 1,4–2,4 mS/cm para remolacha en una guía general asociada a HydroSol. Bull’s Blood es una variedad de remolacha, pero la guía no la identifica ni valida ese rango para plántulas, FloraSeries o cualquier sistema específico.",
+      en: "Hydrocrop reports 1.4–2.4 mS/cm for beetroot in general guidance associated with HydroSol. Bull’s Blood is a beetroot cultivar, but the guide does not identify it or validate that range for seedlings, FloraSeries, or every system.",
+    },
+  },
+  {
     plantIds: ["tiny-tim-sweet-alyssum"],
     source: NUTRIENT_SOURCES.alyssumSubirrigationReview,
     text: {
@@ -1314,6 +1322,7 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
       ["thyme", 0.8, 1.6],
       ["marjoram", 1.6, 2.0],
       ["watercress", 0.4, 1.8],
+      ["beetroot", 1.4, 2.4],
     ] as const
   ).map(([cropIdentity, min, max]): EvidenceObservation => ({
     id: `${cropIdentity}-hydrocrop-ec`,

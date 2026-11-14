@@ -557,8 +557,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 11,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 122,
-      INSUFFICIENT: 374,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 123,
+      INSUFFICIENT: 373,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -1394,6 +1394,31 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(loadSavedSystems()).toEqual([]);
   });
 
+  it("resolves Bull's Blood through explicitly identified beetroot guidance", () => {
+    expect(resolveNutrientCropIdentity("bulls-blood-beet")).toBe("beetroot");
+    expect(hasApplicableCropNutrientEvidence("bulls-blood-beet")).toBe(true);
+    const context = contextFor({ "bulls-blood-beet": 1 }, "gh-flora")[0]!;
+    const result = selectCropRange(context).ec;
+    expect(result.ec).toEqual({ min: 1.4, max: 2.4, unit: "mS/cm" });
+    expect(result.observations[0]?.source.id).toBe("hydrocrop-hydrosol-crop-ec-guide");
+    const observation = recordActualDoses({
+      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
+      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(observation.ok).toBe(true);
+    const calculated = calculateGardenResult({
+      language: "en", mode: "target", crops: { "bulls-blood-beet": 1 }, liters: 4,
+      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
+      currentEc: null, currentLiters: null, waterAdded: null, userTarget: null, round: 1,
+      calibrationObservations: [observation.value!],
+    });
+    expect(calculated.kind).toBe("ok");
+    if (calculated.kind === "ok") {
+      expect(calculated.doses.length).toBe(3);
+      expect(calculated.target?.value).toBeGreaterThan(1.4);
+    }
+  });
+
   it("warns when dosing equipment precision is unknown rather than assuming a resolution", () => {
     const input = {
       mode: "recipe" as const, crops: { "bibb-lettuce": 1 }, liters: 4,
@@ -1444,6 +1469,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const { dosingResolutionMl: _resolution, ...withoutResolution } = saved;
     persistSavedSystems([withoutResolution]);
     expect(loadSavedSystems()[0]?.dosingResolutionMl).toBeUndefined();
+    const { sourceEcKnown: _known, ...legacySystem } = withoutResolution;
+    persistSavedSystems([legacySystem]);
+    expect(loadSavedSystems()[0]?.sourceEcKnown).toBe(false);
     vi.unstubAllGlobals();
   });
 });

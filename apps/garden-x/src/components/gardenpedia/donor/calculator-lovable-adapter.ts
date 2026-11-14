@@ -322,7 +322,9 @@ export function loadSavedSystems(): SavedSystem[] {
         capacityLiters: item.capacityLiters ?? null,
         waterAdded: item.waterAdded ?? null,
         dosingResolutionMl: item.dosingResolutionMl,
-        sourceEcKnown: item.sourceEcKnown ?? true,
+        // Older saved systems did not record whether the displayed value was
+        // measured; their zero/default cannot be treated as a measurement.
+        sourceEcKnown: item.sourceEcKnown === true,
       }));
   } catch {
     return [];
@@ -426,6 +428,9 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   "resina-calendula": "calendula",
   "common-fenugreek-trigonella-foenum-graecum": "fenugreek",
   "borage-blue": "borage",
+  // Bull's Blood is a beetroot cultivar; the supplier's EC guidance is
+  // crop-level, not a cultivar-specific trial or a seedling recommendation.
+  "bulls-blood-beet": "beetroot",
   "basil-dark-opal": "basil",
   "basil-spicy-globe": "basil",
   "butterhead-lettuce-unspecified": "lettuce",

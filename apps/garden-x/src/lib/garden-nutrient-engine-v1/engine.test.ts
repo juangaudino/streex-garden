@@ -65,6 +65,14 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("preserves Hydrocrop beetroot guidance as crop-level and excludes seedlings", () => {
+    const context: CropContext = { cropIdentity: "beetroot", measurementScope: "NUTRIENT_SOLUTION" };
+    const result = selectCropRange(context).ec;
+    expect(result.ec).toEqual({ min: 1.4, max: 2.4, unit: "mS/cm" });
+    expect(result.observations[0]?.source.id).toBe("hydrocrop-hydrosol-crop-ec-guide");
+    expect(result.observations[0]?.notes).toContain("HydroSol");
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+  });
   it("keeps fenugreek and borage supplier values contextual and excludes seedlings", () => {
     for (const [cropIdentity, min, max] of [["fenugreek", 1.2, 2.4], ["borage", 1.4, 2.2]] as const) {
       const context: CropContext = { cropIdentity, measurementScope: "NUTRIENT_SOLUTION" };

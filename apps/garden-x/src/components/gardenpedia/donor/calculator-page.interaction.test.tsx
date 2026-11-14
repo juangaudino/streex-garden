@@ -33,6 +33,17 @@ describe("Calculator real control interactions", () => {
     vi.restoreAllMocks();
   });
 
+  it("asks for a source-water reading when a legacy system did not record whether it was measured", async () => {
+    window.localStorage.setItem("gardenpedia.calculator.systems.v1", JSON.stringify([{
+      id: "legacy-system", name: "Old system", mode: "target",
+      water: { label: { es: "Agua", en: "Water" }, ec: 0 },
+    }]));
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByText("Old system", { exact: true }));
+    expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("");
+  });
+
   it("keeps carnivorous plants out of the nutrient picker", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

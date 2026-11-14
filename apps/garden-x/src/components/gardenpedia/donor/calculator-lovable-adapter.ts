@@ -415,6 +415,8 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   "sunflower-american-giant-hybrid": "sunflower",
   "sunflower-autumn-beauty": "sunflower",
   "purple-kohlrabi": "kohlrabi",
+  "bunching-onion-allium-fistulosum": "bunching-onion",
+  "evergreen-bunching-onion-nabuka": "bunching-onion",
   "basil-dark-opal": "basil",
   "basil-spicy-globe": "basil",
   "butterhead-lettuce-unspecified": "lettuce",

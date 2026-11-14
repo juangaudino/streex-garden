@@ -65,6 +65,13 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("preserves non-bulbing bunching onion guidance without promoting it to seedlings", () => {
+    const context: CropContext = { cropIdentity: "bunching-onion", measurementScope: "NUTRIENT_SOLUTION", phenologicalStage: "UNSPECIFIED" };
+    const result = selectCropRange(context).ec;
+    expect(result.ec).toEqual({ min: 1.8, max: 2.4, unit: "mS/cm" });
+    expect(result.observations[0]?.notes).toContain("does not identify a botanical species");
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+  });
   it("preserves sunflower and kohlrabi supplier ranges without applying them to seedlings", () => {
     for (const [cropIdentity, min, max] of [["sunflower", 1.2, 1.8], ["kohlrabi", 1.8, 2.4]] as const) {
       const context: CropContext = { cropIdentity, phenologicalStage: "UNSPECIFIED", measurementScope: "NUTRIENT_SOLUTION" };

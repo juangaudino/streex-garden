@@ -1,6 +1,15 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  igworksBunchingOnion: {
+    id: "igworks-hydroponic-bunching-onion-guide",
+    publisher: "IGWorks",
+    title: "Growing Hydroponic Bunching Onions & Scallions",
+    url: "https://igworks.com/blogs/growing-guides/growing-hydroponic-bunching-onions-scallions",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
   igworksSunflower: {
     id: "igworks-hydroponic-sunflower-guide",
     publisher: "IGWorks",
@@ -985,6 +994,20 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "bunching-onion-igworks-ec",
+    metric: "EC",
+    cropIdentity: "bunching-onion",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "INFERRED",
+    source: NUTRIENT_SOURCES.igworksBunchingOnion,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1.8, max: 2.4, unit: "mS/cm" },
+    notes: "Supplier guidance for non-bulbing bunching onions; it does not identify a botanical species or cultivar, stage or individual reservoir. The association to Allium fistulosum is crop-type guidance, not cultivar-specific validation or a seedling dose.",
+  },
   {
     id: "sunflower-igworks-pre-bud-ec",
     metric: "EC",

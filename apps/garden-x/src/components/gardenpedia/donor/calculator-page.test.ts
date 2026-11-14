@@ -58,6 +58,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(resolveNutrientCropIdentity("purple-kohlrabi")).toBe("kohlrabi");
     expect(hasApplicableCropNutrientEvidence("purple-kohlrabi")).toBe(true);
   });
+  it("maps the user's bunching onion type to non-bulbing crop guidance", () => {
+    for (const id of ["bunching-onion-allium-fistulosum", "evergreen-bunching-onion-nabuka"]) {
+      expect(resolveNutrientCropIdentity(id)).toBe("bunching-onion");
+      expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
+    }
+  });
   it("maps Bouquet dill to general grower guidance while retaining seasonal context", () => {
     expect(resolveNutrientCropIdentity("dill-bouquet")).toBe("dill");
     expect(hasApplicableCropNutrientEvidence("dill-bouquet")).toBe(true);
@@ -520,8 +526,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 11,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 113,
-      INSUFFICIENT: 383,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 115,
+      INSUFFICIENT: 381,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

@@ -316,6 +316,38 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByRole("button", { name: "Calibrate this product" })).toBeTruthy();
   });
 
+  it("keeps a shared-tank warning while calculating an explicitly chosen EC with calibrated A+B", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    for (const name of ["Bibb Lettuce", "Cherry Tomato"]) {
+      await user.click(screen.getByRole("button", { name: "Add plant" }));
+      await user.type(screen.getByPlaceholderText("Search plant…"), name);
+      await user.click(screen.getByText(name, { exact: true }).closest("button")!);
+    }
+    expect(screen.getByText(/reported ranges do not overlap/i)).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: "A + B" }));
+    await user.type(screen.getByLabelText("A+B manufacturer"), "Test manufacturer");
+    await user.type(screen.getByLabelText("Exact A+B product name"), "Test product");
+    await user.type(screen.getByLabelText("Exact formulation or version"), "V1");
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.20");
+    await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
+    await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    await user.type(screen.getByLabelText(/^Part A/), "4");
+    await user.type(screen.getByLabelText(/^Part B/), "2");
+    await user.click(screen.getByRole("button", { name: "Save calibration" }));
+    await waitFor(() =>
+      expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
+    );
+    expect(screen.getByText(/reported ranges do not overlap/i)).toBeTruthy();
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
+      "1.20",
+    );
+    expect(screen.getAllByText("Part A").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Part B").length).toBeGreaterThan(0);
+  });
+
   it("restores target, mode, measured state, source water, equipment and actual calibration after reload", async () => {
     const user = userEvent.setup();
     const first = render(<CalculatorPage language="en" />);

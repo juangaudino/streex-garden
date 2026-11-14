@@ -46,8 +46,20 @@ describe("Gardenpedia Calculator V1 integration", () => {
         study.source.id === "idroponica-facile-home-tower-guide" &&
         study.plantIds.some((plantId: string) => plantId === id),
       )).toBe(true);
-      expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+      if (id !== "dill-bouquet") expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     }
+  });
+  it("maps Bouquet dill to general grower guidance while retaining seasonal context", () => {
+    expect(resolveNutrientCropIdentity("dill-bouquet")).toBe("dill");
+    expect(hasApplicableCropNutrientEvidence("dill-bouquet")).toBe(true);
+    expect(CROP_STUDY_REFERENCES.some((study) =>
+      study.source.id === "pure-hydroponics-crop-conductivity-2015" &&
+      study.plantIds.some((id: string) => id === "dill-bouquet"),
+    )).toBe(true);
+  });
+  it("maps curled chervil to species-level grower guidance", () => {
+    expect(resolveNutrientCropIdentity("curled-chervil")).toBe("chervil");
+    expect(hasApplicableCropNutrientEvidence("curled-chervil")).toBe(true);
   });
   it("does not reuse common chive evidence for the distinct garlic chive species", () => {
     expect(resolveNutrientCropIdentity("garlic-chives")).toBeUndefined();
@@ -478,8 +490,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 8,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 106,
-      INSUFFICIENT: 393,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 108,
+      INSUFFICIENT: 391,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

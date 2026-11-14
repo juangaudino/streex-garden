@@ -1,6 +1,34 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  igworksDill: {
+    id: "igworks-hydroponic-dill-guide",
+    publisher: "IGWorks",
+    title: "Growing Hydroponic Dill",
+    url: "https://igworks.com/blogs/growing-guides/growing-hydroponic-dill",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
+  igworksChervil: {
+    id: "igworks-hydroponic-chervil-guide",
+    publisher: "IGWorks",
+    title: "Growing Hydroponic Chervil",
+    url: "https://igworks.com/blogs/growing-guides/growing-hydroponic-chervil",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
+  pureHydroponicsConductivity: {
+    id: "pure-hydroponics-crop-conductivity-2015",
+    publisher: "Pure Hydroponics Ltd · D. A. Slade",
+    title: "Crop Nutrient Conductivity Levels",
+    url: "https://purehydroponics.com/wp-content/uploads/2012/05/Recommended-EC-Levels.pdf",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    publication: "2015-11-23",
+    retrievedAt: "2026-11-14",
+  },
   idroponicaTowerGuide: {
     id: "idroponica-facile-home-tower-guide",
     publisher: "Idroponica Facile",
@@ -492,6 +520,14 @@ export const NUTRIENT_SOURCES = {
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
 export const CROP_STUDY_REFERENCES = [
   {
+    plantIds: ["dill-bouquet"],
+    source: NUTRIENT_SOURCES.pureHydroponicsConductivity,
+    text: {
+      es: "Otra guía comercial presenta valores de conductividad para eneldo y especies relacionadas que varían según la temporada y el sistema. Sus criterios difieren de otras guías; no identifican la variedad Bouquet ni establecen un objetivo universal.",
+      en: "Another commercial guide presents conductivity values for dill and related crops that vary with season and system. Its criteria differ from other guides; they do not identify Bouquet or establish a universal target.",
+    },
+  },
+  {
     plantIds: ["dill-bouquet", "astro-arugula", "purple-kohlrabi"],
     source: NUTRIENT_SOURCES.idroponicaTowerGuide,
     text: {
@@ -904,6 +940,36 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "chervil-igworks-hydroponic-ec",
+    metric: "EC",
+    cropIdentity: "chervil",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "INFERRED",
+    source: NUTRIENT_SOURCES.igworksChervil,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 0.8, max: 1.8, unit: "mS/cm" },
+    notes:
+      "IGWorks' general hydroponic chervil guidance does not specify cultivar, growth stage, or an individual reservoir. It is not a validated seedling dose or guaranteed optimum.",
+  },
+  {
+    id: "dill-igworks-hydroponic-ec",
+    metric: "EC",
+    cropIdentity: "dill",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "INFERRED",
+    source: NUTRIENT_SOURCES.igworksDill,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
+    notes:
+      "IGWorks' general hydroponic dill guidance, not specific to Bouquet, a growth stage, or a particular reservoir. Other supplier guidance differs by season and system. Not a validated seedling dose or guaranteed optimum.",
+  },
   ...(["tatsoi", "cilantro", "flowering-choy-sum"] as const).map(
     (cropIdentity): EvidenceObservation => ({
       id: `${cropIdentity}-nsw-nft-ec`,

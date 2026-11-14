@@ -405,6 +405,10 @@ const RECIPE_IDS = Object.fromEntries(
 ) as Record<string, string | undefined>;
 
 const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
+  // Bouquet is a cultivar of Anethum graveolens; the grower's guidance is
+  // for dill generally, not a cultivar-specific measurement.
+  "dill-bouquet": "dill",
+  "curled-chervil": "chervil",
   "basil-dark-opal": "basil",
   "basil-spicy-globe": "basil",
   "butterhead-lettuce-unspecified": "lettuce",

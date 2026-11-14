@@ -65,6 +65,29 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("keeps chervil grower guidance separate from seedling guidance", () => {
+    const context: CropContext = {
+      cropIdentity: "chervil",
+      phenologicalStage: "UNSPECIFIED",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
+    const result = selectCropRange(context).ec;
+    expect(result.ec).toEqual({ min: 0.8, max: 1.8, unit: "mS/cm" });
+    expect(result.evidenceState).toBe("MODERATE");
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+  });
+  it("uses general dill guidance without treating it as a seedling or cultivar-specific rule", () => {
+    const context: CropContext = {
+      cropIdentity: "dill",
+      phenologicalStage: "UNSPECIFIED",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
+    const result = selectCropRange(context).ec;
+    expect(result.ec).toEqual({ min: 1, max: 1.6, unit: "mS/cm" });
+    expect(result.evidenceState).toBe("MODERATE");
+    expect(result.observations[0]?.source.id).toBe("igworks-hydroponic-dill-guide");
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+  });
   it("applies tatsoi and cilantro evidence only to NFT and never to a seedling or unknown system", () => {
     for (const cropIdentity of ["tatsoi", "cilantro", "flowering-choy-sum"]) {
       const context: CropContext = {

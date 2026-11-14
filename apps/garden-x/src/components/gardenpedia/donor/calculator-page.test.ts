@@ -71,6 +71,15 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
   });
+  it("shows African marigold trial context without fabricating an automatic range", () => {
+    const reference = CROP_STUDY_REFERENCES.find((study) =>
+      study.source.id === "kazakidou-burrage-marigold-nft-1994" &&
+      study.plantIds.some((id: string) => id === "marigold-jolly-jester"),
+    );
+    expect(reference?.text.en).toContain("1.5, 3.0 and 6.0");
+    expect(reference?.text.en).toContain("not an automatic range");
+    expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
+  });
   it("resolves sunflower cultivars and purple kohlrabi to identified crop-level guidance", () => {
     for (const id of ["sunflower-helianthus-annuus", "sunflower-american-giant-hybrid", "sunflower-autumn-beauty"]) {
       expect(resolveNutrientCropIdentity(id)).toBe("sunflower");

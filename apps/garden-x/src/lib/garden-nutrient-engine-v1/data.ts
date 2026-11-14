@@ -335,6 +335,16 @@ export const NUTRIENT_SOURCES = {
     publication: "2024",
     retrievedAt: "2026-11-12",
   },
+  marigoldNftConductivityStudy: {
+    id: "kazakidou-burrage-marigold-nft-1994",
+    publisher: "International Society for Horticultural Science",
+    title: "The production of African marigold by the nutrient film technique: the influence of solution conductivity on growth and carotenoid levels",
+    url: "https://ishs.org/ishs-article/361_33/",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "1994",
+    retrievedAt: "2026-11-14",
+  },
   komatsunaNftThesis: {
     id: "arkansas-komatsuna-nft-2014",
     publisher: "University of Arkansas · Leah P. Malvar",
@@ -809,6 +819,14 @@ export const CROP_STUDY_REFERENCES = [
     text: {
       es: "Un estudio cultivó Tagetes erecta Atlantis Primrose en tanques hidropónicos con distintas condiciones de hierro y manganeso. No probó Jolly Jester ni establece una EC óptima o dosis para esa variedad.",
       en: "A study grew Tagetes erecta Atlantis Primrose in hydroponic tubs under different iron and manganese conditions. It did not test Jolly Jester or establish an optimum EC or dose for that variety.",
+    },
+  },
+  {
+    plantIds: ["marigold-jolly-jester"],
+    source: NUTRIENT_SOURCES.marigoldNftConductivityStudy,
+    text: {
+      es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. No identifica Jolly Jester ni valida todos los valores intermedios, otras formulaciones o plántulas; no es un rango automático para tu sistema.",
+      en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. It does not identify Jolly Jester or validate every intermediate value, other formulations or seedlings; it is not an automatic range for your system.",
     },
   },
   {

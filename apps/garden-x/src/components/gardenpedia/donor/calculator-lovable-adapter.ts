@@ -9,6 +9,7 @@ import {
   executeFreshRecipe,
   learnFromObservation,
   selectCropRange,
+  sameProductIdentity,
 } from "@/lib/garden-nutrient-engine-v1/engine";
 import {
   CROP_EVIDENCE,
@@ -775,7 +776,9 @@ function recipeSignatureFor(
     volumeL: productId === "aerogarden" ? undefined : 1,
   });
   return recipe.ok && recipe.value
-    ? recipe.value.parts
+    ? productId === "aerogarden"
+      ? "single:1"
+      : recipe.value.parts
         .map((part) => `${part.componentId}:${part.ml}`)
         .sort()
         .join("|")
@@ -1421,10 +1424,7 @@ function applicableCalibration(
   identity: CalibrationObservation["productIdentity"],
   context: string,
 ) {
-  const observations = input.calibrationObservations ?? [];
-  const matching = observations.filter(
-    (item) => item.recipeContextSignature === context && item.componentDosesMl,
-  );
+  const matching = matchingCalibrationObservations(input, identity, context);
   const latest = matching.at(-1);
   return buildCalibrationModel({
     productIdentity: identity,
@@ -1432,6 +1432,30 @@ function applicableCalibration(
     recipeSignature: latest?.componentRatioOrRecipeSignature ?? context,
     // Old observations without actual per-component amounts cannot prove a mixture.
     observations: matching,
+  });
+}
+
+function matchingCalibrationObservations(
+  input: Pick<CalcInput, "productId" | "calibrationObservations">,
+  identity: CalibrationObservation["productIdentity"],
+  context: string,
+): CalibrationObservation[] {
+  return (input.calibrationObservations ?? []).flatMap((item) => {
+    if (!sameProductIdentity(identity, item.productIdentity) ||
+        item.formulationVersion !== identity.formulationVersion || !item.componentDosesMl)
+      return [];
+    const previousContext = item.recipeContextSignature;
+    if (previousContext === context) return [item];
+    // Earlier AeroGarden records encoded the official dose rather than its
+    // single-component ratio. Normalize matching records in memory only.
+    if (input.productId !== "aerogarden" || context !== "single:1" ||
+        !previousContext || !/^single:(?:4|8|12|16|24)$/.test(previousContext) ||
+        Object.keys(item.componentDosesMl).length !== 1 ||
+        !((item.componentDosesMl["single"] ?? 0) > 0) ||
+        !item.componentRatioOrRecipeSignature.startsWith(`${previousContext};observed=`))
+      return [];
+    return [{ ...item, recipeContextSignature: context,
+      componentRatioOrRecipeSignature: context + item.componentRatioOrRecipeSignature.slice(previousContext.length) }];
   });
 }
 
@@ -1465,10 +1489,7 @@ export function calibrationUsage(
   );
   const recorded = input.calibrationObservations?.length ?? 0;
   if (!identity || !signature) return { used: 0, recorded };
-  const observations = input.calibrationObservations ?? [];
-  const matching = observations.filter(
-    (item) => item.recipeContextSignature === signature && item.componentDosesMl,
-  );
+  const matching = matchingCalibrationObservations(input, identity, signature);
   const latest = matching.at(-1);
   const model = buildCalibrationModel({
     productIdentity: identity,

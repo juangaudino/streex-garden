@@ -86,7 +86,9 @@ distintas edades; una edad en días es contexto, no confirma por sí sola una et
 - **AeroGarden:** verifica Receta con un modelo de 2, 3, 6, 7, 9 o 12 pods y la
   alimentación correspondiente; comprueba la etiqueta de tu producto. Los demás
   grupos no deben recibir cantidades interpoladas. Para
-  cálculo por EC se necesita una calibración real compatible con el producto.
+  cálculo por EC se necesita una calibración real compatible con el producto. Al
+  cambiar de alimentación o modelo debe conservarse la calibración del mismo
+  producto de un solo componente; revisa cualquier aviso de extrapolación.
 - **Visitante e inicio de sesión:** abre la calculadora en ambos contextos y repite
   un recorrido. Comprueba que los sistemas guardados se comportan según lo que la
   interfaz indique; no presupongas sincronización entre dispositivos.

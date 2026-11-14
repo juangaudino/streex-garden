@@ -50,7 +50,7 @@ function error(code: string, message: string, missing?: string[]): EngineError {
   return { code, message, ...(missing ? { missing } : {}) };
 }
 
-function sameProductIdentity(
+export function sameProductIdentity(
   left: ManufacturerRecipe["product"],
   right: CalibrationObservation["productIdentity"],
 ): boolean {

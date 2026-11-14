@@ -1222,6 +1222,34 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
 
+  it("reuses a single-component AeroGarden calibration across verified feedings while preserving old records", () => {
+    const observation = recordActualDoses({
+      productId: "aerogarden", stageId: "feeding-1", liters: 4, pods: 9,
+      baselineEc: 0.2, resultingEc: 1, actualDoses: { single: "4" },
+    }).value!;
+    const legacy = {
+      ...observation,
+      recipeContextSignature: "single:8",
+      componentRatioOrRecipeSignature: observation.componentRatioOrRecipeSignature.replace("single:1;", "single:8;"),
+    };
+    const originalSignature = legacy.componentRatioOrRecipeSignature;
+    const input = {
+      crops: { "genovese-basil": 1 }, liters: 4, productId: "aerogarden",
+      stageId: "feeding-3", pods: 12, sourceEc: 0.2, currentEc: 0.8,
+      currentLiters: 3, capacityLiters: 5, waterAdded: 0.5, userTarget: 1.2,
+      round: 1, calibrationObservations: [legacy],
+    };
+    expect(calibrationUsage(input)).toEqual({ used: 1, recorded: 1 });
+    for (const mode of ["target", "adjust", "topup"] as const) {
+      const result = calculateGardenResult({ ...input, mode });
+      expect(result.kind).toBe("ok");
+      if (result.kind === "ok") expect(result.doses.some((dose) => dose.amount > 0 && dose.unit === "mL")).toBe(true);
+    }
+    expect(legacy.componentRatioOrRecipeSignature).toBe(originalSignature);
+    const otherProduct = { ...legacy, productIdentity: { ...legacy.productIdentity, formulationVersion: "other" }, formulationVersion: "other" };
+    expect(calibrationUsage({ ...input, calibrationObservations: [otherProduct] }).used).toBe(0);
+  });
+
   it("differentiates supported AeroGarden feeding events without asking for volume", () => {
     const run = (stageId: string) =>
       calculateGardenResult({

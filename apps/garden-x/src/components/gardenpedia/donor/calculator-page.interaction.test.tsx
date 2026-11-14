@@ -265,6 +265,12 @@ describe("Calculator real control interactions", () => {
       expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
     );
     expect(screen.getAllByText("Liquid Plant Food").length).toBeGreaterThan(0);
+    await user.click(screen.getByRole("tab", { name: "Recipe" }));
+    await user.click(screen.getByRole("button", { name: "12 pods" }));
+    await user.selectOptions(screen.getByLabelText("Feeding event"), "feeding-3");
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    expect(screen.queryByRole("button", { name: "Calibrate this product" })).toBeNull();
+    expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
   });
 
   it("uses the manufacturer's 3- and 12-pod feeding sequences", async () => {

@@ -35,6 +35,11 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("maps Resina calendula to species guidance without mapping Tagetes marigold", () => {
+    expect(resolveNutrientCropIdentity("resina-calendula")).toBe("calendula");
+    expect(hasApplicableCropNutrientEvidence("resina-calendula")).toBe(true);
+    expect(resolveNutrientCropIdentity("marigold-jolly-jester")).toBeUndefined();
+  });
   it("uses petunia crop guidance and lavender's explicitly selected stage", () => {
     for (const id of ["cascading-petunia", "petunia-dwarf-bedding-mixed"]) {
       expect(resolveNutrientCropIdentity(id)).toBe("petunia");
@@ -549,8 +554,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 11,
-      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 119,
-      INSUFFICIENT: 377,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 120,
+      INSUFFICIENT: 376,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

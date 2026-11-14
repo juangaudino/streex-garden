@@ -65,6 +65,14 @@ function calibrationInput() {
 }
 
 describe("Garden Nutrient Engine V1", () => {
+  it("preserves Calendula officinalis guidance separately from Tagetes", () => {
+    const context: CropContext = { cropIdentity: "calendula", measurementScope: "NUTRIENT_SOLUTION" };
+    const result = selectCropRange(context).ec;
+    expect(result.ec).toEqual({ min: 1.2, max: 1.8, unit: "mS/cm" });
+    expect(result.observations[0]?.source.id).toBe("lanitex-hydroponic-calendula-guide");
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
+    expect(selectCropRange({ ...context, cropIdentity: "tagetes" }).ec.ec).toBeUndefined();
+  });
   it("retains petunia and English lavender source context and stage limits", () => {
     const petunia: CropContext = { cropIdentity: "petunia", measurementScope: "NUTRIENT_SOLUTION" };
     expect(selectCropRange(petunia).ec.ec).toEqual({ min: 1.2, max: 2.5, unit: "mS/cm" });

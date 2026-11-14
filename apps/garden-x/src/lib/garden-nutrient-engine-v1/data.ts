@@ -1,6 +1,15 @@
 import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  lanitexCalendula: {
+    id: "lanitex-hydroponic-calendula-guide",
+    publisher: "Lanitex Hydro Garden",
+    title: "Calendula Flowers and Their Cultivation in Hydroponic Systems",
+    url: "https://lanitexhydrogarden.com.au/blogs/hydroponic-plants/grow-calendula-australia",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-14",
+  },
   letpotPetunia: {
     id: "letpot-hydroponic-petunia-guide",
     publisher: "LetPot",
@@ -1038,6 +1047,20 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "calendula-lanitex-ec",
+    metric: "EC",
+    cropIdentity: "calendula",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.lanitexCalendula,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1.2, max: 1.8, unit: "mS/cm" },
+    notes: "Supplier crop-level guidance identifies Calendula officinalis, not Tagetes marigold. The source does not validate the Resina cultivar, individual stage, or a specific reservoir. Not a validated seedling dose.",
+  },
   {
     id: "petunia-letpot-ec",
     metric: "EC",

@@ -1600,6 +1600,18 @@ export function calculateTopUpMaintenance(input: {
         [],
       );
     if (
+      input.policy?.dosingEquipmentResolutionMl !== undefined &&
+      nutrientDoseMl > 0 &&
+      nutrientDoseMl < input.policy.dosingEquipmentResolutionMl
+    )
+      warnings.push(
+        warning(
+          "DOSE_BELOW_EQUIPMENT_RESOLUTION",
+          "The required dose is positive but below the configured dosing resolution.",
+          ["top-up-current-ec", "top-up-water", "calibration-factor"],
+        ),
+      );
+    if (
       nutrientDoseMl < input.calibration.validCalibrationRange.minDoseMl ||
       nutrientDoseMl > input.calibration.validCalibrationRange.maxDoseMl ||
       resultingVolumeL < input.calibration.validCalibrationRange.minVolumeL ||

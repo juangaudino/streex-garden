@@ -979,6 +979,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "Mide el EC del agua de reposición antes de calcular la dilución.",
       "Measure the dilution water EC before calculating dilution.",
     ],
+    [
+      "La dosis necesaria es positiva, pero está por debajo de la resolución configurada para tu equipo.",
+      "The required dose is positive but below the configured dosing resolution.",
+    ],
   ];
   const pair = pairs.find((item) => item.includes(message));
   if (pair) return pair[lang === "es" ? 0 : 1];
@@ -1309,6 +1313,7 @@ function calculateResult(input: CalcInput): CalcResult {
     replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),
     targetEc: targetValue,
     calibration: calibrationModel,
+    policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl },
   });
   if (!topup.ok || !topup.value)
     return engineNeeds(topup.errors[0]?.message ?? "No se pudo calcular el relleno.", {

@@ -827,6 +827,35 @@ describe("Garden Nutrient Engine V1", () => {
     expect(result.value?.claims.find((item) => item.id === "top-up-dose")).toBeDefined();
   });
 
+  it("warns when a positive top-up dose is below the user's equipment resolution", () => {
+    const { product, observations } = calibrationInput();
+    const calibration = buildCalibrationModel({
+      productIdentity: product,
+      formulationVersion: product.formulationVersion,
+      recipeSignature: "micro:gro:bloom=1:1:1",
+      observations,
+    }).value!;
+    const input = {
+      currentVolumeL: 8,
+      nominalVolumeL: 10,
+      replacementWaterL: 1,
+      currentEc: measurement(1, "NUTRIENT_SOLUTION"),
+      replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
+      targetEc: 1.2,
+      calibration,
+    };
+    const baseline = calculateTopUpMaintenance(input);
+    expect(baseline.ok).toBe(true);
+    expect(baseline.value!.nutrientDoseMl).toBeGreaterThan(0);
+    const warned = calculateTopUpMaintenance({
+      ...input,
+      policy: { dosingEquipmentResolutionMl: baseline.value!.nutrientDoseMl! * 2 },
+    });
+    expect(warned.value!.nutrientDoseMl).toBe(baseline.value!.nutrientDoseMl);
+    expect(warned.warnings.some((item) => item.code === "DOSE_BELOW_EQUIPMENT_RESOLUTION")).toBe(true);
+    expect(baseline.warnings.some((item) => item.code === "DOSE_BELOW_EQUIPMENT_RESOLUTION")).toBe(false);
+  });
+
   it("reports deterministic source-water values without a universal threshold", () => {
     const result = evaluateSourceWater({
       sourceEc: measurement(0.5, "SOURCE_WATER"),

@@ -44,6 +44,23 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("");
   });
 
+  it("shows dose measurement warnings without requiring the explanation disclosure", () => {
+    render(<CalculatorPage language="en" />);
+    const warning = screen.getByText(/Dosing equipment resolution is unknown/i);
+    expect(warning.closest("details")).toBeNull();
+    expect(warning.closest('[role="alert"]')).not.toBeNull();
+  });
+
+  it("keeps an unmeasurable dose warning visible beside the recipe", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByText("More settings", { exact: true }));
+    await user.type(screen.getByLabelText(/^Dosing resolution/), "10");
+    const warning = screen.getByText(/Below your dosing resolution \(10 mL\)/i);
+    expect(warning.closest("details")).toBeNull();
+    expect(warning.textContent).toContain("FloraMicro");
+  });
+
   it("keeps carnivorous plants out of the nutrient picker", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);
@@ -76,7 +93,7 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByRole("button", { name: "Add plant" }));
     await user.type(screen.getByPlaceholderText("Search plant…"), "Epazote");
     await user.click(screen.getByRole("option", { name: /Epazote/ }));
-    expect(screen.getByRole("alert").textContent).toMatch(
+    expect(screen.getAllByRole("alert").map((alert) => alert.textContent).join(" ")).toMatch(
       /not enough applicable EC evidence.*Epazote/i,
     );
   });
@@ -197,7 +214,7 @@ describe("Calculator real control interactions", () => {
     await user.selectOptions(screen.getByLabelText("Stage of Bibb Lettuce"), "VEGETATIVE");
     await user.click(screen.getByText("Other stages of this plant?"));
     await user.click(screen.getByRole("checkbox", { name: "Seedling" }));
-    expect(screen.getByRole("alert").textContent).toMatch(/not enough applicable EC evidence/i);
+    expect(screen.getAllByRole("alert").map((alert) => alert.textContent).join(" ")).toMatch(/not enough applicable EC evidence/i);
     await user.click(screen.getByRole("button", { name: "Save as system" }));
     await user.type(screen.getByRole("textbox", { name: "System name" }), "Mixed lettuce");
     await user.click(screen.getByRole("button", { name: /^Save$/ }));
@@ -321,7 +338,7 @@ describe("Calculator real control interactions", () => {
     await waitFor(() =>
       expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
     );
-    expect(screen.getByRole("alert").textContent).toContain("in memory only");
+    expect(screen.getAllByRole("alert").map((alert) => alert.textContent).join(" ")).toContain("in memory only");
   });
 
   it("calibrates an identified A+B product using the user's actual component doses", async () => {

@@ -1861,6 +1861,14 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                       </>
                     )}
 
+                    {result.warnings && result.warnings.length > 0 && (
+                      <div role="alert" className="mt-4 rounded-lg border border-amber-500/60 bg-background/55 p-3 text-sm">
+                        <ul className="space-y-1">
+                          {result.warnings.map((message) => <li key={message}>{message}</li>)}
+                        </ul>
+                      </div>
+                    )}
+
                     {/* Next */}
                     <div className="mt-5 rounded-lg bg-background/55 p-4">
                       <p className="text-xs font-semibold text-muted-foreground">{t.next}</p>
@@ -1947,11 +1955,6 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                         )}
                         <EvidenceMark level={result.evidence} t={t} />
                         <p className="text-muted-foreground">{result.evidenceNote[lang]}</p>
-                        {result.warnings?.map((message) => (
-                          <p key={message} className="text-sm text-muted-foreground">
-                            {message}
-                          </p>
-                        ))}
                         <div>
                           <p className="text-xs font-semibold text-muted-foreground">{t.sources}</p>
                           <ul className="mt-1 list-inside list-disc text-muted-foreground">

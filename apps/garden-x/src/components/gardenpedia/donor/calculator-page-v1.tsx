@@ -97,6 +97,8 @@ const T = {
     unit: "Unidad EC",
     sourceEc: "EC del agua de origen",
     targetEc: "EC objetivo",
+    targetManualHint:
+      "Escribe el EC que quieres usar. Sin una referencia aplicable, Garden no puede sugerirlo por ti.",
     meter: "Medidor",
     dosing: "Dosificación",
     syringe: "Jeringa 1 mL",
@@ -223,6 +225,8 @@ const T = {
     unit: "EC unit",
     sourceEc: "Source-water EC",
     targetEc: "Target EC",
+    targetManualHint:
+      "Enter the EC you want to use. Without an applicable reference, Garden cannot suggest one for you.",
     meter: "Meter",
     dosing: "Dosing",
     syringe: "1 mL syringe",
@@ -2317,6 +2321,9 @@ function TargetControl({
           {t.range}: {fmtEc(range.min)}–{fmtEc(range.max)} {unitLabel}
         </p>
       )}
+      {!range && !isUser && (
+        <p className="mt-2 text-xs text-muted-foreground">{t.targetManualHint}</p>
+      )}
       <div className="mt-3 flex items-center gap-3">
         <Button
           variant="outline"
@@ -2336,7 +2343,7 @@ function TargetControl({
               inputMode="decimal"
               value={value}
               onChange={(event) => onChange(event.target.value)}
-              placeholder="1.20"
+              placeholder="—"
               className="w-full min-w-0 bg-transparent text-center font-display text-3xl font-bold tabular-nums outline-none"
             />
             <span className="shrink-0 text-sm font-medium text-muted-foreground">{unitLabel}</span>

@@ -62,6 +62,20 @@ describe("Calculator real control interactions", () => {
     );
   });
 
+  it("makes manual EC entry clear when the selected plant lacks a crop range", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Cascading Petunia");
+    await user.click(screen.getByRole("option", { name: /Cascading Petunia/ }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    expect(screen.getByText(/Enter the EC you want to use/)).toBeTruthy();
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.type(target, "1.2");
+    expect(target.value).toBe("1.2");
+  });
+
   it("preserves actual amounts already entered when the calibration sample volume changes", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

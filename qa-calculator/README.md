@@ -1,5 +1,12 @@
 # Calculator V1 verification
 
+> Historical integration report: the baseline, catalog counts, product support,
+> test totals and deployment status below describe an earlier review and are not
+> the current production status. In particular, AeroGarden EC modes can use a
+> compatible user calibration. For the current physical QA procedure, see
+> [QA-USUARIO.md](./QA-USUARIO.md). This file preserves the original fixtures
+> and historical evidence; it does not certify a later release.
+
 Base under User Zero review: `3654c876e8669fa7aa3e6632372b226630da437c`.
 All storage changes are local Calculator settings. No Supabase or canonical Garden writes.
 

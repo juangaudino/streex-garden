@@ -709,6 +709,7 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
         stageId,
         pods,
         sourceEc,
+        sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
         currentEc: num(currentEc, true),
         currentLiters: num(currentLiters),
         capacityLiters: num(capacityInput),
@@ -727,7 +728,9 @@ export function CalculatorPage({ language = "es" }: { language?: Lang }) {
               ? [t.volume]
               : []
             : []),
-          ...(mode !== "recipe" && parseDecimalInput(sourceEcInput) === null ? [t.sourceEc] : []),
+          ...((mode === "target" || mode === "topup") && parseDecimalInput(sourceEcInput) === null
+            ? [t.sourceEc]
+            : []),
           ...(targetEdited && (userTarget === null || userTarget <= 0) && mode !== "recipe"
             ? [t.targetEc]
             : []),

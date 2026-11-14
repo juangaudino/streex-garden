@@ -113,6 +113,21 @@ function compare(test: string, source: string, expected: number, actual: number,
   expect(difference, test).toBeLessThanOrEqual(tolerance);
 }
 describe("Calculator objective independent validation", () => {
+  it("requires source-water EC for dilution, not for adding nutrient or holding", () => {
+    const input = { ...calibrated, language: "en" as const, mode: "adjust" as const, sourceEcKnown: false, currentLiters: 3 };
+    const add = calculateGardenResult({ ...input, currentEc: 0.8 });
+    expect(add.kind).toBe("ok");
+    if (add.kind === "ok") expect(add.action).toBe("add");
+    const hold = calculateGardenResult({ ...input, currentEc: 1.2 });
+    expect(hold.kind).toBe("ok");
+    if (hold.kind === "ok") expect(hold.action).toBe("hold");
+    const dilution = calculateGardenResult({ ...input, currentEc: 1.5 });
+    expect(dilution.kind).toBe("needs");
+    if (dilution.kind === "needs") expect(dilution.message).toMatch(/dilution water EC/);
+    const known = calculateGardenResult({ ...input, sourceEcKnown: true, currentEc: 1.5 });
+    expect(known.kind).toBe("ok");
+    if (known.kind === "ok") expect(known.action).toBe("dilute");
+  });
   it("compares GH manufacturer doses at all seven implemented steps and four volumes", () => {
     for (const [index, micro, gro, bloom, min, max] of gh)
       for (const liters of [2, 4, 6.5, 10]) {

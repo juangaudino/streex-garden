@@ -349,6 +349,7 @@ export type CalcInput = {
   stageId: string;
   pods: number;
   sourceEc: number;
+  sourceEcKnown?: boolean | undefined;
   currentEc: number | null;
   currentLiters: number | null;
   capacityLiters?: number | null | undefined;
@@ -974,6 +975,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "Usa mediciones EC finitas no negativas, y un volumen y objetivo positivos.",
       "Use finite non-negative EC measurements and positive volume/target values.",
     ],
+    [
+      "Mide el EC del agua de reposición antes de calcular la dilución.",
+      "Measure the dilution water EC before calculating dilution.",
+    ],
   ];
   const pair = pairs.find((item) => item.includes(message));
   if (pair) return pair[lang === "es" ? 0 : 1];
@@ -1224,7 +1229,8 @@ function calculateResult(input: CalcInput): CalcResult {
       return engineNeeds("cuántos litros quedan", targetPresentation);
     const correction = calculateEcCorrection({
       currentEc: makeMeasurement(input.currentEc),
-      dilutionWaterEc: makeSourceWaterMeasurement(input.sourceEc),
+      dilutionWaterEc:
+        input.sourceEcKnown === false ? undefined : makeSourceWaterMeasurement(input.sourceEc),
       targetEc: targetValue,
       reservoirVolumeL: input.currentLiters,
       reservoirCapacityL: input.capacityLiters ?? undefined,

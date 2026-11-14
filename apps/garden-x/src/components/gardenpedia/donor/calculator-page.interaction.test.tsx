@@ -423,6 +423,7 @@ describe("Calculator real control interactions", () => {
       expect(screen.queryByRole("button", { name: "Save calibration" })).toBeNull(),
     );
 
+    await user.clear(sourceEc);
     await user.click(screen.getByRole("tab", { name: "Correct" }));
     await user.type(screen.getByLabelText(/^Liters remaining/), "4");
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
@@ -430,6 +431,12 @@ describe("Calculator real control interactions", () => {
     );
     await user.type(screen.getByLabelText(/^EC you measured/), "0.80");
     await waitFor(() => expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0));
+    await user.clear(screen.getByLabelText(/^EC you measured/));
+    await user.type(screen.getByLabelText(/^EC you measured/), "1.50");
+    expect(screen.getByText(/Measure the dilution water EC before calculating dilution/i)).toBeTruthy();
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await user.clear(screen.getByLabelText(/^EC you measured/));
+    await user.type(screen.getByLabelText(/^EC you measured/), "0.80");
     await user.click(screen.getByText("More settings", { exact: true }));
     await user.type(screen.getByLabelText(/^Reservoir capacity/), "4");
     expect(screen.getByText(/next nutrient dose would exceed reservoir capacity/i)).toBeTruthy();

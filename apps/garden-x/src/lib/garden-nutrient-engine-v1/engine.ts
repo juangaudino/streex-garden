@@ -127,6 +127,12 @@ function systemCompatible(observation: EvidenceObservation, context: CropContext
   );
 }
 
+function cultivarCompatible(observation: EvidenceObservation, context: CropContext): boolean {
+  // Generic crop observations can inform a cultivar, but an observation tied
+  // to one cultivar is applicable only when that cultivar is explicitly known.
+  return !observation.cultivar || observation.cultivar === context.cultivar;
+}
+
 function metricEvidence(
   observations: EvidenceObservation[],
   context: CropContext,
@@ -135,8 +141,7 @@ function metricEvidence(
   return observations.filter((observation) => {
     if (observation.metric !== metric) return false;
     if (observation.cropIdentity !== context.cropIdentity) return false;
-    if (context.cultivar && observation.cultivar && observation.cultivar !== context.cultivar)
-      return false;
+    if (!cultivarCompatible(observation, context)) return false;
     if (!stageCompatible(observation, context)) return false;
     if (!systemCompatible(observation, context)) return false;
     if (
@@ -155,6 +160,8 @@ function automaticEvidence(observations: EvidenceObservation[]): EvidenceObserva
   return observations.filter(
     (observation) =>
       AUTOMATIC_TIERS.has(observation.source.tier) &&
+      (observation.verificationStatus === "VERIFIED" ||
+        observation.verificationStatus === "CONFLICTING") &&
       observation.evidenceState !== "LOW" &&
       observation.evidenceState !== "INSUFFICIENT",
   );
@@ -171,6 +178,7 @@ export function selectApplicable(
   return automaticEvidence(
     observations.filter((observation) => {
       if (observation.cropIdentity !== context.cropIdentity) return false;
+      if (!cultivarCompatible(observation, context)) return false;
       if (!stageCompatible(observation, context)) return false;
       if (!systemCompatible(observation, context)) return false;
       if (
@@ -195,7 +203,8 @@ function rangeSelection(
     .map((observation) => observation.observedRange)
     .filter((range): range is NonNullable<EvidenceObservation["observedRange"]> => Boolean(range));
   const evidenceState = observations.some(
-    (observation) => observation.evidenceState === "CONFLICTING",
+    (observation) => observation.evidenceState === "CONFLICTING" ||
+      observation.verificationStatus === "CONFLICTING",
   )
     ? "CONFLICTING"
     : observations.length > 0

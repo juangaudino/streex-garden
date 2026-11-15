@@ -557,6 +557,31 @@ describe("Garden Nutrient Engine V1", () => {
     ).toEqual([ec.id, nft.id]);
   });
 
+  it("selects cultivar-specific evidence only for an explicitly matching cultivar", () => {
+    const generic = CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!;
+    const named = { ...generic, id: "specific-cultivar", cultivar: "genovese" };
+    const other = { ...generic, id: "other-cultivar", cultivar: "thai" };
+    const observations = [generic, named, other];
+    expect(selectApplicable(observations, basil).map((item) => item.id)).toEqual([generic.id]);
+    const context = { ...basil, cultivar: "genovese" };
+    expect(selectApplicable(observations, context).map((item) => item.id)).toEqual([generic.id, named.id]);
+    expect(selectCropRange(context, observations).ec.observations.map((item) => item.id))
+      .toEqual([generic.id, named.id]);
+    expect(selectCropRange({ ...basil, cultivar: "thai" }, [named]).ec.ec).toBeUndefined();
+    expect(selectCropRange(basil, [named]).ec.ec).toBeUndefined();
+  });
+
+  it("does not promote unverified observations and preserves verified-source conflicts", () => {
+    const verified = CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!;
+    const unverified = { ...verified, id: "unverified", verificationStatus: "UNVERIFIED" as const };
+    const reported = { ...verified, id: "reported", verificationStatus: "REPORTED" as const };
+    expect(selectApplicable([unverified, reported], basil)).toHaveLength(0);
+    expect(calculateFreshTargetEc({ contexts: [basil], observations: [unverified, reported] }).ok).toBe(false);
+    const conflicting = { ...verified, id: "conflicting", verificationStatus: "CONFLICTING" as const };
+    expect(selectCropRange(basil, [conflicting]).ec.evidenceState).toBe("CONFLICTING");
+    expect(calculateFreshTargetEc({ contexts: [basil], observations: [conflicting] }).ok).toBe(false);
+  });
+
   it("never intersects ranges across different measurement scopes in a mixed planting", () => {
     const tomatoEc = CROP_EVIDENCE.find(
       (item) => item.cropIdentity === "tomato" && item.metric === "EC",

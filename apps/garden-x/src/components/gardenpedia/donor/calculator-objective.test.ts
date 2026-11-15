@@ -19,10 +19,15 @@ import {
 const gh = [
   [1, 1.8, 1.8, 1.8, 0.4, 0.5],
   [2, 3.6, 3.4, 2.6, 0.9, 1.1],
+  [3, 4.9, 4.6, 3.4, 1.2, 1.4],
   [4, 6, 5.6, 4.2, 1.4, 1.7],
   [5, 7.6, 6.6, 8.5, 2, 2.4],
+  [6, 7.6, 6.6, 8.5, 2, 2.4],
   [7, 4.6, 4.6, 6.6, 1.4, 1.7],
+  [8, 4.6, 4.6, 6.6, 1.4, 1.7],
+  [9, 4.6, 4.6, 6.6, 1.4, 1.7],
   [10, 3.3, 3.3, 4, 0.9, 1.1],
+  [11, 3.3, 3.3, 4, 0.9, 1.1],
   [12, 2, 2, 3.2, 0.6, 0.8],
 ];
 const ghUrl = "https://generalhydroponics.com/pages/flora-series-3-part-feed-program";
@@ -128,7 +133,7 @@ describe("Calculator objective independent validation", () => {
     expect(known.kind).toBe("ok");
     if (known.kind === "ok") expect(known.action).toBe("dilute");
   });
-  it("compares GH manufacturer doses at all seven implemented steps and four volumes", () => {
+  it("compares GH manufacturer doses at all twelve nutrient-feeding weeks and four volumes", () => {
     for (const [index, micro, gro, bloom, min, max] of gh)
       for (const liters of [2, 4, 6.5, 10]) {
         const value = run({ ...base, mode: "recipe", stageId: `feeding-${index}`, liters });

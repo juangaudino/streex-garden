@@ -760,7 +760,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
 
   it("projects every verified FloraSeries feeding step without inventing plant phenology", () => {
-    expect(CALCULATOR_STAGES.map((stage) => stage.feedingIndex)).toEqual([1, 2, 4, 5, 7, 10, 12]);
+    expect(CALCULATOR_STAGES.map((stage) => stage.feedingIndex)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
     const result = calculateGardenResult({
       mode: "recipe",
       crops: { "genovese-basil": 1 },

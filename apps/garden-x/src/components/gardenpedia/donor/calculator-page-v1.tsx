@@ -1906,6 +1906,13 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                           </strong>
                         </p>
                       )}
+                      {result.expectedEc?.kind === "manufacturer" && (
+                        <p className="mt-1 text-center text-xs text-muted-foreground">
+                          {lang === "es"
+                            ? "El agua de origen influye en la lectura final. Mide tu mezcla."
+                            : "Source water affects the final reading. Measure your mixture."}
+                        </p>
+                      )}
                     </div>
 
                     {/* Disclosure: why */}

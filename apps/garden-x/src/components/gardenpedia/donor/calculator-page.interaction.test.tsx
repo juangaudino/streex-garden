@@ -321,6 +321,17 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByText("24.00", { exact: true })).toBeTruthy();
   });
 
+  it("lets the visitor select the official FloraSeries third grow week", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.selectOptions(screen.getByLabelText("Recipe stage"), "feeding-3");
+    expect(screen.getByText("5.18", { exact: true })).toBeTruthy();
+    expect(screen.getByText("4.86", { exact: true })).toBeTruthy();
+    expect(screen.getByText("3.59", { exact: true })).toBeTruthy();
+    expect(screen.getByText(/1\.20/).textContent).toContain("1.40");
+    expect(screen.getByText("Source water affects the final reading. Measure your mixture.")).toBeTruthy();
+  });
+
   it("can calculate for an anonymous visitor when browser storage is unavailable", async () => {
     const user = userEvent.setup();
     vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {

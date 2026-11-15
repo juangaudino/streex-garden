@@ -1206,6 +1206,13 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                               </a>
                             </details>
                           )}
+                          {id === "chamomile-unspecified" && (
+                            <p className="col-span-full text-xs text-muted-foreground">
+                              {lang === "es"
+                                ? "Especie de manzanilla sin identificar: la referencia de EC es general, no una validación para tu especie o sus plántulas."
+                                : "Chamomile species unidentified: the EC reference is general, not a validation for your species or its seedlings."}
+                            </p>
+                          )}
                           {studies.length > 0 && (
                             <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">

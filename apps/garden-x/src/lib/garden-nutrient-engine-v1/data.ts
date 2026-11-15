@@ -216,6 +216,24 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     retrievedAt: "2026-11-12",
   },
+  letpotChamomile: {
+    id: "letpot-hydroponic-chamomile-guide",
+    publisher: "LetPot",
+    title: "How to grow hydroponic chamomile indoors",
+    url: "https://letpot.com/en-au/blogs/hydroponic-plant-growing-knowledge-and-tips/how-to-grow-hydroponic-chamomile-indoors-a-detailed-guide",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    retrievedAt: "2026-11-15",
+  },
+  tennesseeConeflowerExtension: {
+    id: "tennessee-extension-coneflower-fertilization",
+    publisher: "University of Tennessee Extension",
+    title: "Echinacea tennesseensis",
+    url: "https://tnyards.utk.edu/echinacea-tennesseensis/",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-15",
+  },
   echinaceaHydroponicsReview: {
     id: "echinacea-agronomy-review-2024",
     publisher: "Plants",
@@ -762,11 +780,27 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["chamomile-unspecified"],
+    source: NUTRIENT_SOURCES.letpotChamomile,
+    text: {
+      es: "LetPot ofrece para manzanilla hidropónica una referencia general de EC de solución de 1,0–1,6 mS/cm. La guía menciona manzanilla alemana y romana, pero no distingue la EC por especie ni por etapa; la identidad de esta planta sigue sin determinarse y la referencia no valida una dosis para plántulas.",
+      en: "LetPot reports general hydroponic chamomile solution EC guidance of 1.0–1.6 mS/cm. The guide mentions German and Roman chamomile but does not distinguish EC by species or stage; this plant's identity remains unknown and the reference does not validate a seedling dose.",
+    },
+  },
+  {
     plantIds: ["tennessee-coneflower-echinacea-tennesseensis"],
     source: NUTRIENT_SOURCES.echinaceaHydroponicsReview,
     text: {
       es: "Una revisión describe cultivo hidropónico de otras especies de Echinacea, especialmente E. purpurea y E. angustifolia. No valida esos resultados ni una EC óptima para E. tennesseensis.",
       en: "A review describes hydroponic cultivation of other Echinacea species, especially E. purpurea and E. angustifolia. It does not validate those results or an optimum EC for E. tennesseensis.",
+    },
+  },
+  {
+    plantIds: ["tennessee-coneflower-echinacea-tennesseensis"],
+    source: NUTRIENT_SOURCES.tennesseeConeflowerExtension,
+    text: {
+      es: "La Universidad de Tennessee desaconseja fertilizar Echinacea tennesseensis en su guía de jardinería en suelo, porque puede debilitar sus tallos. La guía no estudia depósitos hidropónicos ni establece un objetivo de EC para ellos.",
+      en: "The University of Tennessee advises against fertilizing Echinacea tennesseensis in its soil-gardening guidance because it can weaken stems. It does not study hydroponic reservoirs or establish an EC target for them.",
     },
   },
   {
@@ -1165,6 +1199,20 @@ function cropObservation(
  * Missing crops remain INSUFFICIENT rather than inheriting a category default.
  */
 export const CROP_EVIDENCE: EvidenceObservation[] = [
+  {
+    id: "chamomile-unspecified-letpot-ec",
+    metric: "EC",
+    cropIdentity: "chamomile-unspecified",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.letpotChamomile,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
+    notes: "General supplier guidance for hydroponic chamomile; the guide discusses German and Roman chamomile but does not distinguish their EC needs. This identity's species and stage are unknown. Not a seedling recommendation or a validated species-specific optimum.",
+  },
   ...([
     ["fenugreek", 1.2, 2.4],
     ["borage", 1.4, 2.2],

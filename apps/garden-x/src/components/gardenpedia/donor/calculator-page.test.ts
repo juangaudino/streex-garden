@@ -36,6 +36,13 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("keeps Tennessee coneflower's soil fertilization warning distinct from hydroponic EC guidance", () => {
+    const id = "tennessee-coneflower-echinacea-tennesseensis";
+    expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    const reference = CROP_STUDY_REFERENCES.find((item) => item.plantIds.includes(id) && item.source.id === "tennessee-extension-coneflower-fertilization");
+    expect(reference?.text.en).toMatch(/soil-gardening/);
+    expect(reference?.selectableEcMs).toBeUndefined();
+  });
   it("warns when a calculated EC adjustment is smaller than the user's meter resolution", () => {
     const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
       pods: 6, baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
@@ -249,8 +256,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ),
     ).toBe(true);
   });
-  it("keeps identity sources from becoming nutrient targets for unidentified or distinct crops", () => {
-    for (const id of ["chamomile-unspecified", "mexican-tarragon"]) {
+  it("keeps identity sources from becoming nutrient targets for distinct crops", () => {
+    for (const id of ["mexican-tarragon"]) {
       expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
       expect(
         CROP_STUDY_REFERENCES.some((study) =>
@@ -259,7 +266,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ).toBe(true);
     }
   });
-  it("makes named basil, butterhead, and species-unspecified chamomile identities selectable without inventing crop evidence", () => {
+  it("makes named basil, butterhead, and species-unspecified chamomile identities selectable", () => {
     for (const id of [
       "basil-dark-opal",
       "basil-spicy-globe",
@@ -279,9 +286,25 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(resolveNutrientCropIdentity(id)).toBe("lemon-basil");
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
-    for (const id of ["chamomile-unspecified"]) {
-      expect(resolveNutrientCropIdentity(id)).toBeUndefined();
-      expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    expect(resolveNutrientCropIdentity("chamomile-unspecified")).toBeUndefined();
+    expect(hasApplicableCropNutrientEvidence("chamomile-unspecified")).toBe(true);
+    const general = contextFor({ "chamomile-unspecified": 1 }, "gh-flora")[0]!;
+    const selected = selectCropRange(general).ec;
+    expect(selected.ec).toEqual({ min: 1, max: 1.6, unit: "mS/cm" });
+    expect(selected.observations[0]?.source.id).toBe("letpot-hydroponic-chamomile-guide");
+    const seedling = contextFor({ "chamomile-unspecified": 1 }, "gh-flora", { "chamomile-unspecified": "SEEDLING" })[0]!;
+    expect(selectCropRange(seedling).ec.ec).toBeUndefined();
+    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
+      pods: 6, baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
+    expect(reading.ok).toBe(true);
+    const inputs = { crops: { "chamomile-unspecified": 1 }, liters: 4, productId: "gh-flora",
+      stageId: "feeding-2", pods: 6, sourceEc: 0.2, sourceEcKnown: true,
+      currentEc: 0.8, currentLiters: 3, capacityLiters: 5, waterAdded: 0.5,
+      userTarget: null, round: 1, calibrationObservations: [reading.value!] };
+    for (const mode of ["recipe", "target", "adjust", "topup"] as const) {
+      const result = calculateGardenResult({ ...inputs, mode });
+      expect(result.kind).toBe("ok");
+      if (result.kind === "ok") expect(result.doses.length).toBeGreaterThan(0);
     }
   });
   it("applies holy basil evidence only when the user selects a matching stage", () => {
@@ -676,9 +699,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 11,
+      SUPPORTED_DIRECT: 12,
       SUPPORTED_VIA_DEFENSIBLE_MAPPING: 123,
-      INSUFFICIENT: 373,
+      INSUFFICIENT: 372,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [

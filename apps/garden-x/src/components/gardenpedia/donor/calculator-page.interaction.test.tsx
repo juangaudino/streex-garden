@@ -19,6 +19,10 @@ vi.mock("@/components/ui/dialog", () => {
 });
 
 describe("Calculator real control interactions", () => {
+  it("discloses that general chamomile guidance is not species-specific", () => {
+    render(<CalculatorPage language="en" initialPlantId="chamomile-unspecified" />);
+    expect(screen.getByText(/Chamomile species unidentified: the EC reference is general/i)).toBeTruthy();
+  });
   it("starts a profile-linked calculation with the selected public plant", () => {
     render(<CalculatorPage language="en" initialPlantId="common-fenugreek-trigonella-foenum-graecum" />);
     expect(screen.getByText(/Common Fenugreek/i)).toBeTruthy();

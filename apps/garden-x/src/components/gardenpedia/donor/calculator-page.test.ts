@@ -187,8 +187,10 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const observation = recordActualDoses({
       productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
       baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+      meterResolutionMs: 0.01,
     });
     expect(observation.ok).toBe(true);
+    expect(observation.value?.meterResolution).toBe(0.01);
     const result = calculateGardenResult({
       language: "en", mode: "target", crops: { "garlic-chives": 1 },
       cropStages: { "garlic-chives": "SEEDLING" }, liters: 4, productId: "gh-flora",

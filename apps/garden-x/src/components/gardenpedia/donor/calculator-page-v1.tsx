@@ -1793,6 +1793,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                           baselineEc,
                           resultingEc,
                           actualDoses,
+                          meterResolutionMs,
                         });
                         if (!observation.ok || !observation.value) {
                           setCalibrationError(
@@ -2058,6 +2059,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                                   : sourceEc,
                             resultingEc: measuredMs,
                             actualDoses,
+                            meterResolutionMs,
                           });
                           if (!observation.ok || !observation.value) {
                             setCalibrationError(t.calibrationInvalid);

@@ -1582,6 +1582,7 @@ export function recordActualDoses(input: {
   baselineEc: number;
   resultingEc: number;
   actualDoses: Record<string, string>;
+  meterResolutionMs?: number | undefined;
 }): EngineResult<CalibrationObservation> {
   const identity = productIdentity(
     input.productId,
@@ -1648,6 +1649,8 @@ export function recordActualDoses(input: {
   if (observation.value) {
     observation.value.recipeContextSignature = signature;
     observation.value.componentDosesMl = componentDosesMl;
+    if (input.meterResolutionMs !== undefined && Number.isFinite(input.meterResolutionMs) && input.meterResolutionMs > 0)
+      observation.value.meterResolution = input.meterResolutionMs;
   }
   return observation;
 }

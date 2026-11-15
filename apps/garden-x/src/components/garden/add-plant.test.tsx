@@ -160,9 +160,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
       screen.getByRole("link", { name: /URUQ 8-Pod · snapklik.com/ }).getAttribute("href"),
     ).toContain("snapklik.com");
     expect(screen.queryByPlaceholderText("Search basil, Ocimum, Genovese…")).toBeNull();
-    const sunflower = screen.getByText("American Giant Hybrid Sunflower");
-    expect(sunflower.closest("details")?.open).toBe(false);
-    expect(sunflower.closest("section[aria-label='Recommended here']")).toBeNull();
+    expect(screen.queryByText("American Giant Hybrid Sunflower")).toBeNull();
     expect(screen.queryByText(/^(best|top pick|winner|score)$/i)).toBeNull();
   }, 15_000);
 
@@ -226,6 +224,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
 
+    fireEvent.click(screen.getByText(/Other plants without enough evidence · \d+/));
     const mintCard = (await screen.findByText("Common Mint")).closest("article");
     expect(mintCard?.textContent).not.toContain("Documented growth habit");
     expect(mintCard?.querySelector("ul.mt-2.space-y-1")).toBeNull();
@@ -234,6 +233,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
   it("preserves evidence source links and taxonomic scope", async () => {
     openSheet();
     fireEvent.click(await screen.findByRole("button", { name: "What could I plant here?" }));
+    fireEvent.click(screen.getByText(/Other plants without enough evidence · \d+/));
     const buttercrunch = await screen.findByText("Buttercrunch Lettuce");
     const card = buttercrunch.closest("article")!;
     fireEvent.click(card.querySelector("summary")!);

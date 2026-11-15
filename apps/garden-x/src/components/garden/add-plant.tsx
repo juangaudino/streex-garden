@@ -48,6 +48,8 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState<GardenLibraryEntry | null>(null);
   const [showContextualResults, setShowContextualResults] = useState(false);
+  const [showAdditionalRecommended, setShowAdditionalRecommended] = useState(false);
+  const [showInsufficient, setShowInsufficient] = useState(false);
   const [nickname, setNickname] = useState("");
   const [date, setDate] = useState(todayInputValue());
   const [precision, setPrecision] = useState<"exact" | "approximate" | "unknown">("exact");
@@ -68,10 +70,18 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
   }, [open]);
 
   useEffect(() => {
+    if (showContextualResults) return;
+    setShowAdditionalRecommended(false);
+    setShowInsufficient(false);
+  }, [showContextualResults]);
+
+  useEffect(() => {
     if (!open) return;
     setQuery("");
     setSelected(null);
     setShowContextualResults(false);
+    setShowAdditionalRecommended(false);
+    setShowInsufficient(false);
     setNickname("");
     setDate(todayInputValue());
     setPrecision("exact");
@@ -90,7 +100,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
     [catalog, query],
   );
   const contextualEvaluation = useMemo(() => {
-    if (!catalog || !garden || !positionId) {
+    if (!showContextualResults || !catalog || !garden || !positionId) {
       return { candidates: [], unavailable: false, machineFact: null };
     }
     try {
@@ -117,7 +127,7 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
     } catch {
       return { candidates: [], unavailable: true, machineFact: null };
     }
-  }, [catalog, garden, positionId, store.plants]);
+  }, [showContextualResults, catalog, garden, positionId, store.plants]);
   const contextualCandidates = contextualEvaluation.candidates;
   const libraryEntryById = useMemo(
     () => new Map(catalog?.entries.map((entry) => [entry.libraryPlantId, entry]) ?? []),
@@ -336,14 +346,14 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                                 ) : null}
                                 <div className="space-y-2">{renderCards(shortlist)}</div>
                                 {additionalRecommended.length ? (
-                                  <details className="mt-2 text-sm">
+                                  <details className="mt-2 text-sm" onToggle={(event) => setShowAdditionalRecommended(event.currentTarget.open)}>
                                     <summary className="w-fit cursor-pointer font-medium text-primary">
                                       {ui(language, "moreSupportedCandidates")} ·{" "}
                                       {additionalRecommended.length}
                                     </summary>
-                                    <div className="mt-2 space-y-2">
+                                    {showAdditionalRecommended && <div className="mt-2 space-y-2">
                                       {renderCards(additionalRecommended)}
-                                    </div>
+                                    </div>}
                                   </details>
                                 ) : null}
                               </section>
@@ -358,14 +368,14 @@ export function AddPlantSheet({ gardenId, positionId, slot, open, onClose }: Pro
                               </section>
                             ) : null}
                             {insufficient.length ? (
-                              <details className="rounded-2xl border border-border/70 bg-secondary/40 p-3">
+                              <details className="rounded-2xl border border-border/70 bg-secondary/40 p-3" onToggle={(event) => setShowInsufficient(event.currentTarget.open)}>
                                 <summary className="cursor-pointer font-medium">
                                   {ui(language, "otherPlantsInsufficient")} · {insufficient.length}
                                   <span className="mt-1 block text-sm font-normal text-muted-foreground">
                                     {ui(language, "insufficientEvidenceIntro")}
                                   </span>
                                 </summary>
-                                <div className="mt-3 space-y-2">{renderCards(insufficient)}</div>
+                                {showInsufficient && <div className="mt-3 space-y-2">{renderCards(insufficient)}</div>}
                               </details>
                             ) : null}
                           </div>

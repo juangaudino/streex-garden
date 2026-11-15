@@ -335,6 +335,16 @@ export const NUTRIENT_SOURCES = {
     publication: "2015",
     retrievedAt: "2026-11-12",
   },
+  epazoteSteinerStudy: {
+    id: "aguilar-carpio-epazote-steiner-2021",
+    publisher: "Biotecnia · Aguilar-Carpio y colaboradores",
+    title: "Análisis de crecimiento de epazote cultivado en invernadero",
+    url: "https://www.scielo.org.mx/pdf/biotecnia/v23n2/1665-1456-biotecnia-23-02-113.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2021",
+    retrievedAt: "2026-11-14",
+  },
   marigoldMicronutrientStudy: {
     id: "marigold-hydroponic-iron-manganese-2024",
     publisher: "Scientia Horticulturae",
@@ -838,6 +848,14 @@ export const CROP_STUDY_REFERENCES = [
     text: {
       es: "Un estudio cultivó epazote en arena gruesa irrigada con solución nutritiva antes de recolectar inflorescencias. No comparó niveles de EC ni establece una dosis para depósitos domésticos.",
       en: "A study grew epazote in coarse sand irrigated with nutrient solution before harvesting inflorescences. It did not compare EC levels or establish a dose for home reservoirs.",
+    },
+  },
+  {
+    plantIds: ["epazote"],
+    source: NUTRIENT_SOURCES.epazoteSteinerStudy,
+    text: {
+      es: "Un ensayo de epazote H-1000 en macetas con tezontle comparó soluciones Steiner a EC de 1,0, 1,5 y 2,0 mS/cm y obtuvo mayor producción con 2,0. Ese resultado corresponde a una formulación y sistema concretos; no valida una dosis ni un intervalo para un tanque o plántulas.",
+      en: "A trial of H-1000 epazote in volcanic substrate pots compared Steiner solutions at EC 1.0, 1.5 and 2.0 mS/cm and obtained greater yield at 2.0. This result belongs to a specific formulation and system; it does not validate a dose or range for a reservoir or seedlings.",
     },
   },
   {

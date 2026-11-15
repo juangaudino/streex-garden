@@ -80,6 +80,15 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.text.en).toContain("not an automatic range");
     expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
   });
+  it("shows the epazote substrate trial without treating it as a reservoir range", () => {
+    const reference = CROP_STUDY_REFERENCES.find((study) =>
+      study.source.id === "aguilar-carpio-epazote-steiner-2021" &&
+      study.plantIds.some((id: string) => id === "epazote"),
+    );
+    expect(reference?.text.en).toContain("1.0, 1.5 and 2.0");
+    expect(reference?.text.en).toContain("does not validate a dose or range");
+    expect(hasApplicableCropNutrientEvidence("epazote")).toBe(false);
+  });
   it("keeps the coleus grower-page claim visible but out of automatic targets", () => {
     const reference = CROP_STUDY_REFERENCES.find((study) =>
       study.source.id === "plant-garden-coleus-hydroponic-guide" &&

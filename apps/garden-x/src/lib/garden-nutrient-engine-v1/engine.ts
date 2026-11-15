@@ -372,13 +372,13 @@ export function deriveSuggestedStartingPoint(
   derivedFrom: string[] = [],
 ): EngineResult<number> {
   const width = range.max - range.min;
-  if (meterResolution !== undefined && width <= meterResolution) {
+  if (width <= 0 || (meterResolution !== undefined && width <= meterResolution)) {
     return result(
       undefined,
       [
         warning(
           "STARTING_POINT_SUPPRESSED",
-          "The evidence range is no wider than the meter resolution; Garden will not present false precision.",
+          "The evidence range is a single value or no wider than the meter resolution; Garden will not present false precision.",
           derivedFrom,
         ),
       ],

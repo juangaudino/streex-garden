@@ -484,6 +484,7 @@ describe("Calculator real control interactions", () => {
     const resolution = screen.getByLabelText(/^Dosing resolution/);
     await user.clear(resolution);
     await user.type(resolution, "0.1");
+    await user.type(screen.getByLabelText(/^EC meter resolution/), "0.01");
     await user.click(screen.getByRole("button", { name: "Save as system" }));
     await user.type(screen.getByRole("textbox", { name: "System name" }), "Complete configuration");
     await user.click(screen.getByRole("button", { name: /^Save$/ }));
@@ -494,6 +495,7 @@ describe("Calculator real control interactions", () => {
       currentEc: 0.8,
       currentLiters: 4,
       dosingResolutionMl: 0.1,
+      meterResolutionMs: 0.01,
       liters: 4,
       water: { ec: 0.2 },
       crops: { "genovese-basil": 1 },
@@ -513,6 +515,8 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByLabelText(/^EC you measured/) as HTMLInputElement).value).toBe("0.8");
     expect(screen.queryByText("To calculate I need")).toBeNull();
     expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
+    await user.click(screen.getByText("More settings", { exact: true }));
+    expect((screen.getByLabelText(/^EC meter resolution/) as HTMLInputElement).value).toBe("0.01");
     const ratioNotice = screen.getByText(/Component proportions follow your actual calibration mixture/i);
     expect(ratioNotice.closest("details")).toBeNull();
   });

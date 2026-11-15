@@ -424,8 +424,10 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
   const [calibrationTemporary, setCalibrationTemporary] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [dosingResolutionInput, setDosingResolutionInput] = useState("");
+  const [meterResolutionInput, setMeterResolutionInput] = useState("");
   const [correctionStepInput, setCorrectionStepInput] = useState("50");
   const dosingResolutionMl = parseDecimalInput(dosingResolutionInput) ?? undefined;
+  const meterResolutionMs = parseDecimalInput(meterResolutionInput) ?? undefined;
   const [round, setRound] = useState(1);
   const [justLearned, setJustLearned] = useState(false);
   const [calibrationObservations, setCalibrationObservations] = useState<
@@ -468,6 +470,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
         capacityLiters: parseDecimalInput(capacityInput),
         waterAdded: parseDecimalInput(waterAdded),
         dosingResolutionMl,
+        meterResolutionMs,
         correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
         water: { ...sys.water, ec: sourceEc },
         sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
@@ -503,6 +506,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     setCapacityInput(s.capacityLiters == null ? "" : String(s.capacityLiters));
     setWaterAdded(s.waterAdded == null ? "" : String(s.waterAdded));
     setDosingResolutionInput(s.dosingResolutionMl == null ? "" : String(s.dosingResolutionMl));
+    setMeterResolutionInput(s.meterResolutionMs == null ? "" : String(s.meterResolutionMs));
     setCorrectionStepInput(String((s.correctionFraction ?? 0.5) * 100));
     setRound(1);
     const observations =
@@ -544,6 +548,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
       capacityLiters: parseDecimalInput(capacityInput),
       waterAdded: parseDecimalInput(waterAdded),
       dosingResolutionMl,
+      meterResolutionMs,
       correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
       calibration: calibrationObservations.length
         ? { learned: 0, readings: calibrationObservations.length }
@@ -658,6 +663,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
       capacityLiters: parseDecimalInput(capacityInput),
       waterAdded: parseDecimalInput(waterAdded),
       dosingResolutionMl,
+      meterResolutionMs,
       correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
       calibration: { learned: 0, readings: nextObservations.length },
     };
@@ -724,6 +730,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
         round,
         calibrationObservations,
         dosingResolutionMl,
+        meterResolutionMs,
         correctionFraction: (parseDecimalInput(correctionStepInput) ?? 0) / 100,
         invalidFields: [
           ...(productId === "ab" && !customAbManufacturer.trim() ? [t.customAbManufacturer] : []),
@@ -741,6 +748,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
             ? [t.targetEc]
             : []),
           ...(dosingResolutionInput.trim() && (dosingResolutionMl === undefined || dosingResolutionMl <= 0) ? [t.dosing] : []),
+          ...(meterResolutionInput.trim() && (meterResolutionMs === undefined || meterResolutionMs <= 0) ? [lang === "es" ? "Resolución del medidor de EC" : "EC meter resolution"] : []),
           ...(mode === "adjust" &&
           ((parseDecimalInput(correctionStepInput) ?? 0) <= 0 ||
             (parseDecimalInput(correctionStepInput) ?? 0) > 100)
@@ -774,6 +782,8 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
       calibrationObservations,
       dosingResolutionMl,
       dosingResolutionInput,
+      meterResolutionMs,
+      meterResolutionInput,
       correctionStepInput,
       sourceEcInput,
       targetEdited,
@@ -1613,6 +1623,15 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                     value={dosingResolutionInput}
                     onChange={setDosingResolutionInput}
                   />
+                  <Field
+                    label={lang === "es" ? "Resolución del medidor de EC" : "EC meter resolution"}
+                    suffix="mS/cm"
+                    value={meterResolutionInput}
+                    onChange={setMeterResolutionInput}
+                  />
+                  <p className="text-xs text-muted-foreground">
+                    {lang === "es" ? "Opcional: indica el menor cambio de EC que muestra tu medidor, en mS/cm." : "Optional: enter the smallest EC change your meter displays, in mS/cm."}
+                  </p>
                   <p className="text-xs text-muted-foreground">
                     {lang === "es" ? "Opcional: indica la menor cantidad que puedes medir con tu equipo." : "Optional: enter the smallest amount your equipment can measure."}
                   </p>

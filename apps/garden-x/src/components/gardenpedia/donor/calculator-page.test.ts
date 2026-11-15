@@ -36,6 +36,24 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("uses the actual EC meter resolution instead of assuming a universal one", () => {
+    const input = {
+      language: "en" as const, mode: "target" as const, crops: { "bibb-lettuce": 1 },
+      liters: 4, productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
+      sourceEcKnown: true, currentEc: null, currentLiters: null, waterAdded: null,
+      userTarget: null, round: 1,
+    };
+    const unknown = calculateGardenResult(input);
+    const fine = calculateGardenResult({ ...input, meterResolutionMs: 0.01 });
+    const coarse = calculateGardenResult({ ...input, meterResolutionMs: 1 });
+    expect(unknown.target?.provenance).toBe("garden");
+    expect(fine.target?.provenance).toBe("garden");
+    expect(coarse.target).toBeUndefined();
+    expect(coarse.kind).toBe("needs");
+    if (coarse.kind === "needs") expect(coarse.message).toMatch(/meter resolution/i);
+    const explicit = calculateGardenResult({ ...input, meterResolutionMs: 1, userTarget: 1.3 });
+    expect(explicit.target).toEqual({ value: 1.3, provenance: "user" });
+  });
   it("offers study treatment values only as explicit, source-linked choices", () => {
     const choices = CROP_STUDY_REFERENCES.filter((reference) => reference.selectableEcMs !== undefined);
     expect(choices.map((reference) => [reference.source.id, reference.selectableEcMs])).toEqual([
@@ -1555,6 +1573,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       currentLiters: 3,
       waterAdded: 1,
       dosingResolutionMl: 0.1,
+      meterResolutionMs: 0.01,
       capacityLiters: 8,
       sourceEcKnown: true,
     };

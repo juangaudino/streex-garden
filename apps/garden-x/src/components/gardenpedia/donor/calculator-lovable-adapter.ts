@@ -275,6 +275,7 @@ export type SavedSystem = {
   capacityLiters?: number | null | undefined;
   waterAdded?: (number | null) | undefined;
   dosingResolutionMl?: number | undefined;
+  meterResolutionMs?: number | undefined;
   correctionFraction?: number | undefined;
   sourceEcKnown?: boolean | undefined;
 };
@@ -322,6 +323,7 @@ export function loadSavedSystems(): SavedSystem[] {
         capacityLiters: item.capacityLiters ?? null,
         waterAdded: item.waterAdded ?? null,
         dosingResolutionMl: item.dosingResolutionMl,
+        meterResolutionMs: item.meterResolutionMs,
         // Older saved systems did not record whether the displayed value was
         // measured; their zero/default cannot be treated as a measurement.
         sourceEcKnown: item.sourceEcKnown === true,
@@ -361,6 +363,7 @@ export type CalcInput = {
   round: number;
   calibrationObservations?: CalibrationObservation[] | undefined;
   dosingResolutionMl?: number | undefined;
+  meterResolutionMs?: number | undefined;
   correctionFraction?: number | undefined;
 };
 
@@ -980,6 +983,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "The user-selected target is outside the applicable evidence range; it is preserved and not silently replaced.",
     ],
     [
+      "La evidencia se reduce a un solo valor o el rango no supera la resolución indicada para tu medidor. Elige un objetivo explícito.",
+      "The evidence is a single value or its range is no wider than your meter resolution. Choose an explicit target.",
+    ],
+    [
       "Se conserva el objetivo elegido, pero Garden no pudo establecer un rango de evidencia común aplicable a los cultivos.",
       "The user-selected target is preserved, but Garden could not establish a common applicable crop evidence range.",
     ],
@@ -1086,6 +1093,8 @@ function calculateResult(input: CalcInput): CalcResult {
       input.waterAdded ?? 0,
     ].every(Number.isFinite) ||
     input.liters <= 0 ||
+    (input.meterResolutionMs !== undefined &&
+      (!Number.isFinite(input.meterResolutionMs) || input.meterResolutionMs <= 0)) ||
     input.sourceEc < 0 ||
     (input.userTarget !== null && input.userTarget <= 0) ||
     (input.currentEc !== null && input.currentEc < 0)
@@ -1108,7 +1117,7 @@ function calculateResult(input: CalcInput): CalcResult {
   const targetEngine = calculateFreshTargetEc({
     contexts,
     userSelectedTarget: input.userTarget ?? undefined,
-    meterResolution: 0.1,
+    meterResolution: input.meterResolutionMs,
   });
   const targetValue = input.userTarget ?? targetEngine.value?.suggestedStartingPoint;
   const evidenceState = targetEngine.value?.evidenceState ?? compatibility.evidenceState;
@@ -1188,7 +1197,10 @@ function calculateResult(input: CalcInput): CalcResult {
   if (input.mode === "target") {
     if (!targetEngine.ok || !targetEngine.value || targetValue === undefined) {
       return engineNeeds(
-        targetEngine.errors[0]?.message ?? "Elige un objetivo o aporta evidencia aplicable.",
+        targetEngine.errors[0]?.message ??
+          (targetEngine.warnings.some((item) => item.code === "STARTING_POINT_SUPPRESSED")
+            ? "La evidencia se reduce a un solo valor o el rango no supera la resolución indicada para tu medidor. Elige un objetivo explícito."
+            : "Elige un objetivo o aporta evidencia aplicable."),
         targetPresentation,
       );
     }

@@ -954,9 +954,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["hyssop"],
     source: NUTRIENT_SOURCES.hyssopHydroponicStudy,
+    selectableEcMs: 2.2,
     text: {
-      es: "Un ensayo de hisopo Lekar trasplantó plantas con cuatro hojas a solución hidropónica y estudió aplicaciones de selenio. No establece un intervalo de EC óptimo ni recomienda añadir selenio a cultivos domésticos.",
-      en: "A trial of Lekar hyssop transplanted plants with four leaves into hydroponic solution and studied selenium treatments. It does not establish an optimum EC range or recommend adding selenium to home crops.",
+      es: "Un ensayo de hisopo Lekar trasplantó plantas con cuatro hojas a una solución hidropónica aireada y después mantuvo la solución de ensayo en EC 2,2 ± 0,1 mS/cm. Incluyó controles sin selenio. Esa es una condición del estudio, no un intervalo óptimo validado para tu variedad o sistema, ni una recomendación de añadir selenio.",
+      en: "A trial transplanted four-leaf Lekar hyssop to aerated hydroponic solution and subsequently maintained the trial solution at EC 2.2 ± 0.1 mS/cm. It included controls without selenium. That is a study condition, not an optimum range validated for your variety or system, nor a recommendation to add selenium.",
     },
   },
   {

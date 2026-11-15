@@ -19,6 +19,18 @@ vi.mock("@/components/ui/dialog", () => {
 });
 
 describe("Calculator real control interactions", () => {
+  it("offers the hyssop study value only as an explicit choice with its limitations", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="hyssop" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/not an optimum range validated for your variety or system/i)).toBeTruthy();
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByRole("button", { name: /Choose study EC for Hyssop: 2\.20 mS\/cm/i }));
+    expect(target.value).toBe("2.2");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
   it("discloses that general chamomile guidance is not species-specific", () => {
     render(<CalculatorPage language="en" initialPlantId="chamomile-unspecified" />);
     expect(screen.getByText(/Chamomile species unidentified: the EC reference is general/i)).toBeTruthy();

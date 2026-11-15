@@ -36,6 +36,22 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("makes the hyssop study condition selectable without presenting it as a validated crop range", () => {
+    expect(hasApplicableCropNutrientEvidence("hyssop")).toBe(false);
+    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
+      pods: 6, baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
+    expect(reading.ok).toBe(true);
+    const result = calculateGardenResult({ mode: "target", crops: { hyssop: 1 }, liters: 4,
+      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2, sourceEcKnown: true,
+      currentEc: null, currentLiters: null, waterAdded: null, userTarget: 2.2, round: 1,
+      calibrationObservations: [reading.value!] });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.target).toEqual({ value: 2.2, provenance: "user" });
+      expect(result.evidence).toBe("insufficient");
+      expect(result.doses).toHaveLength(3);
+    }
+  });
   it("keeps Tennessee coneflower's soil fertilization warning distinct from hydroponic EC guidance", () => {
     const id = "tennessee-coneflower-echinacea-tennesseensis";
     expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
@@ -100,6 +116,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["aguilar-carpio-epazote-steiner-2021", 2],
       ["kazakidou-burrage-marigold-nft-1994", 1.5],
       ["arkansas-komatsuna-nft-2014", 1.2],
+      ["hyssop-hydroponic-selenium-2022", 2.2],
       ["can-tho-zinnia-hoagland-2022", 1.4],
       ["nguyen-eryngium-foetidum-hydroponics-2018", 1.5],
       ["juarez-porophyllum-nutrient-poster", 1.5],

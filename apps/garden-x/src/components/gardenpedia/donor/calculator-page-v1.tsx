@@ -1527,7 +1527,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                     targetEdited ? targetInput : result.target ? fmtEc(result.target.value) : ""
                   }
                   range={result.range}
-                  isUser={result.target?.provenance === "user"}
+                  isUser={targetEdited && userTarget !== null && userTarget > 0}
                   outside={!!result.outsideEvidence}
                   onChange={editTarget}
                   onStep={(delta) => {

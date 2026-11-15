@@ -105,13 +105,14 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByPlaceholderText("Search plant…"), "Culantro");
     await user.click(screen.getByRole("option", { name: /Culantro/i }));
     await user.click(screen.getByRole("tab", { name: "By EC" }));
-    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
     await user.click(screen.getByText("View cultivation sources"));
     expect(screen.getByText(/not validated as a target for your system/i)).toBeTruthy();
     await user.click(screen.getByRole("button", { name: /Choose study EC for Culantro: 1\.50 mS\/cm/i }));
     expect(target.value).toBe("1.5");
+    expect(screen.getByText("Your target")).toBeTruthy();
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
     expect(screen.getByText(/not enough applicable EC evidence/i)).toBeTruthy();
     expect(screen.getByRole("button", { name: "Calibrate this product" })).toBeTruthy();
     await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");

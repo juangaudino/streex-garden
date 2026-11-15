@@ -266,6 +266,15 @@ export const NUTRIENT_SOURCES = {
     publication: "2015",
     retrievedAt: "2026-11-12",
   },
+  alyssumGeorgiaStudy: {
+    id: "georgia-alyssum-subirrigation-solution",
+    publisher: "University of Georgia · Department of Horticulture",
+    title: "Fertilization guidelines for subirrigation of six bedding plant species",
+    url: "https://hortphys.uga.edu/hortphys/files/2020/04/fertilizer-guidelines-for-bedding-plants.pdf",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-15",
+  },
   coleusFertilizerStudy: {
     id: "ishs-coleus-nitrogen-cultivars",
     publisher: "International Society for Horticultural Science",
@@ -798,6 +807,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "Una revisión cita un ensayo de aliso dulce en subirrigación con solución Hoagland. No identifica Tiny Tim ni valida una EC para tanques domésticos; la EC del sustrato y la de la solución se deben distinguir.",
       en: "A review cites a sweet alyssum subirrigation trial using Hoagland solution. It does not identify Tiny Tim or validate an EC for home reservoirs; substrate EC and solution EC must be distinguished.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-sweet-alyssum"],
+    source: NUTRIENT_SOURCES.alyssumGeorgiaStudy,
+    selectableEcMs: 2.0,
+    text: {
+      es: "Un ensayo de aliso dulce New Carpet of Snow en sustrato con subirrigación obtuvo el mayor crecimiento entre sus tratamientos con una solución nutritiva de EC 2,0 mS/cm. No estudió Tiny Tim ni valida esa cifra para un tanque doméstico; la EC de solución no es la EC medida en el sustrato.",
+      en: "A study of New Carpet of Snow sweet alyssum in subirrigated growing medium found the greatest growth among its treatments with nutrient-solution EC 2.0 mS/cm. It did not study Tiny Tim or validate that value for a home reservoir; solution EC is not the EC measured in the growing medium.",
     },
   },
   {

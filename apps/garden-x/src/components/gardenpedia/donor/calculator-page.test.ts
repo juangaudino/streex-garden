@@ -39,6 +39,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("offers study treatment values only as explicit, source-linked choices", () => {
     const choices = CROP_STUDY_REFERENCES.filter((reference) => reference.selectableEcMs !== undefined);
     expect(choices.map((reference) => [reference.source.id, reference.selectableEcMs])).toEqual([
+      ["georgia-alyssum-subirrigation-solution", 2],
       ["aguilar-carpio-epazote-steiner-2021", 2],
       ["kazakidou-burrage-marigold-nft-1994", 1.5],
       ["arkansas-komatsuna-nft-2014", 1.2],
@@ -48,7 +49,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     ]);
     for (const reference of choices) {
       expect(reference.source.url).toMatch(/^https:\/\//);
-      expect(["B", "C"]).toContain(reference.source.tier);
+      expect(["A", "B", "C"]).toContain(reference.source.tier);
       for (const id of reference.plantIds) expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     }
   });

@@ -36,6 +36,38 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("warns when a calculated EC adjustment is smaller than the user's meter resolution", () => {
+    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
+      pods: 6, baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
+    expect(reading.ok).toBe(true);
+    const input = { language: "es" as const, crops: { "bibb-lettuce": 1 }, liters: 4,
+      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 1,
+      sourceEcKnown: true, currentEc: 1, currentLiters: 4, capacityLiters: 5,
+      waterAdded: 0, userTarget: 1.04, round: 1, calibrationObservations: [reading.value!],
+      meterResolutionMs: 0.1 };
+    for (const mode of ["target", "adjust", "topup"] as const) {
+      const lowResolution = calculateGardenResult({ ...input, mode });
+      expect(lowResolution.kind).toBe("ok");
+      if (lowResolution.kind === "ok")
+        expect(lowResolution.warnings?.join(" ")).toMatch(/menor que la resolución indicada/);
+      const fineResolution = calculateGardenResult({ ...input, mode, meterResolutionMs: 0.01 });
+      expect(fineResolution.kind).toBe("ok");
+      if (fineResolution.kind === "ok")
+        expect(fineResolution.warnings?.join(" ")).not.toMatch(/menor que la resolución indicada/);
+    }
+  });
+  it("preserves a low-resolution calibration and warns when using it", () => {
+    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
+      pods: 6, baselineEc: 0.2, resultingEc: 0.24, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+      meterResolutionMs: 0.1 });
+    expect(reading.ok).toBe(true);
+    const result = calculateGardenResult({ language: "es", mode: "target", crops: { "bibb-lettuce": 1 },
+      liters: 4, productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
+      currentEc: null, currentLiters: null, waterAdded: null, userTarget: 1.2, round: 1,
+      calibrationObservations: [reading.value!] });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") expect(result.warnings?.join(" ")).toMatch(/calibración es menor que la resolución/);
+  });
   it("uses the actual EC meter resolution instead of assuming a universal one", () => {
     const input = {
       language: "en" as const, mode: "target" as const, crops: { "bibb-lettuce": 1 },

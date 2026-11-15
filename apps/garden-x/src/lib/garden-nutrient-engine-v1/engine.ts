@@ -642,6 +642,12 @@ export function calculateFreshTargetEcDose(input: {
       [],
     );
   const warnings: EngineWarning[] = [];
+  if (input.policy?.meterResolution !== undefined &&
+      Number.isFinite(input.policy.meterResolution) && input.policy.meterResolution > 0 &&
+      input.targetEc - sourceEc < input.policy.meterResolution)
+    warnings.push(warning("EC_DIFFERENCE_BELOW_METER_RESOLUTION",
+      "The EC change is smaller than your meter's stated resolution; confirm with a more precise measurement before adjusting.",
+      ["fresh-source-water-ec", "fresh-target-ec"]));
   if (
     input.reservoirVolumeL < input.calibration.validCalibrationRange.minVolumeL ||
     input.reservoirVolumeL > input.calibration.validCalibrationRange.maxVolumeL ||
@@ -990,6 +996,10 @@ export function buildCalibrationModel(input: {
         Math.max(normalizedFactor * 0.5, 0.05),
     )
     .map((item) => item.id);
+  const lowResolutionIds = applicable.filter((item) =>
+    item.meterResolution !== undefined && Number.isFinite(item.meterResolution) &&
+    item.meterResolution > 0 && item.deltaEc < item.meterResolution,
+  ).map((item) => item.id);
   const model: CalibrationModel = {
     productIdentity: input.productIdentity,
     formulationVersion: input.formulationVersion,
@@ -1022,7 +1032,8 @@ export function buildCalibrationModel(input: {
   };
   return result(
     model,
-    potentialOutlierIds.length
+    [
+      ...(potentialOutlierIds.length
       ? [
           warning(
             "POTENTIAL_CALIBRATION_OUTLIERS",
@@ -1030,7 +1041,13 @@ export function buildCalibrationModel(input: {
             potentialOutlierIds,
           ),
         ]
-      : [],
+      : []),
+      ...(lowResolutionIds.length
+        ? [warning("CALIBRATION_BELOW_METER_RESOLUTION",
+            "A calibration EC change is smaller than the meter resolution recorded with it; repeat the measurement with a measurable change or a more precise meter.",
+            lowResolutionIds)]
+        : []),
+    ],
     [],
     model.claims,
   );
@@ -1165,6 +1182,12 @@ export function calculateEcCorrection(input: {
       claims,
     );
   const difference = input.targetEc - currentEc;
+  if (input.policy?.meterResolution !== undefined &&
+      Number.isFinite(input.policy.meterResolution) && input.policy.meterResolution > 0 &&
+      Math.abs(difference) > Number.EPSILON && Math.abs(difference) < input.policy.meterResolution)
+    warnings.push(warning("EC_DIFFERENCE_BELOW_METER_RESOLUTION",
+      "The EC change is smaller than your meter's stated resolution; confirm with a more precise measurement before adjusting.",
+      ["current-ec", "target-ec"]));
   if (Math.abs(difference) < Number.EPSILON)
     return result(
       {
@@ -1564,6 +1587,13 @@ export function calculateTopUpMaintenance(input: {
       ],
     ),
   ];
+  if (input.policy?.meterResolution !== undefined &&
+      Number.isFinite(input.policy.meterResolution) && input.policy.meterResolution > 0 &&
+      Math.abs(input.targetEc - afterWaterEc) > comparisonTolerance &&
+      Math.abs(input.targetEc - afterWaterEc) < input.policy.meterResolution)
+    warnings.push(warning("EC_DIFFERENCE_BELOW_METER_RESOLUTION",
+      "The EC change is smaller than your meter's stated resolution; confirm with a more precise measurement before adjusting.",
+      ["top-up-current-ec", "top-up-water"]));
   if (input.targetEc - afterWaterEc > comparisonTolerance) {
     if (!input.calibration)
       return result(

@@ -1027,6 +1027,14 @@ function presentationMessage(message: string, lang: Lang): string {
       "This linear EC model is an approximation; restored EC does not prove restored nutrient balance.",
     ],
     [
+      "El cambio de EC es menor que la resolución indicada para tu medidor; confirma con una medición más precisa antes de ajustar.",
+      "The EC change is smaller than your meter's stated resolution; confirm with a more precise measurement before adjusting.",
+    ],
+    [
+      "El cambio de EC de una calibración es menor que la resolución registrada del medidor; repite la medición con un cambio que puedas medir o un medidor más preciso.",
+      "A calibration EC change is smaller than the meter resolution recorded with it; repeat the measurement with a measurable change or a more precise meter.",
+    ],
+    [
       "La dosis está fuera del rango de volumen/dosis observado en tu calibración. Añade con cuidado y vuelve a medir.",
       "The fresh target dose is outside the validated calibration volume or dose range.",
     ],
@@ -1226,7 +1234,7 @@ function calculateResult(input: CalcInput): CalcResult {
       targetEc: targetValue,
       reservoirVolumeL: input.liters,
       calibration: calibration?.value,
-      policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl },
+      policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl, meterResolution: input.meterResolutionMs },
     });
     if (!dose.ok || !dose.value) {
       return {
@@ -1270,7 +1278,7 @@ function calculateResult(input: CalcInput): CalcResult {
       ),
       sources: [...new Set([...sources, ...calibration.value.claims.map((claim) => claim.label)])],
       expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
-      warnings: [...targetEngine.warnings, ...dose.warnings].map((item) => item.message),
+      warnings: [...targetEngine.warnings, ...calibration.warnings, ...dose.warnings].map((item) => item.message),
     };
   }
 
@@ -1313,6 +1321,7 @@ function calculateResult(input: CalcInput): CalcResult {
       calibration: calibrationModel,
       policy: {
         dosingEquipmentResolutionMl: input.dosingResolutionMl,
+        meterResolution: input.meterResolutionMs,
         firstStepFraction: input.correctionFraction,
       },
     });
@@ -1359,7 +1368,7 @@ function calculateResult(input: CalcInput): CalcResult {
         ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
       ],
       compatibility,
-      warnings: [...targetEngine.warnings, ...correction.warnings].map((item) => item.message),
+      warnings: [...targetEngine.warnings, ...(value.direction === "ADD_NUTRIENT" ? calibration.warnings : []), ...correction.warnings].map((item) => item.message),
       expectedEc:
         value.firstStepDoseMl === undefined
           ? {
@@ -1385,7 +1394,7 @@ function calculateResult(input: CalcInput): CalcResult {
     replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),
     targetEc: targetValue,
     calibration: calibrationModel,
-    policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl },
+    policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl, meterResolution: input.meterResolutionMs },
   });
   if (!topup.ok || !topup.value)
     return engineNeeds(topup.errors[0]?.message ?? "No se pudo calcular el relleno.", {
@@ -1427,7 +1436,7 @@ function calculateResult(input: CalcInput): CalcResult {
       ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
     ],
     compatibility,
-    warnings: [...targetEngine.warnings, ...topup.warnings].map((item) => item.message),
+    warnings: [...targetEngine.warnings, ...(value.nutrientDoseMl ? calibration.warnings : []), ...topup.warnings].map((item) => item.message),
     expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
   };
 }

@@ -911,6 +911,10 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
 function presentationMessage(message: string, lang: Lang): string {
   const pairs: [string, string][] = [
     [
+      "Mide el EC del agua de reposición antes de calcular el relleno.",
+      "Measure the source-water EC before calculating the top-up.",
+    ],
+    [
       "Las proporciones de los componentes siguen la mezcla que mediste en tu calibración y pueden diferir de la receta del fabricante para esta etapa.",
       "Component proportions follow your actual calibration mixture and may differ from the manufacturer's recipe for this stage.",
     ],
@@ -1420,6 +1424,15 @@ export function planTopUpToCapacity(
   input: CalcInput,
   targetEc: number,
 ): { ok: true; waterToAddL: number } | { ok: false; code: string; message: string } {
+  if (input.sourceEcKnown === false)
+    return {
+      ok: false,
+      code: "SOURCE_WATER_EC_REQUIRED",
+      message: presentationMessage(
+        "Measure the source-water EC before calculating the top-up.",
+        input.language ?? "es",
+      ),
+    };
   const identity = productIdentity(
     input.productId,
     input.customAbName,

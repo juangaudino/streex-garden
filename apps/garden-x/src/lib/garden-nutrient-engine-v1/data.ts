@@ -665,7 +665,13 @@ export const NUTRIENT_SOURCES = {
 } satisfies Record<string, SourceRef>;
 
 /** Research observations for the reader; never automatically treated as an optimum or dose. */
-export const CROP_STUDY_REFERENCES = [
+export const CROP_STUDY_REFERENCES: readonly {
+  plantIds: readonly string[];
+  source: SourceRef;
+  text: { es: string; en: string };
+  /** A single reported study treatment, offered only as an explicit user choice. */
+  selectableEcMs?: number;
+}[] = [
   {
     plantIds: ["dill-bouquet"],
     source: NUTRIENT_SOURCES.pureHydroponicsConductivity,
@@ -853,6 +859,7 @@ export const CROP_STUDY_REFERENCES = [
   {
     plantIds: ["epazote"],
     source: NUTRIENT_SOURCES.epazoteSteinerStudy,
+    selectableEcMs: 2.0,
     text: {
       es: "Un ensayo de epazote H-1000 en macetas con tezontle comparó soluciones Steiner a EC de 1,0, 1,5 y 2,0 mS/cm y obtuvo mayor producción con 2,0. Ese resultado corresponde a una formulación y sistema concretos; no valida una dosis ni un intervalo para un tanque o plántulas.",
       en: "A trial of H-1000 epazote in volcanic substrate pots compared Steiner solutions at EC 1.0, 1.5 and 2.0 mS/cm and obtained greater yield at 2.0. This result belongs to a specific formulation and system; it does not validate a dose or range for a reservoir or seedlings.",
@@ -869,6 +876,7 @@ export const CROP_STUDY_REFERENCES = [
   {
     plantIds: ["marigold-jolly-jester"],
     source: NUTRIENT_SOURCES.marigoldNftConductivityStudy,
+    selectableEcMs: 1.5,
     text: {
       es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. No identifica Jolly Jester ni valida todos los valores intermedios, otras formulaciones o plántulas; no es un rango automático para tu sistema.",
       en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. It does not identify Jolly Jester or validate every intermediate value, other formulations or seedlings; it is not an automatic range for your system.",
@@ -877,6 +885,7 @@ export const CROP_STUDY_REFERENCES = [
   {
     plantIds: ["lady-murasaki-komatsuna"],
     source: NUTRIENT_SOURCES.komatsunaNftThesis,
+    selectableEcMs: 1.2,
     text: {
       es: "Una tesis probó komatsuna en NFT con EC de 1,0 a 1,8 mS/cm y observó hojas deformadas con valores superiores a 1,2. No identificó Lady Murasaki ni establece una dosis para otra variedad o sistema.",
       en: "A thesis tested komatsuna in NFT at EC 1.0–1.8 mS/cm and observed leaf cupping above 1.2. It did not identify Lady Murasaki or establish a dose for another variety or system.",
@@ -933,6 +942,7 @@ export const CROP_STUDY_REFERENCES = [
   {
     plantIds: ["zinnia-lilliput-mixed"],
     source: NUTRIENT_SOURCES.zinniaHydroponicStudy,
+    selectableEcMs: 1.4,
     text: {
       es: "Un ensayo de Zinnia elegans informó buen crecimiento con solución Hoagland a EC de 1,4 y 2,8 mS/cm como tratamientos separados. No identificó Lilliput ni comparó todos los valores intermedios; no establece un rango óptimo ni una dosis para tu sistema.",
       en: "A Zinnia elegans experiment reported good growth with Hoagland solution at 1.4 and 2.8 mS/cm as separate treatments. It did not identify Lilliput or compare all intermediate values; it establishes neither an optimum range nor a dose for your system.",
@@ -949,6 +959,7 @@ export const CROP_STUDY_REFERENCES = [
   {
     plantIds: ["culantro"],
     source: NUTRIENT_SOURCES.culantroHydroponicStudy,
+    selectableEcMs: 1.5,
     text: {
       es: "En un ensayo hidropónico de culantro (Eryngium foetidum), una solución SH5 de 1,5 mS/cm produjo mayor crecimiento que los tratamientos de 1,0 y 2,0 mS/cm. Es un resultado de ese ensayo y formulación, no un rango validado ni una dosis automática para tu sistema o sus plántulas.",
       en: "In a hydroponic culantro (Eryngium foetidum) trial, an SH5 solution at 1.5 mS/cm produced more growth than the 1.0 and 2.0 mS/cm treatments. This is specific to that experiment and formulation, not a validated range or automatic dose for your system or seedlings.",
@@ -965,6 +976,7 @@ export const CROP_STUDY_REFERENCES = [
   {
     plantIds: ["papalo-porophyllum-ruderale"],
     source: NUTRIENT_SOURCES.papaloNutrientStudy,
+    selectableEcMs: 1.5,
     text: {
       es: "Un resumen de congreso sobre pápalo en macetas con sustrato comparó solución Steiner a EC de 1,0, 1,5, 2,0 y 2,5 mS/cm; reportó mayor rendimiento a 1,5 a los 53 días desde la siembra. No es un ensayo en tanque ni establece un intervalo o dosis para tus plantas.",
       en: "A conference abstract on pápalo in substrate pots compared Steiner solution at ECs of 1.0, 1.5, 2.0 and 2.5 mS/cm and reported highest yield at 1.5 at 53 days after sowing. This was not a reservoir trial and does not establish a range or dose for your plants.",
@@ -1038,7 +1050,7 @@ export const CROP_STUDY_REFERENCES = [
       en: "In a coir-container trial, Verdão cilantro and Nebuka bunching onion performed well with nutrient solution EC between 1.6 and 2.2 mS/cm. This is evidence for that method, not an automatic dose or validation for water reservoirs.",
     },
   },
-] as const;
+];
 
 /** Contextual observation only: it is never an EC target or stage inference. */
 export const CROP_STAGE_REFERENCES = [

@@ -1214,6 +1214,23 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                                   >
                                     {reference.source.publisher}
                                   </a>
+                                  {mode !== "recipe" && reference.selectableEcMs !== undefined && (
+                                    <div className="mt-2 rounded-md border border-border p-2">
+                                      <p>
+                                        {lang === "es"
+                                          ? "Es un valor observado en ese estudio, no un objetivo validado para tu sistema. Si lo eliges, será tu objetivo manual y la dosis requerirá calibración."
+                                          : "This value was observed in that study, not validated as a target for your system. If selected, it becomes your manual target and dosing requires calibration."}
+                                      </p>
+                                      <button
+                                        type="button"
+                                        className="mt-2 min-h-10 font-medium text-primary underline"
+                                        aria-label={`${lang === "es" ? "Elegir EC del estudio para" : "Choose study EC for"} ${c.name[lang]}: ${fmtEc(reference.selectableEcMs)} ${unitLabel}`}
+                                        onClick={() => editTarget(String(unit === "uS" ? reference.selectableEcMs! * 1000 : reference.selectableEcMs))}
+                                      >
+                                        {lang === "es" ? "Elegir como mi EC objetivo" : "Choose as my EC target"}: {fmtEc(reference.selectableEcMs)} {unitLabel}
+                                      </button>
+                                    </div>
+                                  )}
                                 </div>
                               ))}
                             </details>

@@ -98,6 +98,44 @@ describe("Calculator real control interactions", () => {
     );
   });
 
+  it("lets a visitor deliberately select a reported culantro study value as a manual target", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Culantro");
+    await user.click(screen.getByRole("option", { name: /Culantro/i }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/not validated as a target for your system/i)).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: /Choose study EC for Culantro: 1\.50 mS\/cm/i }));
+    expect(target.value).toBe("1.5");
+    expect(screen.getByText(/not enough applicable EC evidence/i)).toBeTruthy();
+    expect(screen.getByRole("button", { name: "Calibrate this product" })).toBeTruthy();
+    await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
+    await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    await user.click(screen.getByRole("button", { name: "Save calibration" }));
+    expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
+    expect(screen.getByText(/not enough applicable EC evidence/i)).toBeTruthy();
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe("1.5");
+  });
+
+  it("presents the explicit study choice in Spanish and converts it to microsiemens", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="es" />);
+    await user.click(screen.getByRole("button", { name: "Añadir planta" }));
+    await user.type(screen.getByPlaceholderText("Buscar planta…"), "Epazote");
+    await user.click(screen.getByRole("option", { name: /Epazote/i }));
+    await user.click(screen.getByRole("tab", { name: "Por EC" }));
+    await user.click(screen.getByText("Más ajustes", { exact: true }));
+    await user.click(screen.getByRole("button", { name: "µS/cm" }));
+    await user.click(screen.getByText("Ver fuentes de cultivo"));
+    await user.click(screen.getByRole("button", { name: /Elegir EC del estudio para Epazote: 2000 µS\/cm/i }));
+    expect((screen.getByRole("textbox", { name: "EC objetivo" }) as HTMLInputElement).value).toBe("2000");
+  });
+
   it("makes manual EC entry clear when the selected plant lacks a crop range", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

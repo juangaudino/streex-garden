@@ -28,6 +28,7 @@ import {
   generalCropReferenceForStage,
   hasApplicableCropNutrientEvidence,
   loadSavedSystems,
+  planTopUpToCapacity,
   persistSavedSystems,
   recipeStageLabel,
   recordActualDoses,
@@ -35,6 +36,34 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("offers study treatment values only as explicit, source-linked choices", () => {
+    const choices = CROP_STUDY_REFERENCES.filter((reference) => reference.selectableEcMs !== undefined);
+    expect(choices.map((reference) => [reference.source.id, reference.selectableEcMs])).toEqual([
+      ["aguilar-carpio-epazote-steiner-2021", 2],
+      ["kazakidou-burrage-marigold-nft-1994", 1.5],
+      ["arkansas-komatsuna-nft-2014", 1.2],
+      ["can-tho-zinnia-hoagland-2022", 1.4],
+      ["nguyen-eryngium-foetidum-hydroponics-2018", 1.5],
+      ["juarez-porophyllum-nutrient-poster", 1.5],
+    ]);
+    for (const reference of choices) {
+      expect(reference.source.url).toMatch(/^https:\/\//);
+      expect(["B", "C"]).toContain(reference.source.tier);
+      for (const id of reference.plantIds) expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+    }
+  });
+  it("never plans a capacity refill using an explicitly unknown source-water EC", () => {
+    const plan = planTopUpToCapacity({
+      language: "es", mode: "topup", crops: { "bibb-lettuce": 1 }, liters: 4,
+      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0,
+      sourceEcKnown: false, currentEc: 1.2, currentLiters: 2,
+      capacityLiters: 4, waterAdded: null, userTarget: 1.2, round: 1,
+    }, 1.2);
+    expect(plan).toEqual({
+      ok: false, code: "SOURCE_WATER_EC_REQUIRED",
+      message: "Mide el EC del agua de reposición antes de calcular el relleno.",
+    });
+  });
   it("resolves fenugreek and blue borage using their own crop types", () => {
     for (const [id, identity] of [["common-fenugreek-trigonella-foenum-graecum", "fenugreek"], ["borage-blue", "borage"]] as const) {
       expect(resolveNutrientCropIdentity(id)).toBe(identity);

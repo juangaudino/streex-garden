@@ -492,7 +492,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     setStageId(s.stageId);
     setPods(s.pods);
     setUnit(s.unit);
-    setSourceEcInput(s.sourceEcKnown === false ? "" : String(s.water.ec));
+    setSourceEcInput(s.sourceEcKnown === false ? "" : String(s.unit === "uS" ? Number((s.water.ec * 1000).toPrecision(15)) : s.water.ec));
     setMode(s.mode ?? "recipe");
     setUserTarget(s.userTarget ?? null);
     setTargetInput(
@@ -538,7 +538,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
       stageId,
       pods,
       unit,
-      water: { ...sys.water, ec: parseDecimalInput(sourceEcInput) ?? 0 },
+      water: { ...sys.water, ec: sourceEc },
       sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
       calibrationObservations,
       mode,
@@ -593,7 +593,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     setJustLearned(false);
   };
 
-  const sourceEc = parseDecimalInput(sourceEcInput) ?? 0;
+  const sourceEc = Number(((parseDecimalInput(sourceEcInput) ?? 0) / (unit === "uS" ? 1000 : 1)).toPrecision(15));
   useEffect(
     () => setFillPlanMessage(""),
     [
@@ -624,8 +624,13 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     if (next !== unit && targetInput.trim()) {
       const currentMs = parseDisplayedEc(targetInput);
       if (currentMs !== null) {
-        setTargetInput(next === "uS" ? String(Math.round(currentMs * 1000)) : currentMs.toFixed(2));
+        setTargetInput(String(Number((next === "uS" ? currentMs * 1000 : currentMs).toPrecision(15))));
       }
+    }
+    if (next !== unit && sourceEcInput.trim()) {
+      const currentMs = parseDisplayedEc(sourceEcInput);
+      if (currentMs !== null)
+        setSourceEcInput(String(Number((next === "uS" ? currentMs * 1000 : currentMs).toPrecision(15))));
     }
     setUnit(next);
     if (next !== unit && currentEc.trim()) {
@@ -1529,7 +1534,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
               {mode !== "recipe" && (
                 <Field
                   label={t.sourceEc}
-                  suffix="mS/cm"
+                  suffix={unitLabel}
                   value={sourceEcInput}
                   onChange={setSourceEcInput}
                 />
@@ -1606,7 +1611,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                   {mode === "recipe" && (
                     <Field
                       label={t.sourceEc}
-                      suffix="mS/cm"
+                      suffix={unitLabel}
                       value={sourceEcInput}
                       onChange={setSourceEcInput}
                     />

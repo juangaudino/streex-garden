@@ -545,21 +545,28 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByLabelText(/^Liters before top-up/), "3");
     await user.type(screen.getByLabelText(/^Water to add/), "1");
     await user.type(screen.getByLabelText(/^EC before top-up/), "0.80");
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.1234");
     await user.clear(screen.getByRole("textbox", { name: "Target EC" }));
-    await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.20");
+    await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.2345");
     await user.click(screen.getByText("More settings", { exact: true }));
     await user.click(screen.getByRole("button", { name: /^µS\/cm$/ }));
     expect((screen.getByLabelText(/^EC before top-up/) as HTMLInputElement).value).toBe("800");
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
-      "1200",
+      "1234.5",
     );
+    expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("123.4");
+    await user.click(screen.getByRole("button", { name: /^mS\/cm$/ }));
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe("1.2345");
+    expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("0.1234");
+    await user.click(screen.getByRole("button", { name: /^µS\/cm$/ }));
     await user.click(screen.getByRole("button", { name: "Save as system" }));
     await user.type(screen.getByRole("textbox", { name: "System name" }), "Top up state");
     await user.click(screen.getByRole("button", { name: /^Save$/ }));
     const saved = JSON.parse(window.localStorage.getItem("gardenpedia.calculator.systems.v1")!)[0];
     expect(saved).toMatchObject({
       mode: "topup",
-      userTarget: 1.2,
+      userTarget: 1.2345,
+      water: { ec: 0.1234 },
       currentEc: 0.8,
       currentLiters: 3,
       capacityLiters: 4,

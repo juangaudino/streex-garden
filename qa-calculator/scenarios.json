@@ -383,6 +383,194 @@
       },
       "liters": 2,
       "productId": "gh-flora",
+      "stageId": "feeding-3",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 2.588886,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 2.430382,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 1.79637,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 4,
+      "productId": "gh-flora",
+      "stageId": "feeding-3",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 5.177772,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 4.860764,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 3.59274,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 6.5,
+      "productId": "gh-flora",
+      "stageId": "feeding-3",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 8.4138795,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 7.8987415,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 5.8382025,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 10,
+      "productId": "gh-flora",
+      "stageId": "feeding-3",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 12.94443,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 12.151909999999999,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 8.98185,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 2,
+      "productId": "gh-flora",
       "stageId": "feeding-4",
       "pods": 6,
       "sourceEc": 0.2,
@@ -759,6 +947,194 @@
       },
       "liters": 2,
       "productId": "gh-flora",
+      "stageId": "feeding-6",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 4.015416,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 3.487072,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 4.490924,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 4,
+      "productId": "gh-flora",
+      "stageId": "feeding-6",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 8.030832,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 6.974144,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 8.981848,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 6.5,
+      "productId": "gh-flora",
+      "stageId": "feeding-6",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 13.050102,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 11.332984,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 14.595502999999999,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 10,
+      "productId": "gh-flora",
+      "stageId": "feeding-6",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 20.077080000000002,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 17.43536,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 22.45462,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 2,
+      "productId": "gh-flora",
       "stageId": "feeding-7",
       "pods": 6,
       "sourceEc": 0.2,
@@ -947,6 +1323,382 @@
       },
       "liters": 2,
       "productId": "gh-flora",
+      "stageId": "feeding-8",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 2.430382,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 2.430382,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 3.487072,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 4,
+      "productId": "gh-flora",
+      "stageId": "feeding-8",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 4.860764,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 4.860764,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 6.974144,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 6.5,
+      "productId": "gh-flora",
+      "stageId": "feeding-8",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 7.8987415,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 7.8987415,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 11.332984,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 10,
+      "productId": "gh-flora",
+      "stageId": "feeding-8",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 12.151909999999999,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 12.151909999999999,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 17.43536,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 2,
+      "productId": "gh-flora",
+      "stageId": "feeding-9",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 2.430382,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 2.430382,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 3.487072,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 4,
+      "productId": "gh-flora",
+      "stageId": "feeding-9",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 4.860764,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 4.860764,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 6.974144,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 6.5,
+      "productId": "gh-flora",
+      "stageId": "feeding-9",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 7.8987415,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 7.8987415,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 11.332984,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 10,
+      "productId": "gh-flora",
+      "stageId": "feeding-9",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 12.151909999999999,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 12.151909999999999,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 17.43536,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 2,
+      "productId": "gh-flora",
       "stageId": "feeding-10",
       "pods": 6,
       "sourceEc": 0.2,
@@ -1089,6 +1841,194 @@
       "liters": 10,
       "productId": "gh-flora",
       "stageId": "feeding-10",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 8.71768,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 8.71768,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 10.566880000000001,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 2,
+      "productId": "gh-flora",
+      "stageId": "feeding-11",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 1.743536,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 1.743536,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 2.113376,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 4,
+      "productId": "gh-flora",
+      "stageId": "feeding-11",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 3.487072,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 3.487072,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 4.226752,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 6.5,
+      "productId": "gh-flora",
+      "stageId": "feeding-11",
+      "pods": 6,
+      "sourceEc": 0.2,
+      "currentEc": null,
+      "currentLiters": null,
+      "waterAdded": null,
+      "userTarget": 1.2,
+      "round": 1
+    },
+    "hasCalibration": false,
+    "output": {
+      "kind": "ok",
+      "range": {
+        "min": 1.2,
+        "max": 1.8,
+        "common": true
+      },
+      "evidence": "high",
+      "compatibility": "COMMON_OPTIMUM_RANGE",
+      "action": "add",
+      "doses": [
+        {
+          "label": "FloraMicro",
+          "amount": 5.666492,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraGro",
+          "amount": 5.666492,
+          "unit": "mL"
+        },
+        {
+          "label": "FloraBloom",
+          "amount": 6.868472000000001,
+          "unit": "mL"
+        }
+      ]
+    }
+  },
+  {
+    "input": {
+      "mode": "recipe",
+      "crops": {
+        "bibb-lettuce": 1
+      },
+      "liters": 10,
+      "productId": "gh-flora",
+      "stageId": "feeding-11",
       "pods": 6,
       "sourceEc": 0.2,
       "currentEc": null,
@@ -3374,7 +4314,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -3384,10 +4324,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -5806,7 +6745,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -5816,10 +6755,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -8238,7 +9176,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -8248,10 +9186,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -10670,7 +11607,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -10680,10 +11617,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -13102,7 +14038,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -13112,10 +14048,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -15534,7 +16469,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -15544,10 +16479,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -17966,7 +18900,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -17976,10 +18910,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -20398,7 +21331,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -20408,10 +21341,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -22830,7 +23762,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -22840,10 +23772,9 @@
         "max": 4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -25262,7 +26193,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -25272,10 +26203,9 @@
         "max": 4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -27694,7 +28624,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -27704,10 +28634,9 @@
         "max": 4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -30126,7 +31055,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -30136,10 +31065,9 @@
         "max": 4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -32558,7 +33486,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -32568,10 +33496,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -34990,7 +35917,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -35000,10 +35927,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -37422,7 +38348,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -37432,10 +38358,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -39854,7 +40779,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -39864,10 +40789,9 @@
         "max": 1.8,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -42286,7 +43210,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -42296,10 +43220,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -44718,7 +45641,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -44728,10 +45651,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -47150,7 +48072,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -47160,10 +48082,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -49582,7 +50503,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -49592,10 +50513,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -52014,7 +52934,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -52024,10 +52944,9 @@
         "max": 2.3,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -54446,7 +55365,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -54456,10 +55375,9 @@
         "max": 2.3,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -56878,7 +57796,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -56888,10 +57806,9 @@
         "max": 2.3,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -59310,7 +60227,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -59320,10 +60237,9 @@
         "max": 2.3,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -61742,7 +62658,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -61752,10 +62668,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -64174,7 +65089,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -64184,10 +65099,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -66606,7 +67520,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -66616,10 +67530,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -69038,7 +69951,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -69048,10 +69961,9 @@
         "max": 2.2,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -71470,7 +72382,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -71480,10 +72392,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -73902,7 +74813,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -73912,10 +74823,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -76334,7 +77244,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -76344,10 +77254,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -78766,7 +79675,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -78776,10 +79685,9 @@
         "max": 1.6,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -81198,7 +82106,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -81208,10 +82116,9 @@
         "max": 2.4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -83630,7 +84537,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -83640,10 +84547,9 @@
         "max": 2.4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -86062,7 +86968,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -86072,10 +86978,9 @@
         "max": 2.4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -88494,7 +89399,7 @@
     },
     "hasCalibration": true,
     "output": {
-      "kind": "ok",
+      "kind": "needs",
       "target": {
         "value": 0.8,
         "provenance": "user"
@@ -88504,10 +89409,9 @@
         "max": 2.4,
         "common": true
       },
-      "evidence": "low",
+      "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "action": "hold",
-      "doses": []
+      "message": "El EC del agua de origen ya coincide con el objetivo. La conductividad no identifica los nutrientes presentes: no consideres esa agua una solución nutritiva completa."
     }
   },
   {
@@ -90053,7 +90957,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90104,7 +91009,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90155,7 +91061,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90206,7 +91113,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90257,7 +91165,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90308,7 +91217,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90359,7 +91269,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90410,7 +91321,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90461,7 +91373,8 @@
       "currentLiters": 1,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90512,7 +91425,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90568,7 +91482,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90624,7 +91539,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90680,7 +91596,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90736,7 +91653,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90792,7 +91710,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90848,7 +91767,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90904,7 +91824,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -90960,7 +91881,8 @@
       "currentLiters": 1,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91016,7 +91938,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91072,7 +91995,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91128,7 +92052,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91184,7 +92109,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91240,7 +92166,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91296,7 +92223,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91352,7 +92280,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91408,7 +92337,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91464,7 +92394,8 @@
       "currentLiters": 1,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91520,7 +92451,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91576,7 +92508,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91632,7 +92565,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91688,7 +92622,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91744,7 +92679,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91800,7 +92736,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91856,7 +92793,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91912,7 +92850,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -91968,7 +92907,8 @@
       "currentLiters": 1,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92024,7 +92964,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92075,7 +93016,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92126,7 +93068,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92177,7 +93120,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92228,7 +93172,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92279,7 +93224,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92330,7 +93276,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92381,7 +93328,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92432,7 +93380,8 @@
       "currentLiters": 2,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92483,7 +93432,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92539,7 +93489,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92595,7 +93546,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92651,7 +93603,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92707,7 +93660,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92763,7 +93717,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92819,7 +93774,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92875,7 +93831,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92931,7 +93888,8 @@
       "currentLiters": 2,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -92987,7 +93945,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93043,7 +94002,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93099,7 +94059,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93155,7 +94116,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93211,7 +94173,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93267,7 +94230,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93323,7 +94287,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93379,7 +94344,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93435,7 +94401,8 @@
       "currentLiters": 2,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93491,7 +94458,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93547,7 +94515,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93603,7 +94572,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93659,7 +94629,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93715,7 +94686,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93771,7 +94743,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93827,7 +94800,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93883,7 +94857,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93939,7 +94914,8 @@
       "currentLiters": 2,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -93995,7 +94971,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94046,7 +95023,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94097,7 +95075,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94148,7 +95127,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94199,7 +95179,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94250,7 +95231,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94301,7 +95283,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94352,7 +95335,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94403,7 +95387,8 @@
       "currentLiters": 3,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94454,7 +95439,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94510,7 +95496,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94566,7 +95553,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94622,7 +95610,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94678,7 +95667,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94734,7 +95724,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94790,7 +95781,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94846,7 +95838,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94902,7 +95895,8 @@
       "currentLiters": 3,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -94958,7 +95952,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95014,7 +96009,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95070,7 +96066,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95126,7 +96123,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95182,7 +96180,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95238,7 +96237,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95294,7 +96294,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95350,7 +96351,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95406,7 +96408,8 @@
       "currentLiters": 3,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95462,7 +96465,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95518,7 +96522,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95574,7 +96579,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95630,7 +96636,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95686,7 +96693,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95742,7 +96750,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95798,7 +96807,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95854,7 +96864,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95910,7 +96921,8 @@
       "currentLiters": 3,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -95966,7 +96978,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96017,7 +97030,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96068,7 +97082,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96119,7 +97134,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96170,7 +97186,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96221,7 +97238,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96272,7 +97290,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96323,7 +97342,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96374,7 +97394,8 @@
       "currentLiters": 5,
       "waterAdded": 0,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96425,7 +97446,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96481,7 +97503,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96537,7 +97560,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96593,7 +97617,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96649,7 +97674,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96705,7 +97731,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96761,7 +97788,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96817,7 +97845,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96873,7 +97902,8 @@
       "currentLiters": 5,
       "waterAdded": 0.5,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96929,7 +97959,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -96985,7 +98016,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97041,7 +98073,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97097,7 +98130,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97153,7 +98187,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97209,7 +98244,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97265,7 +98301,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97321,7 +98358,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97377,7 +98415,8 @@
       "currentLiters": 5,
       "waterAdded": 1,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97433,7 +98472,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97489,7 +98529,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97545,7 +98586,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97601,7 +98643,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97657,7 +98700,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97713,7 +98757,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97769,7 +98814,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97825,7 +98871,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -97881,7 +98928,8 @@
       "currentLiters": 5,
       "waterAdded": 2,
       "userTarget": 1.2,
-      "round": 1
+      "round": 1,
+      "capacityLiters": 10
     },
     "hasCalibration": true,
     "output": {
@@ -98188,7 +99236,7 @@
     "hasCalibration": true,
     "output": {
       "kind": "needs",
-      "evidence": "insufficient",
+      "evidence": "high",
       "compatibility": "NO_COMMON_OPTIMUM_RANGE",
       "message": "Los rangos publicados no se solapan. Define un objetivo explícito o separa los cultivos."
     }
@@ -98375,7 +99423,7 @@
       },
       "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "message": "Elige un objetivo o aporta evidencia aplicable."
+      "message": "La evidencia se reduce a un solo valor o el rango no supera la resolución indicada para tu medidor. Elige un objetivo explícito."
     }
   },
   {
@@ -98383,7 +99431,7 @@
       "mode": "recipe",
       "crops": {
         "genovese-basil": 1,
-        "petunia": 1
+        "epazote": 1
       },
       "liters": 4,
       "productId": "gh-flora",
@@ -98426,7 +99474,7 @@
       "mode": "target",
       "crops": {
         "genovese-basil": 1,
-        "petunia": 1
+        "epazote": 1
       },
       "liters": 4,
       "productId": "gh-flora",
@@ -99027,7 +100075,7 @@
       },
       "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "message": "El relleno superaría la capacidad del tanque."
+      "message": "Reservoir capacity is required before adding water."
     }
   },
   {
@@ -99061,7 +100109,7 @@
       },
       "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "message": "La dilución adicional superaría la capacidad. Retira o sustituye solución y recalcula con el volumen restante real."
+      "message": "Reservoir capacity is required before adding water."
     }
   },
   {

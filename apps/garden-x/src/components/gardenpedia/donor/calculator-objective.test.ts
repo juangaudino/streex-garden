@@ -118,6 +118,18 @@ function compare(test: string, source: string, expected: number, actual: number,
   expect(difference, test).toBeLessThanOrEqual(tolerance);
 }
 describe("Calculator objective independent validation", () => {
+  it("does not treat explicitly unknown source-water EC as zero in fresh solution or top-up", () => {
+    const fresh = calculateGardenResult({ ...calibrated, language: "en", sourceEcKnown: false });
+    expect(fresh.kind).toBe("needs");
+    if (fresh.kind === "needs") expect(fresh.message).toMatch(/source-water EC/);
+    const refill = calculateGardenResult({
+      ...calibrated, language: "en", mode: "topup", sourceEcKnown: false,
+      currentEc: 0.8, currentLiters: 3, capacityLiters: 4.1, waterAdded: 1,
+    });
+    expect(refill.kind).toBe("needs");
+    if (refill.kind === "needs") expect(refill.message).toMatch(/source-water EC/);
+    expect(calculateGardenResult({ ...calibrated, sourceEcKnown: true }).kind).toBe("ok");
+  });
   it("requires source-water EC for dilution, not for adding nutrient or holding", () => {
     const input = { ...calibrated, language: "en" as const, mode: "adjust" as const, sourceEcKnown: false, currentLiters: 3 };
     const add = calculateGardenResult({ ...input, currentEc: 0.8 });

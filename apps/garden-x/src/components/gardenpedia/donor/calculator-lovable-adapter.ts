@@ -914,6 +914,10 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
 function presentationMessage(message: string, lang: Lang): string {
   const pairs: [string, string][] = [
     [
+      "Mide el EC del agua de origen antes de preparar la solución.",
+      "Measure the source-water EC before preparing the solution.",
+    ],
+    [
       "Mide el EC del agua de reposición antes de calcular el relleno.",
       "Measure the source-water EC before calculating the top-up.",
     ],
@@ -1203,6 +1207,8 @@ function calculateResult(input: CalcInput): CalcResult {
   }
 
   if (input.mode === "target") {
+    if (input.sourceEcKnown === false)
+      return engineNeeds("Mide el EC del agua de origen antes de preparar la solución.", targetPresentation);
     if (!targetEngine.ok || !targetEngine.value || targetValue === undefined) {
       return engineNeeds(
         targetEngine.errors[0]?.message ??
@@ -1384,6 +1390,8 @@ function calculateResult(input: CalcInput): CalcResult {
   if (input.currentLiters === null) return engineNeeds("cuántos litros quedan", targetPresentation);
   if (input.waterAdded === null)
     return engineNeeds("cuánta agua planeas añadir", targetPresentation);
+  if (input.waterAdded > 0 && input.sourceEcKnown === false)
+    return engineNeeds("Mide el EC del agua de reposición antes de calcular el relleno.", targetPresentation);
   if (input.capacityLiters == null)
     return engineNeeds("Reservoir capacity is required before adding water.", targetPresentation);
   const topup = calculateTopUpMaintenance({

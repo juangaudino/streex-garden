@@ -19,6 +19,18 @@ vi.mock("@/components/ui/dialog", () => {
 });
 
 describe("Calculator real control interactions", () => {
+  it("makes the unverified coleus guide an explicit manual choice only", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="rainbow-mix-coleus" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/lower bound of a guide without supporting evidence/i)).toBeTruthy();
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByRole("button", { name: /Choose guide lower bound for Rainbow Mix Coleus: 1\.00 mS\/cm/i }));
+    expect(target.value).toBe("1");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
   it("offers the garlic chives study condition only as an explicit user choice", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="garlic-chives" />);

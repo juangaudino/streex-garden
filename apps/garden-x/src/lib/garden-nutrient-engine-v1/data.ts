@@ -707,6 +707,8 @@ export const CROP_STUDY_REFERENCES: readonly {
   text: { es: string; en: string };
   /** A single reported study treatment, offered only as an explicit user choice. */
   selectableEcMs?: number;
+  /** Marks a low-quality guide's lower bound; never an automatic recommendation. */
+  selectionKind?: "GUIDE_LOWER_BOUND";
 }[] = [
   {
     plantIds: ["dill-bouquet"],
@@ -880,6 +882,8 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["rainbow-mix-coleus"],
     source: NUTRIENT_SOURCES.coleusPlantGardenGuide,
+    selectableEcMs: 1.0,
+    selectionKind: "GUIDE_LOWER_BOUND",
     text: {
       es: "Una guía de Plant.Garden para Plectranthus scutellarioides en Kratky o DWC menciona EC de solución de 1,0–1,6 mS/cm. No identifica Rainbow Mix, etapa, formulación ni evidencia de respaldo; es una referencia reportada, no un objetivo automático validado.",
       en: "A Plant.Garden guide for Plectranthus scutellarioides in Kratky or DWC reports solution EC of 1.0–1.6 mS/cm. It does not identify Rainbow Mix, stage, formulation, or supporting evidence; this is a reported reference, not a validated automatic target.",

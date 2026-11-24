@@ -313,6 +313,15 @@ export const NUTRIENT_SOURCES = {
     region: "Malaysia",
     retrievedAt: "2026-11-14",
   },
+  mexicanTarragonZipGrow: {
+    id: "zipgrow-mexican-tarragon-hydroponic-tower",
+    publisher: "ZipGrow",
+    title: "Flower Power in Hydroponic Towers",
+    url: "https://zipgrow.com/flower-power-in-hydroponic-towers/",
+    sourceClass: "MANUFACTURER",
+    tier: "C",
+    retrievedAt: "2026-11-24",
+  },
   hibiscusMoscheutosGrower: {
     id: "panam-hibiscus-luna-grower-2023",
     publisher: "PanAmerican Seed",
@@ -769,6 +778,14 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "El estragón mexicano o pericón es Tagetes lucida, distinto del estragón francés. Esta fuente trata su identidad y ambiente terrestre; no establece un rango de EC ni una dosis hidropónica.",
       en: "Mexican tarragon or pericón is Tagetes lucida, distinct from French tarragon. This source describes its identity and terrestrial habitat; it does not establish a hydroponic EC range or dose.",
+    },
+  },
+  {
+    plantIds: ["mexican-tarragon"],
+    source: NUTRIENT_SOURCES.mexicanTarragonZipGrow,
+    text: {
+      es: "ZipGrow incluye Tagetes lucida en su guía de flores para torres hidropónicas y menciona un pH de al menos 6. No publica una EC para esta especie ni una dosis de FloraSeries; la referencia no permite calcular un objetivo automáticamente.",
+      en: "ZipGrow includes Tagetes lucida in its hydroponic tower flower guide and mentions a pH of at least 6. It does not publish an EC for this species or a FloraSeries dose; the reference cannot establish an automatic target.",
     },
   },
   {

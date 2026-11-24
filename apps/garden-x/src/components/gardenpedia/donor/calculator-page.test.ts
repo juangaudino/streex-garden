@@ -128,6 +128,13 @@ describe("Gardenpedia Calculator V1 integration", () => {
       for (const id of reference.plantIds) expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     }
   });
+  it("keeps the Mexican tarragon hydroponic guide contextual without inventing an EC target", () => {
+    const source = CROP_STUDY_REFERENCES.find((item) => item.source.id === "zipgrow-mexican-tarragon-hydroponic-tower");
+    expect(source?.plantIds).toContain("mexican-tarragon");
+    expect(source?.selectableEcMs).toBeUndefined();
+    expect(source?.text.en).toMatch(/does not publish an EC/);
+    expect(hasApplicableCropNutrientEvidence("mexican-tarragon")).toBe(false);
+  });
   it("never plans a capacity refill using an explicitly unknown source-water EC", () => {
     const plan = planTopUpToCapacity({
       language: "es", mode: "topup", crops: { "bibb-lettuce": 1 }, liters: 4,

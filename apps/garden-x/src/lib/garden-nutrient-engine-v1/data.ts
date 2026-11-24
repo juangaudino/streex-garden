@@ -705,7 +705,7 @@ export const CROP_STUDY_REFERENCES: readonly {
   plantIds: readonly string[];
   source: SourceRef;
   text: { es: string; en: string };
-  /** A single reported study treatment, offered only as an explicit user choice. */
+  /** A reported study value or marked guide bound, offered only as an explicit user choice. */
   selectableEcMs?: number;
   /** Marks a low-quality guide's lower bound; never an automatic recommendation. */
   selectionKind?: "GUIDE_LOWER_BOUND";

@@ -19,6 +19,18 @@ vi.mock("@/components/ui/dialog", () => {
 });
 
 describe("Calculator real control interactions", () => {
+  it("offers the garlic chives study condition only as an explicit user choice", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="garlic-chives" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/not a recommendation to add salt/i)).toBeTruthy();
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByRole("button", { name: /Choose study EC for Garlic Chives: 1\.40 mS\/cm/i }));
+    expect(target.value).toBe("1.4");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
   it("offers the hyssop study value only as an explicit choice with its limitations", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="hyssop" />);
@@ -573,6 +585,12 @@ describe("Calculator real control interactions", () => {
       waterAdded: 1,
       unit: "uS",
     });
+    cleanup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByText("Top up state", { exact: true }));
+    expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("123.4");
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe("1234.5");
+    expect((screen.getByLabelText(/^EC before top-up/) as HTMLInputElement).value).toBe("800");
   });
 
   it("keeps 0.20 EC intact and completes calibration, By EC, Correct, and Top Up", async () => {

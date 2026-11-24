@@ -1021,9 +1021,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["garlic-chives"],
     source: NUTRIENT_SOURCES.garlicChivesHydroponicStudy,
+    selectableEcMs: 1.4,
     text: {
-      es: "Un estudio de cebollín de ajo (Allium tuberosum, cultivar 791) utilizó una solución hidropónica de EC 1,4 mS/cm antes de los tratamientos de salinidad. Es una condición experimental, no un intervalo óptimo ni una dosis para otro cultivo o sistema.",
-      en: "A study of garlic chives (Allium tuberosum, cultivar 791) used a hydroponic solution at EC 1.4 mS/cm before salinity treatments. This is an experimental condition, not an optimum range or dose for another crop or system.",
+      es: "Un estudio de cebollín de ajo (Allium tuberosum, cultivar 791) utilizó EC 1,4 mS/cm en cultivo DFT antes de los tratamientos de salinidad. Es una condición experimental, no un intervalo óptimo ni una dosis validada para tus plantas, plántulas o sistema. No es una recomendación de añadir sal.",
+      en: "A study of garlic chives (Allium tuberosum, cultivar 791) used EC 1.4 mS/cm in DFT before salinity treatments. This is an experimental condition, not an optimum range or validated dose for your plants, seedlings or system. It is not a recommendation to add salt.",
     },
   },
   {

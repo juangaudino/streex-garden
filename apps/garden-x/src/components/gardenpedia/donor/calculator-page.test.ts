@@ -119,6 +119,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["hyssop-hydroponic-selenium-2022", 2.2],
       ["can-tho-zinnia-hoagland-2022", 1.4],
       ["nguyen-eryngium-foetidum-hydroponics-2018", 1.5],
+      ["chinese-chive-hydroponic-salinity-2022", 1.4],
       ["juarez-porophyllum-nutrient-poster", 1.5],
     ]);
     for (const reference of choices) {

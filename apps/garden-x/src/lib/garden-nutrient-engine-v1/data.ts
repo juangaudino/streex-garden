@@ -403,9 +403,9 @@ export const NUTRIENT_SOURCES = {
     retrievedAt: "2026-11-14",
   },
   bariHydroponicGuide: {
-    id: "barc-fertilizer-recommendation-guide-2024-marigold",
+    id: "barc-fertilizer-recommendation-guide-2024-hydroponics",
     publisher: "Bangladesh Agricultural Research Council (BARC)",
-    title: "Fertilizer Recommendation Guide-2024 · Hydroponic African marigold",
+    title: "Fertilizer Recommendation Guide-2024 · Hydroponic crop production",
     url: "https://apps.barc.gov.bd/fertilizer_recommendation/FRG%20English%2030.10.2024.pdf",
     sourceClass: "OTHER",
     tier: "B",
@@ -978,6 +978,100 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "La guía de BARC prescribe EC de solución de 1,5 mS/cm para marigold africano hidropónico ‘BARI Gada-1’: desde plántula hasta trasplante y desde trasplante hasta cosecha. Es una pauta regional para otra variedad y la solución BARI, no una validación automática para Jolly Jester ni para otro fertilizante. Solo se ofrece como objetivo manual que requiere calibración.",
       en: "BARC's guide prescribes nutrient-solution EC of 1.5 mS/cm for hydroponic African marigold ‘BARI Gada-1’: from seedling to transplant and from transplant to harvest. This is regional guidance for another cultivar and the BARI solution, not automatic validation for Jolly Jester or another fertilizer. It is offered only as a manual target that requires calibration.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "BARC informa 1,5 mS/cm con BARI Hydroponic Solution-1 para tomate BARI Tomato-14 durante plántula hasta trasplante y desde trasplante hasta antes de antesis. Es una pauta de otra variedad y formulación; no valida Tiny Tim ni otros tomates, no es un óptimo universal y requiere calibración para usarla como objetivo manual.",
+      en: "BARC reports 1.5 mS/cm with BARI Hydroponic Solution-1 for BARI Tomato-14 from seedling to transplant and from transplant until before anthesis. This is guidance for another cultivar and formulation; it does not validate Tiny Tim or other tomatoes, is not a universal optimum, and requires calibration to use as a manual target.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcValuesMs: [2.3, 2.5],
+    text: {
+      es: "Para BARI Tomato-14, la guía sube la EC de la solución BARI a 2,3–2,5 mS/cm tras antesis durante desarrollo del fruto. Los botones son los extremos publicados para elegir manualmente; la fuente no valida esta etapa para tus cultivares ni para otro fertilizante.",
+      en: "For BARI Tomato-14, the guide raises BARI solution EC to 2.3–2.5 mS/cm after anthesis during fruit development. The buttons are the published endpoints for a manual choice; the source does not validate this stage for your cultivars or another fertilizer.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 2.0,
+    text: {
+      es: "La guía BARC indica alrededor de 2,0 mS/cm para BARI Tomato-14 durante la maduración del fruto con BARI Hydroponic Solution-1. Es una condición de esa variedad y fórmula, no una validación automática para Tiny Tim u otros tomates.",
+      en: "BARC indicates around 2.0 mS/cm for BARI Tomato-14 during fruit ripening with BARI Hydroponic Solution-1. This is specific to that cultivar and formula, not automatic validation for Tiny Tim or other tomatoes.",
+    },
+  },
+  {
+    plantIds: ["mini-lunchbox-sweet-pepper"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "BARC recomienda 1,5 mS/cm con BARI Hydroponic Solution-1 para pimiento dulce BARI Mistimorich-1/-2 desde plántula hasta antesis. Es un objetivo manual de otra variedad y solución; no cambia la receta del fabricante que selecciones ni valida automáticamente Lunchbox.",
+      en: "BARC recommends 1.5 mS/cm with BARI Hydroponic Solution-1 for BARI Mistimorich-1/-2 sweet pepper from seedling through anthesis. This is a manual target for another cultivar and solution; it does not change your selected manufacturer's recipe or automatically validate Lunchbox.",
+    },
+  },
+  {
+    plantIds: ["mini-lunchbox-sweet-pepper"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 2.0,
+    text: {
+      es: "Para BARI Mistimorich-1/-2, la guía aumenta a 2,0 mS/cm después de antesis y durante el desarrollo del fruto. No es una recomendación automática para Lunchbox ni para otra formulación.",
+      en: "For BARI Mistimorich-1/-2, the guide increases to 2.0 mS/cm after anthesis and during fruit development. This is not an automatic recommendation for Lunchbox or another formulation.",
+    },
+  },
+  {
+    plantIds: [
+      "bibb-lettuce",
+      "black-seeded-simpson",
+      "buttercrunch-lettuce",
+      "butterhead-lettuce-unspecified",
+      "iceberg-lettuce",
+      "red-romaine-lettuce",
+      "green-salanova-lettuce",
+      "breen-romaine-lettuce",
+      "bronze-arrow-lettuce",
+      "pandero-romaine-lettuce",
+    ],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "Para BARI Lettuce-1, BARC indica 1,5 mS/cm con BARI Hydroponic Solution-1 durante plántula hasta trasplante. Se muestra como referencia manual para esta especie, no como validación de cada cultivar ni de otras soluciones.",
+      en: "For BARI Lettuce-1, BARC reports 1.5 mS/cm with BARI Hydroponic Solution-1 from seedling to transplant. This is shown as a manual species-level reference, not validation for every cultivar or other nutrient solutions.",
+    },
+  },
+  {
+    plantIds: [
+      "bibb-lettuce",
+      "black-seeded-simpson",
+      "buttercrunch-lettuce",
+      "butterhead-lettuce-unspecified",
+      "iceberg-lettuce",
+      "red-romaine-lettuce",
+      "green-salanova-lettuce",
+      "breen-romaine-lettuce",
+      "bronze-arrow-lettuce",
+      "pandero-romaine-lettuce",
+    ],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcValuesMs: [1.5, 2.0],
+    text: {
+      es: "Después del trasplante, la guía informa 1,5–2,0 mS/cm para BARI Lettuce-1 en solución BARI hasta cosecha. Los extremos se pueden elegir como objetivos manuales; la fuente no valida cada cultivar ni formula y no crea un rango automático para tu sistema.",
+      en: "After transplanting, the guide reports 1.5–2.0 mS/cm for BARI Lettuce-1 in BARI solution through harvest. The endpoints can be selected as manual targets; the source does not validate each cultivar or formula and does not create an automatic range for your system.",
+    },
+  },
+  {
+    plantIds: ["monterey-strawberry"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcValuesMs: [1.0, 1.2],
+    text: {
+      es: "BARC recomienda 1,0–1,2 mS/cm después del trasplante hasta cosecha para sus cultivares BARI Strawberry-1/-2/-3 en solución hidropónica. Se ofrece solo como elección manual contextual: Monterey no es un cultivar BARI, la fórmula es distinta y no se genera evidencia automática ni dosis sin calibración.",
+      en: "BARC recommends 1.0–1.2 mS/cm from transplant to harvest for its BARI Strawberry-1/-2/-3 cultivars in hydroponic solution. This is offered only as a contextual manual choice: Monterey is not a BARI cultivar, the formula differs, and no automatic evidence or dose is generated without calibration.",
     },
   },
   {

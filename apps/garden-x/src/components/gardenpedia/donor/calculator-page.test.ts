@@ -214,7 +214,15 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["plant-garden-coleus-hydroponic-guide", [1]],
       ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
       ["kazakidou-burrage-marigold-nft-1994", [1.5, 3]],
-      ["barc-fertilizer-recommendation-guide-2024-marigold", [1.5]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [2.3, 2.5]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [2.0]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [2.0]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5, 2.0]],
+      ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.0, 1.2]],
       ["arkansas-komatsuna-nft-2014", [1, 1.2]],
       ["hyssop-hydroponic-selenium-2022", [2.2]],
       ["can-tho-zinnia-hoagland-2022", [1.4, 2.8]],
@@ -264,7 +272,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
   it("keeps BARC marigold EC as a cultivar- and solution-qualified manual choice", () => {
     const reference = CROP_STUDY_REFERENCES.find(
-      (study) => study.source.id === "barc-fertilizer-recommendation-guide-2024-marigold",
+      (study) =>
+        study.source.id === "barc-fertilizer-recommendation-guide-2024-hydroponics" &&
+        study.plantIds.includes("marigold-jolly-jester"),
     );
     expect(reference?.plantIds).toEqual(["marigold-jolly-jester"]);
     expect(reference?.selectableEcMs).toBe(1.5);
@@ -272,6 +282,38 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.text.en).toContain("BARI Gada-1");
     expect(reference?.text.en).toContain("manual target");
     expect(reference?.text.en).toContain("not automatic validation");
+  });
+  it("offers BARC crop- and stage-qualified readings only as manual choices", () => {
+    const references = CROP_STUDY_REFERENCES.filter(
+      (study) => study.source.id === "barc-fertilizer-recommendation-guide-2024-hydroponics",
+    );
+    expect(references).toHaveLength(9);
+    for (const plantId of ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"]) {
+      const tomatoRefs = references.filter((study) => study.plantIds.includes(plantId));
+      expect(
+        tomatoRefs.map((study) => study.selectableEcValuesMs ?? [study.selectableEcMs]),
+      ).toEqual([[1.5], [2.3, 2.5], [2.0]]);
+      expect(
+        tomatoRefs.every((study) =>
+          /manual|not a universal optimum|does not validate|not automatic/i.test(study.text.en),
+        ),
+      ).toBe(true);
+    }
+    expect(
+      references.find(
+        (study) =>
+          study.plantIds.includes("mini-lunchbox-sweet-pepper") && study.selectableEcMs === 2.0,
+      )?.text.en,
+    ).toContain("not an automatic recommendation");
+    expect(
+      references.find(
+        (study) => study.plantIds.includes("bibb-lettuce") && study.selectableEcValuesMs,
+      )?.selectableEcValuesMs,
+    ).toEqual([1.5, 2.0]);
+    expect(
+      references.find((study) => study.plantIds.includes("monterey-strawberry"))
+        ?.selectableEcValuesMs,
+    ).toEqual([1.0, 1.2]);
   });
   it("keeps the Mexican tarragon hydroponic guide contextual without inventing an EC target", () => {
     const source = CROP_STUDY_REFERENCES.find(

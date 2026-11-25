@@ -507,13 +507,14 @@ export const NUTRIENT_SOURCES = {
   },
   culantroHydroponicStudy: {
     id: "nguyen-eryngium-foetidum-hydroponics-2018",
-    publisher: "Nguyen and colleagues · Vietnam National University of Agriculture",
-    title: "Study on the cultivation technique of Eryngium foetidum on hydroponic system",
+    publisher: "Nông nghiệp và Phát triển Nông thôn · Nguyen Thi Quynh et al.",
+    title: "Study on the cultivation technique of Eryngium foetidum L. on hydroponic system",
     url: "https://scholar.dlu.edu.vn/thuvienso/bitstream/DLU123456789/216924/1/CVv201S112018036.pdf",
     sourceClass: "OTHER",
     tier: "B",
     publication: "2018",
-    retrievedAt: "2026-11-07",
+    region: "Vietnam",
+    retrievedAt: "2026-11-25",
   },
   garlicChivesHydroponicStudy: {
     id: "chinese-chive-hydroponic-salinity-2022",
@@ -1157,8 +1158,8 @@ export const CROP_STUDY_REFERENCES: readonly {
     selectableEcMs: 1.5,
     selectableEcValuesMs: [1.0, 1.5, 2.0],
     text: {
-      es: "En un ensayo hidropónico de culantro (Eryngium foetidum), una solución SH5 de 1,5 mS/cm produjo mayor crecimiento que los tratamientos de 1,0 y 2,0 mS/cm. Es un resultado de ese ensayo y formulación, no un rango validado ni una dosis automática para tu sistema o sus plántulas.",
-      en: "In a hydroponic culantro (Eryngium foetidum) trial, an SH5 solution at 1.5 mS/cm produced more growth than the 1.0 and 2.0 mS/cm treatments. This is specific to that experiment and formulation, not a validated range or automatic dose for your system or seedlings.",
+      es: "En un ensayo hidropónico de Eryngium foetidum, tras 28 días de cultivo el tratamiento de 1,5 mS/cm superó en crecimiento y rendimiento a 1,0 y 2,0 mS/cm; el artículo describe además SH5 como la solución más adecuada. Son condiciones de ese ensayo, no un rango validado ni una dosis automática para tu sistema o sus plántulas.",
+      en: "In a hydroponic Eryngium foetidum trial, after 28 days of cultivation the 1.5 mS/cm treatment outperformed 1.0 and 2.0 mS/cm in growth and yield; the article separately describes SH5 as the most suitable solution. These are experiment-specific conditions, not a validated range or automatic dose for your system or seedlings.",
     },
   },
   {

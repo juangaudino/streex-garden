@@ -233,6 +233,13 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
       ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
     ]);
+    const culantro = CROP_STUDY_REFERENCES.find(
+      (reference) => reference.source.id === "nguyen-eryngium-foetidum-hydroponics-2018",
+    );
+    expect(culantro?.plantIds).toEqual(["culantro"]);
+    expect(culantro?.source.region).toBe("Vietnam");
+    expect(culantro?.text.en).toContain("after 28 days");
+    expect(hasApplicableCropNutrientEvidence("culantro")).toBe(false);
     for (const reference of choices) {
       expect(reference.source.url).toMatch(/^https:\/\//);
       if (reference.selectionKind === "GUIDE_LOWER_BOUND") expect(reference.source.tier).toBe("E");

@@ -44,6 +44,7 @@ import {
   planTopUpToCapacity,
   persistSavedSystems,
   recipeStageLabel,
+  recipeStagesForSchedule,
   recordActualDoses,
   resolveNutrientCropIdentity,
   type CalcResult,
@@ -87,6 +88,7 @@ const T = {
     customAbNote:
       "Identificado por ti. No hay receta oficial cargada: mide las dosis reales de A y B para calibrar y sigue las instrucciones del fabricante para mezclarlos.",
     stage: "Etapa de la receta",
+    recipeProgram: "Programa del fabricante",
     feedingEvent: "Evento de alimentación",
     currentEc: "EC que mediste",
     currentLiters: "Litros que quedan",
@@ -216,6 +218,7 @@ const T = {
     customAbNote:
       "Identified by you. No official recipe is loaded: measure the actual A and B doses to calibrate and follow the manufacturer's mixing instructions.",
     stage: "Recipe stage",
+    recipeProgram: "Manufacturer program",
     feedingEvent: "Feeding event",
     currentEc: "EC you measured",
     currentLiters: "Liters remaining",
@@ -459,6 +462,12 @@ export function CalculatorPage({
   >(() => loadQuickCalibrationObservations());
 
   const product = CALCULATOR_PRODUCTS.find((p) => p.id === productId) ?? CALCULATOR_PRODUCTS[0]!;
+  const activeRecipeStage = product.recipeStages.find((stage) => stage.id === stageId);
+  const selectedRecipeScheduleId = activeRecipeStage?.scheduleId ?? "LIGHT_FEED";
+  const selectedRecipeSchedule = product.recipeSchedules?.find(
+    (schedule) => schedule.id === selectedRecipeScheduleId,
+  );
+  const selectedRecipeStages = recipeStagesForSchedule(product.id, selectedRecipeScheduleId);
   const calibrationCounts = calibrationUsage({
     productId,
     customAbManufacturer,
@@ -1569,13 +1578,48 @@ export function CalculatorPage({
                 )}
                 {mode === "recipe" && product.hasRecipeStages && (
                   <div className="mt-3 space-y-2">
+                    {product.recipeSchedules && (
+                      <div className="space-y-2">
+                        <p className="text-xs font-semibold text-muted-foreground">
+                          {t.recipeProgram}
+                        </p>
+                        <div
+                          role="group"
+                          aria-label={t.recipeProgram}
+                          className="grid grid-cols-3 gap-1.5"
+                        >
+                          {product.recipeSchedules.map((schedule) => (
+                            <Chip
+                              key={schedule.id}
+                              active={selectedRecipeScheduleId === schedule.id}
+                              onClick={() => {
+                                const currentIndex = activeRecipeStage?.feedingIndex;
+                                const nextStages = recipeStagesForSchedule(product.id, schedule.id);
+                                const nextStage =
+                                  nextStages.find((stage) => stage.feedingIndex === currentIndex) ??
+                                  nextStages[0];
+                                if (nextStage) setStageId(nextStage.id);
+                              }}
+                            >
+                              {schedule.label[lang]}
+                            </Chip>
+                          ))}
+                        </div>
+                        <p className="text-xs text-muted-foreground">
+                          {selectedRecipeSchedule?.context[lang]}
+                          {lang === "es"
+                            ? ". Es un programa del fabricante, no una etapa universal de la planta."
+                            : ". This is a manufacturer program, not a universal plant stage."}
+                        </p>
+                      </div>
+                    )}
                     <select
                       aria-label={product.id === "aerogarden" ? t.feedingEvent : t.stage}
                       value={stageId}
                       onChange={(e) => setStageId(e.target.value)}
                       className="h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm"
                     >
-                      {product.recipeStages
+                      {selectedRecipeStages
                         .filter(
                           (s) =>
                             product.id !== "aerogarden" ||
@@ -1718,7 +1762,7 @@ export function CalculatorPage({
                         onChange={(event) => setStageId(event.target.value)}
                         className="mt-1 h-11 w-full rounded-md border border-input bg-background px-3 text-sm"
                       >
-                        {product.recipeStages
+                        {recipeStagesForSchedule(product.id, selectedRecipeScheduleId)
                           .filter(
                             (stage) =>
                               product.id !== "aerogarden" ||
@@ -1994,8 +2038,8 @@ export function CalculatorPage({
                     {mode === "recipe" && product.basis === "liters" && (
                       <p className="mt-2 text-xs text-muted-foreground">
                         {lang === "es"
-                          ? "La dosis sigue el programa oficial Light Feed de GH; las plantas seleccionadas se evalúan por separado."
-                          : "Doses follow GH's official Light Feed program; selected crops are evaluated separately."}
+                          ? `La dosis sigue el programa oficial ${selectedRecipeSchedule?.label.es ?? "Light Feed"} de GH; las plantas seleccionadas se evalúan por separado.`
+                          : `Doses follow GH's official ${selectedRecipeSchedule?.label.en ?? "Light Feed"} program; selected crops are evaluated separately.`}
                       </p>
                     )}
                     <h2 className="mt-3 font-display text-2xl font-bold">
@@ -2006,7 +2050,9 @@ export function CalculatorPage({
                           : t.actHold}
                     </h2>
                     {result.action === "hold" ? (
-                      <p className="mt-2 text-sm text-muted-foreground">{t.holdBody}</p>
+                      <p className="mt-2 text-sm text-muted-foreground">
+                        {result.instruction ?? t.holdBody}
+                      </p>
                     ) : (
                       <>
                         <p className="mt-4 text-xs font-semibold text-muted-foreground">

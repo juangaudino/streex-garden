@@ -54,7 +54,7 @@ An actual user must substitute their own measured before/after EC and actual app
 
 ## External reference checks
 
-- [GH official feed program](https://generalhydroponics.com/pages/flora-series-3-part-feed-program), US revision 07/07/2026: all seven implemented Light Feed steps, four reservoir volumes, all three components and manufacturer EC ranges.
+- [GH official feed program](https://generalhydroponics.com/pages/flora-series-3-part-feed-program), US revision 07/07/2026: Light Feed, Medium Feed (General Use), and Aggressive Feed (Low Irrigation/Heavy Feeding) are separate manufacturer schedules. Published weeks, all three component amounts, EC ranges, and water-only flush are represented without filling schedule gaps.
 - [AeroGarden manufacturer instructions](https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html): supported 6/7/9-pod groups and first/second/later events. The previous product URLs redirect and no longer expose all feeding instructions; source pointers were repaired.
 - [OSU HLA-6722](https://extension.okstate.edu/fact-sheets/electrical-conductivity-and-ph-guide-for-hydroponics): every stored EC/pH range, including basil, lettuce, tomato, strawberry and pepper. Stage is unspecified; these are crop-level observations, not cultivar-specific or seedling prescriptions.
 

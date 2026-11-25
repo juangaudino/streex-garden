@@ -116,9 +116,12 @@ export interface RecipeComponent {
 export interface RecipeStep {
   stage: string;
   feedingIndex?: number | undefined;
+  /** Manufacturer program selector, distinct from the crop's phenological stage. */
+  scheduleId?: string | undefined;
   label: string;
   doses: Record<string, number>;
   doseUnit: "mL/L" | "mL/gal" | "mL";
+  action?: "WATER_ONLY_FLUSH" | undefined;
   expectedEc?: { min: number; max: number; unit: "mS/cm" } | undefined;
   source: SourceRef;
   epistemic: "MANUFACTURER_INSTRUCTION";
@@ -249,6 +252,8 @@ export interface RecipeResult {
   volumeL?: number | undefined;
   podCount?: number | undefined;
   feedingIndex?: number | undefined;
+  scheduleId?: string | undefined;
+  action?: "WATER_ONLY_FLUSH" | undefined;
   parts: DosePart[];
   manufacturerRecipeExpectation?: { min: number; max: number; unit: "mS/cm" } | undefined;
   cropCompatibility?: RangeSelection[] | undefined;

@@ -131,6 +131,24 @@ describe("Calculator real control interactions", () => {
     );
     expect(screen.getByText(/Common Fenugreek/i)).toBeTruthy();
   });
+  it("keeps the selected FloraSeries manufacturer program, stage, explanation, and dose aligned", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+
+    expect(screen.getByText(/official Light Feed program/i)).toBeTruthy();
+    expect(screen.getByText(/3\.80/)).toBeTruthy();
+    expect(screen.getByText(/0\.90–1\.10 mS\/cm/)).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: "Medium Feed" }));
+
+    expect(screen.getByText(/official Medium Feed program/i)).toBeTruthy();
+    expect(screen.getByText(/4\.44/)).toBeTruthy();
+    expect(screen.getByText(/1\.00–1\.20 mS\/cm/)).toBeTruthy();
+    expect(screen.queryByText(/3\.80/)).toBeNull();
+    expect((screen.getByLabelText("Recipe stage") as HTMLSelectElement).value).toBe(
+      "medium_feed-feeding-2",
+    );
+  });
   it("does not preselect an excluded carnivorous plant", () => {
     render(<CalculatorPage language="en" initialPlantId="venus-flytrap-dionaea-muscipula" />);
     expect(screen.queryByText(/Venus Flytrap/i)).toBeNull();

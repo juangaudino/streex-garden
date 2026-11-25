@@ -1,4 +1,4 @@
-import type { EvidenceObservation, ManufacturerRecipe, SourceRef } from "./types.ts";
+import type { EvidenceObservation, ManufacturerRecipe, RecipeStep, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
   borgmannHydroponicEc: {
@@ -734,14 +734,14 @@ export const NUTRIENT_SOURCES = {
   generalHydroponicsFlora: {
     id: "general-hydroponics-floraseries-2026-07-07",
     publisher: "General Hydroponics",
-    title: "FloraSeries Professional 3-Part Nutrient System · Light Feed",
+    title: "FloraSeries Professional 3-Part Nutrient System · official feed schedules",
     url: "https://generalhydroponics.com/pages/flora-series-3-part-feed-program",
     sourceClass: "MANUFACTURER",
     tier: "A",
     publication: "2026",
     revision: "English United States Revised 07/07/2026",
     region: "US",
-    retrievedAt: "2026-10-03",
+    retrievedAt: "2026-11-25",
   },
   aerogardenBounty: {
     id: "aerogarden-bounty-liquid-food",
@@ -2028,6 +2028,245 @@ const floraProduct = {
   region: "US",
 };
 
+type FloraFeedScheduleId = "LIGHT_FEED" | "MEDIUM_FEED" | "AGGRESSIVE_FEED";
+type FloraScheduleRow = {
+  scheduleId: FloraFeedScheduleId;
+  feedingIndex: number;
+  stage: string;
+  label: string;
+  micro: number;
+  gro: number;
+  bloom: number;
+  ec: readonly [number, number];
+};
+
+// Transcribed from GH's current official US page. The published schedules do
+// not contain identical week sets: retain only rows the manufacturer lists.
+const floraScheduleRows: readonly FloraScheduleRow[] = [
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 1,
+    stage: "SEEDLING_CLONE",
+    label: "Grow week 1 / Seedling-Clone",
+    micro: 2.0,
+    gro: 2.0,
+    bloom: 2.0,
+    ec: [0.5, 0.6],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 2,
+    stage: "EARLY_GROWTH",
+    label: "Grow week 2 / Early Growth",
+    micro: 4.2,
+    gro: 3.8,
+    bloom: 3.0,
+    ec: [1.0, 1.2],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 3,
+    stage: "EARLY_GROWTH",
+    label: "Grow week 3 / Early Growth",
+    micro: 5.6,
+    gro: 5.2,
+    bloom: 3.8,
+    ec: [1.3, 1.6],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 4,
+    stage: "LATE_GROWTH",
+    label: "Grow week 4 / Late Growth",
+    micro: 6.8,
+    gro: 6.4,
+    bloom: 4.8,
+    ec: [1.6, 2.0],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 5,
+    stage: "EARLY_BLOOM",
+    label: "Bloom week 1 / Early Bloom",
+    micro: 6.1,
+    gro: 5.3,
+    bloom: 6.8,
+    ec: [1.6, 1.9],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 6,
+    stage: "EARLY_BLOOM",
+    label: "Bloom week 2 / Early Bloom",
+    micro: 6.1,
+    gro: 5.3,
+    bloom: 6.8,
+    ec: [1.6, 1.9],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 7,
+    stage: "MID_BLOOM",
+    label: "Bloom week 3 / Mid Bloom",
+    micro: 5.3,
+    gro: 5.3,
+    bloom: 7.6,
+    ec: [1.6, 1.9],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 8,
+    stage: "MID_BLOOM",
+    label: "Bloom week 4 / Mid Bloom",
+    micro: 5.3,
+    gro: 5.3,
+    bloom: 7.6,
+    ec: [1.6, 1.9],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 9,
+    stage: "MID_BLOOM",
+    label: "Bloom week 5 / Mid Bloom",
+    micro: 5.3,
+    gro: 5.3,
+    bloom: 7.6,
+    ec: [1.6, 1.9],
+  },
+  {
+    scheduleId: "MEDIUM_FEED",
+    feedingIndex: 12,
+    stage: "RIPEN",
+    label: "Bloom week 8 / Ripen",
+    micro: 2.3,
+    gro: 2.3,
+    bloom: 3.6,
+    ec: [0.7, 0.9],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 2,
+    stage: "EARLY_GROWTH",
+    label: "Grow week 2 / Early Growth",
+    micro: 5.2,
+    gro: 4.8,
+    bloom: 3.7,
+    ec: [1.3, 1.5],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 3,
+    stage: "EARLY_GROWTH",
+    label: "Grow week 3 / Early Growth",
+    micro: 7.0,
+    gro: 6.5,
+    bloom: 4.8,
+    ec: [1.7, 2.1],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 4,
+    stage: "LATE_GROWTH",
+    label: "Grow week 4 / Late Growth",
+    micro: 8.5,
+    gro: 8.0,
+    bloom: 6.0,
+    ec: [2.0, 2.5],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 5,
+    stage: "EARLY_BLOOM",
+    label: "Bloom week 1 / Early Bloom",
+    micro: 7.6,
+    gro: 6.6,
+    bloom: 8.5,
+    ec: [2.0, 2.4],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 6,
+    stage: "EARLY_BLOOM",
+    label: "Bloom week 2 / Early Bloom",
+    micro: 7.6,
+    gro: 6.6,
+    bloom: 8.5,
+    ec: [2.0, 2.4],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 7,
+    stage: "MID_BLOOM",
+    label: "Bloom week 3 / Mid Bloom",
+    micro: 6.6,
+    gro: 6.6,
+    bloom: 9.5,
+    ec: [1.9, 2.4],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 8,
+    stage: "MID_BLOOM",
+    label: "Bloom week 4 / Mid Bloom",
+    micro: 6.6,
+    gro: 6.6,
+    bloom: 9.5,
+    ec: [1.9, 2.4],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 9,
+    stage: "MID_BLOOM",
+    label: "Bloom week 5 / Mid Bloom",
+    micro: 6.6,
+    gro: 6.6,
+    bloom: 9.5,
+    ec: [1.9, 2.4],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 10,
+    stage: "LATE_BLOOM",
+    label: "Bloom week 6 / Late Bloom",
+    micro: 4.7,
+    gro: 4.7,
+    bloom: 5.7,
+    ec: [1.3, 1.6],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 11,
+    stage: "LATE_BLOOM",
+    label: "Bloom week 7 / Late Bloom",
+    micro: 4.7,
+    gro: 4.7,
+    bloom: 5.7,
+    ec: [1.3, 1.6],
+  },
+  {
+    scheduleId: "AGGRESSIVE_FEED",
+    feedingIndex: 12,
+    stage: "RIPEN",
+    label: "Bloom week 8 / Ripen",
+    micro: 2.8,
+    gro: 2.8,
+    bloom: 4.5,
+    ec: [0.9, 1.1],
+  },
+];
+
+const additionalFloraSteps: RecipeStep[] = floraScheduleRows.map((row) => ({
+  stage: row.stage,
+  scheduleId: row.scheduleId,
+  feedingIndex: row.feedingIndex,
+  label: row.label,
+  doses: { micro: floraDose(row.micro), gro: floraDose(row.gro), bloom: floraDose(row.bloom) },
+  doseUnit: "mL/L",
+  expectedEc: { min: row.ec[0], max: row.ec[1], unit: "mS/cm" },
+  source: flora,
+  epistemic: "MANUFACTURER_INSTRUCTION",
+}));
+
 export const FLORA_RECIPE: ManufacturerRecipe = {
   id: "general-hydroponics-floraseries-3part-2026-07-07",
   product: floraProduct,
@@ -2040,6 +2279,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "SEEDLING_CLONE",
       feedingIndex: 1,
+      scheduleId: "LIGHT_FEED",
       label: "Grow week 1 / Seedling-Clone",
       doses: { micro: floraDose(1.8), gro: floraDose(1.8), bloom: floraDose(1.8) },
       doseUnit: "mL/L",
@@ -2050,6 +2290,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "EARLY_GROWTH",
       feedingIndex: 2,
+      scheduleId: "LIGHT_FEED",
       label: "Grow week 2 / Early Growth",
       doses: { micro: floraDose(3.6), gro: floraDose(3.4), bloom: floraDose(2.6) },
       doseUnit: "mL/L",
@@ -2060,6 +2301,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "EARLY_GROWTH",
       feedingIndex: 3,
+      scheduleId: "LIGHT_FEED",
       label: "Grow week 3 / Early Growth",
       doses: { micro: floraDose(4.9), gro: floraDose(4.6), bloom: floraDose(3.4) },
       doseUnit: "mL/L",
@@ -2070,6 +2312,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "LATE_GROWTH",
       feedingIndex: 4,
+      scheduleId: "LIGHT_FEED",
       label: "Grow week 4 / Late Growth",
       doses: { micro: floraDose(6.0), gro: floraDose(5.6), bloom: floraDose(4.2) },
       doseUnit: "mL/L",
@@ -2080,6 +2323,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "EARLY_BLOOM",
       feedingIndex: 5,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 1 / Early Bloom",
       doses: { micro: floraDose(7.6), gro: floraDose(6.6), bloom: floraDose(8.5) },
       doseUnit: "mL/L",
@@ -2090,6 +2334,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "EARLY_BLOOM",
       feedingIndex: 6,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 2 / Early Bloom",
       doses: { micro: floraDose(7.6), gro: floraDose(6.6), bloom: floraDose(8.5) },
       doseUnit: "mL/L",
@@ -2100,6 +2345,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "MID_BLOOM",
       feedingIndex: 7,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 3 / Mid Bloom",
       doses: { micro: floraDose(4.6), gro: floraDose(4.6), bloom: floraDose(6.6) },
       doseUnit: "mL/L",
@@ -2110,6 +2356,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "MID_BLOOM",
       feedingIndex: 8,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 4 / Mid Bloom",
       doses: { micro: floraDose(4.6), gro: floraDose(4.6), bloom: floraDose(6.6) },
       doseUnit: "mL/L",
@@ -2120,6 +2367,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "MID_BLOOM",
       feedingIndex: 9,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 5 / Mid Bloom",
       doses: { micro: floraDose(4.6), gro: floraDose(4.6), bloom: floraDose(6.6) },
       doseUnit: "mL/L",
@@ -2130,6 +2378,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "LATE_BLOOM",
       feedingIndex: 10,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 6 / Late Bloom",
       doses: { micro: floraDose(3.3), gro: floraDose(3.3), bloom: floraDose(4.0) },
       doseUnit: "mL/L",
@@ -2140,6 +2389,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "LATE_BLOOM",
       feedingIndex: 11,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 7 / Late Bloom",
       doses: { micro: floraDose(3.3), gro: floraDose(3.3), bloom: floraDose(4.0) },
       doseUnit: "mL/L",
@@ -2150,6 +2400,7 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
     {
       stage: "RIPEN",
       feedingIndex: 12,
+      scheduleId: "LIGHT_FEED",
       label: "Bloom week 8 / Ripen",
       doses: { micro: floraDose(2.0), gro: floraDose(2.0), bloom: floraDose(3.2) },
       doseUnit: "mL/L",
@@ -2157,6 +2408,29 @@ export const FLORA_RECIPE: ManufacturerRecipe = {
       source: flora,
       epistemic: "MANUFACTURER_INSTRUCTION",
     },
+    {
+      stage: "FLUSH",
+      feedingIndex: 13,
+      scheduleId: "LIGHT_FEED",
+      label: "Bloom week 9 / Flush (water only)",
+      doses: {},
+      doseUnit: "mL/L",
+      action: "WATER_ONLY_FLUSH",
+      source: flora,
+      epistemic: "MANUFACTURER_INSTRUCTION",
+    },
+    ...additionalFloraSteps,
+    ...(["MEDIUM_FEED", "AGGRESSIVE_FEED"] as const).map((scheduleId) => ({
+      stage: "FLUSH",
+      feedingIndex: 13,
+      scheduleId,
+      label: "Bloom week 9 / Flush (water only)",
+      doses: {},
+      doseUnit: "mL/L" as const,
+      action: "WATER_ONLY_FLUSH" as const,
+      source: flora,
+      epistemic: "MANUFACTURER_INSTRUCTION" as const,
+    })),
   ],
   mixingOrder: ["micro", "gro", "bloom"],
   source: flora,

@@ -61,6 +61,7 @@ export type CalculatorProduct = {
   hasRecipeStages?: boolean | undefined;
   recipeId?: string | undefined;
   recipeStages: CalculatorStage[];
+  recipeSchedules?: readonly CalculatorRecipeSchedule[] | undefined;
   podGroups?: readonly number[] | undefined;
   available: boolean;
 };
@@ -68,7 +69,14 @@ export type CalculatorProduct = {
 export type CalculatorStage = {
   id: string;
   feedingIndex: number | undefined;
+  scheduleId?: string | undefined;
   label: Record<Lang, string>;
+};
+
+export type CalculatorRecipeSchedule = {
+  id: string;
+  label: Record<Lang, string>;
+  context: Record<Lang, string>;
 };
 
 export type CalculatorStageGuidance = Pick<
@@ -147,6 +155,7 @@ function spanishRecipeLabel(label: string): string {
     .replace("Mid Bloom", "Floración media")
     .replace("Late Bloom", "Floración tardía")
     .replace("Ripen", "Maduración")
+    .replace("Flush (water only)", "Enjuague (solo agua)")
     .replace("6-pod Harvest feeding", "Alimentación Harvest · 6 pods")
     .replace("9-pod Bounty first or second feeding", "Alimentación Bounty 1/2 · 9 pods")
     .replace("9-pod Bounty later feeding", "Alimentación Bounty posterior · 9 pods");
@@ -154,6 +163,24 @@ function spanishRecipeLabel(label: string): string {
 
 const FLORA_RECIPE_ID = "general-hydroponics-floraseries-3part-2026-07-07";
 const AEROGARDEN_RECIPE_ID = "aerogarden-liquid-plant-food-4-3-6";
+
+export const FLORA_RECIPE_SCHEDULES: readonly CalculatorRecipeSchedule[] = [
+  {
+    id: "LIGHT_FEED",
+    label: { es: "Light Feed", en: "Light Feed" },
+    context: { es: "Riego frecuente · secado rápido", en: "High irrigation · fast dryback" },
+  },
+  {
+    id: "MEDIUM_FEED",
+    label: { es: "Medium Feed", en: "Medium Feed" },
+    context: { es: "Uso general", en: "General use" },
+  },
+  {
+    id: "AGGRESSIVE_FEED",
+    label: { es: "Aggressive Feed", en: "Aggressive Feed" },
+    context: { es: "Riego bajo · alimentación intensa", en: "Low irrigation · heavy feeding" },
+  },
+];
 
 function projectRecipeStages(recipeId: string): CalculatorStage[] {
   const recipe = MANUFACTURER_RECIPES.find((item) => item.id === recipeId);
@@ -166,8 +193,12 @@ function projectRecipeStages(recipeId: string): CalculatorStage[] {
       return true;
     })
     .map((step) => ({
-      id: `feeding-${step.feedingIndex ?? step.label}`,
+      id:
+        recipeId === FLORA_RECIPE_ID && step.scheduleId !== "LIGHT_FEED"
+          ? `${step.scheduleId?.toLowerCase()}-feeding-${step.feedingIndex ?? step.label}`
+          : `feeding-${step.feedingIndex ?? step.label}`,
       feedingIndex: step.feedingIndex,
+      scheduleId: step.scheduleId,
       label: {
         es:
           recipeId === AEROGARDEN_RECIPE_ID
@@ -226,6 +257,7 @@ export function manufacturerDoseDefaults(input: {
     recipeId,
     ...(input.productId === "aerogarden" ? { podCount: input.pods } : { volumeL: input.liters }),
     ...(stage?.feedingIndex === undefined ? {} : { feedingIndex: stage.feedingIndex }),
+    ...(stage?.scheduleId ? { scheduleId: stage.scheduleId } : {}),
   });
   return recipe.ok && recipe.value
     ? recipe.value.parts.map((part) => ({
@@ -244,6 +276,7 @@ export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
     hasRecipeStages: true,
     recipeId: FLORA_RECIPE_ID,
     recipeStages: FLORA_STAGES,
+    recipeSchedules: FLORA_RECIPE_SCHEDULES,
     available: true,
     parts: [
       { id: "micro", label: "FloraMicro" },
@@ -278,6 +311,16 @@ export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
 ];
 
 export const CALCULATOR_STAGES = FLORA_STAGES;
+
+export function recipeStagesForSchedule(
+  productId: string,
+  scheduleId?: string | undefined,
+): CalculatorStage[] {
+  const product = CALCULATOR_PRODUCTS.find((item) => item.id === productId);
+  return (product?.recipeStages ?? CALCULATOR_STAGES).filter(
+    (stage) => !stage.scheduleId || !scheduleId || stage.scheduleId === scheduleId,
+  );
+}
 
 const STAGE_ALIASES: Record<string, string> = {
   w1: "feeding-1",
@@ -431,6 +474,7 @@ export type CalcResult =
       kind: "ok";
       provenance: Provenance;
       action: "add" | "dilute" | "hold";
+      instruction?: string | undefined;
       doses: { label: string; amount: number; unit: "mL" | "L" }[];
       target?: { value: number; provenance: Provenance } | undefined;
       range?:
@@ -847,19 +891,18 @@ function recipeSignatureFor(
   const recipe = executeFreshRecipe({
     recipeId,
     feedingIndex: stage?.feedingIndex,
+    ...(stage?.scheduleId ? { scheduleId: stage.scheduleId } : {}),
     podCount: productId === "aerogarden" ? pods : undefined,
     // GH signatures describe the recipe ratio, not a particular reservoir
     // size. Volume is supplied separately to the calibration calculation.
     volumeL: productId === "aerogarden" ? undefined : 1,
   });
-  return recipe.ok && recipe.value
-    ? productId === "aerogarden"
-      ? "single:1"
-      : recipe.value.parts
-          .map((part) => `${part.componentId}:${part.ml}`)
-          .sort()
-          .join("|")
-    : undefined;
+  if (!recipe.ok || !recipe.value || recipe.value.action === "WATER_ONLY_FLUSH") return undefined;
+  if (productId === "aerogarden") return "single:1";
+  return recipe.value.parts
+    .map((part) => `${part.componentId}:${part.ml}`)
+    .sort()
+    .join("|");
 }
 
 function dosePartsForTotal(
@@ -886,6 +929,7 @@ function dosePartsForTotal(
   const recipe = executeFreshRecipe({
     recipeId,
     feedingIndex: stage?.feedingIndex,
+    ...(stage?.scheduleId ? { scheduleId: stage.scheduleId } : {}),
     podCount: productId === "aerogarden" ? pods : undefined,
     volumeL: productId === "aerogarden" ? undefined : 1,
   });
@@ -1228,6 +1272,7 @@ function calculateResult(input: CalcInput): CalcResult {
       volumeL: input.productId === "aerogarden" ? undefined : input.liters,
       podCount: input.productId === "aerogarden" ? input.pods : undefined,
       feedingIndex: stage?.feedingIndex,
+      ...(stage?.scheduleId ? { scheduleId: stage.scheduleId } : {}),
       contexts,
       dosingEquipmentResolutionMl: input.dosingResolutionMl,
     });
@@ -1239,7 +1284,13 @@ function calculateResult(input: CalcInput): CalcResult {
     return {
       kind: "ok",
       provenance: "official",
-      action: "add",
+      action: recipe.value.action === "WATER_ONLY_FLUSH" ? "hold" : "add",
+      instruction:
+        recipe.value.action === "WATER_ONLY_FLUSH"
+          ? input.language === "en"
+            ? "Flush with water only. Do not add FloraSeries nutrients."
+            : "Enjuaga solo con agua. No añadas nutrientes FloraSeries."
+          : undefined,
       doses: recipe.value.parts.map((part) => ({
         label: part.label,
         amount: part.ml,

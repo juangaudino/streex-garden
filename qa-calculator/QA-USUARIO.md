@@ -20,14 +20,39 @@ no compartas capturas que los muestren si no deseas hacerlo.
 - Si falta un rango para la planta, usa un objetivo elegido por ti únicamente si ya
   cuentas con una referencia adecuada. La aplicación debe mostrar la incertidumbre.
 
+## Cobertura de las 83 variedades
+
+La prueba de cobertura del inventario confirma **7 identidades con evidencia
+directa, 57 con una asignación explícita a evidencia de cultivo defendible y 19
+sin evidencia suficiente para un rango automático**. Las 83 se pueden seleccionar
+y usar con una receta oficial; las 19 sin rango deben permanecer como
+**INSUFFICIENT**. No se deben completar con el rango de una planta parecida por el
+nombre.
+
+Las pruebas de cálculo usan observaciones de calibración **simuladas** para
+verificar los cuatro flujos. No son datos medidos de tu FloraSeries: Por EC,
+Corregir y Rellenar solo quedan calibrados para tu producto cuando guardes una
+medición real con las cantidades que efectivamente añadiste.
+
+Los días desde siembra son contexto, no una transición automática de etapa. Elige
+la etapa que observas en cada variedad; la etapa del programa del fabricante es
+independiente. Esto evita que la calculadora convierta una fecha o semana de receta
+en una afirmación biológica no respaldada.
+
 ## 1. Receta y calibración de FloraSeries
 
-1. Abre **Receta**, añade una planta, selecciona **GH FloraSeries**, una etapa de
-   su programa y el volumen real de agua nueva.
+1. Abre **Receta**, añade una planta, selecciona **GH FloraSeries**, el programa
+   oficial **Light Feed**, **Medium Feed** o **Aggressive Feed**, la semana
+   publicada y el volumen real de agua nueva. El programa del fabricante no es
+   la etapa biológica de la planta.
 2. Comprueba que aparezcan las cantidades separadas de **FloraMicro, FloraGro y
-   FloraBloom**. Cambia el volumen y verifica que las cantidades cambien; cambia
-   la etapa del programa y comprueba que cambie la receta. La etapa del programa
-   no identifica automáticamente la etapa biológica de la planta.
+   FloraBloom**. Cambia el volumen y verifica que las cantidades cambien. Para la
+   misma semana Grow 2, compara los tres programas: cada uno debe mostrar su
+   propia dosis y rango de EC esperado por GH. Medium no publica Grow/Bloom
+   weeks 10–11 en esa tabla y Aggressive no publica Grow week 1; la aplicación no
+   debe interpolar esos huecos. La semana 13 debe indicar enjuague solo con agua,
+   sin dosis nutritiva. Ninguna selección de programa identifica automáticamente
+   la etapa biológica de la planta.
 3. Para obtener una calibración real, prepara una muestra siguiendo la receta y
    mide su EC **antes** y **después** de añadir y mezclar los nutrientes. Espera a
    que la lectura se estabilice. En «¿Qué obtuviste?» introduce ambas mediciones y

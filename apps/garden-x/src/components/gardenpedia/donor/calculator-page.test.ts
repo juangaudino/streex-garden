@@ -21,7 +21,6 @@ import {
   CALCULATOR_PLANTS,
   CALCULATOR_EXCLUDED_CARNIVOROUS_IDS,
   CALCULATOR_PRODUCTS,
-  CALCULATOR_STAGES,
   buildCropEvidenceCoverage,
   calculateGardenResult,
   calibrationUsage,
@@ -33,6 +32,7 @@ import {
   planTopUpToCapacity,
   persistSavedSystems,
   recipeStageLabel,
+  recipeStagesForSchedule,
   recordActualDoses,
   resolveNutrientCropIdentity,
 } from "./calculator-lovable-adapter";
@@ -1596,9 +1596,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
 
   it("projects every verified FloraSeries feeding step without inventing plant phenology", () => {
-    expect(CALCULATOR_STAGES.map((stage) => stage.feedingIndex)).toEqual([
-      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
-    ]);
+    expect(
+      recipeStagesForSchedule("gh-flora", "LIGHT_FEED").map((stage) => stage.feedingIndex),
+    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
     const result = calculateGardenResult({
       mode: "recipe",
       crops: { "genovese-basil": 1 },
@@ -1617,6 +1617,26 @@ describe("Gardenpedia Calculator V1 integration", () => {
     if (result.kind === "ok") {
       expect(result.expectedEc).toEqual({ kind: "manufacturer", min: 0.9, max: 1.1 });
       expect(result.evidence).toBe("high");
+    }
+
+    const medium = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "medium_feed-feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(medium.kind).toBe("ok");
+    if (medium.kind === "ok") {
+      expect(medium.doses[0]?.amount).toBeCloseTo(4.44, 2);
+      expect(medium.expectedEc).toEqual({ kind: "manufacturer", min: 1.0, max: 1.2 });
     }
   });
 

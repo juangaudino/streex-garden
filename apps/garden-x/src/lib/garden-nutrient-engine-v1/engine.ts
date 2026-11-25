@@ -705,6 +705,7 @@ export function executeFreshRecipe(input: {
   volumeL?: number | undefined;
   podCount?: number | undefined;
   feedingIndex?: number | undefined;
+  scheduleId?: string | undefined;
   contexts?: CropContext[] | undefined;
   observations?: EvidenceObservation[] | undefined;
   dosingEquipmentResolutionMl?: number | undefined;
@@ -724,6 +725,46 @@ export function executeFreshRecipe(input: {
       [],
     );
   let steps = recipe.steps;
+  const availableSchedules = [...new Set(steps.flatMap((step) => step.scheduleId ?? []))];
+  let selectedScheduleId: string | undefined;
+  if (availableSchedules.length > 0) {
+    selectedScheduleId =
+      input.scheduleId ?? (availableSchedules.includes("LIGHT_FEED") ? "LIGHT_FEED" : undefined);
+    if (!selectedScheduleId)
+      return result(
+        undefined,
+        [],
+        [error("RECIPE_SCHEDULE_REQUIRED", "Select a manufacturer feed schedule.", ["scheduleId"])],
+        [],
+      );
+    if (!availableSchedules.includes(selectedScheduleId))
+      return result(
+        undefined,
+        [],
+        [
+          error(
+            "UNSUPPORTED_RECIPE_SCHEDULE",
+            "This manufacturer schedule is not included in Garden's verified recipe data.",
+            ["scheduleId"],
+          ),
+        ],
+        [],
+      );
+    steps = steps.filter((step) => step.scheduleId === selectedScheduleId);
+  } else if (input.scheduleId !== undefined) {
+    return result(
+      undefined,
+      [],
+      [
+        error(
+          "UNSUPPORTED_RECIPE_SCHEDULE",
+          "This recipe does not define selectable manufacturer schedules.",
+          ["scheduleId"],
+        ),
+      ],
+      [],
+    );
+  }
   if (input.podCount !== undefined) {
     if (!recipe.podCountGroups?.includes(input.podCount)) {
       return result(
@@ -750,6 +791,20 @@ export function executeFreshRecipe(input: {
       recipe.podCountGroups && [2, 3, 6, 7].includes(input.podCount ?? 0) ? 1 :
       recipe.podCountGroups && [9, 12].includes(input.podCount ?? 0) && input.feedingIndex >= 3 ? 3 : input.feedingIndex;
     steps = steps.filter((step) => step.feedingIndex === feedingIndex);
+    if (steps.length === 0 && selectedScheduleId) {
+      return result(
+        undefined,
+        [],
+        [
+          error(
+            "UNSUPPORTED_RECIPE_STEP",
+            "The manufacturer does not publish a recipe for this week in the selected schedule; Garden will not interpolate it.",
+            ["scheduleId", "feedingIndex"],
+          ),
+        ],
+        [],
+      );
+    }
   }
   if (steps.length !== 1)
     return result(
@@ -865,8 +920,10 @@ export function executeFreshRecipe(input: {
   }
   const claims: Claim[] = [
     claim(
-      "manufacturer-dose",
-      "Manufacturer recipe dose",
+      step.action === "WATER_ONLY_FLUSH" ? "manufacturer-flush" : "manufacturer-dose",
+      step.action === "WATER_ONLY_FLUSH"
+        ? "Manufacturer water-only flush instruction"
+        : "Manufacturer recipe dose",
       "MANUFACTURER_INSTRUCTION",
       [recipe.source.id],
       { sourceIds: [recipe.source.id] },
@@ -892,6 +949,8 @@ export function executeFreshRecipe(input: {
       volumeL: input.volumeL,
       podCount: input.podCount,
       feedingIndex: input.feedingIndex,
+      scheduleId: selectedScheduleId,
+      action: step.action,
       parts,
       manufacturerRecipeExpectation: step.expectedEc,
       cropCompatibility,

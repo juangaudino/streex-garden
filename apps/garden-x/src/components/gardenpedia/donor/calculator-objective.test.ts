@@ -8,7 +8,17 @@ import {
   type CalcInput,
   type CalcResult,
 } from "./calculator-lovable-adapter";
-import { CROP_EVIDENCE, AEROGARDEN_RECIPE } from "@/lib/garden-nutrient-engine-v1/data";
+import {
+  CROP_EVIDENCE,
+  AEROGARDEN_RECIPE,
+  FLORA_RECIPE,
+} from "@/lib/garden-nutrient-engine-v1/data";
+import {
+  CALCULATOR_EXCLUDED_CARNIVOROUS_IDS,
+  CALCULATOR_PLANTS,
+  CALCULATOR_PRODUCTS,
+  recipeStagesForSchedule,
+} from "./calculator-lovable-adapter";
 import {
   calculatePolycultureRange,
   executeFreshRecipe,
@@ -118,6 +128,165 @@ function compare(test: string, source: string, expected: number, actual: number,
   expect(difference, test).toBeLessThanOrEqual(tolerance);
 }
 describe("Calculator objective independent validation", () => {
+  it("keeps every canonical non-carnivorous identity usable in Recipe and calibrated By EC", () => {
+    const eligiblePlants = CALCULATOR_PLANTS.filter(
+      (plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id),
+    );
+    expect(eligiblePlants).toHaveLength(499);
+    let officialRecipeDoses: number[] | undefined;
+
+    for (const plant of eligiblePlants) {
+      const recipe = calculateGardenResult({
+        ...base,
+        mode: "recipe",
+        crops: { [plant.id]: 1 },
+        stageId: "feeding-2",
+        userTarget: null,
+      });
+      expect(recipe.kind, `${plant.id} official recipe`).toBe("ok");
+      if (recipe.kind !== "ok") throw Error(recipe.message);
+      const recipeDoses = recipe.doses.map((dose) => dose.amount);
+      if (!officialRecipeDoses) officialRecipeDoses = recipeDoses;
+      expect(recipeDoses, `${plant.id} manufacturer recipe stays crop-independent`).toEqual(
+        officialRecipeDoses,
+      );
+
+      const targetResult = calculateGardenResult({
+        ...calibrated,
+        crops: { [plant.id]: 1 },
+      });
+
+      expect(targetResult.kind, `${plant.id} calibrated By EC`).toBe("ok");
+      expect(targetResult.target?.value, plant.id).toBe(1.2);
+      expect(targetResult.target?.provenance, plant.id).toBe("user");
+      expect(targetResult.compatibility?.status, plant.id).toMatch(
+        /COMMON_OPTIMUM_RANGE|NO_COMMON_OPTIMUM_RANGE|INSUFFICIENT/,
+      );
+      if (targetResult.kind === "ok") {
+        expect(
+          targetResult.doses.reduce((sum, dose) => sum + dose.amount, 0),
+          plant.id,
+        ).toBeGreaterThan(0);
+        if (targetResult.compatibility?.status === "INSUFFICIENT")
+          expect(targetResult.evidence, plant.id).toBe("insufficient");
+      }
+
+      const correction = calculateGardenResult({
+        ...calibrated,
+        mode: "adjust",
+        crops: { [plant.id]: 1 },
+        currentLiters: 4,
+        currentEc: 0.8,
+      });
+      expect(correction.kind, `${plant.id} calibrated Correct`).toBe("ok");
+      if (correction.kind === "ok")
+        expect(correction.doses.some((dose) => dose.amount > 0), plant.id).toBe(true);
+
+      const topUp = calculateGardenResult({
+        ...calibrated,
+        mode: "topup",
+        crops: { [plant.id]: 1 },
+        currentLiters: 3,
+        currentEc: 0.8,
+        capacityLiters: 4.1,
+        waterAdded: 1,
+        sourceEcKnown: true,
+      });
+      expect(topUp.kind, `${plant.id} calibrated Top Up`).toBe("ok");
+      if (topUp.kind === "ok")
+        expect(topUp.doses.some((dose) => dose.amount > 0), plant.id).toBe(true);
+    }
+  });
+
+  it("matches every published General Use and Low Irrigation FloraSeries recipe row", () => {
+    const schedules = [
+      {
+        id: "MEDIUM_FEED",
+        rows: [
+          [1, 2.0, 2.0, 2.0, 0.5, 0.6],
+          [2, 4.2, 3.8, 3.0, 1.0, 1.2],
+          [3, 5.6, 5.2, 3.8, 1.3, 1.6],
+          [4, 6.8, 6.4, 4.8, 1.6, 2.0],
+          [5, 6.1, 5.3, 6.8, 1.6, 1.9],
+          [6, 6.1, 5.3, 6.8, 1.6, 1.9],
+          [7, 5.3, 5.3, 7.6, 1.6, 1.9],
+          [8, 5.3, 5.3, 7.6, 1.6, 1.9],
+          [9, 5.3, 5.3, 7.6, 1.6, 1.9],
+          [12, 2.3, 2.3, 3.6, 0.7, 0.9],
+        ],
+      },
+      {
+        id: "AGGRESSIVE_FEED",
+        rows: [
+          [2, 5.2, 4.8, 3.7, 1.3, 1.5],
+          [3, 7.0, 6.5, 4.8, 1.7, 2.1],
+          [4, 8.5, 8.0, 6.0, 2.0, 2.5],
+          [5, 7.6, 6.6, 8.5, 2.0, 2.4],
+          [6, 7.6, 6.6, 8.5, 2.0, 2.4],
+          [7, 6.6, 6.6, 9.5, 1.9, 2.4],
+          [8, 6.6, 6.6, 9.5, 1.9, 2.4],
+          [9, 6.6, 6.6, 9.5, 1.9, 2.4],
+          [10, 4.7, 4.7, 5.7, 1.3, 1.6],
+          [11, 4.7, 4.7, 5.7, 1.3, 1.6],
+          [12, 2.8, 2.8, 4.5, 0.9, 1.1],
+        ],
+      },
+    ] as const;
+    for (const schedule of schedules) {
+      for (const [week, micro, gro, bloom, minEc, maxEc] of schedule.rows) {
+        const result = executeFreshRecipe({
+          recipeId: FLORA_RECIPE.id,
+          scheduleId: schedule.id,
+          feedingIndex: week,
+          // One US gallon makes the mL/gal source values directly comparable.
+          volumeL: 3.785411784,
+        });
+        expect(result.ok, `${schedule.id} week ${week}`).toBe(true);
+        expect(result.value?.parts.map((part) => part.ml)).toHaveLength(3);
+        expect(result.value?.parts[0]?.ml).toBeCloseTo(micro, 5);
+        expect(result.value?.parts[1]?.ml).toBeCloseTo(gro, 5);
+        expect(result.value?.parts[2]?.ml).toBeCloseTo(bloom, 5);
+        expect(result.value?.manufacturerRecipeExpectation).toEqual({
+          min: minEc,
+          max: maxEc,
+          unit: "mS/cm",
+        });
+      }
+    }
+  });
+
+  it("projects the three official schedules, rejects unpublished weeks, and models water-only flush", () => {
+    const flora = CALCULATOR_PRODUCTS.find((product) => product.id === "gh-flora");
+    expect(flora?.recipeSchedules?.map((schedule) => schedule.id)).toEqual([
+      "LIGHT_FEED",
+      "MEDIUM_FEED",
+      "AGGRESSIVE_FEED",
+    ]);
+    expect(
+      recipeStagesForSchedule("gh-flora", "MEDIUM_FEED").map((stage) => stage.feedingIndex),
+    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]);
+    expect(
+      recipeStagesForSchedule("gh-flora", "AGGRESSIVE_FEED").map((stage) => stage.feedingIndex),
+    ).toEqual([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+    const missingMediumWeek = executeFreshRecipe({
+      recipeId: FLORA_RECIPE.id,
+      scheduleId: "MEDIUM_FEED",
+      feedingIndex: 10,
+      volumeL: 4,
+    });
+    expect(missingMediumWeek.errors[0]?.code).toBe("UNSUPPORTED_RECIPE_STEP");
+    const flush = executeFreshRecipe({
+      recipeId: FLORA_RECIPE.id,
+      scheduleId: "AGGRESSIVE_FEED",
+      feedingIndex: 13,
+      volumeL: 4,
+    });
+    expect(flush.ok).toBe(true);
+    expect(flush.value?.action).toBe("WATER_ONLY_FLUSH");
+    expect(flush.value?.parts).toEqual([]);
+    expect(flush.value?.manufacturerRecipeExpectation).toBeUndefined();
+  });
+
   it("does not treat explicitly unknown source-water EC as zero in fresh solution or top-up", () => {
     const fresh = calculateGardenResult({ ...calibrated, language: "en", sourceEcKnown: false });
     expect(fresh.kind).toBe("needs");

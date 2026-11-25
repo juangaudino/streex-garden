@@ -652,7 +652,16 @@ export type CropEvidenceCoverageRow = {
   evidenceIdentity?: string | undefined;
 };
 
+export type CropEvidenceCoverageContext = {
+  phenologicalStage?: CalculatorCropStage | undefined;
+  hydroponicSystem?: HydroponicSystem | undefined;
+};
+
 export type CropEvidenceCoverageReport = {
+  context: {
+    phenologicalStage: CalculatorCropStage;
+    hydroponicSystem: HydroponicSystem;
+  };
   totals: Record<CropEvidenceCoverageClass, number>;
   rows: CropEvidenceCoverageRow[];
 };
@@ -666,8 +675,20 @@ export function resolveNutrientCropIdentity(plantId: string): string | undefined
  * the embedded Plant Detail calculator. Unknown identities must not inherit
  * the legacy calculator's broad category defaults.
  */
-export function hasApplicableCropNutrientEvidence(plantId: string): boolean {
-  const result = calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE);
+export function hasApplicableCropNutrientEvidence(
+  plantId: string,
+  context: CropEvidenceCoverageContext = {},
+): boolean {
+  const result = calculatePolycultureRange(
+    contextFor(
+      { [plantId]: 1 },
+      "gh-flora",
+      context.phenologicalStage ? { [plantId]: context.phenologicalStage } : {},
+      {},
+      context.hydroponicSystem ?? "UNKNOWN",
+    ),
+    CROP_EVIDENCE,
+  );
   return result.status !== "INSUFFICIENT";
 }
 
@@ -696,16 +717,23 @@ export function generalCropReferenceForStage(
  * evidence boundary. Unknown identities stay insufficient; no name matching
  * or category guessing is used here.
  */
-export function buildCropEvidenceCoverage(): CropEvidenceCoverageReport {
+export function buildCropEvidenceCoverage(
+  context: CropEvidenceCoverageContext = {},
+): CropEvidenceCoverageReport {
+  const resolvedContext = {
+    phenologicalStage: context.phenologicalStage ?? "UNSPECIFIED",
+    hydroponicSystem: context.hydroponicSystem ?? "UNKNOWN",
+  } satisfies CropEvidenceCoverageReport["context"];
   const rows = CALCULATOR_PLANTS.map(({ id }) => {
     const evidenceIdentity = resolveNutrientCropIdentity(id);
     const hasDirectEvidence = CROP_EVIDENCE.some((item) => item.cropIdentity === id);
-    if (hasDirectEvidence && hasApplicableCropNutrientEvidence(id)) {
+    const hasApplicableEvidence = hasApplicableCropNutrientEvidence(id, resolvedContext);
+    if (hasDirectEvidence && hasApplicableEvidence) {
       return { plantId: id, classification: "SUPPORTED_DIRECT" as const, evidenceIdentity: id };
     }
     if (!evidenceIdentity) return { plantId: id, classification: "INSUFFICIENT" as const };
 
-    return !hasApplicableCropNutrientEvidence(id)
+    return !hasApplicableEvidence
       ? { plantId: id, classification: "INSUFFICIENT" as const, evidenceIdentity }
       : {
           plantId: id,
@@ -720,7 +748,7 @@ export function buildCropEvidenceCoverage(): CropEvidenceCoverageReport {
     NOT_APPLICABLE: 0,
   };
   for (const row of rows) totals[row.classification] += 1;
-  return { totals, rows };
+  return { context: resolvedContext, totals, rows };
 }
 
 export function calculatorPlantById(id: string): DonorPlant | undefined {

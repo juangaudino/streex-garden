@@ -22,12 +22,22 @@ no compartas capturas que los muestren si no deseas hacerlo.
 
 ## Cobertura de las 83 variedades
 
-La prueba de cobertura del inventario confirma **7 identidades con evidencia
-directa, 57 con una asignación explícita a evidencia de cultivo defendible y 19
-sin evidencia suficiente para un rango automático**. Las 83 se pueden seleccionar
-y usar con una receta oficial; las 19 sin rango deben permanecer como
-**INSUFFICIENT**. No se deben completar con el rango de una planta parecida por el
-nombre.
+En el contexto por defecto —etapa sin especificar y sistema hidropónico sin
+especificar— la prueba confirma **7 identidades con evidencia directa, 57 con una
+asignación explícita a evidencia de cultivo defendible y 19 sin evidencia
+suficiente para un rango automático**. Esos 19 no son una categoría universal:
+algunos tienen evidencia condicionada a una etapa o sistema concretos. Por
+ejemplo, el ajo chino puede resolver evidencia directa en etapa vegetativa y
+aeroponía; Scarlet Red Tatsoi tiene contexto de cultivo para NFT; y Lavender
+Vera tiene evidencia de guía por etapa que se conserva como asignación de especie,
+no de cultivar.
+
+Las 83 se pueden seleccionar y usar con una receta oficial. En Por EC, Corregir y
+Rellenar, la calculadora usa un rango derivado del cultivo solo cuando la etapa,
+el sistema y el alcance de medición hacen aplicable la evidencia. Cuando no la
+hay, el usuario puede elegir explícitamente un objetivo y el cálculo requiere
+calibración medida para el producto exacto; la pantalla conserva **INSUFFICIENT**
+y no inventa un rango. No se asigna evidencia por parecido del nombre.
 
 Las pruebas de cálculo usan observaciones de calibración **simuladas** para
 verificar los cuatro flujos. No son datos medidos de tu FloraSeries: Por EC,

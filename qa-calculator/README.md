@@ -83,7 +83,7 @@ There is no empirical GH EC-to-dose calibration in the inspected repository/prot
 ## Final automated check snapshot
 
 - Relevant Gardenpedia/Calculator/engine suite: 14 files, 98 tests passed.
-- Numerical matrix: 1,979 executed calculations; 149 numeric comparisons passed, including 146 manufacturer/agronomic comparisons and 3 independently recomputed simulated-calibration cases.
+- Numerical matrix: 2,013 executed calculations; 235 numeric comparisons passed, including 232 comparisons tied to cited references and 3 independently recomputed simulated-calibration cases. The simulated cases verify arithmetic only, not empirical nutrient response.
 - Full repository suite with four workers: 634 passed, 1 failed. The same Compare Timeline-query assertion fails on the unchanged reviewed baseline; no Compare code was changed. An unbounded-worker run additionally timed out in AddPlant; isolated and four-worker runs pass that file.
 - Root typecheck and the strict Calculator dependency-graph typecheck passed. This does not assert that unrelated app-wide pre-existing TypeScript errors were repaired.
 - Changed-file lint, production build, content validation and diff whitespace checks passed.

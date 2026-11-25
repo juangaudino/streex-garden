@@ -3,6 +3,10 @@
   "calculations": 2013,
   "externalComparisons": 235,
   "coverage": {
+    "context": {
+      "phenologicalStage": "UNSPECIFIED",
+      "hydroponicSystem": "UNKNOWN"
+    },
     "totals": {
       "SUPPORTED_DIRECT": 13,
       "SUPPORTED_VIA_DEFENSIBLE_MAPPING": 123,

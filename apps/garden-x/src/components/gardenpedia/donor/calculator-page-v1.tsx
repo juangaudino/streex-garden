@@ -1102,6 +1102,10 @@ export function CalculatorPage({
                       const stageReference = CROP_STAGE_REFERENCES.find(
                         (reference) => reference.cropIdentity === resolveNutrientCropIdentity(id),
                       );
+                      const ageDays = Number(cropSowingAgeDays[id]);
+                      const ageWindow = stageReference?.ageWindows?.find(
+                        (window) => ageDays >= window.minDays && ageDays <= window.maxDays,
+                      );
                       const studies = CROP_STUDY_REFERENCES.filter((reference) =>
                         (reference.plantIds as readonly string[]).includes(id),
                       );
@@ -1322,8 +1326,8 @@ export function CalculatorPage({
                                   ? "Ver fuentes de cultivo"
                                   : "View cultivation sources"}
                               </summary>
-                              {studies.map((reference) => (
-                                <div key={reference.source.id}>
+                              {studies.map((reference, index) => (
+                                <div key={`${reference.source.id}-${index}`}>
                                   <p className="mt-2">{reference.text[lang]}</p>
                                   <a
                                     className="mt-1 inline-block underline"
@@ -1449,6 +1453,7 @@ export function CalculatorPage({
                           </label>
                           {cropSowingAgeDays[id] !== undefined && cropSowingAgeDays[id] !== "" && (
                             <div className="col-span-full text-xs text-muted-foreground">
+                              {ageWindow && <p>{ageWindow.text[lang]}</p>}
                               {seedAgeReferences[id] ? (
                                 <>
                                   <p>

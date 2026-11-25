@@ -1275,6 +1275,24 @@ export const CROP_STAGE_REFERENCES = [
   {
     cropIdentity: "holy-basil",
     source: NUTRIENT_SOURCES.letpotHolyBasil,
+    ageWindows: [
+      {
+        minDays: 14,
+        maxDays: 21,
+        text: {
+          es: "Esta guía sitúa sus plántulas aproximadamente en esta ventana; confirma la etapa observando hojas y desarrollo, no solo la edad.",
+          en: "This guide places its seedlings approximately in this window; confirm the stage from leaves and development, not age alone.",
+        },
+      },
+      {
+        minDays: 42,
+        maxDays: 56,
+        text: {
+          es: "La guía describe crecimiento alrededor de esta ventana, pero no define una transición universal. Confirma la etapa observando la planta.",
+          en: "The guide describes growth around this window but does not define a universal transition. Confirm the stage by observing the plant.",
+        },
+      },
+    ],
     text: {
       es: "Una guía comercial para tulsi describe plántula aproximadamente entre los días 14 y 21 y crecimiento en torno a 42–56 días. Son referencias para sus condiciones; la edad por sí sola no confirma la etapa de tu planta.",
       en: "A commercial guide describes holy basil seedlings at approximately 14–21 days and growth around 42–56 days. These are references under its conditions; age alone does not confirm your plant's stage.",
@@ -1291,6 +1309,16 @@ export const CROP_STAGE_REFERENCES = [
   {
     cropIdentity: "lettuce",
     source: NUTRIENT_SOURCES.kentuckyHydroponicLettuce,
+    ageWindows: [
+      {
+        minDays: 14,
+        maxDays: 21,
+        text: {
+          es: "La guía describe una ventana habitual de trasplante. Comprueba además 3–4 hojas verdaderas y raíces visibles bajo el sustrato; la edad no cambia automáticamente la etapa.",
+          en: "The guide describes a typical transplant window. Also check for 3–4 true leaves and roots visible below the substrate; age does not automatically change the stage.",
+        },
+      },
+    ],
     text: {
       es: "En una guía de lechuga hidropónica en ambiente controlado, la Universidad de Kentucky describe el trasplante cuando hay 3–4 hojas verdaderas y raíces visibles bajo el sustrato, habitualmente 14–21 días tras la siembra. Es una referencia del método, no una etapa confirmada ni una dosis para tu planta.",
       en: "In its controlled-environment hydroponic lettuce guide, the University of Kentucky describes transplanting when there are 3–4 true leaves and roots visible below the substrate, usually 14–21 days after sowing. This is method-specific context, not a confirmed stage or a dose for your plant.",

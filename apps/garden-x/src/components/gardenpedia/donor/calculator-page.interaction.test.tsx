@@ -340,7 +340,7 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByRole("option", { name: /Bibb Lettuce/ }));
     await user.type(screen.getByLabelText("Days since sowing of Bibb Lettuce"), "15");
     await user.click(screen.getByText("Reference for observing this plant"));
-    expect(screen.getByText(/3–4 true leaves and roots visible/i)).toBeTruthy();
+    expect(screen.getAllByText(/3–4 true leaves and roots visible/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/not a confirmed stage or a dose/i)).toBeTruthy();
     expect(
       screen

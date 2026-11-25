@@ -55,6 +55,32 @@ describe("Calculator real control interactions", () => {
     expect(target.value).toBe("2.2");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
+  it("offers the NFT Asian-vegetable study values only as manual EC choices", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="scarlet-red-tatsoi" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(
+      screen.getByText(/does not validate the interval for seedlings or systems other than NFT/i),
+    ).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: /Choose study EC for Scarlet Red Tatsoi: 1\.50 mS\/cm/i }));
+    expect(target.value).toBe("1.5");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
+  it("offers an observed deep-flow EC as a manual choice, not a recommended range", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="dill-bouquet" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/1\.56 is an observed condition, not an optimum range/i)).toBeTruthy();
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByRole("button", { name: /Choose study EC for Dill Bouquet: 1\.56 mS\/cm/i }));
+    expect(target.value).toBe("1.56");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
   it("discloses that general chamomile guidance is not species-specific", () => {
     render(<CalculatorPage language="en" initialPlantId="chamomile-unspecified" />);
     expect(screen.getByText(/Chamomile species unidentified: the EC reference is general/i)).toBeTruthy();

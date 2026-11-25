@@ -752,9 +752,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["dill-bouquet", "italian-giant-parsley", "watercress"],
     source: NUTRIENT_SOURCES.bouquetDillDeepFlowStudy,
+    selectableEcMs: 1.56,
     text: {
-      es: "Un ensayo cultivó eneldo Bouquet, perejil Giant of Italy y berro en solución profunda aireada a EC 1,56 mS/cm mientras comparaba luz y temperatura. No comparó niveles de EC; ese valor es una condición del ensayo, no un rango óptimo ni una dosis validada para tus plantas.",
-      en: "A trial grew Bouquet dill, Giant of Italy parsley and watercress in aerated deep-flow solution at EC 1.56 mS/cm while comparing light and temperature. It did not compare EC levels; that value is a trial condition, not an optimum range or validated dose for your plants.",
+      es: "Un ensayo cultivó eneldo Bouquet, perejil Giant of Italy y berro en solución profunda aireada a EC 1,56 mS/cm mientras comparaba luz y temperatura. No comparó niveles de EC: 1,56 es solo una condición observada, no un rango óptimo. Puedes elegirla como objetivo manual, pero no está validada para plántulas ni para otro sistema.",
+      en: "A trial grew Bouquet dill, Giant of Italy parsley and watercress in aerated deep-flow solution at EC 1.56 mS/cm while comparing light and temperature. It did not compare EC levels: 1.56 is an observed condition, not an optimum range. You may choose it as a manual target, but it is not validated for seedlings or another system.",
     },
   },
   {
@@ -768,9 +769,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["thai-basil"],
     source: NUTRIENT_SOURCES.nswAsianGreensNft,
+    selectableEcValuesMs: [1.5, 2.5],
     text: {
-      es: "Un ensayo NFT incluyó albahaca tailandesa Siam Queen en una evaluación de hortalizas. La fuente no identifica la variedad de esta planta; sus resultados no prueban una EC óptima para ella o para otro sistema.",
-      en: "An NFT trial included Siam Queen Thai basil in a leafy-crop evaluation. The source does not identify this plant's cultivar; its results do not establish an optimum EC for it or another system.",
+      es: "Un ensayo NFT de hortalizas asiáticas incluyó albahaca tailandesa Siam Queen y reportó adecuada la banda de solución de 1,5–2,5 mS/cm para la mayoría de cultivos estudiados. No identifica la variedad de esta planta ni valida la banda para plántulas o sistemas distintos de NFT; son valores de referencia que solo puedes elegir manualmente.",
+      en: "An NFT trial of Asian vegetables included Siam Queen Thai basil and reported the 1.5–2.5 mS/cm solution band as suitable for most crops studied. It does not identify this plant's cultivar or validate the band for seedlings or systems other than NFT; these reference values are available only as manual choices.",
     },
   },
   {
@@ -1183,9 +1185,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["tatsoi", "scarlet-red-tatsoi", "cilantro", "hon-tsai-tai"],
     source: NUTRIENT_SOURCES.nswAsianGreensNft,
+    selectableEcValuesMs: [1.5, 2.5],
     text: {
-      es: "En ensayos NFT, la agencia de agricultura de Nueva Gales del Sur observó buen crecimiento de tatsoi, cilantro y choy sum con EC de solución nutritiva entre 1,5 y 2,5 mS/cm. No identifica Scarlet Red ni Hon Tsai Tai y no confirma ese intervalo para plántulas o sistemas distintos de NFT.",
-      en: "In NFT trials, the New South Wales agriculture agency observed good tatsoi, cilantro and choy sum growth at nutrient-solution ECs of 1.5–2.5 mS/cm. It did not identify Scarlet Red or Hon Tsai Tai and does not validate that range for seedlings or systems other than NFT.",
+      es: "En ensayos NFT, la agencia de agricultura de Nueva Gales del Sur informó que la producción de tatsoi, cilantro y choy sum era adecuada con solución nutritiva entre 1,5 y 2,5 mS/cm, usando la fórmula Huett para lechuga. El informe no identifica los cultivares Scarlet Red ni Hon Tsai Tai; esta referencia de cultivo no valida ese intervalo para plántulas ni sistemas distintos de NFT.",
+      en: "In NFT trials, the New South Wales agriculture agency reported suitable production of tatsoi, coriander and choy sum with nutrient solution between 1.5 and 2.5 mS/cm, using the Huett lettuce formulation. The report does not identify the Scarlet Red or Hon Tsai Tai cultivars; this cultivation reference does not validate the interval for seedlings or systems other than NFT.",
     },
   },
   {

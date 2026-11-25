@@ -2,6 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 
 import {
   AEROGARDEN_RECIPE,
+  CROP_EVIDENCE,
   CROP_STUDY_REFERENCES,
   FLORA_RECIPE,
 } from "@/lib/garden-nutrient-engine-v1/data";
@@ -210,6 +211,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
         reference.selectableEcValuesMs ?? [reference.selectableEcMs],
       ]),
     ).toEqual([
+      ["walters-lopez-bouquet-dill-deep-flow-2021", [1.56]],
+      ["nsw-asian-vegetables-nft-2011", [1.5, 2.5]],
       ["georgia-alyssum-subirrigation-solution", [2]],
       ["plant-garden-coleus-hydroponic-guide", [1]],
       ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
@@ -229,6 +232,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["nguyen-eryngium-foetidum-hydroponics-2018", [1, 1.5, 2]],
       ["chinese-chive-hydroponic-salinity-2022", [1.4]],
       ["juarez-porophyllum-nutrient-poster", [1, 1.5, 2, 2.5]],
+      ["nsw-asian-vegetables-nft-2011", [1.5, 2.5]],
       ["cyprus-lavender-potassium-hydroponic-2017", [2.1]],
       ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
       ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
@@ -244,6 +248,28 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(reference.source.url).toMatch(/^https:\/\//);
       if (reference.selectionKind === "GUIDE_LOWER_BOUND") expect(reference.source.tier).toBe("E");
       else expect(["A", "B", "C"]).toContain(reference.source.tier);
+    }
+  });
+  it("keeps NSW Asian-vegetable EC evidence NFT-specific and offers only explicit manual values", () => {
+    const study = CROP_STUDY_REFERENCES.find(
+      (reference) =>
+        reference.source.id === "nsw-asian-vegetables-nft-2011" &&
+        reference.plantIds.includes("scarlet-red-tatsoi"),
+    );
+    expect(study?.plantIds).toEqual([
+      "tatsoi",
+      "scarlet-red-tatsoi",
+      "cilantro",
+      "hon-tsai-tai",
+    ]);
+    expect(study?.selectableEcValuesMs).toEqual([1.5, 2.5]);
+
+    for (const cropIdentity of ["tatsoi", "cilantro", "flowering-choy-sum"]) {
+      const evidence = CROP_EVIDENCE.find(
+        (item) => item.cropIdentity === cropIdentity && item.source.id === study?.source.id,
+      );
+      expect(evidence?.hydroponicSystem).toBe("NFT");
+      expect(evidence?.observedRange).toEqual({ min: 1.5, max: 2.5, unit: "mS/cm" });
     }
   });
   it("offers holy basil NFT trial values only as manual targets, not an automatic optimum", () => {

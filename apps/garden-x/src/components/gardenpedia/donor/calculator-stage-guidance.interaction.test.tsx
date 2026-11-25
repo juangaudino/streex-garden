@@ -66,7 +66,7 @@ describe("Calculator plant-stage guidance", () => {
     fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
     fireEvent.click(screen.getByText("View cultivation sources"));
 
-    expect(screen.getByRole("button", { name: /1\.50 mS\/cm/ })).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: /1\.50 mS\/cm/ })).toHaveLength(2);
     fireEvent.click(screen.getByRole("button", { name: /3\.00 mS\/cm/ }));
 
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(

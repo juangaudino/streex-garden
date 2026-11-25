@@ -402,6 +402,17 @@ export const NUTRIENT_SOURCES = {
     publication: "1994",
     retrievedAt: "2026-11-14",
   },
+  bariHydroponicGuide: {
+    id: "barc-fertilizer-recommendation-guide-2024-marigold",
+    publisher: "Bangladesh Agricultural Research Council (BARC)",
+    title: "Fertilizer Recommendation Guide-2024 · Hydroponic African marigold",
+    url: "https://apps.barc.gov.bd/fertilizer_recommendation/FRG%20English%2030.10.2024.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2024",
+    region: "Bangladesh",
+    retrievedAt: "2026-11-25",
+  },
   komatsunaNftThesis: {
     id: "arkansas-komatsuna-nft-2014",
     publisher: "University of Arkansas · Leah P. Malvar",
@@ -961,6 +972,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["marigold-jolly-jester"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "La guía de BARC prescribe EC de solución de 1,5 mS/cm para marigold africano hidropónico ‘BARI Gada-1’: desde plántula hasta trasplante y desde trasplante hasta cosecha. Es una pauta regional para otra variedad y la solución BARI, no una validación automática para Jolly Jester ni para otro fertilizante. Solo se ofrece como objetivo manual que requiere calibración.",
+      en: "BARC's guide prescribes nutrient-solution EC of 1.5 mS/cm for hydroponic African marigold ‘BARI Gada-1’: from seedling to transplant and from transplant to harvest. This is regional guidance for another cultivar and the BARI solution, not automatic validation for Jolly Jester or another fertilizer. It is offered only as a manual target that requires calibration.",
+    },
+  },
+  {
     plantIds: ["lady-murasaki-komatsuna"],
     source: NUTRIENT_SOURCES.komatsunaNftThesis,
     selectableEcMs: 1.2,
@@ -1084,6 +1104,7 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["lavender-vera"],
     source: NUTRIENT_SOURCES.lavenderHydroponicStudy,
+    selectableEcMs: 2.1,
     text: {
       es: "Un ensayo en invernadero con Lavandula angustifolia usó una solución nutritiva con EC objetivo de 2,1 mS/cm para estudiar potasio. No comparó rangos de EC para Vera y no establece una dosis para tu sistema.",
       en: "A greenhouse study of Lavandula angustifolia used a nutrient solution targeted at EC 2.1 mS/cm while studying potassium. It did not compare EC ranges for Vera and does not establish a dose for your system.",
@@ -1110,11 +1131,30 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
-    plantIds: ["basil-lemon", "basil-lime", "tulsi-holy-basil-ocimum-tenuiflorum"],
+    plantIds: ["basil-lemon"],
     source: NUTRIENT_SOURCES.basilSpeciesNftStudy,
     text: {
-      es: "Un ensayo NFT en invernadero comparó albahaca limón ‘Lime’ y albahaca sagrada ‘Holy’ a EC iniciales de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido, aunque sí cambió concentraciones de nutrientes en los tejidos. Son resultados del ensayo, no un rango óptimo ni una pauta para plántulas o cualquier sistema.",
-      en: "A greenhouse NFT trial compared lemon basil ‘Lime’ and holy basil ‘Holy’ at initial ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth, although tissue nutrient concentrations changed. These are trial results, not an optimum range or instructions for seedlings or every system.",
+      es: "Un ensayo NFT en invernadero incluyó albahaca limón ‘Lime’ y albahaca sagrada ‘Holy’ a EC de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. El catálogo identifica esta planta como ‘Lemon’, no como el cultivar ensayado ‘Lime’; por eso el ensayo se muestra solo como contexto relacionado, no como evidencia directa para esta variedad. La EC no cambió significativamente el crecimiento medido.",
+      en: "A greenhouse NFT trial included lemon basil ‘Lime’ and holy basil ‘Holy’ at ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. The catalog identifies this plant as ‘Lemon’, not the tested ‘Lime’ cultivar, so the trial is shown only as related context, not direct evidence for this variety. EC did not significantly change measured growth.",
+    },
+  },
+  {
+    plantIds: ["basil-lime"],
+    source: NUTRIENT_SOURCES.basilSpeciesNftStudy,
+    selectableEcValuesMs: [0.5, 1.0, 2.0, 3.0, 4.0],
+    text: {
+      es: "El ensayo NFT en invernadero probó albahaca limón ‘Lime’ tres semanas después del trasplante con soluciones de EC 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido, aunque sí algunas concentraciones de nutrientes en los tejidos. Estos son tratamientos experimentales del cultivar ‘Lime’, no un rango óptimo ni una dosis para plántulas o sistemas distintos.",
+      en: "The greenhouse NFT trial tested lemon basil ‘Lime’ three weeks after transplanting with nutrient-solution ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth, though it changed some tissue nutrient concentrations. These are experimental treatments for cultivar ‘Lime’, not an optimum range or a dose for seedlings or other systems.",
+    },
+  },
+  {
+    plantIds: ["tulsi-holy-basil-ocimum-tenuiflorum"],
+    source: NUTRIENT_SOURCES.basilSpeciesNftStudy,
+    selectableEcMs: 0.5,
+    selectableEcValuesMs: [0.5, 1.0, 2.0, 3.0, 4.0],
+    text: {
+      es: "El ensayo NFT de Walters y Currey incluyó albahaca sagrada ‘Holy’ (Ocimum tenuiflorum) con EC iniciales de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido en sus condiciones. Son tratamientos experimentales, no un rango óptimo ni una pauta para plántulas o cualquier sistema.",
+      en: "The Walters and Currey NFT trial included holy basil ‘Holy’ (Ocimum tenuiflorum) at initial ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth under their conditions. These are experimental treatments, not an optimum range or instructions for seedlings or every system.",
     },
   },
   {

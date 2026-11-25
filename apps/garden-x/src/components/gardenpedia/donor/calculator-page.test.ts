@@ -214,20 +214,64 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["plant-garden-coleus-hydroponic-guide", [1]],
       ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
       ["kazakidou-burrage-marigold-nft-1994", [1.5, 3]],
+      ["barc-fertilizer-recommendation-guide-2024-marigold", [1.5]],
       ["arkansas-komatsuna-nft-2014", [1, 1.2]],
       ["hyssop-hydroponic-selenium-2022", [2.2]],
       ["can-tho-zinnia-hoagland-2022", [1.4, 2.8]],
       ["nguyen-eryngium-foetidum-hydroponics-2018", [1, 1.5, 2]],
       ["chinese-chive-hydroponic-salinity-2022", [1.4]],
       ["juarez-porophyllum-nutrient-poster", [1, 1.5, 2, 2.5]],
+      ["cyprus-lavender-potassium-hydroponic-2017", [2.1]],
+      ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
+      ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
     ]);
     for (const reference of choices) {
       expect(reference.source.url).toMatch(/^https:\/\//);
       if (reference.selectionKind === "GUIDE_LOWER_BOUND") expect(reference.source.tier).toBe("E");
       else expect(["A", "B", "C"]).toContain(reference.source.tier);
-      for (const id of reference.plantIds)
-        expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     }
+  });
+  it("offers holy basil NFT trial values only as manual targets, not an automatic optimum", () => {
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "walters-currey-basil-species-nft-2018" &&
+        study.plantIds.includes("tulsi-holy-basil-ocimum-tenuiflorum"),
+    );
+    expect(reference?.plantIds).toContain("tulsi-holy-basil-ocimum-tenuiflorum");
+    expect(reference?.selectableEcValuesMs).toEqual([0.5, 1, 2, 3, 4]);
+    expect(reference?.text.en).toContain("not an optimum");
+    expect(hasApplicableCropNutrientEvidence("tulsi-holy-basil-ocimum-tenuiflorum")).toBe(false);
+  });
+  it("limits the lemon-basil NFT treatment choices to the matching Lime cultivar", () => {
+    const limeStudy = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "walters-currey-basil-species-nft-2018" &&
+        study.plantIds.includes("basil-lime"),
+    );
+    const lemonStudy = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "walters-currey-basil-species-nft-2018" &&
+        study.plantIds.includes("basil-lemon"),
+    );
+    expect(limeStudy?.selectableEcValuesMs).toEqual([0.5, 1, 2, 3, 4]);
+    expect(limeStudy?.text.en).toContain("not an optimum range");
+    expect(lemonStudy?.selectableEcValuesMs).toBeUndefined();
+    expect(lemonStudy?.text.en).toContain("not direct evidence for this variety");
+    expect(resolveNutrientCropIdentity("basil-lime")).toBe("lemon-basil");
+    expect(resolveNutrientCropIdentity("basil-lemon")).toBe("lemon-basil");
+    expect(hasApplicableCropNutrientEvidence("basil-lime")).toBe(true);
+    expect(hasApplicableCropNutrientEvidence("basil-lemon")).toBe(true);
+  });
+  it("keeps BARC marigold EC as a cultivar- and solution-qualified manual choice", () => {
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) => study.source.id === "barc-fertilizer-recommendation-guide-2024-marigold",
+    );
+    expect(reference?.plantIds).toEqual(["marigold-jolly-jester"]);
+    expect(reference?.selectableEcMs).toBe(1.5);
+    expect(reference?.source.region).toBe("Bangladesh");
+    expect(reference?.text.en).toContain("BARI Gada-1");
+    expect(reference?.text.en).toContain("manual target");
+    expect(reference?.text.en).toContain("not automatic validation");
   });
   it("keeps the Mexican tarragon hydroponic guide contextual without inventing an EC target", () => {
     const source = CROP_STUDY_REFERENCES.find(

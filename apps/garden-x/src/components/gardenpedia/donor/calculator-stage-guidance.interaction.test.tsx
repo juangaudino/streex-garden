@@ -46,6 +46,37 @@ describe("Calculator plant-stage guidance", () => {
     ).toBeTruthy();
   });
 
+  it("shows the lettuce transplant-age cue without selecting a phenological stage", () => {
+    render(<CalculatorPage language="en" initialPlantId="bibb-lettuce" />);
+
+    fireEvent.change(screen.getByRole("spinbutton", { name: "Days since sowing of Bibb Lettuce" }), {
+      target: { value: "17" },
+    });
+
+    expect(screen.getByText(/typical transplant window/i)).toBeTruthy();
+    expect(screen.getAllByText(/3–4 true leaves/i).length).toBeGreaterThan(0);
+    expect(
+      screen
+        .getAllByRole("combobox")
+        .some((select) => (select as HTMLSelectElement).value === "UNSPECIFIED"),
+    ).toBe(true);
+  });
+
+  it("shows published holy-basil age windows only as confirmation cues", () => {
+    render(<CalculatorPage language="es" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />);
+
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Días desde la siembra de/ }), {
+      target: { value: "18" },
+    });
+
+    expect(screen.getByText(/sitúa sus plántulas aproximadamente en esta ventana/i)).toBeTruthy();
+    expect(
+      screen
+        .getAllByRole("combobox")
+        .some((select) => (select as HTMLSelectElement).value === "UNSPECIFIED"),
+    ).toBe(true);
+  });
+
   it("offers both reported Zinnia EC treatments as explicit user targets", () => {
     render(<CalculatorPage language="en" initialPlantId="zinnia-lilliput-mixed" />);
 
@@ -66,7 +97,7 @@ describe("Calculator plant-stage guidance", () => {
     fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
     fireEvent.click(screen.getByText("View cultivation sources"));
 
-    expect(screen.getByRole("button", { name: /1\.50 mS\/cm/ })).toBeTruthy();
+    expect(screen.getAllByRole("button", { name: /1\.50 mS\/cm/ })).toHaveLength(2);
     fireEvent.click(screen.getByRole("button", { name: /3\.00 mS\/cm/ }));
 
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(

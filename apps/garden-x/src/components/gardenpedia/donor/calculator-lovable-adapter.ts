@@ -472,6 +472,9 @@ const NUTRIENT_IDENTITY_MAP: Record<string, string> = {
   "tulsi-holy-basil-ocimum-tenuiflorum": "holy-basil",
   "cascading-petunia": "petunia",
   "petunia-dwarf-bedding-mixed": "petunia",
+  // Exact Magic Fountains identity has stage timing context, but no applicable
+  // reservoir EC evidence. This mapping must not imply nutrient support.
+  "delphinium-magic-fountains-dwarf": "delphinium",
   "lavender-vera": "english-lavender",
   "resina-calendula": "calendula",
   "common-fenugreek-trigonella-foenum-graecum": "fenugreek",

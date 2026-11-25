@@ -341,6 +341,24 @@ export const NUTRIENT_SOURCES = {
     tier: "A",
     retrievedAt: "2026-11-12",
   },
+  benaryMagicFountainsGrower: {
+    id: "benary-delphinium-magic-fountains-grower",
+    publisher: "Benary",
+    title: "Delphinium elatum Magic Fountains growing guide",
+    url: "https://www.benary.com/products/delphinium-elatum-magic-fountains",
+    sourceClass: "MANUFACTURER",
+    tier: "A",
+    retrievedAt: "2026-11-25",
+  },
+  kentuckyLunaBlushSubstrate: {
+    id: "uky-luna-blush-substrate-ec",
+    publisher: "University of Kentucky · Nursery and Landscape Program",
+    title: "UK Nursery and Landscape Program, PR 602",
+    url: "https://publications.mgcafe.uky.edu/files/pr602.pdf",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "B",
+    retrievedAt: "2026-11-25",
+  },
   carnationHydroponicStudy: {
     id: "carnation-cultivation-gamma-2025",
     publisher: "Discover Agriculture",
@@ -401,6 +419,17 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     publication: "1994",
     retrievedAt: "2026-11-14",
+  },
+  bariHydroponicGuide: {
+    id: "barc-fertilizer-recommendation-guide-2024-hydroponics",
+    publisher: "Bangladesh Agricultural Research Council (BARC)",
+    title: "Fertilizer Recommendation Guide-2024 · Hydroponic crop production",
+    url: "https://apps.barc.gov.bd/fertilizer_recommendation/FRG%20English%2030.10.2024.pdf",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2024",
+    region: "Bangladesh",
+    retrievedAt: "2026-11-25",
   },
   komatsunaNftThesis: {
     id: "arkansas-komatsuna-nft-2014",
@@ -496,13 +525,14 @@ export const NUTRIENT_SOURCES = {
   },
   culantroHydroponicStudy: {
     id: "nguyen-eryngium-foetidum-hydroponics-2018",
-    publisher: "Nguyen and colleagues · Vietnam National University of Agriculture",
-    title: "Study on the cultivation technique of Eryngium foetidum on hydroponic system",
+    publisher: "Nông nghiệp và Phát triển Nông thôn · Nguyen Thi Quynh et al.",
+    title: "Study on the cultivation technique of Eryngium foetidum L. on hydroponic system",
     url: "https://scholar.dlu.edu.vn/thuvienso/bitstream/DLU123456789/216924/1/CVv201S112018036.pdf",
     sourceClass: "OTHER",
     tier: "B",
     publication: "2018",
-    retrievedAt: "2026-11-07",
+    region: "Vietnam",
+    retrievedAt: "2026-11-25",
   },
   garlicChivesHydroponicStudy: {
     id: "chinese-chive-hydroponic-salinity-2022",
@@ -575,6 +605,17 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     publication: "2018",
     retrievedAt: "2026-11-07",
+  },
+  holyBasilDftStudy: {
+    id: "holy-basil-controlled-dft-study-2022",
+    publisher: "Frontiers in Plant Science · National Taiwan University and collaborators",
+    title:
+      "Physiological responses and variation in secondary metabolite content among Thai holy basil cultivars (Ocimum tenuiflorum L.) grown under controlled environmental conditions in a plant factory",
+    url: "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2022.1008917/full",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2022",
+    retrievedAt: "2026-11-25",
   },
   nswAsianGreensNft: {
     id: "nsw-asian-vegetables-nft-2011",
@@ -740,9 +781,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["dill-bouquet", "italian-giant-parsley", "watercress"],
     source: NUTRIENT_SOURCES.bouquetDillDeepFlowStudy,
+    selectableEcMs: 1.56,
     text: {
-      es: "Un ensayo cultivó eneldo Bouquet, perejil Giant of Italy y berro en solución profunda aireada a EC 1,56 mS/cm mientras comparaba luz y temperatura. No comparó niveles de EC; ese valor es una condición del ensayo, no un rango óptimo ni una dosis validada para tus plantas.",
-      en: "A trial grew Bouquet dill, Giant of Italy parsley and watercress in aerated deep-flow solution at EC 1.56 mS/cm while comparing light and temperature. It did not compare EC levels; that value is a trial condition, not an optimum range or validated dose for your plants.",
+      es: "Un ensayo cultivó eneldo Bouquet, perejil Giant of Italy y berro en solución profunda aireada a EC 1,56 mS/cm mientras comparaba luz y temperatura. No comparó niveles de EC: 1,56 es solo una condición observada, no un rango óptimo. Puedes elegirla como objetivo manual, pero no está validada para plántulas ni para otro sistema.",
+      en: "A trial grew Bouquet dill, Giant of Italy parsley and watercress in aerated deep-flow solution at EC 1.56 mS/cm while comparing light and temperature. It did not compare EC levels: 1.56 is an observed condition, not an optimum range. You may choose it as a manual target, but it is not validated for seedlings or another system.",
     },
   },
   {
@@ -756,9 +798,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["thai-basil"],
     source: NUTRIENT_SOURCES.nswAsianGreensNft,
+    selectableEcValuesMs: [1.5, 2.5],
     text: {
-      es: "Un ensayo NFT incluyó albahaca tailandesa Siam Queen en una evaluación de hortalizas. La fuente no identifica la variedad de esta planta; sus resultados no prueban una EC óptima para ella o para otro sistema.",
-      en: "An NFT trial included Siam Queen Thai basil in a leafy-crop evaluation. The source does not identify this plant's cultivar; its results do not establish an optimum EC for it or another system.",
+      es: "Un ensayo NFT de hortalizas asiáticas incluyó albahaca tailandesa Siam Queen y reportó adecuada la banda de solución de 1,5–2,5 mS/cm para la mayoría de cultivos estudiados. No identifica la variedad de esta planta ni valida la banda para plántulas o sistemas distintos de NFT; son valores de referencia que solo puedes elegir manualmente.",
+      en: "An NFT trial of Asian vegetables included Siam Queen Thai basil and reported the 1.5–2.5 mS/cm solution band as suitable for most crops studied. It does not identify this plant's cultivar or validate the band for seedlings or systems other than NFT; these reference values are available only as manual choices.",
     },
   },
   {
@@ -909,6 +952,22 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["delphinium-magic-fountains-dwarf"],
+    source: NUTRIENT_SOURCES.benaryMagicFountainsGrower,
+    text: {
+      es: "Benary sí identifica Magic Fountains: indica EC de medio 0,5–0,75 durante producción de plugs y 1,2–1,5 al crecer. Son mediciones del sustrato, no EC de solución nutritiva en un tanque; no las usamos para calcular una dosis hidropónica.",
+      en: "Benary identifies Magic Fountains and reports media EC of 0.5–0.75 during plug production and 1.2–1.5 while growing on. These are substrate measurements, not nutrient-solution EC in a reservoir; we do not use them to calculate a hydroponic dose.",
+    },
+  },
+  {
+    plantIds: ["blush-hibiscus"],
+    source: NUTRIENT_SOURCES.kentuckyLunaBlushSubstrate,
+    text: {
+      es: "Un informe de la Universidad de Kentucky incluye Hibiscus moscheutos ‘Luna Blush’ y registra EC de sustrato de 1,5, 2,0 y 2,3 mS/cm en tres medios. El perfil Gardyn Blush no tiene un cultivar confirmado y esas mediciones no son EC de tanque; no se usan como rango ni dosis hidropónica.",
+      en: "A University of Kentucky report includes Hibiscus moscheutos ‘Luna Blush’ and records substrate EC of 1.5, 2.0 and 2.3 mS/cm in three media. The Gardyn Blush profile has no confirmed cultivar, and these measurements are not reservoir EC; they are not used as a hydroponic range or dose.",
+    },
+  },
+  {
     plantIds: ["fragrant-dwarf-dianthus-mix"],
     source: NUTRIENT_SOURCES.carnationHydroponicStudy,
     text: {
@@ -958,6 +1017,109 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. No identifica Jolly Jester ni valida todos los valores intermedios, otras formulaciones o plántulas; no es un rango automático para tu sistema.",
       en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. It does not identify Jolly Jester or validate every intermediate value, other formulations or seedlings; it is not an automatic range for your system.",
+    },
+  },
+  {
+    plantIds: ["marigold-jolly-jester"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "La guía de BARC prescribe EC de solución de 1,5 mS/cm para marigold africano hidropónico ‘BARI Gada-1’: desde plántula hasta trasplante y desde trasplante hasta cosecha. Es una pauta regional para otra variedad y la solución BARI, no una validación automática para Jolly Jester ni para otro fertilizante. Solo se ofrece como objetivo manual que requiere calibración.",
+      en: "BARC's guide prescribes nutrient-solution EC of 1.5 mS/cm for hydroponic African marigold ‘BARI Gada-1’: from seedling to transplant and from transplant to harvest. This is regional guidance for another cultivar and the BARI solution, not automatic validation for Jolly Jester or another fertilizer. It is offered only as a manual target that requires calibration.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "BARC informa 1,5 mS/cm con BARI Hydroponic Solution-1 para tomate BARI Tomato-14 durante plántula hasta trasplante y desde trasplante hasta antes de antesis. Es una pauta de otra variedad y formulación; no valida Tiny Tim ni otros tomates, no es un óptimo universal y requiere calibración para usarla como objetivo manual.",
+      en: "BARC reports 1.5 mS/cm with BARI Hydroponic Solution-1 for BARI Tomato-14 from seedling to transplant and from transplant until before anthesis. This is guidance for another cultivar and formulation; it does not validate Tiny Tim or other tomatoes, is not a universal optimum, and requires calibration to use as a manual target.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcValuesMs: [2.3, 2.5],
+    text: {
+      es: "Para BARI Tomato-14, la guía sube la EC de la solución BARI a 2,3–2,5 mS/cm tras antesis durante desarrollo del fruto. Los botones son los extremos publicados para elegir manualmente; la fuente no valida esta etapa para tus cultivares ni para otro fertilizante.",
+      en: "For BARI Tomato-14, the guide raises BARI solution EC to 2.3–2.5 mS/cm after anthesis during fruit development. The buttons are the published endpoints for a manual choice; the source does not validate this stage for your cultivars or another fertilizer.",
+    },
+  },
+  {
+    plantIds: ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 2.0,
+    text: {
+      es: "La guía BARC indica alrededor de 2,0 mS/cm para BARI Tomato-14 durante la maduración del fruto con BARI Hydroponic Solution-1. Es una condición de esa variedad y fórmula, no una validación automática para Tiny Tim u otros tomates.",
+      en: "BARC indicates around 2.0 mS/cm for BARI Tomato-14 during fruit ripening with BARI Hydroponic Solution-1. This is specific to that cultivar and formula, not automatic validation for Tiny Tim or other tomatoes.",
+    },
+  },
+  {
+    plantIds: ["mini-lunchbox-sweet-pepper"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "BARC recomienda 1,5 mS/cm con BARI Hydroponic Solution-1 para pimiento dulce BARI Mistimorich-1/-2 desde plántula hasta antesis. Es un objetivo manual de otra variedad y solución; no cambia la receta del fabricante que selecciones ni valida automáticamente Lunchbox.",
+      en: "BARC recommends 1.5 mS/cm with BARI Hydroponic Solution-1 for BARI Mistimorich-1/-2 sweet pepper from seedling through anthesis. This is a manual target for another cultivar and solution; it does not change your selected manufacturer's recipe or automatically validate Lunchbox.",
+    },
+  },
+  {
+    plantIds: ["mini-lunchbox-sweet-pepper"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 2.0,
+    text: {
+      es: "Para BARI Mistimorich-1/-2, la guía aumenta a 2,0 mS/cm después de antesis y durante el desarrollo del fruto. No es una recomendación automática para Lunchbox ni para otra formulación.",
+      en: "For BARI Mistimorich-1/-2, the guide increases to 2.0 mS/cm after anthesis and during fruit development. This is not an automatic recommendation for Lunchbox or another formulation.",
+    },
+  },
+  {
+    plantIds: [
+      "bibb-lettuce",
+      "black-seeded-simpson",
+      "buttercrunch-lettuce",
+      "butterhead-lettuce-unspecified",
+      "iceberg-lettuce",
+      "red-romaine-lettuce",
+      "green-salanova-lettuce",
+      "breen-romaine-lettuce",
+      "bronze-arrow-lettuce",
+      "pandero-romaine-lettuce",
+    ],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcMs: 1.5,
+    text: {
+      es: "Para BARI Lettuce-1, BARC indica 1,5 mS/cm con BARI Hydroponic Solution-1 durante plántula hasta trasplante. Se muestra como referencia manual para esta especie, no como validación de cada cultivar ni de otras soluciones.",
+      en: "For BARI Lettuce-1, BARC reports 1.5 mS/cm with BARI Hydroponic Solution-1 from seedling to transplant. This is shown as a manual species-level reference, not validation for every cultivar or other nutrient solutions.",
+    },
+  },
+  {
+    plantIds: [
+      "bibb-lettuce",
+      "black-seeded-simpson",
+      "buttercrunch-lettuce",
+      "butterhead-lettuce-unspecified",
+      "iceberg-lettuce",
+      "red-romaine-lettuce",
+      "green-salanova-lettuce",
+      "breen-romaine-lettuce",
+      "bronze-arrow-lettuce",
+      "pandero-romaine-lettuce",
+    ],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcValuesMs: [1.5, 2.0],
+    text: {
+      es: "Después del trasplante, la guía informa 1,5–2,0 mS/cm para BARI Lettuce-1 en solución BARI hasta cosecha. Los extremos se pueden elegir como objetivos manuales; la fuente no valida cada cultivar ni formula y no crea un rango automático para tu sistema.",
+      en: "After transplanting, the guide reports 1.5–2.0 mS/cm for BARI Lettuce-1 in BARI solution through harvest. The endpoints can be selected as manual targets; the source does not validate each cultivar or formula and does not create an automatic range for your system.",
+    },
+  },
+  {
+    plantIds: ["monterey-strawberry"],
+    source: NUTRIENT_SOURCES.bariHydroponicGuide,
+    selectableEcValuesMs: [1.0, 1.2],
+    text: {
+      es: "BARC recomienda 1,0–1,2 mS/cm después del trasplante hasta cosecha para sus cultivares BARI Strawberry-1/-2/-3 en solución hidropónica. Se ofrece solo como elección manual contextual: Monterey no es un cultivar BARI, la fórmula es distinta y no se genera evidencia automática ni dosis sin calibración.",
+      en: "BARC recommends 1.0–1.2 mS/cm from transplant to harvest for its BARI Strawberry-1/-2/-3 cultivars in hydroponic solution. This is offered only as a contextual manual choice: Monterey is not a BARI cultivar, the formula differs, and no automatic evidence or dose is generated without calibration.",
     },
   },
   {
@@ -1043,8 +1205,8 @@ export const CROP_STUDY_REFERENCES: readonly {
     selectableEcMs: 1.5,
     selectableEcValuesMs: [1.0, 1.5, 2.0],
     text: {
-      es: "En un ensayo hidropónico de culantro (Eryngium foetidum), una solución SH5 de 1,5 mS/cm produjo mayor crecimiento que los tratamientos de 1,0 y 2,0 mS/cm. Es un resultado de ese ensayo y formulación, no un rango validado ni una dosis automática para tu sistema o sus plántulas.",
-      en: "In a hydroponic culantro (Eryngium foetidum) trial, an SH5 solution at 1.5 mS/cm produced more growth than the 1.0 and 2.0 mS/cm treatments. This is specific to that experiment and formulation, not a validated range or automatic dose for your system or seedlings.",
+      es: "En un ensayo hidropónico de Eryngium foetidum, tras 28 días de cultivo el tratamiento de 1,5 mS/cm superó en crecimiento y rendimiento a 1,0 y 2,0 mS/cm; el artículo describe además SH5 como la solución más adecuada. Son condiciones de ese ensayo, no un rango validado ni una dosis automática para tu sistema o sus plántulas.",
+      en: "In a hydroponic Eryngium foetidum trial, after 28 days of cultivation the 1.5 mS/cm treatment outperformed 1.0 and 2.0 mS/cm in growth and yield; the article separately describes SH5 as the most suitable solution. These are experiment-specific conditions, not a validated range or automatic dose for your system or seedlings.",
     },
   },
   {
@@ -1068,9 +1230,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["tatsoi", "scarlet-red-tatsoi", "cilantro", "hon-tsai-tai"],
     source: NUTRIENT_SOURCES.nswAsianGreensNft,
+    selectableEcValuesMs: [1.5, 2.5],
     text: {
-      es: "En ensayos NFT, la agencia de agricultura de Nueva Gales del Sur observó buen crecimiento de tatsoi, cilantro y choy sum con EC de solución nutritiva entre 1,5 y 2,5 mS/cm. No identifica Scarlet Red ni Hon Tsai Tai y no confirma ese intervalo para plántulas o sistemas distintos de NFT.",
-      en: "In NFT trials, the New South Wales agriculture agency observed good tatsoi, cilantro and choy sum growth at nutrient-solution ECs of 1.5–2.5 mS/cm. It did not identify Scarlet Red or Hon Tsai Tai and does not validate that range for seedlings or systems other than NFT.",
+      es: "En ensayos NFT, la agencia de agricultura de Nueva Gales del Sur informó que la producción de tatsoi, cilantro y choy sum era adecuada con solución nutritiva entre 1,5 y 2,5 mS/cm, usando la fórmula Huett para lechuga. El informe no identifica los cultivares Scarlet Red ni Hon Tsai Tai; esta referencia de cultivo no valida ese intervalo para plántulas ni sistemas distintos de NFT.",
+      en: "In NFT trials, the New South Wales agriculture agency reported suitable production of tatsoi, coriander and choy sum with nutrient solution between 1.5 and 2.5 mS/cm, using the Huett lettuce formulation. The report does not identify the Scarlet Red or Hon Tsai Tai cultivars; this cultivation reference does not validate the interval for seedlings or systems other than NFT.",
     },
   },
   {
@@ -1084,6 +1247,7 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["lavender-vera"],
     source: NUTRIENT_SOURCES.lavenderHydroponicStudy,
+    selectableEcMs: 2.1,
     text: {
       es: "Un ensayo en invernadero con Lavandula angustifolia usó una solución nutritiva con EC objetivo de 2,1 mS/cm para estudiar potasio. No comparó rangos de EC para Vera y no establece una dosis para tu sistema.",
       en: "A greenhouse study of Lavandula angustifolia used a nutrient solution targeted at EC 2.1 mS/cm while studying potassium. It did not compare EC ranges for Vera and does not establish a dose for your system.",
@@ -1110,11 +1274,39 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
-    plantIds: ["basil-lemon", "basil-lime", "tulsi-holy-basil-ocimum-tenuiflorum"],
+    plantIds: ["basil-lemon"],
     source: NUTRIENT_SOURCES.basilSpeciesNftStudy,
     text: {
-      es: "Un ensayo NFT en invernadero comparó albahaca limón ‘Lime’ y albahaca sagrada ‘Holy’ a EC iniciales de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido, aunque sí cambió concentraciones de nutrientes en los tejidos. Son resultados del ensayo, no un rango óptimo ni una pauta para plántulas o cualquier sistema.",
-      en: "A greenhouse NFT trial compared lemon basil ‘Lime’ and holy basil ‘Holy’ at initial ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth, although tissue nutrient concentrations changed. These are trial results, not an optimum range or instructions for seedlings or every system.",
+      es: "Un ensayo NFT en invernadero incluyó albahaca limón ‘Lime’ y albahaca sagrada ‘Holy’ a EC de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. El catálogo identifica esta planta como ‘Lemon’, no como el cultivar ensayado ‘Lime’; por eso el ensayo se muestra solo como contexto relacionado, no como evidencia directa para esta variedad. La EC no cambió significativamente el crecimiento medido.",
+      en: "A greenhouse NFT trial included lemon basil ‘Lime’ and holy basil ‘Holy’ at ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. The catalog identifies this plant as ‘Lemon’, not the tested ‘Lime’ cultivar, so the trial is shown only as related context, not direct evidence for this variety. EC did not significantly change measured growth.",
+    },
+  },
+  {
+    plantIds: ["basil-lime"],
+    source: NUTRIENT_SOURCES.basilSpeciesNftStudy,
+    selectableEcValuesMs: [0.5, 1.0, 2.0, 3.0, 4.0],
+    text: {
+      es: "El ensayo NFT en invernadero probó albahaca limón ‘Lime’ tres semanas después del trasplante con soluciones de EC 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido, aunque sí algunas concentraciones de nutrientes en los tejidos. Estos son tratamientos experimentales del cultivar ‘Lime’, no un rango óptimo ni una dosis para plántulas o sistemas distintos.",
+      en: "The greenhouse NFT trial tested lemon basil ‘Lime’ three weeks after transplanting with nutrient-solution ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth, though it changed some tissue nutrient concentrations. These are experimental treatments for cultivar ‘Lime’, not an optimum range or a dose for seedlings or other systems.",
+    },
+  },
+  {
+    plantIds: ["tulsi-holy-basil-ocimum-tenuiflorum"],
+    source: NUTRIENT_SOURCES.basilSpeciesNftStudy,
+    selectableEcMs: 0.5,
+    selectableEcValuesMs: [0.5, 1.0, 2.0, 3.0, 4.0],
+    text: {
+      es: "El ensayo NFT de Walters y Currey incluyó albahaca sagrada ‘Holy’ (Ocimum tenuiflorum) con EC iniciales de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido en sus condiciones. Son tratamientos experimentales, no un rango óptimo ni una pauta para plántulas o cualquier sistema.",
+      en: "The Walters and Currey NFT trial included holy basil ‘Holy’ (Ocimum tenuiflorum) at initial ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth under their conditions. These are experimental treatments, not an optimum range or instructions for seedlings or every system.",
+    },
+  },
+  {
+    plantIds: ["tulsi-holy-basil-ocimum-tenuiflorum"],
+    source: NUTRIENT_SOURCES.holyBasilDftStudy,
+    selectableEcValuesMs: [1.4, 2.2],
+    text: {
+      es: "Un estudio de 12 accesiones/cultivares de Ocimum tenuiflorum en DFT y ambiente controlado ajustó la solución Enshi modificada a 1,4 mS/cm al trasplantar y a 2,2 ± 0,33 mS/cm tras otros 14 días. Son condiciones experimentales secuenciales, no un óptimo ni una receta universal. Puedes seleccionar los valores solo como objetivos manuales y confirmar la respuesta de tu planta.",
+      en: "A controlled-environment DFT study of 12 Ocimum tenuiflorum accessions/cultivars set modified Enshi solution to 1.4 mS/cm at transplant and 2.2 ± 0.33 mS/cm after another 14 days. These are sequential experimental conditions, not an optimum or universal recipe. You may choose them only as manual targets and should confirm your plant's response.",
     },
   },
   {
@@ -1140,6 +1332,24 @@ export const CROP_STAGE_REFERENCES = [
   {
     cropIdentity: "holy-basil",
     source: NUTRIENT_SOURCES.letpotHolyBasil,
+    ageWindows: [
+      {
+        minDays: 14,
+        maxDays: 21,
+        text: {
+          es: "Esta guía sitúa sus plántulas aproximadamente en esta ventana; confirma la etapa observando hojas y desarrollo, no solo la edad.",
+          en: "This guide places its seedlings approximately in this window; confirm the stage from leaves and development, not age alone.",
+        },
+      },
+      {
+        minDays: 42,
+        maxDays: 56,
+        text: {
+          es: "La guía describe crecimiento alrededor de esta ventana, pero no define una transición universal. Confirma la etapa observando la planta.",
+          en: "The guide describes growth around this window but does not define a universal transition. Confirm the stage by observing the plant.",
+        },
+      },
+    ],
     text: {
       es: "Una guía comercial para tulsi describe plántula aproximadamente entre los días 14 y 21 y crecimiento en torno a 42–56 días. Son referencias para sus condiciones; la edad por sí sola no confirma la etapa de tu planta.",
       en: "A commercial guide describes holy basil seedlings at approximately 14–21 days and growth around 42–56 days. These are references under its conditions; age alone does not confirm your plant's stage.",
@@ -1156,9 +1366,45 @@ export const CROP_STAGE_REFERENCES = [
   {
     cropIdentity: "lettuce",
     source: NUTRIENT_SOURCES.kentuckyHydroponicLettuce,
+    ageWindows: [
+      {
+        minDays: 14,
+        maxDays: 21,
+        text: {
+          es: "La guía describe una ventana habitual de trasplante. Comprueba además 3–4 hojas verdaderas y raíces visibles bajo el sustrato; la edad no cambia automáticamente la etapa.",
+          en: "The guide describes a typical transplant window. Also check for 3–4 true leaves and roots visible below the substrate; age does not automatically change the stage.",
+        },
+      },
+    ],
     text: {
       es: "En una guía de lechuga hidropónica en ambiente controlado, la Universidad de Kentucky describe el trasplante cuando hay 3–4 hojas verdaderas y raíces visibles bajo el sustrato, habitualmente 14–21 días tras la siembra. Es una referencia del método, no una etapa confirmada ni una dosis para tu planta.",
       en: "In its controlled-environment hydroponic lettuce guide, the University of Kentucky describes transplanting when there are 3–4 true leaves and roots visible below the substrate, usually 14–21 days after sowing. This is method-specific context, not a confirmed stage or a dose for your plant.",
+    },
+  },
+  {
+    cropIdentity: "delphinium",
+    source: NUTRIENT_SOURCES.benaryMagicFountainsGrower,
+    ageWindows: [
+      {
+        minDays: 5,
+        maxDays: 8,
+        text: {
+          es: "Benary espera la emergencia de la radícula aproximadamente entre los días 5 y 8. Comprueba la plántula; la edad no cambia automáticamente la etapa ni la dosis.",
+          en: "Benary expects radicle emergence at approximately days 5–8. Check the seedling; age does not automatically change its stage or dose.",
+        },
+      },
+      {
+        minDays: 14,
+        maxDays: 21,
+        text: {
+          es: "Tras las primeras dos semanas, la guía reduce la temperatura cuando se expanden los cotiledones. Usa el desarrollo observado para confirmar la etapa; esta referencia de propagación no establece una dosis para el tanque.",
+          en: "After the first two weeks, the guide lowers temperature once cotyledons expand. Confirm stage from observed development; this propagation reference does not establish a reservoir dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La guía de Magic Fountains indica 5–8 días para la radícula y un plug de aproximadamente 5–6 semanas. Son tiempos de propagación del productor; no prueban por sí solos la etapa de una planta ni definen EC hidropónica de tanque.",
+      en: "The Magic Fountains guide gives 5–8 days to radicle emergence and approximately 5–6 weeks for a plug. These are breeder propagation timings; they do not by themselves prove a plant's stage or define reservoir EC.",
     },
   },
 ] as const;

@@ -1208,6 +1208,10 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("reports complete canonical crop-evidence coverage without guessing", () => {
     const report = buildCropEvidenceCoverage();
+    expect(report.context).toEqual({
+      phenologicalStage: "UNSPECIFIED",
+      hydroponicSystem: "UNKNOWN",
+    });
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
       SUPPORTED_DIRECT: 13,
@@ -1268,6 +1272,51 @@ describe("Gardenpedia Calculator V1 integration", () => {
         "INSUFFICIENT",
       );
     }
+  });
+
+  it("distinguishes default-insufficient crops from evidence available only in a stated stage or system", () => {
+    const defaultCoverage = buildCropEvidenceCoverage();
+    const aeroponicVegetative = buildCropEvidenceCoverage({
+      phenologicalStage: "VEGETATIVE",
+      hydroponicSystem: "AEROPONIC",
+    });
+    const nft = buildCropEvidenceCoverage({
+      phenologicalStage: "UNSPECIFIED",
+      hydroponicSystem: "NFT",
+    });
+    const dwc = buildCropEvidenceCoverage({
+      phenologicalStage: "UNSPECIFIED",
+      hydroponicSystem: "DWC",
+    });
+    const stageSpecific = buildCropEvidenceCoverage({
+      phenologicalStage: "SEEDLING",
+      hydroponicSystem: "UNKNOWN",
+    });
+
+    expect(defaultCoverage.rows.find((row) => row.plantId === "garlic-chives")?.classification).toBe(
+      "INSUFFICIENT",
+    );
+    expect(
+      aeroponicVegetative.rows.find((row) => row.plantId === "garlic-chives"),
+    ).toMatchObject({
+      classification: "SUPPORTED_DIRECT",
+      evidenceIdentity: "garlic-chives",
+    });
+    expect(nft.rows.find((row) => row.plantId === "scarlet-red-tatsoi")).toMatchObject({
+      classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+      evidenceIdentity: "tatsoi",
+    });
+    expect(dwc.rows.find((row) => row.plantId === "scarlet-red-tatsoi")?.classification).toBe(
+      "INSUFFICIENT",
+    );
+    expect(stageSpecific.rows.find((row) => row.plantId === "lavender-vera")).toMatchObject({
+      classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+      evidenceIdentity: "english-lavender",
+    });
+    expect(
+      stageSpecific.rows.find((row) => row.plantId === "delphinium-magic-fountains-dwarf")
+        ?.classification,
+    ).toBe("INSUFFICIENT");
   });
 
   it("can calculate a manual, calibrated By EC dose for each of the user's 83 non-carnivorous varieties", () => {

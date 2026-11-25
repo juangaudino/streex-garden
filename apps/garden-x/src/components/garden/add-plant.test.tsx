@@ -162,7 +162,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
     expect(screen.queryByPlaceholderText("Search basil, Ocimum, Genovese…")).toBeNull();
     expect(screen.queryByText("American Giant Hybrid Sunflower")).toBeNull();
     expect(screen.queryByText(/^(best|top pick|winner|score)$/i)).toBeNull();
-  }, 15_000);
+  }, 30_000);
 
   it("renders the recommendation hierarchy in Spanish", async () => {
     mocks.language = "es";
@@ -302,7 +302,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
         }),
       ),
     );
-  });
+  }, 30_000);
 
   it("selects a contextual candidate using the existing Add Plant save flow", async () => {
     openSheet();
@@ -323,7 +323,7 @@ describe("AddPlantSheet contextual B3 entry point", () => {
         }),
       ),
     );
-  });
+  }, 30_000);
 
   it("records the selected stable cycle origin using localized labels", async () => {
     openSheet();

@@ -36,7 +36,10 @@ export function GardenpediaDirect({
   search: GardenpediaSearch;
   onNavigate: (next: GardenpediaNavigation) => void;
 }) {
-  const [language, setLanguage] = useState<GardenpediaLanguage>(() => preferredLanguage());
+  // Keep the first server and browser render identical. The saved preference
+  // is applied after hydration so an ES preference cannot make SSR render EN
+  // while the client immediately renders ES.
+  const [language, setLanguage] = useState<GardenpediaLanguage>("en");
   const target = useMemo(
     () =>
       search.plant
@@ -57,6 +60,23 @@ export function GardenpediaDirect({
   const [machineProfileComponent, setMachineProfileComponent] =
     useState<MachineProfileComponent | null>(null);
   const [seedProfile, setSeedProfile] = useState<SeedProfileViewModel | null>(null);
+
+  const changeLanguage = (nextLanguage: GardenpediaLanguage) => {
+    setLanguage(nextLanguage);
+    try {
+      const current = JSON.parse(window.localStorage.getItem("garden-x-preferences") || "{}");
+      window.localStorage.setItem(
+        "garden-x-preferences",
+        JSON.stringify({ ...current, language: nextLanguage }),
+      );
+    } catch {
+      // Gardenpedia remains usable when browser storage is unavailable.
+    }
+  };
+
+  useEffect(() => {
+    setLanguage(preferredLanguage());
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -109,7 +129,7 @@ export function GardenpediaDirect({
         <SeedProfilePage
           profile={seedProfile}
           language={language}
-          onLanguageChange={setLanguage}
+          onLanguageChange={changeLanguage}
           onBack={() => onNavigate({ seed: undefined, view: "seeds" })}
           onPlantSelect={(plantId) =>
             onNavigate({ plant: plantId, view: "library", seed: undefined, machine: undefined })
@@ -136,7 +156,9 @@ export function GardenpediaDirect({
           detail={buildDonorPlantDetail(entry, language)}
           language={language}
           onBack={() => onNavigate({ plant: undefined, view: "library" })}
-          onOpenCalculator={() => onNavigate({ view: "calculator", calculatorPlant: entry.libraryPlantId })}
+          onOpenCalculator={() =>
+            onNavigate({ view: "calculator", calculatorPlant: entry.libraryPlantId })
+          }
           onSeedSelect={(seedId) =>
             onNavigate({ seed: seedId, view: "seeds", plant: undefined, machine: undefined })
           }
@@ -159,7 +181,7 @@ export function GardenpediaDirect({
     <div className="gardenpedia-direct">
       <GardenLibrary
         language={language}
-        onLanguageChange={setLanguage}
+        onLanguageChange={changeLanguage}
         initialView={search.view ?? "library"}
         calculatorPlant={search.view === "calculator" ? search.calculatorPlant : undefined}
         onViewChange={(view) =>

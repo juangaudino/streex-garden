@@ -57,6 +57,7 @@ import {
   type SavedSystem,
 } from "./calculator-lovable-adapter";
 import { cn } from "@/lib/utils";
+import type { GardenpediaLanguage } from "./gardenpedia-shell";
 
 /* ---------------------------------------------------------------- copy */
 
@@ -1103,9 +1104,12 @@ export function CalculatorPage({
                         (reference) => reference.cropIdentity === resolveNutrientCropIdentity(id),
                       );
                       const ageDays = Number(cropSowingAgeDays[id]);
-                      const ageWindow = stageReference?.ageWindows?.find(
-                        (window) => ageDays >= window.minDays && ageDays <= window.maxDays,
-                      );
+                      const ageWindow =
+                        stageReference && "ageWindows" in stageReference
+                          ? stageReference.ageWindows.find(
+                              (window) => ageDays >= window.minDays && ageDays <= window.maxDays,
+                            )
+                          : undefined;
                       const studies = CROP_STUDY_REFERENCES.filter((reference) =>
                         (reference.plantIds as readonly string[]).includes(id),
                       );
@@ -1293,15 +1297,14 @@ export function CalculatorPage({
                                     {guide.sources.length > 0 && (
                                       <ul className="mt-1 space-y-1">
                                         {guide.sources.slice(0, 2).map((source) => (
-                                          <li key={source.id}>
+                                          <li key={source.url}>
                                             <a
                                               className="underline"
                                               href={source.url}
                                               target="_blank"
                                               rel="noreferrer"
                                             >
-                                              {source.publisher}
-                                              {source.title ? ` · ${source.title}` : ""}
+                                              {source.label}
                                             </a>
                                           </li>
                                         ))}
@@ -1673,6 +1676,7 @@ export function CalculatorPage({
               {mode !== "recipe" && (
                 <TargetControl
                   t={t}
+                  lang={lang}
                   unitLabel={unitLabel}
                   fmtEc={fmtEc}
                   value={
@@ -2135,8 +2139,20 @@ export function CalculatorPage({
                         {result.range && (
                           <div className="grid grid-cols-2 gap-2">
                             <Stat
-                              label={result.range.common ? t.range : t.noCommon}
-                              value={`${fmtEc(result.range.min)}–${fmtEc(result.range.max)}`}
+                              label={
+                                result.range.min === result.range.max
+                                  ? lang === "es"
+                                    ? "Punto reportado"
+                                    : "Reported point"
+                                  : result.range.common
+                                    ? t.range
+                                    : t.noCommon
+                              }
+                              value={
+                                result.range.min === result.range.max
+                                  ? fmtEc(result.range.min)
+                                  : `${fmtEc(result.range.min)}–${fmtEc(result.range.max)}`
+                              }
                             />
                             {result.target && (
                               <Stat
@@ -2497,6 +2513,7 @@ function EvidenceMark({ level, t, compact }: { level: Evidence; t: Copy; compact
 
 function TargetControl({
   t,
+  lang,
   value,
   range,
   isUser,
@@ -2509,6 +2526,7 @@ function TargetControl({
   step,
 }: {
   t: Copy;
+  lang: GardenpediaLanguage;
   value: string;
   range?: { min: number; max: number; common: boolean } | undefined;
   isUser: boolean;
@@ -2537,7 +2555,13 @@ function TargetControl({
       </div>
       {range && (
         <p className="mt-2 text-xs text-muted-foreground">
-          {t.range}: {fmtEc(range.min)}–{fmtEc(range.max)} {unitLabel}
+          {range.min === range.max
+            ? lang === "es"
+              ? "Punto reportado"
+              : "Reported point"
+            : t.range}
+          : {range.min === range.max ? fmtEc(range.min) : `${fmtEc(range.min)}–${fmtEc(range.max)}`}{" "}
+          {unitLabel}
         </p>
       )}
       {!range && !isUser && (

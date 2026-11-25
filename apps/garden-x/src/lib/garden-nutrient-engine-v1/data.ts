@@ -420,6 +420,18 @@ export const NUTRIENT_SOURCES = {
     publication: "1994",
     retrievedAt: "2026-11-14",
   },
+  choySumFloatingEcStudy2020: {
+    id: "yunindanova-choysum-floating-ec-2020",
+    publisher: "Buletin Agroteknologi",
+    title:
+      "Nutrient Uptake, Partitioning, and Production of Two Subspecies of Brassica using Different Solution Concentrates in Floating Hydroponics Systems",
+    url: "https://doi.org/10.32663/ba.v1i2.1810",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2020; 1(2):86–97",
+    region: "Indonesia",
+    retrievedAt: "2026-11-25",
+  },
   bariHydroponicGuide: {
     id: "barc-fertilizer-recommendation-guide-2024-hydroponics",
     publisher: "Bangladesh Agricultural Research Council (BARC)",
@@ -543,6 +555,17 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     publication: "2022",
     retrievedAt: "2026-11-12",
+  },
+  garlicChivesAeroponicEcStudy2026: {
+    id: "asianjab-chinese-chives-aeroponics-ec-2026",
+    publisher: "Asian Journal of Agriculture and Biology",
+    title:
+      "Evaluation of growth and physio-biochemical characteristics of Chinese chives (Allium tuberosum) in an aeroponic system under varied EC concentrations",
+    url: "https://doi.org/10.35495/ajab.2026.129",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2026(4), article 129",
+    retrievedAt: "2026-11-25",
   },
   papaloNutrientStudy: {
     id: "juarez-porophyllum-nutrient-poster",
@@ -1029,6 +1052,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["hon-tsai-tai"],
+    source: NUTRIENT_SOURCES.choySumFloatingEcStudy2020,
+    selectableEcValuesMs: [1.0, 2.0],
+    text: {
+      es: "Un ensayo de cultivo flotante comparó EC iniciales de 1,0 y 2,0 mS/cm usando Choy Sum ‘Tosakan’ y una solución AB Mix; algunos resultados favorecieron 1,0 y otros fueron similares. No estudió Hon Tsai Tai ni compara FloraSeries. Son condiciones experimentales para elegir manualmente, no un rango óptimo ni una dosis automática.",
+      en: "A floating-system trial compared initial EC values of 1.0 and 2.0 mS/cm using Choy Sum ‘Tosakan’ and an AB Mix solution; some outcomes favored 1.0 while others were similar. It did not study Hon Tsai Tai or compare FloraSeries. These are experimental conditions for manual selection, not an optimum range or automatic dose.",
+    },
+  },
+  {
     plantIds: ["tiny-tim-tomato", "large-red-cherry-tomato", "cherry-tomato"],
     source: NUTRIENT_SOURCES.bariHydroponicGuide,
     selectableEcMs: 1.5,
@@ -1216,6 +1248,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "Un estudio de cebollín de ajo (Allium tuberosum, cultivar 791) utilizó EC 1,4 mS/cm en cultivo DFT antes de los tratamientos de salinidad. Es una condición experimental, no un intervalo óptimo ni una dosis validada para tus plantas, plántulas o sistema. No es una recomendación de añadir sal.",
       en: "A study of garlic chives (Allium tuberosum, cultivar 791) used EC 1.4 mS/cm in DFT before salinity treatments. This is an experimental condition, not an optimum range or validated dose for your plants, seedlings or system. It is not a recommendation to add salt.",
+    },
+  },
+  {
+    plantIds: ["garlic-chives"],
+    source: NUTRIENT_SOURCES.garlicChivesAeroponicEcStudy2026,
+    selectableEcValuesMs: [1.2, 1.6],
+    text: {
+      es: "Un estudio de 2026 probó cebollín chino Allium tuberosum ‘Speed Green’ en aeroponía, con solución Enshi durante 15 días, y comparó 0,8, 1,2, 1,6 y 2,0 mS/cm. Los autores proponen 1,2–1,6 como rango inicial para esas condiciones. El calculador solo lo aplica con etapa vegetativa y sistema aeropónico; no es un óptimo universal ni valida FloraSeries u otras formulaciones.",
+      en: "A 2026 study tested Chinese chive Allium tuberosum ‘Speed Green’ in aeroponics with Enshi solution for 15 days and compared 0.8, 1.2, 1.6 and 2.0 mS/cm. The authors propose 1.2–1.6 as a starting range under those conditions. The calculator applies it only for vegetative stage and aeroponics; it is not a universal optimum and does not validate FloraSeries or other formulations.",
     },
   },
   {
@@ -1689,6 +1730,36 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     notes:
       "LetPot's stage-specific garlic chive guidance, converted from µS/cm; cultivar and reservoir conditions are unspecified. Growth and maturity remain distinct and neither implies a flowering target.",
   })),
+  {
+    id: "garlic-chives-yaseen-aeroponic-vegetative-ec-2026",
+    metric: "EC",
+    cropIdentity: "garlic-chives",
+    stageApplicability: "VEGETATIVE",
+    hydroponicSystem: "AEROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.garlicChivesAeroponicEcStudy2026,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1.2, max: 1.6, unit: "mS/cm" },
+    notes:
+      "The study reports 1.2–1.6 mS/cm as a suitable starting range for vegetative Allium tuberosum under its aeroponic conditions. It tested cultivar Speed Green with Enshi-type solution for 15 days after transfer; use only for a user-selected vegetative stage and aeroponic system. It is not a universal optimum or validation for FloraSeries or other formulations.",
+  },
+  {
+    id: "culantro-nguyen-hydroponic-ec-2018",
+    metric: "EC",
+    cropIdentity: "culantro",
+    stageApplicability: "UNSPECIFIED",
+    hydroponicSystem: "GENERAL_HYDROPONIC",
+    measurementScope: "NUTRIENT_SOLUTION",
+    scopeBasis: "STATED",
+    source: NUTRIENT_SOURCES.culantroHydroponicStudy,
+    verificationStatus: "VERIFIED",
+    evidenceState: "MODERATE",
+    observedRange: { min: 1.5, max: 1.5, unit: "mS/cm" },
+    notes:
+      "The study reports that Eryngium foetidum grew and yielded best with SH5 nutrient solution at 1.5 mS/cm in its hydroponic production conditions. This is one tested, source-reported best treatment, not a broad optimum interval; cultivar, formula equivalence, individual stage and household reservoir are not established. It does not validate FloraSeries or a dose.",
+  },
   {
     id: "chervil-igworks-hydroponic-ec",
     metric: "EC",

@@ -27,7 +27,11 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByText(/lower bound of a guide without supporting evidence/i)).toBeTruthy();
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
-    await user.click(screen.getByRole("button", { name: /Choose guide lower bound for Rainbow Mix Coleus: 1\.00 mS\/cm/i }));
+    await user.click(
+      screen.getByRole("button", {
+        name: /Choose guide lower bound for Rainbow Mix Coleus: 1\.00 mS\/cm/i,
+      }),
+    );
     expect(target.value).toBe("1");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
@@ -39,7 +43,9 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByText(/not a recommendation to add salt/i)).toBeTruthy();
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
-    await user.click(screen.getByRole("button", { name: /Choose study EC for Garlic Chives: 1\.40 mS\/cm/i }));
+    await user.click(
+      screen.getByRole("button", { name: /Choose study EC for Garlic Chives: 1\.40 mS\/cm/i }),
+    );
     expect(target.value).toBe("1.4");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
@@ -48,10 +54,14 @@ describe("Calculator real control interactions", () => {
     render(<CalculatorPage language="en" initialPlantId="hyssop" />);
     await user.click(screen.getByRole("tab", { name: "By EC" }));
     await user.click(screen.getByText("View cultivation sources"));
-    expect(screen.getByText(/not an optimum range validated for your variety or system/i)).toBeTruthy();
+    expect(
+      screen.getByText(/not an optimum range validated for your variety or system/i),
+    ).toBeTruthy();
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
-    await user.click(screen.getByRole("button", { name: /Choose study EC for Hyssop: 2\.20 mS\/cm/i }));
+    await user.click(
+      screen.getByRole("button", { name: /Choose study EC for Hyssop: 2\.20 mS\/cm/i }),
+    );
     expect(target.value).toBe("2.2");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
@@ -65,15 +75,15 @@ describe("Calculator real control interactions", () => {
     expect(
       screen.getByText(/does not validate the interval for seedlings or systems other than NFT/i),
     ).toBeTruthy();
-    await user.click(screen.getByRole("button", { name: /Choose study EC for Scarlet Red Tatsoi: 1\.50 mS\/cm/i }));
+    await user.click(
+      screen.getByRole("button", { name: /Choose study EC for Scarlet Red Tatsoi: 1\.50 mS\/cm/i }),
+    );
     expect(target.value).toBe("1.5");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
   it("offers controlled DFT holy-basil study conditions as manual choices, not an optimum", async () => {
     const user = userEvent.setup();
-    render(
-      <CalculatorPage language="en" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />,
-    );
+    render(<CalculatorPage language="en" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />);
     await user.click(screen.getByRole("tab", { name: "By EC" }));
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
@@ -95,7 +105,9 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByText(/1\.56 is an observed condition, not an optimum range/i)).toBeTruthy();
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
-    await user.click(screen.getByRole("button", { name: /Choose study EC for Dill Bouquet: 1\.56 mS\/cm/i }));
+    await user.click(
+      screen.getByRole("button", { name: /Choose study EC for Dill Bouquet: 1\.56 mS\/cm/i }),
+    );
     expect(target.value).toBe("1.56");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
@@ -109,10 +121,14 @@ describe("Calculator real control interactions", () => {
   });
   it("discloses that general chamomile guidance is not species-specific", () => {
     render(<CalculatorPage language="en" initialPlantId="chamomile-unspecified" />);
-    expect(screen.getByText(/Chamomile species unidentified: the EC reference is general/i)).toBeTruthy();
+    expect(
+      screen.getByText(/Chamomile species unidentified: the EC reference is general/i),
+    ).toBeTruthy();
   });
   it("starts a profile-linked calculation with the selected public plant", () => {
-    render(<CalculatorPage language="en" initialPlantId="common-fenugreek-trigonella-foenum-graecum" />);
+    render(
+      <CalculatorPage language="en" initialPlantId="common-fenugreek-trigonella-foenum-graecum" />,
+    );
     expect(screen.getByText(/Common Fenugreek/i)).toBeTruthy();
   });
   it("does not preselect an excluded carnivorous plant", () => {
@@ -126,10 +142,17 @@ describe("Calculator real control interactions", () => {
   });
 
   it("asks for a source-water reading when a legacy system did not record whether it was measured", async () => {
-    window.localStorage.setItem("gardenpedia.calculator.systems.v1", JSON.stringify([{
-      id: "legacy-system", name: "Old system", mode: "target",
-      water: { label: { es: "Agua", en: "Water" }, ec: 0 },
-    }]));
+    window.localStorage.setItem(
+      "gardenpedia.calculator.systems.v1",
+      JSON.stringify([
+        {
+          id: "legacy-system",
+          name: "Old system",
+          mode: "target",
+          water: { label: { es: "Agua", en: "Water" }, ec: 0 },
+        },
+      ]),
+    );
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);
     await user.click(screen.getByText("Old system", { exact: true }));
@@ -185,12 +208,15 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByRole("button", { name: "Add plant" }));
     await user.type(screen.getByPlaceholderText("Search plant…"), "Epazote");
     await user.click(screen.getByRole("option", { name: /Epazote/ }));
-    expect(screen.getAllByRole("alert").map((alert) => alert.textContent).join(" ")).toMatch(
-      /not enough applicable EC evidence.*Epazote/i,
-    );
+    expect(
+      screen
+        .getAllByRole("alert")
+        .map((alert) => alert.textContent)
+        .join(" "),
+    ).toMatch(/not enough applicable EC evidence.*Epazote/i);
   });
 
-  it("lets a visitor deliberately select a reported culantro study value as a manual target", async () => {
+  it("lets a visitor select the reported culantro point as a manual target and calculate a calibrated dose", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);
     await user.click(screen.getByRole("button", { name: "Add plant" }));
@@ -201,18 +227,25 @@ describe("Calculator real control interactions", () => {
     expect(target.value).toBe("");
     await user.click(screen.getByText("View cultivation sources"));
     expect(screen.getByText(/not validated as a target for your system/i)).toBeTruthy();
-    await user.click(screen.getByRole("button", { name: /Choose study EC for Culantro: 1\.50 mS\/cm/i }));
+    await user.click(
+      screen.getByRole("button", { name: /Choose study EC for Culantro: 1\.50 mS\/cm/i }),
+    );
     expect(target.value).toBe("1.5");
     expect(screen.getByText("Your target")).toBeTruthy();
     await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
-    expect(screen.getByText(/not enough applicable EC evidence/i)).toBeTruthy();
+    expect(screen.queryByText(/not enough applicable EC evidence/i)).toBeNull();
     expect(screen.getByRole("button", { name: "Calibrate this product" })).toBeTruthy();
     await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
     await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
-    expect(screen.getByText(/not enough applicable EC evidence/i)).toBeTruthy();
-    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe("1.5");
+    expect(screen.queryByText(/not enough applicable EC evidence/i)).toBeNull();
+    expect(screen.getByText("FloraMicro")).toBeTruthy();
+    expect(screen.getByText("FloraGro")).toBeTruthy();
+    expect(screen.getByText("FloraBloom")).toBeTruthy();
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
+      "1.5",
+    );
   });
 
   it("presents the explicit study choice in Spanish and converts it to microsiemens", async () => {
@@ -225,8 +258,12 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByText("Más ajustes", { exact: true }));
     await user.click(screen.getByRole("button", { name: "µS/cm" }));
     await user.click(screen.getByText("Ver fuentes de cultivo"));
-    await user.click(screen.getByRole("button", { name: /Elegir EC del estudio para Epazote: 2000 µS\/cm/i }));
-    expect((screen.getByRole("textbox", { name: "EC objetivo" }) as HTMLInputElement).value).toBe("2000");
+    await user.click(
+      screen.getByRole("button", { name: /Elegir EC del estudio para Epazote: 2000 µS\/cm/i }),
+    );
+    expect((screen.getByRole("textbox", { name: "EC objetivo" }) as HTMLInputElement).value).toBe(
+      "2000",
+    );
   });
 
   it("makes manual EC entry clear when the selected plant lacks a crop range", async () => {
@@ -276,7 +313,9 @@ describe("Calculator real control interactions", () => {
     for (const name of ["FloraMicro", "FloraGro", "FloraBloom"]) {
       expect((screen.getByLabelText(new RegExp(`^${name}`)) as HTMLInputElement).value).toBe("");
     }
-    expect((screen.getByRole("button", { name: "Save calibration" }) as HTMLButtonElement).disabled).toBe(true);
+    expect(
+      (screen.getByRole("button", { name: "Save calibration" }) as HTMLButtonElement).disabled,
+    ).toBe(true);
   });
 
   it("offers optional first-calibration guidance in both languages", async () => {
@@ -345,7 +384,12 @@ describe("Calculator real control interactions", () => {
     await user.selectOptions(screen.getByLabelText("Stage of Bibb Lettuce"), "VEGETATIVE");
     await user.click(screen.getByText("Other stages of this plant?"));
     await user.click(screen.getByRole("checkbox", { name: "Seedling" }));
-    expect(screen.getAllByRole("alert").map((alert) => alert.textContent).join(" ")).toMatch(/not enough applicable EC evidence/i);
+    expect(
+      screen
+        .getAllByRole("alert")
+        .map((alert) => alert.textContent)
+        .join(" "),
+    ).toMatch(/not enough applicable EC evidence/i);
     await user.click(screen.getByRole("button", { name: "Save as system" }));
     await user.type(screen.getByRole("textbox", { name: "System name" }), "Mixed lettuce");
     await user.click(screen.getByRole("button", { name: /^Save$/ }));
@@ -460,7 +504,9 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByText("4.86", { exact: true })).toBeTruthy();
     expect(screen.getByText("3.59", { exact: true })).toBeTruthy();
     expect(screen.getByText(/1\.20/).textContent).toContain("1.40");
-    expect(screen.getByText("Source water affects the final reading. Measure your mixture.")).toBeTruthy();
+    expect(
+      screen.getByText("Source water affects the final reading. Measure your mixture."),
+    ).toBeTruthy();
   });
 
   it("can calculate for an anonymous visitor when browser storage is unavailable", async () => {
@@ -480,7 +526,12 @@ describe("Calculator real control interactions", () => {
     await waitFor(() =>
       expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
     );
-    expect(screen.getAllByRole("alert").map((alert) => alert.textContent).join(" ")).toContain("in memory only");
+    expect(
+      screen
+        .getAllByRole("alert")
+        .map((alert) => alert.textContent)
+        .join(" "),
+    ).toContain("in memory only");
   });
 
   it("calibrates an identified A+B product using the user's actual component doses", async () => {
@@ -609,7 +660,9 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
     await user.click(screen.getByText("More settings", { exact: true }));
     expect((screen.getByLabelText(/^EC meter resolution/) as HTMLInputElement).value).toBe("0.01");
-    const ratioNotice = screen.getByText(/Component proportions follow your actual calibration mixture/i);
+    const ratioNotice = screen.getByText(
+      /Component proportions follow your actual calibration mixture/i,
+    );
     expect(ratioNotice.closest("details")).toBeNull();
   });
 
@@ -632,7 +685,9 @@ describe("Calculator real control interactions", () => {
     );
     expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("123.4");
     await user.click(screen.getByRole("button", { name: /^mS\/cm$/ }));
-    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe("1.2345");
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
+      "1.2345",
+    );
     expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("0.1234");
     await user.click(screen.getByRole("button", { name: /^µS\/cm$/ }));
     await user.click(screen.getByRole("button", { name: "Save as system" }));
@@ -653,7 +708,9 @@ describe("Calculator real control interactions", () => {
     render(<CalculatorPage language="en" />);
     await user.click(screen.getByText("Top up state", { exact: true }));
     expect((screen.getByLabelText(/^Source-water EC/) as HTMLInputElement).value).toBe("123.4");
-    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe("1234.5");
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
+      "1234.5",
+    );
     expect((screen.getByLabelText(/^EC before top-up/) as HTMLInputElement).value).toBe("800");
   });
 
@@ -699,7 +756,9 @@ describe("Calculator real control interactions", () => {
     await waitFor(() => expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0));
     await user.clear(screen.getByLabelText(/^EC you measured/));
     await user.type(screen.getByLabelText(/^EC you measured/), "1.50");
-    expect(screen.getByText(/Measure the dilution water EC before calculating dilution/i)).toBeTruthy();
+    expect(
+      screen.getByText(/Measure the dilution water EC before calculating dilution/i),
+    ).toBeTruthy();
     await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
     await user.clear(screen.getByLabelText(/^EC you measured/));
     await user.type(screen.getByLabelText(/^EC you measured/), "0.80");

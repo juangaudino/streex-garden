@@ -306,6 +306,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
       ["kazakidou-burrage-marigold-nft-1994", [1.5, 3]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
+      ["yunindanova-choysum-floating-ec-2020", [1.0, 2.0]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [2.3, 2.5]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [2.0]],
@@ -319,6 +320,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["can-tho-zinnia-hoagland-2022", [1.4, 2.8]],
       ["nguyen-eryngium-foetidum-hydroponics-2018", [1, 1.5, 2]],
       ["chinese-chive-hydroponic-salinity-2022", [1.4]],
+      ["asianjab-chinese-chives-aeroponics-ec-2026", [1.2, 1.6]],
       ["juarez-porophyllum-nutrient-poster", [1, 1.5, 2, 2.5]],
       ["nsw-asian-vegetables-nft-2011", [1.5, 2.5]],
       ["cyprus-lavender-potassium-hydroponic-2017", [2.1]],
@@ -332,7 +334,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(culantro?.plantIds).toEqual(["culantro"]);
     expect(culantro?.source.region).toBe("Vietnam");
     expect(culantro?.text.en).toContain("after 28 days");
-    expect(hasApplicableCropNutrientEvidence("culantro")).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("culantro")).toBe(true);
     for (const reference of choices) {
       expect(reference.source.url).toMatch(/^https:\/\//);
       if (reference.selectionKind === "GUIDE_LOWER_BOUND") expect(reference.source.tier).toBe("E");
@@ -345,12 +347,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
         reference.source.id === "nsw-asian-vegetables-nft-2011" &&
         reference.plantIds.includes("scarlet-red-tatsoi"),
     );
-    expect(study?.plantIds).toEqual([
-      "tatsoi",
-      "scarlet-red-tatsoi",
-      "cilantro",
-      "hon-tsai-tai",
-    ]);
+    expect(study?.plantIds).toEqual(["tatsoi", "scarlet-red-tatsoi", "cilantro", "hon-tsai-tai"]);
     expect(study?.selectableEcValuesMs).toEqual([1.5, 2.5]);
 
     for (const cropIdentity of ["tatsoi", "cilantro", "flowering-choy-sum"]) {
@@ -360,6 +357,95 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(evidence?.hydroponicSystem).toBe("NFT");
       expect(evidence?.observedRange).toEqual({ min: 1.5, max: 2.5, unit: "mS/cm" });
     }
+  });
+  it("exposes 2026 aeroponic Chinese-chive treatments only as manual choices", () => {
+    const study = CROP_STUDY_REFERENCES.find(
+      (reference) => reference.source.id === "asianjab-chinese-chives-aeroponics-ec-2026",
+    );
+    expect(study?.plantIds).toEqual(["garlic-chives"]);
+    expect(study?.source.publication).toBe("2026(4), article 129");
+    expect(study?.source.url).toBe("https://doi.org/10.35495/ajab.2026.129");
+    expect(study?.selectableEcValuesMs).toEqual([1.2, 1.6]);
+    expect(study?.text.en).toContain("not a universal optimum");
+    expect(hasApplicableCropNutrientEvidence("garlic-chives")).toBe(false);
+    const evidence = CROP_EVIDENCE.find(
+      (observation) => observation.source.id === study?.source.id,
+    );
+    expect(evidence).toMatchObject({
+      cropIdentity: "garlic-chives",
+      stageApplicability: "VEGETATIVE",
+      hydroponicSystem: "AEROPONIC",
+      measurementScope: "NUTRIENT_SOLUTION",
+      observedRange: { min: 1.2, max: 1.6, unit: "mS/cm" },
+      evidenceState: "MODERATE",
+    });
+
+    const aeroponicVegetative = contextFor(
+      { "garlic-chives": 1 },
+      "gh-flora",
+      { "garlic-chives": "VEGETATIVE" },
+      {},
+      "AEROPONIC",
+    )[0]!;
+    // The engine intersects this study with compatible general hydroponic
+    // guidance for garlic chives (1.2–1.5 mS/cm).
+    expect(selectCropRange(aeroponicVegetative).ec.ec).toEqual({
+      min: 1.2,
+      max: 1.5,
+      unit: "mS/cm",
+    });
+
+    const unknownSystem = contextFor({ "garlic-chives": 1 }, "gh-flora", {
+      "garlic-chives": "VEGETATIVE",
+    })[0]!;
+    const unspecifiedStage = contextFor(
+      { "garlic-chives": 1 },
+      "gh-flora",
+      {},
+      {},
+      "AEROPONIC",
+    )[0]!;
+    expect(
+      selectCropRange(unknownSystem).ec.observations.some(
+        (observation) => observation.id === "garlic-chives-yaseen-aeroponic-vegetative-ec-2026",
+      ),
+    ).toBe(false);
+    expect(
+      selectCropRange(unspecifiedStage).ec.observations.some(
+        (observation) => observation.id === "garlic-chives-yaseen-aeroponic-vegetative-ec-2026",
+      ),
+    ).toBe(false);
+  });
+  it("exposes Choy Sum trial concentrations as manual context for Hon Tsai Tai only", () => {
+    const study = CROP_STUDY_REFERENCES.find(
+      (reference) => reference.source.id === "yunindanova-choysum-floating-ec-2020",
+    );
+    expect(study?.plantIds).toEqual(["hon-tsai-tai"]);
+    expect(study?.source.url).toBe("https://doi.org/10.32663/ba.v1i2.1810");
+    expect(study?.selectableEcValuesMs).toEqual([1.0, 2.0]);
+    expect(study?.text.en).toContain("Tosakan");
+    expect(study?.text.en).toContain("not an optimum range");
+    expect(hasApplicableCropNutrientEvidence("hon-tsai-tai")).toBe(false);
+    expect(CROP_EVIDENCE.some((observation) => observation.source.id === study?.source.id)).toBe(
+      false,
+    );
+  });
+  it("uses the reported culantro best treatment as a single evidence point without false precision", () => {
+    const context = contextFor({ culantro: 1 }, "gh-flora")[0]!;
+    const range = selectCropRange(context).ec;
+    expect(range.ec).toEqual({ min: 1.5, max: 1.5, unit: "mS/cm" });
+    expect(range.evidenceState).toBe("MODERATE");
+    expect(range.observations.map((observation) => observation.source.id)).toContain(
+      "nguyen-eryngium-foetidum-hydroponics-2018",
+    );
+    expect(
+      calculateFreshTargetEc({ contexts: [context] }).value?.suggestedStartingPoint,
+    ).toBeUndefined();
+    expect(buildCropEvidenceCoverage().rows.find((row) => row.plantId === "culantro")).toEqual({
+      plantId: "culantro",
+      classification: "SUPPORTED_DIRECT",
+      evidenceIdentity: "culantro",
+    });
   });
   it("offers holy basil NFT trial values only as manual targets, not an automatic optimum", () => {
     const reference = CROP_STUDY_REFERENCES.find(
@@ -1124,9 +1210,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const report = buildCropEvidenceCoverage();
     expect(report.rows).toHaveLength(donorPlants.length);
     expect(report.totals).toEqual({
-      SUPPORTED_DIRECT: 12,
+      SUPPORTED_DIRECT: 13,
       SUPPORTED_VIA_DEFENSIBLE_MAPPING: 123,
-      INSUFFICIENT: 372,
+      INSUFFICIENT: 371,
       NOT_APPLICABLE: 0,
     });
     for (const plantId of [
@@ -1193,16 +1279,17 @@ describe("Gardenpedia Calculator V1 integration", () => {
     );
     expect(coverageRows.every(Boolean)).toBe(true);
     expect({
-      SUPPORTED_DIRECT: coverageRows.filter((row) => row?.classification === "SUPPORTED_DIRECT").length,
+      SUPPORTED_DIRECT: coverageRows.filter((row) => row?.classification === "SUPPORTED_DIRECT")
+        .length,
       SUPPORTED_VIA_DEFENSIBLE_MAPPING: coverageRows.filter(
         (row) => row?.classification === "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
       ).length,
       INSUFFICIENT: coverageRows.filter((row) => row?.classification === "INSUFFICIENT").length,
       NOT_APPLICABLE: coverageRows.filter((row) => row?.classification === "NOT_APPLICABLE").length,
     }).toEqual({
-      SUPPORTED_DIRECT: 6,
+      SUPPORTED_DIRECT: 7,
       SUPPORTED_VIA_DEFENSIBLE_MAPPING: 57,
-      INSUFFICIENT: 20,
+      INSUFFICIENT: 19,
       NOT_APPLICABLE: 0,
     });
     const calibration = recordActualDoses({
@@ -1236,7 +1323,10 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
     for (const plantId of USER_ZERO_83_VARIETY_IDS) {
       const coverageRow = coverageRows.find((row) => row?.plantId === plantId);
-      expect(CALCULATOR_PLANTS.some((plant) => plant.id === plantId), plantId).toBe(true);
+      expect(
+        CALCULATOR_PLANTS.some((plant) => plant.id === plantId),
+        plantId,
+      ).toBe(true);
       const shared = {
         crops: { [plantId]: 1 },
         liters: 4,
@@ -1287,10 +1377,16 @@ describe("Gardenpedia Calculator V1 integration", () => {
       });
 
       for (const result of [byEc, correction, topUp, recipe]) {
-        expect(result.kind, `${plantId}: ${result.kind === "needs" ? result.message : result.kind}`).toBe("ok");
+        expect(
+          result.kind,
+          `${plantId}: ${result.kind === "needs" ? result.message : result.kind}`,
+        ).toBe("ok");
         if (result.kind === "ok") {
           expect(result.doses.length).toBeGreaterThanOrEqual(3);
-          expect(result.doses.every((dose) => dose.amount > 0), plantId).toBe(true);
+          expect(
+            result.doses.every((dose) => dose.amount > 0),
+            plantId,
+          ).toBe(true);
         }
       }
       if (byEc.kind === "ok") expect(byEc.target).toEqual({ value: 1.2, provenance: "user" });
@@ -1305,6 +1401,83 @@ describe("Gardenpedia Calculator V1 integration", () => {
         expect(byEc.kind === "ok" && byEc.range).toBeUndefined();
         expect(recipe.kind === "ok" && recipe.range).toBeUndefined();
       }
+    }
+  });
+
+  it("supports the user's 83 varieties with a named, calibrated A+B product but no invented recipe", () => {
+    const namedProduct = {
+      productId: "ab",
+      customAbManufacturer: "QA manufacturer",
+      customAbName: "QA nutrient A+B",
+      customAbVersion: "Label/formula 1",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+    };
+    const calibration = recordActualDoses({
+      ...namedProduct,
+      baselineEc: 0.2,
+      resultingEc: 1.0,
+      actualDoses: { a: "4", b: "2" },
+    });
+    expect(calibration.ok).toBe(true);
+    if (!calibration.value) throw new Error("Expected an exact-product A+B calibration fixture");
+
+    for (const plantId of USER_ZERO_83_VARIETY_IDS) {
+      const shared = {
+        ...namedProduct,
+        crops: { [plantId]: 1 },
+        sourceEc: 0.2,
+        sourceEcKnown: true,
+        userTarget: 1.2,
+        round: 1,
+        calibrationObservations: [calibration.value],
+      };
+      const target = calculateGardenResult({
+        ...shared,
+        mode: "target",
+        currentEc: null,
+        currentLiters: null,
+        waterAdded: null,
+      });
+      const correction = calculateGardenResult({
+        ...shared,
+        mode: "adjust",
+        currentEc: 0.8,
+        currentLiters: 4,
+        waterAdded: null,
+      });
+      const topUp = calculateGardenResult({
+        ...shared,
+        mode: "topup",
+        currentEc: 0.8,
+        currentLiters: 3,
+        capacityLiters: 4.1,
+        waterAdded: 1,
+      });
+
+      for (const result of [target, correction, topUp]) {
+        expect(
+          result.kind,
+          `${plantId}: ${result.kind === "needs" ? result.message : result.kind}`,
+        ).toBe("ok");
+        if (result.kind === "ok") {
+          const componentDoses = result.doses.filter((dose) =>
+            ["Parte A", "Parte B"].includes(dose.label),
+          );
+          expect(componentDoses.map((dose) => dose.label)).toEqual(["Parte A", "Parte B"]);
+          expect(componentDoses.every((dose) => dose.amount > 0)).toBe(true);
+        }
+      }
+
+      const recipe = calculateGardenResult({
+        ...shared,
+        mode: "recipe",
+        currentEc: null,
+        currentLiters: null,
+        waterAdded: null,
+      });
+      expect(recipe.kind, plantId).toBe("needs");
     }
   });
 

@@ -4,9 +4,9 @@
   "externalComparisons": 235,
   "coverage": {
     "totals": {
-      "SUPPORTED_DIRECT": 12,
+      "SUPPORTED_DIRECT": 13,
       "SUPPORTED_VIA_DEFENSIBLE_MAPPING": 123,
-      "INSUFFICIENT": 372,
+      "INSUFFICIENT": 371,
       "NOT_APPLICABLE": 0
     },
     "rows": [
@@ -662,7 +662,8 @@
       },
       {
         "plantId": "culantro",
-        "classification": "INSUFFICIENT"
+        "classification": "SUPPORTED_DIRECT",
+        "evidenceIdentity": "culantro"
       },
       {
         "plantId": "curled-chervil",
@@ -696,7 +697,8 @@
       },
       {
         "plantId": "delphinium-magic-fountains-dwarf",
-        "classification": "INSUFFICIENT"
+        "classification": "INSUFFICIENT",
+        "evidenceIdentity": "delphinium"
       },
       {
         "plantId": "delta-maidenhair-fern-adiantum-raddianum",

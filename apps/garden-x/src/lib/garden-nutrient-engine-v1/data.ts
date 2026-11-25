@@ -341,6 +341,24 @@ export const NUTRIENT_SOURCES = {
     tier: "A",
     retrievedAt: "2026-11-12",
   },
+  benaryMagicFountainsGrower: {
+    id: "benary-delphinium-magic-fountains-grower",
+    publisher: "Benary",
+    title: "Delphinium elatum Magic Fountains growing guide",
+    url: "https://www.benary.com/products/delphinium-elatum-magic-fountains",
+    sourceClass: "MANUFACTURER",
+    tier: "A",
+    retrievedAt: "2026-11-25",
+  },
+  kentuckyLunaBlushSubstrate: {
+    id: "uky-luna-blush-substrate-ec",
+    publisher: "University of Kentucky · Nursery and Landscape Program",
+    title: "UK Nursery and Landscape Program, PR 602",
+    url: "https://publications.mgcafe.uky.edu/files/pr602.pdf",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "B",
+    retrievedAt: "2026-11-25",
+  },
   carnationHydroponicStudy: {
     id: "carnation-cultivation-gamma-2025",
     publisher: "Discover Agriculture",
@@ -923,6 +941,22 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["delphinium-magic-fountains-dwarf"],
+    source: NUTRIENT_SOURCES.benaryMagicFountainsGrower,
+    text: {
+      es: "Benary sí identifica Magic Fountains: indica EC de medio 0,5–0,75 durante producción de plugs y 1,2–1,5 al crecer. Son mediciones del sustrato, no EC de solución nutritiva en un tanque; no las usamos para calcular una dosis hidropónica.",
+      en: "Benary identifies Magic Fountains and reports media EC of 0.5–0.75 during plug production and 1.2–1.5 while growing on. These are substrate measurements, not nutrient-solution EC in a reservoir; we do not use them to calculate a hydroponic dose.",
+    },
+  },
+  {
+    plantIds: ["blush-hibiscus"],
+    source: NUTRIENT_SOURCES.kentuckyLunaBlushSubstrate,
+    text: {
+      es: "Un informe de la Universidad de Kentucky incluye Hibiscus moscheutos ‘Luna Blush’ y registra EC de sustrato de 1,5, 2,0 y 2,3 mS/cm en tres medios. El perfil Gardyn Blush no tiene un cultivar confirmado y esas mediciones no son EC de tanque; no se usan como rango ni dosis hidropónica.",
+      en: "A University of Kentucky report includes Hibiscus moscheutos ‘Luna Blush’ and records substrate EC of 1.5, 2.0 and 2.3 mS/cm in three media. The Gardyn Blush profile has no confirmed cultivar, and these measurements are not reservoir EC; they are not used as a hydroponic range or dose.",
+    },
+  },
+  {
     plantIds: ["fragrant-dwarf-dianthus-mix"],
     source: NUTRIENT_SOURCES.carnationHydroponicStudy,
     text: {
@@ -1325,6 +1359,32 @@ export const CROP_STAGE_REFERENCES = [
     text: {
       es: "En una guía de lechuga hidropónica en ambiente controlado, la Universidad de Kentucky describe el trasplante cuando hay 3–4 hojas verdaderas y raíces visibles bajo el sustrato, habitualmente 14–21 días tras la siembra. Es una referencia del método, no una etapa confirmada ni una dosis para tu planta.",
       en: "In its controlled-environment hydroponic lettuce guide, the University of Kentucky describes transplanting when there are 3–4 true leaves and roots visible below the substrate, usually 14–21 days after sowing. This is method-specific context, not a confirmed stage or a dose for your plant.",
+    },
+  },
+  {
+    cropIdentity: "delphinium",
+    source: NUTRIENT_SOURCES.benaryMagicFountainsGrower,
+    ageWindows: [
+      {
+        minDays: 5,
+        maxDays: 8,
+        text: {
+          es: "Benary espera la emergencia de la radícula aproximadamente entre los días 5 y 8. Comprueba la plántula; la edad no cambia automáticamente la etapa ni la dosis.",
+          en: "Benary expects radicle emergence at approximately days 5–8. Check the seedling; age does not automatically change its stage or dose.",
+        },
+      },
+      {
+        minDays: 14,
+        maxDays: 21,
+        text: {
+          es: "Tras las primeras dos semanas, la guía reduce la temperatura cuando se expanden los cotiledones. Usa el desarrollo observado para confirmar la etapa; esta referencia de propagación no establece una dosis para el tanque.",
+          en: "After the first two weeks, the guide lowers temperature once cotyledons expand. Confirm stage from observed development; this propagation reference does not establish a reservoir dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La guía de Magic Fountains indica 5–8 días para la radícula y un plug de aproximadamente 5–6 semanas. Son tiempos de propagación del productor; no prueban por sí solos la etapa de una planta ni definen EC hidropónica de tanque.",
+      en: "The Magic Fountains guide gives 5–8 days to radicle emergence and approximately 5–6 weeks for a plug. These are breeder propagation timings; they do not by themselves prove a plant's stage or define reservoir EC.",
     },
   },
 ] as const;

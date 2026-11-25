@@ -81,6 +81,14 @@ describe("Calculator real control interactions", () => {
     expect(target.value).toBe("1.56");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
+  it("uses the Magic Fountains day reference as a cue without auto-changing phenological stage", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="delphinium-magic-fountains-dwarf" />);
+    const age = screen.getByLabelText(/Days since sowing of/i);
+    await user.type(age, "6");
+    expect(screen.getByText(/expects radicle emergence at approximately days 5–8/i)).toBeTruthy();
+    expect((screen.getByLabelText(/Stage of/i) as HTMLSelectElement).value).toBe("UNSPECIFIED");
+  });
   it("discloses that general chamomile guidance is not species-specific", () => {
     render(<CalculatorPage language="en" initialPlantId="chamomile-unspecified" />);
     expect(screen.getByText(/Chamomile species unidentified: the EC reference is general/i)).toBeTruthy();

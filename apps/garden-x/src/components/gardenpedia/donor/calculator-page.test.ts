@@ -37,6 +37,94 @@ import {
   resolveNutrientCropIdentity,
 } from "./calculator-lovable-adapter";
 
+// Transcribed from the user's 2026-11-07 inventory, deduplicated by variety;
+// the three separately listed carnivorous plants are intentionally excluded.
+const USER_ZERO_83_VARIETY_IDS = [
+  "basil-ocimum-basilicum",
+  "bibb-lettuce",
+  "black-seeded-simpson",
+  "blush-hibiscus",
+  "breen-romaine-lettuce",
+  "broadleaf-sage",
+  "bronze-arrow-lettuce",
+  "buttercrunch-lettuce",
+  "butterhead-lettuce-unspecified",
+  "cascading-petunia",
+  "cherry-tomato",
+  "chinese-light-green-celery",
+  "common-chives",
+  "cilantro",
+  "cinnamon-basil",
+  "common-fenugreek-trigonella-foenum-graecum",
+  "common-mint",
+  "culantro",
+  "basil-dark-opal",
+  "dill-bouquet",
+  "petunia-dwarf-bedding-mixed",
+  "epazote",
+  "evergreen-bunching-onion-nabuka",
+  "garlic-chives",
+  "genovese-basil",
+  "german-thyme",
+  "green-salanova-lettuce",
+  "hon-tsai-tai",
+  "iceberg-lettuce",
+  "italian-giant-parsley",
+  "italian-large-leaf-basil",
+  "italian-oregano",
+  "marigold-jolly-jester",
+  "lavender-vera",
+  "basil-lemon",
+  "zinnia-lilliput-mixed",
+  "basil-lime",
+  "mexican-tarragon",
+  "mini-lunchbox-sweet-pepper",
+  "monterey-strawberry",
+  "papalo-porophyllum-ruderale",
+  "perpetual-spinach",
+  "rainbow-mix-coleus",
+  "red-romaine-lettuce",
+  "resina-calendula",
+  "rosemary",
+  "seaside-f1-spinach",
+  "basil-spicy-globe",
+  "sweet-basil",
+  "marjoram",
+  "thai-basil",
+  "tiny-tim-sweet-alyssum",
+  "tiny-tim-tomato",
+  "tulsi-holy-basil-ocimum-tenuiflorum",
+  "watercress",
+  "sunflower-american-giant-hybrid",
+  "astro-arugula",
+  "sunflower-autumn-beauty",
+  "borage-blue",
+  "chamomile-unspecified",
+  "peppermint-mentha-piperita",
+  "crimson-giant-radish",
+  "curled-chervil",
+  "dark-green-zucchini",
+  "fragrant-dwarf-dianthus-mix",
+  "hyssop",
+  "lady-murasaki-komatsuna",
+  "large-red-cherry-tomato",
+  "lemon-balm",
+  "delphinium-magic-fountains-dwarf",
+  "muir-lettuce",
+  "pandero-romaine-lettuce",
+  "purple-kohlrabi",
+  "red-mustard-greens",
+  "scarlet-red-tatsoi",
+  "tennessee-coneflower-echinacea-tennesseensis",
+  "bush-nasturtium-tropaeolum-minus",
+  "wasabina-mustard-greens",
+  "bulls-blood-beet",
+  "bunching-onion-allium-fistulosum",
+  "tatsoi",
+  "romaine-lettuce",
+  "sunflower-helianthus-annuus",
+] as const;
+
 describe("Gardenpedia Calculator V1 integration", () => {
   it("uses bilingual public profile guidance to help identify observed plant stages", () => {
     const english = calculatorStageGuidanceForPlant("genovese-basil", "en", "FLOWERING");
@@ -469,6 +557,23 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.text.en).toContain("1.0–1.6");
     expect(reference?.text.en).toContain("1.0–1.8");
     expect(hasApplicableCropNutrientEvidence("hyssop")).toBe(false);
+  });
+  it("keeps exact-cultivar substrate EC evidence out of reservoir targets", () => {
+    const delphinium = CROP_STUDY_REFERENCES.find(
+      (reference) => reference.source.id === "benary-delphinium-magic-fountains-grower",
+    );
+    const hibiscus = CROP_STUDY_REFERENCES.find(
+      (reference) => reference.source.id === "uky-luna-blush-substrate-ec",
+    );
+    expect(delphinium?.text.en).toMatch(/substrate measurements.*not nutrient-solution EC/i);
+    expect(delphinium?.selectableEcValuesMs).toBeUndefined();
+    expect(delphinium?.selectableEcMs).toBeUndefined();
+    expect(hibiscus?.text.en).toMatch(/substrate EC.*not reservoir EC/i);
+    expect(hibiscus?.selectableEcValuesMs).toBeUndefined();
+    expect(hibiscus?.selectableEcMs).toBeUndefined();
+    expect(resolveNutrientCropIdentity("delphinium-magic-fountains-dwarf")).toBe("delphinium");
+    expect(hasApplicableCropNutrientEvidence("delphinium-magic-fountains-dwarf")).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("blush-hibiscus")).toBe(false);
   });
   it("resolves sunflower cultivars and purple kohlrabi to identified crop-level guidance", () => {
     for (const id of [
@@ -1075,6 +1180,130 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(report.rows.find((row) => row.plantId === plantId)?.classification).toBe(
         "INSUFFICIENT",
       );
+    }
+  });
+
+  it("can calculate a manual, calibrated By EC dose for each of the user's 83 non-carnivorous varieties", () => {
+    expect(USER_ZERO_83_VARIETY_IDS).toHaveLength(83);
+    expect(new Set(USER_ZERO_83_VARIETY_IDS).size).toBe(83);
+    const coverage = buildCropEvidenceCoverage();
+    const coverageRows = USER_ZERO_83_VARIETY_IDS.map((plantId) =>
+      coverage.rows.find((row) => row.plantId === plantId),
+    );
+    expect(coverageRows.every(Boolean)).toBe(true);
+    expect({
+      SUPPORTED_DIRECT: coverageRows.filter((row) => row?.classification === "SUPPORTED_DIRECT").length,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: coverageRows.filter(
+        (row) => row?.classification === "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+      ).length,
+      INSUFFICIENT: coverageRows.filter((row) => row?.classification === "INSUFFICIENT").length,
+      NOT_APPLICABLE: coverageRows.filter((row) => row?.classification === "NOT_APPLICABLE").length,
+    }).toEqual({
+      SUPPORTED_DIRECT: 6,
+      SUPPORTED_VIA_DEFENSIBLE_MAPPING: 57,
+      INSUFFICIENT: 20,
+      NOT_APPLICABLE: 0,
+    });
+    const calibration = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1.0,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(calibration.ok).toBe(true);
+    if (!calibration.value) throw new Error("Expected a valid GH calibration fixture");
+
+    const officialRecipe = calculateGardenResult({
+      mode: "recipe",
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(officialRecipe.kind).toBe("ok");
+    if (officialRecipe.kind !== "ok") throw new Error(officialRecipe.message);
+
+    for (const plantId of USER_ZERO_83_VARIETY_IDS) {
+      const coverageRow = coverageRows.find((row) => row?.plantId === plantId);
+      expect(CALCULATOR_PLANTS.some((plant) => plant.id === plantId), plantId).toBe(true);
+      const shared = {
+        crops: { [plantId]: 1 },
+        liters: 4,
+        productId: "gh-flora",
+        stageId: "feeding-2",
+        pods: 6,
+        sourceEc: 0.2,
+        sourceEcKnown: true,
+        userTarget: 1.2,
+        round: 1,
+        calibrationObservations: [calibration.value],
+      };
+      const byEc = calculateGardenResult({
+        ...shared,
+        mode: "target",
+        currentEc: null,
+        currentLiters: null,
+        waterAdded: null,
+      });
+      const correction = calculateGardenResult({
+        ...shared,
+        mode: "adjust",
+        currentEc: 0.8,
+        currentLiters: 4,
+        waterAdded: null,
+      });
+      const topUp = calculateGardenResult({
+        ...shared,
+        mode: "topup",
+        currentEc: 0.8,
+        currentLiters: 3,
+        capacityLiters: 4.1,
+        waterAdded: 1,
+      });
+      const recipe = calculateGardenResult({
+        mode: "recipe",
+        crops: { [plantId]: 1 },
+        liters: 4,
+        productId: "gh-flora",
+        stageId: "feeding-2",
+        pods: 6,
+        sourceEc: 0.2,
+        currentEc: null,
+        currentLiters: null,
+        waterAdded: null,
+        userTarget: null,
+        round: 1,
+      });
+
+      for (const result of [byEc, correction, topUp, recipe]) {
+        expect(result.kind, `${plantId}: ${result.kind === "needs" ? result.message : result.kind}`).toBe("ok");
+        if (result.kind === "ok") {
+          expect(result.doses.length).toBeGreaterThanOrEqual(3);
+          expect(result.doses.every((dose) => dose.amount > 0), plantId).toBe(true);
+        }
+      }
+      if (byEc.kind === "ok") expect(byEc.target).toEqual({ value: 1.2, provenance: "user" });
+      if (recipe.kind === "ok") {
+        expect(recipe.doses).toHaveLength(3);
+        expect(recipe.doses.map((dose) => dose.amount)).toEqual(
+          officialRecipe.doses.map((dose) => dose.amount),
+        );
+      }
+      if (coverageRow?.classification === "INSUFFICIENT") {
+        expect(byEc.kind === "ok" && byEc.evidence).toBe("insufficient");
+        expect(byEc.kind === "ok" && byEc.range).toBeUndefined();
+        expect(recipe.kind === "ok" && recipe.range).toBeUndefined();
+      }
     }
   });
 

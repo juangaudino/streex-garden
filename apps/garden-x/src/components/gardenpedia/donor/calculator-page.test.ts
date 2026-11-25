@@ -324,6 +324,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["cyprus-lavender-potassium-hydroponic-2017", [2.1]],
       ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
       ["walters-currey-basil-species-nft-2018", [0.5, 1, 2, 3, 4]],
+      ["holy-basil-controlled-dft-study-2022", [1.4, 2.2]],
     ]);
     const culantro = CROP_STUDY_REFERENCES.find(
       (reference) => reference.source.id === "nguyen-eryngium-foetidum-hydroponics-2018",

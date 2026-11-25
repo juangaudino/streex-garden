@@ -606,6 +606,17 @@ export const NUTRIENT_SOURCES = {
     publication: "2018",
     retrievedAt: "2026-11-07",
   },
+  holyBasilDftStudy: {
+    id: "holy-basil-controlled-dft-study-2022",
+    publisher: "Frontiers in Plant Science · National Taiwan University and collaborators",
+    title:
+      "Physiological responses and variation in secondary metabolite content among Thai holy basil cultivars (Ocimum tenuiflorum L.) grown under controlled environmental conditions in a plant factory",
+    url: "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2022.1008917/full",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2022",
+    retrievedAt: "2026-11-25",
+  },
   nswAsianGreensNft: {
     id: "nsw-asian-vegetables-nft-2011",
     publisher: "New South Wales Department of Primary Industries",
@@ -1287,6 +1298,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "El ensayo NFT de Walters y Currey incluyó albahaca sagrada ‘Holy’ (Ocimum tenuiflorum) con EC iniciales de 0,5, 1,0, 2,0, 3,0 y 4,0 mS/cm. La EC no cambió significativamente el crecimiento medido en sus condiciones. Son tratamientos experimentales, no un rango óptimo ni una pauta para plántulas o cualquier sistema.",
       en: "The Walters and Currey NFT trial included holy basil ‘Holy’ (Ocimum tenuiflorum) at initial ECs of 0.5, 1.0, 2.0, 3.0 and 4.0 mS/cm. EC did not significantly change measured growth under their conditions. These are experimental treatments, not an optimum range or instructions for seedlings or every system.",
+    },
+  },
+  {
+    plantIds: ["tulsi-holy-basil-ocimum-tenuiflorum"],
+    source: NUTRIENT_SOURCES.holyBasilDftStudy,
+    selectableEcValuesMs: [1.4, 2.2],
+    text: {
+      es: "Un estudio de 12 accesiones/cultivares de Ocimum tenuiflorum en DFT y ambiente controlado ajustó la solución Enshi modificada a 1,4 mS/cm al trasplantar y a 2,2 ± 0,33 mS/cm tras otros 14 días. Son condiciones experimentales secuenciales, no un óptimo ni una receta universal. Puedes seleccionar los valores solo como objetivos manuales y confirmar la respuesta de tu planta.",
+      en: "A controlled-environment DFT study of 12 Ocimum tenuiflorum accessions/cultivars set modified Enshi solution to 1.4 mS/cm at transplant and 2.2 ± 0.33 mS/cm after another 14 days. These are sequential experimental conditions, not an optimum or universal recipe. You may choose them only as manual targets and should confirm your plant's response.",
     },
   },
   {

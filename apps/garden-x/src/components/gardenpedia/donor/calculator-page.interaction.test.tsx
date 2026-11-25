@@ -69,6 +69,24 @@ describe("Calculator real control interactions", () => {
     expect(target.value).toBe("1.5");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
+  it("offers controlled DFT holy-basil study conditions as manual choices, not an optimum", async () => {
+    const user = userEvent.setup();
+    render(
+      <CalculatorPage language="en" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />,
+    );
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/sequential experimental conditions, not an optimum/i)).toBeTruthy();
+    await user.click(
+      screen.getByRole("button", {
+        name: /Choose study EC for Tulsi \(Holy Basil\): 1\.40 mS\/cm/i,
+      }),
+    );
+    expect(target.value).toBe("1.4");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
   it("offers an observed deep-flow EC as a manual choice, not a recommended range", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="dill-bouquet" />);

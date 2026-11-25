@@ -25,6 +25,7 @@ import {
   calculateGardenResult,
   calibrationUsage,
   contextFor,
+  calculatorStageGuidanceForPlant,
   generalCropReferenceForStage,
   hasApplicableCropNutrientEvidence,
   loadSavedSystems,
@@ -36,15 +37,50 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("uses bilingual public profile guidance to help identify observed plant stages", () => {
+    const english = calculatorStageGuidanceForPlant("genovese-basil", "en", "FLOWERING");
+    const spanish = calculatorStageGuidanceForPlant("genovese-basil", "es", "FLOWERING");
+
+    expect(english.map((guide) => guide.title)).toEqual(["Flowering", "Growth"]);
+    expect(english[0]?.backing).toBe("source");
+    expect(english[0]?.sources.length).toBeGreaterThan(0);
+    expect(spanish[0]?.title).toBe("Floración");
+    expect(spanish[0]?.body).toContain("floración");
+    expect(spanish[0]?.sources[0]?.url).toMatch(/^https:\/\//);
+  });
+
+  it("returns no stage guidance for an unknown identity without inventing content", () => {
+    expect(calculatorStageGuidanceForPlant("unmapped-test-identity", "en", "MATURE")).toEqual([]);
+  });
+
   it("makes the hyssop study condition selectable without presenting it as a validated crop range", () => {
     expect(hasApplicableCropNutrientEvidence("hyssop")).toBe(false);
-    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
-      pods: 6, baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
+    const reading = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
     expect(reading.ok).toBe(true);
-    const result = calculateGardenResult({ mode: "target", crops: { hyssop: 1 }, liters: 4,
-      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2, sourceEcKnown: true,
-      currentEc: null, currentLiters: null, waterAdded: null, userTarget: 2.2, round: 1,
-      calibrationObservations: [reading.value!] });
+    const result = calculateGardenResult({
+      mode: "target",
+      crops: { hyssop: 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      sourceEcKnown: true,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: 2.2,
+      round: 1,
+      calibrationObservations: [reading.value!],
+    });
     expect(result.kind).toBe("ok");
     if (result.kind === "ok") {
       expect(result.target).toEqual({ value: 2.2, provenance: "user" });
@@ -55,19 +91,43 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("keeps Tennessee coneflower's soil fertilization warning distinct from hydroponic EC guidance", () => {
     const id = "tennessee-coneflower-echinacea-tennesseensis";
     expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
-    const reference = CROP_STUDY_REFERENCES.find((item) => item.plantIds.includes(id) && item.source.id === "tennessee-extension-coneflower-fertilization");
+    const reference = CROP_STUDY_REFERENCES.find(
+      (item) =>
+        item.plantIds.includes(id) &&
+        item.source.id === "tennessee-extension-coneflower-fertilization",
+    );
     expect(reference?.text.en).toMatch(/soil-gardening/);
     expect(reference?.selectableEcMs).toBeUndefined();
   });
   it("warns when a calculated EC adjustment is smaller than the user's meter resolution", () => {
-    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
-      pods: 6, baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
+    const reading = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
     expect(reading.ok).toBe(true);
-    const input = { language: "es" as const, crops: { "bibb-lettuce": 1 }, liters: 4,
-      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 1,
-      sourceEcKnown: true, currentEc: 1, currentLiters: 4, capacityLiters: 5,
-      waterAdded: 0, userTarget: 1.04, round: 1, calibrationObservations: [reading.value!],
-      meterResolutionMs: 0.1 };
+    const input = {
+      language: "es" as const,
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 1,
+      sourceEcKnown: true,
+      currentEc: 1,
+      currentLiters: 4,
+      capacityLiters: 5,
+      waterAdded: 0,
+      userTarget: 1.04,
+      round: 1,
+      calibrationObservations: [reading.value!],
+      meterResolutionMs: 0.1,
+    };
     for (const mode of ["target", "adjust", "topup"] as const) {
       const lowResolution = calculateGardenResult({ ...input, mode });
       expect(lowResolution.kind).toBe("ok");
@@ -80,23 +140,53 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
   it("preserves a low-resolution calibration and warns when using it", () => {
-    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
-      pods: 6, baselineEc: 0.2, resultingEc: 0.24, actualDoses: { micro: "4", gro: "3", bloom: "2" },
-      meterResolutionMs: 0.1 });
+    const reading = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 0.24,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+      meterResolutionMs: 0.1,
+    });
     expect(reading.ok).toBe(true);
-    const result = calculateGardenResult({ language: "es", mode: "target", crops: { "bibb-lettuce": 1 },
-      liters: 4, productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
-      currentEc: null, currentLiters: null, waterAdded: null, userTarget: 1.2, round: 1,
-      calibrationObservations: [reading.value!] });
+    const result = calculateGardenResult({
+      language: "es",
+      mode: "target",
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: 1.2,
+      round: 1,
+      calibrationObservations: [reading.value!],
+    });
     expect(result.kind).toBe("ok");
-    if (result.kind === "ok") expect(result.warnings?.join(" ")).toMatch(/calibración es menor que la resolución/);
+    if (result.kind === "ok")
+      expect(result.warnings?.join(" ")).toMatch(/calibración es menor que la resolución/);
   });
   it("uses the actual EC meter resolution instead of assuming a universal one", () => {
     const input = {
-      language: "en" as const, mode: "target" as const, crops: { "bibb-lettuce": 1 },
-      liters: 4, productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
-      sourceEcKnown: true, currentEc: null, currentLiters: null, waterAdded: null,
-      userTarget: null, round: 1,
+      language: "en" as const,
+      mode: "target" as const,
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      sourceEcKnown: true,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
     };
     const unknown = calculateGardenResult(input);
     const fine = calculateGardenResult({ ...input, meterResolutionMs: 0.01 });
@@ -110,47 +200,76 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(explicit.target).toEqual({ value: 1.3, provenance: "user" });
   });
   it("offers study treatment values only as explicit, source-linked choices", () => {
-    const choices = CROP_STUDY_REFERENCES.filter((reference) => reference.selectableEcMs !== undefined);
-    expect(choices.map((reference) => [reference.source.id, reference.selectableEcMs])).toEqual([
-      ["georgia-alyssum-subirrigation-solution", 2],
-      ["plant-garden-coleus-hydroponic-guide", 1],
-      ["aguilar-carpio-epazote-steiner-2021", 2],
-      ["kazakidou-burrage-marigold-nft-1994", 1.5],
-      ["arkansas-komatsuna-nft-2014", 1.2],
-      ["hyssop-hydroponic-selenium-2022", 2.2],
-      ["can-tho-zinnia-hoagland-2022", 1.4],
-      ["nguyen-eryngium-foetidum-hydroponics-2018", 1.5],
-      ["chinese-chive-hydroponic-salinity-2022", 1.4],
-      ["juarez-porophyllum-nutrient-poster", 1.5],
+    const choices = CROP_STUDY_REFERENCES.filter(
+      (reference) =>
+        reference.selectableEcValuesMs?.length || reference.selectableEcMs !== undefined,
+    );
+    expect(
+      choices.map((reference) => [
+        reference.source.id,
+        reference.selectableEcValuesMs ?? [reference.selectableEcMs],
+      ]),
+    ).toEqual([
+      ["georgia-alyssum-subirrigation-solution", [2]],
+      ["plant-garden-coleus-hydroponic-guide", [1]],
+      ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
+      ["kazakidou-burrage-marigold-nft-1994", [1.5, 3]],
+      ["arkansas-komatsuna-nft-2014", [1, 1.2]],
+      ["hyssop-hydroponic-selenium-2022", [2.2]],
+      ["can-tho-zinnia-hoagland-2022", [1.4, 2.8]],
+      ["nguyen-eryngium-foetidum-hydroponics-2018", [1, 1.5, 2]],
+      ["chinese-chive-hydroponic-salinity-2022", [1.4]],
+      ["juarez-porophyllum-nutrient-poster", [1, 1.5, 2, 2.5]],
     ]);
     for (const reference of choices) {
       expect(reference.source.url).toMatch(/^https:\/\//);
       if (reference.selectionKind === "GUIDE_LOWER_BOUND") expect(reference.source.tier).toBe("E");
       else expect(["A", "B", "C"]).toContain(reference.source.tier);
-      for (const id of reference.plantIds) expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+      for (const id of reference.plantIds)
+        expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
     }
   });
   it("keeps the Mexican tarragon hydroponic guide contextual without inventing an EC target", () => {
-    const source = CROP_STUDY_REFERENCES.find((item) => item.source.id === "zipgrow-mexican-tarragon-hydroponic-tower");
+    const source = CROP_STUDY_REFERENCES.find(
+      (item) => item.source.id === "zipgrow-mexican-tarragon-hydroponic-tower",
+    );
     expect(source?.plantIds).toContain("mexican-tarragon");
     expect(source?.selectableEcMs).toBeUndefined();
     expect(source?.text.en).toMatch(/does not publish an EC/);
     expect(hasApplicableCropNutrientEvidence("mexican-tarragon")).toBe(false);
   });
   it("never plans a capacity refill using an explicitly unknown source-water EC", () => {
-    const plan = planTopUpToCapacity({
-      language: "es", mode: "topup", crops: { "bibb-lettuce": 1 }, liters: 4,
-      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0,
-      sourceEcKnown: false, currentEc: 1.2, currentLiters: 2,
-      capacityLiters: 4, waterAdded: null, userTarget: 1.2, round: 1,
-    }, 1.2);
+    const plan = planTopUpToCapacity(
+      {
+        language: "es",
+        mode: "topup",
+        crops: { "bibb-lettuce": 1 },
+        liters: 4,
+        productId: "gh-flora",
+        stageId: "feeding-2",
+        pods: 6,
+        sourceEc: 0,
+        sourceEcKnown: false,
+        currentEc: 1.2,
+        currentLiters: 2,
+        capacityLiters: 4,
+        waterAdded: null,
+        userTarget: 1.2,
+        round: 1,
+      },
+      1.2,
+    );
     expect(plan).toEqual({
-      ok: false, code: "SOURCE_WATER_EC_REQUIRED",
+      ok: false,
+      code: "SOURCE_WATER_EC_REQUIRED",
       message: "Mide el EC del agua de reposición antes de calcular el relleno.",
     });
   });
   it("resolves fenugreek and blue borage using their own crop types", () => {
-    for (const [id, identity] of [["common-fenugreek-trigonella-foenum-graecum", "fenugreek"], ["borage-blue", "borage"]] as const) {
+    for (const [id, identity] of [
+      ["common-fenugreek-trigonella-foenum-graecum", "fenugreek"],
+      ["borage-blue", "borage"],
+    ] as const) {
       expect(resolveNutrientCropIdentity(id)).toBe(identity);
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
@@ -166,7 +285,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
     expect(resolveNutrientCropIdentity("lavender-vera")).toBe("english-lavender");
-    const mature = contextFor({ "lavender-vera": 1 }, "gh-flora", { "lavender-vera": "MATURE" })[0]!;
+    const mature = contextFor({ "lavender-vera": 1 }, "gh-flora", {
+      "lavender-vera": "MATURE",
+    })[0]!;
     expect(selectCropRange(mature).ec.ec).toEqual({ min: 1.2, max: 1.5, unit: "mS/cm" });
     expect(hasApplicableCropNutrientEvidence("lavender-vera")).toBe(false);
   });
@@ -178,35 +299,41 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
   it("shows tower-specific guidance without applying it as a general crop target", () => {
     for (const id of ["dill-bouquet", "astro-arugula", "purple-kohlrabi"]) {
-      expect(CROP_STUDY_REFERENCES.some((study) =>
-        study.source.id === "idroponica-facile-home-tower-guide" &&
-        study.plantIds.some((plantId: string) => plantId === id),
-      )).toBe(true);
+      expect(
+        CROP_STUDY_REFERENCES.some(
+          (study) =>
+            study.source.id === "idroponica-facile-home-tower-guide" &&
+            study.plantIds.some((plantId: string) => plantId === id),
+        ),
+      ).toBe(true);
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
   });
   it("shows African marigold trial context without fabricating an automatic range", () => {
-    const reference = CROP_STUDY_REFERENCES.find((study) =>
-      study.source.id === "kazakidou-burrage-marigold-nft-1994" &&
-      study.plantIds.some((id: string) => id === "marigold-jolly-jester"),
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "kazakidou-burrage-marigold-nft-1994" &&
+        study.plantIds.some((id: string) => id === "marigold-jolly-jester"),
     );
     expect(reference?.text.en).toContain("1.5, 3.0 and 6.0");
     expect(reference?.text.en).toContain("not an automatic range");
     expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
   });
   it("shows the epazote substrate trial without treating it as a reservoir range", () => {
-    const reference = CROP_STUDY_REFERENCES.find((study) =>
-      study.source.id === "aguilar-carpio-epazote-steiner-2021" &&
-      study.plantIds.some((id: string) => id === "epazote"),
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "aguilar-carpio-epazote-steiner-2021" &&
+        study.plantIds.some((id: string) => id === "epazote"),
     );
     expect(reference?.text.en).toContain("1.0, 1.5 and 2.0");
     expect(reference?.text.en).toContain("does not validate a dose or range");
     expect(hasApplicableCropNutrientEvidence("epazote")).toBe(false);
   });
   it("keeps the coleus grower-page claim visible but out of automatic targets", () => {
-    const reference = CROP_STUDY_REFERENCES.find((study) =>
-      study.source.id === "plant-garden-coleus-hydroponic-guide" &&
-      study.plantIds.some((id: string) => id === "rainbow-mix-coleus"),
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "plant-garden-coleus-hydroponic-guide" &&
+        study.plantIds.some((id: string) => id === "rainbow-mix-coleus"),
     );
     expect(reference?.source.tier).toBe("E");
     expect(reference?.text.en).toContain("1.0–1.6");
@@ -214,9 +341,10 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(hasApplicableCropNutrientEvidence("rainbow-mix-coleus")).toBe(false);
   });
   it("shows inconsistent hyssop guide values as reported context only", () => {
-    const reference = CROP_STUDY_REFERENCES.find((study) =>
-      study.source.id === "scale-stem-hyssop-hydroponic-guide" &&
-      study.plantIds.some((id: string) => id === "hyssop"),
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "scale-stem-hyssop-hydroponic-guide" &&
+        study.plantIds.some((id: string) => id === "hyssop"),
     );
     expect(reference?.source.tier).toBe("E");
     expect(reference?.text.en).toContain("1.0–1.6");
@@ -224,7 +352,11 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(hasApplicableCropNutrientEvidence("hyssop")).toBe(false);
   });
   it("resolves sunflower cultivars and purple kohlrabi to identified crop-level guidance", () => {
-    for (const id of ["sunflower-helianthus-annuus", "sunflower-american-giant-hybrid", "sunflower-autumn-beauty"]) {
+    for (const id of [
+      "sunflower-helianthus-annuus",
+      "sunflower-american-giant-hybrid",
+      "sunflower-autumn-beauty",
+    ]) {
       expect(resolveNutrientCropIdentity(id)).toBe("sunflower");
       expect(hasApplicableCropNutrientEvidence(id)).toBe(true);
     }
@@ -240,10 +372,13 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("maps Bouquet dill to general grower guidance while retaining seasonal context", () => {
     expect(resolveNutrientCropIdentity("dill-bouquet")).toBe("dill");
     expect(hasApplicableCropNutrientEvidence("dill-bouquet")).toBe(true);
-    expect(CROP_STUDY_REFERENCES.some((study) =>
-      study.source.id === "pure-hydroponics-crop-conductivity-2015" &&
-      study.plantIds.some((id: string) => id === "dill-bouquet"),
-    )).toBe(true);
+    expect(
+      CROP_STUDY_REFERENCES.some(
+        (study) =>
+          study.source.id === "pure-hydroponics-crop-conductivity-2015" &&
+          study.plantIds.some((id: string) => id === "dill-bouquet"),
+      ),
+    ).toBe(true);
   });
   it("maps curled chervil to species-level grower guidance", () => {
     expect(resolveNutrientCropIdentity("curled-chervil")).toBe("chervil");
@@ -251,17 +386,32 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
   it("uses the selected garlic chive stage in an actionable calibrated preparation", () => {
     const observation = recordActualDoses({
-      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
-      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
       meterResolutionMs: 0.01,
     });
     expect(observation.ok).toBe(true);
     expect(observation.value?.meterResolution).toBe(0.01);
     const result = calculateGardenResult({
-      language: "en", mode: "target", crops: { "garlic-chives": 1 },
-      cropStages: { "garlic-chives": "SEEDLING" }, liters: 4, productId: "gh-flora",
-      stageId: "feeding-2", pods: 6, sourceEc: 0.2, currentEc: null,
-      currentLiters: null, waterAdded: null, userTarget: null, round: 1,
+      language: "en",
+      mode: "target",
+      crops: { "garlic-chives": 1 },
+      cropStages: { "garlic-chives": "SEEDLING" },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
       calibrationObservations: [observation.value!],
     });
     expect(result.kind).toBe("ok");
@@ -273,7 +423,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("does not reuse common chive evidence for the distinct garlic chive species", () => {
     expect(resolveNutrientCropIdentity("garlic-chives")).toBe("garlic-chives");
     expect(hasApplicableCropNutrientEvidence("garlic-chives")).toBe(false);
-    const seedling = contextFor({ "garlic-chives": 1 }, "gh-flora", { "garlic-chives": "SEEDLING" })[0]!;
+    const seedling = contextFor({ "garlic-chives": 1 }, "gh-flora", {
+      "garlic-chives": "SEEDLING",
+    })[0]!;
     expect(selectCropRange(seedling).ec.ec).toEqual({ min: 1, max: 1.3, unit: "mS/cm" });
     expect(
       CROP_STUDY_REFERENCES.some(
@@ -319,15 +471,36 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const selected = selectCropRange(general).ec;
     expect(selected.ec).toEqual({ min: 1, max: 1.6, unit: "mS/cm" });
     expect(selected.observations[0]?.source.id).toBe("letpot-hydroponic-chamomile-guide");
-    const seedling = contextFor({ "chamomile-unspecified": 1 }, "gh-flora", { "chamomile-unspecified": "SEEDLING" })[0]!;
+    const seedling = contextFor({ "chamomile-unspecified": 1 }, "gh-flora", {
+      "chamomile-unspecified": "SEEDLING",
+    })[0]!;
     expect(selectCropRange(seedling).ec.ec).toBeUndefined();
-    const reading = recordActualDoses({ productId: "gh-flora", stageId: "feeding-2", liters: 4,
-      pods: 6, baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" } });
+    const reading = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
     expect(reading.ok).toBe(true);
-    const inputs = { crops: { "chamomile-unspecified": 1 }, liters: 4, productId: "gh-flora",
-      stageId: "feeding-2", pods: 6, sourceEc: 0.2, sourceEcKnown: true,
-      currentEc: 0.8, currentLiters: 3, capacityLiters: 5, waterAdded: 0.5,
-      userTarget: null, round: 1, calibrationObservations: [reading.value!] };
+    const inputs = {
+      crops: { "chamomile-unspecified": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      sourceEcKnown: true,
+      currentEc: 0.8,
+      currentLiters: 3,
+      capacityLiters: 5,
+      waterAdded: 0.5,
+      userTarget: null,
+      round: 1,
+      calibrationObservations: [reading.value!],
+    };
     for (const mode of ["recipe", "target", "adjust", "topup"] as const) {
       const result = calculateGardenResult({ ...inputs, mode });
       expect(result.kind).toBe("ok");
@@ -492,7 +665,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const result = calculateGardenResult({
       language: "en",
       mode: "target",
-      crops: { "epazote": 1 },
+      crops: { epazote: 1 },
       liters: 4,
       productId: "gh-flora",
       stageId: "feeding-2",
@@ -901,7 +1074,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
 
   it("projects every verified FloraSeries feeding step without inventing plant phenology", () => {
-    expect(CALCULATOR_STAGES.map((stage) => stage.feedingIndex)).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
+    expect(CALCULATOR_STAGES.map((stage) => stage.feedingIndex)).toEqual([
+      1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,
+    ]);
     const result = calculateGardenResult({
       mode: "recipe",
       crops: { "genovese-basil": 1 },
@@ -926,7 +1101,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("keeps an unmapped published identity insufficient instead of guessing a crop", () => {
     const result = calculateGardenResult({
       mode: "recipe",
-      crops: { "epazote": 1 },
+      crops: { epazote: 1 },
       liters: 2,
       productId: "gh-flora",
       stageId: "feeding-2",
@@ -1430,23 +1605,42 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("explains that GH EC dosing uses the measured mixture, not necessarily the official ratio", () => {
     const observation = recordActualDoses({
-      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
-      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
     });
     expect(observation.ok).toBe(true);
     const input = {
-      language: "en" as const, crops: { "bibb-lettuce": 1 }, liters: 4,
-      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
-      currentEc: 0.7, currentLiters: 2, capacityLiters: 4, waterAdded: 1,
-      userTarget: 1.2, round: 1, calibrationObservations: [observation.value!],
+      language: "en" as const,
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: 0.7,
+      currentLiters: 2,
+      capacityLiters: 4,
+      waterAdded: 1,
+      userTarget: 1.2,
+      round: 1,
+      calibrationObservations: [observation.value!],
     };
     for (const mode of ["target", "adjust", "topup"] as const) {
       const result = calculateGardenResult({ ...input, mode });
       expect(result.kind).toBe("ok");
       if (result.kind === "ok") {
-        expect(result.warnings?.join(" ")).toContain("Component proportions follow your actual calibration mixture");
-        expect(result.doses.find((part) => part.label === "FloraMicro")!.amount /
-          result.doses.find((part) => part.label === "FloraBloom")!.amount).toBeCloseTo(2);
+        expect(result.warnings?.join(" ")).toContain(
+          "Component proportions follow your actual calibration mixture",
+        );
+        expect(
+          result.doses.find((part) => part.label === "FloraMicro")!.amount /
+            result.doses.find((part) => part.label === "FloraBloom")!.amount,
+        ).toBeCloseTo(2);
       }
     }
     const official = calculateGardenResult({ ...input, mode: "recipe" });
@@ -1498,29 +1692,51 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("reuses a single-component AeroGarden calibration across verified feedings while preserving old records", () => {
     const observation = recordActualDoses({
-      productId: "aerogarden", stageId: "feeding-1", liters: 4, pods: 9,
-      baselineEc: 0.2, resultingEc: 1, actualDoses: { single: "4" },
+      productId: "aerogarden",
+      stageId: "feeding-1",
+      liters: 4,
+      pods: 9,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { single: "4" },
     }).value!;
     const legacy = {
       ...observation,
       recipeContextSignature: "single:8",
-      componentRatioOrRecipeSignature: observation.componentRatioOrRecipeSignature.replace("single:1;", "single:8;"),
+      componentRatioOrRecipeSignature: observation.componentRatioOrRecipeSignature.replace(
+        "single:1;",
+        "single:8;",
+      ),
     };
     const originalSignature = legacy.componentRatioOrRecipeSignature;
     const input = {
-      crops: { "genovese-basil": 1 }, liters: 4, productId: "aerogarden",
-      stageId: "feeding-3", pods: 12, sourceEc: 0.2, currentEc: 0.8,
-      currentLiters: 3, capacityLiters: 5, waterAdded: 0.5, userTarget: 1.2,
-      round: 1, calibrationObservations: [legacy],
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "aerogarden",
+      stageId: "feeding-3",
+      pods: 12,
+      sourceEc: 0.2,
+      currentEc: 0.8,
+      currentLiters: 3,
+      capacityLiters: 5,
+      waterAdded: 0.5,
+      userTarget: 1.2,
+      round: 1,
+      calibrationObservations: [legacy],
     };
     expect(calibrationUsage(input)).toEqual({ used: 1, recorded: 1 });
     for (const mode of ["target", "adjust", "topup"] as const) {
       const result = calculateGardenResult({ ...input, mode });
       expect(result.kind).toBe("ok");
-      if (result.kind === "ok") expect(result.doses.some((dose) => dose.amount > 0 && dose.unit === "mL")).toBe(true);
+      if (result.kind === "ok")
+        expect(result.doses.some((dose) => dose.amount > 0 && dose.unit === "mL")).toBe(true);
     }
     expect(legacy.componentRatioOrRecipeSignature).toBe(originalSignature);
-    const otherProduct = { ...legacy, productIdentity: { ...legacy.productIdentity, formulationVersion: "other" }, formulationVersion: "other" };
+    const otherProduct = {
+      ...legacy,
+      productIdentity: { ...legacy.productIdentity, formulationVersion: "other" },
+      formulationVersion: "other",
+    };
     expect(calibrationUsage({ ...input, calibrationObservations: [otherProduct] }).used).toBe(0);
   });
 
@@ -1556,7 +1772,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("keeps unsupported canonical crops insufficient for crop-derived By EC", () => {
     const result = calculateGardenResult({
       mode: "target",
-      crops: { "epazote": 1 },
+      crops: { epazote: 1 },
       liters: 4,
       productId: "gh-flora",
       stageId: "feeding-2",
@@ -1598,14 +1814,29 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(result.ec).toEqual({ min: 1.4, max: 2.4, unit: "mS/cm" });
     expect(result.observations[0]?.source.id).toBe("hydrocrop-hydrosol-crop-ec-guide");
     const observation = recordActualDoses({
-      productId: "gh-flora", stageId: "feeding-2", liters: 4, pods: 6,
-      baselineEc: 0.2, resultingEc: 1, actualDoses: { micro: "4", gro: "3", bloom: "2" },
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
     });
     expect(observation.ok).toBe(true);
     const calculated = calculateGardenResult({
-      language: "en", mode: "target", crops: { "bulls-blood-beet": 1 }, liters: 4,
-      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
-      currentEc: null, currentLiters: null, waterAdded: null, userTarget: null, round: 1,
+      language: "en",
+      mode: "target",
+      crops: { "bulls-blood-beet": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
       calibrationObservations: [observation.value!],
     });
     expect(calculated.kind).toBe("ok");
@@ -1617,9 +1848,18 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("warns when dosing equipment precision is unknown rather than assuming a resolution", () => {
     const input = {
-      mode: "recipe" as const, crops: { "bibb-lettuce": 1 }, liters: 4,
-      productId: "gh-flora", stageId: "feeding-2", pods: 6, sourceEc: 0.2,
-      currentEc: null, currentLiters: null, waterAdded: null, userTarget: null, round: 1,
+      mode: "recipe" as const,
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
     };
     const unknown = calculateGardenResult({ ...input, language: "en" });
     const known = calculateGardenResult({ ...input, language: "en", dosingResolutionMl: 0.1 });

@@ -394,7 +394,8 @@ export const NUTRIENT_SOURCES = {
   marigoldNftConductivityStudy: {
     id: "kazakidou-burrage-marigold-nft-1994",
     publisher: "International Society for Horticultural Science",
-    title: "The production of African marigold by the nutrient film technique: the influence of solution conductivity on growth and carotenoid levels",
+    title:
+      "The production of African marigold by the nutrient film technique: the influence of solution conductivity on growth and carotenoid levels",
     url: "https://ishs.org/ishs-article/361_33/",
     sourceClass: "OTHER",
     tier: "B",
@@ -707,6 +708,8 @@ export const CROP_STUDY_REFERENCES: readonly {
   text: { es: string; en: string };
   /** A reported study value or marked guide bound, offered only as an explicit user choice. */
   selectableEcMs?: number;
+  /** Multiple reported treatment values offered as explicit user choices, never as a range. */
+  selectableEcValuesMs?: readonly number[];
   /** Marks a low-quality guide's lower bound; never an automatic recommendation. */
   selectionKind?: "GUIDE_LOWER_BOUND";
 }[] = [
@@ -933,6 +936,7 @@ export const CROP_STUDY_REFERENCES: readonly {
     plantIds: ["epazote"],
     source: NUTRIENT_SOURCES.epazoteSteinerStudy,
     selectableEcMs: 2.0,
+    selectableEcValuesMs: [1.0, 1.5, 2.0],
     text: {
       es: "Un ensayo de epazote H-1000 en macetas con tezontle comparó soluciones Steiner a EC de 1,0, 1,5 y 2,0 mS/cm y obtuvo mayor producción con 2,0. Ese resultado corresponde a una formulación y sistema concretos; no valida una dosis ni un intervalo para un tanque o plántulas.",
       en: "A trial of H-1000 epazote in volcanic substrate pots compared Steiner solutions at EC 1.0, 1.5 and 2.0 mS/cm and obtained greater yield at 2.0. This result belongs to a specific formulation and system; it does not validate a dose or range for a reservoir or seedlings.",
@@ -950,6 +954,7 @@ export const CROP_STUDY_REFERENCES: readonly {
     plantIds: ["marigold-jolly-jester"],
     source: NUTRIENT_SOURCES.marigoldNftConductivityStudy,
     selectableEcMs: 1.5,
+    selectableEcValuesMs: [1.5, 3.0],
     text: {
       es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. No identifica Jolly Jester ni valida todos los valores intermedios, otras formulaciones o plántulas; no es un rango automático para tu sistema.",
       en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. It does not identify Jolly Jester or validate every intermediate value, other formulations or seedlings; it is not an automatic range for your system.",
@@ -959,6 +964,7 @@ export const CROP_STUDY_REFERENCES: readonly {
     plantIds: ["lady-murasaki-komatsuna"],
     source: NUTRIENT_SOURCES.komatsunaNftThesis,
     selectableEcMs: 1.2,
+    selectableEcValuesMs: [1.0, 1.2],
     text: {
       es: "Una tesis probó komatsuna en NFT con EC de 1,0 a 1,8 mS/cm y observó hojas deformadas con valores superiores a 1,2. No identificó Lady Murasaki ni establece una dosis para otra variedad o sistema.",
       en: "A thesis tested komatsuna in NFT at EC 1.0–1.8 mS/cm and observed leaf cupping above 1.2. It did not identify Lady Murasaki or establish a dose for another variety or system.",
@@ -1017,6 +1023,7 @@ export const CROP_STUDY_REFERENCES: readonly {
     plantIds: ["zinnia-lilliput-mixed"],
     source: NUTRIENT_SOURCES.zinniaHydroponicStudy,
     selectableEcMs: 1.4,
+    selectableEcValuesMs: [1.4, 2.8],
     text: {
       es: "Un ensayo de Zinnia elegans informó buen crecimiento con solución Hoagland a EC de 1,4 y 2,8 mS/cm como tratamientos separados. No identificó Lilliput ni comparó todos los valores intermedios; no establece un rango óptimo ni una dosis para tu sistema.",
       en: "A Zinnia elegans experiment reported good growth with Hoagland solution at 1.4 and 2.8 mS/cm as separate treatments. It did not identify Lilliput or compare all intermediate values; it establishes neither an optimum range nor a dose for your system.",
@@ -1034,6 +1041,7 @@ export const CROP_STUDY_REFERENCES: readonly {
     plantIds: ["culantro"],
     source: NUTRIENT_SOURCES.culantroHydroponicStudy,
     selectableEcMs: 1.5,
+    selectableEcValuesMs: [1.0, 1.5, 2.0],
     text: {
       es: "En un ensayo hidropónico de culantro (Eryngium foetidum), una solución SH5 de 1,5 mS/cm produjo mayor crecimiento que los tratamientos de 1,0 y 2,0 mS/cm. Es un resultado de ese ensayo y formulación, no un rango validado ni una dosis automática para tu sistema o sus plántulas.",
       en: "In a hydroponic culantro (Eryngium foetidum) trial, an SH5 solution at 1.5 mS/cm produced more growth than the 1.0 and 2.0 mS/cm treatments. This is specific to that experiment and formulation, not a validated range or automatic dose for your system or seedlings.",
@@ -1051,10 +1059,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["papalo-porophyllum-ruderale"],
     source: NUTRIENT_SOURCES.papaloNutrientStudy,
-    selectableEcMs: 1.5,
+    selectableEcValuesMs: [1.0, 1.5, 2.0, 2.5],
     text: {
-      es: "Un resumen de congreso sobre pápalo en macetas con sustrato comparó solución Steiner a EC de 1,0, 1,5, 2,0 y 2,5 mS/cm; reportó mayor rendimiento a 1,5 a los 53 días desde la siembra. No es un ensayo en tanque ni establece un intervalo o dosis para tus plantas.",
-      en: "A conference abstract on pápalo in substrate pots compared Steiner solution at ECs of 1.0, 1.5, 2.0 and 2.5 mS/cm and reported highest yield at 1.5 at 53 days after sowing. This was not a reservoir trial and does not establish a range or dose for your plants.",
+      es: "Un resumen de congreso sobre pápalo en macetas con sustrato comparó cuatro concentraciones de solución Steiner: EC de 1,0, 1,5, 2,0 y 2,5 mS/cm. Reportó mayor rendimiento a 1,5 a los 53 días desde la siembra. Son tratamientos de ese ensayo, no un intervalo óptimo ni una dosis para tu tanque.",
+      en: "A conference abstract on papalo in substrate pots compared four Steiner solution concentrations: EC 1.0, 1.5, 2.0 and 2.5 mS/cm. It reported higher yield at 1.5 at 53 days after sowing. These are treatments from that trial, not an optimum range or a dose for your reservoir.",
     },
   },
   {
@@ -1234,12 +1242,15 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
-    notes: "General supplier guidance for hydroponic chamomile; the guide discusses German and Roman chamomile but does not distinguish their EC needs. This identity's species and stage are unknown. Not a seedling recommendation or a validated species-specific optimum.",
+    notes:
+      "General supplier guidance for hydroponic chamomile; the guide discusses German and Roman chamomile but does not distinguish their EC needs. This identity's species and stage are unknown. Not a seedling recommendation or a validated species-specific optimum.",
   },
-  ...([
-    ["fenugreek", 1.2, 2.4],
-    ["borage", 1.4, 2.2],
-  ] as const).map(([cropIdentity, min, max]): EvidenceObservation => ({
+  ...(
+    [
+      ["fenugreek", 1.2, 2.4],
+      ["borage", 1.4, 2.2],
+    ] as const
+  ).map(([cropIdentity, min, max]): EvidenceObservation => ({
     id: `${cropIdentity}-borgmann-ec`,
     metric: "EC",
     cropIdentity,
@@ -1251,7 +1262,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "Borgmann's hydroponic crop table lists EC values without units in its table; mS/cm and nutrient-solution scope are inferred from the surrounding hydroponic guidance and conventional scale. Cultivar and stage are unspecified; not a seedling recommendation or guaranteed optimum.",
+    notes:
+      "Borgmann's hydroponic crop table lists EC values without units in its table; mS/cm and nutrient-solution scope are inferred from the surrounding hydroponic guidance and conventional scale. Cultivar and stage are unspecified; not a seedling recommendation or guaranteed optimum.",
   })),
   {
     id: "calendula-lanitex-ec",
@@ -1265,7 +1277,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min: 1.2, max: 1.8, unit: "mS/cm" },
-    notes: "Supplier crop-level guidance identifies Calendula officinalis, not Tagetes marigold. The source does not validate the Resina cultivar, individual stage, or a specific reservoir. Not a validated seedling dose.",
+    notes:
+      "Supplier crop-level guidance identifies Calendula officinalis, not Tagetes marigold. The source does not validate the Resina cultivar, individual stage, or a specific reservoir. Not a validated seedling dose.",
   },
   {
     id: "petunia-letpot-ec",
@@ -1279,13 +1292,16 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min: 1.2, max: 2.5, unit: "mS/cm" },
-    notes: "General LetPot petunia guidance includes cascading types but does not establish a cultivar-specific response or separate growth-stage range. It is not a validated seedling dose.",
+    notes:
+      "General LetPot petunia guidance includes cascading types but does not establish a cultivar-specific response or separate growth-stage range. It is not a validated seedling dose.",
   },
-  ...([
-    ["SEEDLING", 0.7, 0.9],
-    ["VEGETATIVE", 0.9, 1.2],
-    ["MATURE", 1.2, 1.5],
-  ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
+  ...(
+    [
+      ["SEEDLING", 0.7, 0.9],
+      ["VEGETATIVE", 0.9, 1.2],
+      ["MATURE", 1.2, 1.5],
+    ] as const
+  ).map(([stageApplicability, min, max]): EvidenceObservation => ({
     id: `english-lavender-letpot-${stageApplicability.toLowerCase()}-ec`,
     metric: "EC",
     cropIdentity: "english-lavender",
@@ -1297,7 +1313,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "LetPot's stage-specific guidance identifies Lavandula angustifolia, converted from µS/cm. It does not validate the Vera cultivar or a specific reservoir; maturity and flowering are not treated as identical.",
+    notes:
+      "LetPot's stage-specific guidance identifies Lavandula angustifolia, converted from µS/cm. It does not validate the Vera cultivar or a specific reservoir; maturity and flowering are not treated as identical.",
   })),
   {
     id: "lemon-basil-growee-ec",
@@ -1311,13 +1328,16 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min: 1, max: 1.6, unit: "mS/cm" },
-    notes: "Growee gives general basil nutrient-solution guidance and explicitly includes lemon basil. Lime basil is mapped by the shared O. × africanum crop identity; this is not cultivar-specific validation or a validated seedling dose.",
+    notes:
+      "Growee gives general basil nutrient-solution guidance and explicitly includes lemon basil. Lime basil is mapped by the shared O. × africanum crop identity; this is not cultivar-specific validation or a validated seedling dose.",
   },
-  ...([
-    ["SEEDLING", 0.7, 0.9],
-    ["VEGETATIVE", 0.9, 1.2],
-    ["MATURE", 1.6, 2.1],
-  ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
+  ...(
+    [
+      ["SEEDLING", 0.7, 0.9],
+      ["VEGETATIVE", 0.9, 1.2],
+      ["MATURE", 1.6, 2.1],
+    ] as const
+  ).map(([stageApplicability, min, max]): EvidenceObservation => ({
     id: `holy-basil-letpot-${stageApplicability.toLowerCase()}-ec`,
     metric: "EC",
     cropIdentity: "holy-basil",
@@ -1329,7 +1349,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "LetPot's guidance for Ocimum tenuiflorum by reported growth stage, converted from µS/cm. Maturity is not automatically equated with vegetative growth or flowering.",
+    notes:
+      "LetPot's guidance for Ocimum tenuiflorum by reported growth stage, converted from µS/cm. Maturity is not automatically equated with vegetative growth or flowering.",
   })),
   {
     id: "bunching-onion-igworks-ec",
@@ -1343,7 +1364,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min: 1.8, max: 2.4, unit: "mS/cm" },
-    notes: "Supplier guidance for non-bulbing bunching onions; it does not identify a botanical species or cultivar, stage or individual reservoir. The association to Allium fistulosum is crop-type guidance, not cultivar-specific validation or a seedling dose.",
+    notes:
+      "Supplier guidance for non-bulbing bunching onions; it does not identify a botanical species or cultivar, stage or individual reservoir. The association to Allium fistulosum is crop-type guidance, not cultivar-specific validation or a seedling dose.",
   },
   {
     id: "sunflower-igworks-pre-bud-ec",
@@ -1357,12 +1379,15 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min: 1.2, max: 1.6, unit: "mS/cm" },
-    notes: "The supplier describes this range before flower buds appear. It is not specific to the named cultivar, a seedling, or a particular hydroponic reservoir.",
+    notes:
+      "The supplier describes this range before flower buds appear. It is not specific to the named cultivar, a seedling, or a particular hydroponic reservoir.",
   },
-  ...([
-    ["sunflower", 1.2, 1.8, NUTRIENT_SOURCES.igworksSunflower],
-    ["kohlrabi", 1.8, 2.4, NUTRIENT_SOURCES.lanitexKohlrabi],
-  ] as const).map(([cropIdentity, min, max, source]): EvidenceObservation => ({
+  ...(
+    [
+      ["sunflower", 1.2, 1.8, NUTRIENT_SOURCES.igworksSunflower],
+      ["kohlrabi", 1.8, 2.4, NUTRIENT_SOURCES.lanitexKohlrabi],
+    ] as const
+  ).map(([cropIdentity, min, max, source]): EvidenceObservation => ({
     id: `${cropIdentity}-${source.id}-ec`,
     metric: "EC",
     cropIdentity,
@@ -1374,12 +1399,15 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "General grower guidance for hydroponic nutrient solution, not a cultivar-specific trial or a guarantee for a particular system or stage. The source's own product and growing context may affect results; not a validated seedling dose.",
+    notes:
+      "General grower guidance for hydroponic nutrient solution, not a cultivar-specific trial or a guarantee for a particular system or stage. The source's own product and growing context may affect results; not a validated seedling dose.",
   })),
-  ...([
-    ["arugula", 0.8, 1.4, NUTRIENT_SOURCES.igworksArugula],
-    ["cilantro", 1.3, 1.8, NUTRIENT_SOURCES.igworksCilantro],
-  ] as const).map(([cropIdentity, min, max, source]): EvidenceObservation => ({
+  ...(
+    [
+      ["arugula", 0.8, 1.4, NUTRIENT_SOURCES.igworksArugula],
+      ["cilantro", 1.3, 1.8, NUTRIENT_SOURCES.igworksCilantro],
+    ] as const
+  ).map(([cropIdentity, min, max, source]): EvidenceObservation => ({
     id: `${cropIdentity}-igworks-hydroponic-ec`,
     metric: "EC",
     cropIdentity,
@@ -1391,13 +1419,16 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "General supplier guidance for hydroponic nutrient solution; no cultivar, growth stage or individual reservoir is specified. Not a validated seedling dose or a guaranteed optimum.",
+    notes:
+      "General supplier guidance for hydroponic nutrient solution; no cultivar, growth stage or individual reservoir is specified. Not a validated seedling dose or a guaranteed optimum.",
   })),
-  ...([
-    ["SEEDLING", 1, 1.3],
-    ["VEGETATIVE", 1, 1.5],
-    ["MATURE", 1.5, 1.8],
-  ] as const).map(([stageApplicability, min, max]): EvidenceObservation => ({
+  ...(
+    [
+      ["SEEDLING", 1, 1.3],
+      ["VEGETATIVE", 1, 1.5],
+      ["MATURE", 1.5, 1.8],
+    ] as const
+  ).map(([stageApplicability, min, max]): EvidenceObservation => ({
     id: `garlic-chives-letpot-${stageApplicability.toLowerCase()}-ec`,
     metric: "EC",
     cropIdentity: "garlic-chives",
@@ -1409,7 +1440,8 @@ export const CROP_EVIDENCE: EvidenceObservation[] = [
     verificationStatus: "VERIFIED",
     evidenceState: "MODERATE",
     observedRange: { min, max, unit: "mS/cm" },
-    notes: "LetPot's stage-specific garlic chive guidance, converted from µS/cm; cultivar and reservoir conditions are unspecified. Growth and maturity remain distinct and neither implies a flowering target.",
+    notes:
+      "LetPot's stage-specific garlic chive guidance, converted from µS/cm; cultivar and reservoir conditions are unspecified. Growth and maturity remain distinct and neither implies a flowering target.",
   })),
   {
     id: "chervil-igworks-hydroponic-ec",
@@ -1878,7 +1910,8 @@ export const AEROGARDEN_RECIPE: ManufacturerRecipe = {
     ...([1, 2, 3] as const).map((feedingIndex) => ({
       stage: "POD_GROUP_12",
       feedingIndex,
-      label: feedingIndex === 3 ? "12-pod third and later feedings" : `12-pod feeding ${feedingIndex}`,
+      label:
+        feedingIndex === 3 ? "12-pod third and later feedings" : `12-pod feeding ${feedingIndex}`,
       doses: { single: feedingIndex === 3 ? 24 : 16 },
       doseUnit: "mL" as const,
       source: NUTRIENT_SOURCES.aerogardenLiquidFood,

@@ -16,7 +16,13 @@ import {
   MANUFACTURER_RECIPES,
   NUTRIENT_SOURCES,
 } from "@/lib/garden-nutrient-engine-v1/data";
-import { donorPlants, donorPlantsById } from "./canonical-adapter";
+import {
+  buildDonorPlantDetail,
+  canonicalEntries,
+  donorPlants,
+  donorPlantsById,
+  type DonorGuideSection,
+} from "./canonical-adapter";
 import type { DonorPlant } from "./canonical-adapter";
 import type {
   CalibrationObservation,
@@ -65,6 +71,11 @@ export type CalculatorStage = {
   label: Record<Lang, string>;
 };
 
+export type CalculatorStageGuidance = Pick<
+  DonorGuideSection,
+  "id" | "title" | "body" | "backing" | "confidence" | "sources"
+>;
+
 export const CALCULATOR_PLANTS: CalculatorPlant[] = donorPlants.map((plant) => ({
   id: plant.id,
   emoji: plant.emoji,
@@ -73,6 +84,44 @@ export const CALCULATOR_PLANTS: CalculatorPlant[] = donorPlants.map((plant) => (
   cultivar: plant.variety,
   aliases: plant.tags,
 }));
+
+const STAGE_GUIDE_SECTIONS: Record<CalculatorCropStage, readonly string[]> = {
+  UNSPECIFIED: ["growth", "flowering", "harvest", "germination"],
+  SEEDLING: ["germination", "growth"],
+  VEGETATIVE: ["growth", "hydroponics"],
+  MATURE: ["growth", "harvest"],
+  FLOWERING: ["flowering", "growth"],
+  FRUITING: ["fruiting", "harvest", "growth"],
+  MIXED: ["germination", "growth", "flowering", "harvest"],
+};
+
+/**
+ * Returns existing public Plant Profile context to help a grower identify an
+ * observed stage. These editorial cues do not infer stage from age or change
+ * the Calculator's evidence selection or dose.
+ */
+export function calculatorStageGuidanceForPlant(
+  plantId: string,
+  language: Lang,
+  stage: CalculatorCropStage,
+): CalculatorStageGuidance[] {
+  const entry = canonicalEntries.find((candidate) => candidate.libraryPlantId === plantId);
+  if (!entry) return [];
+  const guides = buildDonorPlantDetail(entry, language).guides;
+  const byId = new Map(guides.map((guide) => [guide.id, guide]));
+  return STAGE_GUIDE_SECTIONS[stage]
+    .map((id) => byId.get(id))
+    .filter((guide): guide is DonorGuideSection => Boolean(guide && (guide.body || guide.subtitle)))
+    .slice(0, 2)
+    .map(({ id, title, body, backing, confidence, sources }) => ({
+      id,
+      title,
+      body,
+      backing,
+      confidence,
+      sources,
+    }));
+}
 
 /** Carnivorous plant profiles stay in Gardenpedia, but are not nutrient recipe inputs. */
 export const CALCULATOR_EXCLUDED_CARNIVOROUS_IDS = new Set([
@@ -151,23 +200,17 @@ export function recipeStageLabel(
 ): string {
   if (productId !== "aerogarden") return stage.label[lang];
   if (stage.feedingIndex === 1 && (pods === 9 || pods === 12)) {
-    return lang === "es"
-      ? `Primera alimentación · ${pods} pods`
-      : `First feeding · ${pods} pods`;
+    return lang === "es" ? `Primera alimentación · ${pods} pods` : `First feeding · ${pods} pods`;
   }
   if (stage.feedingIndex === 2) {
-    return lang === "es"
-      ? `Segunda alimentación · ${pods} pods`
-      : `Second feeding · ${pods} pods`;
+    return lang === "es" ? `Segunda alimentación · ${pods} pods` : `Second feeding · ${pods} pods`;
   }
   if (stage.feedingIndex === 3) {
     return lang === "es"
       ? `Tercera y siguientes · ${pods} pods`
       : `Third and later feedings · ${pods} pods`;
   }
-  return lang === "es"
-    ? `En cada alimentación · ${pods} pods`
-    : `At each feeding · ${pods} pods`;
+  return lang === "es" ? `En cada alimentación · ${pods} pods` : `At each feeding · ${pods} pods`;
 }
 
 export function manufacturerDoseDefaults(input: {
@@ -215,7 +258,9 @@ export const CALCULATOR_PRODUCTS: CalculatorProduct[] = [
     recipeId: AEROGARDEN_RECIPE_ID,
     hasRecipeStages: true,
     recipeStages: AEROGARDEN_STAGES,
-    podGroups: MANUFACTURER_RECIPES.find((recipe) => recipe.id === AEROGARDEN_RECIPE_ID)?.podCountGroups ?? [],
+    podGroups:
+      MANUFACTURER_RECIPES.find((recipe) => recipe.id === AEROGARDEN_RECIPE_ID)?.podCountGroups ??
+      [],
     available: true,
     parts: [{ id: "single", label: "Liquid Plant Food" }],
   },
@@ -808,9 +853,9 @@ function recipeSignatureFor(
     ? productId === "aerogarden"
       ? "single:1"
       : recipe.value.parts
-        .map((part) => `${part.componentId}:${part.ml}`)
-        .sort()
-        .join("|")
+          .map((part) => `${part.componentId}:${part.ml}`)
+          .sort()
+          .join("|")
     : undefined;
 }
 
@@ -874,8 +919,12 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
       ...(calculated.warnings ?? []),
       "User-identified formulation and measured ratio; no manufacturer recipe is implied. Follow the manufacturer's mixing instructions.",
     ];
-  if (calculated.kind === "ok" && input.productId === "gh-flora" && input.mode !== "recipe" &&
-      calculated.doses.some((dose) => dose.unit === "mL" && dose.amount > 0))
+  if (
+    calculated.kind === "ok" &&
+    input.productId === "gh-flora" &&
+    input.mode !== "recipe" &&
+    calculated.doses.some((dose) => dose.unit === "mL" && dose.amount > 0)
+  )
     calculated.warnings = [
       ...(calculated.warnings ?? []),
       "Component proportions follow your actual calibration mixture and may differ from the manufacturer's recipe for this stage.",
@@ -897,8 +946,11 @@ export function calculateGardenResult(input: CalcInput): CalcResult {
         `Below your dosing resolution (${input.dosingResolutionMl} mL): ${unmeasurable.map((dose) => dose.label).join(", ")}. Use suitable equipment; do not round a required dose to zero.`,
       ];
   }
-  if (calculated.kind === "ok" && input.dosingResolutionMl === undefined &&
-      calculated.doses.some((dose) => dose.unit === "mL" && dose.amount > 0))
+  if (
+    calculated.kind === "ok" &&
+    input.dosingResolutionMl === undefined &&
+    calculated.doses.some((dose) => dose.unit === "mL" && dose.amount > 0)
+  )
     calculated.warnings = [
       ...(calculated.warnings ?? []),
       "Dosing equipment resolution is unknown; check that you can measure each amount accurately.",
@@ -1208,7 +1260,10 @@ function calculateResult(input: CalcInput): CalcResult {
 
   if (input.mode === "target") {
     if (input.sourceEcKnown === false)
-      return engineNeeds("Mide el EC del agua de origen antes de preparar la solución.", targetPresentation);
+      return engineNeeds(
+        "Mide el EC del agua de origen antes de preparar la solución.",
+        targetPresentation,
+      );
     if (!targetEngine.ok || !targetEngine.value || targetValue === undefined) {
       return engineNeeds(
         targetEngine.errors[0]?.message ??
@@ -1240,7 +1295,10 @@ function calculateResult(input: CalcInput): CalcResult {
       targetEc: targetValue,
       reservoirVolumeL: input.liters,
       calibration: calibration?.value,
-      policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl, meterResolution: input.meterResolutionMs },
+      policy: {
+        dosingEquipmentResolutionMl: input.dosingResolutionMl,
+        meterResolution: input.meterResolutionMs,
+      },
     });
     if (!dose.ok || !dose.value) {
       return {
@@ -1284,7 +1342,9 @@ function calculateResult(input: CalcInput): CalcResult {
       ),
       sources: [...new Set([...sources, ...calibration.value.claims.map((claim) => claim.label)])],
       expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
-      warnings: [...targetEngine.warnings, ...calibration.warnings, ...dose.warnings].map((item) => item.message),
+      warnings: [...targetEngine.warnings, ...calibration.warnings, ...dose.warnings].map(
+        (item) => item.message,
+      ),
     };
   }
 
@@ -1374,7 +1434,11 @@ function calculateResult(input: CalcInput): CalcResult {
         ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
       ],
       compatibility,
-      warnings: [...targetEngine.warnings, ...(value.direction === "ADD_NUTRIENT" ? calibration.warnings : []), ...correction.warnings].map((item) => item.message),
+      warnings: [
+        ...targetEngine.warnings,
+        ...(value.direction === "ADD_NUTRIENT" ? calibration.warnings : []),
+        ...correction.warnings,
+      ].map((item) => item.message),
       expectedEc:
         value.firstStepDoseMl === undefined
           ? {
@@ -1391,7 +1455,10 @@ function calculateResult(input: CalcInput): CalcResult {
   if (input.waterAdded === null)
     return engineNeeds("cuánta agua planeas añadir", targetPresentation);
   if (input.waterAdded > 0 && input.sourceEcKnown === false)
-    return engineNeeds("Mide el EC del agua de reposición antes de calcular el relleno.", targetPresentation);
+    return engineNeeds(
+      "Mide el EC del agua de reposición antes de calcular el relleno.",
+      targetPresentation,
+    );
   if (input.capacityLiters == null)
     return engineNeeds("Reservoir capacity is required before adding water.", targetPresentation);
   const topup = calculateTopUpMaintenance({
@@ -1402,7 +1469,10 @@ function calculateResult(input: CalcInput): CalcResult {
     replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),
     targetEc: targetValue,
     calibration: calibrationModel,
-    policy: { dosingEquipmentResolutionMl: input.dosingResolutionMl, meterResolution: input.meterResolutionMs },
+    policy: {
+      dosingEquipmentResolutionMl: input.dosingResolutionMl,
+      meterResolution: input.meterResolutionMs,
+    },
   });
   if (!topup.ok || !topup.value)
     return engineNeeds(topup.errors[0]?.message ?? "No se pudo calcular el relleno.", {
@@ -1444,7 +1514,11 @@ function calculateResult(input: CalcInput): CalcResult {
       ...new Set([...sources, ...(calibrationModel?.claims.map((claim) => claim.label) ?? [])]),
     ],
     compatibility,
-    warnings: [...targetEngine.warnings, ...(value.nutrientDoseMl ? calibration.warnings : []), ...topup.warnings].map((item) => item.message),
+    warnings: [
+      ...targetEngine.warnings,
+      ...(value.nutrientDoseMl ? calibration.warnings : []),
+      ...topup.warnings,
+    ].map((item) => item.message),
     expectedEc: { kind: "calculated", min: targetValue, max: targetValue },
   };
 }
@@ -1529,21 +1603,34 @@ function matchingCalibrationObservations(
   context: string,
 ): CalibrationObservation[] {
   return (input.calibrationObservations ?? []).flatMap((item) => {
-    if (!sameProductIdentity(identity, item.productIdentity) ||
-        item.formulationVersion !== identity.formulationVersion || !item.componentDosesMl)
+    if (
+      !sameProductIdentity(identity, item.productIdentity) ||
+      item.formulationVersion !== identity.formulationVersion ||
+      !item.componentDosesMl
+    )
       return [];
     const previousContext = item.recipeContextSignature;
     if (previousContext === context) return [item];
     // Earlier AeroGarden records encoded the official dose rather than its
     // single-component ratio. Normalize matching records in memory only.
-    if (input.productId !== "aerogarden" || context !== "single:1" ||
-        !previousContext || !/^single:(?:4|8|12|16|24)$/.test(previousContext) ||
-        Object.keys(item.componentDosesMl).length !== 1 ||
-        !((item.componentDosesMl["single"] ?? 0) > 0) ||
-        !item.componentRatioOrRecipeSignature.startsWith(`${previousContext};observed=`))
+    if (
+      input.productId !== "aerogarden" ||
+      context !== "single:1" ||
+      !previousContext ||
+      !/^single:(?:4|8|12|16|24)$/.test(previousContext) ||
+      Object.keys(item.componentDosesMl).length !== 1 ||
+      !((item.componentDosesMl["single"] ?? 0) > 0) ||
+      !item.componentRatioOrRecipeSignature.startsWith(`${previousContext};observed=`)
+    )
       return [];
-    return [{ ...item, recipeContextSignature: context,
-      componentRatioOrRecipeSignature: context + item.componentRatioOrRecipeSignature.slice(previousContext.length) }];
+    return [
+      {
+        ...item,
+        recipeContextSignature: context,
+        componentRatioOrRecipeSignature:
+          context + item.componentRatioOrRecipeSignature.slice(previousContext.length),
+      },
+    ];
   });
 }
 
@@ -1666,7 +1753,11 @@ export function recordActualDoses(input: {
   if (observation.value) {
     observation.value.recipeContextSignature = signature;
     observation.value.componentDosesMl = componentDosesMl;
-    if (input.meterResolutionMs !== undefined && Number.isFinite(input.meterResolutionMs) && input.meterResolutionMs > 0)
+    if (
+      input.meterResolutionMs !== undefined &&
+      Number.isFinite(input.meterResolutionMs) &&
+      input.meterResolutionMs > 0
+    )
       observation.value.meterResolution = input.meterResolutionMs;
   }
   return observation;

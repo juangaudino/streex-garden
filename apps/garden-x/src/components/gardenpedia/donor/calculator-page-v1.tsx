@@ -36,6 +36,7 @@ import {
   calculateGardenResult,
   calibrationUsage,
   calculatorSourceUrl,
+  calculatorStageGuidanceForPlant,
   generalCropReferenceForStage,
   formatActualDosePrefill,
   loadSavedSystems,
@@ -76,7 +77,8 @@ const T = {
     volume: "Volumen del tanque",
     capacity: "Capacidad del tanque",
     pods: "Capacidad del modelo (pods)",
-    podGroupsHint: "Modelos indicados por el fabricante: 2, 3, 6, 7, 9 y 12 pods. Revisa la etiqueta de tu producto.",
+    podGroupsHint:
+      "Modelos indicados por el fabricante: 2, 3, 6, 7, 9 y 12 pods. Revisa la etiqueta de tu producto.",
     product: "Nutriente",
     customAbManufacturer: "Fabricante del producto A+B",
     customAbName: "Nombre exacto del producto A+B",
@@ -204,7 +206,8 @@ const T = {
     volume: "Reservoir volume",
     capacity: "Reservoir capacity",
     pods: "Model capacity (pods)",
-    podGroupsHint: "Manufacturer-listed models: 2, 3, 6, 7, 9 and 12 pods. Check your product label.",
+    podGroupsHint:
+      "Manufacturer-listed models: 2, 3, 6, 7, 9 and 12 pods. Check your product label.",
     product: "Nutrient",
     customAbManufacturer: "A+B manufacturer",
     customAbName: "Exact A+B product name",
@@ -371,7 +374,13 @@ const seedAgeReferences: Readonly<Record<string, SeedAgeReference>> = gardenSeed
 
 /* ---------------------------------------------------------------- page */
 
-export function CalculatorPage({ language = "es", initialPlantId }: { language?: Lang; initialPlantId?: string | undefined }) {
+export function CalculatorPage({
+  language = "es",
+  initialPlantId,
+}: {
+  language?: Lang;
+  initialPlantId?: string | undefined;
+}) {
   const [lang, setLang] = useState<Lang>(language);
   useEffect(() => setLang(language), [language]);
   const t = T[lang];
@@ -384,7 +393,8 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
   const [plantQuery, setPlantQuery] = useState("");
   const [mode, setMode] = useState<Mode>("recipe");
   const [crops, setCrops] = useState<Record<string, number>>(() =>
-    initialPlantId && CALCULATOR_PLANTS.some((plant) => plant.id === initialPlantId) &&
+    initialPlantId &&
+    CALCULATOR_PLANTS.some((plant) => plant.id === initialPlantId) &&
     !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(initialPlantId)
       ? { [initialPlantId]: 1 }
       : sys.crops,
@@ -428,6 +438,19 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
   const [correctionStepInput, setCorrectionStepInput] = useState("50");
   const dosingResolutionMl = parseDecimalInput(dosingResolutionInput) ?? undefined;
   const meterResolutionMs = parseDecimalInput(meterResolutionInput) ?? undefined;
+  const stageGuidanceByPlant = useMemo(
+    () =>
+      new Map(
+        Object.keys(crops).map(
+          (id) =>
+            [
+              id,
+              calculatorStageGuidanceForPlant(id, lang, cropStages[id] ?? "UNSPECIFIED"),
+            ] as const,
+        ),
+      ),
+    [crops, cropStages, lang],
+  );
   const [round, setRound] = useState(1);
   const [justLearned, setJustLearned] = useState(false);
   const [calibrationObservations, setCalibrationObservations] = useState<
@@ -492,7 +515,11 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     setStageId(s.stageId);
     setPods(s.pods);
     setUnit(s.unit);
-    setSourceEcInput(s.sourceEcKnown === false ? "" : String(s.unit === "uS" ? Number((s.water.ec * 1000).toPrecision(15)) : s.water.ec));
+    setSourceEcInput(
+      s.sourceEcKnown === false
+        ? ""
+        : String(s.unit === "uS" ? Number((s.water.ec * 1000).toPrecision(15)) : s.water.ec),
+    );
     setMode(s.mode ?? "recipe");
     setUserTarget(s.userTarget ?? null);
     setTargetInput(
@@ -593,7 +620,9 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     setJustLearned(false);
   };
 
-  const sourceEc = Number(((parseDecimalInput(sourceEcInput) ?? 0) / (unit === "uS" ? 1000 : 1)).toPrecision(15));
+  const sourceEc = Number(
+    ((parseDecimalInput(sourceEcInput) ?? 0) / (unit === "uS" ? 1000 : 1)).toPrecision(15),
+  );
   useEffect(
     () => setFillPlanMessage(""),
     [
@@ -624,13 +653,17 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
     if (next !== unit && targetInput.trim()) {
       const currentMs = parseDisplayedEc(targetInput);
       if (currentMs !== null) {
-        setTargetInput(String(Number((next === "uS" ? currentMs * 1000 : currentMs).toPrecision(15))));
+        setTargetInput(
+          String(Number((next === "uS" ? currentMs * 1000 : currentMs).toPrecision(15))),
+        );
       }
     }
     if (next !== unit && sourceEcInput.trim()) {
       const currentMs = parseDisplayedEc(sourceEcInput);
       if (currentMs !== null)
-        setSourceEcInput(String(Number((next === "uS" ? currentMs * 1000 : currentMs).toPrecision(15))));
+        setSourceEcInput(
+          String(Number((next === "uS" ? currentMs * 1000 : currentMs).toPrecision(15))),
+        );
     }
     setUnit(next);
     if (next !== unit && currentEc.trim()) {
@@ -752,8 +785,14 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
           ...(targetEdited && (userTarget === null || userTarget <= 0) && mode !== "recipe"
             ? [t.targetEc]
             : []),
-          ...(dosingResolutionInput.trim() && (dosingResolutionMl === undefined || dosingResolutionMl <= 0) ? [t.dosing] : []),
-          ...(meterResolutionInput.trim() && (meterResolutionMs === undefined || meterResolutionMs <= 0) ? [lang === "es" ? "Resolución del medidor de EC" : "EC meter resolution"] : []),
+          ...(dosingResolutionInput.trim() &&
+          (dosingResolutionMl === undefined || dosingResolutionMl <= 0)
+            ? [t.dosing]
+            : []),
+          ...(meterResolutionInput.trim() &&
+          (meterResolutionMs === undefined || meterResolutionMs <= 0)
+            ? [lang === "es" ? "Resolución del medidor de EC" : "EC meter resolution"]
+            : []),
           ...(mode === "adjust" &&
           ((parseDecimalInput(correctionStepInput) ?? 0) <= 0 ||
             (parseDecimalInput(correctionStepInput) ?? 0) > 100)
@@ -1071,6 +1110,7 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                         cropStages[id] ?? "UNSPECIFIED",
                         hydroponicSystem,
                       );
+                      const stageGuidance = stageGuidanceByPlant.get(id) ?? [];
                       return (
                         <li
                           key={id}
@@ -1211,6 +1251,63 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                               </a>
                             </details>
                           )}
+                          {stageGuidance.length > 0 && (
+                            <details className="col-span-full text-xs text-muted-foreground">
+                              <summary className="cursor-pointer font-medium">
+                                {lang === "es"
+                                  ? "Pistas de la ficha para reconocer la etapa"
+                                  : "Profile cues to help identify the stage"}
+                              </summary>
+                              <p className="mt-2">
+                                {lang === "es"
+                                  ? "Usa estas notas públicas junto con lo que observas en la planta. Los días desde la siembra no confirman una etapa ni cambian la dosis."
+                                  : "Use these public notes alongside what you observe on the plant. Days since sowing do not confirm a stage or change the dose."}
+                              </p>
+                              <div className="mt-2 space-y-2">
+                                {stageGuidance.map((guide) => (
+                                  <section
+                                    key={guide.id}
+                                    className="rounded-md border border-border/70 p-2"
+                                  >
+                                    <h4 className="font-medium text-foreground">
+                                      {guide.title}
+                                      <span className="ml-2 rounded border px-1.5 py-0.5 text-[10px] font-normal">
+                                        {guide.backing === "source"
+                                          ? lang === "es"
+                                            ? "Respaldado por fuente"
+                                            : "Source-backed"
+                                          : guide.backing === "garden"
+                                            ? lang === "es"
+                                              ? "Adaptación Garden"
+                                              : "Garden adaptation"
+                                            : lang === "es"
+                                              ? "Por validar"
+                                              : "Needs validation"}
+                                      </span>
+                                    </h4>
+                                    <p className="mt-1">{guide.body}</p>
+                                    {guide.sources.length > 0 && (
+                                      <ul className="mt-1 space-y-1">
+                                        {guide.sources.slice(0, 2).map((source) => (
+                                          <li key={source.id}>
+                                            <a
+                                              className="underline"
+                                              href={source.url}
+                                              target="_blank"
+                                              rel="noreferrer"
+                                            >
+                                              {source.publisher}
+                                              {source.title ? ` · ${source.title}` : ""}
+                                            </a>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    )}
+                                  </section>
+                                ))}
+                              </div>
+                            </details>
+                          )}
                           {id === "chamomile-unspecified" && (
                             <p className="col-span-full text-xs text-muted-foreground">
                               {lang === "es"
@@ -1236,27 +1333,43 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                                   >
                                     {reference.source.publisher}
                                   </a>
-                                  {mode !== "recipe" && reference.selectableEcMs !== undefined && (
-                                    <div className="mt-2 rounded-md border border-border p-2">
-                                      <p>
-                                        {reference.selectionKind === "GUIDE_LOWER_BOUND"
-                                          ? lang === "es"
-                                            ? "Es el límite inferior de una guía sin evidencia de respaldo, no una dosis validada. Si lo eliges, será tu objetivo manual y la dosis requerirá calibración."
-                                            : "This is the lower bound of a guide without supporting evidence, not a validated dose. If selected, it becomes your manual target and dosing requires calibration."
-                                          : lang === "es"
-                                          ? "Es un valor observado en ese estudio, no un objetivo validado para tu sistema. Si lo eliges, será tu objetivo manual y la dosis requerirá calibración."
-                                          : "This value was observed in that study, not validated as a target for your system. If selected, it becomes your manual target and dosing requires calibration."}
-                                      </p>
-                                      <button
-                                        type="button"
-                                        className="mt-2 min-h-10 font-medium text-primary underline"
-                                        aria-label={`${reference.selectionKind === "GUIDE_LOWER_BOUND" ? (lang === "es" ? "Elegir límite inferior de la guía para" : "Choose guide lower bound for") : (lang === "es" ? "Elegir EC del estudio para" : "Choose study EC for")} ${c.name[lang]}: ${fmtEc(reference.selectableEcMs)} ${unitLabel}`}
-                                        onClick={() => editTarget(String(unit === "uS" ? reference.selectableEcMs! * 1000 : reference.selectableEcMs))}
-                                      >
-                                        {lang === "es" ? "Elegir como mi EC objetivo" : "Choose as my EC target"}: {fmtEc(reference.selectableEcMs)} {unitLabel}
-                                      </button>
-                                    </div>
-                                  )}
+                                  {mode !== "recipe" &&
+                                    (reference.selectableEcValuesMs?.length ||
+                                      reference.selectableEcMs !== undefined) && (
+                                      <div className="mt-2 rounded-md border border-border p-2">
+                                        <p>
+                                          {reference.selectionKind === "GUIDE_LOWER_BOUND"
+                                            ? lang === "es"
+                                              ? "Es el límite inferior de una guía sin evidencia de respaldo, no una dosis validada. Si lo eliges, será tu objetivo manual y la dosis requerirá calibración."
+                                              : "This is the lower bound of a guide without supporting evidence, not a validated dose. If selected, it becomes your manual target and dosing requires calibration."
+                                            : lang === "es"
+                                              ? "Es un valor observado en ese estudio, no un objetivo validado para tu sistema. Si lo eliges, será tu objetivo manual y la dosis requerirá calibración."
+                                              : "This value was observed in that study, not validated as a target for your system. If selected, it becomes your manual target and dosing requires calibration."}
+                                        </p>
+                                        {(
+                                          reference.selectableEcValuesMs ?? [
+                                            reference.selectableEcMs!,
+                                          ]
+                                        ).map((value) => (
+                                          <button
+                                            key={value}
+                                            type="button"
+                                            className="mt-2 min-h-10 font-medium text-primary underline"
+                                            aria-label={`${reference.selectionKind === "GUIDE_LOWER_BOUND" ? (lang === "es" ? "Elegir límite inferior de la guía para" : "Choose guide lower bound for") : lang === "es" ? "Elegir EC del estudio para" : "Choose study EC for"} ${c.name[lang]}: ${fmtEc(value)} ${unitLabel}`}
+                                            onClick={() =>
+                                              editTarget(
+                                                String(unit === "uS" ? value * 1000 : value),
+                                              )
+                                            }
+                                          >
+                                            {lang === "es"
+                                              ? "Elegir como mi EC objetivo"
+                                              : "Choose as my EC target"}
+                                            : {fmtEc(value)} {unitLabel}
+                                          </button>
+                                        ))}
+                                      </div>
+                                    )}
                                 </div>
                               ))}
                             </details>
@@ -1317,8 +1430,8 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                           )}
                           <label className="col-span-full flex items-center gap-2 text-xs text-muted-foreground">
                             {lang === "es"
-                              ? "Días desde la siembra (opcional)"
-                              : "Days since sowing (optional)"}
+                              ? "Días desde la siembra (referencia)"
+                              : "Days since sowing (reference)"}
                             <input
                               type="number"
                               min="0"
@@ -1384,8 +1497,8 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                   {Object.keys(crops).length > 0 && (
                     <p className="mt-2 text-xs text-muted-foreground">
                       {lang === "es"
-                        ? "Indica si hay plántulas: la edad en días no determina por sí sola una etapa ni un EC adecuado."
-                        : "Indicate whether seedlings are present: age in days alone does not determine stage or a suitable EC."}
+                        ? "La etapa elegida arriba es la que usa el cálculo. Los días se guardan como referencia y no cambian la etapa ni la dosis."
+                        : "The stage selected above drives the calculation. Days are saved as context and do not change the stage or dose."}
                     </p>
                   )}
                   <button
@@ -1456,7 +1569,11 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                     >
                       {product.recipeStages
                         .filter(
-                          (s) => product.id !== "aerogarden" || s.feedingIndex === 1 || pods === 9 || pods === 12,
+                          (s) =>
+                            product.id !== "aerogarden" ||
+                            s.feedingIndex === 1 ||
+                            pods === 9 ||
+                            pods === 12,
                         )
                         .map((s) => (
                           <option key={s.id} value={s.id}>
@@ -1478,7 +1595,11 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                           active={pods === group}
                           onClick={() => {
                             setPods(group);
-                            if (group !== 9 && group !== 12 && ["feeding-2", "feeding-3"].includes(stageId))
+                            if (
+                              group !== 9 &&
+                              group !== 12 &&
+                              ["feeding-2", "feeding-3"].includes(stageId)
+                            )
                               setStageId("feeding-1");
                           }}
                         >
@@ -1591,7 +1712,10 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                         {product.recipeStages
                           .filter(
                             (stage) =>
-                              product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9 || pods === 12,
+                              product.id !== "aerogarden" ||
+                              stage.feedingIndex === 1 ||
+                              pods === 9 ||
+                              pods === 12,
                           )
                           .map((stage) => (
                             <option key={stage.id} value={stage.id}>
@@ -1646,10 +1770,14 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                     onChange={setMeterResolutionInput}
                   />
                   <p className="text-xs text-muted-foreground">
-                    {lang === "es" ? "Opcional: indica el menor cambio de EC que muestra tu medidor, en mS/cm." : "Optional: enter the smallest EC change your meter displays, in mS/cm."}
+                    {lang === "es"
+                      ? "Opcional: indica el menor cambio de EC que muestra tu medidor, en mS/cm."
+                      : "Optional: enter the smallest EC change your meter displays, in mS/cm."}
                   </p>
                   <p className="text-xs text-muted-foreground">
-                    {lang === "es" ? "Opcional: indica la menor cantidad que puedes medir con tu equipo." : "Optional: enter the smallest amount your equipment can measure."}
+                    {lang === "es"
+                      ? "Opcional: indica la menor cantidad que puedes medir con tu equipo."
+                      : "Optional: enter the smallest amount your equipment can measure."}
                   </p>
                 </div>
               </details>
@@ -1915,9 +2043,14 @@ export function CalculatorPage({ language = "es", initialPlantId }: { language?:
                     )}
 
                     {result.warnings && result.warnings.length > 0 && (
-                      <div role="alert" className="mt-4 rounded-lg border border-amber-500/60 bg-background/55 p-3 text-sm">
+                      <div
+                        role="alert"
+                        className="mt-4 rounded-lg border border-amber-500/60 bg-background/55 p-3 text-sm"
+                      >
                         <ul className="space-y-1">
-                          {result.warnings.map((message) => <li key={message}>{message}</li>)}
+                          {result.warnings.map((message) => (
+                            <li key={message}>{message}</li>
+                          ))}
                         </ul>
                       </div>
                     )}
@@ -2560,7 +2693,11 @@ function CalibrationCard({
           >
             {product.recipeStages
               .filter(
-                (stage) => product.id !== "aerogarden" || stage.feedingIndex === 1 || pods === 9 || pods === 12,
+                (stage) =>
+                  product.id !== "aerogarden" ||
+                  stage.feedingIndex === 1 ||
+                  pods === 9 ||
+                  pods === 12,
               )
               .map((stage) => (
                 <option key={stage.id} value={stage.id}>

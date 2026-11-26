@@ -65,6 +65,24 @@ case, the manufacturer dose is unchanged and Garden withholds crop compatibility
 and any common range until the stage composition is complete. A recipe step is
 not plant phenology, and this guard does not make it one.
 
+### Additional age-context coverage — 2026-11-26
+
+- Added source-backed nursery or germination context for Nebuka/bunching onion,
+  perpetual spinach, Hon Tsai Tai, Scarlet Red Tatsoi, purple kohlrabi and the
+  miniature/spray Dianthus mix. Tatsoi also has a separately labeled floating-
+  culture trial reference.
+- These references do not assign phenological stage or change an EC range or
+  dose. The grower must inspect the plant and confirm a suggested stage. Garden
+  does not convert an unsupported sowing-day count into a stage.
+- The exact cultivar/system boundary is retained in each note: garden and
+  nursery timing is not presented as a hydroponic transition, and supplier
+  germination windows only indicate emergence context.
+- Added a regression assertion that every registered nutrient source ID is
+  unique and every source URL is HTTPS. Focused age/stage and Calculator UI tests
+  pass **102/102**; the full suite passes **1,023/1,023**. Typecheck, the Garden
+  build, content validation and changed-file lint pass. Build regenerated only
+  the manifest timestamp; that noise is excluded from the change.
+
 ## Historical continuation snapshot — superseded
 
 - Isolated worktree: `/private/tmp/garden-calculator-online-review`, branch

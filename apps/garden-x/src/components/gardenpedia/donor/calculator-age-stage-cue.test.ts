@@ -6,9 +6,20 @@ import {
   contextFor,
 } from "./calculator-lovable-adapter";
 import { calculatePolycultureRange } from "@/lib/garden-nutrient-engine-v1/engine";
-import { CROP_EVIDENCE } from "@/lib/garden-nutrient-engine-v1/data";
+import { CROP_EVIDENCE, NUTRIENT_SOURCES } from "@/lib/garden-nutrient-engine-v1/data";
 
 describe("calculator age stage cues", () => {
+  it("keeps the nutrient source registry uniquely identified and linkable", () => {
+    const sources = Object.values(NUTRIENT_SOURCES);
+    const ids = sources.map((source) => source.id);
+
+    expect(new Set(ids).size).toBe(ids.length);
+    for (const source of sources) {
+      expect(source.url, source.id).toMatch(/^https:\/\//);
+      expect(() => new URL(source.url)).not.toThrow();
+    }
+  });
+
   it("uses USU's celery seed-to-transplant timing only as confirmable nursery context", () => {
     const cue = calculatorAgeStageCueForPlant("chinese-light-green-celery", 90);
     expect(cue?.reference.source.id).toBe("usu-grow-your-own-transplants-celery-timing");
@@ -21,6 +32,50 @@ describe("calculator age stage cues", () => {
     expect(cue?.ageWindow.text.en).toMatch(/does not automatically change stage or dose/);
     expect(calculatorAgeStageCueForPlant("chinese-light-green-celery", 78)).toBeUndefined();
     expect(calculatorAgeStageCueForPlant("chinese-light-green-celery", 106)).toBeUndefined();
+  });
+
+  it("adds sourced, confirmable seedling timing for the remaining named leafy and onion varieties", () => {
+    expect(
+      calculatorAgeStageCueForPlant("evergreen-bunching-onion-nabuka", 28)?.reference.source.id,
+    ).toBe("umn-extension-scallions-transplanting");
+    expect(
+      calculatorAgeStageCueForPlant("bunching-onion-allium-fistulosum", 28)?.ageWindow,
+    ).toMatchObject({
+      minDays: 28,
+      maxDays: 28,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(calculatorAgeStageCueForPlant("perpetual-spinach", 28)?.reference.source.id).toBe(
+      "nc-state-extension-perpetual-spinach-transplanting",
+    );
+    expect(calculatorAgeStageCueForPlant("hon-tsai-tai", 10)?.reference.source.id).toBe(
+      "seed-collection-hon-tsai-tai-germination",
+    );
+    expect(calculatorAgeStageCueForPlant("scarlet-red-tatsoi", 10)?.reference.source.id).toBe(
+      "hudson-valley-scarlet-red-tatsoi-germination",
+    );
+    expect(calculatorAgeStageCueForPlant("scarlet-red-tatsoi", 16)).toBeUndefined();
+    expect(calculatorAgeStageCueForPlant("purple-kohlrabi", 35)?.ageWindow).toMatchObject({
+      minDays: 28,
+      maxDays: 42,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(
+      calculatorAgeStageCueForPlant("fragrant-dwarf-dianthus-mix", 49)?.reference.source.id,
+    ).toBe("usu-extension-miniature-carnation-transplanting");
+  });
+
+  it("does not manufacture age-to-stage windows for crops without comparable timing evidence", () => {
+    for (const plantId of [
+      "monterey-strawberry",
+      "papalo-porophyllum-ruderale",
+      "peppermint-mentha-piperita",
+      "tennessee-coneflower-echinacea-tennesseensis",
+      "bulls-blood-beet",
+      "chamomile-unspecified",
+    ]) {
+      expect(calculatorAgeStageCueForPlant(plantId, 30), plantId).toBeUndefined();
+    }
   });
 
   it("resolves only explicitly mapped public stage references for the plant row", () => {

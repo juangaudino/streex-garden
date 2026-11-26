@@ -254,7 +254,8 @@ export function calculatorStageGuidanceForPlant(
 export function calculatorStageReferenceForPlant(plantId: string) {
   const exactReferences = CROP_STAGE_REFERENCES.filter(
     (item) =>
-      item.cropIdentity === plantId || ("plantIds" in item && item.plantIds.includes(plantId)),
+      item.cropIdentity === plantId ||
+      ("plantIds" in item && (item.plantIds as readonly string[]).includes(plantId)),
   );
   const cropIdentity = resolveNutrientCropIdentity(plantId);
   const mappedReferences = cropIdentity
@@ -285,7 +286,8 @@ export function calculatorAgeStageCueForPlant(plantId: string, ageDays: number) 
   if (!Number.isFinite(ageDays) || ageDays < 0) return undefined;
   const exactAgeReferences = CROP_STAGE_REFERENCES.filter(
     (item) =>
-      (item.cropIdentity === plantId || ("plantIds" in item && item.plantIds.includes(plantId))) &&
+      (item.cropIdentity === plantId ||
+        ("plantIds" in item && (item.plantIds as readonly string[]).includes(plantId))) &&
       "ageWindows" in item,
   );
   const resolvedCropIdentity = resolveNutrientCropIdentity(plantId);

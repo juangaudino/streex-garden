@@ -64,6 +64,21 @@ import {
 import { cn } from "@/lib/utils";
 import type { GardenpediaLanguage } from "./gardenpedia-shell";
 
+const CROP_STAGE_SUGGESTIONS = [
+  "SEEDLING",
+  "VEGETATIVE",
+  "MATURE",
+  "FLOWERING",
+  "FRUITING",
+] as const satisfies readonly CalculatorCropStage[];
+
+function isCalculatorCropStage(value: unknown): value is (typeof CROP_STAGE_SUGGESTIONS)[number] {
+  return (
+    typeof value === "string" &&
+    CROP_STAGE_SUGGESTIONS.includes(value as (typeof CROP_STAGE_SUGGESTIONS)[number])
+  );
+}
+
 /* ---------------------------------------------------------------- copy */
 
 const T = {
@@ -1213,12 +1228,10 @@ export function CalculatorPage({
                             )[stage],
                         )
                         .join(", ");
-                      const ageStageSuggestion: CalculatorCropStage | undefined =
+                      const ageStageSuggestion =
                         ageWindow &&
                         "stageSuggestion" in ageWindow &&
-                        ["SEEDLING", "VEGETATIVE", "MATURE", "FLOWERING", "FRUITING"].includes(
-                          ageWindow.stageSuggestion,
-                        )
+                        isCalculatorCropStage(ageWindow.stageSuggestion)
                           ? ageWindow.stageSuggestion
                           : undefined;
                       const ageStageLabel = ageStageSuggestion

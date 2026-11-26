@@ -610,6 +610,31 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
   });
 
+  it("identifies the GH feeding program in each calibration recipe option", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Bibb Lettuce");
+    await user.click(screen.getByRole("option", { name: /Bibb Lettuce/i }));
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+
+    const recipeUsed = screen.getAllByLabelText("Recipe used").at(-1) as HTMLSelectElement;
+    const labels = Array.from(recipeUsed.options, (option) => option.textContent?.trim() ?? "");
+    expect(labels).toContain("Light Feed · Grow week 2 / Early Growth");
+    expect(labels).toContain("Medium Feed · Grow week 2 / Early Growth");
+    expect(labels).toContain("Aggressive Feed · Grow week 2 / Early Growth");
+    expect(new Set(labels).size).toBe(labels.length);
+
+    await user.selectOptions(
+      recipeUsed,
+      Array.from(recipeUsed.options).find((option) =>
+        option.textContent?.startsWith("Medium Feed · Grow week 2"),
+      )!.value,
+    );
+    expect((screen.getByLabelText(/^FloraMicro/) as HTMLInputElement).value).toBe("4.44");
+  });
+
   it("uses the manufacturer's 3- and 12-pod feeding sequences", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

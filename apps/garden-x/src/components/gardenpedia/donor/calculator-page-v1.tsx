@@ -334,6 +334,21 @@ const T = {
 } as const;
 type Copy = (typeof T)[Lang];
 
+type CalculatorProduct = (typeof CALCULATOR_PRODUCTS)[number];
+type CalculatorRecipeStage = CalculatorProduct["recipeStages"][number];
+
+function recipeStageOptionLabel(
+  stage: CalculatorRecipeStage,
+  product: CalculatorProduct,
+  pods: number,
+  lang: Lang,
+) {
+  const label = recipeStageLabel(stage, product.id, pods, lang);
+  if (product.id !== "gh-flora" || !stage.scheduleId) return label;
+  const schedule = product.recipeSchedules?.find((item) => item.id === stage.scheduleId);
+  return schedule ? `${schedule.label[lang]} · ${label}` : label;
+}
+
 const MODE_ICONS: Record<Mode, React.ComponentType<{ className?: string }>> = {
   recipe: BookOpen,
   target: Target,
@@ -1832,7 +1847,7 @@ export function CalculatorPage({
                           )
                           .map((stage) => (
                             <option key={stage.id} value={stage.id}>
-                              {recipeStageLabel(stage, product.id, pods, lang)}
+                              {recipeStageOptionLabel(stage, product, pods, lang)}
                             </option>
                           ))}
                       </select>
@@ -2820,7 +2835,7 @@ function CalibrationCard({
               )
               .map((stage) => (
                 <option key={stage.id} value={stage.id}>
-                  {recipeStageLabel(stage, product.id, pods, lang)}
+                  {recipeStageOptionLabel(stage, product, pods, lang)}
                 </option>
               ))}
           </select>

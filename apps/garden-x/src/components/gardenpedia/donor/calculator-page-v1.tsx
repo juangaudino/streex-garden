@@ -1208,7 +1208,7 @@ export function CalculatorPage({
                     </span>
                   )}
               </label>
-              {mode !== "recipe" || product.basis === "liters" ? (
+              {mode !== "recipe" || product.basis === "liters" || product.id === "aerogarden" ? (
                 <Block title={t.plants} hint={`${Object.values(crops).reduce((a, b) => a + b, 0)}`}>
                   <ul className="space-y-1.5">
                     {Object.keys(crops).map((id) => {

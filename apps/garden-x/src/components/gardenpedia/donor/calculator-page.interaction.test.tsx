@@ -284,6 +284,25 @@ describe("Calculator real control interactions", () => {
       "medium_feed-feeding-2",
     );
   });
+
+  it("keeps crop compatibility selectable for AeroGarden recipes without changing the official dose", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "AeroGarden" }));
+
+    expect(screen.getByRole("button", { name: "Add plant" })).toBeTruthy();
+    expect(screen.getByText("8.00", { exact: true })).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Bibb Lettuce");
+    await user.click(screen.getByRole("option", { name: /Bibb Lettuce/i }));
+
+    expect(screen.getByText("Bibb Lettuce")).toBeTruthy();
+    await user.click(screen.getByText("Why, and where it comes from"));
+    expect(screen.getByText(/Crop compatibility:\s*Common range/)).toBeTruthy();
+    expect(screen.getByText("8.00", { exact: true })).toBeTruthy();
+  });
+
   it("localizes recipe compatibility warnings without changing manufacturer doses", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="es" />);

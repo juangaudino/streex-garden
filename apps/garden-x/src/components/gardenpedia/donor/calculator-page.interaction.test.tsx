@@ -245,6 +245,29 @@ describe("Calculator real control interactions", () => {
       "medium_feed-feeding-2",
     );
   });
+  it("localizes recipe compatibility warnings without changing manufacturer doses", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="es" />);
+
+    for (const name of ["Albahaca genovesa", "Lechuga Bibb"]) {
+      await user.click(screen.getByRole("button", { name: "Añadir planta" }));
+      await user.type(screen.getByPlaceholderText("Buscar planta…"), name);
+      await user.click(screen.getByText(name, { exact: true }).closest("button")!);
+    }
+
+    expect(
+      screen.getByText(
+        /El rango de EC esperado por el fabricante no se solapa con la evidencia aplicable del cultivo/i,
+      ),
+    ).toBeTruthy();
+    expect(screen.getByText(/3\.80/)).toBeTruthy();
+    expect(screen.getByText(/3\.59/)).toBeTruthy();
+    expect(screen.getByText(/2\.75/)).toBeTruthy();
+
+    await user.click(screen.getByText("Por qué y de dónde sale"));
+    expect(screen.getByText(/Rango común/)).toBeTruthy();
+    expect(screen.getByText(/1\.20–1\.60/)).toBeTruthy();
+  });
   it("does not preselect an excluded carnivorous plant", () => {
     render(<CalculatorPage language="en" initialPlantId="venus-flytrap-dionaea-muscipula" />);
     expect(screen.queryByText(/Venus Flytrap/i)).toBeNull();

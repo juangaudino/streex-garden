@@ -1235,6 +1235,19 @@ function presentationMessage(message: string, lang: Lang): string {
       "No applicable comparable crop EC evidence is available.",
     ],
     [
+      "La receta del fabricante se puede aplicar, pero no hay evidencia suficiente para evaluar con confianza la compatibilidad del cultivo.",
+      "The manufacturer recipe is executable, but crop compatibility cannot be evaluated with high confidence.",
+    ],
+    [
+      "La receta del fabricante se puede aplicar, pero la evidencia comparable de los cultivos presenta un conflicto relevante.",
+      "The manufacturer recipe is executable, but comparable crop evidence contains a material conflict.",
+    ],
+    [
+      "El rango de EC esperado por el fabricante no se solapa con la evidencia aplicable del cultivo; Garden no considera que uno invalide al otro.",
+      "The manufacturer expected EC and applicable crop evidence do not overlap; neither is silently ranked as the truth.",
+    ],
+    ["Los rangos reportados de EC no se solapan.", "The reported EC ranges do not overlap."],
+    [
       "Los rangos publicados no se solapan. Define un objetivo explícito o separa los cultivos.",
       "The reported EC ranges do not overlap.",
     ],
@@ -1458,7 +1471,9 @@ function calculateResult(input: CalcInput): CalcResult {
       evidenceNote: noteFor(recipe.value.evidenceState),
       sources: [...new Set([recipe.value.recipe.source.title, ...sources])],
       compatibility,
-      warnings: recipe.warnings.map((item) => item.message),
+      warnings: recipe.warnings.map((item) =>
+        presentationMessage(item.message, input.language ?? "es"),
+      ),
       expectedEc: recipe.value.manufacturerRecipeExpectation
         ? {
             kind: "manufacturer",

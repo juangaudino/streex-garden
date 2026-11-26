@@ -116,7 +116,10 @@ en una afirmación biológica no respaldada.
    mide su EC **antes** y **después** de añadir y mezclar los nutrientes. Espera a
    que la lectura se estabilice. En «¿Qué obtuviste?» introduce ambas mediciones y
    las cantidades efectivamente añadidas de cada componente; edita cualquier dosis
-   que haya sido distinta de la sugerida. Guarda la lectura.
+  que haya sido distinta de la sugerida. Marca la confirmación de que las
+  cantidades coinciden con lo que añadiste realmente y guarda la lectura. Si
+  cambias una dosis, el volumen de muestra o la receta, vuelve a confirmar antes
+  de guardar.
 4. La dosis de la receta oficial y el EC esperado por el fabricante son referencias
    diferentes del EC que acabas de medir. No sustituyas tu medición por el rango
    esperado. Si una cantidad es menor que la resolución de tu equipo, usa un

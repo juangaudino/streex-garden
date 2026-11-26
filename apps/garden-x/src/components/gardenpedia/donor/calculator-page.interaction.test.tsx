@@ -63,6 +63,12 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByLabelText(/^Actual sample volume/), "2");
     expect((confirmation as HTMLInputElement).checked).toBe(false);
     expect(save.disabled).toBe(true);
+
+    await user.click(confirmation);
+    const recipeSelectors = screen.getAllByLabelText("Recipe used");
+    await user.selectOptions(recipeSelectors[recipeSelectors.length - 1], "feeding-3");
+    expect((confirmation as HTMLInputElement).checked).toBe(false);
+    expect(save.disabled).toBe(true);
   });
 
   it("makes the unverified coleus guide an explicit manual choice only", async () => {
@@ -449,6 +455,12 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByLabelText(/^EC del agua de origen/), "0.20");
     await user.click(screen.getByText("¿Primera calibración?"));
     expect(screen.getByText(/volumen real de la muestra y mide su EC/)).toBeTruthy();
+    await user.click(screen.getByRole("button", { name: "Calibrar este producto" }));
+    expect(
+      screen.getByRole("checkbox", {
+        name: "Confirmo que estas cantidades coinciden con lo que añadí realmente",
+      }),
+    ).toBeTruthy();
   });
 
   it("accepts a small single-plant volume and calculates planned water to capacity", async () => {

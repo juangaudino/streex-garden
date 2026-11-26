@@ -638,6 +638,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.plantIds).toEqual(["bush-nasturtium-tropaeolum-minus"]);
     expect(reference?.selectableEcMs).toBe(1.0);
     expect(reference?.text.en).toMatch(/T\. minus, a different species/i);
+    expect(reference?.text.en).toMatch(/not statistically significant/i);
     expect(reference?.text.en).toMatch(/not automatic evidence/i);
     expect(
       CROP_EVIDENCE.some(

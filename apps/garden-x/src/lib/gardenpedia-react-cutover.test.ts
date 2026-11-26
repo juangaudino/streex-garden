@@ -17,7 +17,8 @@ describe("Gardenpedia React cutover", () => {
     expect(surfaces).toContain('"gardenpedia_curator_queue"');
     expect(surfaces).toContain('"gardenpedia_approve_proposal"');
     expect(surfaces).not.toContain("service_role");
-    expect(explore).toContain("auth.signedIn");
+    expect(explore).toContain("const showPrivateNavigation = !diagnosticOnly;");
+    expect(explore).toContain("useGardenpediaAuth(!diagnosticOnly && privateView !== null)");
     expect(explore).toContain("MyGardenSurface");
   });
 

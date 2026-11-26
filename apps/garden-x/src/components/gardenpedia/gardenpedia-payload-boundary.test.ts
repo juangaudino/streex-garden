@@ -40,11 +40,12 @@ describe("Gardenpedia public payload boundary", () => {
     expect(fullAdapter).toMatch(/seedProfilesV0|seedProfilesWave1/);
   });
 
-  it("does not boot Supabase Auth while the public catalog is active", () => {
+  it("shows My Garden without login while keeping Supabase Auth out of public views", () => {
     const explore = source("donor/explore.tsx");
 
-    expect(explore).toContain("hasPersistedGardenpediaSession");
+    expect(explore).not.toContain("hasPersistedGardenpediaSession");
+    expect(explore).toContain("const showPrivateNavigation = !diagnosticOnly;");
     expect(explore).toContain("privateView !== null");
-    expect(explore).toContain("sessionHint || auth.signedIn");
+    expect(explore).toContain("useGardenpediaAuth(!diagnosticOnly && privateView !== null)");
   });
 });

@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Check, ChevronDown, ChevronRight, Search, Sprout } from "lucide-react";
 
 import { PlantAdvisorDrawer } from "./plant-advisor-drawer";
-import { hasPersistedGardenpediaSession, useGardenpediaAuth } from "../gardenpedia-auth";
+import { useGardenpediaAuth } from "../gardenpedia-auth";
 import type { GardenpediaPrivateView } from "../gardenpedia-auth";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -295,14 +295,8 @@ export function GardenLibrary({
     useState<PrivateSurfaceComponent | null>(null);
   const [diagnosticSelection, setDiagnosticSelection] = useState<Plant | null>(null);
   const privateView = privateViewFor(view);
-  const [sessionHint, setSessionHint] = useState(hasPersistedGardenpediaSession);
   const auth = useGardenpediaAuth(!diagnosticOnly && privateView !== null);
-  const showPrivateNavigation = !diagnosticOnly && (sessionHint || auth.signedIn);
-
-  useEffect(() => {
-    if (!privateView || auth.loading) return;
-    setSessionHint(auth.signedIn);
-  }, [auth.loading, auth.signedIn, privateView]);
+  const showPrivateNavigation = !diagnosticOnly;
 
   useEffect(() => {
     setView(initialView);

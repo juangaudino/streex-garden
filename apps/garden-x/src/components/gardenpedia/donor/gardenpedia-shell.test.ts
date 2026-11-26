@@ -20,6 +20,9 @@ describe("Gardenpedia shared shell and Calculator mobile dock", () => {
     expect(shell).toContain('"my-machines"');
     expect(shell).toContain("grid-cols-3");
     expect(shell).toContain('aria-current={active ? "page" : undefined}');
+    expect(explore).toContain("const showPrivateNavigation = !diagnosticOnly;");
+    expect(explore).toContain("useGardenpediaAuth(!diagnosticOnly && privateView !== null)");
+    expect(explore).not.toContain("hasPersistedGardenpediaSession");
   });
 
   it("keeps Calculator inside the shared shell and contains the horizontal dock", () => {

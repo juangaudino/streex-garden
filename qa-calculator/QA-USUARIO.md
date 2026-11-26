@@ -132,7 +132,14 @@ evidencia automática ni un objetivo validado para esa planta.
 Los días desde siembra son contexto, no una transición automática de etapa. Elige
 la etapa que observas en cada variedad; la etapa del programa del fabricante es
 independiente. Esto evita que la calculadora convierta una fecha o semana de receta
-en una afirmación biológica no respaldada.
+en una afirmación biológica no respaldada. Para Tulsi/Holy Basil, la guía de LetPot
+publica ventanas de plántula (14–21 días), crecimiento (42–56) y madurez (60–90),
+además de EC distintas por fase. La calculadora muestra las dos últimas como
+sugerencias con esa procedencia: a los 50 días y 75 días, comprueba la fase en la
+planta y confirma manualmente. Después deben aparecer, respectivamente, los rangos
+reportados de 0,90–1,20 y 1,60–2,10 mS/cm. Los días por sí solos no seleccionan
+etapa ni alteran el resultado. Esta es una guía de proveedor, no una regla universal
+ni una validación independiente del cultivar.
 
 ## 1. Receta y calibración de FloraSeries
 

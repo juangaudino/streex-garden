@@ -1691,9 +1691,19 @@ export const CROP_STAGE_REFERENCES = [
       {
         minDays: 42,
         maxDays: 56,
+        stageSuggestion: "VEGETATIVE",
         text: {
-          es: "La guía describe crecimiento alrededor de esta ventana, pero no define una transición universal. Confirma la etapa observando la planta.",
-          en: "The guide describes growth around this window but does not define a universal transition. Confirm the stage by observing the plant.",
+          es: "La guía identifica esta ventana como crecimiento y publica EC para esa fase. Contrástala con el desarrollo visible y confirma la etapa antes de usar esa evidencia; no es una transición universal ni automática.",
+          en: "The guide labels this window as growth and publishes an EC range for that phase. Check it against visible development and confirm the stage before using that evidence; this is not a universal or automatic transition.",
+        },
+      },
+      {
+        minDays: 60,
+        maxDays: 90,
+        stageSuggestion: "MATURE",
+        text: {
+          es: "La guía identifica esta ventana como madurez y publica EC para esa fase. Comprueba el desarrollo visible y confirma la etapa antes de usar esa evidencia; los días no garantizan madurez en otra planta o sistema.",
+          en: "The guide labels this window as maturity and publishes an EC range for that phase. Check visible development and confirm the stage before using that evidence; the day count does not guarantee maturity in another plant or system.",
         },
       },
     ],

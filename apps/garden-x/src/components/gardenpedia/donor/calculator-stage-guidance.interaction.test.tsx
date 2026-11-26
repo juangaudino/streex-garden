@@ -167,6 +167,56 @@ describe("Calculator plant-stage guidance", () => {
     );
   });
 
+  it("uses a confirmed source-mapped growth-age cue to recalculate Tulsi's applicable EC context", () => {
+    render(<CalculatorPage language="en" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />);
+    fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
+    fireEvent.change(screen.getByLabelText(/Source-water EC/), {
+      target: { value: "0.2" },
+    });
+
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
+      target: { value: "50" },
+    });
+
+    expect(screen.getByText(/labels this window as growth/i)).toBeTruthy();
+    expect(target.value).toBe("");
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "UNSPECIFIED",
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: vegetative growth" }));
+
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "VEGETATIVE",
+    );
+    expect(target.value).not.toBe("");
+    expect(screen.getByText(/0\.90–1\.20/)).toBeTruthy();
+  });
+
+  it("offers the separate source-backed maturity stage only after the grower confirms it", () => {
+    render(<CalculatorPage language="es" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />);
+    fireEvent.click(screen.getByRole("tab", { name: "Por EC" }));
+    fireEvent.change(screen.getByLabelText(/EC del agua de origen/), {
+      target: { value: "0.2" },
+    });
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Días desde la siembra de/ }), {
+      target: { value: "75" },
+    });
+
+    expect(screen.getByText(/identifica esta ventana como madurez/i)).toBeTruthy();
+    const stage = screen.getByRole("combobox", { name: /Etapa de/ }) as HTMLSelectElement;
+    expect(stage.value).toBe("UNSPECIFIED");
+    fireEvent.click(screen.getByRole("button", { name: "Confirmar etapa: planta madura" }));
+
+    expect(stage.value).toBe("MATURE");
+    expect(
+      (screen.getByRole("textbox", { name: "EC objetivo" }) as HTMLInputElement).value,
+    ).not.toBe("");
+    expect(screen.getByText(/1\.60–2\.10/)).toBeTruthy();
+  });
+
   it("shows Komatsuna's measured leaf-development timeline without changing stage or dose", () => {
     const { container } = render(
       <CalculatorPage language="en" initialPlantId="lady-murasaki-komatsuna" />,

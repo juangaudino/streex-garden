@@ -2,7 +2,10 @@ import { describe, expect, it } from "vitest";
 import {
   calculatorAgeStageCueForPlant,
   calculatorStageReferenceForPlant,
+  contextFor,
 } from "./calculator-lovable-adapter";
+import { calculatePolycultureRange } from "@/lib/garden-nutrient-engine-v1/engine";
+import { CROP_EVIDENCE } from "@/lib/garden-nutrient-engine-v1/data";
 
 describe("calculator age stage cues", () => {
   it("resolves only explicitly mapped public stage references for the plant row", () => {
@@ -53,6 +56,41 @@ describe("calculator age stage cues", () => {
     });
     expect(cue?.ageWindow.text.en).toMatch(/developed leaves and roots/i);
     expect(cue?.ageWindow.text.en).toMatch(/does not automatically change its stage or dose/i);
+  });
+
+  it("maps Tulsi growth and maturity day windows to confirmable stages backed by the same source", () => {
+    const growth = calculatorAgeStageCueForPlant("tulsi-holy-basil-ocimum-tenuiflorum", 50);
+    expect(growth?.reference.source.id).toBe("letpot-hydroponic-holy-basil-guide");
+    expect(growth?.ageWindow).toMatchObject({
+      minDays: 42,
+      maxDays: 56,
+      stageSuggestion: "VEGETATIVE",
+    });
+    expect(growth?.ageWindow.text.en).toMatch(/not a universal or automatic transition/i);
+
+    const maturity = calculatorAgeStageCueForPlant("tulsi-holy-basil-ocimum-tenuiflorum", 75);
+    expect(maturity?.reference.source.id).toBe("letpot-hydroponic-holy-basil-guide");
+    expect(maturity?.ageWindow).toMatchObject({
+      minDays: 60,
+      maxDays: 90,
+      stageSuggestion: "MATURE",
+    });
+    expect(maturity?.ageWindow.text.en).toMatch(/does not guarantee maturity/i);
+
+    const plantId = "tulsi-holy-basil-ocimum-tenuiflorum";
+    const growthRange = calculatePolycultureRange(
+      contextFor({ [plantId]: 1 }, "gh-flora", { [plantId]: "VEGETATIVE" }),
+      CROP_EVIDENCE,
+    );
+    expect(growthRange.status).toBe("COMMON_OPTIMUM_RANGE");
+    expect(growthRange.range).toMatchObject({ min: 0.9, max: 1.2 });
+
+    const maturityRange = calculatePolycultureRange(
+      contextFor({ [plantId]: 1 }, "gh-flora", { [plantId]: "MATURE" }),
+      CROP_EVIDENCE,
+    );
+    expect(maturityRange.status).toBe("COMMON_OPTIMUM_RANGE");
+    expect(maturityRange.range).toMatchObject({ min: 1.6, max: 2.1 });
   });
 
   it("uses the exact Komatsuna study timeline as seedling confirmation context", () => {

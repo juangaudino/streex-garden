@@ -1166,9 +1166,21 @@ export function CalculatorPage({
                       const ageStageSuggestion: CalculatorCropStage | undefined =
                         ageWindow &&
                         "stageSuggestion" in ageWindow &&
-                        ageWindow.stageSuggestion === "SEEDLING"
-                          ? "SEEDLING"
+                        ["SEEDLING", "VEGETATIVE", "MATURE", "FLOWERING", "FRUITING"].includes(
+                          ageWindow.stageSuggestion,
+                        )
+                          ? ageWindow.stageSuggestion
                           : undefined;
+                      const ageStageLabel = ageStageSuggestion
+                        ? {
+                            SEEDLING: lang === "es" ? "plántula" : "seedling",
+                            VEGETATIVE:
+                              lang === "es" ? "crecimiento vegetativo" : "vegetative growth",
+                            MATURE: lang === "es" ? "planta madura" : "mature plant",
+                            FLOWERING: lang === "es" ? "floración" : "flowering",
+                            FRUITING: lang === "es" ? "fructificación" : "fruiting",
+                          }[ageStageSuggestion]
+                        : undefined;
                       const studies = CROP_STUDY_REFERENCES.filter((reference) =>
                         (reference.plantIds as readonly string[]).includes(id),
                       );
@@ -1581,8 +1593,8 @@ export function CalculatorPage({
                                 <div className="mt-2 rounded-md border border-border/70 p-2">
                                   <p>
                                     {lang === "es"
-                                      ? "La ventana publicada ofrece una pista de plántula; confirma cotiledones/hojas y desarrollo. La edad no la aplica automáticamente."
-                                      : "The published window offers a seedling cue; confirm cotyledons/leaves and development. Age does not apply it automatically."}
+                                      ? `La ventana publicada ofrece una pista de ${ageStageLabel}; confirma la etapa observando el desarrollo de la planta. La edad no la aplica automáticamente.`
+                                      : `The published window offers a ${ageStageLabel} cue; confirm the stage from the plant's visible development. Age does not apply it automatically.`}
                                   </p>
                                   <button
                                     type="button"
@@ -1597,11 +1609,11 @@ export function CalculatorPage({
                                   >
                                     {cropStages[id] === ageStageSuggestion
                                       ? lang === "es"
-                                        ? "Plántula seleccionada"
-                                        : "Seedling selected"
+                                        ? `Etapa seleccionada: ${ageStageLabel}`
+                                        : `Stage selected: ${ageStageLabel}`
                                       : lang === "es"
-                                        ? "Confirmar etapa: plántula"
-                                        : "Confirm stage: seedling"}
+                                        ? `Confirmar etapa: ${ageStageLabel}`
+                                        : `Confirm stage: ${ageStageLabel}`}
                                   </button>
                                   <p className="mt-1">
                                     {lang === "es"

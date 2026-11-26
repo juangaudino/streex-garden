@@ -520,6 +520,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(lemonStudy?.text.en).toContain("not direct evidence for this variety");
     expect(resolveNutrientCropIdentity("basil-lime")).toBe("lemon-basil");
     expect(resolveNutrientCropIdentity("basil-lemon")).toBe("lemon-basil");
+    expect(resolveNutrientCropIdentity("unmapped-basil-cultivar")).toBeUndefined();
     expect(hasApplicableCropNutrientEvidence("basil-lime")).toBe(true);
     expect(hasApplicableCropNutrientEvidence("basil-lemon")).toBe(true);
   });

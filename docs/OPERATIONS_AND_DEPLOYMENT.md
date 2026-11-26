@@ -30,14 +30,16 @@ Nunca añadir estas variables a `.env.local` del frontend, commits, builds ni ca
 Desde la raíz del repositorio y con Supabase CLI autenticado:
 
 ```bash
-supabase functions deploy garden-ai --project-ref sabulxbfdimoqnbgnmso
+supabase functions deploy garden-ai --project-ref fnhggqqnkhkrfwmnsqmy
 ```
 
 Verificar después:
 
 ```bash
-supabase functions list --project-ref sabulxbfdimoqnbgnmso
+supabase functions list --project-ref fnhggqqnkhkrfwmnsqmy
 ```
+
+`fnhggqqnkhkrfwmnsqmy` es el proyecto canónico de Production. El proyecto histórico `sabulxbfdimoqnbgnmso` está retirado para operaciones y no debe usarse como destino de despliegue.
 
 La función debe permanecer con JWT obligatorio. No desactivar `verify_jwt` para depurar una consulta de IA.
 

@@ -20,6 +20,36 @@ no compartas capturas que los muestren si no deseas hacerlo.
 - Si falta un rango para la planta, usa un objetivo elegido por ti únicamente si ya
   cuentas con una referencia adecuada. La aplicación debe mostrar la incertidumbre.
 
+## Registro de una medición física
+
+Completa esto durante la primera prueba de calibración. Usa un recipiente de prueba
+separado de los depósitos que alimentan plantas; no registres los valores simulados
+de las pruebas automáticas como si fueran mediciones reales.
+
+| Dato | Valor real |
+| --- | --- |
+| Fecha y hora | ______ |
+| Planta y etapa observada | ______ |
+| Sistema hidropónico | ______ |
+| Fabricante, producto y formulación exacta | ______ |
+| Programa y paso oficial, si aplica | ______ |
+| Volumen de agua de la muestra | ______ L |
+| EC del agua antes de nutrientes | ______ mS/cm |
+| EC final después de mezclar y estabilizar | ______ mS/cm |
+| Temperatura / ATC del medidor, si se muestra | ______ |
+| Resolución indicada del medidor | ______ mS/cm |
+| FloraMicro realmente añadido | ______ mL |
+| FloraGro realmente añadido | ______ mL |
+| FloraBloom realmente añadido | ______ mL |
+| Parte A / nutriente único realmente añadido | ______ mL |
+| Resolución de la jeringa o dosificador | ______ mL |
+| Observaciones | ______ |
+
+Registra solo los componentes que correspondan al producto y las cantidades que
+efectivamente mediste. Si el cambio entre EC inicial y final es menor que la
+resolución del medidor, no lo uses como calibración cuantitativa confiable; repite
+la observación con una diferencia medible o un instrumento más preciso.
+
 ## Cobertura de las 83 variedades
 
 En el contexto por defecto —etapa sin especificar y sistema hidropónico sin
@@ -118,12 +148,13 @@ en una afirmación biológica no respaldada.
    debe interpolar esos huecos. La semana 13 debe indicar enjuague solo con agua,
    sin dosis nutritiva. Ninguna selección de programa identifica automáticamente
    la etapa biológica de la planta.
-3. Para obtener una calibración real, prepara una muestra siguiendo la receta y
-   mide su EC **antes** y **después** de añadir y mezclar los nutrientes. Espera a
+3. Para obtener una calibración real, prepara una muestra de prueba siguiendo la
+   receta y mide su EC **antes** y **después** de añadir y mezclar los nutrientes. Espera a
    que la lectura se estabilice. En «¿Qué obtuviste?» introduce ambas mediciones y
    las cantidades efectivamente añadidas de cada componente; edita cualquier dosis
   que haya sido distinta de la sugerida. Marca la confirmación de que las
-  cantidades coinciden con lo que añadiste realmente y guarda la lectura. Si
+  cantidades coinciden con lo que añadiste realmente y guarda la lectura. Completa
+  el registro de medición anterior para conservar la observación fuera del navegador. Si
   cambias una dosis, el volumen de muestra o la receta, vuelve a confirmar antes
   de guardar.
 4. La dosis de la receta oficial y el EC esperado por el fabricante son referencias

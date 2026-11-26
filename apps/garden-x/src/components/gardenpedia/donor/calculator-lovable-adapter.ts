@@ -1390,7 +1390,6 @@ function presentationMessage(message: string, lang: Lang): string {
 }
 
 function calculateResult(input: CalcInput): CalcResult {
-  if (input.invalidFields?.length) return { kind: "needs", missing: input.invalidFields };
   if (Object.keys(input.crops).some((id) => CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(id))) {
     return engineNeeds(
       "Esta calculadora de nutrientes no incluye plantas carnívoras. Retíralas de la mezcla para continuar.",
@@ -1476,6 +1475,13 @@ function calculateResult(input: CalcInput): CalcResult {
     sources,
     compatibility,
   };
+
+  // Keep the crop-evidence result visible while the user fills required mode
+  // inputs (for example source-water EC). The validation state should not hide
+  // a shared-tank conflict or an experimental compromise from the user.
+  if (input.invalidFields?.length) {
+    return { kind: "needs", missing: input.invalidFields, ...targetPresentation };
+  }
 
   if (input.mode === "recipe") {
     const recipeId = RECIPE_IDS[input.productId];

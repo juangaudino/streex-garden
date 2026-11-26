@@ -2,7 +2,7 @@
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import type { ReactNode } from "react";
+import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 import { CalculatorPage } from "./calculator-page-v1";
 
@@ -18,12 +18,47 @@ vi.mock("@/components/ui/dialog", () => {
   };
 });
 
+vi.mock("@/components/ui/button", () => ({
+  Button: ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { children: ReactNode }) =>
+    <button {...props}>{children}</button>,
+}));
+
+vi.mock("@/lib/utils", () => ({
+  cn: (...values: (string | undefined | false)[]) => values.filter(Boolean).join(" "),
+}));
+
 describe("Calculator real control interactions", () => {
+  it("offers an explicit shared-tank compromise without replacing a chosen target", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    for (const name of ["Bibb Lettuce", "Cherry Tomato"]) {
+      await user.click(screen.getByRole("button", { name: "Add plant" }));
+      await user.type(screen.getByPlaceholderText("Search plant…"), name);
+      await user.click(screen.getByText(name, { exact: true }).closest("button")!);
+    }
+    expect(screen.getByText(/reported ranges do not overlap/i)).toBeTruthy();
+    expect(screen.queryByText(/Experimental operational midpoint/i)).toBeNull();
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+
+    expect(screen.getByText(/reported ranges do not overlap/i)).toBeTruthy();
+    expect(screen.getByText(/Experimental operational midpoint/i)).toBeTruthy();
+    expect(screen.getByText(/not an optimum for any crop/i)).toBeTruthy();
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+
+    await user.click(screen.getByRole("button", { name: "Use as my manual target" }));
+    expect(Number(target.value)).toBeGreaterThan(0);
+    expect(screen.getByText(/Your manual target is preserved/i)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Use as my manual target" })).toBeNull();
+  });
+
   it("never treats assumed EC readings as calibration measurements", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
     await user.click(screen.getByRole("tab", { name: "By EC" }));
-    await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.2");
+    const target = screen.getByRole("textbox", { name: "Target EC" });
+    await user.clear(target);
+    await user.type(target, "1.2");
     await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
     await screen.findByLabelText(/^EC before adding nutrients/);
     expect((screen.getByLabelText(/^EC before adding nutrients/) as HTMLInputElement).value).toBe(
@@ -200,7 +235,7 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByText("View cultivation sources"));
     expect(screen.getByText(/1\.56 is an observed condition, not an optimum range/i)).toBeTruthy();
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
-    expect(target.value).toBe("");
+    expect(target.value).toBe("1.15");
     await user.click(
       screen.getByRole("button", { name: /Choose study EC for Dill Bouquet: 1\.56 mS\/cm/i }),
     );

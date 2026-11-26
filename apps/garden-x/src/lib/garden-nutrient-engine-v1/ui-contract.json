@@ -185,6 +185,25 @@
       "Persist locally; no canonical Garden writes"
     ]
   },
+  "sharedCropCompatibility": {
+    "statuses": ["COMMON_OPTIMUM_RANGE", "NO_COMMON_OPTIMUM_RANGE", "INSUFFICIENT"],
+    "noCommonRange": {
+      "outputs": ["reported ranges by crop", "limiting crops", "per-crop deviation", "separationRecommended"],
+      "operationalCompromise": {
+        "available": true,
+        "epistemic": "ENGINE_INFERENCE",
+        "experimentalPolicy": true,
+        "dependsOn": ["applicable crop observations", "measurement scope", "phenological stage", "hydroponic system"],
+        "target": "midpoint of the closest non-overlapping applicable range bounds; minimizes the maximum distance to those intervals",
+        "rules": [
+          "Never label the compromise as a crop optimum or supported range",
+          "Never select it automatically or replace a user-selected target",
+          "Show each crop's distance from its reported interval",
+          "Recommend separate reservoirs"
+        ]
+      }
+    }
+  },
   "epistemicClasses": [
     "SOURCE_BACKED_FACT",
     "MANUFACTURER_INSTRUCTION",

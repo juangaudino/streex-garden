@@ -783,6 +783,37 @@ describe("Garden Nutrient Engine V1", () => {
     expect(result.rationale).toContain("reported EC ranges do not overlap");
   });
 
+  it("returns an explicitly experimental minimax midpoint and per-crop deviations for a shared tank", () => {
+    const result = calculatePolycultureRange([basil, tomato]);
+    const compromise = result.operationalCompromise;
+    expect(result.status).toBe("NO_COMMON_OPTIMUM_RANGE");
+    expect(compromise).toMatchObject({
+      epistemic: "ENGINE_INFERENCE",
+      experimentalPolicy: true,
+      separationRecommended: true,
+    });
+    expect(compromise).toBeDefined();
+    const commonFloor = Math.max(...result.cropRanges.map((crop) => crop.ec!.min));
+    const commonCeiling = Math.min(...result.cropRanges.map((crop) => crop.ec!.max));
+    expect(compromise!.targetEc).toBeCloseTo((commonFloor + commonCeiling) / 2, 12);
+    expect(compromise!.dependsOn.length).toBeGreaterThan(0);
+    expect(compromise!.deviations).toHaveLength(result.cropRanges.length);
+    for (const crop of result.cropRanges) {
+      const deviation = compromise!.deviations.find((item) => item.cropIdentity === crop.cropIdentity);
+      expect(deviation?.deviation).toBeCloseTo(
+        Math.max(crop.ec!.min - compromise!.targetEc, 0, compromise!.targetEc - crop.ec!.max),
+        12,
+      );
+    }
+    expect(result.claims).toContainEqual(
+      expect.objectContaining({
+        id: "operational-compromise",
+        epistemic: "ENGINE_INFERENCE",
+        experimentalPolicy: true,
+      }),
+    );
+  });
+
   it("does not change a target based on plant counts", () => {
     const one = calculatePolycultureRange([basil, tomato]);
     const repeated = calculatePolycultureRange([
@@ -800,6 +831,7 @@ describe("Garden Nutrient Engine V1", () => {
     ]);
     expect(repeated.range).toEqual(one.range);
     expect(repeated.status).toBe(one.status);
+    expect(repeated.operationalCompromise?.targetEc).toBe(one.operationalCompromise?.targetEc);
   });
 
   it("executes exact Flora manufacturer data and does not use equal-thirds fallback", () => {

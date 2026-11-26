@@ -234,6 +234,16 @@ export interface PolycultureRange {
   limitingCrops: string[];
   deviations?: { cropIdentity: string; deviation: number }[] | undefined;
   separationRecommended?: boolean | undefined;
+  operationalCompromise?: {
+    targetEc: number;
+    limitingCrops: string[];
+    deviations: { cropIdentity: string; deviation: number }[];
+    rationale: string;
+    separationRecommended: true;
+    epistemic: "ENGINE_INFERENCE";
+    experimentalPolicy: true;
+    dependsOn: string[];
+  } | undefined;
   rationale?: string | undefined;
   evidenceState: EvidenceState;
   claims: Claim[];

@@ -335,16 +335,41 @@ export function calculatePolycultureRange(
       ],
     };
   }
+  // A shared tank has no common reported optimum. Offer only an explicitly
+  // experimental minimax compromise: the midpoint of the closest gap between
+  // the intersected lower and upper bounds. It minimizes the largest distance
+  // to the applicable intervals without using plant counts as weights.
+  const targetEc = (commonFloor + commonCeiling) / 2;
+  const deviations = valid.map((range) => ({
+    cropIdentity: range.cropIdentity,
+    deviation:
+      targetEc < range.ec!.min
+        ? range.ec!.min - targetEc
+        : targetEc > range.ec!.max
+          ? targetEc - range.ec!.max
+          : 0,
+  }));
+  const dependsOn = valid.flatMap((range) => range.observations.map((item) => item.id));
+  const compromiseRationale =
+    "This experimental midpoint minimizes the largest distance to the reported crop intervals; it is not an optimum for any crop. Separate reservoirs are recommended.";
+  const operationalCompromise = {
+    targetEc,
+    limitingCrops,
+    deviations,
+    rationale: compromiseRationale,
+    separationRecommended: true as const,
+    epistemic: "ENGINE_INFERENCE" as const,
+    experimentalPolicy: true as const,
+    dependsOn,
+  };
   return {
     status: "NO_COMMON_OPTIMUM_RANGE",
     cropRanges,
     limitingCrops,
-    deviations: valid.map((range) => ({
-      cropIdentity: range.cropIdentity,
-      deviation: Math.max(0, commonFloor - range.ec!.max),
-    })),
+    deviations,
     separationRecommended: true,
     rationale: "The reported EC ranges do not overlap.",
+    operationalCompromise,
     evidenceState: valid.some((range) => range.evidenceState === "MODERATE") ? "MODERATE" : "HIGH",
     claims: [
       ...baseClaims,
@@ -353,6 +378,13 @@ export function calculatePolycultureRange(
         "The reported EC ranges do not overlap",
         "DETERMINISTIC_CALCULATION",
         valid.map((range) => range.cropIdentity),
+      ),
+      claim(
+        "operational-compromise",
+        "Experimental minimax EC compromise; not a crop optimum",
+        "ENGINE_INFERENCE",
+        dependsOn,
+        { experimentalPolicy: true, value: targetEc },
       ),
     ],
   };

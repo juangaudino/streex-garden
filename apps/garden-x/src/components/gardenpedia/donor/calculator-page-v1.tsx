@@ -137,7 +137,13 @@ const T = {
     common: "Rango común",
     noCommon: "Sin rango de EC común",
     noCommonBody: (p: string) =>
-      `${p} tiene el rango de EC reportado más bajo, así que Garden propone un compromiso operativo cerca de ese rango. No significa que las plantas sean incompatibles.`,
+      `El intervalo de ${p} limita el punto medio matemático. No es un óptimo de cultivo; separar los depósitos sigue siendo preferible.`,
+    compromise: "Punto medio operativo experimental",
+    compromiseDisclaimer:
+      "Es una inferencia matemática entre rangos reportados, no un óptimo para ninguna planta. Separar los cultivos es preferible.",
+    useCompromise: "Usar como mi objetivo manual",
+    keepTarget: "Tu objetivo manual se conserva; no fue reemplazado.",
+    deviations: "Distancia al intervalo reportado",
     yourTarget: "Tu objetivo",
     useSuggested: "Usar sugerido",
     outside:
@@ -281,7 +287,13 @@ const T = {
     common: "Common range",
     noCommon: "No common EC range",
     noCommonBody: (p: string) =>
-      `${p} has the lower reported EC range, so Garden offers an operational compromise near it. This does not mean the plants are incompatible.`,
+      `${p}'s interval constrains the mathematical midpoint. This is not a crop optimum; separate reservoirs remain preferable.`,
+    compromise: "Experimental operational midpoint",
+    compromiseDisclaimer:
+      "This is a mathematical inference between reported intervals, not an optimum for any crop. Separate crops where possible.",
+    useCompromise: "Use as my manual target",
+    keepTarget: "Your manual target is preserved; it was not replaced.",
+    deviations: "Distance from reported interval",
     yourTarget: "Your target",
     useSuggested: "Use suggested",
     outside:
@@ -2165,6 +2177,46 @@ export function CalculatorPage({
                       ) : null;
                     })}
                   </ul>
+                  {mode !== "recipe" && result.compatibility.operationalCompromise && (
+                    <div className="mt-3 rounded-md border border-amber-500/40 bg-background/40 p-3">
+                      <p className="font-semibold">
+                        {t.compromise}: {fmtEc(result.compatibility.operationalCompromise.targetEc)} {unitLabel}
+                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {t.compromiseDisclaimer}
+                      </p>
+                      <p className="mt-2 text-xs font-medium">{t.deviations}</p>
+                      <ul className="mt-1 space-y-1 text-xs">
+                        {result.compatibility.operationalCompromise.deviations.map((item) => {
+                          const names = Object.keys(crops).filter(
+                            (id) => (resolveNutrientCropIdentity(id) ?? id) === item.cropIdentity,
+                          );
+                          return (
+                            <li key={item.cropIdentity}>
+                              {names.map(cropName).join(", ") || item.cropIdentity}: {fmtEc(item.deviation)} {unitLabel}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                      {userTarget === null && (
+                        <Button
+                          type="button"
+                          size="sm"
+                          variant="outline"
+                          className="mt-3"
+                          onClick={() => {
+                            const targetMs = result.compatibility!.operationalCompromise!.targetEc;
+                            editTarget(String(unit === "uS" ? targetMs * 1000 : targetMs));
+                          }}
+                        >
+                          {t.useCompromise}
+                        </Button>
+                      )}
+                      {userTarget !== null && (
+                        <p className="mt-2 text-xs font-medium">{t.keepTarget}</p>
+                      )}
+                    </div>
+                  )}
                   <p className="mt-2 text-xs text-muted-foreground">
                     {lang === "es" ? "Fuente" : "Source"}:{" "}
                     {[

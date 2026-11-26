@@ -162,8 +162,11 @@ The requested empirical-calibration gate is **not proven** by these checks. An a
   records, and zero unresolved source IDs. `npx vite build` passed; it retains
   the existing 695.70 kB main-chunk warning and ineffective dynamic-import
   warning for `photo-renditions.ts`.
-- No database, canonical catalog, Supabase, main branch, or production changes.
-  Physical iPhone QA and empirical nutrient calibration remain outstanding.
+- This continuation did not change the database, canonical catalog, or Supabase.
+  The Calculator changes were published to `main` in commit
+  `c80815267ca596561cdafad02128e915bf38f258` and its production deployment is
+  READY. Physical iPhone QA and empirical nutrient calibration remain
+  outstanding.
 - Added a browser-storage resilience regression: the Calculator still renders
   when private browsing blocks `localStorage`; a failed local save leaves the
   system-name form open and reports the failure without interrupting use.

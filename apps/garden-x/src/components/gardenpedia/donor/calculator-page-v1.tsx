@@ -1137,9 +1137,11 @@ export function CalculatorPage({
                       const ageDays = Number(cropSowingAgeDays[id]);
                       const ageCue = calculatorAgeStageCueForPlant(id, ageDays);
                       const ageWindow = ageCue?.ageWindow;
-                      const ageStageSuggestion =
-                        ageWindow && "stageSuggestion" in ageWindow
-                          ? ageWindow.stageSuggestion
+                      const ageStageSuggestion: CalculatorCropStage | undefined =
+                        ageWindow &&
+                        "stageSuggestion" in ageWindow &&
+                        ageWindow.stageSuggestion === "SEEDLING"
+                          ? "SEEDLING"
                           : undefined;
                       const studies = CROP_STUDY_REFERENCES.filter((reference) =>
                         (reference.plantIds as readonly string[]).includes(id),
@@ -1394,7 +1396,10 @@ export function CalculatorPage({
                                               reference.selectableEcValuesMs ?? [
                                                 reference.selectableEcMs!,
                                               ]
-                                            ).map((value) => ({ value }))
+                                            ).map((value) => ({
+                                              value,
+                                              stage: undefined as string | undefined,
+                                            }))
                                         ).map(({ value, stage }) => (
                                           <button
                                             key={`${stage ?? "general"}-${value}`}

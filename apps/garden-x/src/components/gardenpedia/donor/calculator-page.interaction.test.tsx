@@ -66,7 +66,7 @@ describe("Calculator real control interactions", () => {
 
     await user.click(confirmation);
     const recipeSelectors = screen.getAllByLabelText("Recipe used");
-    await user.selectOptions(recipeSelectors[recipeSelectors.length - 1], "feeding-3");
+    await user.selectOptions(recipeSelectors[recipeSelectors.length - 1]!, "feeding-3");
     expect((confirmation as HTMLInputElement).checked).toBe(false);
     expect(save.disabled).toBe(true);
   });

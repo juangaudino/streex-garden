@@ -1451,7 +1451,14 @@ describe("Gardenpedia Calculator V1 integration", () => {
   });
 
   it("audits all 83 varieties across declared stage and hydroponic contexts", () => {
-    const stages = ["UNSPECIFIED", "SEEDLING", "VEGETATIVE", "MATURE", "FLOWERING", "FRUITING"];
+    const stages = [
+      "UNSPECIFIED",
+      "SEEDLING",
+      "VEGETATIVE",
+      "MATURE",
+      "FLOWERING",
+      "FRUITING",
+    ] as const;
     const hydroponicSystems = [
       "UNKNOWN",
       "DWC",
@@ -1460,7 +1467,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       "DRIP",
       "AEROPONIC",
       "GENERAL_HYDROPONIC",
-    ];
+    ] as const;
     const contexts = stages.flatMap((phenologicalStage) =>
       hydroponicSystems.map((hydroponicSystem) => ({ phenologicalStage, hydroponicSystem })),
     );

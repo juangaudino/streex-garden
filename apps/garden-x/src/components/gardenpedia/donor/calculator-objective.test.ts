@@ -180,7 +180,10 @@ describe("Calculator objective independent validation", () => {
       });
       expect(correction.kind, `${plant.id} calibrated Correct`).toBe("ok");
       if (correction.kind === "ok")
-        expect(correction.doses.some((dose) => dose.amount > 0), plant.id).toBe(true);
+        expect(
+          correction.doses.some((dose) => dose.amount > 0),
+          plant.id,
+        ).toBe(true);
 
       const topUp = calculateGardenResult({
         ...calibrated,
@@ -194,7 +197,10 @@ describe("Calculator objective independent validation", () => {
       });
       expect(topUp.kind, `${plant.id} calibrated Top Up`).toBe("ok");
       if (topUp.kind === "ok")
-        expect(topUp.doses.some((dose) => dose.amount > 0), plant.id).toBe(true);
+        expect(
+          topUp.doses.some((dose) => dose.amount > 0),
+          plant.id,
+        ).toBe(true);
     }
   });
 
@@ -292,15 +298,27 @@ describe("Calculator objective independent validation", () => {
     expect(fresh.kind).toBe("needs");
     if (fresh.kind === "needs") expect(fresh.message).toMatch(/source-water EC/);
     const refill = calculateGardenResult({
-      ...calibrated, language: "en", mode: "topup", sourceEcKnown: false,
-      currentEc: 0.8, currentLiters: 3, capacityLiters: 4.1, waterAdded: 1,
+      ...calibrated,
+      language: "en",
+      mode: "topup",
+      sourceEcKnown: false,
+      currentEc: 0.8,
+      currentLiters: 3,
+      capacityLiters: 4.1,
+      waterAdded: 1,
     });
     expect(refill.kind).toBe("needs");
     if (refill.kind === "needs") expect(refill.message).toMatch(/source-water EC/);
     expect(calculateGardenResult({ ...calibrated, sourceEcKnown: true }).kind).toBe("ok");
   });
   it("requires source-water EC for dilution, not for adding nutrient or holding", () => {
-    const input = { ...calibrated, language: "en" as const, mode: "adjust" as const, sourceEcKnown: false, currentLiters: 3 };
+    const input = {
+      ...calibrated,
+      language: "en" as const,
+      mode: "adjust" as const,
+      sourceEcKnown: false,
+      currentLiters: 3,
+    };
     const add = calculateGardenResult({ ...input, currentEc: 0.8 });
     expect(add.kind).toBe("ok");
     if (add.kind === "ok") expect(add.action).toBe("add");
@@ -348,7 +366,15 @@ describe("Calculator objective independent validation", () => {
         compare(
           `Aero ${pods} pods feeding ${event}`,
           aeroUrl,
-          pods === 2 || pods === 3 ? 4 : pods === 12 ? (event >= 3 ? 24 : 16) : pods === 9 && event >= 3 ? 12 : 8,
+          pods === 2 || pods === 3
+            ? 4
+            : pods === 12
+              ? event >= 3
+                ? 24
+                : 16
+              : pods === 9 && event >= 3
+                ? 12
+                : 8,
           value.value!.parts[0]!.ml,
           0,
         );
@@ -360,7 +386,10 @@ describe("Calculator objective independent validation", () => {
       ).toBe(false);
     }
     for (const feedingIndex of [0, -1, 1.5]) {
-      expect(executeFreshRecipe({ recipeId: AEROGARDEN_RECIPE.id, podCount: 12, feedingIndex }).errors[0]?.code).toBe("INVALID_FEEDING_INDEX");
+      expect(
+        executeFreshRecipe({ recipeId: AEROGARDEN_RECIPE.id, podCount: 12, feedingIndex }).errors[0]
+          ?.code,
+      ).toBe("INVALID_FEEDING_INDEX");
     }
   });
   it("checks every stored EC and pH range against the OSU table", () => {

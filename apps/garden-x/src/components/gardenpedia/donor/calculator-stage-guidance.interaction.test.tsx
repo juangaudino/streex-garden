@@ -299,6 +299,23 @@ describe("Calculator plant-stage guidance", () => {
     expect(stage.value).toBe("UNSPECIFIED");
   });
 
+  it("offers Epazote Steiner treatments only as contextual manual targets", () => {
+    render(<CalculatorPage language="en" initialPlantId="epazote" />);
+    fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
+
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    expect(screen.queryByText(/Reported EC range/i)).toBeNull();
+
+    fireEvent.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/A trial of H-1000 epazote.*EC 1\.0, 1\.5 and 2\.0 mS\/cm/i)).toBeTruthy();
+    expect(screen.getByRole("button", { name: /Choose study EC for Epazote: 1\.50 mS\/cm/i })).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: /Choose study EC for Epazote: 1\.50 mS\/cm/i }));
+    expect(target.value).toBe("1.5");
+    expect(screen.getByText(/does not validate a dose or range for a reservoir/i)).toBeTruthy();
+  });
+
   it("shows shared hydroponic seedling criteria for spinach and requires confirmation", () => {
     render(<CalculatorPage language="en" initialPlantId="seaside-f1-spinach" />);
     fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {

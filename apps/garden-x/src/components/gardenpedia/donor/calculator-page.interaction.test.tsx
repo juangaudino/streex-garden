@@ -136,26 +136,26 @@ describe("Calculator real control interactions", () => {
   });
   it("offers the Tagetes patula DWC conditions only as manual calibrated choices", async () => {
     const user = userEvent.setup();
-    render(<CalculatorPage language="en" initialPlantId="marigold-jolly-jester" />);
+    render(<CalculatorPage language="en" initialPlantId="french-marigold" />);
     await user.click(screen.getByRole("tab", { name: "By EC" }));
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
     expect(target.value).toBe("");
     await user.click(screen.getByText("View cultivation sources"));
-    expect(screen.getByText(/did not include Jolly Jester or compare EC treatments/i)).toBeTruthy();
+    expect(screen.getByText(/not the Jolly Jester commercial identity/i)).toBeTruthy();
     expect(
       screen.getByRole("button", {
-        name: /Choose study EC for .*Jolly Jester.*: 1\.80 mS\/cm.*University of Debrecen/i,
+        name: /Choose study EC for French Marigold: 1\.80 mS\/cm.*University of Debrecen/i,
       }),
     ).toBeTruthy();
     expect(
       screen.getByRole("button", {
-        name: /Choose study EC for .*Jolly Jester.*: 2\.00 mS\/cm.*University of Debrecen/i,
+        name: /Choose study EC for French Marigold: 2\.00 mS\/cm.*University of Debrecen/i,
       }),
     ).toBeTruthy();
     expect(target.value).toBe("");
     await user.click(
       screen.getByRole("button", {
-        name: /Choose study EC for .*Jolly Jester.*: 1\.80 mS\/cm.*University of Debrecen/i,
+        name: /Choose study EC for French Marigold: 1\.80 mS\/cm.*University of Debrecen/i,
       }),
     );
     expect(target.value).toBe("1.8");

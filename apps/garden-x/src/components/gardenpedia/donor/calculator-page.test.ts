@@ -535,7 +535,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.source.region).toBe("Bangladesh");
     expect(reference?.text.en).toContain("BARI Gada-1");
     expect(reference?.text.en).toContain("manual target");
-    expect(reference?.text.en).toContain("not automatic validation");
+    expect(reference?.text.en).toContain("not validation of Jolly Jester or automatic evidence");
   });
   it("offers BARC crop- and stage-qualified readings only as manual choices", () => {
     const references = CROP_STUDY_REFERENCES.filter(
@@ -692,29 +692,33 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const reference = CROP_STUDY_REFERENCES.find(
       (study) =>
         study.source.id === "tagetes-patula-dwc-cultivars-2026" &&
-        study.plantIds.includes("marigold-jolly-jester"),
+        study.plantIds.includes("french-marigold"),
     );
+    expect(reference?.plantIds).toEqual(["french-marigold"]);
     expect(reference?.selectableEcMs).toBeUndefined();
     expect(reference?.selectableEcValuesMs).toEqual([1.8, 2.0]);
-    expect(reference?.text.en).toContain("did not include Jolly Jester");
+    expect(reference?.text.en).toContain("not the Jolly Jester commercial identity");
     expect(reference?.text.en).toContain("not an optimum range");
+    expect(reference?.plantIds).not.toContain("marigold-jolly-jester");
     expect(
       CROP_EVIDENCE.some((observation) => observation.source.id === reference?.source.id),
     ).toBe(false);
     expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("french-marigold")).toBe(false);
   });
   it("exposes the LaNiTex Tagetes patula report as manual stage-context choices only", () => {
     const reference = CROP_STUDY_REFERENCES.find(
       (study) => study.source.id === "lanitex-hydroponic-marigold-guide-2026",
     );
-    expect(reference?.plantIds).toEqual(["marigold-jolly-jester"]);
+    expect(reference?.plantIds).toEqual(["french-marigold"]);
+    expect(reference?.plantIds).not.toContain("marigold-jolly-jester");
     expect(reference?.selectableEcValuesMs).toEqual([1.0, 1.5, 1.8, 2.0]);
     expect(reference?.source).toMatchObject({
       sourceClass: "SPECIALIST_GROWER",
       tier: "C",
       region: "Australia",
     });
-    expect(reference?.text.en).toMatch(/does not identify Jolly Jester/i);
+    expect(reference?.text.en).toMatch(/does not identify the Jolly Jester commercial identity/i);
     expect(reference?.text.en).toMatch(/not automatic evidence/i);
     expect(
       CROP_EVIDENCE.some(
@@ -722,6 +726,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ),
     ).toBe(false);
     expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("french-marigold")).toBe(false);
   });
   it("shows the epazote substrate trial without treating it as a reservoir range", () => {
     const reference = CROP_STUDY_REFERENCES.find(

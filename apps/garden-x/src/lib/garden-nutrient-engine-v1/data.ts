@@ -39,6 +39,72 @@ export const NUTRIENT_SOURCES = {
     tier: "A",
     retrievedAt: "2026-11-26",
   },
+  umnScallionsTransplanting: {
+    id: "umn-extension-scallions-transplanting",
+    publisher: "University of Minnesota Extension",
+    title: "Growing scallions in home gardens",
+    url: "https://extension.umn.edu/garden-and-home/yard-and-garden/gardening-in-minnesota/growing-scallions-in-home-gardens",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-26",
+  },
+  ncStatePerpetualSpinach: {
+    id: "nc-state-extension-perpetual-spinach-transplanting",
+    publisher: "North Carolina State University Extension · Gardener Plant Toolbox",
+    title: "Perpetual Spinach — Beta vulgaris Leaf Beet Group",
+    url: "https://plants.ces.ncsu.edu/plants/beta-vulgaris-leaf-beet-group/common-name/perpetual-spinach/",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-26",
+  },
+  hudsonValleyScarletRedTatsoi: {
+    id: "hudson-valley-scarlet-red-tatsoi-germination",
+    publisher: "Hudson Valley Seed Company",
+    title: "Scarlet Red Tatsoi",
+    url: "https://hudsonvalleyseed.com/collections/asian-greens/products/scarlet-red-tatsoi",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-26",
+  },
+  seedCollectionHonTsaiTai: {
+    id: "seed-collection-hon-tsai-tai-germination",
+    publisher: "The Seed Collection",
+    title: "Hon Tsai Tai seeds",
+    url: "https://www.theseedcollection.com.au/Hon-Tsai-Tai",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-26",
+  },
+  usuMiniatureCarnation: {
+    id: "usu-extension-miniature-carnation-transplanting",
+    publisher: "Utah State University Extension",
+    title: "Miniature Carnation Cut Flower Production in Utah",
+    url: "https://extension.usu.edu/productionhort/research/miniature-carnation-cut-flower-production-in-utah",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-26",
+  },
+  wvuKohlrabiTransplantAge: {
+    id: "wvu-extension-kohlrabi-transplant-age",
+    publisher: "West Virginia University Extension Service",
+    title: "Vegetable Seeding and Transplanting Guide",
+    url: "https://extension.wvu.edu/files/d/afd82393-94a4-45b9-bdfd-d763c0f0d2c6/vegetable-seeding-transplanting.pdf",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-26",
+  },
+  tatsoiFloatingCultureStudy: {
+    id: "kartika-tatsoi-transplant-timing-floating-culture-2021",
+    publisher:
+      "Trends in Sciences · Universitas Sriwijaya and Indonesia National Research and Innovation Agency",
+    title:
+      "Effect of the Cultivation Systems and Split Fertilizer Applications on the Growth and Yields of Tatsoi",
+    url: "https://tis.wu.ac.th/index.php/tis/article/view/344",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2021",
+    retrievedAt: "2026-11-26",
+  },
   ukyLeafyCropHydroponic: {
     id: "uky-ut-leafy-crop-hydroponic-production-w844b",
     publisher: "University of Kentucky / University of Tennessee Extension",
@@ -2213,6 +2279,134 @@ export const CROP_STAGE_REFERENCES = [
     text: {
       es: "Wisconsin Extension describe las hojas jóvenes de cilantro como anchas y planas; al espigar aparecen hojas más finas y plumosas sobre el tallo floral. La planta seca y las semillas marrones indican una fase posterior. Son rasgos observables, no un calendario universal ni una dosis.",
       en: "Wisconsin Extension describes young cilantro leaves as broad and flat; when bolting begins, finer, fern-like leaves appear along the flowering stem. A dried plant and brown seed pods indicate a later phase. These are observable cues, not a universal calendar or dose.",
+    },
+  },
+  {
+    cropIdentity: "bunching-onion",
+    plantIds: ["evergreen-bunching-onion-nabuka", "bunching-onion-allium-fistulosum"],
+    source: NUTRIENT_SOURCES.umnScallionsTransplanting,
+    ageWindows: [
+      {
+        minDays: 28,
+        maxDays: 28,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "UMN Extension indica iniciar bunching onions en interior cuatro semanas antes del trasplante exterior. Es una referencia de vivero para Allium fistulosum; confirma hojas y raíces en tu planta y selecciona la etapa manualmente. La edad no cambia la etapa ni la dosis.",
+          en: "UMN Extension says to start bunching onions indoors four weeks before outdoor transplanting. This is a nursery reference for Allium fistulosum; confirm leaves and roots on your plant and select its stage manually. Age does not change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "UMN Extension identifica los scallions como Allium fistulosum y recomienda iniciar las plántulas en interior cuatro semanas antes de trasplantar al exterior. Es contexto de establecimiento, no un calendario hidropónico ni una transición automática.",
+      en: "UMN Extension identifies scallions as Allium fistulosum and recommends starting seedlings indoors four weeks before outdoor transplanting. This is establishment context, not a hydroponic calendar or automatic stage transition.",
+    },
+  },
+  {
+    cropIdentity: "perpetual-spinach",
+    plantIds: ["perpetual-spinach"],
+    source: NUTRIENT_SOURCES.ncStatePerpetualSpinach,
+    ageWindows: [
+      {
+        minDays: 28,
+        maxDays: 28,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "NC State Extension describe trasplantar la acelga de hoja conocida como perpetual spinach cuatro semanas después de iniciar la semilla. Confirma las hojas y raíces visibles; el calendario de suelo no establece una transición hidropónica ni cambia la dosis.",
+          en: "NC State Extension describes transplanting the leaf-beet type called perpetual spinach four weeks after starting seed. Confirm visible leaves and roots; the soil-growing calendar does not establish a hydroponic transition or change the dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Perpetual spinach es un grupo de Beta vulgaris, no Spinacia oleracea. NC State Extension recomienda iniciar en interior y trasplantar aproximadamente cuatro semanas después; confirma el desarrollo visible y no uses la edad como etapa o pauta de EC.",
+      en: "Perpetual spinach is a Beta vulgaris group, not Spinacia oleracea. NC State Extension recommends starting indoors and transplanting about four weeks later; confirm visible development and do not use age as a stage or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "hon-tsai-tai",
+    plantIds: ["hon-tsai-tai"],
+    source: NUTRIENT_SOURCES.seedCollectionHonTsaiTai,
+    ageWindows: [
+      {
+        minDays: 7,
+        maxDays: 14,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El proveedor de semillas indica 7–14 días de germinación para Hon Tsai Tai bajo sus condiciones. Úsalo solo como ventana de emergencia y comprueba si la semilla germinó; no confirma desarrollo posterior, etapa de la planta ni dosis.",
+          en: "The seed supplier lists 7–14 days for Hon Tsai Tai germination under its conditions. Use this only as an emergence window and check whether the seed has germinated; it does not confirm later development, plant stage, or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "El proveedor publica una ventana de germinación de 7–14 días para esta variedad. Es información de la semilla vendida, no una edad de trasplante, transición fenológica ni pauta de EC.",
+      en: "The supplier lists a 7–14-day germination window for this variety. This describes the seed sold, not a transplant age, phenological transition, or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "scarlet-red-tatsoi",
+    plantIds: ["scarlet-red-tatsoi"],
+    source: NUTRIENT_SOURCES.hudsonValleyScarletRedTatsoi,
+    ageWindows: [
+      {
+        minDays: 5,
+        maxDays: 15,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Hudson Valley Seed Company indica 5–15 días para la germinación de Scarlet Red Tatsoi. Esta es una ventana de emergencia de la variedad; confirma si emergió y su desarrollo visible. No cambia automáticamente etapa ni dosis.",
+          en: "Hudson Valley Seed Company lists 5–15 days for Scarlet Red Tatsoi germination. This is a variety-specific emergence window; confirm emergence and visible development. It does not automatically change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "El proveedor identifica Scarlet Red Tatsoi como Brassica rapa y publica 5–15 días para germinación. La fecha de emergencia solo orienta la observación; no establece una transición posterior ni una dosis.",
+      en: "The supplier identifies Scarlet Red Tatsoi as Brassica rapa and lists 5–15 days for germination. Emergence timing only guides observation; it does not establish a later transition or dose.",
+    },
+  },
+  {
+    cropIdentity: "purple-kohlrabi",
+    plantIds: ["purple-kohlrabi"],
+    source: NUTRIENT_SOURCES.wvuKohlrabiTransplantAge,
+    ageWindows: [
+      {
+        minDays: 28,
+        maxDays: 42,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "WVU Extension indica 4–6 semanas como edad de trasplante de colirrábano. No identifica el cultivar morado ni producción hidropónica; verifica hojas verdaderas y raíces y confirma la etapa manualmente. La edad no cambia el EC ni la dosis.",
+          en: "WVU Extension lists 4–6 weeks as a transplant age for kohlrabi. It does not identify the purple cultivar or hydroponic production; check true leaves and roots and confirm the stage manually. Age does not change EC or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La guía de WVU ofrece 4–6 semanas como edad de trasplante para colirrábano en vivero. No estudia el cultivar morado ni hidroponía; usa la referencia solo para contextualizar la plántula y confirma su desarrollo visible.",
+      en: "WVU's guide gives 4–6 weeks as a nursery transplant age for kohlrabi. It does not study the purple cultivar or hydroponics; use this only to contextualize the seedling and confirm visible development.",
+    },
+  },
+  {
+    cropIdentity: "miniature-carnation",
+    plantIds: ["fragrant-dwarf-dianthus-mix"],
+    source: NUTRIENT_SOURCES.usuMiniatureCarnation,
+    ageWindows: [
+      {
+        minDays: 42,
+        maxDays: 56,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "USU Extension recomienda iniciar carnation miniatura en interior 6–8 semanas antes del trasplante y reporta germinación de 7–14 días. Es una guía de clavel spray para producción de flor cortada, no identifica esta mezcla ni un sistema hidropónico. Confirma hojas y raíces; la edad no cambia la etapa ni la dosis.",
+          en: "USU Extension recommends starting miniature carnations indoors 6–8 weeks before transplanting and reports 7–14-day germination. This spray-carnation guide is for cut-flower production; it does not identify this mix or a hydroponic system. Confirm leaves and roots; age does not change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "USU Extension cubre clavel miniatura/spray de Dianthus caryophyllus y recomienda 6–8 semanas de producción de trasplante. La mezcla comercial de esta ficha no está identificada en la guía; se muestra como contexto de vivero, no calendario hidropónico ni pauta de EC.",
+      en: "USU Extension covers miniature/spray Dianthus caryophyllus and recommends 6–8 weeks of transplant production. The commercial mix in this profile is not identified in the guide; this is nursery context, not a hydroponic schedule or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "scarlet-red-tatsoi",
+    source: NUTRIENT_SOURCES.tatsoiFloatingCultureStudy,
+    text: {
+      es: "Un ensayo de tatsoi trasplantó plántulas a los 14 días desde la siembra y cosechó 49 días después. Incluyó cultivo flotante y convencional, pero no identifica Scarlet Red ni un tanque doméstico. Es contexto de un ensayo, no una transición automática ni pauta de EC.",
+      en: "A tatsoi trial transplanted seedlings 14 days after sowing and harvested 49 days later. It included floating and conventional cultivation but does not identify Scarlet Red or a home reservoir. This is trial context, not an automatic transition or EC prescription.",
     },
   },
 ] as const;

@@ -423,7 +423,9 @@ describe("Calculator plant-stage guidance", () => {
     render(<CalculatorPage language="en" initialPlantId="monterey-strawberry" />);
     fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
     const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
-    expect(target.value).toBe("");
+    // The target field is prefilled from the separate crop-level evidence
+    // range (1.8–2.2), not from the study's contextual/manual choices below.
+    expect(target.value).toBe("1.90");
     fireEvent.click(screen.getByText("View cultivation sources"));
 
     const vegetative = screen.getByRole("button", {
@@ -434,7 +436,7 @@ describe("Calculator plant-stage guidance", () => {
     });
     expect(vegetative).toBeTruthy();
     expect(fruiting).toBeTruthy();
-    expect(target.value).toBe("");
+    expect(target.value).toBe("1.90");
 
     fireEvent.click(fruiting);
     expect(target.value).toBe("1.3");

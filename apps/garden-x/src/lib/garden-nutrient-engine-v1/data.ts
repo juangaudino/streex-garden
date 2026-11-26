@@ -30,6 +30,15 @@ export const NUTRIENT_SOURCES = {
     publication: "ANR-2954",
     retrievedAt: "2026-11-25",
   },
+  usuGrowYourOwnTransplants: {
+    id: "usu-grow-your-own-transplants-celery-timing",
+    publisher: "Utah State University Extension",
+    title: "Grow Your Own Transplants At Home",
+    url: "https://extension.usu.edu/yardandgarden/research/grow-your-own-transplants-at-home",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-26",
+  },
   ukyLeafyCropHydroponic: {
     id: "uky-ut-leafy-crop-hydroponic-production-w844b",
     publisher: "University of Kentucky / University of Tennessee Extension",
@@ -1662,6 +1671,26 @@ function wvuTransplantReference(
 }
 
 export const CROP_STAGE_REFERENCES = [
+  {
+    cropIdentity: "celery",
+    plantIds: ["chinese-light-green-celery"],
+    source: NUTRIENT_SOURCES.usuGrowYourOwnTransplants,
+    ageWindows: [
+      {
+        minDays: 79,
+        maxDays: 105,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "USU Extension publica 9–21 días hasta la germinación y 10–12 semanas desde la germinación hasta el trasplante de apio en un contexto de vivero exterior; 79–105 días desde la siembra es el intervalo combinado. Confirma hojas verdaderas y raíces desarrolladas: no identifica el cultivar Chinese Light Green ni cambia la etapa o dosis automáticamente.",
+          en: "USU Extension lists 9–21 days to celery germination and 10–12 weeks from germination to transplant in an outdoor nursery context; 79–105 days from sowing is the combined interval. Confirm true leaves and established roots: the source does not identify the Chinese Light Green cultivar and does not automatically change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "USU Extension da un calendario general de vivero para apio: 9–21 días para germinar y 10–12 semanas desde germinación hasta trasplante; también pide 3–4 hojas maduras y raíces establecidas. Es contexto exterior, no un calendario hidropónico ni una pauta de EC para el cultivar Chinese Light Green.",
+      en: "USU Extension gives a general celery nursery timeline: 9–21 days to germinate and 10–12 weeks from germination to transplant; it also calls for 3–4 mature leaves and an established root system. This is outdoor context, not a hydroponic schedule or EC prescription for the Chinese Light Green cultivar.",
+    },
+  },
   {
     cropIdentity: "lady-murasaki-komatsuna",
     source: NUTRIENT_SOURCES.komatsunaNftThesis,

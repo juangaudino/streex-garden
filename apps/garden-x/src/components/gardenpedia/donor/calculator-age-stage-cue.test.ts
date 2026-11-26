@@ -9,6 +9,20 @@ import { calculatePolycultureRange } from "@/lib/garden-nutrient-engine-v1/engin
 import { CROP_EVIDENCE } from "@/lib/garden-nutrient-engine-v1/data";
 
 describe("calculator age stage cues", () => {
+  it("uses USU's celery seed-to-transplant timing only as confirmable nursery context", () => {
+    const cue = calculatorAgeStageCueForPlant("chinese-light-green-celery", 90);
+    expect(cue?.reference.source.id).toBe("usu-grow-your-own-transplants-celery-timing");
+    expect(cue?.ageWindow).toMatchObject({
+      minDays: 79,
+      maxDays: 105,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(cue?.ageWindow.text.en).toMatch(/outdoor nursery context/);
+    expect(cue?.ageWindow.text.en).toMatch(/does not automatically change stage or dose/);
+    expect(calculatorAgeStageCueForPlant("chinese-light-green-celery", 78)).toBeUndefined();
+    expect(calculatorAgeStageCueForPlant("chinese-light-green-celery", 106)).toBeUndefined();
+  });
+
   it("resolves only explicitly mapped public stage references for the plant row", () => {
     expect(calculatorStageReferenceForPlant("genovese-basil")?.cropIdentity).toBe("basil");
     expect(calculatorStageReferenceForPlant("bibb-lettuce")?.cropIdentity).toBe("lettuce");

@@ -66,6 +66,12 @@ la observación con una diferencia medible o un instrumento más preciso.
   mantenerse igual. Confirma visualmente hojas verdaderas y raíces antes de elegir
   Plántula. A los 22 días la ventana ya no aplica; la aplicación no debe inventar
   una nueva etapa ni cambiar por sí sola la dosis.
+- Añade **Chinese Light Green Celery** con 90 días: debe mostrar el contexto de
+  trasplante general de apio de USU Extension (79–105 días desde siembra, derivado
+  de 9–21 días a germinación más 10–12 semanas hasta trasplante), con la advertencia
+  de que no identifica el cultivar ni es un calendario hidropónico. Debe pedir
+  confirmar la etapa por hojas verdaderas y raíces, sin cambiarla ni cambiar la
+  dosis automáticamente. A 106 días esa ventana debe dejar de aparecer.
 - En cada planta compara por separado **edad desde siembra**, **etapa observada**
   y **etapa del programa del fabricante**. Cambiar los días no debe alterar una
   dosis hasta que una etapa observada/aplicable o un objetivo cambie explícitamente.

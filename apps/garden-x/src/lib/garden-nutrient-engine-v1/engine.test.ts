@@ -66,7 +66,10 @@ function calibrationInput() {
 
 describe("Garden Nutrient Engine V1", () => {
   it("preserves Hydrocrop beetroot guidance as crop-level and excludes seedlings", () => {
-    const context: CropContext = { cropIdentity: "beetroot", measurementScope: "NUTRIENT_SOLUTION" };
+    const context: CropContext = {
+      cropIdentity: "beetroot",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
     const result = selectCropRange(context).ec;
     expect(result.ec).toEqual({ min: 1.4, max: 2.4, unit: "mS/cm" });
     expect(result.observations[0]?.source.id).toBe("hydrocrop-hydrosol-crop-ec-guide");
@@ -74,7 +77,10 @@ describe("Garden Nutrient Engine V1", () => {
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
   });
   it("keeps fenugreek and borage supplier values contextual and excludes seedlings", () => {
-    for (const [cropIdentity, min, max] of [["fenugreek", 1.2, 2.4], ["borage", 1.4, 2.2]] as const) {
+    for (const [cropIdentity, min, max] of [
+      ["fenugreek", 1.2, 2.4],
+      ["borage", 1.4, 2.2],
+    ] as const) {
       const context: CropContext = { cropIdentity, measurementScope: "NUTRIENT_SOLUTION" };
       const result = selectCropRange(context).ec;
       expect(result.ec).toEqual({ min, max, unit: "mS/cm" });
@@ -84,7 +90,10 @@ describe("Garden Nutrient Engine V1", () => {
     }
   });
   it("preserves Calendula officinalis guidance separately from Tagetes", () => {
-    const context: CropContext = { cropIdentity: "calendula", measurementScope: "NUTRIENT_SOLUTION" };
+    const context: CropContext = {
+      cropIdentity: "calendula",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
     const result = selectCropRange(context).ec;
     expect(result.ec).toEqual({ min: 1.2, max: 1.8, unit: "mS/cm" });
     expect(result.observations[0]?.source.id).toBe("lanitex-hydroponic-calendula-guide");
@@ -95,35 +104,78 @@ describe("Garden Nutrient Engine V1", () => {
     const petunia: CropContext = { cropIdentity: "petunia", measurementScope: "NUTRIENT_SOLUTION" };
     expect(selectCropRange(petunia).ec.ec).toEqual({ min: 1.2, max: 2.5, unit: "mS/cm" });
     expect(selectCropRange({ ...petunia, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
-    const lavender: CropContext = { cropIdentity: "english-lavender", measurementScope: "NUTRIENT_SOLUTION" };
+    const lavender: CropContext = {
+      cropIdentity: "english-lavender",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
     expect(selectCropRange(lavender).ec.ec).toBeUndefined();
-    expect(selectCropRange({ ...lavender, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 0.7, max: 0.9, unit: "mS/cm" });
-    expect(selectCropRange({ ...lavender, phenologicalStage: "MATURE" }).ec.ec).toEqual({ min: 1.2, max: 1.5, unit: "mS/cm" });
+    expect(selectCropRange({ ...lavender, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({
+      min: 0.7,
+      max: 0.9,
+      unit: "mS/cm",
+    });
+    expect(selectCropRange({ ...lavender, phenologicalStage: "MATURE" }).ec.ec).toEqual({
+      min: 1.2,
+      max: 1.5,
+      unit: "mS/cm",
+    });
   });
   it("keeps holy basil seedling and growth guidance distinct from maturity", () => {
-    const context: CropContext = { cropIdentity: "holy-basil", measurementScope: "NUTRIENT_SOLUTION" };
+    const context: CropContext = {
+      cropIdentity: "holy-basil",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
     expect(selectCropRange(context).ec.ec).toBeUndefined();
-    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 0.7, max: 0.9, unit: "mS/cm" });
-    expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({ min: 0.9, max: 1.2, unit: "mS/cm" });
-    expect(selectCropRange({ ...context, phenologicalStage: "MATURE" }).ec.ec).toEqual({ min: 1.6, max: 2.1, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({
+      min: 0.7,
+      max: 0.9,
+      unit: "mS/cm",
+    });
+    expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({
+      min: 0.9,
+      max: 1.2,
+      unit: "mS/cm",
+    });
+    expect(selectCropRange({ ...context, phenologicalStage: "MATURE" }).ec.ec).toEqual({
+      min: 1.6,
+      max: 2.1,
+      unit: "mS/cm",
+    });
     expect(selectCropRange({ ...context, phenologicalStage: "FLOWERING" }).ec.ec).toBeUndefined();
   });
   it("preserves non-bulbing bunching onion guidance without promoting it to seedlings", () => {
-    const context: CropContext = { cropIdentity: "bunching-onion", measurementScope: "NUTRIENT_SOLUTION", phenologicalStage: "UNSPECIFIED" };
+    const context: CropContext = {
+      cropIdentity: "bunching-onion",
+      measurementScope: "NUTRIENT_SOLUTION",
+      phenologicalStage: "UNSPECIFIED",
+    };
     const result = selectCropRange(context).ec;
     expect(result.ec).toEqual({ min: 1.8, max: 2.4, unit: "mS/cm" });
     expect(result.observations[0]?.notes).toContain("does not identify a botanical species");
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
   });
   it("preserves sunflower and kohlrabi supplier ranges without applying them to seedlings", () => {
-    for (const [cropIdentity, min, max] of [["sunflower", 1.2, 1.8], ["kohlrabi", 1.8, 2.4]] as const) {
-      const context: CropContext = { cropIdentity, phenologicalStage: "UNSPECIFIED", measurementScope: "NUTRIENT_SOLUTION" };
+    for (const [cropIdentity, min, max] of [
+      ["sunflower", 1.2, 1.8],
+      ["kohlrabi", 1.8, 2.4],
+    ] as const) {
+      const context: CropContext = {
+        cropIdentity,
+        phenologicalStage: "UNSPECIFIED",
+        measurementScope: "NUTRIENT_SOLUTION",
+      };
       const result = selectCropRange(context).ec;
       expect(result.ec).toEqual({ min, max, unit: "mS/cm" });
       expect(result.evidenceState).toBe("MODERATE");
       expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
     }
-    expect(selectCropRange({ cropIdentity: "sunflower", phenologicalStage: "VEGETATIVE", measurementScope: "NUTRIENT_SOLUTION" }).ec.ec).toEqual({ min: 1.2, max: 1.6, unit: "mS/cm" });
+    expect(
+      selectCropRange({
+        cropIdentity: "sunflower",
+        phenologicalStage: "VEGETATIVE",
+        measurementScope: "NUTRIENT_SOLUTION",
+      }).ec.ec,
+    ).toEqual({ min: 1.2, max: 1.6, unit: "mS/cm" });
   });
   it("keeps chervil grower guidance separate from seedling guidance", () => {
     const context: CropContext = {
@@ -164,17 +216,40 @@ describe("Garden Nutrient Engine V1", () => {
     }
   });
   it("applies cilantro general guidance separately from NFT guidance", () => {
-    const context: CropContext = { cropIdentity: "cilantro", phenologicalStage: "UNSPECIFIED", measurementScope: "NUTRIENT_SOLUTION" };
+    const context: CropContext = {
+      cropIdentity: "cilantro",
+      phenologicalStage: "UNSPECIFIED",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
     expect(selectCropRange(context).ec.ec).toEqual({ min: 1.3, max: 1.8, unit: "mS/cm" });
-    expect(selectCropRange({ ...context, hydroponicSystem: "NFT" }).ec.ec).toEqual({ min: 1.5, max: 1.8, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, hydroponicSystem: "NFT" }).ec.ec).toEqual({
+      min: 1.5,
+      max: 1.8,
+      unit: "mS/cm",
+    });
     expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toBeUndefined();
   });
   it("uses garlic chive stage-specific guidance only for the specified stage", () => {
-    const context: CropContext = { cropIdentity: "garlic-chives", measurementScope: "NUTRIENT_SOLUTION" };
+    const context: CropContext = {
+      cropIdentity: "garlic-chives",
+      measurementScope: "NUTRIENT_SOLUTION",
+    };
     expect(selectCropRange(context).ec.ec).toBeUndefined();
-    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({ min: 1, max: 1.3, unit: "mS/cm" });
-    expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({ min: 1, max: 1.5, unit: "mS/cm" });
-    expect(selectCropRange({ ...context, phenologicalStage: "MATURE" }).ec.ec).toEqual({ min: 1.5, max: 1.8, unit: "mS/cm" });
+    expect(selectCropRange({ ...context, phenologicalStage: "SEEDLING" }).ec.ec).toEqual({
+      min: 1,
+      max: 1.3,
+      unit: "mS/cm",
+    });
+    expect(selectCropRange({ ...context, phenologicalStage: "VEGETATIVE" }).ec.ec).toEqual({
+      min: 1,
+      max: 1.5,
+      unit: "mS/cm",
+    });
+    expect(selectCropRange({ ...context, phenologicalStage: "MATURE" }).ec.ec).toEqual({
+      min: 1.5,
+      max: 1.8,
+      unit: "mS/cm",
+    });
     expect(selectCropRange({ ...context, phenologicalStage: "FLOWERING" }).ec.ec).toBeUndefined();
   });
   it("uses rosemary supplier guidance as a moderate reported range, not a seedling rule", () => {
@@ -340,8 +415,14 @@ describe("Garden Nutrient Engine V1", () => {
     };
     expect(calculateTopUpMaintenance(base).errors[0]?.code).toBe("SOURCE_WATER_EC_REQUIRED");
     expect(calculateTopUpMaintenance({ ...base, replacementWaterL: 0 }).ok).toBe(true);
-    const needsDilution = { ...base, currentEc: measurement(1.5, "NUTRIENT_SOLUTION"), replacementWaterL: 0 };
-    expect(calculateTopUpMaintenance(needsDilution).errors[0]?.code).toBe("SOURCE_WATER_EC_REQUIRED");
+    const needsDilution = {
+      ...base,
+      currentEc: measurement(1.5, "NUTRIENT_SOLUTION"),
+      replacementWaterL: 0,
+    };
+    expect(calculateTopUpMaintenance(needsDilution).errors[0]?.code).toBe(
+      "SOURCE_WATER_EC_REQUIRED",
+    );
     const measuredDilution = calculateTopUpMaintenance({
       ...needsDilution,
       replacementWaterEc: measurement(0.2, "SOURCE_WATER"),
@@ -558,28 +639,45 @@ describe("Garden Nutrient Engine V1", () => {
   });
 
   it("selects cultivar-specific evidence only for an explicitly matching cultivar", () => {
-    const generic = CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!;
+    const generic = CROP_EVIDENCE.find(
+      (item) => item.cropIdentity === "basil" && item.metric === "EC",
+    )!;
     const named = { ...generic, id: "specific-cultivar", cultivar: "genovese" };
     const other = { ...generic, id: "other-cultivar", cultivar: "thai" };
     const observations = [generic, named, other];
     expect(selectApplicable(observations, basil).map((item) => item.id)).toEqual([generic.id]);
     const context = { ...basil, cultivar: "genovese" };
-    expect(selectApplicable(observations, context).map((item) => item.id)).toEqual([generic.id, named.id]);
-    expect(selectCropRange(context, observations).ec.observations.map((item) => item.id))
-      .toEqual([generic.id, named.id]);
+    expect(selectApplicable(observations, context).map((item) => item.id)).toEqual([
+      generic.id,
+      named.id,
+    ]);
+    expect(selectCropRange(context, observations).ec.observations.map((item) => item.id)).toEqual([
+      generic.id,
+      named.id,
+    ]);
     expect(selectCropRange({ ...basil, cultivar: "thai" }, [named]).ec.ec).toBeUndefined();
     expect(selectCropRange(basil, [named]).ec.ec).toBeUndefined();
   });
 
   it("does not promote unverified observations and preserves verified-source conflicts", () => {
-    const verified = CROP_EVIDENCE.find((item) => item.cropIdentity === "basil" && item.metric === "EC")!;
+    const verified = CROP_EVIDENCE.find(
+      (item) => item.cropIdentity === "basil" && item.metric === "EC",
+    )!;
     const unverified = { ...verified, id: "unverified", verificationStatus: "UNVERIFIED" as const };
     const reported = { ...verified, id: "reported", verificationStatus: "REPORTED" as const };
     expect(selectApplicable([unverified, reported], basil)).toHaveLength(0);
-    expect(calculateFreshTargetEc({ contexts: [basil], observations: [unverified, reported] }).ok).toBe(false);
-    const conflicting = { ...verified, id: "conflicting", verificationStatus: "CONFLICTING" as const };
+    expect(
+      calculateFreshTargetEc({ contexts: [basil], observations: [unverified, reported] }).ok,
+    ).toBe(false);
+    const conflicting = {
+      ...verified,
+      id: "conflicting",
+      verificationStatus: "CONFLICTING" as const,
+    };
     expect(selectCropRange(basil, [conflicting]).ec.evidenceState).toBe("CONFLICTING");
-    expect(calculateFreshTargetEc({ contexts: [basil], observations: [conflicting] }).ok).toBe(false);
+    expect(calculateFreshTargetEc({ contexts: [basil], observations: [conflicting] }).ok).toBe(
+      false,
+    );
   });
 
   it("never intersects ranges across different measurement scopes in a mixed planting", () => {
@@ -735,6 +833,39 @@ describe("Garden Nutrient Engine V1", () => {
     });
     expect(unsupported.ok).toBe(false);
     expect(unsupported.errors[0]?.code).toBe("UNSUPPORTED_POD_COUNT");
+  });
+
+  it("matches the official AeroGarden dose for every published pod group and feeding event", () => {
+    const published = [
+      { podCount: 2, expected: [4, 4, 4] },
+      { podCount: 3, expected: [4, 4, 4] },
+      { podCount: 6, expected: [8, 8, 8] },
+      { podCount: 7, expected: [8, 8, 8] },
+      { podCount: 9, expected: [8, 8, 12] },
+      { podCount: 12, expected: [16, 16, 24] },
+    ] as const;
+
+    for (const { podCount, expected } of published) {
+      for (const [index, ml] of expected.entries()) {
+        const result = executeFreshRecipe({
+          recipeId: AEROGARDEN_RECIPE.id,
+          podCount,
+          feedingIndex: index + 1,
+        });
+        expect(result.ok, `${podCount} pods, feed ${index + 1}`).toBe(true);
+        expect(result.value?.parts[0]?.ml, `${podCount} pods, feed ${index + 1}`).toBe(ml);
+      }
+    }
+
+    for (const podCount of [1, 4, 5, 8, 10, 11]) {
+      const result = executeFreshRecipe({
+        recipeId: AEROGARDEN_RECIPE.id,
+        podCount,
+        feedingIndex: 1,
+      });
+      expect(result.ok, `${podCount} pods`).toBe(false);
+      expect(result.errors[0]?.code, `${podCount} pods`).toBe("UNSUPPORTED_POD_COUNT");
+    }
   });
 
   it("does not require reservoir volume for an AeroGarden recipe that does not use it", () => {
@@ -982,8 +1113,12 @@ describe("Garden Nutrient Engine V1", () => {
       policy: { dosingEquipmentResolutionMl: baseline.value!.nutrientDoseMl! * 2 },
     });
     expect(warned.value!.nutrientDoseMl).toBe(baseline.value!.nutrientDoseMl);
-    expect(warned.warnings.some((item) => item.code === "DOSE_BELOW_EQUIPMENT_RESOLUTION")).toBe(true);
-    expect(baseline.warnings.some((item) => item.code === "DOSE_BELOW_EQUIPMENT_RESOLUTION")).toBe(false);
+    expect(warned.warnings.some((item) => item.code === "DOSE_BELOW_EQUIPMENT_RESOLUTION")).toBe(
+      true,
+    );
+    expect(baseline.warnings.some((item) => item.code === "DOSE_BELOW_EQUIPMENT_RESOLUTION")).toBe(
+      false,
+    );
   });
 
   it("reports deterministic source-water values without a universal threshold", () => {

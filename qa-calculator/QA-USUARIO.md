@@ -74,7 +74,24 @@ manualmente un EC, pero no constituyen un intervalo óptimo automático.
 Las pruebas de cálculo usan observaciones de calibración **simuladas** para
 verificar los cuatro flujos. No son datos medidos de tu FloraSeries: Por EC,
 Corregir y Rellenar solo quedan calibrados para tu producto cuando guardes una
-medición real con las cantidades que efectivamente añadiste.
+medición real con las cantidades que efectivamente añadiste. Las 83 identidades
+se recorren en las pruebas con todos los modos, pero eso no significa que cada
+una tenga rango automático: en estado predeterminado, 7 tienen evidencia directa,
+57 usan una asignación de cultivo explícita y defendible, y 19 quedan como
+INSUFFICIENT. En los contextos probados, 13 no obtienen rango automático.
+
+Algunas referencias recientes son condiciones observadas y seleccionables solo
+como objetivo manual: los tratamientos NFT de Komatsuna, las condiciones DWC de
+Tagetes patula, los valores hidropónicos de LaNiTex para marigold y los ensayos de
+Dianthus, aliso dulce y zinnia en sustrato con subirrigación. La guía de LaNiTex
+es de nivel de fuente C, no identifica Jolly Jester y solo ofrece contexto por
+fase; sus valores no son rangos óptimos para el depósito ni evidencia automática.
+Tampoco se usan como evidencia automática las demás condiciones experimentales.
+La fresa tiene elecciones manuales separadas por etapa del estudio; no se usan
+para asignar la etapa de la planta ni para cambiar una receta oficial. Para Bush
+Nasturtium se muestra además 1,00 mS/cm como observación manual de enraizamiento
+de esquejes de *Tropaeolum majus*; la ficha es *T. minus*, así que no constituye
+evidencia automática ni un objetivo validado para esa planta.
 
 Los días desde siembra son contexto, no una transición automática de etapa. Elige
 la etapa que observas en cada variedad; la etapa del programa del fabricante es
@@ -150,12 +167,14 @@ distintas edades; una edad en días es contexto, no confirma por sí sola una et
 - **A+B:** identifica fabricante, producto y formulación. Para cálculo por EC registra
   una calibración real con las cantidades efectivas de ambas partes; cambiar la
   formulación no debe reutilizar silenciosamente la calibración anterior.
-- **AeroGarden:** verifica Receta con un modelo de 2, 3, 6, 7, 9 o 12 pods y la
-  alimentación correspondiente; comprueba la etiqueta de tu producto. Los demás
-  grupos no deben recibir cantidades interpoladas. Para
-  cálculo por EC se necesita una calibración real compatible con el producto. Al
-  cambiar de alimentación o modelo debe conservarse la calibración del mismo
-  producto de un solo componente; revisa cualquier aviso de extrapolación.
+- **AeroGarden:** la página oficial actual de Liquid Plant Food publica grupos
+  de 2/3, 6/7, 9 y 12 pods. Verifica 2/3 pods = 4 mL por alimentación; 6/7 =
+  8 mL por alimentación; 9 = 8 mL en las dos primeras y 12 mL después; 12 =
+  16 mL en las dos primeras y 24 mL después. El modo Receta no necesita
+  volumen de depósito para estas cantidades. No pruebes un conteo intermedio no
+  publicado (por ejemplo, 10 pods). Para cálculo por EC se necesita una
+  calibración real compatible con el producto. [Instrucciones oficiales de
+  AeroGarden](https://scottsmiraclegro.com/en-us/brands/aerogarden/products/accessories/VB999965.html).
 - **Visitante e inicio de sesión:** abre la calculadora en ambos contextos y repite
   un recorrido. Comprueba que los sistemas guardados se comportan según lo que la
   interfaz indique; no presupongas sincronización entre dispositivos.

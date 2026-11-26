@@ -7,6 +7,51 @@
 > [QA-USUARIO.md](./QA-USUARIO.md). This file preserves the original fixtures
 > and historical evidence; it does not certify a later release.
 
+## Current continuation snapshot — 2026-11-25
+
+- Worktree branch: `codex/calculator-finalization-20261125`, based on
+  `32e289d631d49786881c2d93aca31f4110d9924f` (`origin/main`). Calculator source,
+  engine evidence and tests have uncommitted changes in that isolated worktree;
+  nothing from this continuation has been committed or deployed.
+- The objective calculation suite was rerun: **16/16 tests passed**, producing
+  2,013 deterministic calculation cases and 235 numeric comparisons. The
+  7-file Calculator/engine regression set passed **248/248 tests**.
+- The complete repository suite passed **974/974 tests across 126 files** with
+  `--maxWorkers=2` (now configured in GitHub Actions to reduce contention around
+  Add Plant's timed interaction tests);
+  root typecheck, changed-file ESLint, Vite production build, Gardenpedia content
+  validation and whitespace checks passed. Content validation reported 512
+  plants, 1,304 sources, 328 Seed Profiles, 464 taxonomy records and zero
+  unresolved source IDs.
+- The calculator adapter currently exposes **507 identities**, of which 499 are
+  non-carnivorous and 8 carnivorous profiles are excluded from nutrient inputs.
+  User Zero's 83 non-carnivorous varieties are searchable and exercised through
+  Recipe, By EC, Correct and Top Up tests. By EC/Correct/Top Up use simulated
+  calibration observations in software tests; those are not real product
+  measurements.
+- For those 83 varieties at unspecified stage/system, coverage is 7
+  `SUPPORTED_DIRECT`, 57 `SUPPORTED_VIA_DEFENSIBLE_MAPPING`, and 19
+  `INSUFFICIENT`. Across 6 stages × 7 hydroponic contexts, 70/83 obtain an
+  automatic evidence range somewhere; 13 do not. All 83 can still run with an
+  explicit user target and compatible measured calibration. The 13 must remain
+  visibly `INSUFFICIENT`; no automatic crop EC range is claimed for them.
+- The current official manufacturer page documents AeroGarden feeding amounts
+  for groups 2/3, 6/7, 9 and 12. These are separate feeding events; unsupported
+  intermediate pod counts must not be interpolated. See the updated physical QA
+  steps below.
+- A peer-reviewed *Tropaeolum majus* cutting-rooting experiment is available as
+  a manual-only 1.00 mS/cm contextual choice for the user's *T. minus* Bush
+  Nasturtium. It is a different species and propagation outcome, so the value is
+  not crop evidence, an optimum, or an automatic target; the identity remains
+  `INSUFFICIENT` for automatic EC dosing.
+- Physical iPhone QA and a real measured FloraSeries calibration are still
+  required before calling the EC response empirically validated. The Mac browser
+  is locked and local loopback access is denied in this environment, so no new
+  rendered-browser or physical-device QA is claimed.
+- Build passed with the app's general bundle warnings: a 695.69 kB minified
+  main JavaScript chunk and `photo-renditions.ts` remaining in the static graph
+  despite a dynamic import. This pass did not change those modules.
+
 Base under User Zero review: `3654c876e8669fa7aa3e6632372b226630da437c`.
 All storage changes are local Calculator settings. No Supabase or canonical Garden writes.
 
@@ -70,9 +115,12 @@ npx vitest run apps/garden-x/src/components/gardenpedia/donor/calculator-objecti
 
 There is no empirical GH EC-to-dose calibration in the inspected repository/prototype. EC math checks use explicitly simulated observations. This must not be described as manufacturer validation of EC dosing.
 
-## Scope and known limits
+## Historical scope and known limits
 
-- 49 published identities have explicit defensible crop-family evidence mappings; 165 remain insufficient. No substring mapping, no fabricated ranges.
+- The following coverage counts are from an older review snapshot, not the
+  current 83-variety audit: 49 published identities had explicit defensible
+  crop-family evidence mappings and 165 were insufficient. No substring mapping
+  or fabricated ranges.
 - A+B remains unavailable without an exact product/formulation.
 - AeroGarden V1 exposes verified Recipe support for 6/7/9-pod models. Its EC modes are explicitly unavailable in this interface. Other groups are not interpolated.
 - One observation provides a local response estimate with LOW evidence and extrapolation warnings. Remeasurement remains necessary.
@@ -80,7 +128,7 @@ There is no empirical GH EC-to-dose calibration in the inspected repository/prot
 - The broad suite has one pre-existing Compare failure, reproduced independently on the reviewed base. Calculator/Gardenpedia relevant tests must pass; that unrelated failure is reported, not hidden or edited away.
 - Chromium/browser rendering does not establish physical iPhone or empirical nutrient-response validation.
 
-## Final automated check snapshot
+## Historical automated check snapshot
 
 - Relevant Gardenpedia/Calculator/engine suite: 14 files, 98 tests passed.
 - Numerical matrix: 2,013 executed calculations; 235 numeric comparisons passed, including 232 comparisons tied to cited references and 3 independently recomputed simulated-calibration cases. The simulated cases verify arithmetic only, not empirical nutrient response.

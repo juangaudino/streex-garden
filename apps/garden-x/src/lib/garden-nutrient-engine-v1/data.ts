@@ -194,6 +194,28 @@ export const NUTRIENT_SOURCES = {
     tier: "C",
     retrievedAt: "2026-11-13",
   },
+  strawberryEcByGrowthStageStudy: {
+    id: "strawberry-hydroponic-ec-by-growth-stage-2021",
+    publisher: "Acta Horticulturae · International Society for Horticultural Science",
+    title:
+      "Effect of different nutrient solution EC during growth stages on fruit and vegetative characteristics of strawberry in hydroponic system",
+    url: "https://ishs.org/ishs-article/1315_78/",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2021",
+    retrievedAt: "2026-11-25",
+  },
+  nasturtiumRootingEcStudy: {
+    id: "nasturtium-majus-cutting-rooting-ec-2021",
+    publisher: "Agronomy · MDPI",
+    title:
+      "Effects of Node Position and Electric Conductivity of Nutrient Solution on Adventitious Rooting of Nasturtium (Tropaeolum majus L.) Cuttings",
+    url: "https://www.mdpi.com/2073-4395/11/2/363",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2021; 11(2):363",
+    retrievedAt: "2026-11-25",
+  },
   welshOnionKoreaStudy: {
     id: "gangwon-welsh-onion-recirculating-hydroponics-2005",
     publisher: "Gangwon Agricultural Research and Extension Services",
@@ -332,8 +354,8 @@ export const NUTRIENT_SOURCES = {
     publication: "2015",
     retrievedAt: "2026-11-12",
   },
-  alyssumGeorgiaStudy: {
-    id: "georgia-alyssum-subirrigation-solution",
+  ugaBeddingPlantSubirrigation: {
+    id: "uga-bedding-plant-subirrigation-study",
     publisher: "University of Georgia · Department of Horticulture",
     title: "Fertilization guidelines for subirrigation of six bedding plant species",
     url: "https://hortphys.uga.edu/hortphys/files/2020/04/fertilizer-guidelines-for-bedding-plants.pdf",
@@ -379,6 +401,17 @@ export const NUTRIENT_SOURCES = {
     tier: "A",
     publication: "2023",
     retrievedAt: "2026-11-12",
+  },
+  hibiscusHardyCultivarFertigation: {
+    id: "hardy-hibiscus-cultivar-fertigation-2016",
+    publisher: "Breeding Science · J-STAGE",
+    title:
+      "Interspecific hybridization among cultivars of hardy Hibiscus species section Muenchhusia",
+    url: "https://www.jstage.jst.go.jp/article/jsbbs/66/2/66_300/_html/-char/en",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2016; 66(2):300–308",
+    retrievedAt: "2026-11-25",
   },
   delphiniumGrower: {
     id: "panam-delphinium-dasante-grower",
@@ -467,6 +500,28 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     publication: "1994",
     retrievedAt: "2026-11-14",
+  },
+  tagetesPatulaDwcStudy: {
+    id: "tagetes-patula-dwc-cultivars-2026",
+    publisher: "Agronomy · University of Debrecen",
+    title:
+      "Effects of cultivation–substrate system on growth, flowering, carotenoid accumulation, and substrate microbiology of three Tagetes patula cultivars under greenhouse and field conditions",
+    url: "https://www.mdpi.com/2073-4395/16/4/411",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2026",
+    retrievedAt: "2026-11-25",
+  },
+  lanitexHydroponicMarigoldGuide: {
+    id: "lanitex-hydroponic-marigold-guide-2026",
+    publisher: "LaNiTex Hydro Garden",
+    title: "How to Grow Hydroponic Marigolds in Australia",
+    url: "https://lanitexhydrogarden.com.au/blogs/hydroponic-plants/grow-marigolds-australia",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    region: "Australia",
+    publication: "Updated 2026-09-09",
+    retrievedAt: "2026-11-25",
   },
   choySumFloatingEcStudy2020: {
     id: "yunindanova-choysum-floating-ec-2020",
@@ -567,11 +622,11 @@ export const NUTRIENT_SOURCES = {
     publisher: "Can Tho University Journal of Science",
     title:
       "Growth and flowering of hydroponic Zinnia at different Hoagland and Arnon nutritional levels",
-    url: "https://demo-ojs.cusc.vn/index.php/ctujsvn/article/view/4368",
+    url: "https://ctujsvn.ctu.edu.vn/index.php/ctujsvn/article/view/4368",
     sourceClass: "OTHER",
     tier: "B",
     publication: "2022",
-    retrievedAt: "2026-11-12",
+    retrievedAt: "2026-11-25",
   },
   fenugreekHydroponicStudy: {
     id: "fenugreek-selenium-iodine-2023",
@@ -822,6 +877,11 @@ export const CROP_STUDY_REFERENCES: readonly {
   selectableEcMs?: number;
   /** Multiple reported treatment values offered as explicit user choices, never as a range. */
   selectableEcValuesMs?: readonly number[];
+  /** Treatment observations explicitly associated with a plant growth stage; manual choices only. */
+  stageSpecificEcChoices?: readonly {
+    stage: "VEGETATIVE" | "FRUITING";
+    value: number;
+  }[];
   /** Marks a low-quality guide's lower bound; never an automatic recommendation. */
   selectionKind?: "GUIDE_LOWER_BOUND";
 }[] = [
@@ -948,6 +1008,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["bush-nasturtium-tropaeolum-minus"],
+    source: NUTRIENT_SOURCES.nasturtiumRootingEcStudy,
+    selectableEcMs: 1.0,
+    text: {
+      es: "Un estudio hidropónico de Tropaeolum majus evaluó el enraizamiento de esquejes y obtuvo mejores resultados de raíz con 1,0 mS/cm dentro de los tratamientos ensayados. Tu ficha corresponde a T. minus, otra especie, y el ensayo no estudió producción adulta ni un objetivo general de EC. Se muestra solo como referencia manual de una especie relacionada; no es evidencia automática, rango óptimo ni dosis. Cualquier cálculo requiere un objetivo elegido por ti y calibración de la mezcla exacta.",
+      en: "A hydroponic study of Tropaeolum majus evaluated cutting root formation and found the best rooting results at 1.0 mS/cm among the tested treatments. Your profile is T. minus, a different species, and the trial did not study mature production or a general EC target. This is shown only as a manual reference from a related species; it is not automatic evidence, an optimum range, or a dose. Any calculation requires your explicit target and calibration of the exact mix.",
+    },
+  },
+  {
     plantIds: ["basil-lemon"],
     source: NUTRIENT_SOURCES.lemonBasilLightStudy,
     text: {
@@ -972,6 +1041,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["fragrant-dwarf-dianthus-mix"],
+    source: NUTRIENT_SOURCES.ugaBeddingPlantSubirrigation,
+    selectableEcMs: 2.0,
+    text: {
+      es: "En el ensayo de UGA, Dianthus ‘Telstar Crimson’ tuvo mayor crecimiento entre los tratamientos probados cuando la solución nutritiva de entrada estaba en 2,0 mS/cm, en macetas con sustrato y subirrigación. No estudió esta mezcla ni valida ese valor para un depósito hidropónico; se ofrece solo como referencia manual del estudio, no como rango ni objetivo automático.",
+      en: "In UGA's trial, Dianthus ‘Telstar Crimson’ had its greatest growth among tested treatments when the input nutrient solution was 2.0 mS/cm, in substrate-filled pots under subirrigation. The study did not test this mix or validate that value for a hydroponic reservoir; it is shown only as a manual study reference, not a range or automatic target.",
+    },
+  },
+  {
     plantIds: ["tiny-tim-sweet-alyssum"],
     source: NUTRIENT_SOURCES.alyssumSubirrigationReview,
     text: {
@@ -981,7 +1059,7 @@ export const CROP_STUDY_REFERENCES: readonly {
   },
   {
     plantIds: ["tiny-tim-sweet-alyssum"],
-    source: NUTRIENT_SOURCES.alyssumGeorgiaStudy,
+    source: NUTRIENT_SOURCES.ugaBeddingPlantSubirrigation,
     selectableEcMs: 2.0,
     text: {
       es: "Un ensayo de aliso dulce New Carpet of Snow en sustrato con subirrigación obtuvo el mayor crecimiento entre sus tratamientos con una solución nutritiva de EC 2,0 mS/cm. No estudió Tiny Tim ni valida esa cifra para un tanque doméstico; la EC de solución no es la EC medida en el sustrato.",
@@ -1012,6 +1090,14 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "La ficha del productor para Hibiscus moscheutos Luna describe cultivo en sustrato y nutrición por etapas. No identifica Blush ni valida sus medidas de sustrato como EC del tanque.",
       en: "The grower sheet for Hibiscus moscheutos Luna describes substrate culture and stage-based feeding. It does not identify Blush or validate substrate measurements as reservoir EC.",
+    },
+  },
+  {
+    plantIds: ["blush-hibiscus"],
+    source: NUTRIENT_SOURCES.hibiscusHardyCultivarFertigation,
+    text: {
+      es: "En un ensayo de hibridación de Hibiscus resistentes, tres cultivares de H. moscheutos recibieron fertilizante 14-3-23 semanalmente en invernadero; la solución aplicada tenía EC de 1,3 mS/cm. El estudio no comparó EC ni evaluó crecimiento nutricional, no incluyó la identidad comercial Blush y no midió un depósito hidropónico. Se conserva como condición de fertirriego, no como objetivo ni rango.",
+      en: "In a hardy Hibiscus hybridization study, three H. moscheutos cultivars received weekly 14-3-23 fertilizer in a greenhouse; the applied solution had EC 1.3 mS/cm. The study did not compare EC or evaluate nutritional growth response, did not include the Blush commercial identity, and did not measure a hydroponic reservoir. This is retained as a fertigation condition, not a target or range.",
     },
   },
   {
@@ -1086,8 +1172,26 @@ export const CROP_STUDY_REFERENCES: readonly {
     selectableEcMs: 1.5,
     selectableEcValuesMs: [1.5, 3.0],
     text: {
-      es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. No identifica Jolly Jester ni valida todos los valores intermedios, otras formulaciones o plántulas; no es un rango automático para tu sistema.",
-      en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. It does not identify Jolly Jester or validate every intermediate value, other formulations or seedlings; it is not an automatic range for your system.",
+      es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. La ficha de esta variedad la identifica como Tagetes patula; son especies distintas. El ensayo no identifica Jolly Jester ni valida los valores para esta ficha, otros productos o plántulas; no es un rango automático.",
+      en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. This profile identifies the variety as Tagetes patula; these are different species. The trial does not identify Jolly Jester or validate those values for this profile, other products or seedlings; it is not an automatic range.",
+    },
+  },
+  {
+    plantIds: ["marigold-jolly-jester"],
+    source: NUTRIENT_SOURCES.tagetesPatulaDwcStudy,
+    selectableEcValuesMs: [1.8, 2.0],
+    text: {
+      es: "Un estudio de 2026 cultivó tres cultivares de Tagetes patula en DWC y mantuvo la solución a 1,8–2,0 mS/cm, siguiendo la pauta de Terra Aquatica Tripart. No incluyó Jolly Jester ni comparó tratamientos de EC; estos valores solo se ofrecen como condiciones experimentales seleccionables, no como rango óptimo, dosis o recomendación automática. Cualquier cálculo requiere calibrar tu mezcla exacta.",
+      en: "A 2026 study grew three Tagetes patula cultivars in DWC and maintained the solution at 1.8–2.0 mS/cm using Terra Aquatica Tripart guidance. It did not include Jolly Jester or compare EC treatments; these values are offered only as selectable experimental conditions, not an optimum range, dose or automatic recommendation. Any calculation requires calibration of your exact mix.",
+    },
+  },
+  {
+    plantIds: ["marigold-jolly-jester"],
+    source: NUTRIENT_SOURCES.lanitexHydroponicMarigoldGuide,
+    selectableEcValuesMs: [1.0, 1.5, 1.8, 2.0],
+    text: {
+      es: "La guía de LaNiTex para marigold hidropónico incluye Tagetes patula y reporta 1,0–1,5 mS/cm para plántula/crecimiento vegetativo y 1,8–2,0 durante floración; menciona hasta 2,2 solo como ensayo para usuarios experimentados con medición estable. No identifica Jolly Jester, es una guía de un operador y no una validación independiente de esta variedad. Estos valores son referencias manuales, no evidencia automática ni un rango óptimo; cualquier dosis requiere calibración de la mezcla exacta.",
+      en: "LaNiTex's hydroponic marigold guide includes Tagetes patula and reports 1.0–1.5 mS/cm for seedlings/vegetative growth and 1.8–2.0 during flowering; it mentions up to 2.2 only as a trial for experienced growers with stable monitoring. It does not identify Jolly Jester, and it is an operator guide rather than independent validation of this variety. These values are manual references, not automatic evidence or an optimum range; any dose requires calibration of the exact mix.",
     },
   },
   {
@@ -1095,8 +1199,8 @@ export const CROP_STUDY_REFERENCES: readonly {
     source: NUTRIENT_SOURCES.bariHydroponicGuide,
     selectableEcMs: 1.5,
     text: {
-      es: "La guía de BARC prescribe EC de solución de 1,5 mS/cm para marigold africano hidropónico ‘BARI Gada-1’: desde plántula hasta trasplante y desde trasplante hasta cosecha. Es una pauta regional para otra variedad y la solución BARI, no una validación automática para Jolly Jester ni para otro fertilizante. Solo se ofrece como objetivo manual que requiere calibración.",
-      en: "BARC's guide prescribes nutrient-solution EC of 1.5 mS/cm for hydroponic African marigold ‘BARI Gada-1’: from seedling to transplant and from transplant to harvest. This is regional guidance for another cultivar and the BARI solution, not automatic validation for Jolly Jester or another fertilizer. It is offered only as a manual target that requires calibration.",
+      es: "La guía de BARC prescribe EC de solución de 1,5 mS/cm para marigold africano hidropónico ‘BARI Gada-1’: desde plántula hasta trasplante y desde trasplante hasta cosecha. La ficha de Jolly Jester lo identifica como Tagetes patula, no como marigold africano; la guía trata otra identidad y usa la solución BARI. Es solo contexto y no una validación automática; cualquier objetivo manual requiere calibración.",
+      en: "BARC's guide prescribes nutrient-solution EC of 1.5 mS/cm for hydroponic African marigold ‘BARI Gada-1’: from seedling to transplant and from transplant to harvest. The Jolly Jester profile identifies it as Tagetes patula, not African marigold; the guide concerns a different identity and uses the BARI solution. This is context only, not automatic validation; any manual target requires calibration.",
     },
   },
   {
@@ -1203,13 +1307,25 @@ export const CROP_STUDY_REFERENCES: readonly {
     },
   },
   {
+    plantIds: ["monterey-strawberry"],
+    source: NUTRIENT_SOURCES.strawberryEcByGrowthStageStudy,
+    stageSpecificEcChoices: [
+      { stage: "VEGETATIVE", value: 0.9 },
+      { stage: "FRUITING", value: 1.3 },
+      { stage: "FRUITING", value: 1.7 },
+    ],
+    text: {
+      es: "Un ensayo hidropónico de fresa comparó 0,9 mS/cm durante crecimiento vegetativo y 1,3 o 1,7 al iniciar la fructificación. El mayor peso y tamaño del fruto se observó con 1,3 en las condiciones ensayadas. No identifica Monterey ni valida un objetivo general; cada valor se ofrece solo como elección manual contextual y requiere calibrar la mezcla exacta.",
+      en: "A hydroponic strawberry trial compared 0.9 mS/cm during vegetative growth and 1.3 or 1.7 at the start of bearing. The greatest fruit weight and size were observed at 1.3 under the tested conditions. It does not identify Monterey or validate a general target; each value is offered only as a contextual manual choice and requires calibration of the exact mix.",
+    },
+  },
+  {
     plantIds: ["lady-murasaki-komatsuna"],
     source: NUTRIENT_SOURCES.komatsunaNftThesis,
-    selectableEcMs: 1.2,
-    selectableEcValuesMs: [1.0, 1.2],
+    selectableEcValuesMs: [1.0, 1.2, 1.4, 1.6, 1.8],
     text: {
-      es: "Una tesis probó komatsuna en NFT con EC de 1,0 a 1,8 mS/cm y observó hojas deformadas con valores superiores a 1,2. No identificó Lady Murasaki ni establece una dosis para otra variedad o sistema.",
-      en: "A thesis tested komatsuna in NFT at EC 1.0–1.8 mS/cm and observed leaf cupping above 1.2. It did not identify Lady Murasaki or establish a dose for another variety or system.",
+      es: "Una tesis de la Universidad de Arkansas ensayó komatsuna en NFT con tratamientos de 1,0; 1,2; 1,4; 1,6 y 1,8 mS/cm. La altura y el peso fresco tendieron a aumentar entre 1,0 y 1,2, mientras el encopamiento y la deformación de hojas aumentaron por encima de 1,2. No identificó Lady Murasaki ni define un rango óptimo; los tratamientos se ofrecen solo como elecciones manuales contextualizadas, no como dosis ni objetivo automático.",
+      en: "A University of Arkansas thesis tested komatsuna in NFT at 1.0, 1.2, 1.4, 1.6, and 1.8 mS/cm treatments. Height and fresh weight trended upward from 1.0 to 1.2, while leaf cupping and distortion increased above 1.2. It did not identify Lady Murasaki or establish an optimum range; the treatments are offered only as contextual manual choices, not a dose or automatic target.",
     },
   },
   {
@@ -1259,6 +1375,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "Un estudio de rúcula Astro en NFT utilizó solución nutritiva a EC 1,5 mS/cm al comparar inoculaciones. Esta condición no es un intervalo óptimo ni una dosis para otros sistemas o etapas.",
       en: "A study of Astro arugula in NFT used nutrient solution at EC 1.5 mS/cm while comparing inoculations. This condition is not an optimum range or a dose for other systems or stages.",
+    },
+  },
+  {
+    plantIds: ["zinnia-lilliput-mixed"],
+    source: NUTRIENT_SOURCES.ugaBeddingPlantSubirrigation,
+    selectableEcMs: 1.1,
+    text: {
+      es: "En el ensayo de UGA, zinnia ‘Dreamland Mix’ creció mejor entre las concentraciones probadas con solución nutritiva de 1,1 mS/cm, en macetas con sustrato y subirrigación. No estudió Lilliput ni valida ese valor para un tanque; se ofrece como referencia manual contextual, no como rango u objetivo automático.",
+      en: "In UGA's trial, zinnia ‘Dreamland Mix’ grew best among tested concentrations with 1.1 mS/cm nutrient solution, in substrate-filled pots under subirrigation. The study did not test Lilliput or validate that value for a reservoir; it is shown as contextual manual reference, not a range or automatic target.",
     },
   },
   {

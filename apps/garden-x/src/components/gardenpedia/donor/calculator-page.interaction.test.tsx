@@ -19,6 +19,23 @@ vi.mock("@/components/ui/dialog", () => {
 });
 
 describe("Calculator real control interactions", () => {
+  it("never treats assumed EC readings as calibration measurements", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.2");
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await screen.findByLabelText(/^EC before adding nutrients/);
+    expect((screen.getByLabelText(/^EC before adding nutrients/) as HTMLInputElement).value).toBe(
+      "",
+    );
+    expect((screen.getByLabelText(/^EC after mixing/) as HTMLInputElement).value).toBe("");
+    expect(screen.getByRole("button", { name: "Save calibration" })).toHaveProperty(
+      "disabled",
+      true,
+    );
+  });
+
   it("makes the unverified coleus guide an explicit manual choice only", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="rainbow-mix-coleus" />);
@@ -63,6 +80,50 @@ describe("Calculator real control interactions", () => {
       screen.getByRole("button", { name: /Choose study EC for Hyssop: 2\.20 mS\/cm/i }),
     );
     expect(target.value).toBe("2.2");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
+  it("keeps the related-species Bush Nasturtium value an explicit manual target", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="bush-nasturtium-tropaeolum-minus" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/T\. minus, a different species/i)).toBeTruthy();
+    expect(screen.getByText(/not automatic evidence, an optimum range, or a dose/i)).toBeTruthy();
+    await user.click(
+      screen.getByRole("button", {
+        name: /Choose study EC for Bush Nasturtium: 1\.00 mS\/cm · Agronomy · MDPI/i,
+      }),
+    );
+    expect(target.value).toBe("1");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
+  it("offers the Tagetes patula DWC conditions only as manual calibrated choices", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="marigold-jolly-jester" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/did not include Jolly Jester or compare EC treatments/i)).toBeTruthy();
+    expect(
+      screen.getByRole("button", {
+        name: /Choose study EC for .*Jolly Jester.*: 1\.80 mS\/cm.*University of Debrecen/i,
+      }),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole("button", {
+        name: /Choose study EC for .*Jolly Jester.*: 2\.00 mS\/cm.*University of Debrecen/i,
+      }),
+    ).toBeTruthy();
+    expect(target.value).toBe("");
+    await user.click(
+      screen.getByRole("button", {
+        name: /Choose study EC for .*Jolly Jester.*: 1\.80 mS\/cm.*University of Debrecen/i,
+      }),
+    );
+    expect(target.value).toBe("1.8");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
   it("offers the NFT Asian-vegetable study values only as manual EC choices", async () => {

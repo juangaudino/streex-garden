@@ -177,7 +177,14 @@ describe("Calculator plant-stage guidance", () => {
     fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
     fireEvent.click(screen.getByText("View cultivation sources"));
 
-    expect(screen.getAllByRole("button", { name: /1\.50 mS\/cm/ })).toHaveLength(2);
+    const options150 = screen.getAllByRole("button", { name: /1\.50 mS\/cm/ });
+    expect(options150).toHaveLength(3);
+    expect(options150.map((button) => button.getAttribute("aria-label"))).toEqual(
+      expect.arrayContaining([
+        expect.stringContaining("LaNiTex Hydro Garden"),
+        expect.stringContaining("Bangladesh Agricultural Research Council"),
+      ]),
+    );
     fireEvent.click(screen.getByRole("button", { name: /3\.00 mS\/cm/ }));
 
     expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
@@ -219,14 +226,41 @@ describe("Calculator plant-stage guidance", () => {
     );
   });
 
-  it("shows only lower reported Komatsuna study choices and retains the damage warning", () => {
+  it("shows every reported Komatsuna NFT treatment only as a manual choice", () => {
     render(<CalculatorPage language="en" initialPlantId="lady-murasaki-komatsuna" />);
 
     fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
     fireEvent.click(screen.getByText("View cultivation sources"));
-    expect(screen.getByRole("button", { name: /1\.00 mS\/cm/ })).toBeTruthy();
-    expect(screen.getByRole("button", { name: /1\.20 mS\/cm/ })).toBeTruthy();
-    expect(screen.getByText(/leaf cupping above 1\.2/i)).toBeTruthy();
-    expect(screen.queryByRole("button", { name: /1\.60 mS\/cm/ })).toBeNull();
+    for (const value of ["1.00", "1.20", "1.40", "1.60", "1.80"]) {
+      expect(screen.getByRole("button", { name: new RegExp(value + " mS/cm") })).toBeTruthy();
+    }
+    expect(screen.getByText(/leaf cupping and distortion increased above 1\.2/i)).toBeTruthy();
+    expect(target.value).toBe("");
+    fireEvent.click(screen.getByRole("button", { name: /1\.20 mS\/cm/ }));
+    expect(target.value).toBe("1.2");
+  });
+
+  it("labels Monterey Strawberry study EC choices by observed growth stage without auto-targeting", () => {
+    render(<CalculatorPage language="en" initialPlantId="monterey-strawberry" />);
+    fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    fireEvent.click(screen.getByText("View cultivation sources"));
+
+    const vegetative = screen.getByRole("button", {
+      name: /Monterey Strawberry.*vegetative growth.*0\.90 mS\/cm/i,
+    });
+    const fruiting = screen.getByRole("button", {
+      name: /Monterey Strawberry.*fruiting.*1\.30 mS\/cm/i,
+    });
+    expect(vegetative).toBeTruthy();
+    expect(fruiting).toBeTruthy();
+    expect(target.value).toBe("");
+
+    fireEvent.click(fruiting);
+    expect(target.value).toBe("1.3");
+    expect(screen.getByText("Your target")).toBeTruthy();
   });
 });

@@ -1352,7 +1352,8 @@ export function CalculatorPage({
                                   </a>
                                   {mode !== "recipe" &&
                                     (reference.selectableEcValuesMs?.length ||
-                                      reference.selectableEcMs !== undefined) && (
+                                      reference.selectableEcMs !== undefined ||
+                                      reference.stageSpecificEcChoices?.length) && (
                                       <div className="mt-2 rounded-md border border-border p-2">
                                         <p>
                                           {reference.selectionKind === "GUIDE_LOWER_BOUND"
@@ -1363,16 +1364,22 @@ export function CalculatorPage({
                                               ? "Es un valor observado en ese estudio, no un objetivo validado para tu sistema. Si lo eliges, será tu objetivo manual y la dosis requerirá calibración."
                                               : "This value was observed in that study, not validated as a target for your system. If selected, it becomes your manual target and dosing requires calibration."}
                                         </p>
-                                        {(
-                                          reference.selectableEcValuesMs ?? [
-                                            reference.selectableEcMs!,
-                                          ]
-                                        ).map((value) => (
+                                        {(reference.stageSpecificEcChoices
+                                          ? reference.stageSpecificEcChoices.map((choice) => ({
+                                              value: choice.value,
+                                              stage: choice.stage,
+                                            }))
+                                          : (
+                                              reference.selectableEcValuesMs ?? [
+                                                reference.selectableEcMs!,
+                                              ]
+                                            ).map((value) => ({ value }))
+                                        ).map(({ value, stage }) => (
                                           <button
-                                            key={value}
+                                            key={`${stage ?? "general"}-${value}`}
                                             type="button"
                                             className="mt-2 min-h-10 font-medium text-primary underline"
-                                            aria-label={`${reference.selectionKind === "GUIDE_LOWER_BOUND" ? (lang === "es" ? "Elegir límite inferior de la guía para" : "Choose guide lower bound for") : lang === "es" ? "Elegir EC del estudio para" : "Choose study EC for"} ${c.name[lang]}: ${fmtEc(value)} ${unitLabel}`}
+                                            aria-label={`${reference.selectionKind === "GUIDE_LOWER_BOUND" ? (lang === "es" ? "Elegir límite inferior de la guía para" : "Choose guide lower bound for") : lang === "es" ? "Elegir EC del estudio para" : "Choose study EC for"} ${c.name[lang]}${stage ? ` · ${stage === "VEGETATIVE" ? (lang === "es" ? "crecimiento vegetativo" : "vegetative growth") : lang === "es" ? "fructificación" : "fruiting"}` : ""}: ${fmtEc(value)} ${unitLabel} · ${reference.source.publisher}`}
                                             onClick={() =>
                                               editTarget(
                                                 String(unit === "uS" ? value * 1000 : value),
@@ -1382,7 +1389,13 @@ export function CalculatorPage({
                                             {lang === "es"
                                               ? "Elegir como mi EC objetivo"
                                               : "Choose as my EC target"}
+                                            {stage
+                                              ? ` · ${stage === "VEGETATIVE" ? (lang === "es" ? "crecimiento vegetativo" : "vegetative") : lang === "es" ? "fructificación" : "fruiting"}`
+                                              : ""}
                                             : {fmtEc(value)} {unitLabel}
+                                            <span className="ml-1 text-xs font-normal text-muted-foreground">
+                                              · {reference.source.publisher}
+                                            </span>
                                           </button>
                                         ))}
                                       </div>

@@ -37,7 +37,7 @@ jobs:
         run: node -e 'const fs=require("node:fs");const s=process.env.APPROVED_BUNDLE||"";if(Buffer.byteLength(s)>60000)throw Error("Bundle exceeds 60 KB");JSON.parse(s);fs.writeFileSync("/tmp/gardenpedia-approved-bundle.json",s)'
       - name: Validate and stage deterministic Gardenpedia source change
         run: node scripts/gardenpedia-prepare-publication.mjs /tmp/gardenpedia-approved-bundle.json
-      - run: npm test
+      - run: npm test -- --maxWorkers=2
       - run: npm run typecheck
       - name: Build the deployed Garden X application and Gardenpedia catalog
         run: cd apps/garden-x && npm install --no-audit --no-fund && npm run build

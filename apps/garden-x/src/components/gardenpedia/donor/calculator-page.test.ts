@@ -189,6 +189,18 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.text.en).toMatch(/soil-gardening/);
     expect(reference?.selectableEcMs).toBeUndefined();
   });
+  it("preserves hardy Hibiscus fertigation EC as context, not as a hydroponic target", () => {
+    const id = "blush-hibiscus";
+    const reference = CROP_STUDY_REFERENCES.find(
+      (item) =>
+        item.plantIds.includes(id) && item.source.id === "hardy-hibiscus-cultivar-fertigation-2016",
+    );
+
+    expect(reference?.text.en).toMatch(/weekly 14-3-23 fertilizer.*EC 1\.3 mS\/cm/i);
+    expect(reference?.text.en).toMatch(/not a target or range/i);
+    expect(reference?.selectableEcMs).toBeUndefined();
+    expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
+  });
   it("warns when a calculated EC adjustment is smaller than the user's meter resolution", () => {
     const reading = recordActualDoses({
       productId: "gh-flora",
@@ -302,10 +314,14 @@ describe("Gardenpedia Calculator V1 integration", () => {
     ).toEqual([
       ["walters-lopez-bouquet-dill-deep-flow-2021", [1.56]],
       ["nsw-asian-vegetables-nft-2011", [1.5, 2.5]],
-      ["georgia-alyssum-subirrigation-solution", [2]],
+      ["nasturtium-majus-cutting-rooting-ec-2021", [1]],
+      ["uga-bedding-plant-subirrigation-study", [2]],
+      ["uga-bedding-plant-subirrigation-study", [2]],
       ["plant-garden-coleus-hydroponic-guide", [1]],
       ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
       ["kazakidou-burrage-marigold-nft-1994", [1.5, 3]],
+      ["tagetes-patula-dwc-cultivars-2026", [1.8, 2.0]],
+      ["lanitex-hydroponic-marigold-guide-2026", [1.0, 1.5, 1.8, 2.0]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
       ["yunindanova-choysum-floating-ec-2020", [1.0, 2.0]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
@@ -316,8 +332,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5, 2.0]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.0, 1.2]],
-      ["arkansas-komatsuna-nft-2014", [1, 1.2]],
+      ["arkansas-komatsuna-nft-2014", [1, 1.2, 1.4, 1.6, 1.8]],
       ["hyssop-hydroponic-selenium-2022", [2.2]],
+      ["uga-bedding-plant-subirrigation-study", [1.1]],
       ["can-tho-zinnia-hoagland-2022", [1.4, 2.8]],
       ["nguyen-eryngium-foetidum-hydroponics-2018", [1, 1.5, 2]],
       ["chinese-chive-hydroponic-salinity-2022", [1.4]],
@@ -341,6 +358,33 @@ describe("Gardenpedia Calculator V1 integration", () => {
       if (reference.selectionKind === "GUIDE_LOWER_BOUND") expect(reference.source.tier).toBe("E");
       else expect(["A", "B", "C"]).toContain(reference.source.tier);
     }
+  });
+  it("keeps UGA ornamental treatment results manual and out of automatic crop evidence", () => {
+    const references = CROP_STUDY_REFERENCES.filter(
+      (reference) => reference.source.id === "uga-bedding-plant-subirrigation-study",
+    );
+    expect(references.map((reference) => [reference.plantIds, reference.selectableEcMs])).toEqual([
+      [["fragrant-dwarf-dianthus-mix"], 2.0],
+      [["tiny-tim-sweet-alyssum"], 2.0],
+      [["zinnia-lilliput-mixed"], 1.1],
+    ]);
+    expect(references.map((reference) => reference.text.en).join(" ")).toMatch(/not.*automatic/i);
+    expect(
+      CROP_EVIDENCE.filter(
+        (observation) => observation.source.id === "uga-bedding-plant-subirrigation-study",
+      ),
+    ).toHaveLength(0);
+  });
+  it("keeps all Komatsuna NFT treatments as manual references, never as an inferred optimum", () => {
+    const reference = CROP_STUDY_REFERENCES.find(
+      (item) => item.source.id === "arkansas-komatsuna-nft-2014",
+    );
+    expect(reference?.plantIds).toEqual(["lady-murasaki-komatsuna"]);
+    expect(reference?.selectableEcValuesMs).toEqual([1.0, 1.2, 1.4, 1.6, 1.8]);
+    expect(reference?.text.en).toMatch(/not.*optimum range.*manual choices/i);
+    expect(
+      CROP_EVIDENCE.filter((item) => item.source.id === "arkansas-komatsuna-nft-2014"),
+    ).toHaveLength(0);
   });
   it("keeps NSW Asian-vegetable EC evidence NFT-specific and offers only explicit manual values", () => {
     const study = CROP_STUDY_REFERENCES.find(
@@ -523,6 +567,19 @@ describe("Gardenpedia Calculator V1 integration", () => {
       references.find((study) => study.plantIds.includes("monterey-strawberry"))
         ?.selectableEcValuesMs,
     ).toEqual([1.0, 1.2]);
+    const stageStudy = CROP_STUDY_REFERENCES.find(
+      (study) => study.source.id === "strawberry-hydroponic-ec-by-growth-stage-2021",
+    );
+    expect(stageStudy?.plantIds).toContain("monterey-strawberry");
+    expect(stageStudy?.stageSpecificEcChoices).toEqual([
+      { stage: "VEGETATIVE", value: 0.9 },
+      { stage: "FRUITING", value: 1.3 },
+      { stage: "FRUITING", value: 1.7 },
+    ]);
+    expect(stageStudy?.text.en).toMatch(/manual choice/);
+    expect(
+      CROP_EVIDENCE.some((observation) => observation.source.id === stageStudy?.source.id),
+    ).toBe(false);
   });
   it("keeps the Mexican tarragon hydroponic guide contextual without inventing an EC target", () => {
     const source = CROP_STUDY_REFERENCES.find(
@@ -574,6 +631,21 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(hasApplicableCropNutrientEvidence("resina-calendula")).toBe(true);
     expect(resolveNutrientCropIdentity("marigold-jolly-jester")).toBeUndefined();
   });
+  it("keeps the related-species nasturtium rooting study manual-only", () => {
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) => study.source.id === "nasturtium-majus-cutting-rooting-ec-2021",
+    );
+    expect(reference?.plantIds).toEqual(["bush-nasturtium-tropaeolum-minus"]);
+    expect(reference?.selectableEcMs).toBe(1.0);
+    expect(reference?.text.en).toMatch(/T\. minus, a different species/i);
+    expect(reference?.text.en).toMatch(/not automatic evidence/i);
+    expect(
+      CROP_EVIDENCE.some(
+        (observation) => observation.source.id === "nasturtium-majus-cutting-rooting-ec-2021",
+      ),
+    ).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("bush-nasturtium-tropaeolum-minus")).toBe(false);
+  });
   it("uses petunia crop guidance and lavender's explicitly selected stage", () => {
     for (const id of ["cascading-petunia", "petunia-dwarf-bedding-mixed"]) {
       expect(resolveNutrientCropIdentity(id)).toBe("petunia");
@@ -612,6 +684,41 @@ describe("Gardenpedia Calculator V1 integration", () => {
     );
     expect(reference?.text.en).toContain("1.5, 3.0 and 6.0");
     expect(reference?.text.en).toContain("not an automatic range");
+    expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
+  });
+  it("shows the Tagetes patula DWC condition as context only, never as an EC target", () => {
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) =>
+        study.source.id === "tagetes-patula-dwc-cultivars-2026" &&
+        study.plantIds.includes("marigold-jolly-jester"),
+    );
+    expect(reference?.selectableEcMs).toBeUndefined();
+    expect(reference?.selectableEcValuesMs).toEqual([1.8, 2.0]);
+    expect(reference?.text.en).toContain("did not include Jolly Jester");
+    expect(reference?.text.en).toContain("not an optimum range");
+    expect(
+      CROP_EVIDENCE.some((observation) => observation.source.id === reference?.source.id),
+    ).toBe(false);
+    expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
+  });
+  it("exposes the LaNiTex Tagetes patula report as manual stage-context choices only", () => {
+    const reference = CROP_STUDY_REFERENCES.find(
+      (study) => study.source.id === "lanitex-hydroponic-marigold-guide-2026",
+    );
+    expect(reference?.plantIds).toEqual(["marigold-jolly-jester"]);
+    expect(reference?.selectableEcValuesMs).toEqual([1.0, 1.5, 1.8, 2.0]);
+    expect(reference?.source).toMatchObject({
+      sourceClass: "SPECIALIST_GROWER",
+      tier: "C",
+      region: "Australia",
+    });
+    expect(reference?.text.en).toMatch(/does not identify Jolly Jester/i);
+    expect(reference?.text.en).toMatch(/not automatic evidence/i);
+    expect(
+      CROP_EVIDENCE.some(
+        (observation) => observation.source.id === "lanitex-hydroponic-marigold-guide-2026",
+      ),
+    ).toBe(false);
     expect(hasApplicableCropNutrientEvidence("marigold-jolly-jester")).toBe(false);
   });
   it("shows the epazote substrate trial without treating it as a reservoir range", () => {
@@ -1709,6 +1816,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const aero = CALCULATOR_PRODUCTS.find((product) => product.id === "aerogarden");
     expect(aero?.podGroups).toEqual([2, 3, 6, 7, 9, 12]);
     expect(aero?.recipeStages.map((stage) => stage.feedingIndex)).toEqual([1, 2, 3]);
+    expect(recipeStageLabel(aero!.recipeStages[0]!, "aerogarden", 2, "en")).toMatch(
+      /each feeding/i,
+    );
     expect(recipeStageLabel(aero!.recipeStages[0]!, "aerogarden", 6, "en")).toMatch(
       /each feeding/i,
     );
@@ -1719,6 +1829,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
       /second feeding/i,
     );
     expect(recipeStageLabel(aero!.recipeStages[2]!, "aerogarden", 9, "en")).toMatch(
+      /third and later/i,
+    );
+    expect(recipeStageLabel(aero!.recipeStages[0]!, "aerogarden", 12, "en")).toMatch(
+      /first feeding/i,
+    );
+    expect(recipeStageLabel(aero!.recipeStages[2]!, "aerogarden", 12, "en")).toMatch(
       /third and later/i,
     );
   });

@@ -579,6 +579,40 @@ describe("Calculator real control interactions", () => {
     ).toBe("36");
   });
 
+  it("lets the grower confirm a source-backed age cue for one cohort in a shared reservoir", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Tulsi");
+    await user.click(screen.getByRole("option", { name: /Tulsi \(Holy Basil\)/ }));
+    await user.selectOptions(screen.getByLabelText("Stage of Tulsi (Holy Basil)"), "MIXED");
+    await user.click(screen.getByText("Stages represented"));
+    await user.click(screen.getByLabelText("Seedling"));
+    await user.click(screen.getByLabelText("Vegetative growth"));
+    await user.type(
+      screen.getByLabelText("Days since sowing of Tulsi (Holy Basil) · Vegetative growth"),
+      "75",
+    );
+
+    const confirmStage = screen.getByRole("button", {
+      name: "Confirm this cohort's stage: Mature plant",
+    });
+    expect(confirmStage).toBeTruthy();
+    expect((screen.getByLabelText("Vegetative growth") as HTMLInputElement).checked).toBe(true);
+    await user.click(confirmStage);
+
+    expect((screen.getByLabelText("Seedling") as HTMLInputElement).checked).toBe(true);
+    expect((screen.getByLabelText("Vegetative growth") as HTMLInputElement).checked).toBe(false);
+    expect((screen.getByLabelText("Mature plant") as HTMLInputElement).checked).toBe(true);
+    expect(
+      (
+        screen.getByLabelText(
+          "Days since sowing of Tulsi (Holy Basil) · Mature plant",
+        ) as HTMLInputElement
+      ).value,
+    ).toBe("75");
+  });
+
   it("preserves the current Quick Mix draft after saving it as a system", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

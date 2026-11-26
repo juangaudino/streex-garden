@@ -112,6 +112,9 @@ const T = {
       "Selecciona las etapas que observas en esta variedad. Garden evaluará el rango común sin ponderar por cantidad de plantas.",
     mixedStagesRequired:
       "Para evaluar una mezcla de etapas, indica al menos dos etapas observadas y una cantidad de plantas suficiente.",
+    confirmCohortStage: (stage: string) => `Confirmar etapa de esta cohorte: ${stage}`,
+    cohortStageCue:
+      "La fuente ofrece una pista por edad, no una confirmación. Comprueba la planta y confirma su etapa para actualizar la evidencia.",
     recipeProgram: "Programa del fabricante",
     feedingEvent: "Evento de alimentación",
     currentEc: "EC que mediste",
@@ -262,6 +265,9 @@ const T = {
       "Select the stages you observe in this variety. Garden evaluates the common range without weighting by plant count.",
     mixedStagesRequired:
       "To evaluate mixed stages, select at least two observed stages and a sufficient plant count.",
+    confirmCohortStage: (stage: string) => `Confirm this cohort's stage: ${stage}`,
+    cohortStageCue:
+      "The source offers an age cue, not confirmation. Check the plant and confirm its stage to update the evidence.",
     recipeProgram: "Manufacturer program",
     feedingEvent: "Feeding event",
     currentEc: "EC you measured",
@@ -1703,6 +1709,30 @@ export function CalculatorPage({
                                       age !== ""
                                         ? calculatorAgeStageCueForPlant(id, Number(age))
                                         : undefined;
+                                    const suggestedStage =
+                                      cue && "stageSuggestion" in cue.ageWindow
+                                        ? (cue.ageWindow
+                                            .stageSuggestion as CalculatorAdditionalStage)
+                                        : undefined;
+                                    const suggestedStageLabel = suggestedStage
+                                      ? (
+                                          {
+                                            SEEDLING: lang === "es" ? "Plántula" : "Seedling",
+                                            VEGETATIVE:
+                                              lang === "es"
+                                                ? "Crecimiento vegetativo"
+                                                : "Vegetative growth",
+                                            MATURE:
+                                              lang === "es" ? "Planta madura" : "Mature plant",
+                                            FLOWERING: lang === "es" ? "Floración" : "Flowering",
+                                            FRUITING: lang === "es" ? "Fructificación" : "Fruiting",
+                                          } satisfies Record<CalculatorAdditionalStage, string>
+                                        )[suggestedStage]
+                                      : undefined;
+                                    const canConfirmSuggestedStage =
+                                      suggestedStage !== undefined &&
+                                      suggestedStage !== stage &&
+                                      !(cropAdditionalStages[id] ?? []).includes(suggestedStage);
                                     return (
                                       <div key={stage} className="grid gap-1">
                                         <label className="flex items-center gap-2">
@@ -1738,6 +1768,69 @@ export function CalculatorPage({
                                             {cue ? (
                                               <>
                                                 <p>{cue.ageWindow.text[lang]}</p>
+                                                {suggestedStage && suggestedStageLabel && (
+                                                  <div className="mt-2 rounded-md border border-border/70 p-2">
+                                                    <p>{t.cohortStageCue}</p>
+                                                    {canConfirmSuggestedStage && (
+                                                      <button
+                                                        type="button"
+                                                        className="mt-2 min-h-9 rounded-md border border-border px-3 font-medium text-foreground"
+                                                        onClick={() => {
+                                                          const nextStages = [
+                                                            ...new Set([
+                                                              ...(
+                                                                cropAdditionalStages[id] ?? []
+                                                              ).filter((item) => item !== stage),
+                                                              suggestedStage,
+                                                            ]),
+                                                          ];
+                                                          if (nextStages.length > 1) {
+                                                            setCropStageSowingAgeDays((current) => {
+                                                              const nextAges = {
+                                                                ...(current[id] ?? {}),
+                                                              };
+                                                              delete nextAges[stage];
+                                                              nextAges[suggestedStage] = age;
+                                                              return { ...current, [id]: nextAges };
+                                                            });
+                                                            setCropAdditionalStages((current) => ({
+                                                              ...current,
+                                                              [id]: nextStages,
+                                                            }));
+                                                          } else {
+                                                            setCropStageSowingAgeDays(
+                                                              (current) => ({
+                                                                ...current,
+                                                                [id]: {},
+                                                              }),
+                                                            );
+                                                            setCropStages((current) => ({
+                                                              ...current,
+                                                              [id]: suggestedStage,
+                                                            }));
+                                                            setCropAdditionalStages((current) => ({
+                                                              ...current,
+                                                              [id]: [],
+                                                            }));
+                                                            setCropSowingAgeDays((current) => ({
+                                                              ...current,
+                                                              [id]: age,
+                                                            }));
+                                                          }
+                                                        }}
+                                                      >
+                                                        {t.confirmCohortStage(suggestedStageLabel)}
+                                                      </button>
+                                                    )}
+                                                    {!canConfirmSuggestedStage && (
+                                                      <p className="mt-1 font-medium">
+                                                        {lang === "es"
+                                                          ? `Etapa sugerida ya incluida: ${suggestedStageLabel}`
+                                                          : `Suggested stage already included: ${suggestedStageLabel}`}
+                                                      </p>
+                                                    )}
+                                                  </div>
+                                                )}
                                                 <a
                                                   className="mt-1 inline-block underline"
                                                   href={cue.reference.source.url}

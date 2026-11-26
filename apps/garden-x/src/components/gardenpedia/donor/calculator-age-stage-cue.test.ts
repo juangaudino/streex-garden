@@ -43,6 +43,34 @@ describe("calculator age stage cues", () => {
     expect(calculatorAgeStageCueForPlant("seaside-f1-spinach", 19)).toBeUndefined();
   });
 
+  it("uses the controlled holy-basil DFT transplant observation as a day-14 cue only", () => {
+    const cue = calculatorAgeStageCueForPlant("tulsi-holy-basil-ocimum-tenuiflorum", 14);
+    expect(cue?.reference.source.id).toBe("holy-basil-controlled-dft-study-2022");
+    expect(cue?.ageWindow).toMatchObject({
+      minDays: 14,
+      maxDays: 14,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(cue?.ageWindow.text.en).toMatch(/developed leaves and roots/i);
+    expect(cue?.ageWindow.text.en).toMatch(/does not automatically change its stage or dose/i);
+  });
+
+  it("uses the exact Komatsuna study timeline as seedling confirmation context", () => {
+    const twoLeafCue = calculatorAgeStageCueForPlant("lady-murasaki-komatsuna", 14);
+    expect(twoLeafCue?.reference.source.id).toBe("arkansas-komatsuna-nft-2014");
+    expect(twoLeafCue?.ageWindow).toMatchObject({
+      minDays: 14,
+      maxDays: 14,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(twoLeafCue?.ageWindow.text.en).toMatch(/two true leaves/i);
+
+    const transplantCue = calculatorAgeStageCueForPlant("lady-murasaki-komatsuna", 21);
+    expect(transplantCue?.reference.source.id).toBe("arkansas-komatsuna-nft-2014");
+    expect(transplantCue?.ageWindow.text.en).toMatch(/four true leaves/i);
+    expect(transplantCue?.ageWindow.text.en).toMatch(/not an automatic stage or EC target/i);
+  });
+
   it("adds Texas A&M transplant timing for exact ornamental identities without changing nutrient evidence", () => {
     const cases = [
       ["tiny-tim-sweet-alyssum", 28, 21, 35],
@@ -98,6 +126,14 @@ describe("calculator age stage cues", () => {
   it("uses morphology guidance for cilantro without inventing an age window", () => {
     expect(calculatorStageReferenceForPlant("cilantro")?.text.en).toMatch(/broad and flat/i);
     expect(calculatorAgeStageCueForPlant("cilantro", 20)).toBeUndefined();
+  });
+
+  it("uses the UNAM Epazote transplant observation as context, never an automatic age window", () => {
+    const reference = calculatorStageReferenceForPlant("epazote");
+    expect(reference?.source.id).toBe("unam-epazote-hydroponic-2013");
+    expect(reference?.text.en).toMatch(/about 30 days.*second pair of leaves/i);
+    expect(reference?.text.en).toMatch(/ambiguous/i);
+    expect(calculatorAgeStageCueForPlant("epazote", 30)).toBeUndefined();
   });
 
   it("returns no cue for unmapped plants or invalid ages", () => {

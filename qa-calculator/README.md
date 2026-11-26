@@ -7,22 +7,21 @@
 > [QA-USUARIO.md](./QA-USUARIO.md). This file preserves the original fixtures
 > and historical evidence; it does not certify a later release.
 
-## Current continuation snapshot — 2026-11-25
+## Current continuation snapshot — 2026-11-26
 
-- Worktree branch: `codex/calculator-finalization-20261125`, based on
-  `32e289d631d49786881c2d93aca31f4110d9924f` (`origin/main`). Calculator source,
-  engine evidence and tests have uncommitted changes in that isolated worktree;
-  nothing from this continuation has been committed or deployed.
-- The objective calculation suite was rerun: **16/16 tests passed**, producing
-  2,013 deterministic calculation cases and 235 numeric comparisons. The
-  7-file Calculator/engine regression set passed **248/248 tests**.
-- The complete repository suite passed **974/974 tests across 126 files** with
-  `--maxWorkers=2` (now configured in GitHub Actions to reduce contention around
-  Add Plant's timed interaction tests);
-  root typecheck, changed-file ESLint, Vite production build, Gardenpedia content
-  validation and whitespace checks passed. Content validation reported 512
-  plants, 1,304 sources, 328 Seed Profiles, 464 taxonomy records and zero
-  unresolved source IDs.
+- Isolated worktree: `/private/tmp/garden-calculator-online-review`, branch
+  `codex/calculator-online-review-2026-11-26`, base/HEAD snapshot
+  `084e330830df34b934672debc1caaaf5fedb3928`. The original checkout and its
+  unrelated work remain untouched. The reviewed Calculator delta is limited to
+  the files listed in the current change set; generated `.output`, `.wrangler`
+  and `public/grow-guide-lab` directories are excluded.
+- The objective calculation suite passed **16/16**, producing 2,013
+  deterministic calculation cases and 235 numeric comparisons. The full
+  repository suite passed **986/986 tests across 126 files** with
+  `--maxWorkers=2`. Typecheck, changed-file ESLint, Vite production build,
+  Gardenpedia content validation and `git diff --check` passed. Content
+  validation reported 512 plants, 1,304 sources, 328 Seed Profiles, 464
+  taxonomy records and zero unresolved source IDs.
 - The calculator adapter currently exposes **507 identities**, of which 499 are
   non-carnivorous and 8 carnivorous profiles are excluded from nutrient inputs.
   User Zero's 83 non-carnivorous varieties are searchable and exercised through
@@ -44,10 +43,14 @@
   Nasturtium. It is a different species and propagation outcome, so the value is
   not crop evidence, an optimum, or an automatic target; the identity remains
   `INSUFFICIENT` for automatic EC dosing.
+- Local rendered-browser review was completed on the Calculator page: Recipe
+  rendered its three FloraSeries components and manufacturer EC range; By EC
+  showed Basil's 1.00–1.60 mS/cm reference and correctly required an applicable
+  calibration before producing a dose; Correct and Top Up exposed their
+  distinct measured-state inputs. This was a desktop local-browser check, not
+  iPhone QA or an empirical nutrient-response test.
 - Physical iPhone QA and a real measured FloraSeries calibration are still
-  required before calling the EC response empirically validated. The Mac browser
-  is locked and local loopback access is denied in this environment, so no new
-  rendered-browser or physical-device QA is claimed.
+  required before calling the EC response empirically validated.
 - Build passed with the app's general bundle warnings: a 695.69 kB minified
   main JavaScript chunk and `photo-renditions.ts` remaining in the static graph
   despite a dynamic import. This pass did not change those modules.
@@ -139,6 +142,36 @@ There is no empirical GH EC-to-dose calibration in the inspected repository/prot
 - Browser workflow details and measured widths are in `browser-validation.md`.
 
 The requested empirical-calibration gate is **not proven** by these checks. An actual measured exact-product observation is needed for that gate. The software accepts, saves and consumes such observations; simulated QA entries must never be relabeled as physical evidence.
+
+## Latest continuation — 2026-11-26
+
+- Worktree: `/private/tmp/garden-calculator-online-review`, branch
+  `codex/calculator-online-review-2026-11-26`, based on local
+  `origin/main` snapshot `084e330830df34b934672debc1caaaf5fedb3928`.
+- Added a bilingual, source-linked Tulsi development cue from a primary DFT
+  study: its seedlings were transplanted at 14 days after leaves and roots had
+  developed. This is a comparison for the grower to confirm, not an automatic
+  phenological transition or EC recommendation. Added the University of
+  Arkansas Komatsuna thesis timeline for two true leaves around day 14 and at
+  least four by the end of week three; the UI still requires the grower to
+  confirm the stage. Neither cue changes EC evidence or dose logic.
+- Validation on this worktree: focused stage/storage tests **33/33**; full suite
+  **986/986** across 126 files; typecheck, changed-file ESLint,
+  `git diff --check`, and Gardenpedia content validation passed. Content
+  validation reports 512 plants, 1,304 sources, 328 Seed Profiles, 464 taxonomy
+  records, and zero unresolved source IDs. `npx vite build` passed; it retains
+  the existing 695.70 kB main-chunk warning and ineffective dynamic-import
+  warning for `photo-renditions.ts`.
+- No database, canonical catalog, Supabase, main branch, or production changes.
+  Physical iPhone QA and empirical nutrient calibration remain outstanding.
+- Added a browser-storage resilience regression: the Calculator still renders
+  when private browsing blocks `localStorage`; a failed local save leaves the
+  system-name form open and reports the failure without interrupting use.
+- Local desktop-browser check opened `/gardenpedia/?view=calculator`, verified
+  the FloraSeries Recipe result and range, then checked By EC, Correct and Top
+  Up input states. By EC showed the Basil evidence range and withheld a dose
+  until an applicable calibration existed. This is not mobile/iPhone QA or
+  empirical nutrient-response validation.
 
 ## Preview platform prerequisite
 

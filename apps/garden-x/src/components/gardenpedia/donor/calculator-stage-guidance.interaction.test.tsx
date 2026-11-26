@@ -81,6 +81,47 @@ describe("Calculator plant-stage guidance", () => {
     ).toBe(true);
   });
 
+  it("shows the primary DFT day-14 observation and keeps stage confirmation manual", () => {
+    render(<CalculatorPage language="en" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />);
+
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
+      target: { value: "14" },
+    });
+
+    expect(screen.getByText(/controlled DFT study of 12 holy-basil accessions/i)).toBeTruthy();
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "UNSPECIFIED",
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "SEEDLING",
+    );
+  });
+
+  it("shows Komatsuna's measured leaf-development timeline without changing stage or dose", () => {
+    const { container } = render(
+      <CalculatorPage language="en" initialPlantId="lady-murasaki-komatsuna" />,
+    );
+    const resultRegion = container.querySelector('[aria-live="polite"]');
+    const resultBeforeAgeEntry = resultRegion?.textContent;
+
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
+      target: { value: "14" },
+    });
+
+    expect(
+      screen.getByText(/around day 14 about 80% of seedlings had two true leaves/i),
+    ).toBeTruthy();
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "UNSPECIFIED",
+    );
+    expect(resultRegion?.textContent).toBe(resultBeforeAgeEntry);
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "SEEDLING",
+    );
+  });
+
   it("keeps a Texas A&M zinnia transplant-time cue separate from the selected plant stage", () => {
     render(<CalculatorPage language="en" initialPlantId="zinnia-lilliput-mixed" />);
     fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
@@ -120,6 +161,21 @@ describe("Calculator plant-stage guidance", () => {
     expect(
       (screen.getByRole("combobox", { name: "Etapa de Epazote" }) as HTMLSelectElement).value,
     ).toBe("UNSPECIFIED");
+  });
+
+  it("shows the sourced Epazote morphology cue without applying a stage from day count", () => {
+    render(<CalculatorPage language="en" initialPlantId="epazote" />);
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
+      target: { value: "30" },
+    });
+
+    const stage = screen.getByRole("combobox", { name: "Stage of Epazote" }) as HTMLSelectElement;
+    expect(stage.value).toBe("UNSPECIFIED");
+    const disclosure = screen.getByText("Reference for observing this plant");
+    fireEvent.click(disclosure);
+    expect(screen.getByText(/about 30 days.*second pair of leaves/i)).toBeTruthy();
+    expect(screen.getByText(/unit for conductivity is ambiguous/i)).toBeTruthy();
+    expect(stage.value).toBe("UNSPECIFIED");
   });
 
   it("shows shared hydroponic seedling criteria for spinach and requires confirmation", () => {

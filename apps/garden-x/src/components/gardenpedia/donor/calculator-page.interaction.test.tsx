@@ -901,7 +901,7 @@ describe("Calculator real control interactions", () => {
 
   it("keeps 0.20 EC intact and completes calibration, By EC, Correct, and Top Up", async () => {
     const user = userEvent.setup();
-    render(<CalculatorPage language="en" />);
+    const { rerender } = render(<CalculatorPage language="en" />);
 
     await user.click(screen.getByRole("button", { name: "Add plant" }));
     await user.type(screen.getByPlaceholderText("Search plant…"), "Bibb Lettuce");
@@ -978,5 +978,20 @@ describe("Calculator real control interactions", () => {
       /leaves room for the calibrated nutrients/i,
     );
     expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0);
+    expect(
+      screen.getByText(
+        /after adding and mixing the replacement water, measure EC before adding nutrients/i,
+      ),
+    ).toBeTruthy();
+
+    rerender(<CalculatorPage language="es" />);
+    expect(screen.getByRole("tab", { name: "Rellenar" }).getAttribute("aria-selected")).toBe(
+      "true",
+    );
+    expect(
+      screen.getByText(
+        /después de añadir y mezclar el agua de reposición, mide el EC antes de añadir nutrientes/i,
+      ),
+    ).toBeTruthy();
   });
 });

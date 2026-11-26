@@ -1621,6 +1621,61 @@ function wvuTransplantReference(
 
 export const CROP_STAGE_REFERENCES = [
   {
+    cropIdentity: "lady-murasaki-komatsuna",
+    source: NUTRIENT_SOURCES.komatsunaNftThesis,
+    ageWindows: [
+      {
+        minDays: 14,
+        maxDays: 14,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "En la tesis de Arkansas, alrededor del día 14 cerca del 80 % de las plántulas tenía dos hojas verdaderas; luego se aclimataron una semana antes de pasar al NFT. Compara el dato con la planta y confirma la etapa: esta cronología de un ensayo no la cambia ni modifica la dosis automáticamente.",
+          en: "In the Arkansas thesis, around day 14 about 80% of seedlings had two true leaves; they were then acclimated for a week before entering NFT. Compare this with the plant and confirm its stage: this trial timeline does not change stage or dose automatically.",
+        },
+      },
+      {
+        minDays: 21,
+        maxDays: 21,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Al final de las tres semanas de propagación, las plantas de la tesis tenían al menos cuatro hojas verdaderas y pasaron al NFT al comenzar la semana siguiente. Es una referencia de ese ensayo, no una etapa automática ni un objetivo de EC.",
+          en: "At the end of three weeks of propagation, plants in the thesis had at least four true leaves and entered NFT at the start of the following week. This is a trial reference, not an automatic stage or EC target.",
+        },
+      },
+    ],
+    text: {
+      es: "La tesis de Arkansas describe dos hojas verdaderas cerca del día 14, aclimatación durante una semana y al menos cuatro hojas verdaderas al final de tres semanas antes del trasplante a NFT. La cronología ayuda a observar desarrollo; no confirma por sí sola la etapa ni cambia la dosis.",
+      en: "The Arkansas thesis describes two true leaves around day 14, one week of acclimation, and at least four true leaves by the end of three weeks before NFT transplant. This timeline can help assess development; it does not by itself confirm stage or change dose.",
+    },
+  },
+  {
+    cropIdentity: "epazote",
+    source: NUTRIENT_SOURCES.epazoteUnamStudy,
+    text: {
+      es: "En un cultivo hidropónico de agregados, la tesis de la UNAM trasplantó epazote alrededor de los 30 días, cuando observó el segundo par de hojas. Es una referencia de ese ensayo para observar el desarrollo, no una transición automática ni una dosis. La unidad publicada de conductividad es ambigua y no se usa para establecer un rango de EC.",
+      en: "In a hydroponic aggregate system, the UNAM thesis transplanted epazote at about 30 days after observing the second pair of leaves. This is a development cue from that study, not an automatic stage transition or a dose. The thesis's unit for conductivity is ambiguous and is not used to establish an EC range.",
+    },
+  },
+  {
+    cropIdentity: "holy-basil",
+    source: NUTRIENT_SOURCES.holyBasilDftStudy,
+    ageWindows: [
+      {
+        minDays: 14,
+        maxDays: 14,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "En un estudio controlado de 12 accesiones/cultivares de albahaca sagrada en DFT, las plántulas se trasplantaron a los 14 días cuando ya tenían hojas y raíces desarrolladas. Usa esto solo como comparación: confirma el aspecto de tu planta antes de elegir Plántula; el día 14 no cambia la etapa ni la dosis automáticamente.",
+          en: "In a controlled DFT study of 12 holy-basil accessions/cultivars, seedlings were transplanted at 14 days after they had developed leaves and roots. Use this only as a comparison: confirm your plant's appearance before choosing Seedling; day 14 does not automatically change its stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Un estudio controlado de 12 accesiones/cultivares de albahaca sagrada trasplantó plántulas a los 14 días, después de observar hojas y raíces desarrolladas. Es contexto de ese ensayo DFT, no una transición universal ni una dosis.",
+      en: "A controlled study of 12 holy-basil accessions/cultivars transplanted seedlings at 14 days after observing developed leaves and roots. This is context from that DFT trial, not a universal stage transition or dose.",
+    },
+  },
+  {
     cropIdentity: "holy-basil",
     source: NUTRIENT_SOURCES.letpotHolyBasil,
     ageWindows: [

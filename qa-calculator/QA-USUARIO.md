@@ -191,6 +191,10 @@ en una afirmación biológica no respaldada.
 2. Comprueba que el resultado indique primero el agua y luego los nutrientes, si
    hacen falta. La suma debe dejar espacio para el volumen de los concentrados;
    si excede la capacidad, la aplicación debe bloquearlo y pedir que se ajuste.
+   Para registrar la respuesta del nutriente, añade y mezcla primero el agua;
+   mide el EC real del tanque ya rellenado antes de añadir nutrientes. Introduce
+   esa lectura como EC de partida, añade la dosis, vuelve a medir y registra los
+   componentes realmente añadidos. No uses el EC modelado por la app como medición.
 3. Tras mezclar, mide de nuevo. Recuperar el EC no demuestra que se hayan restaurado
    las proporciones originales de nutrientes.
 
@@ -218,6 +222,11 @@ distintas edades; una edad en días es contexto, no confirma por sí sola una et
 - **Visitante e inicio de sesión:** abre la calculadora en ambos contextos y repite
   un recorrido. Comprueba que los sistemas guardados se comportan según lo que la
   interfaz indique; no presupongas sincronización entre dispositivos.
+- **Almacenamiento local restringido:** en modo privado/visitante abre Mezcla
+  rápida y completa al menos un cálculo sin guardar. La calculadora debe seguir
+  funcionando aunque el navegador rechace leer o escribir `localStorage`; si
+  guardas un sistema y el navegador lo bloquea, debe dejar la configuración
+  abierta y mostrar el aviso, sin perder el cálculo actual.
 - **iPhone:** revisa los cuatro modos, ES/EN, selección de plantas y teclado. Anota
   cualquier error o desbordamiento. No marques una prueba como aprobada si no
   pudiste completar el recorrido.

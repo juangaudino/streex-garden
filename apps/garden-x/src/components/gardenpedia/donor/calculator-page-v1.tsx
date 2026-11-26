@@ -160,6 +160,8 @@ const T = {
     learnTitle: "¿Qué obtuviste?",
     learnBody:
       "Cuéntale a Garden lo que mediste y lo que añadiste de verdad. Así afina este sistema.",
+    learnTopUpBody:
+      "Después de añadir y mezclar el agua de reposición, mide el EC antes de añadir nutrientes. Luego añade la dosis, vuelve a medir y registra lo que agregaste realmente.",
     gotEc: "EC medido",
     gotMl: "mL que añadiste",
     learn: "Guardar lectura",
@@ -292,6 +294,8 @@ const T = {
     },
     learnTitle: "What did you get?",
     learnBody: "Tell Garden what you measured and actually added. It tunes this system.",
+    learnTopUpBody:
+      "After adding and mixing the replacement water, measure EC before adding nutrients. Then add the dose, measure again, and record what you actually added.",
     gotEc: "Measured EC",
     gotMl: "mL you added",
     learn: "Save reading",
@@ -2335,6 +2339,7 @@ export function CalculatorPage({
                         recommendedDoses={result.doses}
                         learnedCount={calibrationCounts.used}
                         justLearned={justLearned}
+                        topUpMode={mode === "topup"}
                         requireMeasuredBaseline={mode === "recipe" || mode === "topup"}
                         onLearn={(ec, actualDoses, baseline) => {
                           const measured = Number(ec.replace(",", "."));
@@ -2934,6 +2939,7 @@ function LearnCard({
   recommendedDoses,
   learnedCount,
   justLearned,
+  topUpMode,
   onLearn,
   requireMeasuredBaseline,
   onAgain,
@@ -2947,6 +2953,7 @@ function LearnCard({
   recommendedDoses: { label: string; amount: number; unit: "mL" | "L" }[];
   learnedCount: number;
   justLearned: boolean;
+  topUpMode: boolean;
   onLearn: (ec: string, actualDoses: Record<string, string>, baseline: string) => void;
   requireMeasuredBaseline: boolean;
   onAgain: () => void;
@@ -3010,7 +3017,9 @@ function LearnCard({
         </div>
       ) : (
         <>
-          <p className="mt-1 text-sm text-muted-foreground">{t.learnBody}</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {topUpMode ? t.learnTopUpBody : t.learnBody}
+          </p>
           <div className="mt-3 grid gap-2 sm:grid-cols-2">
             {requireMeasuredBaseline && (
               <Field

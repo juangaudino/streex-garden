@@ -6,6 +6,15 @@ not agronomic evidence for Garden's crop ranges.
 
 ## Verified public facts
 
+**Rechecked 2026-11-26:** the [official App Store listing](https://apps.apple.com/nz/app/hydrogardenadvisor/id6807613285)
+shows version 1.0.6. Its product description and version notes claim a 26-crop
+setup planner, saved grow plans, photo checks, harvest-cycle learning, and an
+EC Adjust flow that returns concentrate or dilution amounts for a reservoir.
+Version 1.0.5 notes describe nutrient mixes scaled to crop targets for
+Masterblend, GH 3-part, MaxiGro and Campbell's, plus source-water EC in dilution;
+1.0.6 reports further dosing refinements. These are developer-published feature
+claims, not an independent calculation audit.
+
 - The official [App Store listing](https://apps.apple.com/nz/app/hydrogardenadvisor/id6807613285)
   describes HydroGardenAdvisor as an iPhone growing coach for lettuce, leafy
   greens, herbs, and fruiting crops. It says plans use crop and system context,

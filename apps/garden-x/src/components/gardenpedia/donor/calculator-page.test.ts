@@ -318,6 +318,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["uga-bedding-plant-subirrigation-study", [2]],
       ["uga-bedding-plant-subirrigation-study", [2]],
       ["plant-garden-coleus-hydroponic-guide", [1]],
+      ["wur-delphinium-greenhouse-nutrient-solution-ec-2006", [1.4]],
       ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
       ["kazakidou-burrage-marigold-nft-1994", [1.5, 3]],
       ["tagetes-patula-dwc-cultivars-2026", [1.8, 2.0]],

@@ -10,6 +10,7 @@ import {
 } from "./calculator-lovable-adapter";
 import {
   CROP_EVIDENCE,
+  CROP_STUDY_REFERENCES,
   AEROGARDEN_RECIPE,
   FLORA_RECIPE,
 } from "@/lib/garden-nutrient-engine-v1/data";
@@ -429,6 +430,21 @@ describe("Calculator objective independent validation", () => {
       CROP_EVIDENCE,
     );
     expect(seedling.status).toBe("INSUFFICIENT");
+  });
+  it("offers Delphinium greenhouse fertigation EC only as a manual context choice", () => {
+    const plantId = "delphinium-magic-fountains-dwarf";
+    const reference = CROP_STUDY_REFERENCES.find(
+      (item) =>
+        item.plantIds.includes(plantId) &&
+        item.source.id === "wur-delphinium-greenhouse-nutrient-solution-ec-2006",
+    );
+
+    expect(reference?.selectableEcMs).toBe(1.4);
+    expect(reference?.text.en).toContain("not Magic Fountains in a hydroponic reservoir");
+    expect(CROP_EVIDENCE.some((item) => item.cropIdentity === plantId)).toBe(false);
+    expect(
+      calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE).status,
+    ).toBe("INSUFFICIENT");
   });
   it("independently recomputes fresh dosing across nine families, six waters, eight targets and four volumes", () => {
     for (const id of [

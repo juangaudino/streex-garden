@@ -503,8 +503,8 @@ export function CalculatorPage({
     calibrationObservations,
   });
 
-  const pick = (selection: SavedSystem) => {
-    if (sys.id === "quick")
+  const snapshotQuickDraft = () => {
+    if (sys.id === "quick") {
       quickDraft.current = {
         ...sys,
         crops,
@@ -533,6 +533,10 @@ export function CalculatorPage({
         sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
         calibrationObservations,
       };
+    }
+  };
+  const pick = (selection: SavedSystem) => {
+    snapshotQuickDraft();
     const s = selection.id === "quick" ? quickDraft.current : selection;
     setSys(s);
     setCrops(s.crops);
@@ -578,6 +582,7 @@ export function CalculatorPage({
     setCalibrationTemporary(false);
   };
   const saveCurrentSystem = () => {
+    snapshotQuickDraft();
     const localId =
       typeof crypto !== "undefined" && "randomUUID" in crypto
         ? crypto.randomUUID()

@@ -495,6 +495,28 @@ describe("Calculator real control interactions", () => {
     );
   });
 
+  it("preserves the current Quick Mix draft after saving it as a system", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("button", { name: "Add plant" }));
+    await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
+    await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
+    const volume = screen.getByLabelText("Reservoir volume") as HTMLInputElement;
+    await user.clear(volume);
+    await user.type(volume, "6");
+    await user.click(screen.getByRole("button", { name: "Save as system" }));
+    await user.type(screen.getByRole("textbox", { name: "System name" }), "Basil tank");
+    await user.click(screen.getByRole("button", { name: /^Save$/ }));
+
+    await user.click(screen.getByRole("button", { name: /Quick mix/ }));
+    expect((screen.getByLabelText("Reservoir volume") as HTMLInputElement).value).toBe("6");
+    expect(screen.getByText("Genovese Basil")).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: /Basil tank/ }));
+    expect((screen.getByLabelText("Reservoir volume") as HTMLInputElement).value).toBe("6");
+    expect(screen.getByText("Genovese Basil")).toBeTruthy();
+  });
+
   it("saves and restores different observed stages for two plants of the same variety", async () => {
     const user = userEvent.setup();
     const view = render(<CalculatorPage language="en" />);

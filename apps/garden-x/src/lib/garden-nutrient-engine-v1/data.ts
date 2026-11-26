@@ -431,6 +431,16 @@ export const NUTRIENT_SOURCES = {
     tier: "A",
     retrievedAt: "2026-11-25",
   },
+  wurDelphiniumNutrientSolutionReport: {
+    id: "wur-delphinium-greenhouse-nutrient-solution-ec-2006",
+    publisher: "Wageningen University & Research · Applied Plant Research (PPO)",
+    title: "Groeiremming van visueel aantrekkelijke vaste planten",
+    url: "https://edepot.wur.nl/282779",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2006; project 3234 0139 00",
+    retrievedAt: "2026-11-26",
+  },
   kentuckyLunaBlushSubstrate: {
     id: "uky-luna-blush-substrate-ec",
     publisher: "University of Kentucky · Nursery and Landscape Program",
@@ -1114,6 +1124,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "Benary sí identifica Magic Fountains: indica EC de medio 0,5–0,75 durante producción de plugs y 1,2–1,5 al crecer. Son mediciones del sustrato, no EC de solución nutritiva en un tanque; no las usamos para calcular una dosis hidropónica.",
       en: "Benary identifies Magic Fountains and reports media EC of 0.5–0.75 during plug production and 1.2–1.5 while growing on. These are substrate measurements, not nutrient-solution EC in a reservoir; we do not use them to calculate a hydroponic dose.",
+    },
+  },
+  {
+    plantIds: ["delphinium-magic-fountains-dwarf"],
+    source: NUTRIENT_SOURCES.wurDelphiniumNutrientSolutionReport,
+    selectableEcMs: 1.4,
+    text: {
+      es: "Un informe de investigación aplicada de PPO/Wageningen da un consejo provisional de EC 1,4 mS/cm para la solución nutritiva de Delphinium bajo invernadero con agua de lluvia. El ensayo estudió Delphinium cultorum ‘Dark Blue/White Bee’ en macetas con fertirriego, no Magic Fountains en un depósito hidropónico. Se ofrece solo como contexto para que tú elijas un objetivo manual; no es un rango óptimo ni una dosis automática.",
+      en: "An applied-research report from PPO/Wageningen gives a preliminary 1.4 mS/cm EC recommendation for Delphinium nutrient solution under glass with rainwater. The trial studied Delphinium cultorum ‘Dark Blue/White Bee’ in pots with fertigation, not Magic Fountains in a hydroponic reservoir. This is offered only as context for an explicit user-selected target; it is not an optimum range or automatic dose.",
     },
   },
   {

@@ -83,7 +83,10 @@ INSUFFICIENT. En los contextos probados, 13 no obtienen rango automático.
 Algunas referencias recientes son condiciones observadas y seleccionables solo
 como objetivo manual: los tratamientos NFT de Komatsuna, las condiciones DWC de
 Tagetes patula, los valores hidropónicos de LaNiTex para marigold y los ensayos de
-Dianthus, aliso dulce y zinnia en sustrato con subirrigación. La guía de LaNiTex
+Dianthus, aliso dulce y zinnia en sustrato con subirrigación. Para Delphinium,
+PPO/Wageningen ofrece un contexto de fertirriego bajo invernadero de 1,4 mS/cm,
+pero corresponde a ‘Dark Blue/White Bee’ en maceta, no a Magic Fountains en un
+depósito hidropónico; se muestra solo como opción manual. La guía de LaNiTex
 es de nivel de fuente C, no identifica Jolly Jester y solo ofrece contexto por
 fase; sus valores no son rangos óptimos para el depósito ni evidencia automática.
 Tampoco se usan como evidencia automática las demás condiciones experimentales.

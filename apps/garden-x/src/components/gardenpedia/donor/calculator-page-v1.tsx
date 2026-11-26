@@ -1590,7 +1590,7 @@ export function CalculatorPage({
                                             key={`${stage ?? "general"}-${value}`}
                                             type="button"
                                             className="mt-2 min-h-10 font-medium text-primary underline"
-                                            aria-label={`${reference.selectionKind === "GUIDE_LOWER_BOUND" ? (lang === "es" ? "Elegir límite inferior de la guía para" : "Choose guide lower bound for") : lang === "es" ? "Elegir EC del estudio para" : "Choose study EC for"} ${c.name[lang]}${stage ? ` · ${stage === "VEGETATIVE" ? (lang === "es" ? "crecimiento vegetativo" : "vegetative growth") : lang === "es" ? "fructificación" : "fruiting"}` : ""}: ${fmtEc(value)} ${unitLabel} · ${reference.source.publisher}`}
+                                            aria-label={`${reference.selectionKind === "GUIDE_LOWER_BOUND" ? (lang === "es" ? "Elegir límite inferior de la guía para" : "Choose guide lower bound for") : lang === "es" ? "Elegir EC del estudio para" : "Choose study EC for"} ${c.name[lang]}${stage ? ` · ${stage === "SEEDLING" ? (lang === "es" ? "plántula" : "seedling") : stage === "VEGETATIVE" ? (lang === "es" ? "crecimiento vegetativo" : "vegetative growth") : lang === "es" ? "fructificación" : "fruiting"}` : ""}: ${fmtEc(value)} ${unitLabel} · ${reference.source.publisher}`}
                                             onClick={() =>
                                               editTarget(
                                                 String(unit === "uS" ? value * 1000 : value),
@@ -1601,7 +1601,7 @@ export function CalculatorPage({
                                               ? "Elegir como mi EC objetivo"
                                               : "Choose as my EC target"}
                                             {stage
-                                              ? ` · ${stage === "VEGETATIVE" ? (lang === "es" ? "crecimiento vegetativo" : "vegetative") : lang === "es" ? "fructificación" : "fruiting"}`
+                                              ? ` · ${stage === "SEEDLING" ? (lang === "es" ? "plántula" : "seedling") : stage === "VEGETATIVE" ? (lang === "es" ? "crecimiento vegetativo" : "vegetative") : lang === "es" ? "fructificación" : "fruiting"}`
                                               : ""}
                                             : {fmtEc(value)} {unitLabel}
                                             <span className="ml-1 text-xs font-normal text-muted-foreground">

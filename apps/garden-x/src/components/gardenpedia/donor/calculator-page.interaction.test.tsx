@@ -187,6 +187,45 @@ describe("Calculator real control interactions", () => {
     expect(target.value).toBe("1");
     expect(screen.getByText("Your target")).toBeTruthy();
   });
+  it("keeps Mexican tarragon stage observations manual and source-qualified", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="mexican-tarragon" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+
+    const target = screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement;
+    expect(target.value).toBe("");
+    await user.click(screen.getByText("View cultivation sources"));
+    expect(screen.getByText(/does not document an experimental method/i)).toBeTruthy();
+    expect(screen.getByText(/not an automatic range, validated optimum, or dose/i)).toBeTruthy();
+
+    const seedling = screen.getByRole("button", {
+      name: /Choose study EC for Mexican Tarragon · seedling: 0\.80 mS\/cm · Scale & Stem/i,
+    });
+    const vegetative = screen.getByRole("button", {
+      name: /Choose study EC for Mexican Tarragon · vegetative growth: 1\.40 mS\/cm · Scale & Stem/i,
+    });
+    expect(seedling).toBeTruthy();
+    expect(vegetative).toBeTruthy();
+
+    await user.click(seedling);
+    expect(target.value).toBe("0.8");
+    expect(screen.getByText("Your target")).toBeTruthy();
+  });
+  it("labels Mexican tarragon's manual stage choices in Spanish", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="es" initialPlantId="mexican-tarragon" />);
+    await user.click(screen.getByRole("tab", { name: "Por EC" }));
+    await user.click(screen.getByText("Ver fuentes de cultivo"));
+
+    const options = screen
+      .getAllByRole("button", { name: /Scale & Stem/i })
+      .map((button) => button.getAttribute("aria-label") ?? "");
+    expect(options).toHaveLength(2);
+    expect(options.some((name) => /Estragón mexicano · plántula/i.test(name))).toBe(true);
+    expect(options.some((name) => /Estragón mexicano · crecimiento vegetativo/i.test(name))).toBe(
+      true,
+    );
+  });
   it("offers the Tagetes patula DWC conditions only as manual calibrated choices", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="french-marigold" />);
@@ -267,6 +306,21 @@ describe("Calculator real control interactions", () => {
     await user.type(age, "6");
     expect(screen.getByText(/expects radicle emergence at approximately days 5–8/i)).toBeTruthy();
     expect((screen.getByLabelText(/Stage of/i) as HTMLSelectElement).value).toBe("UNSPECIFIED");
+  });
+  it("uses the Hibiscus grower timeline only as a confirmable seedling cue", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="blush-hibiscus" />);
+    const age = screen.getByLabelText(/Days since sowing of/i);
+    await user.type(age, "25");
+
+    expect(screen.getAllByText(/3–4 weeks of plug production/i).length).toBeGreaterThan(0);
+    const stage = screen.getByLabelText(/Stage of/i) as HTMLSelectElement;
+    expect(stage.value).toBe("UNSPECIFIED");
+    await user.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect(stage.value).toBe("SEEDLING");
+    expect(screen.getByText(/official Light Feed program/i)).toBeTruthy();
+    expect(screen.getByText(/3\.80/)).toBeTruthy();
+    expect(screen.getAllByText(/does not identify Blush/i).length).toBeGreaterThan(0);
   });
   it("discloses that general chamomile guidance is not species-specific", () => {
     render(<CalculatorPage language="en" initialPlantId="chamomile-unspecified" />);

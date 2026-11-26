@@ -143,6 +143,18 @@ una tenga rango automático: en estado predeterminado, 7 tienen evidencia direct
 57 usan una asignación de cultivo explícita y defendible, y 19 quedan como
 INSUFFICIENT. En los contextos probados, 13 no obtienen rango automático.
 
+Para Mexican Tarragon, [Scale & Stem](https://scaleandstem.com/plants/edible/mexican-mint-marigold/)
+identifica *Tagetes lucida* y lista 0,8 mS/cm para plántula y 1,4 para crecimiento vegetativo. La página no documenta
+un método experimental y ofrece cifras generales distintas en otras notas. La
+calculadora muestra cada cifra como elección manual etiquetada por etapa; no crea
+un rango automático ni una dosis validada.
+
+Para Blush Hibiscus, PanAmerican Seed informa 3–4 semanas de producción de plug
+para su serie *Hibiscus moscheutos* Luna F1. La calculadora muestra los días 21–28
+como pista de vivero que el usuario debe confirmar observando hojas y raíces; la
+fuente no identifica el cultivar Blush ni demuestra un calendario hidropónico o
+un rango de EC. La variedad sigue `INSUFFICIENT` para un rango automático.
+
 Algunas referencias recientes son condiciones observadas y seleccionables solo
 como objetivo manual: los tratamientos NFT de Komatsuna, las condiciones DWC de
 Tagetes patula, los valores hidropónicos de LaNiTex para marigold y los ensayos de

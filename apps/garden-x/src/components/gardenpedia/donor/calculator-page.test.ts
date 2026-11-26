@@ -25,6 +25,7 @@ import {
   calculateGardenResult,
   calibrationUsage,
   contextFor,
+  calculatorAgeStageCueForPlant,
   calculatorStageGuidanceForPlant,
   generalCropReferenceForStage,
   hasApplicableCropNutrientEvidence,
@@ -127,6 +128,14 @@ const USER_ZERO_83_VARIETY_IDS = [
 ] as const;
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("provides Blush Hibiscus only a cultivar-scoped transplant cue, not automatic EC evidence", () => {
+    const cue = calculatorAgeStageCueForPlant("blush-hibiscus", 25);
+    expect(cue?.ageWindow.stageSuggestion).toBe("SEEDLING");
+    expect(cue?.reference.source.id).toBe("panam-hibiscus-luna-grower-2023");
+    expect(calculatorAgeStageCueForPlant("blush-hibiscus", 29)).toBeUndefined();
+    expect(hasApplicableCropNutrientEvidence("blush-hibiscus")).toBe(false);
+  });
+
   it("uses bilingual public profile guidance to help identify observed plant stages", () => {
     const english = calculatorStageGuidanceForPlant("genovese-basil", "en", "FLOWERING");
     const spanish = calculatorStageGuidanceForPlant("genovese-basil", "es", "FLOWERING");
@@ -369,16 +378,21 @@ describe("Gardenpedia Calculator V1 integration", () => {
   it("offers study treatment values only as explicit, source-linked choices", () => {
     const choices = CROP_STUDY_REFERENCES.filter(
       (reference) =>
-        reference.selectableEcValuesMs?.length || reference.selectableEcMs !== undefined,
+        reference.selectableEcValuesMs?.length ||
+        reference.selectableEcMs !== undefined ||
+        reference.stageSpecificEcChoices?.length,
     );
     expect(
       choices.map((reference) => [
         reference.source.id,
-        reference.selectableEcValuesMs ?? [reference.selectableEcMs],
+        reference.stageSpecificEcChoices
+          ? reference.stageSpecificEcChoices.map(({ stage, value }) => `${stage}:${value}`)
+          : (reference.selectableEcValuesMs ?? [reference.selectableEcMs]),
       ]),
     ).toEqual([
       ["walters-lopez-bouquet-dill-deep-flow-2021", [1.56]],
       ["nsw-asian-vegetables-nft-2011", [1.5, 2.5]],
+      ["scale-stem-mexican-tarragon-hydroponic-guide", ["SEEDLING:0.8", "VEGETATIVE:1.4"]],
       ["nasturtium-majus-cutting-rooting-ec-2021", [1]],
       ["uga-bedding-plant-subirrigation-study", [2]],
       ["uga-bedding-plant-subirrigation-study", [2]],
@@ -399,6 +413,10 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5, 2.0]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.0, 1.2]],
+      [
+        "strawberry-hydroponic-ec-by-growth-stage-2021",
+        ["VEGETATIVE:0.9", "FRUITING:1.3", "FRUITING:1.7"],
+      ],
       ["illinois-extension-monterey-hydroponic-strawberry-2023", [1.8]],
       ["arkansas-komatsuna-nft-2014", [1, 1.2, 1.4, 1.6, 1.8]],
       ["hyssop-hydroponic-selenium-2022", [2.2]],
@@ -671,6 +689,25 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(source?.plantIds).toContain("mexican-tarragon");
     expect(source?.selectableEcMs).toBeUndefined();
     expect(source?.text.en).toMatch(/does not publish an EC/);
+    expect(hasApplicableCropNutrientEvidence("mexican-tarragon")).toBe(false);
+  });
+  it("offers Tagetes lucida stage figures only as explicit manual references", () => {
+    const reference = CROP_STUDY_REFERENCES.find(
+      (item) => item.source.id === "scale-stem-mexican-tarragon-hydroponic-guide",
+    );
+    expect(reference?.plantIds).toEqual(["mexican-tarragon"]);
+    expect(reference?.stageSpecificEcChoices).toEqual([
+      { stage: "SEEDLING", value: 0.8 },
+      { stage: "VEGETATIVE", value: 1.4 },
+    ]);
+    expect(reference?.source.tier).toBe("C");
+    expect(reference?.text.en).toMatch(/does not document an experimental method/i);
+    expect(reference?.text.en).toMatch(/not an automatic range.*validated optimum/i);
+    expect(
+      CROP_EVIDENCE.some(
+        (observation) => observation.source.id === "scale-stem-mexican-tarragon-hydroponic-guide",
+      ),
+    ).toBe(false);
     expect(hasApplicableCropNutrientEvidence("mexican-tarragon")).toBe(false);
   });
   it("never plans a capacity refill using an explicitly unknown source-water EC", () => {

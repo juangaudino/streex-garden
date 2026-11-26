@@ -420,6 +420,16 @@ export const NUTRIENT_SOURCES = {
     tier: "C",
     retrievedAt: "2026-11-24",
   },
+  mexicanTarragonScaleStem: {
+    id: "scale-stem-mexican-tarragon-hydroponic-guide",
+    publisher: "Scale & Stem",
+    title: "Mexican mint marigold (Tagetes lucida)",
+    url: "https://scaleandstem.com/plants/edible/mexican-mint-marigold/",
+    sourceClass: "SPECIALIST_GROWER",
+    tier: "C",
+    publication: "Reviewed 2026-05-26",
+    retrievedAt: "2026-11-26",
+  },
   hibiscusMoscheutosGrower: {
     id: "panam-hibiscus-luna-grower-2023",
     publisher: "PanAmerican Seed",
@@ -930,7 +940,7 @@ export const CROP_STUDY_REFERENCES: readonly {
   selectableEcValuesMs?: readonly number[];
   /** Treatment observations explicitly associated with a plant growth stage; manual choices only. */
   stageSpecificEcChoices?: readonly {
-    stage: "VEGETATIVE" | "FRUITING";
+    stage: "SEEDLING" | "VEGETATIVE" | "FRUITING";
     value: number;
   }[];
   /** Marks a low-quality guide's lower bound; never an automatic recommendation. */
@@ -1016,6 +1026,18 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "ZipGrow incluye Tagetes lucida en su guía de flores para torres hidropónicas y menciona un pH de al menos 6. No publica una EC para esta especie ni una dosis de FloraSeries; la referencia no permite calcular un objetivo automáticamente.",
       en: "ZipGrow includes Tagetes lucida in its hydroponic tower flower guide and mentions a pH of at least 6. It does not publish an EC for this species or a FloraSeries dose; the reference cannot establish an automatic target.",
+    },
+  },
+  {
+    plantIds: ["mexican-tarragon"],
+    source: NUTRIENT_SOURCES.mexicanTarragonScaleStem,
+    stageSpecificEcChoices: [
+      { stage: "SEEDLING", value: 0.8 },
+      { stage: "VEGETATIVE", value: 1.4 },
+    ],
+    text: {
+      es: "La guía de Scale & Stem identifica el estragón mexicano como Tagetes lucida y publica 0,8 mS/cm para plántula y 1,4 para crecimiento vegetativo. La página no documenta el método experimental y también ofrece cifras generales distintas en sus notas. Son referencias reportadas para que el usuario seleccione explícitamente según la etapa observada; no son un rango automático, un óptimo validado ni una dosis. El cálculo requiere una calibración medida de la mezcla exacta.",
+      en: "Scale & Stem identifies Mexican tarragon as Tagetes lucida and lists 0.8 mS/cm for seedlings and 1.4 for vegetative growth. The page does not document an experimental method and also gives different general figures in its care notes. These are reported references for the user to select explicitly based on observed stage; they are not an automatic range, validated optimum, or dose. Calculation requires a measured calibration of the exact mixture.",
     },
   },
   {
@@ -1671,6 +1693,26 @@ function wvuTransplantReference(
 }
 
 export const CROP_STAGE_REFERENCES = [
+  {
+    cropIdentity: "hibiscus-moscheutos",
+    plantIds: ["blush-hibiscus"],
+    source: NUTRIENT_SOURCES.hibiscusMoscheutosGrower,
+    ageWindows: [
+      {
+        minDays: 21,
+        maxDays: 28,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "PanAmerican Seed indica 3–4 semanas de producción de plug para la serie Luna F1 de Hibiscus moscheutos antes del trasplante. Es una pista de vivero para otro cultivar en sustrato; compara hojas y raíces visibles y confirma la etapa. No identifica Blush ni cambia etapa, evidencia de EC o dosis automáticamente.",
+          en: "PanAmerican Seed lists 3–4 weeks of plug production for its Hibiscus moscheutos Luna F1 series before transplanting. This is a nursery cue for another substrate-grown cultivar; compare visible leaves and roots and confirm the stage. It does not identify Blush or automatically change stage, EC evidence or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La ficha oficial de PanAmerican Seed para Hibiscus moscheutos Luna F1 da 3–4 semanas de producción de plug. Se muestra como contexto de vivero para una especie relacionada, no como calendario hidropónico, rango de EC ni etapa confirmada para Blush.",
+      en: "PanAmerican Seed's official Hibiscus moscheutos Luna F1 sheet lists 3–4 weeks of plug production. This is nursery context for a related species, not a hydroponic schedule, EC range or confirmed stage for Blush.",
+    },
+  },
   {
     cropIdentity: "celery",
     plantIds: ["chinese-light-green-celery"],

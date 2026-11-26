@@ -178,6 +178,10 @@ const T = {
     calibrationAfter: "EC después de mezclar",
     calibrationSave: "Guardar calibración",
     calibrationInvalid: "Revisa las mediciones y las dosis reales antes de guardar.",
+    reservoirMixConfirm:
+      "Confirmo que el tanque usa la misma proporción real de componentes que esta calibración",
+    reservoirMixHelp:
+      "La dosis solo aplica si la mezcla nutritiva del tanque coincide. Si no conoces esa proporción, no continúes con esta estimación.",
     calibrationStorageError: "No se pudo guardar la calibración en este dispositivo.",
     calibrationTemporary:
       "Esta calibración solo está en memoria. Se perderá si recargas o cambias de sistema.",
@@ -312,6 +316,10 @@ const T = {
     calibrationAfter: "EC after mixing",
     calibrationSave: "Save calibration",
     calibrationInvalid: "Check the measurements and actual doses before saving.",
+    reservoirMixConfirm:
+      "I confirm this reservoir uses the same actual component ratio as this calibration",
+    reservoirMixHelp:
+      "The dose applies only when the reservoir's nutrient mixture matches. If you do not know that ratio, do not use this estimate.",
     calibrationStorageError: "Calibration could not be saved on this device.",
     calibrationTemporary:
       "This calibration is in memory only. It will be lost if you reload or change systems.",
@@ -463,6 +471,7 @@ export function CalculatorPage({
   const [sourceEcInput, setSourceEcInput] = useState("");
   const [calibrationOpen, setCalibrationOpen] = useState(true);
   const [calibrationError, setCalibrationError] = useState("");
+  const [reservoirMixConfirmed, setReservoirMixConfirmed] = useState(false);
   const [calibrationTemporary, setCalibrationTemporary] = useState(false);
   const [saveError, setSaveError] = useState("");
   const [dosingResolutionInput, setDosingResolutionInput] = useState("");
@@ -577,6 +586,7 @@ export function CalculatorPage({
     setDosingResolutionInput(s.dosingResolutionMl == null ? "" : String(s.dosingResolutionMl));
     setMeterResolutionInput(s.meterResolutionMs == null ? "" : String(s.meterResolutionMs));
     setCorrectionStepInput(String((s.correctionFraction ?? 0.5) * 100));
+    setReservoirMixConfirmed(false);
     setRound(1);
     const observations =
       s.id === "quick" ? loadQuickCalibrationObservations() : (s.calibrationObservations ?? []);
@@ -658,6 +668,7 @@ export function CalculatorPage({
   };
   const changeMode = (m: Mode) => {
     setMode(m);
+    setReservoirMixConfirmed(false);
     setFillPlanMessage("");
     setRound(1);
     setJustLearned(false);
@@ -679,6 +690,9 @@ export function CalculatorPage({
       calibrationObservations,
     ],
   );
+  useEffect(() => {
+    setReservoirMixConfirmed(false);
+  }, [sys.id, mode, productId, stageId, customAbManufacturer, customAbName, customAbVersion]);
   const parseDisplayedEc = useCallback(
     (raw: string) => {
       const parsed = parseDecimalInput(raw);
@@ -768,6 +782,7 @@ export function CalculatorPage({
       setSavedSystems(nextSystems);
     }
     setCalibrationObservations(nextObservations);
+    setReservoirMixConfirmed(false);
     setSys(snapshot);
     setCalibrationTemporary(!persisted);
     setCalibrationOpen(false);
@@ -813,6 +828,7 @@ export function CalculatorPage({
         dosingResolutionMl,
         meterResolutionMs,
         correctionFraction: (parseDecimalInput(correctionStepInput) ?? 0) / 100,
+        reservoirMixConfirmed,
         invalidFields: [
           ...(productId === "ab" && !customAbManufacturer.trim() ? [t.customAbManufacturer] : []),
           ...(productId === "ab" && !customAbName.trim() ? [t.customAbName] : []),
@@ -872,6 +888,7 @@ export function CalculatorPage({
       meterResolutionMs,
       meterResolutionInput,
       correctionStepInput,
+      reservoirMixConfirmed,
       sourceEcInput,
       targetEdited,
       t,
@@ -1961,6 +1978,25 @@ export function CalculatorPage({
                   </p>
                 </div>
               </details>
+
+              {result.kind === "needs" &&
+                result.mixtureConfirmationRequired &&
+                (mode === "adjust" || mode === "topup") && (
+                  <label className="flex items-start gap-3 rounded-lg border border-border/70 bg-background/40 p-3 text-sm">
+                    <input
+                      type="checkbox"
+                      checked={reservoirMixConfirmed}
+                      onChange={(event) => setReservoirMixConfirmed(event.target.checked)}
+                      className="mt-0.5 size-4 shrink-0 accent-primary"
+                    />
+                    <span>
+                      <span className="block font-medium">{t.reservoirMixConfirm}</span>
+                      <span className="mt-1 block text-xs text-muted-foreground">
+                        {t.reservoirMixHelp}
+                      </span>
+                    </span>
+                  </label>
+                )}
 
               {sys.id === "quick" && (
                 <Button

@@ -83,7 +83,7 @@ const observation = recordActualDoses({
   resultingEc: 1.1,
   actualDoses: { micro: "4", gro: "3", bloom: "2" },
 }).value!;
-const calibrated = { ...base, calibrationObservations: [observation] };
+const calibrated = { ...base, reservoirMixConfirmed: true, calibrationObservations: [observation] };
 function run(input: CalcInput) {
   calculations++;
   const output = calculateGardenResult(input);
@@ -129,6 +129,25 @@ function compare(test: string, source: string, expected: number, actual: number,
   expect(difference, test).toBeLessThanOrEqual(tolerance);
 }
 describe("Calculator objective independent validation", () => {
+  it("requires an explicit confirmation before applying calibration to an existing reservoir", () => {
+    for (const mode of ["adjust", "topup"] as const) {
+      const result = calculateGardenResult({
+        ...calibrated,
+        mode,
+        currentEc: 0.8,
+        currentLiters: 3,
+        capacityLiters: 4,
+        waterAdded: mode === "topup" ? 0.25 : 1,
+        reservoirMixConfirmed: false,
+      });
+      expect(result.kind).toBe("needs");
+      if (result.kind === "needs") {
+        expect(result.mixtureConfirmationRequired, mode).toBe(true);
+        expect(result.message).toMatch(/mezcla real de este tanque.*proporción de componentes/i);
+      }
+    }
+  });
+
   it("keeps every canonical non-carnivorous identity usable in Recipe and calibrated By EC", () => {
     const eligiblePlants = CALCULATOR_PLANTS.filter(
       (plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id),

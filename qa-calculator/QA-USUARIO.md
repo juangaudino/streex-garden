@@ -182,7 +182,10 @@ en una afirmación biológica no respaldada.
 ## 3. Corregir
 
 1. Selecciona **Corregir**. Introduce los litros que realmente quedan y el EC
-   medido del tanque. Confirma el objetivo.
+   medido del tanque. Confirma el objetivo. Si la app pide confirmar la mezcla,
+   hazlo solo si sabes que el tanque tiene la misma proporción real de componentes
+   que la calibración elegida; la receta oficial por sí sola no demuestra esa
+   proporción.
 2. Si el EC está por debajo del objetivo y existe calibración aplicable, comprueba
    que aparezca una dosis parcial de nutrientes. Si está por encima y necesitas
    diluir, mide e introduce el EC del agua de reposición; revisa la capacidad.
@@ -194,7 +197,10 @@ en una afirmación biológica no respaldada.
 
 1. Selecciona **Rellenar**. Introduce la capacidad, los litros presentes **antes**
    del relleno, el EC medido en ese momento, el agua que piensas añadir y el EC
-   medido de esa agua. Confirma el objetivo y la calibración aplicable.
+   medido de esa agua. Confirma el objetivo y la calibración aplicable. Si aparece
+   la confirmación de mezcla, marca que el tanque corresponde a la misma proporción
+   de componentes medida en esa calibración; si no conoces la mezcla, no uses esa
+   estimación de nutrientes.
 2. Comprueba que el resultado indique primero el agua y luego los nutrientes, si
    hacen falta. La suma debe dejar espacio para el volumen de los concentrados;
    si excede la capacidad, la aplicación debe bloquearlo y pedir que se ajuste.

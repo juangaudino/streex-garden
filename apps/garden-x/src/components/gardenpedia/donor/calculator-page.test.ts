@@ -229,6 +229,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       round: 1,
       calibrationObservations: [reading.value!],
       meterResolutionMs: 0.1,
+      reservoirMixConfirmed: true,
     };
     for (const mode of ["target", "adjust", "topup"] as const) {
       const lowResolution = calculateGardenResult({ ...input, mode });
@@ -927,6 +928,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       userTarget: null,
       round: 1,
       calibrationObservations: [reading.value!],
+      reservoirMixConfirmed: true,
     };
     for (const mode of ["recipe", "target", "adjust", "topup"] as const) {
       const result = calculateGardenResult({ ...inputs, mode });
@@ -975,6 +977,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
           userTarget: 1.2,
           round: 1,
           calibrationObservations: [observation.value!],
+          reservoirMixConfirmed: true,
         });
         expect(result.kind, `${plant.id}: ${mode}`).toBe("ok");
         if (mode !== "recipe" && result.kind === "ok") {
@@ -1164,6 +1167,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       customAbManufacturer: "Test manufacturer",
       customAbName: "Test nutrient A+B",
       customAbVersion: "Label v1",
+      reservoirMixConfirmed: true,
     };
     expect(calculateGardenResult({ ...named, mode: "recipe" }).kind).toBe("needs");
     expect(calculateGardenResult({ ...base, mode: "target" }).kind).toBe("needs");
@@ -1598,6 +1602,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
         userTarget: 1.2,
         round: 1,
         calibrationObservations: [calibration.value],
+        reservoirMixConfirmed: true,
       };
       const byEc = calculateGardenResult({
         ...shared,
@@ -1717,6 +1722,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
         userTarget: 1.2,
         round: 1,
         calibrationObservations: [calibration.value],
+        reservoirMixConfirmed: true,
       };
       const target = calculateGardenResult({
         ...shared,
@@ -2225,6 +2231,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       userTarget: 1.2,
       round: 1,
       calibrationObservations: [observation.value!],
+      reservoirMixConfirmed: true,
     };
     const correctionLow = calculateGardenResult({
       ...base,
@@ -2415,6 +2422,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       round: 1,
       correctionFraction: 0.5,
       calibrationObservations: [observation.value!],
+      reservoirMixConfirmed: true,
     });
     expect(result.kind).toBe("needs");
     if (result.kind === "needs") expect(result.message).toContain("superaría la capacidad");
@@ -2465,6 +2473,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       userTarget: 1.2,
       round: 1,
       calibrationObservations: [observation.value!],
+      reservoirMixConfirmed: true,
     };
     for (const mode of ["target", "adjust", "topup"] as const) {
       const result = calculateGardenResult({ ...input, mode });
@@ -2498,6 +2507,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       waterAdded: 0.5,
       userTarget: 1.2,
       round: 1,
+      reservoirMixConfirmed: true,
     };
     const uncalibrated = calculateGardenResult({ ...base, mode: "target" });
     expect(uncalibrated.kind).toBe("needs");
@@ -2559,6 +2569,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       userTarget: 1.2,
       round: 1,
       calibrationObservations: [legacy],
+      reservoirMixConfirmed: true,
     };
     expect(calibrationUsage(input)).toEqual({ used: 1, recorded: 1 });
     for (const mode of ["target", "adjust", "topup"] as const) {

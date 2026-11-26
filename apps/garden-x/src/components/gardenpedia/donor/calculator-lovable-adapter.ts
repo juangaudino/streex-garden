@@ -576,6 +576,7 @@ export type CalcInput = {
   dosingResolutionMl?: number | undefined;
   meterResolutionMs?: number | undefined;
   correctionFraction?: number | undefined;
+  reservoirMixConfirmed?: boolean | undefined;
 };
 
 export type CalcResult =
@@ -584,6 +585,7 @@ export type CalcResult =
       missing: string[];
       message?: string | undefined;
       calibrationRequired?: boolean | undefined;
+      mixtureConfirmationRequired?: boolean | undefined;
       target?: { value: number; provenance: Provenance } | undefined;
       range?:
         { min: number; max: number; common: boolean; limiting?: string | undefined } | undefined;
@@ -1176,6 +1178,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "Component proportions follow your actual calibration mixture and may differ from the manufacturer's recipe for this stage.",
     ],
     [
+      "Confirma que la mezcla real de este tanque coincide con la proporción de componentes usada en la calibración seleccionada.",
+      "Confirm that this tank's actual mixture matches the component ratio used in the selected calibration.",
+    ],
+    [
       "No se conoce la resolución de tu equipo; comprueba que puedes medir cada cantidad con precisión.",
       "Dosing equipment resolution is unknown; check that you can measure each amount accurately.",
     ],
@@ -1602,6 +1608,11 @@ function calculateResult(input: CalcInput): CalcResult {
         calibrationRequired: correction.errors.some((item) => item.code === "CALIBRATION_REQUIRED"),
       });
     const value = correction.value;
+    if (value.direction === "ADD_NUTRIENT" && calibrationModel && !input.reservoirMixConfirmed)
+      return engineNeeds(
+        "Confirma que la mezcla real de este tanque coincide con la proporción de componentes usada en la calibración seleccionada.",
+        { ...targetPresentation, mixtureConfirmationRequired: true },
+      );
     const doses =
       value.direction === "ADD_WATER" && value.waterMl !== undefined
         ? [{ label: "Agua", amount: value.waterMl / 1000, unit: "L" as const }]
@@ -1685,6 +1696,11 @@ function calculateResult(input: CalcInput): CalcResult {
       calibrationRequired: topup.errors.some((item) => item.code === "CALIBRATION_REQUIRED"),
     });
   const value = topup.value;
+  if (value.nutrientDoseMl && calibrationModel && !input.reservoirMixConfirmed)
+    return engineNeeds(
+      "Confirma que la mezcla real de este tanque coincide con la proporción de componentes usada en la calibración seleccionada.",
+      { ...targetPresentation, mixtureConfirmationRequired: true },
+    );
   return {
     kind: "ok",
     provenance: "measured",

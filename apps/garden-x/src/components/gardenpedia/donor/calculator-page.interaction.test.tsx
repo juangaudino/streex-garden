@@ -841,6 +841,12 @@ describe("Calculator real control interactions", () => {
       "1",
     );
     expect((screen.getByLabelText(/^EC you measured/) as HTMLInputElement).value).toBe("0.8");
+    expect(screen.getByText("To calculate I need")).toBeTruthy();
+    await user.click(
+      screen.getByRole("checkbox", {
+        name: /I confirm this reservoir uses the same actual component ratio/i,
+      }),
+    );
     expect(screen.queryByText("To calculate I need")).toBeNull();
     expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
     await user.click(screen.getByText("More settings", { exact: true }));
@@ -941,6 +947,11 @@ describe("Calculator real control interactions", () => {
       "1.20",
     );
     await user.type(screen.getByLabelText(/^EC you measured/), "0.80");
+    await user.click(
+      screen.getByRole("checkbox", {
+        name: /I confirm this reservoir uses the same actual component ratio/i,
+      }),
+    );
     await waitFor(() => expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0));
     await user.clear(screen.getByLabelText(/^EC you measured/));
     await user.type(screen.getByLabelText(/^EC you measured/), "1.50");
@@ -965,6 +976,11 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByLabelText(/^Water to add/), "0.25");
     await user.clear(screen.getByLabelText(/^EC before top-up/));
     await user.type(screen.getByLabelText(/^EC before top-up/), "0.80");
+    await user.click(
+      screen.getByRole("checkbox", {
+        name: /I confirm this reservoir uses the same actual component ratio/i,
+      }),
+    );
     await waitFor(() => expect(screen.getAllByText("FloraMicro").length).toBeGreaterThan(0));
     await user.click(screen.getByRole("button", { name: "Calculate water to capacity" }));
     const plannedWater = Number((screen.getByLabelText(/^Water to add/) as HTMLInputElement).value);

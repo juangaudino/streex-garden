@@ -19,8 +19,12 @@ vi.mock("@/components/ui/dialog", () => {
 });
 
 vi.mock("@/components/ui/button", () => ({
-  Button: ({ children, ...props }: ButtonHTMLAttributes<HTMLButtonElement> & { children: ReactNode }) =>
-    <button {...props}>{children}</button>,
+  Button: ({
+    children,
+    ...props
+  }: ButtonHTMLAttributes<HTMLButtonElement> & { children: ReactNode }) => (
+    <button {...props}>{children}</button>
+  ),
 }));
 
 vi.mock("@/lib/utils", () => ({
@@ -545,6 +549,11 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByText(/Stages represented/));
     await user.click(screen.getByLabelText("Seedling"));
     await user.click(screen.getByLabelText("Vegetative growth"));
+    await user.type(screen.getByLabelText("Days since sowing of Genovese Basil · Seedling"), "15");
+    await user.type(
+      screen.getByLabelText("Days since sowing of Genovese Basil · Vegetative growth"),
+      "36",
+    );
     await user.click(screen.getByRole("button", { name: "Save as system" }));
     await user.type(screen.getByRole("textbox", { name: "System name" }), "Seedlings");
     await user.click(screen.getByRole("button", { name: /^Save$/ }));
@@ -557,6 +566,17 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByText(/Stages represented/));
     expect((screen.getByLabelText("Seedling") as HTMLInputElement).checked).toBe(true);
     expect((screen.getByLabelText("Vegetative growth") as HTMLInputElement).checked).toBe(true);
+    expect(
+      (screen.getByLabelText("Days since sowing of Genovese Basil · Seedling") as HTMLInputElement)
+        .value,
+    ).toBe("15");
+    expect(
+      (
+        screen.getByLabelText(
+          "Days since sowing of Genovese Basil · Vegetative growth",
+        ) as HTMLInputElement
+      ).value,
+    ).toBe("36");
   });
 
   it("preserves the current Quick Mix draft after saving it as a system", async () => {

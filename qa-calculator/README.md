@@ -1,25 +1,27 @@
 # Calculator V1 verification
 
-> Historical integration report: the baseline, catalog counts, product support,
-> test totals and deployment status below describe an earlier review and are not
-> the current production status. In particular, AeroGarden EC modes can use a
-> compatible user calibration. For the current physical QA procedure, see
-> [QA-USUARIO.md](./QA-USUARIO.md). This file preserves the original fixtures
-> and historical evidence; it does not certify a later release.
+> This file preserves historical fixtures and earlier integration reports for
+> context. The current production and validation snapshot follows immediately;
+> sections titled “Historical” are superseded. For the physical QA procedure,
+> see [QA-USUARIO.md](./QA-USUARIO.md). Neither software tests nor a READY
+> deployment certify a real nutrient-response calibration or physical iPhone QA.
 
 ## Current production snapshot — 2026-11-26
 
-- Canonical `main`: `ad092c486d36c35d4a19ca603eafec4bed7496ce` (`perf(calculator):
-  cache canonical plant search index`). Vercel reports this production
-  deployment **READY** at the canonical Gardenpedia domain. The live
-  `/gardenpedia/?view=calculator` route returned HTTP 200 and rendered the
-  Recipe workbench with the official FloraSeries dose and EC expectation range.
+- Canonical `main`: `b709b131f2f104a9fbaf0265dd3d33c2ecd10e8b` (`Cover Epazote
+  manual EC evidence choice`). Vercel confirms the production deployment is
+  **READY**, sourced from `main` at this SHA, with `https://garden.getstreex.com`
+  assigned as an alias. The most recent browser smoke checked the Calculator
+  route and its four mode input boundaries; this is not physical iPhone QA.
 - Calculator evidence follow-ups were merged through PRs #25, #26 and #27.
   The latest changes preserve explicit crop-stage/system evidence boundaries,
   correct the Jolly Jester species boundary, add sourced transition cues,
   require explicit composition for mixed-age/stage reservoirs, and cache the
   canonical plant-search index so bilingual coverage checks stay within the
-  test timeout.
+  test timeout. Later main commits add an explicitly optional shared-tank
+  compromise when crop ranges do not overlap, preserve the strawberry study's
+  manual-target semantics, and expose Epazote study choices without turning
+  them into automatic crop ranges.
 - The catalog adapter exposes 507 identities; 499 are nutrient-calculator
   eligible and 8 carnivorous profiles are intentionally excluded. All 83 of
   User Zero's non-carnivorous varieties are searchable and covered by
@@ -32,11 +34,13 @@
   official recipe or an explicit user target with compatible exact-product
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
-- The latest local verification and GitHub Actions CI passed the full suite:
-  **998/998 tests across 126 files**, along with typecheck, lint and production
-  build. Gardenpedia content validation passed. Content counts:
+- Local verification on this main snapshot passed the full suite:
+  **1,001/1,001 tests across 126 files**, typecheck and production build.
+  Gardenpedia content validation passed. Content counts:
   512 plant source records, 1,304 sources, 328 Seed Profiles, 464 taxonomy
   records, and 0 unresolved source IDs.
+- Calculator-focused suites on this snapshot passed **221/221** across five
+  files, including the 83-variety coverage and four-mode fixtures.
 - Production browser inspection verified that Calculator loads in Spanish, the
   four modes are present, Quick Mix starts empty, and the default FloraSeries
   Recipe shows FloraMicro, FloraGro, FloraBloom and the manufacturer EC range.

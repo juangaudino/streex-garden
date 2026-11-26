@@ -52,6 +52,12 @@ la observación con una diferencia medible o un instrumento más preciso.
 
 ## Edad y etapa observada
 
+- En un tanque compartido con la misma variedad en varias etapas, elige **Varias
+  etapas**, marca cada etapa observada y registra los días de cada grupo por
+  separado. Por ejemplo, Genovese Basil: Plántula = 15 días y Crecimiento
+  vegetativo = 36 días. Deben aparecer por separado; guarda el sistema, recarga y
+  confirma que ambas edades se restauren. Estas edades muestran referencias
+  publicadas y no cambian la etapa ni la dosis automáticamente.
 - Añade **Genovese Basil**, registra 15 días desde la siembra y abre la pista del
   perfil de semilla. Debe mostrar la referencia morfológica y su fuente; la etapa
   seguirá sin especificar hasta que elijas lo que observas en la planta.
@@ -63,6 +69,11 @@ la observación con una diferencia medible o un instrumento más preciso.
 - En cada planta compara por separado **edad desde siembra**, **etapa observada**
   y **etapa del programa del fabricante**. Cambiar los días no debe alterar una
   dosis hasta que una etapa observada/aplicable o un objetivo cambie explícitamente.
+- Para **American Giant**, **Autumn Beauty** y el girasol genérico, registra 20
+  días: aparecerá el hito de trasplante de un ensayo NFT con otro cultivar
+  (‘Girassol de Jardim Amarelo Alto’), cerca de 5 cm. Confirma el tamaño y el
+  desarrollo visibles; no es validación de esos cultivares ni selecciona etapa o
+  EC automáticamente. A los 21 días no debe mantenerse como si fuera una ventana.
 
 ## Cobertura de las 83 variedades
 
@@ -144,11 +155,27 @@ para asignar la etapa de la planta ni para cambiar una receta oficial. Para Bush
 Nasturtium se muestra además 1,00 mS/cm como observación manual de enraizamiento
 de esquejes de *Tropaeolum majus*; la ficha es *T. minus*, así que no constituye
 evidencia automática ni un objetivo validado para esa planta.
+Para Monterey Strawberry, Illinois Extension documenta esa variedad en un sistema
+comercial hidropónico de día neutro operado alrededor de 1,80 mS/cm. La calculadora
+lo ofrece como elección manual contextual, no como óptimo ni como validación de la
+formulación de nutrientes que uses. Para Hyssop, el estudio de ‘Lekar’ informa EC
+de solución 2,2 ± 0,1 mS/cm durante el ensayo y trasplante a las cuatro semanas con
+cuatro hojas verdaderas. La calculadora ofrece 2,2 como contexto manual y el hito
+de edad como pista confirmable; no es un óptimo ni una transición automática.
 
 Los días desde siembra son contexto, no una transición automática de etapa. Elige
 la etapa que observas en cada variedad; la etapa del programa del fabricante es
 independiente. Esto evita que la calculadora convierta una fecha o semana de receta
-en una afirmación biológica no respaldada. Para Tulsi/Holy Basil, la guía de LetPot
+en una afirmación biológica no respaldada. Para cilantro, eneldo Bouquet y perejil
+Italian Giant se muestra la referencia de un estudio NFT que trasplantó los
+cultivares ensayados a las tres semanas. Un estudio de flujo profundo también
+trasplantó Bouquet a las cuatro semanas, Giant of Italy a las cinco y berro a las
+tres. Son observaciones de ensayos/sistemas distintos, no una edad única universal.
+Bouquet no es el eneldo Fernleaf del ensayo NFT de tres semanas. Confirma el
+desarrollo visible; ninguna pista cambia por sí sola la etapa ni la dosis. Para
+Jolly Jester, WVU da 6–8 semanas como referencia genérica de marigold, sin identificar
+Tagetes erecta o el cultivar; se muestra solo como contexto de vivero. Para
+Tulsi/Holy Basil, la guía de LetPot
 publica ventanas de plántula (14–21 días), crecimiento (42–56) y madurez (60–90),
 además de EC distintas por fase. La calculadora muestra las dos últimas como
 sugerencias con esa procedencia: a los 50 días y 75 días, comprueba la fase en la
@@ -241,6 +268,10 @@ aplicación informe si las referencias disponibles se solapan, si no se solapan 
 no hay información suficiente. No debe inventar un rango común ni cambiar una
 receta oficial para hacerla coincidir con las plantas. Repite con plantas de
 distintas edades; una edad en días es contexto, no confirma por sí sola una etapa.
+Si los rangos aplicables no se solapan, comprueba que el resultado siga diciendo
+**NO_COMMON_OPTIMUM_RANGE** y que la app ofrezca, solo como opción explícita, un
+punto medio operativo experimental con desviación visible por cultivo. No lo
+aceptes como óptimo común ni permitas que reemplace un objetivo que ya elegiste.
 
 ## 6. Otros productos y estados
 

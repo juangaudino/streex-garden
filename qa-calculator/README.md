@@ -8,11 +8,17 @@
 
 ## Current production snapshot — 2026-11-26
 
-- Canonical `main`: `b709b131f2f104a9fbaf0265dd3d33c2ecd10e8b` (`Cover Epazote
-  manual EC evidence choice`). Vercel confirms the production deployment is
-  **READY**, sourced from `main` at this SHA, with `https://garden.getstreex.com`
-  assigned as an alias. The most recent browser smoke checked the Calculator
-  route and its four mode input boundaries; this is not physical iPhone QA.
+- Canonical `main`: `f982c18` (`Verify AeroGarden crop removal clears
+  compatibility`). The live production application is **READY** from code
+  commit `4122d69743600919fdee3495926cc453b992c666`; `f982c18` adds a test-only
+  assertion after that deployment and does not change the application bundle.
+  `https://garden.getstreex.com` is assigned to that deployment.
+- The latest production browser smoke selected AeroGarden Recipe, added Bibb
+  Lettuce, and confirmed the crop compatibility disclosure showed the
+  applicable 1.20–1.80 mS/cm range and sources while the official 8.00 mL dose
+  stayed unchanged. Removing the crop cleared that evidence back to
+  `INSUFFICIENT` while preserving the 8.00 mL manufacturer dose. This was a
+  desktop in-app browser check, not physical iPhone QA.
 - Calculator evidence follow-ups were merged through PRs #25, #26 and #27.
   The latest changes preserve explicit crop-stage/system evidence boundaries,
   correct the Jolly Jester species boundary, add sourced transition cues,
@@ -35,17 +41,15 @@
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
 - Local verification on this main snapshot passed the full suite:
-  **1,001/1,001 tests across 126 files**, typecheck and production build.
+  **1,009/1,009 tests across 126 files**, typecheck and production build.
   Gardenpedia content validation passed. Content counts:
   512 plant source records, 1,304 sources, 328 Seed Profiles, 464 taxonomy
   records, and 0 unresolved source IDs.
-- Calculator-focused suites on this snapshot passed **221/221** across five
-  files, including the 83-variety coverage and four-mode fixtures.
-- Production browser inspection verified that Calculator loads in Spanish, the
+- Latest Calculator interaction suite: **47/47**. The full suite includes the
+  83-variety coverage and four-mode fixtures.
+- Production browser inspection also verified Calculator loads in Spanish, the
   four modes are present, Quick Mix starts empty, and the default FloraSeries
   Recipe shows FloraMicro, FloraGro, FloraBloom and the manufacturer EC range.
-  This was a desktop browser check; it does not replace interaction QA on the
-  physical iPhone.
 - Physical iPhone QA and a real measured FloraSeries calibration are still
   pending. Simulated software observations validate arithmetic only; they are
   not empirical product-response measurements. Do not mark the Calculator

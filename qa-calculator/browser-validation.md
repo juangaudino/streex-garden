@@ -34,4 +34,22 @@ Screenshots inspected for mobile and desktop. This evidence does not establish r
 
 - An empirical exact-formulation calibration is not available in the inspected repository/prototype. No coefficient was invented or imported as a real measurement.
 - Physical iPhone acceptance remains User Zero's final gate.
-- Full repository tests retain an unrelated Compare baseline failure; relevant Gardenpedia/Calculator tests pass.
+- The current software suite passed; software tests do not substitute for physical iPhone acceptance or real measured nutrient response.
+
+## Production regression — AeroGarden crop compatibility — 2026-11-26
+
+Verified against `https://garden.getstreex.com/gardenpedia/?view=calculator`
+after the production deployment sourced from `4122d69743600919fdee3495926cc453b992c666`.
+This was a desktop in-app browser smoke test, not a physical iPhone test.
+
+1. Start with the empty Quick Mix and select AeroGarden in Recipe mode.
+2. The plant selector remains available. Add Bibb Lettuce.
+3. The result still shows the verified manufacturer recipe: 8.00 mL AeroGarden
+   Liquid Plant Food.
+4. Open “Why, and where it comes from”: crop compatibility is `Common range`,
+   with 1.20–1.80 mS/cm and its applicable sources.
+5. Remove Bibb Lettuce: the recipe remains 8.00 mL and crop compatibility
+   returns to `Insufficient evidence` because no crop is selected.
+
+No saved system, calibration observation, private record, or canonical data was
+created or changed during this smoke test. The unsaved Quick Mix was left empty.

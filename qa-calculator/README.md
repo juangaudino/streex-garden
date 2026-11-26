@@ -82,6 +82,9 @@ not plant phenology, and this guard does not make it one.
   pass **102/102**; the full suite passes **1,023/1,023**. Typecheck, the Garden
   build, content validation and changed-file lint pass. Build regenerated only
   the manifest timestamp; that noise is excluded from the change.
+- The detailed per-identity audit for the 83 owned varieties, including the
+  default evidence class and stage/system contexts that resolve, is in
+  [`coverage-83-varieties.md`](./coverage-83-varieties.md).
 
 ## Historical continuation snapshot — superseded
 

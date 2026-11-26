@@ -130,7 +130,9 @@ const USER_ZERO_83_VARIETY_IDS = [
 describe("Gardenpedia Calculator V1 integration", () => {
   it("provides Blush Hibiscus only a cultivar-scoped transplant cue, not automatic EC evidence", () => {
     const cue = calculatorAgeStageCueForPlant("blush-hibiscus", 25);
-    expect(cue?.ageWindow.stageSuggestion).toBe("SEEDLING");
+    expect(
+      cue && "stageSuggestion" in cue.ageWindow ? cue.ageWindow.stageSuggestion : undefined,
+    ).toBe("SEEDLING");
     expect(cue?.reference.source.id).toBe("panam-hibiscus-luna-grower-2023");
     expect(calculatorAgeStageCueForPlant("blush-hibiscus", 29)).toBeUndefined();
     expect(hasApplicableCropNutrientEvidence("blush-hibiscus")).toBe(false);

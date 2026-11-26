@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   calculatorAgeStageCueForPlant,
+  calculatorSeedTransitionForPlant,
   calculatorStageReferenceForPlant,
   contextFor,
 } from "./calculator-lovable-adapter";
@@ -161,9 +162,50 @@ describe("calculator age stage cues", () => {
     }
   });
 
+  it("applies reviewed basil and lettuce age cues to explicitly mapped cultivars", () => {
+    for (const plantId of ["basil-dark-opal", "basil-lemon", "basil-lime", "basil-spicy-globe"]) {
+      const cue = calculatorAgeStageCueForPlant(plantId, 42);
+      expect(cue?.reference.source.id).toBe("wvu-extension-seed-starting-transplant-age");
+      expect(cue?.ageWindow).toMatchObject({
+        minDays: 42,
+        maxDays: 42,
+        stageSuggestion: "SEEDLING",
+      });
+    }
+
+    const butterheadAt15Days = calculatorAgeStageCueForPlant("butterhead-lettuce-unspecified", 15);
+    const butterheadAt19Days = calculatorAgeStageCueForPlant("butterhead-lettuce-unspecified", 19);
+    expect(butterheadAt15Days?.reference.source.id).toBe(
+      "university-kentucky-hydroponic-lettuce-ccd-cp-63",
+    );
+    expect(butterheadAt15Days?.ageWindow).toMatchObject({
+      minDays: 14,
+      maxDays: 21,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(butterheadAt19Days?.ageWindow).toEqual(butterheadAt15Days?.ageWindow);
+    expect(calculatorAgeStageCueForPlant("butterhead-lettuce-unspecified", 22)).toBeUndefined();
+  });
+
   it("uses morphology guidance for cilantro without inventing an age window", () => {
     expect(calculatorStageReferenceForPlant("cilantro")?.text.en).toMatch(/broad and flat/i);
     expect(calculatorAgeStageCueForPlant("cilantro", 20)).toBeUndefined();
+  });
+
+  it("exposes a bilingual, publicly sourced Seed Profile transition cue for exact identities", () => {
+    const cue = calculatorSeedTransitionForPlant("genovese-basil");
+    expect(cue?.short.en).toMatch(/leaf stage/i);
+    expect(cue?.short.es).toMatch(/hojas/i);
+    expect(cue?.guidance.en).toMatch(/3–4 sets of leaves/i);
+    expect(cue?.sources).toEqual(
+      expect.arrayContaining([
+        expect.objectContaining({
+          id: "johnnys-genovese-basil-seed",
+          url: expect.stringMatching(/^https:\/\//),
+        }),
+      ]),
+    );
+    expect(calculatorSeedTransitionForPlant("unmapped-test-identity")).toBeUndefined();
   });
 
   it("uses the UNAM Epazote transplant observation as context, never an automatic age window", () => {

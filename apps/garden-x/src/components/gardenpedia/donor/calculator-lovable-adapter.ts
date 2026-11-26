@@ -36,6 +36,7 @@ import type {
   MeasurementScope,
   UserMeasurement,
 } from "@/lib/garden-nutrient-engine-v1/types";
+import { gardenSeedTransitionReferences } from "@/generated/garden-seed-transition-index";
 
 export type Lang = "es" | "en";
 export type Mode = "recipe" | "target" | "adjust" | "topup";
@@ -84,6 +85,12 @@ export type CalculatorStageGuidance = Pick<
   DonorGuideSection,
   "id" | "title" | "body" | "backing" | "confidence" | "sources"
 >;
+
+export type CalculatorSeedTransitionReference = {
+  short: { en: string; es: string };
+  guidance: { en: string; es: string };
+  sources: readonly { id: string; title: string; url: string }[];
+};
 
 export const CALCULATOR_PLANTS: CalculatorPlant[] = donorPlants.map((plant) => ({
   id: plant.id,
@@ -224,6 +231,17 @@ export function calculatorStageReferenceForPlant(plantId: string) {
   return cropIdentity
     ? CROP_STAGE_REFERENCES.find((item) => item.cropIdentity === cropIdentity)
     : undefined;
+}
+
+/**
+ * Returns a public, source-backed Seed Profile transition cue for an exact
+ * canonical identity. It is observational context only, never an age-to-stage
+ * rule or nutrient target.
+ */
+export function calculatorSeedTransitionForPlant(
+  plantId: string,
+): CalculatorSeedTransitionReference | undefined {
+  return gardenSeedTransitionReferences[plantId as keyof typeof gardenSeedTransitionReferences];
 }
 
 /**

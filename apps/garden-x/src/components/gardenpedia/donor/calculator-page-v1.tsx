@@ -36,6 +36,7 @@ import {
   calculateGardenResult,
   calibrationUsage,
   calculatorSourceUrl,
+  calculatorSeedTransitionForPlant,
   calculatorStageGuidanceForPlant,
   calculatorStageReferenceForPlant,
   generalCropReferenceForStage,
@@ -1163,6 +1164,7 @@ export function CalculatorPage({
                       const ageDays = Number(cropSowingAgeDays[id]);
                       const ageCue = calculatorAgeStageCueForPlant(id, ageDays);
                       const ageWindow = ageCue?.ageWindow;
+                      const seedTransitionCue = calculatorSeedTransitionForPlant(id);
                       const ageStageSuggestion: CalculatorCropStage | undefined =
                         ageWindow &&
                         "stageSuggestion" in ageWindow &&
@@ -1366,6 +1368,38 @@ export function CalculatorPage({
                               >
                                 {stageReference.source.publisher}
                               </a>
+                            </details>
+                          )}
+                          {seedTransitionCue && (
+                            <details className="col-span-full text-xs text-muted-foreground">
+                              <summary className="cursor-pointer font-medium">
+                                {lang === "es"
+                                  ? "Pista de transición del perfil de semilla"
+                                  : "Seed Profile transition cue"}
+                              </summary>
+                              <p className="mt-2 font-medium text-foreground">
+                                {seedTransitionCue.short[lang]}
+                              </p>
+                              <p className="mt-1">{seedTransitionCue.guidance[lang]}</p>
+                              <p className="mt-1">
+                                {lang === "es"
+                                  ? "Es contexto de establecimiento respaldado por la fuente. No convierte los días en una etapa ni cambia la dosis."
+                                  : "This is source-backed establishment context. It does not convert days into a stage or change the dose."}
+                              </p>
+                              <ul className="mt-1 space-y-1">
+                                {seedTransitionCue.sources.map((source) => (
+                                  <li key={source.id}>
+                                    <a
+                                      className="underline"
+                                      href={source.url}
+                                      target="_blank"
+                                      rel="noreferrer"
+                                    >
+                                      {source.title}
+                                    </a>
+                                  </li>
+                                ))}
+                              </ul>
                             </details>
                           )}
                           {stageGuidance.length > 0 && (
@@ -1584,9 +1618,13 @@ export function CalculatorPage({
                               {ageWindow && <p>{ageWindow.text[lang]}</p>}
                               {!ageWindow && (
                                 <p>
-                                  {lang === "es"
-                                    ? "No hay una ventana de edad publicada que coincida con este dato. Confirma la etapa observando la planta; los días por sí solos no cambian la etapa ni la dosis."
-                                    : "No published age window matches this entry. Confirm stage from the plant itself; days alone do not change its stage or dose."}
+                                  {seedTransitionCue
+                                    ? lang === "es"
+                                      ? "No hay una ventana publicada para convertir esta edad en etapa. Usa la pista morfológica del perfil de semilla y confirma lo que observas; los días no cambian la etapa ni la dosis."
+                                      : "There is no published window to convert this age into a stage. Use the Seed Profile morphology cue and confirm what you observe; days do not change stage or dose."
+                                    : lang === "es"
+                                      ? "No hay una ventana de edad publicada que coincida con este dato. Confirma la etapa observando la planta; los días por sí solos no cambian la etapa ni la dosis."
+                                      : "No published age window matches this entry. Confirm stage from the plant itself; days alone do not change stage or dose."}
                                 </p>
                               )}
                               {ageStageSuggestion && (

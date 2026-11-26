@@ -276,7 +276,9 @@ describe("Calculator plant-stage guidance", () => {
       target: { value: "20" },
     });
 
-    expect(screen.getByText(/No hay una ventana de edad publicada que coincida/i)).toBeTruthy();
+    expect(
+      screen.getByText(/No hay una ventana publicada para convertir esta edad en etapa/i),
+    ).toBeTruthy();
     expect(
       (screen.getByRole("combobox", { name: "Etapa de Epazote" }) as HTMLSelectElement).value,
     ).toBe("UNSPECIFIED");

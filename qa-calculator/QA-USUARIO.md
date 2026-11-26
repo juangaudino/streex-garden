@@ -50,6 +50,20 @@ efectivamente mediste. Si el cambio entre EC inicial y final es menor que la
 resolución del medidor, no lo uses como calibración cuantitativa confiable; repite
 la observación con una diferencia medible o un instrumento más preciso.
 
+## Edad y etapa observada
+
+- Añade **Genovese Basil**, registra 15 días desde la siembra y abre la pista del
+  perfil de semilla. Debe mostrar la referencia morfológica y su fuente; la etapa
+  seguirá sin especificar hasta que elijas lo que observas en la planta.
+- Añade **Butterhead Lettuce** con 15 días y luego 19 días. Ambos valores caen en
+  la misma ventana publicada de trasplante (14–21 días), así que la pista debe
+  mantenerse igual. Confirma visualmente hojas verdaderas y raíces antes de elegir
+  Plántula. A los 22 días la ventana ya no aplica; la aplicación no debe inventar
+  una nueva etapa ni cambiar por sí sola la dosis.
+- En cada planta compara por separado **edad desde siembra**, **etapa observada**
+  y **etapa del programa del fabricante**. Cambiar los días no debe alterar una
+  dosis hasta que una etapa observada/aplicable o un objetivo cambie explícitamente.
+
 ## Cobertura de las 83 variedades
 
 En el contexto por defecto —etapa sin especificar y sistema hidropónico sin

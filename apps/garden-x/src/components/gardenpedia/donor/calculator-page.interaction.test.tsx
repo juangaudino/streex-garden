@@ -582,9 +582,11 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
     await user.type(screen.getByLabelText("Days since sowing of Genovese Basil"), "15");
     expect(screen.getByText(/Published germination reference: 5–10 days/)).toBeTruthy();
-    expect(screen.getByRole("link", { name: "Genovese Basil Seed" }).getAttribute("href")).toMatch(
-      /^https:/,
-    );
+    expect(
+      screen
+        .getAllByRole("link", { name: "Genovese Basil Seed" })
+        .every((link) => link.getAttribute("href")?.startsWith("https:")),
+    ).toBe(true);
     expect((screen.getByLabelText("Stage of Genovese Basil") as HTMLSelectElement).value).toBe(
       "UNSPECIFIED",
     );

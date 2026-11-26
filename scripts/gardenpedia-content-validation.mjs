@@ -1100,6 +1100,7 @@ const generatedPublicArtifactText = [
   "apps/garden-x/src/generated/garden-library-manifest.ts",
   "apps/garden-x/src/generated/garden-plant-profile-index.ts",
   "apps/garden-x/src/generated/garden-seed-profile-index.ts",
+  "apps/garden-x/src/generated/garden-seed-transition-index.ts",
 ]
   .map((file) => path.join(root, file))
   .filter((file) => fs.existsSync(file))

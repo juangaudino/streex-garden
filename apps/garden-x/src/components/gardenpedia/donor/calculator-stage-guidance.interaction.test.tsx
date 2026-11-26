@@ -171,18 +171,18 @@ describe("Calculator plant-stage guidance", () => {
     );
   });
 
-  it("offers the two directly reported NFT Marigold treatments without making a range", () => {
+  it("offers applicable Erecta-context manual choices without making a range", () => {
     render(<CalculatorPage language="en" initialPlantId="marigold-jolly-jester" />);
 
     fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
     fireEvent.click(screen.getByText("View cultivation sources"));
 
     const options150 = screen.getAllByRole("button", { name: /1\.50 mS\/cm/ });
-    expect(options150).toHaveLength(3);
+    expect(options150).toHaveLength(2);
     expect(options150.map((button) => button.getAttribute("aria-label"))).toEqual(
       expect.arrayContaining([
-        expect.stringContaining("LaNiTex Hydro Garden"),
         expect.stringContaining("Bangladesh Agricultural Research Council"),
+        expect.stringContaining("International Society for Horticultural Science"),
       ]),
     );
     fireEvent.click(screen.getByRole("button", { name: /3\.00 mS\/cm/ }));

@@ -1172,26 +1172,26 @@ export const CROP_STUDY_REFERENCES: readonly {
     selectableEcMs: 1.5,
     selectableEcValuesMs: [1.5, 3.0],
     text: {
-      es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. La ficha de esta variedad la identifica como Tagetes patula; son especies distintas. El ensayo no identifica Jolly Jester ni valida los valores para esta ficha, otros productos o plántulas; no es un rango automático.",
-      en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. This profile identifies the variety as Tagetes patula; these are different species. The trial does not identify Jolly Jester or validate those values for this profile, other products or seedlings; it is not an automatic range.",
+      es: "Un ensayo NFT de Tagetes erecta comparó soluciones a 1,5, 3,0 y 6,0 mS/cm: informó crecimiento y producción de flores similares en los dos primeros tratamientos y una reducción a 6,0. La identidad comercial de Jolly Jester se asocia con Tagetes erecta, pero el ensayo no identifica ese producto ni valida sus valores para esta variedad, otros productos o plántulas; no es un rango automático.",
+      en: "An NFT trial of Tagetes erecta compared solutions at 1.5, 3.0 and 6.0 mS/cm: it reported similar growth and flower production at the first two treatments and a reduction at 6.0. The Jolly Jester commercial identity is associated with Tagetes erecta, but the trial does not identify that product or validate its values for this variety, other products or seedlings; it is not an automatic range.",
     },
   },
   {
-    plantIds: ["marigold-jolly-jester"],
+    plantIds: ["french-marigold"],
     source: NUTRIENT_SOURCES.tagetesPatulaDwcStudy,
     selectableEcValuesMs: [1.8, 2.0],
     text: {
-      es: "Un estudio de 2026 cultivó tres cultivares de Tagetes patula en DWC y mantuvo la solución a 1,8–2,0 mS/cm, siguiendo la pauta de Terra Aquatica Tripart. No incluyó Jolly Jester ni comparó tratamientos de EC; estos valores solo se ofrecen como condiciones experimentales seleccionables, no como rango óptimo, dosis o recomendación automática. Cualquier cálculo requiere calibrar tu mezcla exacta.",
-      en: "A 2026 study grew three Tagetes patula cultivars in DWC and maintained the solution at 1.8–2.0 mS/cm using Terra Aquatica Tripart guidance. It did not include Jolly Jester or compare EC treatments; these values are offered only as selectable experimental conditions, not an optimum range, dose or automatic recommendation. Any calculation requires calibration of your exact mix.",
+      es: "Un estudio de 2026 cultivó tres cultivares de Tagetes patula en DWC y mantuvo la solución a 1,8–2,0 mS/cm, siguiendo la pauta de Terra Aquatica Tripart. Esta referencia de especie corresponde a Tagetes patula y no a la identidad comercial Jolly Jester, que se asocia con Tagetes erecta. El estudio tampoco comparó tratamientos de EC; estos valores solo se ofrecen como condiciones experimentales seleccionables, no como rango óptimo, dosis o recomendación automática. Cualquier cálculo requiere calibrar tu mezcla exacta.",
+      en: "A 2026 study grew three Tagetes patula cultivars in DWC and maintained the solution at 1.8–2.0 mS/cm using Terra Aquatica Tripart guidance. This species-level reference applies to Tagetes patula, not the Jolly Jester commercial identity associated with Tagetes erecta. The study also did not compare EC treatments; these values are offered only as selectable experimental conditions, not an optimum range, dose or automatic recommendation. Any calculation requires calibration of your exact mix.",
     },
   },
   {
-    plantIds: ["marigold-jolly-jester"],
+    plantIds: ["french-marigold"],
     source: NUTRIENT_SOURCES.lanitexHydroponicMarigoldGuide,
     selectableEcValuesMs: [1.0, 1.5, 1.8, 2.0],
     text: {
-      es: "La guía de LaNiTex para marigold hidropónico incluye Tagetes patula y reporta 1,0–1,5 mS/cm para plántula/crecimiento vegetativo y 1,8–2,0 durante floración; menciona hasta 2,2 solo como ensayo para usuarios experimentados con medición estable. No identifica Jolly Jester, es una guía de un operador y no una validación independiente de esta variedad. Estos valores son referencias manuales, no evidencia automática ni un rango óptimo; cualquier dosis requiere calibración de la mezcla exacta.",
-      en: "LaNiTex's hydroponic marigold guide includes Tagetes patula and reports 1.0–1.5 mS/cm for seedlings/vegetative growth and 1.8–2.0 during flowering; it mentions up to 2.2 only as a trial for experienced growers with stable monitoring. It does not identify Jolly Jester, and it is an operator guide rather than independent validation of this variety. These values are manual references, not automatic evidence or an optimum range; any dose requires calibration of the exact mix.",
+      es: "La guía de LaNiTex para marigold hidropónico trata Tagetes patula y reporta 1,0–1,5 mS/cm para plántula/crecimiento vegetativo y 1,8–2,0 durante floración; menciona hasta 2,2 solo como ensayo para usuarios experimentados con medición estable. Esta guía de un operador no identifica la identidad comercial Jolly Jester, asociada con Tagetes erecta, ni constituye validación independiente. Sus valores son referencias manuales de contexto para Tagetes patula, no evidencia automática ni un rango óptimo; cualquier dosis requiere calibrar la mezcla exacta.",
+      en: "LaNiTex's hydroponic marigold guide concerns Tagetes patula and reports 1.0–1.5 mS/cm for seedlings/vegetative growth and 1.8–2.0 during flowering; it mentions up to 2.2 only as a trial for experienced growers with stable monitoring. This operator guide does not identify the Jolly Jester commercial identity associated with Tagetes erecta and is not independent validation. Its values are manual context references for Tagetes patula, not automatic evidence or an optimum range; any dose requires calibration of the exact mix.",
     },
   },
   {
@@ -1199,8 +1199,8 @@ export const CROP_STUDY_REFERENCES: readonly {
     source: NUTRIENT_SOURCES.bariHydroponicGuide,
     selectableEcMs: 1.5,
     text: {
-      es: "La guía de BARC prescribe EC de solución de 1,5 mS/cm para marigold africano hidropónico ‘BARI Gada-1’: desde plántula hasta trasplante y desde trasplante hasta cosecha. La ficha de Jolly Jester lo identifica como Tagetes patula, no como marigold africano; la guía trata otra identidad y usa la solución BARI. Es solo contexto y no una validación automática; cualquier objetivo manual requiere calibración.",
-      en: "BARC's guide prescribes nutrient-solution EC of 1.5 mS/cm for hydroponic African marigold ‘BARI Gada-1’: from seedling to transplant and from transplant to harvest. The Jolly Jester profile identifies it as Tagetes patula, not African marigold; the guide concerns a different identity and uses the BARI solution. This is context only, not automatic validation; any manual target requires calibration.",
+      es: "La guía de BARC prescribe EC de solución de 1,5 mS/cm para el marigold africano hidropónico ‘BARI Gada-1’, desde plántula hasta cosecha, con la solución BARI. La identidad comercial de Jolly Jester se asocia con Tagetes erecta, pero la guía trata otro cultivar y otra formulación: es contexto, no validación de Jolly Jester ni evidencia automática. Cualquier objetivo manual requiere calibración.",
+      en: "BARC's guide prescribes nutrient-solution EC of 1.5 mS/cm for hydroponic African marigold ‘BARI Gada-1’, from seedling through harvest, using the BARI solution. The Jolly Jester commercial identity is associated with Tagetes erecta, but the guide concerns a different cultivar and formulation: it is context, not validation of Jolly Jester or automatic evidence. Any manual target requires calibration.",
     },
   },
   {

@@ -334,6 +334,21 @@ const T = {
 } as const;
 type Copy = (typeof T)[Lang];
 
+type CalculatorProduct = (typeof CALCULATOR_PRODUCTS)[number];
+type CalculatorRecipeStage = CalculatorProduct["recipeStages"][number];
+
+function recipeStageOptionLabel(
+  stage: CalculatorRecipeStage,
+  product: CalculatorProduct,
+  pods: number,
+  lang: Lang,
+) {
+  const label = recipeStageLabel(stage, product.id, pods, lang);
+  if (product.id !== "gh-flora" || !stage.scheduleId) return label;
+  const schedule = product.recipeSchedules?.find((item) => item.id === stage.scheduleId);
+  return schedule ? `${schedule.label[lang]} · ${label}` : label;
+}
+
 const MODE_ICONS: Record<Mode, React.ComponentType<{ className?: string }>> = {
   recipe: BookOpen,
   target: Target,
@@ -1122,9 +1137,11 @@ export function CalculatorPage({
                       const ageDays = Number(cropSowingAgeDays[id]);
                       const ageCue = calculatorAgeStageCueForPlant(id, ageDays);
                       const ageWindow = ageCue?.ageWindow;
-                      const ageStageSuggestion =
-                        ageWindow && "stageSuggestion" in ageWindow
-                          ? ageWindow.stageSuggestion
+                      const ageStageSuggestion: CalculatorCropStage | undefined =
+                        ageWindow &&
+                        "stageSuggestion" in ageWindow &&
+                        ageWindow.stageSuggestion === "SEEDLING"
+                          ? "SEEDLING"
                           : undefined;
                       const studies = CROP_STUDY_REFERENCES.filter((reference) =>
                         (reference.plantIds as readonly string[]).includes(id),
@@ -1379,7 +1396,10 @@ export function CalculatorPage({
                                               reference.selectableEcValuesMs ?? [
                                                 reference.selectableEcMs!,
                                               ]
-                                            ).map((value) => ({ value }))
+                                            ).map((value) => ({
+                                              value,
+                                              stage: undefined as string | undefined,
+                                            }))
                                         ).map(({ value, stage }) => (
                                           <button
                                             key={`${stage ?? "general"}-${value}`}
@@ -1832,7 +1852,7 @@ export function CalculatorPage({
                           )
                           .map((stage) => (
                             <option key={stage.id} value={stage.id}>
-                              {recipeStageLabel(stage, product.id, pods, lang)}
+                              {recipeStageOptionLabel(stage, product, pods, lang)}
                             </option>
                           ))}
                       </select>
@@ -2820,7 +2840,7 @@ function CalibrationCard({
               )
               .map((stage) => (
                 <option key={stage.id} value={stage.id}>
-                  {recipeStageLabel(stage, product.id, pods, lang)}
+                  {recipeStageOptionLabel(stage, product, pods, lang)}
                 </option>
               ))}
           </select>

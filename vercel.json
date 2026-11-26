@@ -9,7 +9,8 @@
     "deploymentEnabled": {
       "prototype/grow-guide": true,
       "garden-x/v1-migration-current": true,
-      "codex/calculator-variety-research": true
+      "codex/calculator-variety-research": true,
+      "codex/calculator-tagetes-evidence-boundary": true
     }
   }
 }

@@ -8,11 +8,12 @@
 
 ## Current production snapshot — 2026-11-26
 
-- Canonical `main`: `f982c18` (`Verify AeroGarden crop removal clears
-  compatibility`). The live production application is **READY** from code
-  commit `4122d69743600919fdee3495926cc453b992c666`; `f982c18` adds a test-only
-  assertion after that deployment and does not change the application bundle.
-  `https://garden.getstreex.com` is assigned to that deployment.
+- Baseline `main` before this calculator follow-through:
+  `5849129f32dccd47c05257fcadb2be14ec75a460` (`Clarify calculator plant
+  stage references`). Vercel confirmed this same commit **READY** on the
+  production alias `https://garden.getstreex.com`. This follow-through adds a
+  mixed-stage recipe compatibility guard without changing recipe math or
+  canonical data.
 - The latest production browser smoke selected AeroGarden Recipe, added Bibb
   Lettuce, and confirmed the crop compatibility disclosure showed the
   applicable 1.20–1.80 mS/cm range and sources while the official 8.00 mL dose
@@ -40,8 +41,9 @@
   official recipe or an explicit user target with compatible exact-product
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
-- Local verification on this main snapshot passed the full suite:
-  **1,009/1,009 tests across 126 files**, typecheck and production build.
+- Local verification on the baseline plus this follow-through passed the full
+  suite: **1,012/1,012 tests across 126 files**, including **171/171** focused
+  Calculator tests. Typecheck, changed-file lint and production build also pass.
   Gardenpedia content validation passed. Content counts:
   512 plant source records, 1,304 sources, 328 Seed Profiles, 464 taxonomy
   records, and 0 unresolved source IDs.
@@ -54,6 +56,14 @@
   pending. Simulated software observations validate arithmetic only; they are
   not empirical product-response measurements. Do not mark the Calculator
   empirically validated until User Zero records and reviews a real calibration.
+
+### Mixed-stage recipe boundary regression
+
+The official manufacturer recipe remains executable even if a grower marks a
+crop as mixed-stage but declares fewer distinct stages than plants. In that
+case, the manufacturer dose is unchanged and Garden withholds crop compatibility
+and any common range until the stage composition is complete. A recipe step is
+not plant phenology, and this guard does not make it one.
 
 ## Historical continuation snapshot — superseded
 

@@ -1521,17 +1521,15 @@ function calculateResult(input: CalcInput): CalcResult {
       "Esta calculadora de nutrientes no incluye plantas carnívoras. Retíralas de la mezcla para continuar.",
     );
   }
-  if (
-    input.mode !== "recipe" &&
-    Object.entries(input.crops).some(([id, count]) => {
-      const primary = input.cropStages?.[id] ?? "UNSPECIFIED";
-      const stages = new Set([
-        ...(primary === "MIXED" ? [] : [primary]),
-        ...(input.cropAdditionalStages?.[id] ?? []),
-      ]);
-      return primary === "MIXED" ? stages.size < 2 || stages.size > count : stages.size > count;
-    })
-  )
+  const invalidStageComposition = Object.entries(input.crops).some(([id, count]) => {
+    const primary = input.cropStages?.[id] ?? "UNSPECIFIED";
+    const stages = new Set([
+      ...(primary === "MIXED" ? [] : [primary]),
+      ...(input.cropAdditionalStages?.[id] ?? []),
+    ]);
+    return primary === "MIXED" ? stages.size < 2 || stages.size > count : stages.size > count;
+  });
+  if (input.mode !== "recipe" && invalidStageComposition)
     return engineNeeds("MIXED_STAGE_COMPOSITION_REQUIRED");
   if (
     ![
@@ -1552,13 +1550,17 @@ function calculateResult(input: CalcInput): CalcResult {
     return engineNeeds(
       "Use finite non-negative EC measurements and positive volume/target values.",
     );
-  const contexts = contextFor(
+  const selectedContexts = contextFor(
     input.crops,
     input.productId,
     input.cropStages,
     input.cropAdditionalStages,
     input.hydroponicSystem,
   );
+  // Crop compatibility is a separate result from manufacturer recipe dosing.
+  // An incomplete "mixed stages" declaration must not imply evidence for only
+  // the one stage entered, but it must never block the official recipe itself.
+  const contexts = input.mode === "recipe" && invalidStageComposition ? [] : selectedContexts;
   const compatibility = calculatePolycultureRange(contexts, CROP_EVIDENCE);
   const range = rangeFor(contexts);
   if (input.mode !== "recipe" && contexts.length === 0) {

@@ -2391,6 +2391,27 @@ describe("Gardenpedia Calculator V1 integration", () => {
     });
     expect(recipeDoesNotDependOnMixedPhenology.kind).toBe("ok");
     expect(recipeDoesNotDependOnMixedPhenology.compatibility?.status).toBe("INSUFFICIENT");
+
+    const incompleteMixedRecipe = calculateGardenResult({
+      ...base,
+      mode: "recipe",
+      crops: { "tulsi-holy-basil-ocimum-tenuiflorum": 2 },
+      cropStages: { "tulsi-holy-basil-ocimum-tenuiflorum": "MIXED" },
+      cropAdditionalStages: { "tulsi-holy-basil-ocimum-tenuiflorum": ["VEGETATIVE"] },
+    });
+    const completeSingleStageRecipe = calculateGardenResult({
+      ...base,
+      mode: "recipe",
+      crops: { "tulsi-holy-basil-ocimum-tenuiflorum": 2 },
+      cropStages: { "tulsi-holy-basil-ocimum-tenuiflorum": "VEGETATIVE" },
+    });
+    expect(incompleteMixedRecipe.kind).toBe("ok");
+    expect(completeSingleStageRecipe.kind).toBe("ok");
+    if (incompleteMixedRecipe.kind === "ok" && completeSingleStageRecipe.kind === "ok") {
+      expect(incompleteMixedRecipe.doses).toEqual(completeSingleStageRecipe.doses);
+      expect(incompleteMixedRecipe.range).toBeUndefined();
+      expect(incompleteMixedRecipe.compatibility?.status).toBe("INSUFFICIENT");
+    }
   });
 
   it("changes correction and top-up outputs when measured reservoir state changes", () => {

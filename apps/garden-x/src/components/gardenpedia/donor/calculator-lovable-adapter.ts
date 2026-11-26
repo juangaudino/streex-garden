@@ -114,6 +114,44 @@ function normalizeCalculatorSearch(value: string): string {
     .replace(/\s+/g, " ");
 }
 
+type CalculatorPlantSearchEntry = {
+  plant: CalculatorPlant;
+  normalizedFields: string[];
+  corpus: string;
+  displayNames: Record<Lang, string>;
+};
+
+let calculatorPlantSearchIndex: CalculatorPlantSearchEntry[] | undefined;
+
+function getCalculatorPlantSearchIndex(): CalculatorPlantSearchEntry[] {
+  if (!calculatorPlantSearchIndex) {
+    calculatorPlantSearchIndex = CALCULATOR_PLANTS.filter(
+      (plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id),
+    ).map((plant) => {
+      const normalizedFields = [
+        plant.id,
+        plant.name.en,
+        plant.name.es,
+        plant.scientificName,
+        plant.cultivar ?? "",
+        ...plant.aliases,
+      ]
+        .map(normalizeCalculatorSearch)
+        .filter(Boolean);
+      return {
+        plant,
+        normalizedFields,
+        corpus: normalizedFields.join(" "),
+        displayNames: {
+          en: normalizeCalculatorSearch(plant.name.en),
+          es: normalizeCalculatorSearch(plant.name.es),
+        },
+      };
+    });
+  }
+  return calculatorPlantSearchIndex;
+}
+
 /**
  * Search public canonical identities without resolving a crop by name. Query
  * words may match across display name, scientific name, cultivar and tags;
@@ -129,23 +167,12 @@ export function searchCalculatorPlants(query: string, language: Lang): Calculato
         .filter((word) => !CALCULATOR_SEARCH_STOP_WORDS.has(word)),
     )
     .filter((words) => words.length > 0);
-  const searchable = CALCULATOR_PLANTS.filter(
-    (plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id),
-  );
-  if (!normalizedQuery) return searchable;
+  const searchable = getCalculatorPlantSearchIndex();
+  if (!normalizedQuery) return searchable.map(({ plant }) => plant);
 
   const matches = searchable.flatMap((plant) => {
-    const fields = [
-      plant.id,
-      plant.name.en,
-      plant.name.es,
-      plant.scientificName,
-      plant.cultivar ?? "",
-      ...plant.aliases,
-    ];
-    const normalizedFields = fields.map(normalizeCalculatorSearch).filter(Boolean);
-    const corpus = normalizedFields.join(" ");
-    const normalizedDisplayName = normalizeCalculatorSearch(plant.name[language]);
+    const { plant: identity, normalizedFields, corpus, displayNames } = plant;
+    const normalizedDisplayName = displayNames[language];
     const exactDisplayName = normalizedDisplayName === normalizedQuery;
     const exactField = normalizedFields.includes(normalizedQuery);
     const queryTokens = groups.flat();
@@ -172,7 +199,7 @@ export function searchCalculatorPlants(query: string, language: Lang): Calculato
           : matchedRatio === 1
             ? 3
             : 4;
-    return [{ plant, score, matchedCount: matchedTokens.length }];
+    return [{ plant: identity, score, matchedCount: matchedTokens.length }];
   });
 
   return matches

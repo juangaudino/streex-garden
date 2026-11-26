@@ -46,6 +46,34 @@ export type EcUnit = "mS" | "uS";
 export type CalculatorCropStage =
   "UNSPECIFIED" | "SEEDLING" | "VEGETATIVE" | "MATURE" | "FLOWERING" | "FRUITING" | "MIXED";
 export type CalculatorAdditionalStage = Exclude<CalculatorCropStage, "UNSPECIFIED" | "MIXED">;
+
+export function replaceAdditionalCohortStage(
+  primaryStage: CalculatorCropStage,
+  additionalStages: CalculatorAdditionalStage[],
+  cohortStage: CalculatorAdditionalStage,
+  suggestedStage: CalculatorAdditionalStage,
+):
+  { primaryStage: CalculatorCropStage; additionalStages: CalculatorAdditionalStage[] } | undefined {
+  if (suggestedStage === cohortStage) return undefined;
+  if (primaryStage !== "MIXED" && suggestedStage === primaryStage) return undefined;
+
+  const nextStages = new Set(
+    additionalStages.filter((stage) => stage !== cohortStage && stage !== primaryStage),
+  );
+  nextStages.add(suggestedStage);
+  const orderedStages = [...nextStages];
+
+  if (primaryStage !== "MIXED") {
+    return { primaryStage, additionalStages: orderedStages };
+  }
+
+  if (orderedStages.length > 1) {
+    return { primaryStage: "MIXED", additionalStages: orderedStages };
+  }
+
+  return { primaryStage: orderedStages[0]!, additionalStages: [] };
+}
+
 export type CalculatorPlant = {
   id: string;
   emoji: string;

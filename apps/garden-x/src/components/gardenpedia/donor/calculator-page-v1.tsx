@@ -50,6 +50,7 @@ import {
   recordActualDoses,
   resolveNutrientCropIdentity,
   calculatorAgeStageCueForPlant,
+  replaceAdditionalCohortStage,
   searchCalculatorPlants,
   type CalcResult,
   type CalculatorAdditionalStage,
@@ -1735,7 +1736,11 @@ export function CalculatorPage({
                                     const canConfirmSuggestedStage =
                                       suggestedStage !== undefined &&
                                       suggestedStage !== stage &&
-                                      !(cropAdditionalStages[id] ?? []).includes(suggestedStage);
+                                      (cropStages[id] === "MIXED" ||
+                                        cropStages[id] !== suggestedStage) &&
+                                      !(cropAdditionalStages[id] ?? []).some(
+                                        (item) => item !== stage && item === suggestedStage,
+                                      );
                                     return (
                                       <div key={stage} className="grid gap-1">
                                         <label className="flex items-center gap-2">
@@ -1779,42 +1784,36 @@ export function CalculatorPage({
                                                         type="button"
                                                         className="mt-2 min-h-9 rounded-md border border-border px-3 font-medium text-foreground"
                                                         onClick={() => {
-                                                          const nextStages = [
-                                                            ...new Set([
-                                                              ...(
-                                                                cropAdditionalStages[id] ?? []
-                                                              ).filter((item) => item !== stage),
+                                                          const composition =
+                                                            replaceAdditionalCohortStage(
+                                                              cropStages[id] ?? "UNSPECIFIED",
+                                                              cropAdditionalStages[id] ?? [],
+                                                              stage,
                                                               suggestedStage,
-                                                            ]),
-                                                          ];
-                                                          if (nextStages.length > 1) {
-                                                            setCropStageSowingAgeDays((current) => {
-                                                              const nextAges = {
-                                                                ...(current[id] ?? {}),
-                                                              };
-                                                              delete nextAges[stage];
-                                                              nextAges[suggestedStage] = age;
-                                                              return { ...current, [id]: nextAges };
-                                                            });
-                                                            setCropAdditionalStages((current) => ({
-                                                              ...current,
-                                                              [id]: nextStages,
-                                                            }));
-                                                          } else {
-                                                            setCropStageSowingAgeDays(
-                                                              (current) => ({
-                                                                ...current,
-                                                                [id]: {},
-                                                              }),
                                                             );
-                                                            setCropStages((current) => ({
-                                                              ...current,
-                                                              [id]: suggestedStage,
-                                                            }));
-                                                            setCropAdditionalStages((current) => ({
-                                                              ...current,
-                                                              [id]: [],
-                                                            }));
+                                                          if (!composition) return;
+                                                          const collapsed =
+                                                            composition.primaryStage !== "MIXED" &&
+                                                            cropStages[id] === "MIXED";
+                                                          setCropStageSowingAgeDays((current) => {
+                                                            const nextAges = {
+                                                              ...(current[id] ?? {}),
+                                                            };
+                                                            delete nextAges[stage];
+                                                            if (!collapsed)
+                                                              nextAges[suggestedStage] = age;
+                                                            else delete nextAges[suggestedStage];
+                                                            return { ...current, [id]: nextAges };
+                                                          });
+                                                          setCropStages((current) => ({
+                                                            ...current,
+                                                            [id]: composition.primaryStage,
+                                                          }));
+                                                          setCropAdditionalStages((current) => ({
+                                                            ...current,
+                                                            [id]: composition.additionalStages,
+                                                          }));
+                                                          if (collapsed) {
                                                             setCropSowingAgeDays((current) => ({
                                                               ...current,
                                                               [id]: age,

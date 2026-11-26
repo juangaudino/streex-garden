@@ -35,6 +35,7 @@ import {
   recipeStageLabel,
   recipeStagesForSchedule,
   recordActualDoses,
+  replaceAdditionalCohortStage,
   resolveNutrientCropIdentity,
   searchCalculatorPlants,
 } from "./calculator-lovable-adapter";
@@ -128,6 +129,29 @@ const USER_ZERO_83_VARIETY_IDS = [
 ] as const;
 
 describe("Gardenpedia Calculator V1 integration", () => {
+  it("preserves the primary cohort when confirming a sourced stage cue for another cohort", () => {
+    expect(replaceAdditionalCohortStage("MATURE", ["SEEDLING"], "SEEDLING", "VEGETATIVE")).toEqual({
+      primaryStage: "MATURE",
+      additionalStages: ["VEGETATIVE"],
+    });
+  });
+
+  it("does not add a duplicate cohort when its confirmed stage is already the primary stage", () => {
+    expect(
+      replaceAdditionalCohortStage("MATURE", ["SEEDLING"], "SEEDLING", "MATURE"),
+    ).toBeUndefined();
+  });
+
+  it("collapses a mixed cohort only after the confirmed cue makes all represented plants one stage", () => {
+    expect(
+      replaceAdditionalCohortStage("MIXED", ["SEEDLING", "VEGETATIVE"], "SEEDLING", "MATURE"),
+    ).toEqual({ primaryStage: "MIXED", additionalStages: ["VEGETATIVE", "MATURE"] });
+    expect(replaceAdditionalCohortStage("MIXED", ["SEEDLING"], "SEEDLING", "MATURE")).toEqual({
+      primaryStage: "MATURE",
+      additionalStages: [],
+    });
+  });
+
   it("provides Blush Hibiscus only a cultivar-scoped transplant cue, not automatic EC evidence", () => {
     const cue = calculatorAgeStageCueForPlant("blush-hibiscus", 25);
     expect(

@@ -67,6 +67,14 @@ describe("calculator age stage cues", () => {
     expect(calculatorAgeStageCueForPlant("rainbow-mix-coleus", 71)).toBeUndefined();
   });
 
+  it("uses the exact Zinnia study cue at day 15 and retains the separate nursery cue later", () => {
+    const hydroponic = calculatorAgeStageCueForPlant("zinnia-lilliput-mixed", 15);
+    expect(hydroponic?.reference.source.id).toBe("can-tho-zinnia-hoagland-2022");
+    expect(hydroponic?.ageWindow.text.en).toMatch(/two pairs of true leaves/i);
+    const nursery = calculatorAgeStageCueForPlant("zinnia-lilliput-mixed", 28);
+    expect(nursery?.reference.source.id).toBe("texas-am-seedling-transplant-timing");
+  });
+
   it("uses explicit WVU Extension identity mappings for the user's herb varieties", () => {
     const cases = [
       ["genovese-basil", 42, 42, 42],

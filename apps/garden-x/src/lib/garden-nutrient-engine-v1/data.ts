@@ -631,12 +631,12 @@ export const NUTRIENT_SOURCES = {
     id: "can-tho-zinnia-hoagland-2022",
     publisher: "Can Tho University Journal of Science",
     title:
-      "Growth and flowering of hydroponic Zinnia at different Hoagland and Arnon nutritional levels",
-    url: "https://ctujsvn.ctu.edu.vn/index.php/ctujsvn/article/view/4368",
+      "Survey on the growth and flowering of hydroponic Zinnia elegans at different Hoagland and Arnon nutritional levels",
+    url: "https://doi.org/10.22144/ctu.jvn.2022.016",
     sourceClass: "OTHER",
     tier: "B",
-    publication: "2022",
-    retrievedAt: "2026-11-25",
+    publication: "2022; 58(1B):148–155",
+    retrievedAt: "2026-11-26",
   },
   fenugreekHydroponicStudy: {
     id: "fenugreek-selenium-iodine-2023",
@@ -1411,8 +1411,8 @@ export const CROP_STUDY_REFERENCES: readonly {
     selectableEcMs: 1.4,
     selectableEcValuesMs: [1.4, 2.8],
     text: {
-      es: "Un ensayo de Zinnia elegans informó buen crecimiento con solución Hoagland a EC de 1,4 y 2,8 mS/cm como tratamientos separados. No identificó Lilliput ni comparó todos los valores intermedios; no establece un rango óptimo ni una dosis para tu sistema.",
-      en: "A Zinnia elegans experiment reported good growth with Hoagland solution at 1.4 and 2.8 mS/cm as separate treatments. It did not identify Lilliput or compare all intermediate values; it establishes neither an optimum range nor a dose for your system.",
+      es: "El estudio hidropónico de Can Tho probó Hoagland-Arnon al 50% (EC 1,4 mS/cm) y al 100% (2,8 mS/cm), con cambio semanal de solución. No identifica Lilliput Mix ni compara todos los valores intermedios: son tratamientos observados, no un intervalo óptimo ni una dosis validada para tu sistema. Se ofrecen solo como objetivos manuales; no generan dosis automática por cultivo.",
+      en: "The Can Tho hydroponic study tested 50% Hoagland-Arnon (EC 1.4 mS/cm) and 100% (2.8 mS/cm), with weekly solution replacement. It does not identify Lilliput Mix or compare all intermediate values: these are observed treatments, not an optimum range or a dose validated for your system. They are offered only as manual targets and do not generate an automatic crop dose.",
     },
   },
   {
@@ -1797,6 +1797,26 @@ export const CROP_STAGE_REFERENCES = [
     es: "; la fuente no identifica Lilliput Mix ni la producción hidropónica",
     en: "; the source does not identify Lilliput Mix or hydroponic production",
   }),
+  {
+    cropIdentity: "zinnia-lilliput-mixed",
+    plantIds: ["zinnia-lilliput-mixed"],
+    source: NUTRIENT_SOURCES.zinniaHydroponicStudy,
+    ageWindows: [
+      {
+        minDays: 15,
+        maxDays: 15,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "En este estudio de Zinnia elegans, el trasplante ocurrió 15 días después de la siembra cuando las plántulas tenían dos pares de hojas verdaderas. Confirma ese desarrollo en tu planta; el artículo no identifica Lilliput Mix y la edad no cambia automáticamente su etapa ni su dosis.",
+          en: "In this Zinnia elegans study, transplanting took place 15 days after sowing when seedlings had two pairs of true leaves. Confirm that development on your plant; the article does not identify Lilliput Mix, and age does not automatically change its stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Referencia de un único estudio hidropónico de Zinnia elegans, cultivar no especificado. Usa los días solo para orientar la observación de dos pares de hojas verdaderas; no es una transición universal de etapa ni una recomendación de EC.",
+      en: "Context from one hydroponic Zinnia elegans study with an unspecified cultivar. Use the day count only to guide observation of two pairs of true leaves; it is not a universal stage transition or an EC recommendation.",
+    },
+  },
   wvuTransplantReference(
     "basil",
     [

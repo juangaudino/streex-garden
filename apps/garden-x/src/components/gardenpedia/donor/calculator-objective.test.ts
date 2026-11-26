@@ -446,6 +446,21 @@ describe("Calculator objective independent validation", () => {
       calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE).status,
     ).toBe("INSUFFICIENT");
   });
+  it("offers Zinnia hydroponic study treatments as manual context, not an automatic range", () => {
+    const plantId = "zinnia-lilliput-mixed";
+    const reference = CROP_STUDY_REFERENCES.find(
+      (item) =>
+        item.plantIds.includes(plantId) && item.source.id === "can-tho-zinnia-hoagland-2022",
+    );
+
+    expect(reference?.selectableEcValuesMs).toEqual([1.4, 2.8]);
+    expect(reference?.text.en).toContain("does not identify Lilliput Mix");
+    expect(reference?.text.en).toContain("not an optimum range");
+    expect(CROP_EVIDENCE.some((item) => item.cropIdentity === plantId)).toBe(false);
+    expect(
+      calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE).status,
+    ).toBe("INSUFFICIENT");
+  });
   it("independently recomputes fresh dosing across nine families, six waters, eight targets and four volumes", () => {
     for (const id of [
       "genovese-basil",

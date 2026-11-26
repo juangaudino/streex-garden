@@ -86,7 +86,10 @@ Tagetes patula, los valores hidropónicos de LaNiTex para marigold y los ensayos
 Dianthus, aliso dulce y zinnia en sustrato con subirrigación. Para Delphinium,
 PPO/Wageningen ofrece un contexto de fertirriego bajo invernadero de 1,4 mS/cm,
 pero corresponde a ‘Dark Blue/White Bee’ en maceta, no a Magic Fountains en un
-depósito hidropónico; se muestra solo como opción manual. La guía de LaNiTex
+depósito hidropónico; se muestra solo como opción manual. Para Zinnia elegans,
+un estudio de la Universidad de Can Tho observó buen crecimiento con Hoagland-Arnon
+al 50% (1,4 mS/cm) y 100% (2,8 mS/cm), pero no identifica Lilliput Mix ni establece
+un óptimo; son opciones de contexto manual, no rangos automáticos. La guía de LaNiTex
 es de nivel de fuente C, no identifica Jolly Jester y solo ofrece contexto por
 fase; sus valores no son rangos óptimos para el depósito ni evidencia automática.
 Tampoco se usan como evidencia automática las demás condiciones experimentales.

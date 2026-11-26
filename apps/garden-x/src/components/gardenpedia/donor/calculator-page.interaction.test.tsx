@@ -301,6 +301,10 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByText("Why, and where it comes from"));
     expect(screen.getByText(/Crop compatibility:\s*Common range/)).toBeTruthy();
     expect(screen.getByText("8.00", { exact: true })).toBeTruthy();
+
+    await user.click(screen.getByRole("button", { name: "Remove" }));
+    expect(screen.getByText(/Crop compatibility:\s*Insufficient evidence/)).toBeTruthy();
+    expect(screen.getByText("8.00", { exact: true })).toBeTruthy();
   });
 
   it("localizes recipe compatibility warnings without changing manufacturer doses", async () => {

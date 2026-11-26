@@ -1529,6 +1529,21 @@ describe("Gardenpedia Calculator V1 integration", () => {
       INSUFFICIENT: 19,
       NOT_APPLICABLE: 0,
     });
+    for (const plantId of USER_ZERO_83_VARIETY_IDS) {
+      const evidenceIdentity = resolveNutrientCropIdentity(plantId) ?? plantId;
+      const evidenceSources = CROP_EVIDENCE.filter(
+        (observation) => observation.cropIdentity === evidenceIdentity,
+      ).map((observation) => observation.source);
+      const contextualSources = CROP_STUDY_REFERENCES.filter((reference) =>
+        reference.plantIds.includes(plantId),
+      ).map((reference) => reference.source);
+      const sources = [...evidenceSources, ...contextualSources];
+      expect(sources.length, `${plantId}: source traceability`).toBeGreaterThan(0);
+      expect(
+        sources.every((source) => /^https:\/\//.test(source.url)),
+        `${plantId}: source URL must be HTTPS`,
+      ).toBe(true);
+    }
     const calibration = recordActualDoses({
       productId: "gh-flora",
       stageId: "feeding-2",

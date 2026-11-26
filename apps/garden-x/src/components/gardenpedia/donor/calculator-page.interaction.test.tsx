@@ -36,6 +36,35 @@ describe("Calculator real control interactions", () => {
     );
   });
 
+  it("requires explicit confirmation of actual doses and clears it after dose or volume changes", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await user.click(screen.getByRole("button", { name: "Calibrate this product" }));
+    await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
+    await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+
+    const save = screen.getByRole("button", { name: "Save calibration" }) as HTMLButtonElement;
+    const confirmation = screen.getByRole("checkbox", {
+      name: "I confirm these amounts match what I actually added",
+    });
+    expect(save.disabled).toBe(true);
+    await user.click(confirmation);
+    expect(save.disabled).toBe(false);
+
+    await user.clear(screen.getByLabelText(/^FloraMicro/));
+    await user.type(screen.getByLabelText(/^FloraMicro/), "4");
+    expect((confirmation as HTMLInputElement).checked).toBe(false);
+    expect(save.disabled).toBe(true);
+
+    await user.click(confirmation);
+    await user.clear(screen.getByLabelText(/^Actual sample volume/));
+    await user.type(screen.getByLabelText(/^Actual sample volume/), "2");
+    expect((confirmation as HTMLInputElement).checked).toBe(false);
+    expect(save.disabled).toBe(true);
+  });
+
   it("makes the unverified coleus guide an explicit manual choice only", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="rainbow-mix-coleus" />);
@@ -316,6 +345,9 @@ describe("Calculator real control interactions", () => {
     expect(screen.getByRole("button", { name: "Calibrate this product" })).toBeTruthy();
     await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
     await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    await user.click(
+      screen.getByRole("checkbox", { name: "I confirm these amounts match what I actually added" }),
+    );
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy();
     expect(screen.queryByText(/not enough applicable EC evidence/i)).toBeNull();
@@ -550,6 +582,9 @@ describe("Calculator real control interactions", () => {
     expect((amount as HTMLInputElement).value).toBe("");
     await user.clear(amount);
     await user.type(amount, "4");
+    await user.click(
+      screen.getByRole("checkbox", { name: "I confirm these amounts match what I actually added" }),
+    );
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     await waitFor(() =>
       expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
@@ -601,6 +636,9 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
     await user.type(screen.getByLabelText(/^EC before adding nutrients/), "0.20");
     await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
+    await user.click(
+      screen.getByRole("checkbox", { name: "I confirm these amounts match what I actually added" }),
+    );
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     await waitFor(() =>
       expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
@@ -633,6 +671,9 @@ describe("Calculator real control interactions", () => {
     expect((b as HTMLInputElement).value).toBe("");
     await user.type(a, "4");
     await user.type(b, "2");
+    await user.click(
+      screen.getByRole("checkbox", { name: "I confirm these amounts match what I actually added" }),
+    );
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     await waitFor(() =>
       expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
@@ -662,6 +703,9 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByLabelText(/^EC after mixing/), "1.00");
     await user.type(screen.getByLabelText(/^Part A/), "4");
     await user.type(screen.getByLabelText(/^Part B/), "2");
+    await user.click(
+      screen.getByRole("checkbox", { name: "I confirm these amounts match what I actually added" }),
+    );
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     await waitFor(() =>
       expect(screen.getByRole("heading", { name: "Add to the reservoir" })).toBeTruthy(),
@@ -695,6 +739,9 @@ describe("Calculator real control interactions", () => {
       await user.clear(field);
       await user.type(field, dose!);
     }
+    await user.click(
+      screen.getByRole("checkbox", { name: "I confirm these amounts match what I actually added" }),
+    );
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     await user.click(screen.getByRole("tab", { name: "Correct" }));
     await user.type(screen.getByLabelText(/^Liters remaining/), "4");
@@ -820,6 +867,9 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByLabelText(/^FloraMicro/) as HTMLInputElement).value).not.toBe("");
     expect((screen.getByLabelText(/^FloraGro/) as HTMLInputElement).value).not.toBe("");
     expect((screen.getByLabelText(/^FloraBloom/) as HTMLInputElement).value).not.toBe("");
+    await user.click(
+      screen.getByRole("checkbox", { name: "I confirm these amounts match what I actually added" }),
+    );
     await user.click(screen.getByRole("button", { name: "Save calibration" }));
     await waitFor(() =>
       expect(screen.queryByRole("button", { name: "Save calibration" })).toBeNull(),

@@ -164,6 +164,9 @@ const T = {
     gotMl: "mL que añadiste",
     learn: "Guardar lectura",
     actualDose: "Lo que añadiste realmente",
+    actualDoseHelp:
+      "Las cantidades recomendadas son solo una referencia. Ajusta lo que no coincida con lo que añadiste y confirma las cantidades reales.",
+    actualDoseConfirm: "Confirmo que estas cantidades coinciden con lo que añadí realmente",
     calibrate: "Calibrar este producto",
     calibrationTitle: "Una medición real para calibrar",
     calibrationInstructions:
@@ -293,6 +296,9 @@ const T = {
     gotMl: "mL you added",
     learn: "Save reading",
     actualDose: "What you actually added",
+    actualDoseHelp:
+      "Recommended amounts are only a starting point. Edit anything that differs, then confirm the amounts you actually added.",
+    actualDoseConfirm: "I confirm these amounts match what I actually added",
     calibrate: "Calibrate this product",
     calibrationTitle: "A real measurement to calibrate",
     calibrationInstructions:
@@ -2730,6 +2736,7 @@ function CalibrationCard({
   );
   const [baseline, setBaseline] = useState("");
   const [resulting, setResulting] = useState("");
+  const [actualDosesConfirmed, setActualDosesConfirmed] = useState(false);
   const [actualDoses, setActualDoses] = useState<Record<string, string>>(() =>
     Object.fromEntries(defaults.map((part) => [part.id, formatActualDosePrefill(part.amount)])),
   );
@@ -2741,6 +2748,7 @@ function CalibrationCard({
     if (previousRecipe.current !== recipe) {
       previousRecipe.current = recipe;
       editedParts.current.clear();
+      setActualDosesConfirmed(false);
     }
     setActualDoses((current) =>
       Object.fromEntries(
@@ -2796,7 +2804,10 @@ function CalibrationCard({
           <select
             aria-label={product.id === "aerogarden" ? t.feedingEvent : t.calibrationStage}
             value={stageId}
-            onChange={(event) => onStageChange(event.target.value)}
+            onChange={(event) => {
+              setActualDosesConfirmed(false);
+              onStageChange(event.target.value);
+            }}
             className="mt-1 h-11 w-full rounded-md border border-input bg-background/70 px-3 text-sm text-foreground"
           >
             {product.recipeStages
@@ -2819,7 +2830,10 @@ function CalibrationCard({
         label={lang === "es" ? "Volumen real de la muestra" : "Actual sample volume"}
         suffix="L"
         value={sampleVolumeInput}
-        onChange={setSampleVolumeInput}
+        onChange={(value) => {
+          setActualDosesConfirmed(false);
+          setSampleVolumeInput(value);
+        }}
       />
       <div className="grid gap-3 sm:grid-cols-2">
         <Field
@@ -2839,6 +2853,7 @@ function CalibrationCard({
       </div>
       <div>
         <p className="text-xs font-semibold text-muted-foreground">{t.actualDose}</p>
+        <p className="mt-1 text-xs text-muted-foreground">{t.actualDoseHelp}</p>
         <div className="mt-2 grid gap-2 sm:grid-cols-2">
           {product.parts.map((part) => (
             <Field
@@ -2848,6 +2863,7 @@ function CalibrationCard({
               value={actualDoses[part.id] ?? ""}
               onChange={(value) => {
                 editedParts.current.add(part.id);
+                setActualDosesConfirmed(false);
                 setActualDoses((current) => ({ ...current, [part.id]: value }));
               }}
               placeholder={
@@ -2857,6 +2873,15 @@ function CalibrationCard({
           ))}
         </div>
       </div>
+      <label className="flex items-start gap-2 text-sm text-foreground">
+        <input
+          type="checkbox"
+          checked={actualDosesConfirmed}
+          onChange={(event) => setActualDosesConfirmed(event.target.checked)}
+          className="mt-0.5 size-4 shrink-0 accent-primary"
+        />
+        <span>{t.actualDoseConfirm}</span>
+      </label>
       <Button
         className="h-11 w-full"
         disabled={
@@ -2864,6 +2889,7 @@ function CalibrationCard({
           sampleVolumeL <= 0 ||
           parseDecimalInput(resulting) === null ||
           (parseDecimalInput(resulting) ?? 0) <= (parseDecimalInput(baseline) ?? 0) ||
+          !actualDosesConfirmed ||
           product.parts.some((part) => !actualDoses[part.id])
         }
         onClick={submit}

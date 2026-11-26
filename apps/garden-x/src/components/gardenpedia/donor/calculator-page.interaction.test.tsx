@@ -75,6 +75,20 @@ describe("Calculator real control interactions", () => {
     );
   });
 
+  it("lets a visitor set a manual target without a selected crop and asks for real calibration", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+
+    await user.clear(screen.getByRole("textbox", { name: "Target EC" }));
+    await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.2");
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+
+    expect(await screen.findByLabelText(/^EC before adding nutrients/)).toBeTruthy();
+    expect(screen.getByText(/record a real measurement of this product/i)).toBeTruthy();
+    expect(screen.queryByText(/Add at least one plant to apply crop EC evidence/i)).toBeNull();
+  });
+
   it("requires explicit confirmation of actual doses and clears it after dose or volume changes", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);

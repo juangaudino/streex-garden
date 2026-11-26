@@ -1563,7 +1563,7 @@ function calculateResult(input: CalcInput): CalcResult {
   const contexts = input.mode === "recipe" && invalidStageComposition ? [] : selectedContexts;
   const compatibility = calculatePolycultureRange(contexts, CROP_EVIDENCE);
   const range = rangeFor(contexts);
-  if (input.mode !== "recipe" && contexts.length === 0) {
+  if (input.mode !== "recipe" && contexts.length === 0 && input.userTarget === null) {
     return engineNeeds("Añade al menos una planta para aplicar evidencia EC.");
   }
   const targetEngine = calculateFreshTargetEc({

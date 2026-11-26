@@ -1198,6 +1198,52 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ).toBe(true);
     }
   });
+  it("allows an explicit user target and exact-product calibration when no crop was selected", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(observation.ok).toBe(true);
+
+    for (const mode of ["target", "adjust", "topup"] as const) {
+      const result = calculateGardenResult({
+        language: "en",
+        mode,
+        crops: {},
+        liters: 4,
+        productId: "gh-flora",
+        stageId: "feeding-2",
+        pods: 6,
+        sourceEc: 0.2,
+        currentEc: 0.7,
+        currentLiters: 4,
+        capacityLiters: 5,
+        waterAdded: 0.5,
+        userTarget: 1.2,
+        round: 1,
+        calibrationObservations: [observation.value!],
+        reservoirMixConfirmed: true,
+      });
+
+      expect(result.kind, mode).toBe("ok");
+      if (result.kind === "ok") {
+        expect(result.doses.length, mode).toBeGreaterThan(0);
+        expect(result.target?.value, mode).toBe(1.2);
+        expect(result.evidence, mode).toBe("insufficient");
+        expect(
+          result.warnings?.some((message) =>
+            /could not establish a common applicable crop evidence range/i.test(message),
+          ),
+          mode,
+        ).toBe(true);
+      }
+    }
+  });
   it("explains source water at or above target before asking for calibration", () => {
     const base = {
       mode: "target" as const,

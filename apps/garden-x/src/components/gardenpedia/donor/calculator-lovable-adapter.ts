@@ -232,7 +232,10 @@ export function calculatorStageReferenceForPlant(plantId: string) {
  */
 export function calculatorAgeStageCueForPlant(plantId: string, ageDays: number) {
   if (!Number.isFinite(ageDays) || ageDays < 0) return undefined;
-  const reference = calculatorStageReferenceForPlant(plantId);
+  const explicitlyMappedAgeReference = CROP_STAGE_REFERENCES.find(
+    (item) => "plantIds" in item && item.plantIds.includes(plantId) && "ageWindows" in item,
+  );
+  const reference = explicitlyMappedAgeReference ?? calculatorStageReferenceForPlant(plantId);
   if (!reference || !("ageWindows" in reference)) return undefined;
   const ageWindow = reference.ageWindows.find(
     (window) => ageDays >= window.minDays && ageDays <= window.maxDays,

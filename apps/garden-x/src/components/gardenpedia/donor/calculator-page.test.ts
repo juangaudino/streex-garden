@@ -1305,6 +1305,14 @@ describe("Gardenpedia Calculator V1 integration", () => {
       classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
       evidenceIdentity: "tatsoi",
     });
+    expect(nft.rows.find((row) => row.plantId === "tatsoi")).toMatchObject({
+      classification: "SUPPORTED_DIRECT",
+      evidenceIdentity: "tatsoi",
+    });
+    expect(nft.rows.find((row) => row.plantId === "hon-tsai-tai")).toMatchObject({
+      classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+      evidenceIdentity: "flowering-choy-sum",
+    });
     expect(dwc.rows.find((row) => row.plantId === "scarlet-red-tatsoi")?.classification).toBe(
       "INSUFFICIENT",
     );
@@ -1313,9 +1321,76 @@ describe("Gardenpedia Calculator V1 integration", () => {
       evidenceIdentity: "english-lavender",
     });
     expect(
+      stageSpecific.rows.find((row) => row.plantId === "tulsi-holy-basil-ocimum-tenuiflorum"),
+    ).toMatchObject({
+      classification: "SUPPORTED_VIA_DEFENSIBLE_MAPPING",
+      evidenceIdentity: "holy-basil",
+    });
+    expect(stageSpecific.rows.find((row) => row.plantId === "garlic-chives")).toMatchObject({
+      classification: "SUPPORTED_DIRECT",
+      evidenceIdentity: "garlic-chives",
+    });
+    expect(
       stageSpecific.rows.find((row) => row.plantId === "delphinium-magic-fountains-dwarf")
         ?.classification,
     ).toBe("INSUFFICIENT");
+  });
+
+  it("audits all 83 varieties across declared stage and hydroponic contexts", () => {
+    const stages = ["UNSPECIFIED", "SEEDLING", "VEGETATIVE", "MATURE", "FLOWERING", "FRUITING"];
+    const hydroponicSystems = [
+      "UNKNOWN",
+      "DWC",
+      "NFT",
+      "KRATKY",
+      "DRIP",
+      "AEROPONIC",
+      "GENERAL_HYDROPONIC",
+    ];
+    const contexts = stages.flatMap((phenologicalStage) =>
+      hydroponicSystems.map((hydroponicSystem) => ({ phenologicalStage, hydroponicSystem })),
+    );
+    const supported = new Set<string>();
+    const userVarietyIds = new Set<string>(USER_ZERO_83_VARIETY_IDS);
+    const defaultCoverage = buildCropEvidenceCoverage();
+
+    for (const context of contexts) {
+      for (const row of buildCropEvidenceCoverage(context).rows) {
+        if (userVarietyIds.has(row.plantId) && row.classification !== "INSUFFICIENT") {
+          supported.add(row.plantId);
+        }
+      }
+    }
+
+    expect(supported.size).toBe(70);
+    const defaultUnsupported = USER_ZERO_83_VARIETY_IDS.filter(
+      (plantId) =>
+        defaultCoverage.rows.find((row) => row.plantId === plantId)?.classification ===
+        "INSUFFICIENT",
+    );
+    expect(defaultUnsupported.filter((plantId) => supported.has(plantId)).sort()).toEqual([
+      "garlic-chives",
+      "hon-tsai-tai",
+      "lavender-vera",
+      "scarlet-red-tatsoi",
+      "tatsoi",
+      "tulsi-holy-basil-ocimum-tenuiflorum",
+    ]);
+    expect(defaultUnsupported.filter((plantId) => !supported.has(plantId)).sort()).toEqual([
+      "blush-hibiscus",
+      "bush-nasturtium-tropaeolum-minus",
+      "delphinium-magic-fountains-dwarf",
+      "epazote",
+      "hyssop",
+      "lady-murasaki-komatsuna",
+      "marigold-jolly-jester",
+      "mexican-tarragon",
+      "papalo-porophyllum-ruderale",
+      "rainbow-mix-coleus",
+      "tennessee-coneflower-echinacea-tennesseensis",
+      "tiny-tim-sweet-alyssum",
+      "zinnia-lilliput-mixed",
+    ]);
   });
 
   it("can calculate a manual, calibrated By EC dose for each of the user's 83 non-carnivorous varieties", () => {

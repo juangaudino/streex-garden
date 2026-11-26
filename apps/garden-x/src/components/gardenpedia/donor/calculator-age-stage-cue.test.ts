@@ -43,6 +43,50 @@ describe("calculator age stage cues", () => {
     expect(calculatorAgeStageCueForPlant("seaside-f1-spinach", 19)).toBeUndefined();
   });
 
+  it("adds Texas A&M transplant timing for exact ornamental identities without changing nutrient evidence", () => {
+    const cases = [
+      ["tiny-tim-sweet-alyssum", 28, 21, 35],
+      ["resina-calendula", 52, 49, 56],
+      ["rainbow-mix-coleus", 60, 49, 70],
+      ["cascading-petunia", 42, 35, 49],
+      ["petunia-dwarf-bedding-mixed", 42, 35, 49],
+      ["zinnia-lilliput-mixed", 28, 21, 35],
+    ] as const;
+
+    for (const [plantId, ageDays, minDays, maxDays] of cases) {
+      const cue = calculatorAgeStageCueForPlant(plantId, ageDays);
+      expect(cue?.reference.source.id).toBe("texas-am-seedling-transplant-timing");
+      expect(cue?.ageWindow).toMatchObject({ minDays, maxDays, stageSuggestion: "SEEDLING" });
+      expect(cue?.ageWindow.text.en).toMatch(/nursery context/);
+      expect(cue?.ageWindow.text.es).toMatch(/vivero/);
+    }
+  });
+
+  it("does not apply the Texas A&M timing outside its published transplant window", () => {
+    expect(calculatorAgeStageCueForPlant("zinnia-lilliput-mixed", 20)).toBeUndefined();
+    expect(calculatorAgeStageCueForPlant("rainbow-mix-coleus", 71)).toBeUndefined();
+  });
+
+  it("uses explicit WVU Extension identity mappings for the user's herb varieties", () => {
+    const cases = [
+      ["genovese-basil", 42, 42, 42],
+      ["thai-basil", 42, 42, 42],
+      ["italian-oregano", 63, 56, 70],
+      ["rosemary", 77, 70, 84],
+      ["italian-giant-parsley", 66, 63, 70],
+      ["german-thyme", 63, 56, 70],
+      ["dark-green-zucchini", 18, 14, 21],
+    ] as const;
+
+    for (const [plantId, ageDays, minDays, maxDays] of cases) {
+      const cue = calculatorAgeStageCueForPlant(plantId, ageDays);
+      expect(cue?.reference.source.id).toBe("wvu-extension-seed-starting-transplant-age");
+      expect(cue?.ageWindow).toMatchObject({ minDays, maxDays, stageSuggestion: "SEEDLING" });
+      expect(cue?.ageWindow.text.en).toMatch(/not an automatic hydroponic stage or dose/);
+      expect(cue?.ageWindow.text.es).toMatch(/no es una etapa hidropónica automática ni una dosis/);
+    }
+  });
+
   it("uses morphology guidance for cilantro without inventing an age window", () => {
     expect(calculatorStageReferenceForPlant("cilantro")?.text.en).toMatch(/broad and flat/i);
     expect(calculatorAgeStageCueForPlant("cilantro", 20)).toBeUndefined();

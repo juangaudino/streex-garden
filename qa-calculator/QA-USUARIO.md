@@ -26,18 +26,50 @@ En el contexto por defecto —etapa sin especificar y sistema hidropónico sin
 especificar— la prueba confirma **7 identidades con evidencia directa, 57 con una
 asignación explícita a evidencia de cultivo defendible y 19 sin evidencia
 suficiente para un rango automático**. Esos 19 no son una categoría universal:
-algunos tienen evidencia condicionada a una etapa o sistema concretos. Por
-ejemplo, el ajo chino puede resolver evidencia directa en etapa vegetativa y
-aeroponía; Scarlet Red Tatsoi tiene contexto de cultivo para NFT; y Lavender
-Vera tiene evidencia de guía por etapa que se conserva como asignación de especie,
-no de cultivar.
+seis encuentran evidencia aplicable si se indica contexto: Garlic Chives,
+Hon Tsai Tai, Lavender Vera, Scarlet Red Tatsoi, Tatsoi y Tulsi. Por ejemplo,
+los tres cultivos de hoja requieren declarar NFT para aplicar la observación de
+ese sistema; Lavender Vera, Tulsi y Garlic Chives requieren elegir una etapa que
+coincida con la observación. La procedencia de cultivar y sistema sigue visible;
+no se presenta como validación específica de cada cultivar.
+
+Una auditoría de **6 etapas × 7 sistemas** para las 83 variedades encontró un
+rango aplicable para **70/83** al menos en uno de esos contextos. Las 13 listadas
+abajo no resuelven un rango automático en esa matriz; siguen disponibles para
+receta oficial o para cálculo con objetivo explícito y calibración compatible.
+
+La lista exacta que la prueba clasifica como **INSUFFICIENT en ese contexto por
+defecto** es: Blush Hibiscus (`blush-hibiscus`), Bush Nasturtium
+(`bush-nasturtium-tropaeolum-minus`), Delphinium Magic Fountains Dwarf
+(`delphinium-magic-fountains-dwarf`), Epazote (`epazote`), Garlic Chives
+(`garlic-chives`), Hon Tsai Tai (`hon-tsai-tai`), Hyssop (`hyssop`), Lady
+Murasaki Komatsuna (`lady-murasaki-komatsuna`), Lavender Vera (`lavender-vera`),
+Jolly Jester Marigold (`marigold-jolly-jester`), Mexican Tarragon
+(`mexican-tarragon`), Papalo (`papalo-porophyllum-ruderale`), Rainbow Mix Coleus
+(`rainbow-mix-coleus`), Scarlet Red Tatsoi (`scarlet-red-tatsoi`), Tatsoi
+(`tatsoi`), Tennessee Coneflower (`tennessee-coneflower-echinacea-tennesseensis`),
+Tiny Tim Sweet Alyssum (`tiny-tim-sweet-alyssum`), Tulsi / Holy Basil
+(`tulsi-holy-basil-ocimum-tenuiflorum`) y Zinnia Lilliput Mixed
+(`zinnia-lilliput-mixed`).
 
 Las 83 se pueden seleccionar y usar con una receta oficial. En Por EC, Corregir y
 Rellenar, la calculadora usa un rango derivado del cultivo solo cuando la etapa,
 el sistema y el alcance de medición hacen aplicable la evidencia. Cuando no la
 hay, el usuario puede elegir explícitamente un objetivo y el cálculo requiere
 calibración medida para el producto exacto; la pantalla conserva **INSUFFICIENT**
-y no inventa un rango. No se asigna evidencia por parecido del nombre.
+y no inventa un rango. Algunos registros también muestran observaciones de cultivo
+como referencias para elegir un objetivo manual; una observación experimental no
+se convierte automáticamente en rango óptimo. No se asigna evidencia por parecido
+del nombre. Esta lista describe la cobertura automática predeterminada, no impide
+que una variedad opere con receta oficial o con objetivo manual y calibración
+compatible.
+
+Las otras 13 sin rango automático en las combinaciones de etapa/sistema
+verificadas son Blush Hibiscus, Bush Nasturtium, Delphinium Magic Fountains Dwarf,
+Epazote, Hyssop, Lady Murasaki Komatsuna, Jolly Jester Marigold, Mexican Tarragon,
+Papalo, Rainbow Mix Coleus, Tennessee Coneflower, Tiny Tim Sweet Alyssum y Zinnia
+Lilliput Mixed. Algunas tienen condiciones experimentales publicadas para elegir
+manualmente un EC, pero no constituyen un intervalo óptimo automático.
 
 Las pruebas de cálculo usan observaciones de calibración **simuladas** para
 verificar los cuatro flujos. No son datos medidos de tu FloraSeries: Por EC,

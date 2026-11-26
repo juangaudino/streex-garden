@@ -1467,6 +1467,13 @@ export function CalculatorPage({
                           {cropSowingAgeDays[id] !== undefined && cropSowingAgeDays[id] !== "" && (
                             <div className="col-span-full text-xs text-muted-foreground">
                               {ageWindow && <p>{ageWindow.text[lang]}</p>}
+                              {!ageWindow && (
+                                <p>
+                                  {lang === "es"
+                                    ? "No hay una ventana de edad publicada que coincida con este dato. Confirma la etapa observando la planta; los días por sí solos no cambian la etapa ni la dosis."
+                                    : "No published age window matches this entry. Confirm stage from the plant itself; days alone do not change its stage or dose."}
+                                </p>
+                              )}
                               {ageStageSuggestion && (
                                 <div className="mt-2 rounded-md border border-border/70 p-2">
                                   <p>
@@ -1548,8 +1555,8 @@ export function CalculatorPage({
                   {Object.keys(crops).length > 0 && (
                     <p className="mt-2 text-xs text-muted-foreground">
                       {lang === "es"
-                        ? "La etapa elegida arriba es la que usa el cálculo. Los días se guardan como referencia y no cambian la etapa ni la dosis."
-                        : "The stage selected above drives the calculation. Days are saved as context and do not change the stage or dose."}
+                        ? "La edad puede mostrar una referencia publicada. Confirma la etapa que observas para filtrar la evidencia y recalcular; sin una referencia aplicable, no inferimos la etapa solo por los días."
+                        : "Age may show a published reference. Confirm the stage you observe to filter evidence and recalculate; without an applicable reference, we do not infer stage from days alone."}
                     </p>
                   )}
                   <button

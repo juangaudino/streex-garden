@@ -21,7 +21,7 @@ describe("Calculator plant-stage guidance", () => {
     const disclosure = screen.getByText("Profile cues to help identify the stage");
     const details = disclosure.closest("details");
     expect(details?.open).toBe(false);
-    expect(screen.getByText(/The stage selected above drives the calculation/)).toBeTruthy();
+    expect(screen.getByText(/Age may show a published reference/)).toBeTruthy();
 
     fireEvent.click(disclosure);
 
@@ -38,12 +38,10 @@ describe("Calculator plant-stage guidance", () => {
     ).toBe(true);
   });
 
-  it("explains that days are contextual in Spanish and do not replace the chosen stage", () => {
+  it("explains how age references can inform stage confirmation in Spanish", () => {
     render(<CalculatorPage language="es" initialPlantId="genovese-basil" />);
 
-    expect(
-      screen.getByText(/Los días se guardan como referencia y no cambian la etapa ni la dosis/),
-    ).toBeTruthy();
+    expect(screen.getByText(/La edad puede mostrar una referencia publicada/)).toBeTruthy();
   });
 
   it("shows the lettuce transplant-age cue without selecting a phenological stage", () => {
@@ -81,6 +79,47 @@ describe("Calculator plant-stage guidance", () => {
         .getAllByRole("combobox")
         .some((select) => (select as HTMLSelectElement).value === "UNSPECIFIED"),
     ).toBe(true);
+  });
+
+  it("keeps a Texas A&M zinnia transplant-time cue separate from the selected plant stage", () => {
+    render(<CalculatorPage language="en" initialPlantId="zinnia-lilliput-mixed" />);
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
+      target: { value: "28" },
+    });
+
+    expect(screen.getByText(/Texas A&M estimates 3–5 weeks/i)).toBeTruthy();
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "UNSPECIFIED",
+    );
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "SEEDLING",
+    );
+  });
+
+  it("offers the user's basil transplant-age cue without treating it as hydroponic dose evidence", () => {
+    render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
+      target: { value: "42" },
+    });
+
+    expect(screen.getByText(/WVU Extension gives 6 weeks/i)).toBeTruthy();
+    const stage = screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement;
+    expect(stage.value).toBe("UNSPECIFIED");
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect(stage.value).toBe("SEEDLING");
+  });
+
+  it("explains when no published age window applies instead of silently treating days as a stage", () => {
+    render(<CalculatorPage language="es" initialPlantId="epazote" />);
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Días desde la siembra de/ }), {
+      target: { value: "20" },
+    });
+
+    expect(screen.getByText(/No hay una ventana de edad publicada que coincida/i)).toBeTruthy();
+    expect(
+      (screen.getByRole("combobox", { name: "Etapa de Epazote" }) as HTMLSelectElement).value,
+    ).toBe("UNSPECIFIED");
   });
 
   it("shows shared hydroponic seedling criteria for spinach and requires confirmation", () => {

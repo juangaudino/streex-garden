@@ -1,6 +1,25 @@
 import type { EvidenceObservation, ManufacturerRecipe, RecipeStep, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  wvuSeedStarting: {
+    id: "wvu-extension-seed-starting-transplant-age",
+    publisher: "West Virginia University Extension",
+    title: "Seed Starting",
+    url: "https://extension.wvu.edu/lawn-gardening-pests/gardening/gardening-101/seed-starting",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-25",
+  },
+  tamuSeedlingProduction: {
+    id: "texas-am-seedling-transplant-timing",
+    publisher: "Texas A&M AgriLife Extension · Aggie Horticulture",
+    title: "Timely Tips on Starting Seedlings at Home",
+    url: "https://aggie-horticulture.tamu.edu/earthkind/landscape/starting-seedlings-at-home/",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "Horticulture Update, January–February 2001",
+    retrievedAt: "2026-11-25",
+  },
   alabamaTransplantProduction: {
     id: "alabama-extension-hydroponic-transplant-production",
     publisher: "Alabama Cooperative Extension System · Auburn University",
@@ -1398,6 +1417,64 @@ export const CROP_STUDY_REFERENCES: readonly {
 ];
 
 /** Contextual observation only: it is never an EC target or stage inference. */
+function tamuTransplantReference(
+  cropIdentity: string,
+  cropName: string,
+  minWeeks: number,
+  maxWeeks: number,
+  cultivarNote: { es: string; en: string },
+) {
+  return {
+    cropIdentity,
+    source: NUTRIENT_SOURCES.tamuSeedlingProduction,
+    ageWindows: [
+      {
+        minDays: minWeeks * 7,
+        maxDays: maxWeeks * 7,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: `Texas A&M estima ${minWeeks}–${maxWeeks} semanas para producir trasplantes de ${cropName}. Confirma hojas verdaderas y desarrollo suficiente antes de elegir Plántula; es una referencia de vivero${cultivarNote.es}, no una etapa automática ni una dosis.`,
+          en: `Texas A&M estimates ${minWeeks}–${maxWeeks} weeks to produce ${cropName} transplants. Confirm true leaves and sufficient development before choosing Seedling; this is nursery context${cultivarNote.en}, not an automatic stage or dose.`,
+        },
+      },
+    ],
+    text: {
+      es: `Texas A&M Extension estima ${minWeeks}–${maxWeeks} semanas para producir trasplantes de ${cropName}. La edad depende de las condiciones y no confirma por sí sola la etapa ni define una pauta de EC${cultivarNote.es}.`,
+      en: `Texas A&M Extension estimates ${minWeeks}–${maxWeeks} weeks to produce ${cropName} transplants. Timing depends on conditions and does not by itself confirm stage or define an EC recommendation${cultivarNote.en}.`,
+    },
+  };
+}
+
+function wvuTransplantReference(
+  cropIdentity: string,
+  plantIds: readonly string[],
+  cropName: string,
+  minWeeks: number,
+  maxWeeks: number,
+) {
+  const weekRange = minWeeks === maxWeeks ? `${minWeeks}` : `${minWeeks}–${maxWeeks}`;
+  return {
+    cropIdentity,
+    plantIds,
+    source: NUTRIENT_SOURCES.wvuSeedStarting,
+    ageWindows: [
+      {
+        minDays: minWeeks * 7,
+        maxDays: maxWeeks * 7,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: `WVU Extension da ${weekRange} semanas como edad de trasplante para ${cropName} en jardines. Confirma el desarrollo visible antes de elegir Plántula; este calendario de cultivo exterior no es una etapa hidropónica automática ni una dosis.`,
+          en: `WVU Extension gives ${weekRange} weeks as transplant age for ${cropName} in garden production. Confirm visible development before choosing Seedling; this outdoor-garden schedule is not an automatic hydroponic stage or dose.`,
+        },
+      },
+    ],
+    text: {
+      es: `WVU Extension publica ${weekRange} semanas como edad de trasplante de ${cropName} para jardines. Las condiciones cambian el ritmo; confirma la etapa observada y no uses este dato como pauta hidropónica o de EC.`,
+      en: `WVU Extension lists ${weekRange} weeks as transplant age for ${cropName} in garden production. Conditions change timing; confirm observed stage and do not use this as hydroponic or EC guidance.`,
+    },
+  };
+}
+
 export const CROP_STAGE_REFERENCES = [
   {
     cropIdentity: "holy-basil",
@@ -1556,6 +1633,55 @@ export const CROP_STAGE_REFERENCES = [
       en: "The guide includes mustard among leafy crops and describes transplanting often at 12–18 days with 3–5 true leaves and visible roots. This establishment reference varies by environment and cube and is not an EC prescription.",
     },
   },
+  tamuTransplantReference("tiny-tim-sweet-alyssum", "alyssum", 3, 5, {
+    es: "; la fuente no identifica el cultivar Tiny Tim ni la producción hidropónica",
+    en: "; the source does not identify the Tiny Tim cultivar or hydroponic production",
+  }),
+  tamuTransplantReference("resina-calendula", "calendula", 7, 8, {
+    es: "; la fuente no identifica el cultivar Resina ni la producción hidropónica",
+    en: "; the source does not identify the Resina cultivar or hydroponic production",
+  }),
+  tamuTransplantReference("rainbow-mix-coleus", "coleus", 7, 10, {
+    es: "; la fuente no identifica Rainbow Mix ni la producción hidropónica",
+    en: "; the source does not identify Rainbow Mix or hydroponic production",
+  }),
+  tamuTransplantReference("petunia", "petunia", 5, 7, {
+    es: "; la fuente no identifica el cultivar ni la producción hidropónica",
+    en: "; the source does not identify a cultivar or hydroponic production",
+  }),
+  tamuTransplantReference("zinnia-lilliput-mixed", "zinnia", 3, 5, {
+    es: "; la fuente no identifica Lilliput Mix ni la producción hidropónica",
+    en: "; the source does not identify Lilliput Mix or hydroponic production",
+  }),
+  wvuTransplantReference(
+    "basil",
+    [
+      "basil-ocimum-basilicum",
+      "cinnamon-basil",
+      "basil-dark-opal",
+      "genovese-basil",
+      "italian-large-leaf-basil",
+      "basil-lemon",
+      "basil-lime",
+      "basil-spicy-globe",
+      "sweet-basil",
+      "thai-basil",
+    ],
+    "basil",
+    6,
+    6,
+  ),
+  wvuTransplantReference("wvu-oregano-transplant-timing", ["italian-oregano"], "oregano", 8, 10),
+  wvuTransplantReference("wvu-rosemary-transplant-timing", ["rosemary"], "rosemary", 10, 12),
+  wvuTransplantReference(
+    "wvu-parsley-transplant-timing",
+    ["italian-giant-parsley"],
+    "parsley",
+    9,
+    10,
+  ),
+  wvuTransplantReference("wvu-thyme-transplant-timing", ["german-thyme"], "thyme", 8, 10),
+  wvuTransplantReference("wvu-squash-transplant-timing", ["dark-green-zucchini"], "squash", 2, 3),
   {
     cropIdentity: "cilantro",
     source: NUTRIENT_SOURCES.wisconsinCilantroGrowth,

@@ -1508,6 +1508,9 @@ export function CalculatorPage({
                                               : "Needs validation"}
                                       </span>
                                     </h4>
+                                    {guide.scopeNote && (
+                                      <p className="mt-1 italic">{guide.scopeNote[lang]}</p>
+                                    )}
                                     <p className="mt-1">{guide.body}</p>
                                     {guide.sources.length > 0 && (
                                       <ul className="mt-1 space-y-1">
@@ -1884,14 +1887,35 @@ export function CalculatorPage({
                                 {ageWindow && <p>{ageWindow.text[lang]}</p>}
                                 {!ageWindow && (
                                   <p>
-                                    {seedTransitionCue
-                                      ? lang === "es"
-                                        ? "No hay una ventana publicada para convertir esta edad en etapa. Usa la pista morfológica del perfil de semilla y confirma lo que observas; los días no cambian la etapa ni la dosis."
-                                        : "There is no published window to convert this age into a stage. Use the Seed Profile morphology cue and confirm what you observe; days do not change stage or dose."
-                                      : lang === "es"
-                                        ? "No hay una ventana de edad publicada que coincida con este dato. Confirma la etapa observando la planta; los días por sí solos no cambian la etapa ni la dosis."
-                                        : "No published age window matches this entry. Confirm stage from the plant itself; days alone do not change stage or dose."}
+                                    {lang === "es"
+                                      ? "No hay una ventana publicada para convertir esta edad en etapa. Confirma la etapa observando la planta; los días no cambian la etapa ni la dosis."
+                                      : "There is no published window to convert this age into a stage. Confirm stage from the plant itself; days do not change stage or dose."}
                                   </p>
+                                )}
+                                {!ageWindow && seedTransitionCue && (
+                                  <section className="mt-2 rounded-md border border-border/70 p-2">
+                                    <p className="font-medium">{seedTransitionCue.short[lang]}</p>
+                                    <p className="mt-1">{seedTransitionCue.guidance[lang]}</p>
+                                    <p className="mt-1">
+                                      {lang === "es"
+                                        ? "Es una pista morfológica con contexto de fuente, no una conversión de días a etapa ni un cambio de dosis."
+                                        : "This is a source-scoped morphology cue, not a day-to-stage conversion or dose change."}
+                                    </p>
+                                    <ul className="mt-1 space-y-1">
+                                      {seedTransitionCue.sources.slice(0, 2).map((source) => (
+                                        <li key={source.id}>
+                                          <a
+                                            className="underline"
+                                            href={source.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                          >
+                                            {source.title}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </section>
                                 )}
                                 {ageStageSuggestion && (
                                   <div className="mt-2 rounded-md border border-border/70 p-2">

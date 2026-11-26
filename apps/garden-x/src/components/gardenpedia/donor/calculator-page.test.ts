@@ -143,6 +143,59 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(calculatorStageGuidanceForPlant("unmapped-test-identity", "en", "MATURE")).toEqual([]);
   });
 
+  it("reuses stage cues only across explicitly mapped same-species profiles and labels their scope", () => {
+    expect(CALCULATOR_PLANTS.find((plant) => plant.id === "basil-dark-opal")?.scientificName).toBe(
+      "Ocimum basilicum",
+    );
+    expect(
+      CALCULATOR_PLANTS.find((plant) => plant.id === "basil-spicy-globe")?.scientificName,
+    ).toBe("Ocimum basilicum");
+    expect(CALCULATOR_PLANTS.find((plant) => plant.id === "basil-lemon")?.scientificName).toBe(
+      "Ocimum × africanum",
+    );
+    expect(CALCULATOR_PLANTS.find((plant) => plant.id === "basil-lime")?.scientificName).toBe(
+      "Ocimum × africanum",
+    );
+
+    for (const plantId of ["basil-dark-opal", "basil-spicy-globe"]) {
+      const guidance = calculatorStageGuidanceForPlant(plantId, "en", "VEGETATIVE");
+      expect(guidance.length, plantId).toBeGreaterThan(0);
+      expect(guidance.every((item) => item.scopeNote?.en.includes("Ocimum basilicum"))).toBe(true);
+      expect(
+        guidance.every((item) => item.sources.some((source) => source.url.startsWith("https://"))),
+      ).toBe(true);
+    }
+
+    for (const plantId of ["basil-lemon", "basil-lime"]) {
+      const guidance = calculatorStageGuidanceForPlant(plantId, "en", "VEGETATIVE");
+      expect(
+        guidance.every((item) => !item.scopeNote?.en.includes("Ocimum basilicum")),
+        plantId,
+      ).toBe(true);
+    }
+
+    const butterhead = calculatorStageGuidanceForPlant(
+      "butterhead-lettuce-unspecified",
+      "es",
+      "SEEDLING",
+    );
+    expect(butterhead.length).toBeGreaterThan(0);
+    expect(butterhead[0]?.scopeNote).toMatchObject({
+      es: expect.stringContaining("Lactuca sativa"),
+    });
+  });
+
+  it("provides only scoped RHS stage cues for unresolved chamomile without EC claims", () => {
+    const seedling = calculatorStageGuidanceForPlant("chamomile-unspecified", "en", "SEEDLING");
+    expect(seedling).toHaveLength(1);
+    expect(seedling[0]?.scopeNote?.en).toMatch(/does not identify your species/i);
+    expect(seedling[0]?.body).toMatch(/need light to germinate/i);
+    expect(seedling[0]?.sources[0]?.url).toBe(
+      "https://www.rhs.org.uk/advice/grow-your-own/herbs/chamomile",
+    );
+    expect(seedling[0]?.body).not.toMatch(/mS\/cm|EC target|nutrient dose/i);
+  });
+
   it("makes the hyssop study condition selectable without presenting it as a validated crop range", () => {
     expect(hasApplicableCropNutrientEvidence("hyssop")).toBe(false);
     const hyssopStudy = CROP_STUDY_REFERENCES.find(

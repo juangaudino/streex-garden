@@ -296,6 +296,15 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     retrievedAt: "2026-11-12",
   },
+  rhsChamomileCultivation: {
+    id: "rhs-chamomile-cultivation-guide",
+    publisher: "Royal Horticultural Society",
+    title: "How to grow chamomile",
+    url: "https://www.rhs.org.uk/advice/grow-your-own/herbs/chamomile",
+    sourceClass: "OTHER",
+    tier: "B",
+    retrievedAt: "2026-11-26",
+  },
   letpotChamomile: {
     id: "letpot-hydroponic-chamomile-guide",
     publisher: "LetPot",

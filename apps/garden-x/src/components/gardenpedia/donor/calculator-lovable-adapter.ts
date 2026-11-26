@@ -84,7 +84,7 @@ export type CalculatorRecipeSchedule = {
 export type CalculatorStageGuidance = Pick<
   DonorGuideSection,
   "id" | "title" | "body" | "backing" | "confidence" | "sources"
->;
+> & { scopeNote?: Record<Lang, string> | undefined };
 
 export type CalculatorSeedTransitionReference = {
   short: { en: string; es: string };
@@ -222,6 +222,109 @@ const STAGE_GUIDE_SECTIONS: Record<CalculatorCropStage, readonly string[]> = {
   MIXED: ["germination", "growth", "flowering", "harvest"],
 };
 
+const SAME_SPECIES_STAGE_GUIDANCE: Record<
+  string,
+  { profileId: string; scopeNote: Record<Lang, string> }
+> = {
+  "basil-dark-opal": {
+    profileId: "genovese-basil",
+    scopeNote: {
+      es: "Pista general de Ocimum basilicum; no está validada específicamente para el cultivar Dark Opal.",
+      en: "General Ocimum basilicum cue; not validated specifically for the Dark Opal cultivar.",
+    },
+  },
+  "basil-spicy-globe": {
+    profileId: "genovese-basil",
+    scopeNote: {
+      es: "Pista general de Ocimum basilicum; no está validada específicamente para Spicy Globe.",
+      en: "General Ocimum basilicum cue; not validated specifically for Spicy Globe.",
+    },
+  },
+  "butterhead-lettuce-unspecified": {
+    profileId: "bibb-lettuce",
+    scopeNote: {
+      es: "Pista de Lactuca sativa tipo butterhead; no identifica un cultivar específico.",
+      en: "Lactuca sativa butterhead-type cue; no specific cultivar is identified.",
+    },
+  },
+};
+
+function chamomileStageGuidance(
+  language: Lang,
+  stage: CalculatorCropStage,
+): CalculatorStageGuidance[] {
+  if (stage === "SEEDLING")
+    return [
+      {
+        id: "germination",
+        title: language === "es" ? "Germinación y plántula" : "Germination and seedlings",
+        body:
+          language === "es"
+            ? "La RHS indica que la manzanilla común y la alemana pueden cultivarse desde semilla; sus semillas necesitan luz para germinar. Trasplanta las plántulas cuando sean suficientemente grandes para manipularlas. La ficha de Gardenpedia no identifica cuál de esas especies tienes."
+            : "The RHS says both common and German chamomile can be grown from seed and need light to germinate. Transplant seedlings once they are large enough to handle. Gardenpedia has not identified which of those species you have.",
+        backing: "source",
+        confidence: "media",
+        sources: [
+          {
+            label: `${NUTRIENT_SOURCES.rhsChamomileCultivation.publisher} · ${NUTRIENT_SOURCES.rhsChamomileCultivation.title}`,
+            url: NUTRIENT_SOURCES.rhsChamomileCultivation.url,
+          },
+        ],
+        scopeNote: {
+          es: "Orientación de cultivo para manzanilla común y alemana; no identifica tu especie ni establece EC hidropónico.",
+          en: "Cultivation guidance for common and German chamomile; it does not identify your species or establish hydroponic EC.",
+        },
+      },
+    ];
+
+  if (stage === "FLOWERING" || stage === "FRUITING")
+    return [
+      {
+        id: "flowering",
+        title: language === "es" ? "Floración" : "Flowering",
+        body:
+          language === "es"
+            ? "La RHS señala que la manzanilla común y la alemana pueden empezar a florecer en tan solo diez semanas; el momento cambia con las condiciones. Comprueba las flores visibles y no uses esa edad para cambiar la etapa o el EC automáticamente."
+            : "The RHS notes that common and German chamomile may begin flowering in as little as ten weeks; timing varies with conditions. Confirm visible flowers and do not use that age to change stage or EC automatically.",
+        backing: "source",
+        confidence: "media",
+        sources: [
+          {
+            label: `${NUTRIENT_SOURCES.rhsChamomileCultivation.publisher} · ${NUTRIENT_SOURCES.rhsChamomileCultivation.title}`,
+            url: NUTRIENT_SOURCES.rhsChamomileCultivation.url,
+          },
+        ],
+        scopeNote: {
+          es: "Referencia temporal de manzanilla común y alemana; la especie de tu ficha sigue sin identificar.",
+          en: "Timing reference for common and German chamomile; the species in your profile remains unidentified.",
+        },
+      },
+    ];
+
+  return [
+    {
+      id: "germination",
+      title: language === "es" ? "Cultivo desde semilla" : "Growing from seed",
+      body:
+        language === "es"
+          ? "La RHS indica que la manzanilla común y la alemana pueden cultivarse desde semilla; germinan con luz y las plántulas se trasplantan cuando se pueden manipular. También señala que pueden empezar a florecer en tan solo diez semanas, según las condiciones."
+          : "The RHS says both common and German chamomile can be grown from seed; they germinate with light and seedlings are transplanted once large enough to handle. They may begin flowering in as little as ten weeks, depending on conditions.",
+      backing: "source",
+      confidence: "media",
+      sources: [
+        {
+          label: `${NUTRIENT_SOURCES.rhsChamomileCultivation.publisher} · ${NUTRIENT_SOURCES.rhsChamomileCultivation.title}`,
+          url: NUTRIENT_SOURCES.rhsChamomileCultivation.url,
+        },
+      ],
+      scopeNote: {
+        es: "Orientación general para manzanilla común y alemana; la ficha no resuelve la especie y esto no establece EC hidropónico.",
+        en: "General guidance for common and German chamomile; the profile does not resolve the species and this does not establish hydroponic EC.",
+      },
+    },
+  ];
+}
+
 /**
  * Returns existing public Plant Profile context to help a grower identify an
  * observed stage. These editorial cues do not infer stage from age or change
@@ -232,7 +335,11 @@ export function calculatorStageGuidanceForPlant(
   language: Lang,
   stage: CalculatorCropStage,
 ): CalculatorStageGuidance[] {
-  const entry = canonicalEntries.find((candidate) => candidate.libraryPlantId === plantId);
+  if (plantId === "chamomile-unspecified") return chamomileStageGuidance(language, stage);
+  const mapped = SAME_SPECIES_STAGE_GUIDANCE[plantId];
+  const entry = canonicalEntries.find(
+    (candidate) => candidate.libraryPlantId === (mapped?.profileId ?? plantId),
+  );
   if (!entry) return [];
   const guides = buildDonorPlantDetail(entry, language).guides;
   const byId = new Map(guides.map((guide) => [guide.id, guide]));
@@ -247,6 +354,7 @@ export function calculatorStageGuidanceForPlant(
       backing,
       confidence,
       sources,
+      ...(mapped ? { scopeNote: mapped.scopeNote } : {}),
     }));
 }
 

@@ -44,6 +44,36 @@ describe("Calculator plant-stage guidance", () => {
     expect(screen.getByText(/La edad puede mostrar una referencia publicada/)).toBeTruthy();
   });
 
+  it("labels shared-species cues and unresolved chamomile scope in the visible UI", () => {
+    const { unmount } = render(<CalculatorPage language="en" initialPlantId="basil-dark-opal" />);
+    fireEvent.click(screen.getByText("Profile cues to help identify the stage"));
+    expect(
+      screen.getAllByText(
+        /General Ocimum basilicum cue; not validated specifically for the Dark Opal cultivar/i,
+      ),
+    ).not.toHaveLength(0);
+    unmount();
+
+    render(<CalculatorPage language="en" initialPlantId="chamomile-unspecified" />);
+    const chamomileDisclosure = screen
+      .getByText("Profile cues to help identify the stage")
+      .closest("details");
+    fireEvent.click(chamomileDisclosure?.querySelector("summary") ?? document.body);
+    expect(chamomileDisclosure?.open).toBe(true);
+    expect(
+      within(chamomileDisclosure!).getByText(
+        /profile does not resolve the species and this does not establish hydroponic EC/i,
+      ),
+    ).toBeTruthy();
+    expect(
+      within(chamomileDisclosure!)
+        .getByRole("link", {
+          name: /Royal Horticultural Society · How to grow chamomile/i,
+        })
+        .getAttribute("href"),
+    ).toBe("https://www.rhs.org.uk/advice/grow-your-own/herbs/chamomile");
+  });
+
   it("shows the lettuce transplant-age cue without selecting a phenological stage", () => {
     render(<CalculatorPage language="en" initialPlantId="bibb-lettuce" />);
 
@@ -282,6 +312,14 @@ describe("Calculator plant-stage guidance", () => {
     expect(
       (screen.getByRole("combobox", { name: "Etapa de Epazote" }) as HTMLSelectElement).value,
     ).toBe("UNSPECIFIED");
+    expect(screen.getByText(/pista morfológica con contexto de fuente/i)).toBeTruthy();
+    expect(
+      screen
+        .getAllByRole("link", { name: "Epazote" })
+        .some(
+          (link) => link.getAttribute("href") === "https://extension.illinois.edu/herbs/epazote",
+        ),
+    ).toBe(true);
   });
 
   it("shows the sourced Epazote morphology cue without applying a stage from day count", () => {
@@ -308,10 +346,16 @@ describe("Calculator plant-stage guidance", () => {
     expect(screen.queryByText(/Reported EC range/i)).toBeNull();
 
     fireEvent.click(screen.getByText("View cultivation sources"));
-    expect(screen.getByText(/A trial of H-1000 epazote.*EC 1\.0, 1\.5 and 2\.0 mS\/cm/i)).toBeTruthy();
-    expect(screen.getByRole("button", { name: /Choose study EC for Epazote: 1\.50 mS\/cm/i })).toBeTruthy();
+    expect(
+      screen.getByText(/A trial of H-1000 epazote.*EC 1\.0, 1\.5 and 2\.0 mS\/cm/i),
+    ).toBeTruthy();
+    expect(
+      screen.getByRole("button", { name: /Choose study EC for Epazote: 1\.50 mS\/cm/i }),
+    ).toBeTruthy();
 
-    fireEvent.click(screen.getByRole("button", { name: /Choose study EC for Epazote: 1\.50 mS\/cm/i }));
+    fireEvent.click(
+      screen.getByRole("button", { name: /Choose study EC for Epazote: 1\.50 mS\/cm/i }),
+    );
     expect(target.value).toBe("1.5");
     expect(screen.getByText(/does not validate a dose or range for a reservoir/i)).toBeTruthy();
   });

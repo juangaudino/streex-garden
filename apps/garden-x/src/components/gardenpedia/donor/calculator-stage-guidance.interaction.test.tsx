@@ -66,6 +66,75 @@ describe("Calculator plant-stage guidance", () => {
     );
   });
 
+  it("lets growers explicitly choose an unspecified-stage range as a manual EC target", () => {
+    render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
+
+    fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
+    fireEvent.change(screen.getByRole("combobox", { name: "Stage of Genovese Basil" }), {
+      target: { value: "VEGETATIVE" },
+    });
+
+    const generalReference = screen.getByText("View general EC reference").closest("details");
+    expect(generalReference?.open).toBe(false);
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe("");
+    fireEvent.click(screen.getByText("View general EC reference"));
+
+    expect(
+      within(generalReference!).getByText(/does not say it applies to the selected stage/i),
+    ).toBeTruthy();
+    fireEvent.click(
+      within(generalReference!).getByRole("button", {
+        name: /Use lower bound as my manual target: 1\.00 mS\/cm/i,
+      }),
+    );
+
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
+      "1",
+    );
+  });
+
+  it("keeps the manual general-range selection bilingual", () => {
+    render(<CalculatorPage language="es" initialPlantId="genovese-basil" />);
+
+    fireEvent.click(screen.getByRole("tab", { name: "Por EC" }));
+    fireEvent.change(screen.getByRole("combobox", { name: "Etapa de Albahaca genovesa" }), {
+      target: { value: "VEGETATIVE" },
+    });
+    fireEvent.click(screen.getByText("Ver referencia general de EC"));
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: /Usar límite inferior como mi objetivo manual: 1\.00 mS\/cm/i,
+      }),
+    );
+
+    expect((screen.getByRole("textbox", { name: "EC objetivo" }) as HTMLInputElement).value).toBe(
+      "1",
+    );
+  });
+
+  it("converts the chosen manual range bound when the display unit is µS/cm", () => {
+    render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
+
+    fireEvent.click(screen.getByRole("tab", { name: "By EC" }));
+    fireEvent.change(screen.getByRole("combobox", { name: "Stage of Genovese Basil" }), {
+      target: { value: "VEGETATIVE" },
+    });
+    fireEvent.click(screen.getByText("View general EC reference"));
+    fireEvent.click(screen.getByText("More settings"));
+    fireEvent.click(screen.getByRole("button", { name: "µS/cm" }));
+
+    fireEvent.click(
+      screen.getByRole("button", {
+        name: /Use lower bound as my manual target: 1000 µS\/cm/i,
+      }),
+    );
+
+    expect((screen.getByRole("textbox", { name: "Target EC" }) as HTMLInputElement).value).toBe(
+      "1000",
+    );
+  });
+
   it("shows published holy-basil age windows only as confirmation cues", () => {
     render(<CalculatorPage language="es" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />);
 

@@ -171,6 +171,13 @@ en una afirmación biológica no respaldada.
    calibración es una estimación: presta atención a los avisos y vuelve a medir.
 3. Cambia el objetivo y después el volumen: las cantidades deben cambiar. Vuelve a
    los valores que realmente usarás antes de preparar cualquier mezcla.
+4. En una variedad con referencia general pero sin evidencia para la etapa elegida,
+   por ejemplo Genovese Basil marcada como **crecimiento vegetativo**, confirma que
+   la calculadora no rellena un objetivo ni afirma que el rango general aplique a esa
+   etapa. Abre **Ver referencia general de EC** y, solo si decides usarla, pulsa un
+   límite para convertirlo explícitamente en tu objetivo manual. Debe conservarse la
+   incertidumbre y seguir exigiendo calibración compatible; no es un objetivo
+   automático ni una validación específica de esa etapa.
 
 ## 3. Corregir
 

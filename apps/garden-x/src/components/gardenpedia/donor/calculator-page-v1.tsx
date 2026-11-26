@@ -1270,6 +1270,44 @@ export function CalculatorPage({
                                   : generalReference.range.max.toFixed(2)}{" "}
                                 {unit === "uS" ? "µS/cm" : "mS/cm"}.
                               </p>
+                              {mode !== "recipe" && (
+                                <div className="mt-2 flex flex-wrap gap-2">
+                                  {(
+                                    [
+                                      ["lower", generalReference.range.min],
+                                      ["upper", generalReference.range.max],
+                                    ] as const
+                                  ).map(([bound, value]) => {
+                                    const displayedValue = unit === "uS" ? value * 1000 : value;
+                                    const boundLabel =
+                                      bound === "lower"
+                                        ? lang === "es"
+                                          ? "límite inferior"
+                                          : "lower bound"
+                                        : lang === "es"
+                                          ? "límite superior"
+                                          : "upper bound";
+                                    return (
+                                      <button
+                                        key={bound}
+                                        type="button"
+                                        className="min-h-10 rounded-md border border-border px-3 py-2 font-medium text-primary underline-offset-4 hover:underline"
+                                        aria-label={
+                                          lang === "es"
+                                            ? `Usar ${boundLabel} como mi objetivo manual: ${fmtEc(value)} ${unitLabel}`
+                                            : `Use ${boundLabel} as my manual target: ${fmtEc(value)} ${unitLabel}`
+                                        }
+                                        onClick={() => editTarget(String(displayedValue))}
+                                      >
+                                        {lang === "es"
+                                          ? `Usar ${boundLabel} como objetivo manual`
+                                          : `Use ${boundLabel} as manual target`}{" "}
+                                        {fmtEc(value)} {unitLabel}
+                                      </button>
+                                    );
+                                  })}
+                                </div>
+                              )}
                               {generalReference.sources.map((source) => (
                                 <a
                                   key={source.id}

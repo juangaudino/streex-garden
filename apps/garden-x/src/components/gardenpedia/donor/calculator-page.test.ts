@@ -145,6 +145,15 @@ describe("Gardenpedia Calculator V1 integration", () => {
 
   it("makes the hyssop study condition selectable without presenting it as a validated crop range", () => {
     expect(hasApplicableCropNutrientEvidence("hyssop")).toBe(false);
+    const hyssopStudy = CROP_STUDY_REFERENCES.find(
+      (reference) => reference.source.id === "hyssop-hydroponic-selenium-2022",
+    );
+    expect(hyssopStudy?.source.url).toBe("https://doi.org/10.3390/horticulturae8111037");
+    expect(hyssopStudy?.source.title).toMatch(/Phenolic Compounds.*Selenium Concentration/i);
+    expect(hyssopStudy?.selectableEcMs).toBe(2.2);
+    expect(
+      CROP_EVIDENCE.some((observation) => observation.source.id === hyssopStudy?.source.id),
+    ).toBe(false);
     const reading = recordActualDoses({
       productId: "gh-flora",
       stageId: "feeding-2",
@@ -189,7 +198,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(reference?.text.en).toMatch(/soil-gardening/);
     expect(reference?.selectableEcMs).toBeUndefined();
   });
-  it("preserves hardy Hibiscus fertigation EC as context, not as a hydroponic target", () => {
+  it("offers the same-species Hibiscus fertigation EC only as an explicit manual reference", () => {
     const id = "blush-hibiscus";
     const reference = CROP_STUDY_REFERENCES.find(
       (item) =>
@@ -197,8 +206,10 @@ describe("Gardenpedia Calculator V1 integration", () => {
     );
 
     expect(reference?.text.en).toMatch(/weekly 14-3-23 fertilizer.*EC 1\.3 mS\/cm/i);
-    expect(reference?.text.en).toMatch(/not a target or range/i);
-    expect(reference?.selectableEcMs).toBeUndefined();
+    expect(reference?.text.en).toMatch(
+      /only as a manual fertigation reference.*not an optimum, range or automatic recommendation/i,
+    );
+    expect(reference?.selectableEcMs).toBe(1.3);
     expect(hasApplicableCropNutrientEvidence(id)).toBe(false);
   });
   it("warns when a calculated EC adjustment is smaller than the user's meter resolution", () => {
@@ -319,6 +330,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["uga-bedding-plant-subirrigation-study", [2]],
       ["uga-bedding-plant-subirrigation-study", [2]],
       ["plant-garden-coleus-hydroponic-guide", [1]],
+      ["hardy-hibiscus-cultivar-fertigation-2016", [1.3]],
       ["wur-delphinium-greenhouse-nutrient-solution-ec-2006", [1.4]],
       ["aguilar-carpio-epazote-steiner-2021", [1, 1.5, 2]],
       ["kazakidou-burrage-marigold-nft-1994", [1.5, 3]],
@@ -334,6 +346,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.5, 2.0]],
       ["barc-fertilizer-recommendation-guide-2024-hydroponics", [1.0, 1.2]],
+      ["illinois-extension-monterey-hydroponic-strawberry-2023", [1.8]],
       ["arkansas-komatsuna-nft-2014", [1, 1.2, 1.4, 1.6, 1.8]],
       ["hyssop-hydroponic-selenium-2022", [2.2]],
       ["uga-bedding-plant-subirrigation-study", [1.1]],
@@ -582,6 +595,20 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(stageStudy?.text.en).toMatch(/manual choice/);
     expect(
       CROP_EVIDENCE.some((observation) => observation.source.id === stageStudy?.source.id),
+    ).toBe(false);
+    const exactCultivarContext = CROP_STUDY_REFERENCES.find(
+      (study) => study.source.id === "illinois-extension-monterey-hydroponic-strawberry-2023",
+    );
+    expect(exactCultivarContext?.plantIds).toEqual(["monterey-strawberry"]);
+    expect(exactCultivarContext?.selectableEcMs).toBe(1.8);
+    expect(exactCultivarContext?.text.en).toMatch(/operational observation.*includes Monterey/i);
+    expect(exactCultivarContext?.text.en).toMatch(
+      /not a target-comparison trial or a validated optimum/i,
+    );
+    expect(
+      CROP_EVIDENCE.some(
+        (observation) => observation.source.id === exactCultivarContext?.source.id,
+      ),
     ).toBe(false);
   });
   it("keeps the Mexican tarragon hydroponic guide contextual without inventing an EC target", () => {
@@ -2453,6 +2480,45 @@ describe("Gardenpedia Calculator V1 integration", () => {
         "FloraGro",
         "FloraBloom",
       ]);
+    }
+  });
+
+  it("translates the experimental suggested-starting-point warning in Spanish", () => {
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4.8", gro: "4.0", bloom: "3.2" },
+    });
+    expect(observation.ok).toBe(true);
+    const result = calculateGardenResult({
+      mode: "target",
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      sourceEcKnown: true,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+      language: "es",
+      calibrationObservations: [observation.value!],
+    });
+    expect(result.kind).toBe("ok");
+    if (result.kind === "ok") {
+      expect(result.warnings).toContain(
+        "Esta es una política provisional de punto de partida de Garden, no un objetivo científico.",
+      );
+      expect(result.warnings?.some((warning) => warning.includes("provisional Garden"))).toBe(
+        false,
+      );
     }
   });
 

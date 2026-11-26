@@ -252,12 +252,18 @@ export function calculatorStageGuidanceForPlant(
 
 /** Returns only the reviewed stage reference explicitly mapped to this identity. */
 export function calculatorStageReferenceForPlant(plantId: string) {
-  const exactIdentity = CROP_STAGE_REFERENCES.find((item) => item.cropIdentity === plantId);
-  if (exactIdentity) return exactIdentity;
+  const exactReferences = CROP_STAGE_REFERENCES.filter(
+    (item) =>
+      item.cropIdentity === plantId || ("plantIds" in item && item.plantIds.includes(plantId)),
+  );
   const cropIdentity = resolveNutrientCropIdentity(plantId);
-  return cropIdentity
-    ? CROP_STAGE_REFERENCES.find((item) => item.cropIdentity === cropIdentity)
-    : undefined;
+  const mappedReferences = cropIdentity
+    ? CROP_STAGE_REFERENCES.filter((item) => item.cropIdentity === cropIdentity)
+    : [];
+  const references = [...new Set([...exactReferences, ...mappedReferences])];
+  return (
+    references.find((item) => !("ageWindows" in item)) ?? exactReferences[0] ?? mappedReferences[0]
+  );
 }
 
 /**
@@ -510,6 +516,9 @@ export type SavedSystem = {
   cropStages?: Record<string, CalculatorCropStage> | undefined;
   cropAdditionalStages?: Record<string, CalculatorAdditionalStage[]> | undefined;
   cropSowingAgeDays?: Record<string, string> | undefined;
+  /** Age observations for distinct stage cohorts of the same crop in a shared reservoir. */
+  cropStageSowingAgeDays?:
+    Record<string, Partial<Record<CalculatorAdditionalStage, string>>> | undefined;
   hydroponicSystem?: HydroponicSystem | undefined;
   liters: number;
   productId: string;
@@ -555,6 +564,9 @@ export function loadSavedSystems(): SavedSystem[] {
         ...(item.cropStages ? { cropStages: item.cropStages } : {}),
         ...(item.cropAdditionalStages ? { cropAdditionalStages: item.cropAdditionalStages } : {}),
         ...(item.cropSowingAgeDays ? { cropSowingAgeDays: item.cropSowingAgeDays } : {}),
+        ...(item.cropStageSowingAgeDays
+          ? { cropStageSowingAgeDays: item.cropStageSowingAgeDays }
+          : {}),
         ...(item.hydroponicSystem ? { hydroponicSystem: item.hydroponicSystem } : {}),
         ...(item.correctionFraction !== undefined
           ? { correctionFraction: item.correctionFraction }
@@ -1251,6 +1263,10 @@ function presentationMessage(message: string, lang: Lang): string {
       "Record a real measurement to calibrate this exact product and mixture.",
     ],
     ["Selecciona un objetivo EC para continuar.", "Select an EC target to continue."],
+    [
+      "Esta es una política provisional de punto de partida de Garden, no un objetivo científico.",
+      "This is a provisional Garden starting policy, not a scientific target.",
+    ],
     [
       "Formulación identificada por ti y proporción medida; no es una receta del fabricante. Sigue sus instrucciones de mezcla.",
       "User-identified formulation and measured ratio; no manufacturer recipe is implied. Follow the manufacturer's mixing instructions.",

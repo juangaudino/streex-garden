@@ -205,6 +205,16 @@ export const NUTRIENT_SOURCES = {
     publication: "2021",
     retrievedAt: "2026-11-25",
   },
+  illinoisMontereyHydroponicStrawberry: {
+    id: "illinois-extension-monterey-hydroponic-strawberry-2023",
+    publisher: "University of Illinois Extension",
+    title: "Hydroponic day-neutral strawberry production observations",
+    url: "https://extension.illinois.edu/blogs/commercial-fruit-and-vegetable-growers/2023-10-27-hydroponic-day-neutral-strawberry",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "2023-10-27",
+    retrievedAt: "2026-11-26",
+  },
   nasturtiumRootingEcStudy: {
     id: "nasturtium-majus-cutting-rooting-ec-2021",
     publisher: "Agronomy · MDPI",
@@ -234,7 +244,7 @@ export const NUTRIENT_SOURCES = {
     sourceClass: "OTHER",
     tier: "B",
     publication: "2021",
-    retrievedAt: "2026-11-13",
+    retrievedAt: "2026-11-26",
   },
   guanajuatoHerbsStudy: {
     id: "guanajuato-aromatic-herbs-cultivation-2017",
@@ -578,13 +588,14 @@ export const NUTRIENT_SOURCES = {
   },
   hyssopHydroponicStudy: {
     id: "hyssop-hydroponic-selenium-2022",
-    publisher: "Horticulturae",
-    title: "Biomass and essential oil of hyssop grown in hydroponics",
-    url: "https://www.mdpi.com/2311-7524/8/11/1037",
+    publisher: "Skrypnik et al. · Horticulturae",
+    title:
+      "Biomass, Phenolic Compounds, Essential Oil Content, and Antioxidant Properties of Hyssop (Hyssopus officinalis L.) Grown in Hydroponics as Affected by Treatment Type and Selenium Concentration",
+    url: "https://doi.org/10.3390/horticulturae8111037",
     sourceClass: "OTHER",
     tier: "B",
-    publication: "2022",
-    retrievedAt: "2026-11-12",
+    publication: "2022-11-05",
+    retrievedAt: "2026-11-26",
   },
   hyssopScaleStemGuide: {
     id: "scale-stem-hyssop-hydroponic-guide",
@@ -720,6 +731,17 @@ export const NUTRIENT_SOURCES = {
     publication: "2013",
     retrievedAt: "2026-11-07",
   },
+  ornamentalSunflowerNftStudy: {
+    id: "antoniacomi-sunflower-nft-transplant-2023",
+    publisher: "Antoniacomi, Luz, and Vilarinho · Ornamental Horticulture",
+    title:
+      "Hydroponic production of ornamental sunflower with cooling of the nutrient solution and planting density",
+    url: "https://doi.org/10.1590/2447-536X.v29i2.2570",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2023; 29(2)",
+    retrievedAt: "2026-11-26",
+  },
   arugulaEcStudy: {
     id: "osu-arugula-ec-2021",
     publisher: "Ohio State University and collaborators · Agronomy",
@@ -775,8 +797,9 @@ export const NUTRIENT_SOURCES = {
   },
   herbNftStudy: {
     id: "walters-currey-herb-nft-2019",
-    publisher: "Walters and Currey · Agronomy",
-    title: "Nutrient Solution Strength and Hydroponic Cilantro, Dill, and Parsley",
+    publisher: "Currey, Walters, and Flax · Agronomy",
+    title:
+      "Nutrient Solution Strength Does Not Interact with the Daily Light Integral to Affect Hydroponic Cilantro, Dill, and Parsley Growth and Tissue Mineral Nutrient Concentrations",
     url: "https://doi.org/10.3390/agronomy9070389",
     sourceClass: "OTHER",
     tier: "B",
@@ -1105,9 +1128,10 @@ export const CROP_STUDY_REFERENCES: readonly {
   {
     plantIds: ["blush-hibiscus"],
     source: NUTRIENT_SOURCES.hibiscusHardyCultivarFertigation,
+    selectableEcMs: 1.3,
     text: {
-      es: "En un ensayo de hibridación de Hibiscus resistentes, tres cultivares de H. moscheutos recibieron fertilizante 14-3-23 semanalmente en invernadero; la solución aplicada tenía EC de 1,3 mS/cm. El estudio no comparó EC ni evaluó crecimiento nutricional, no incluyó la identidad comercial Blush y no midió un depósito hidropónico. Se conserva como condición de fertirriego, no como objetivo ni rango.",
-      en: "In a hardy Hibiscus hybridization study, three H. moscheutos cultivars received weekly 14-3-23 fertilizer in a greenhouse; the applied solution had EC 1.3 mS/cm. The study did not compare EC or evaluate nutritional growth response, did not include the Blush commercial identity, and did not measure a hydroponic reservoir. This is retained as a fertigation condition, not a target or range.",
+      es: "En un ensayo de hibridación, tres cultivares de Hibiscus moscheutos recibieron semanalmente fertilizante 14-3-23 en invernadero; la solución aplicada tenía EC de 1,3 mS/cm. Gardenpedia identifica Blush como Muenchhusia moscheutos, pero el estudio no incluyó esa selección ni comparó EC o respuesta nutricional, y no midió un depósito hidropónico. Puedes elegir 1,3 solo como referencia manual de fertirriego de la misma especie; no es un óptimo, rango ni recomendación automática, y cualquier dosis requiere calibración de la mezcla exacta.",
+      en: "In a hybridization study, three Hibiscus moscheutos cultivars received weekly 14-3-23 fertilizer in a greenhouse; the applied solution had EC 1.3 mS/cm. Gardenpedia identifies Blush as Muenchhusia moscheutos, but the study did not include that selection, compare EC or nutritional response, or measure a hydroponic reservoir. You may choose 1.3 only as a manual fertigation reference from the same species; it is not an optimum, range or automatic recommendation, and any dose requires calibration of the exact mix.",
     },
   },
   {
@@ -1336,6 +1360,15 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "Un ensayo hidropónico de fresa comparó 0,9 mS/cm durante crecimiento vegetativo y 1,3 o 1,7 al iniciar la fructificación. El mayor peso y tamaño del fruto se observó con 1,3 en las condiciones ensayadas. No identifica Monterey ni valida un objetivo general; cada valor se ofrece solo como elección manual contextual y requiere calibrar la mezcla exacta.",
       en: "A hydroponic strawberry trial compared 0.9 mS/cm during vegetative growth and 1.3 or 1.7 at the start of bearing. The greatest fruit weight and size were observed at 1.3 under the tested conditions. It does not identify Monterey or validate a general target; each value is offered only as a contextual manual choice and requires calibration of the exact mix.",
+    },
+  },
+  {
+    plantIds: ["monterey-strawberry"],
+    source: NUTRIENT_SOURCES.illinoisMontereyHydroponicStrawberry,
+    selectableEcMs: 1.8,
+    text: {
+      es: "Illinois Extension documenta un sistema comercial hidropónico de día neutro que cultivó Monterey junto con San Andreas y Albion; el operador mantuvo la solución alrededor de 1,8 mS/cm. Es una observación de operación que sí incluye Monterey, no un ensayo que compare objetivos, ni un óptimo validado para tu tanque o producto. Se ofrece solo como objetivo manual contextual y requiere calibrar la mezcla exacta.",
+      en: "Illinois Extension documents a commercial day-neutral hydroponic setup growing Monterey alongside San Andreas and Albion; the operator held solution EC around 1.8 mS/cm. This is an operational observation that includes Monterey, not a target-comparison trial or a validated optimum for your reservoir or product. It is offered only as a contextual manual target and requires calibration of the exact mix.",
     },
   },
   {
@@ -1824,6 +1857,169 @@ export const CROP_STAGE_REFERENCES = [
     },
   },
   {
+    cropIdentity: "cilantro",
+    plantIds: ["cilantro"],
+    source: NUTRIENT_SOURCES.herbNftStudy,
+    ageWindows: [
+      {
+        minDays: 21,
+        maxDays: 21,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El estudio NFT trasplantó plántulas de cilantro ‘Santo’ con tres semanas desde la siembra. Úsalo como comparación de plántula al trasplante y confirma hojas y raíces visibles; no es una transición universal ni una pauta de EC para tu tanque.",
+          en: "The NFT study transplanted ‘Santo’ cilantro seedlings three weeks after sowing. Use this as a seedling-at-transplant comparison and confirm visible leaves and roots; it is not a universal transition or an EC prescription for your reservoir.",
+        },
+      },
+    ],
+    text: {
+      es: "En un ensayo NFT de invernadero, cilantro ‘Santo’ se trasplantó a las tres semanas de la siembra. Es contexto de un cultivar y método concretos; confirma el desarrollo visible y no lo uses como dosis ni como transición automática.",
+      en: "In a greenhouse NFT trial, ‘Santo’ cilantro was transplanted three weeks after sowing. This is context for a specific cultivar and method; confirm visible development and do not use it as a dose or automatic transition.",
+    },
+  },
+  {
+    cropIdentity: "dill-bouquet",
+    plantIds: ["dill-bouquet"],
+    source: NUTRIENT_SOURCES.herbNftStudy,
+    ageWindows: [
+      {
+        minDays: 21,
+        maxDays: 21,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El estudio NFT trasplantó eneldo ‘Fernleaf’ con tres semanas desde la siembra; tu identidad es ‘Bouquet’, no el cultivar ensayado. Tómalo solo como contexto de la especie y confirma hojas y raíces visibles. No cambia la etapa ni la dosis automáticamente.",
+          en: "The NFT study transplanted ‘Fernleaf’ dill three weeks after sowing; your identity is ‘Bouquet’, not the tested cultivar. Treat this only as species-level context and confirm visible leaves and roots. It does not automatically change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La referencia de tres semanas corresponde al cultivar de eneldo ‘Fernleaf’ en NFT; Bouquet es distinto. Se muestra solo para orientar la observación de plántula, no como calendario universal ni pauta de EC.",
+      en: "The three-week reference is for ‘Fernleaf’ dill in NFT; Bouquet is different. It is shown only to guide seedling observation, not as a universal schedule or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "italian-giant-parsley",
+    plantIds: ["italian-giant-parsley"],
+    source: NUTRIENT_SOURCES.herbNftStudy,
+    ageWindows: [
+      {
+        minDays: 21,
+        maxDays: 21,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El ensayo NFT trasplantó perejil ‘Giant of Italy’ con tres semanas desde la siembra, cultivar que corresponde al nombre comercial Italian Giant de esta identidad. Confirma hojas y raíces visibles; el día no cambia etapa ni dosis automáticamente.",
+          en: "The NFT trial transplanted ‘Giant of Italy’ parsley three weeks after sowing, the cultivar corresponding to this identity’s Italian Giant name. Confirm visible leaves and roots; the day count does not automatically change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "El estudio NFT incluye perejil ‘Giant of Italy’, correspondiente a Italian Giant, y lo trasplantó a las tres semanas. Es contexto de establecimiento bajo ese método, no un calendario universal ni una pauta de EC.",
+      en: "The NFT study includes ‘Giant of Italy’ parsley, corresponding to Italian Giant, and transplanted it at three weeks. This is establishment context under that method, not a universal schedule or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "hyssop",
+    source: NUTRIENT_SOURCES.hyssopHydroponicStudy,
+    ageWindows: [
+      {
+        minDays: 28,
+        maxDays: 28,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El estudio hidropónico trasplantó hisopo ‘Lekar’ a las cuatro semanas, cuando ya tenía cuatro hojas verdaderas. Úsalo como comparación del ensayo y confirma las hojas visibles; la edad no cambia la etapa, el EC ni la dosis automáticamente.",
+          en: "The hydroponic study transplanted ‘Lekar’ hyssop at four weeks, when it had four true leaves. Use this as a trial comparison and confirm visible leaves; age does not automatically change stage, EC, or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "El estudio de Hyssopus officinalis cv. ‘Lekar’ describe el trasplante al sistema hidropónico a las cuatro semanas con cuatro hojas verdaderas. Es contexto de ese cultivar y ensayo, no un calendario universal ni una pauta de EC.",
+      en: "The Hyssopus officinalis cv. ‘Lekar’ study describes transplanting into the hydroponic system at four weeks with four true leaves. This is context for that cultivar and trial, not a universal schedule or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "dill-bouquet",
+    plantIds: ["dill-bouquet"],
+    source: NUTRIENT_SOURCES.bouquetDillDeepFlowStudy,
+    ageWindows: [
+      {
+        minDays: 28,
+        maxDays: 28,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El estudio hidropónico de flujo profundo trasplantó eneldo Bouquet cuatro semanas después de la siembra. Compara el dato con hojas y raíces visibles; otro ensayo NFT usó plántulas de tres semanas. Ninguna fecha cambia automáticamente la etapa ni la dosis.",
+          en: "The deep-flow hydroponic study transplanted Bouquet dill four weeks after sowing. Compare this with visible leaves and roots; another trial used three-week-old seedlings. Neither date automatically changes stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "En el ensayo de flujo profundo, eneldo Bouquet se trasplantó a las cuatro semanas; otro estudio NFT trasplantó eneldo a las tres. Son hitos de ensayos distintos, no un calendario universal ni una pauta de EC.",
+      en: "In the deep-flow trial, Bouquet dill was transplanted at four weeks; another NFT study transplanted dill at three. These are milestones from separate trials, not a universal calendar or EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "italian-giant-parsley",
+    plantIds: ["italian-giant-parsley"],
+    source: NUTRIENT_SOURCES.bouquetDillDeepFlowStudy,
+    ageWindows: [
+      {
+        minDays: 35,
+        maxDays: 35,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El estudio hidropónico de flujo profundo trasplantó perejil ‘Giant of Italy’ cinco semanas después de la siembra. Compara el dato con hojas y raíces visibles; otro ensayo NFT usó plántulas de tres semanas. Ninguna fecha cambia automáticamente la etapa ni la dosis.",
+          en: "The deep-flow hydroponic study transplanted ‘Giant of Italy’ parsley five weeks after sowing. Compare this with visible leaves and roots; another NFT trial used three-week-old seedlings. Neither date automatically changes stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "En el ensayo de flujo profundo, perejil ‘Giant of Italy’ se trasplantó a las cinco semanas; otro ensayo NFT usó tres semanas. Son hitos de ensayos distintos, no un calendario universal ni una pauta de EC.",
+      en: "In the deep-flow trial, ‘Giant of Italy’ parsley was transplanted at five weeks; another NFT trial used three weeks. These are milestones from separate trials, not a universal calendar or EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "watercress",
+    plantIds: ["watercress"],
+    source: NUTRIENT_SOURCES.bouquetDillDeepFlowStudy,
+    ageWindows: [
+      {
+        minDays: 21,
+        maxDays: 21,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El estudio hidropónico de flujo profundo trasplantó berro tres semanas después de la siembra. Úsalo como referencia de ese ensayo y confirma el desarrollo visible; no es un calendario universal ni cambia la etapa o la dosis automáticamente.",
+          en: "The deep-flow hydroponic study transplanted watercress three weeks after sowing. Use this as a reference for that trial and confirm visible development; it is not a universal calendar and does not automatically change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "En el ensayo hidropónico de flujo profundo, las plántulas de berro se trasplantaron a las tres semanas. Es contexto temporal de ese ensayo, no un calendario universal ni una pauta de EC.",
+      en: "In the deep-flow hydroponic trial, watercress seedlings were transplanted at three weeks. This is timing context for that trial, not a universal calendar or EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "sunflower",
+    plantIds: [
+      "sunflower-american-giant-hybrid",
+      "sunflower-autumn-beauty",
+      "sunflower-helianthus-annuus",
+    ],
+    source: NUTRIENT_SOURCES.ornamentalSunflowerNftStudy,
+    ageWindows: [
+      {
+        minDays: 20,
+        maxDays: 20,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Un ensayo NFT trasplantó girasol ornamental el día 20 desde la siembra, cuando la mayoría medía cerca de 5 cm. Se ensayó ‘Girassol de Jardim Amarelo Alto’ de ISLA, no tus cultivares. Confirma tamaño, hojas y raíces; es contexto de un ensayo, no etapa automática ni pauta de EC.",
+          en: "An NFT trial transplanted ornamental sunflower on day 20 after sowing, when most plants were about 5 cm tall. It tested ISLA ‘Girassol de Jardim Amarelo Alto’, not your cultivars. Confirm size, leaves, and roots; this is trial context, not an automatic stage or EC recommendation.",
+        },
+      },
+    ],
+    text: {
+      es: "El ensayo hidropónico NFT de ‘Girassol de Jardim Amarelo Alto’ de ISLA trasplantó la mayoría de las plántulas a los 20 días desde la siembra, cerca de 5 cm de altura. Se muestra solo como contexto de establecimiento para girasol; no valida American Giant, Autumn Beauty u otro cultivar ni constituye una etapa o dosis automática.",
+      en: "The NFT hydroponic trial of ISLA ‘Girassol de Jardim Amarelo Alto’ transplanted most seedlings 20 days after sowing, at about 5 cm tall. This is shown only as sunflower establishment context; it does not validate American Giant, Autumn Beauty, or another cultivar and is not an automatic stage or dose.",
+    },
+  },
+  {
     cropIdentity: "mustard-greens",
     source: NUTRIENT_SOURCES.ukyLeafyCropHydroponic,
     ageWindows: [
@@ -1862,6 +2058,26 @@ export const CROP_STAGE_REFERENCES = [
     es: "; la fuente no identifica Lilliput Mix ni la producción hidropónica",
     en: "; the source does not identify Lilliput Mix or hydroponic production",
   }),
+  {
+    cropIdentity: "marigold-jolly-jester",
+    plantIds: ["marigold-jolly-jester"],
+    source: NUTRIENT_SOURCES.wvuSeedStarting,
+    ageWindows: [
+      {
+        minDays: 42,
+        maxDays: 56,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "WVU Extension indica 6–8 semanas como edad de trasplante para marigold, sin precisar especie o cultivar. Jolly Jester se identifica comercialmente como Tagetes erecta; usa esto solo como contexto de vivero y confirma desarrollo visible. No es calendario hidropónico ni cambia etapa o dosis automáticamente.",
+          en: "WVU Extension lists 6–8 weeks as transplant age for marigold without specifying species or cultivar. Jolly Jester is commercially identified as Tagetes erecta; use this only as nursery context and confirm visible development. It is not a hydroponic schedule and does not automatically change stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "WVU Extension publica 6–8 semanas como edad de trasplante para marigold, pero no identifica Tagetes erecta ni Jolly Jester. Es contexto de vivero exterior, no un calendario hidropónico ni una recomendación de EC.",
+      en: "WVU Extension lists 6–8 weeks as transplant age for marigold but does not identify Tagetes erecta or Jolly Jester. This is outdoor nursery context, not a hydroponic schedule or EC recommendation.",
+    },
+  },
   {
     cropIdentity: "zinnia-lilliput-mixed",
     plantIds: ["zinnia-lilliput-mixed"],

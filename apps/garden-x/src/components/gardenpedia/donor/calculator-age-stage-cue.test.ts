@@ -129,6 +129,15 @@ describe("calculator age stage cues", () => {
     }
   });
 
+  it("labels the generic WVU marigold transplant window as non-cultivar context", () => {
+    const cue = calculatorAgeStageCueForPlant("marigold-jolly-jester", 49);
+    expect(cue?.reference.source.id).toBe("wvu-extension-seed-starting-transplant-age");
+    expect(cue?.ageWindow).toMatchObject({ minDays: 42, maxDays: 56, stageSuggestion: "SEEDLING" });
+    expect(cue?.ageWindow.text.en).toMatch(/without specifying species or cultivar/i);
+    expect(cue?.ageWindow.text.en).toMatch(/does not automatically change stage or dose/i);
+    expect(calculatorAgeStageCueForPlant("marigold-jolly-jester", 57)).toBeUndefined();
+  });
+
   it("does not apply the Texas A&M timing outside its published transplant window", () => {
     expect(calculatorAgeStageCueForPlant("zinnia-lilliput-mixed", 20)).toBeUndefined();
     expect(calculatorAgeStageCueForPlant("rainbow-mix-coleus", 71)).toBeUndefined();
@@ -187,9 +196,84 @@ describe("calculator age stage cues", () => {
     expect(calculatorAgeStageCueForPlant("butterhead-lettuce-unspecified", 22)).toBeUndefined();
   });
 
-  it("uses morphology guidance for cilantro without inventing an age window", () => {
+  it("pairs cilantro morphology with the study's three-week transplant observation", () => {
     expect(calculatorStageReferenceForPlant("cilantro")?.text.en).toMatch(/broad and flat/i);
     expect(calculatorAgeStageCueForPlant("cilantro", 20)).toBeUndefined();
+    const cue = calculatorAgeStageCueForPlant("cilantro", 21);
+    expect(cue?.ageWindow).toMatchObject({ minDays: 21, maxDays: 21, stageSuggestion: "SEEDLING" });
+    expect(cue?.reference.source.id).toBe("walters-currey-herb-nft-2019");
+    expect(cue?.ageWindow.text.en).toMatch(/‘Santo’ cilantro.*three weeks/i);
+    expect(cue?.ageWindow.text.en).toMatch(/not a universal transition/i);
+  });
+
+  it("keeps related dill and Italian Giant parsley transplant cues cultivar-explicit", () => {
+    const dill = calculatorAgeStageCueForPlant("dill-bouquet", 21);
+    expect(dill?.ageWindow.stageSuggestion).toBe("SEEDLING");
+    expect(dill?.ageWindow.text.en).toMatch(/‘Fernleaf’.*not the tested cultivar/i);
+    const parsley = calculatorAgeStageCueForPlant("italian-giant-parsley", 21);
+    expect(parsley?.ageWindow.stageSuggestion).toBe("SEEDLING");
+    expect(parsley?.ageWindow.text.en).toMatch(/‘Giant of Italy’ parsley/i);
+    expect(calculatorAgeStageCueForPlant("flat-leaf-parsley", 21)).toBeUndefined();
+  });
+
+  it("surfaces the distinct hydroponic transplant timings for Bouquet dill, Giant of Italy parsley, and watercress", () => {
+    const dill = calculatorAgeStageCueForPlant("dill-bouquet", 28);
+    expect(dill?.reference.source.id).toBe("walters-lopez-bouquet-dill-deep-flow-2021");
+    expect(dill?.ageWindow).toMatchObject({
+      minDays: 28,
+      maxDays: 28,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(dill?.ageWindow.text.en).toMatch(/Bouquet dill four weeks/i);
+    expect(dill?.ageWindow.text.en).toMatch(/another trial.*three-week-old seedlings/i);
+
+    const parsley = calculatorAgeStageCueForPlant("italian-giant-parsley", 35);
+    expect(parsley?.reference.source.id).toBe("walters-lopez-bouquet-dill-deep-flow-2021");
+    expect(parsley?.ageWindow).toMatchObject({
+      minDays: 35,
+      maxDays: 35,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(parsley?.ageWindow.text.en).toMatch(/‘Giant of Italy’ parsley five weeks/i);
+    expect(parsley?.ageWindow.text.en).toMatch(/another NFT trial.*three-week-old seedlings/i);
+
+    const watercress = calculatorAgeStageCueForPlant("watercress", 21);
+    expect(watercress?.reference.source.id).toBe("walters-lopez-bouquet-dill-deep-flow-2021");
+    expect(watercress?.ageWindow).toMatchObject({
+      minDays: 21,
+      maxDays: 21,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(watercress?.ageWindow.text.en).toMatch(/watercress three weeks after sowing/i);
+    expect(calculatorAgeStageCueForPlant("watercress", 22)).toBeUndefined();
+  });
+
+  it("uses the NFT sunflower transplant cue without claiming cultivar-specific validation", () => {
+    for (const plantId of [
+      "sunflower-american-giant-hybrid",
+      "sunflower-autumn-beauty",
+      "sunflower-helianthus-annuus",
+    ]) {
+      const cue = calculatorAgeStageCueForPlant(plantId, 20);
+      expect(cue?.reference.source.id).toBe("antoniacomi-sunflower-nft-transplant-2023");
+      expect(cue?.ageWindow).toMatchObject({
+        minDays: 20,
+        maxDays: 20,
+        stageSuggestion: "SEEDLING",
+      });
+      expect(cue?.ageWindow.text.en).toMatch(/not your cultivars/i);
+      expect(cue?.ageWindow.text.es).toMatch(/no tus cultivares/i);
+    }
+    expect(calculatorAgeStageCueForPlant("sunflower-american-giant-hybrid", 21)).toBeUndefined();
+  });
+
+  it("uses the exact hyssop study's four-leaf transplant milestone as a confirmable cue", () => {
+    const cue = calculatorAgeStageCueForPlant("hyssop", 28);
+    expect(cue?.ageWindow).toMatchObject({ minDays: 28, maxDays: 28, stageSuggestion: "SEEDLING" });
+    expect(cue?.reference.source.id).toBe("hyssop-hydroponic-selenium-2022");
+    expect(cue?.ageWindow.text.en).toMatch(/‘Lekar’ hyssop.*four true leaves/i);
+    expect(cue?.ageWindow.text.en).toMatch(/does not automatically change stage, EC, or dose/i);
+    expect(calculatorAgeStageCueForPlant("hyssop", 29)).toBeUndefined();
   });
 
   it("exposes a bilingual, publicly sourced Seed Profile transition cue for exact identities", () => {

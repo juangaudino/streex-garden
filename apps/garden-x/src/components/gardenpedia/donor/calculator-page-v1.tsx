@@ -474,6 +474,9 @@ export function CalculatorPage({
   const [cropSowingAgeDays, setCropSowingAgeDays] = useState<Record<string, string>>(
     sys.cropSowingAgeDays ?? {},
   );
+  const [cropStageSowingAgeDays, setCropStageSowingAgeDays] = useState<
+    Record<string, Partial<Record<CalculatorAdditionalStage, string>>>
+  >(sys.cropStageSowingAgeDays ?? {});
   const [liters, setLiters] = useState(sys.liters);
   const [volumeInput, setVolumeInput] = useState(String(sys.liters));
   const [productId, setProductId] = useState(sys.productId);
@@ -548,6 +551,7 @@ export function CalculatorPage({
         cropStages,
         cropAdditionalStages,
         cropSowingAgeDays,
+        cropStageSowingAgeDays,
         liters,
         productId,
         customAbManufacturer,
@@ -580,6 +584,7 @@ export function CalculatorPage({
     setCropStages(s.cropStages ?? {});
     setCropAdditionalStages(s.cropAdditionalStages ?? {});
     setCropSowingAgeDays(s.cropSowingAgeDays ?? {});
+    setCropStageSowingAgeDays(s.cropStageSowingAgeDays ?? {});
     setLiters(s.liters);
     setVolumeInput(String(s.liters));
     setProductId(s.productId);
@@ -633,6 +638,9 @@ export function CalculatorPage({
       cropStages: { ...cropStages },
       cropAdditionalStages: { ...cropAdditionalStages },
       cropSowingAgeDays: { ...cropSowingAgeDays },
+      cropStageSowingAgeDays: Object.fromEntries(
+        Object.entries(cropStageSowingAgeDays).map(([id, ages]) => [id, { ...ages }]),
+      ),
       liters,
       productId,
       customAbManufacturer,
@@ -763,6 +771,9 @@ export function CalculatorPage({
       cropStages: { ...cropStages },
       cropAdditionalStages: { ...cropAdditionalStages },
       cropSowingAgeDays: { ...cropSowingAgeDays },
+      cropStageSowingAgeDays: Object.fromEntries(
+        Object.entries(cropStageSowingAgeDays).map(([id, ages]) => [id, { ...ages }]),
+      ),
       liters,
       productId,
       customAbManufacturer,
@@ -1250,6 +1261,12 @@ export function CalculatorPage({
                                   delete next[id];
                                   return next;
                                 });
+                              if (v <= 1)
+                                setCropStageSowingAgeDays((current) => {
+                                  const next = { ...current };
+                                  delete next[id];
+                                  return next;
+                                });
                             }}
                           />
                           <button
@@ -1263,6 +1280,11 @@ export function CalculatorPage({
                                 return next;
                               });
                               setCropAdditionalStages((current) => {
+                                const next = { ...current };
+                                delete next[id];
+                                return next;
+                              });
+                              setCropStageSowingAgeDays((current) => {
                                 const next = { ...current };
                                 delete next[id];
                                 return next;
@@ -1286,6 +1308,7 @@ export function CalculatorPage({
                                 [id]: event.target.value as CalculatorCropStage,
                               });
                               setCropAdditionalStages((current) => ({ ...current, [id]: [] }));
+                              setCropStageSowingAgeDays((current) => ({ ...current, [id]: {} }));
                             }}
                             className="col-span-full w-full min-w-0 bg-transparent text-xs font-normal"
                           >
@@ -1627,115 +1650,217 @@ export function CalculatorPage({
                                     </label>
                                   ))}
                               </div>
-                            </details>
-                          )}
-                          <label className="col-span-full flex items-center gap-2 text-xs text-muted-foreground">
-                            {lang === "es"
-                              ? "Días desde la siembra (referencia)"
-                              : "Days since sowing (reference)"}
-                            <input
-                              type="number"
-                              min="0"
-                              step="1"
-                              inputMode="numeric"
-                              className="ml-auto h-10 w-20 rounded border border-input bg-background px-2 text-sm"
-                              aria-label={`${lang === "es" ? "Días desde la siembra de" : "Days since sowing of"} ${c.name[lang]}`}
-                              value={cropSowingAgeDays[id] ?? ""}
-                              onChange={(event) => {
-                                const value = event.target.value;
-                                if (value === "" || /^\d{1,5}$/.test(value))
-                                  setCropSowingAgeDays({ ...cropSowingAgeDays, [id]: value });
-                              }}
-                            />
-                          </label>
-                          {cropSowingAgeDays[id] !== undefined && cropSowingAgeDays[id] !== "" && (
-                            <div className="col-span-full text-xs text-muted-foreground">
-                              {ageWindow && <p>{ageWindow.text[lang]}</p>}
-                              {!ageWindow && (
-                                <p>
-                                  {seedTransitionCue
-                                    ? lang === "es"
-                                      ? "No hay una ventana publicada para convertir esta edad en etapa. Usa la pista morfológica del perfil de semilla y confirma lo que observas; los días no cambian la etapa ni la dosis."
-                                      : "There is no published window to convert this age into a stage. Use the Seed Profile morphology cue and confirm what you observe; days do not change stage or dose."
-                                    : lang === "es"
-                                      ? "No hay una ventana de edad publicada que coincida con este dato. Confirma la etapa observando la planta; los días por sí solos no cambian la etapa ni la dosis."
-                                      : "No published age window matches this entry. Confirm stage from the plant itself; days alone do not change stage or dose."}
-                                </p>
-                              )}
-                              {ageStageSuggestion && (
-                                <div className="mt-2 rounded-md border border-border/70 p-2">
-                                  <p>
-                                    {lang === "es"
-                                      ? `La ventana publicada ofrece una pista de ${ageStageLabel}; confirma la etapa observando el desarrollo de la planta. La edad no la aplica automáticamente.`
-                                      : `The published window offers a ${ageStageLabel} cue; confirm the stage from the plant's visible development. Age does not apply it automatically.`}
-                                  </p>
-                                  <button
-                                    type="button"
-                                    disabled={cropStages[id] === ageStageSuggestion}
-                                    onClick={() =>
-                                      setCropStages((current) => ({
-                                        ...current,
-                                        [id]: ageStageSuggestion,
-                                      }))
-                                    }
-                                    className="mt-2 min-h-9 rounded-md border border-border px-3 font-medium text-foreground disabled:opacity-60"
-                                  >
-                                    {cropStages[id] === ageStageSuggestion
-                                      ? lang === "es"
-                                        ? `Etapa seleccionada: ${ageStageLabel}`
-                                        : `Stage selected: ${ageStageLabel}`
-                                      : lang === "es"
-                                        ? `Confirmar etapa: ${ageStageLabel}`
-                                        : `Confirm stage: ${ageStageLabel}`}
-                                  </button>
-                                  <p className="mt-1">
-                                    {lang === "es"
-                                      ? "Al confirmarla, la etapa se usa para filtrar evidencia; si no hay evidencia aplicable, el cálculo lo indicará."
-                                      : "After confirmation, this stage filters applicable evidence; if none applies, the calculation will say so."}
-                                  </p>
+                              {(cropAdditionalStages[id] ?? []).length > 0 && (
+                                <div className="mt-3 space-y-3 rounded-md border border-border/70 p-3">
+                                  <div>
+                                    <p className="font-medium">
+                                      {lang === "es"
+                                        ? "Edad por etapa (referencia)"
+                                        : "Age by stage (reference)"}
+                                    </p>
+                                    <p className="mt-1">
+                                      {lang === "es"
+                                        ? "Registra los días de cada grupo de esta variedad. La edad muestra contexto con fuente; no cambia por sí sola la etapa ni la dosis."
+                                        : "Record the days for each cohort of this variety. Age shows sourced context; it does not by itself change the stage or dose."}
+                                    </p>
+                                  </div>
+                                  {(cropAdditionalStages[id] ?? []).map((stage) => {
+                                    const stageLabel =
+                                      stage === "SEEDLING"
+                                        ? lang === "es"
+                                          ? "Plántula"
+                                          : "Seedling"
+                                        : stage === "VEGETATIVE"
+                                          ? lang === "es"
+                                            ? "Crecimiento vegetativo"
+                                            : "Vegetative growth"
+                                          : stage === "MATURE"
+                                            ? lang === "es"
+                                              ? "Planta madura"
+                                              : "Mature plant"
+                                            : stage === "FLOWERING"
+                                              ? lang === "es"
+                                                ? "Floración"
+                                                : "Flowering"
+                                              : lang === "es"
+                                                ? "Fructificación"
+                                                : "Fruiting";
+                                    const age = cropStageSowingAgeDays[id]?.[stage] ?? "";
+                                    const cue =
+                                      age !== ""
+                                        ? calculatorAgeStageCueForPlant(id, Number(age))
+                                        : undefined;
+                                    return (
+                                      <div key={stage} className="grid gap-1">
+                                        <label className="flex items-center gap-2">
+                                          <span>{stageLabel}</span>
+                                          <span className="ml-auto">
+                                            {lang === "es"
+                                              ? "Días desde siembra"
+                                              : "Days since sowing"}
+                                          </span>
+                                          <input
+                                            type="number"
+                                            min="0"
+                                            step="1"
+                                            inputMode="numeric"
+                                            className="h-10 w-20 rounded border border-input bg-background px-2 text-sm"
+                                            aria-label={`${lang === "es" ? "Días desde la siembra de" : "Days since sowing of"} ${c.name[lang]} · ${stageLabel}`}
+                                            value={age}
+                                            onChange={(event) => {
+                                              const value = event.target.value;
+                                              if (value === "" || /^\d{1,5}$/.test(value))
+                                                setCropStageSowingAgeDays((current) => ({
+                                                  ...current,
+                                                  [id]: {
+                                                    ...current[id],
+                                                    [stage]: value,
+                                                  },
+                                                }));
+                                            }}
+                                          />
+                                        </label>
+                                        {age !== "" && (
+                                          <div className="text-muted-foreground">
+                                            {cue ? (
+                                              <>
+                                                <p>{cue.ageWindow.text[lang]}</p>
+                                                <a
+                                                  className="mt-1 inline-block underline"
+                                                  href={cue.reference.source.url}
+                                                  target="_blank"
+                                                  rel="noreferrer"
+                                                >
+                                                  {cue.reference.source.publisher}
+                                                </a>
+                                              </>
+                                            ) : (
+                                              <p>
+                                                {lang === "es"
+                                                  ? "No hay una ventana de edad publicada para este dato; confirma la etapa por el desarrollo visible."
+                                                  : "No published age window matches this value; confirm the stage from visible development."}
+                                              </p>
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    );
+                                  })}
                                 </div>
                               )}
-                              {seedAgeReferences[id] ? (
-                                <>
+                            </details>
+                          )}
+                          {cropStages[id] !== "MIXED" && (
+                            <label className="col-span-full flex items-center gap-2 text-xs text-muted-foreground">
+                              {lang === "es"
+                                ? "Días desde la siembra (referencia)"
+                                : "Days since sowing (reference)"}
+                              <input
+                                type="number"
+                                min="0"
+                                step="1"
+                                inputMode="numeric"
+                                className="ml-auto h-10 w-20 rounded border border-input bg-background px-2 text-sm"
+                                aria-label={`${lang === "es" ? "Días desde la siembra de" : "Days since sowing of"} ${c.name[lang]}`}
+                                value={cropSowingAgeDays[id] ?? ""}
+                                onChange={(event) => {
+                                  const value = event.target.value;
+                                  if (value === "" || /^\d{1,5}$/.test(value))
+                                    setCropSowingAgeDays({ ...cropSowingAgeDays, [id]: value });
+                                }}
+                              />
+                            </label>
+                          )}
+                          {cropStages[id] !== "MIXED" &&
+                            cropSowingAgeDays[id] !== undefined &&
+                            cropSowingAgeDays[id] !== "" && (
+                              <div className="col-span-full text-xs text-muted-foreground">
+                                {ageWindow && <p>{ageWindow.text[lang]}</p>}
+                                {!ageWindow && (
+                                  <p>
+                                    {seedTransitionCue
+                                      ? lang === "es"
+                                        ? "No hay una ventana publicada para convertir esta edad en etapa. Usa la pista morfológica del perfil de semilla y confirma lo que observas; los días no cambian la etapa ni la dosis."
+                                        : "There is no published window to convert this age into a stage. Use the Seed Profile morphology cue and confirm what you observe; days do not change stage or dose."
+                                      : lang === "es"
+                                        ? "No hay una ventana de edad publicada que coincida con este dato. Confirma la etapa observando la planta; los días por sí solos no cambian la etapa ni la dosis."
+                                        : "No published age window matches this entry. Confirm stage from the plant itself; days alone do not change stage or dose."}
+                                  </p>
+                                )}
+                                {ageStageSuggestion && (
+                                  <div className="mt-2 rounded-md border border-border/70 p-2">
+                                    <p>
+                                      {lang === "es"
+                                        ? `La ventana publicada ofrece una pista de ${ageStageLabel}; confirma la etapa observando el desarrollo de la planta. La edad no la aplica automáticamente.`
+                                        : `The published window offers a ${ageStageLabel} cue; confirm the stage from the plant's visible development. Age does not apply it automatically.`}
+                                    </p>
+                                    <button
+                                      type="button"
+                                      disabled={cropStages[id] === ageStageSuggestion}
+                                      onClick={() =>
+                                        setCropStages((current) => ({
+                                          ...current,
+                                          [id]: ageStageSuggestion,
+                                        }))
+                                      }
+                                      className="mt-2 min-h-9 rounded-md border border-border px-3 font-medium text-foreground disabled:opacity-60"
+                                    >
+                                      {cropStages[id] === ageStageSuggestion
+                                        ? lang === "es"
+                                          ? `Etapa seleccionada: ${ageStageLabel}`
+                                          : `Stage selected: ${ageStageLabel}`
+                                        : lang === "es"
+                                          ? `Confirmar etapa: ${ageStageLabel}`
+                                          : `Confirm stage: ${ageStageLabel}`}
+                                    </button>
+                                    <p className="mt-1">
+                                      {lang === "es"
+                                        ? "Al confirmarla, la etapa se usa para filtrar evidencia; si no hay evidencia aplicable, el cálculo lo indicará."
+                                        : "After confirmation, this stage filters applicable evidence; if none applies, the calculation will say so."}
+                                    </p>
+                                  </div>
+                                )}
+                                {seedAgeReferences[id] ? (
+                                  <>
+                                    <p>
+                                      {lang === "es"
+                                        ? "Referencia publicada de germinación"
+                                        : "Published germination reference"}
+                                      : {seedAgeReferences[id].value[lang]}
+                                      {seedAgeReferences[id].note?.[lang]
+                                        ? ` · ${seedAgeReferences[id].note[lang]}`
+                                        : ""}
+                                    </p>
+                                    <p>
+                                      {seedAgeReferences[id].sources.map((source, index) => (
+                                        <span key={source.id}>
+                                          {index ? " · " : ""}
+                                          <a
+                                            className="underline"
+                                            href={source.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                          >
+                                            {source.title}
+                                          </a>
+                                        </span>
+                                      ))}
+                                    </p>
+                                  </>
+                                ) : (
                                   <p>
                                     {lang === "es"
-                                      ? "Referencia publicada de germinación"
-                                      : "Published germination reference"}
-                                    : {seedAgeReferences[id].value[lang]}
-                                    {seedAgeReferences[id].note?.[lang]
-                                      ? ` · ${seedAgeReferences[id].note[lang]}`
-                                      : ""}
+                                      ? "No hay una referencia de germinación respaldada para esta identidad."
+                                      : "No supported germination reference is available for this identity."}
                                   </p>
-                                  <p>
-                                    {seedAgeReferences[id].sources.map((source, index) => (
-                                      <span key={source.id}>
-                                        {index ? " · " : ""}
-                                        <a
-                                          className="underline"
-                                          href={source.url}
-                                          target="_blank"
-                                          rel="noreferrer"
-                                        >
-                                          {source.title}
-                                        </a>
-                                      </span>
-                                    ))}
-                                  </p>
-                                </>
-                              ) : (
+                                )}
                                 <p>
                                   {lang === "es"
-                                    ? "No hay una referencia de germinación respaldada para esta identidad."
-                                    : "No supported germination reference is available for this identity."}
+                                    ? "Es una referencia desde la siembra, no una etapa confirmada ni una dosis. Selecciona la etapa observada arriba."
+                                    : "This is a reference from sowing, not a confirmed stage or dose. Select the observed stage above."}
                                 </p>
-                              )}
-                              <p>
-                                {lang === "es"
-                                  ? "Es una referencia desde la siembra, no una etapa confirmada ni una dosis. Selecciona la etapa observada arriba."
-                                  : "This is a reference from sowing, not a confirmed stage or dose. Select the observed stage above."}
-                              </p>
-                            </div>
-                          )}
+                              </div>
+                            )}
                         </li>
                       );
                     })}
@@ -2180,11 +2305,10 @@ export function CalculatorPage({
                   {mode !== "recipe" && result.compatibility.operationalCompromise && (
                     <div className="mt-3 rounded-md border border-amber-500/40 bg-background/40 p-3">
                       <p className="font-semibold">
-                        {t.compromise}: {fmtEc(result.compatibility.operationalCompromise.targetEc)} {unitLabel}
+                        {t.compromise}: {fmtEc(result.compatibility.operationalCompromise.targetEc)}{" "}
+                        {unitLabel}
                       </p>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        {t.compromiseDisclaimer}
-                      </p>
+                      <p className="mt-1 text-xs text-muted-foreground">{t.compromiseDisclaimer}</p>
                       <p className="mt-2 text-xs font-medium">{t.deviations}</p>
                       <ul className="mt-1 space-y-1 text-xs">
                         {result.compatibility.operationalCompromise.deviations.map((item) => {
@@ -2193,7 +2317,8 @@ export function CalculatorPage({
                           );
                           return (
                             <li key={item.cropIdentity}>
-                              {names.map(cropName).join(", ") || item.cropIdentity}: {fmtEc(item.deviation)} {unitLabel}
+                              {names.map(cropName).join(", ") || item.cropIdentity}:{" "}
+                              {fmtEc(item.deviation)} {unitLabel}
                             </li>
                           );
                         })}

@@ -1,6 +1,35 @@
 import type { EvidenceObservation, ManufacturerRecipe, RecipeStep, SourceRef } from "./types.ts";
 
 export const NUTRIENT_SOURCES = {
+  alabamaTransplantProduction: {
+    id: "alabama-extension-hydroponic-transplant-production",
+    publisher: "Alabama Cooperative Extension System · Auburn University",
+    title: "Transplant Production for Hydroponic & Greenhouse Systems",
+    url: "https://www.aces.edu/blog/topics/crop-production/transplant-production-for-hydroponic-greenhouse-systems/",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "ANR-2954",
+    retrievedAt: "2026-11-25",
+  },
+  ukyLeafyCropHydroponic: {
+    id: "uky-ut-leafy-crop-hydroponic-production-w844b",
+    publisher: "University of Kentucky / University of Tennessee Extension",
+    title: "Leafy Crop Production in Small-Scale Soilless and Hydroponic Systems",
+    url: "https://greenhousehort.mgcafe.uky.edu/sites/greenhousehort.ca.uky.edu/files/W844-B.pdf",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "W 844-B",
+    retrievedAt: "2026-11-25",
+  },
+  wisconsinCilantroGrowth: {
+    id: "uw-madison-extension-cilantro-growth-stages",
+    publisher: "University of Wisconsin–Madison Extension",
+    title: "Cilantro / Coriander (Coriandrum sativum)",
+    url: "https://hort.extension.wisc.edu/articles/cilantro-coriander-coriandrum-sativum/",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-25",
+  },
   borgmannHydroponicEc: {
     id: "borgmann-hydroponic-ec-values",
     publisher: "Borgmann Aquaponik & Hydroponik",
@@ -1377,6 +1406,7 @@ export const CROP_STAGE_REFERENCES = [
       {
         minDays: 14,
         maxDays: 21,
+        stageSuggestion: "SEEDLING",
         text: {
           es: "Esta guía sitúa sus plántulas aproximadamente en esta ventana; confirma la etapa observando hojas y desarrollo, no solo la edad.",
           en: "This guide places its seedlings approximately in this window; confirm the stage from leaves and development, not age alone.",
@@ -1411,6 +1441,7 @@ export const CROP_STAGE_REFERENCES = [
       {
         minDays: 14,
         maxDays: 21,
+        stageSuggestion: "SEEDLING",
         text: {
           es: "La guía describe una ventana habitual de trasplante. Comprueba además 3–4 hojas verdaderas y raíces visibles bajo el sustrato; la edad no cambia automáticamente la etapa.",
           en: "The guide describes a typical transplant window. Also check for 3–4 true leaves and roots visible below the substrate; age does not automatically change the stage.",
@@ -1420,6 +1451,44 @@ export const CROP_STAGE_REFERENCES = [
     text: {
       es: "En una guía de lechuga hidropónica en ambiente controlado, la Universidad de Kentucky describe el trasplante cuando hay 3–4 hojas verdaderas y raíces visibles bajo el sustrato, habitualmente 14–21 días tras la siembra. Es una referencia del método, no una etapa confirmada ni una dosis para tu planta.",
       en: "In its controlled-environment hydroponic lettuce guide, the University of Kentucky describes transplanting when there are 3–4 true leaves and roots visible below the substrate, usually 14–21 days after sowing. This is method-specific context, not a confirmed stage or a dose for your plant.",
+    },
+  },
+  {
+    cropIdentity: "tomato",
+    source: NUTRIENT_SOURCES.alabamaTransplantProduction,
+    ageWindows: [
+      {
+        minDays: 28,
+        maxDays: 42,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Auburn Extension describe 4–6 semanas de producción de plugs para tomate. Confirma hojas verdaderas y un cepellón con raíces antes de marcar Plántula; la edad no cambia por sí sola la etapa ni la dosis.",
+          en: "Auburn Extension describes 4–6 weeks of plug production for tomato. Confirm true leaves and a rooted plug before marking Seedling; age alone does not change the stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La guía de Alabama Extension da 4–6 semanas como tiempo de producción de plugs de tomate y recomienda evaluar el desarrollo del trasplante. Es una referencia de vivero, no una etapa confirmada ni una pauta de EC.",
+      en: "Alabama Extension gives 4–6 weeks as tomato plug production time and recommends evaluating transplant development. This is nursery context, not a confirmed stage or an EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "pepper",
+    source: NUTRIENT_SOURCES.alabamaTransplantProduction,
+    ageWindows: [
+      {
+        minDays: 42,
+        maxDays: 63,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Auburn Extension describe 6–9 semanas de producción de plugs para pimiento. Comprueba hojas verdaderas, raíces y tamaño del cepellón antes de marcar Plántula; la edad no cambia por sí sola la etapa ni la dosis.",
+          en: "Auburn Extension describes 6–9 weeks of plug production for pepper. Check true leaves, roots and plug size before marking Seedling; age alone does not change the stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La guía de Alabama Extension da 6–9 semanas como tiempo de producción de plugs de pimiento y recomienda evaluar el desarrollo del trasplante. Es una referencia de vivero, no una etapa confirmada ni una pauta de EC.",
+      en: "Alabama Extension gives 6–9 weeks as pepper plug production time and recommends evaluating transplant development. This is nursery context, not a confirmed stage or an EC recommendation.",
     },
   },
   {
@@ -1437,6 +1506,7 @@ export const CROP_STAGE_REFERENCES = [
       {
         minDays: 14,
         maxDays: 21,
+        stageSuggestion: "SEEDLING",
         text: {
           es: "Tras las primeras dos semanas, la guía reduce la temperatura cuando se expanden los cotiledones. Usa el desarrollo observado para confirmar la etapa; esta referencia de propagación no establece una dosis para el tanque.",
           en: "After the first two weeks, the guide lowers temperature once cotyledons expand. Confirm stage from observed development; this propagation reference does not establish a reservoir dose.",
@@ -1446,6 +1516,52 @@ export const CROP_STAGE_REFERENCES = [
     text: {
       es: "La guía de Magic Fountains indica 5–8 días para la radícula y un plug de aproximadamente 5–6 semanas. Son tiempos de propagación del productor; no prueban por sí solos la etapa de una planta ni definen EC hidropónica de tanque.",
       en: "The Magic Fountains guide gives 5–8 days to radicle emergence and approximately 5–6 weeks for a plug. These are breeder propagation timings; they do not by themselves prove a plant's stage or define reservoir EC.",
+    },
+  },
+  {
+    cropIdentity: "spinach",
+    source: NUTRIENT_SOURCES.ukyLeafyCropHydroponic,
+    ageWindows: [
+      {
+        minDays: 12,
+        maxDays: 18,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "La guía de Extension sitúa a muchos trasplantes de hoja entre 12–18 días, pero varía con cultivo, ambiente y cubo. Confirma 3–5 hojas verdaderas y raíces visibles antes de marcar Plántula; la edad no cambia sola la etapa ni la dosis.",
+          en: "The Extension guide places many leafy-crop transplants at 12–18 days, but this varies with crop, environment, and cube. Confirm 3–5 true leaves and visible roots before marking Seedling; age alone does not change the stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Para cultivos de hoja hidropónicos, Kentucky/Tennessee Extension describe el trasplante normalmente a los 12–18 días cuando hay 3–5 hojas verdaderas y raíces visibles. Son criterios de establecimiento, no una predicción de etapa madura ni una pauta de EC.",
+      en: "For hydroponic leafy crops, Kentucky/Tennessee Extension describes transplanting often at 12–18 days when 3–5 true leaves and visible roots are present. These are establishment criteria, not a prediction of mature stage or an EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "mustard-greens",
+    source: NUTRIENT_SOURCES.ukyLeafyCropHydroponic,
+    ageWindows: [
+      {
+        minDays: 12,
+        maxDays: 18,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "La guía de Extension sitúa a muchos trasplantes de hoja entre 12–18 días, pero varía con cultivo, ambiente y cubo. Confirma 3–5 hojas verdaderas y raíces visibles antes de marcar Plántula; la edad no cambia sola la etapa ni la dosis.",
+          en: "The Extension guide places many leafy-crop transplants at 12–18 days, but this varies with crop, environment, and cube. Confirm 3–5 true leaves and visible roots before marking Seedling; age alone does not change the stage or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La guía incluye mostaza entre los cultivos de hoja y describe el trasplante comúnmente a los 12–18 días con 3–5 hojas verdaderas y raíces visibles. Es una referencia de establecimiento con variación por ambiente y cubo; no es una pauta de EC.",
+      en: "The guide includes mustard among leafy crops and describes transplanting often at 12–18 days with 3–5 true leaves and visible roots. This establishment reference varies by environment and cube and is not an EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "cilantro",
+    source: NUTRIENT_SOURCES.wisconsinCilantroGrowth,
+    text: {
+      es: "Wisconsin Extension describe las hojas jóvenes de cilantro como anchas y planas; al espigar aparecen hojas más finas y plumosas sobre el tallo floral. La planta seca y las semillas marrones indican una fase posterior. Son rasgos observables, no un calendario universal ni una dosis.",
+      en: "Wisconsin Extension describes young cilantro leaves as broad and flat; when bolting begins, finer, fern-like leaves appear along the flowering stem. A dried plant and brown seed pods indicate a later phase. These are observable cues, not a universal calendar or dose.",
     },
   },
 ] as const;

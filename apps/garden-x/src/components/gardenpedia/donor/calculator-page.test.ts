@@ -35,6 +35,7 @@ import {
   recipeStagesForSchedule,
   recordActualDoses,
   resolveNutrientCropIdentity,
+  searchCalculatorPlants,
 } from "./calculator-lovable-adapter";
 
 // Transcribed from the user's 2026-11-07 inventory, deduplicated by variety;
@@ -1293,12 +1294,10 @@ describe("Gardenpedia Calculator V1 integration", () => {
       hydroponicSystem: "UNKNOWN",
     });
 
-    expect(defaultCoverage.rows.find((row) => row.plantId === "garlic-chives")?.classification).toBe(
-      "INSUFFICIENT",
-    );
     expect(
-      aeroponicVegetative.rows.find((row) => row.plantId === "garlic-chives"),
-    ).toMatchObject({
+      defaultCoverage.rows.find((row) => row.plantId === "garlic-chives")?.classification,
+    ).toBe("INSUFFICIENT");
+    expect(aeroponicVegetative.rows.find((row) => row.plantId === "garlic-chives")).toMatchObject({
       classification: "SUPPORTED_DIRECT",
       evidenceIdentity: "garlic-chives",
     });
@@ -1449,6 +1448,31 @@ describe("Gardenpedia Calculator V1 integration", () => {
         expect(byEc.kind === "ok" && byEc.evidence).toBe("insufficient");
         expect(byEc.kind === "ok" && byEc.range).toBeUndefined();
         expect(recipe.kind === "ok" && recipe.range).toBeUndefined();
+      }
+    }
+  });
+
+  it("finds every one of the user's 83 varieties through canonical plant search", () => {
+    for (const plantId of USER_ZERO_83_VARIETY_IDS) {
+      const plant = CALCULATOR_PLANTS.find((candidate) => candidate.id === plantId);
+      expect(plant, plantId).toBeTruthy();
+      if (!plant) continue;
+
+      expect(
+        searchCalculatorPlants(plant.name.en, "en").map(({ id }) => id),
+        plantId,
+      ).toContain(plantId);
+      if (plant.name.es) {
+        expect(
+          searchCalculatorPlants(plant.name.es, "es").map(({ id }) => id),
+          plantId,
+        ).toContain(plantId);
+      }
+      if (plant.scientificName) {
+        expect(
+          searchCalculatorPlants(plant.scientificName, "en").map(({ id }) => id),
+          plantId,
+        ).toContain(plantId);
       }
     }
   });

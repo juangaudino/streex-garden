@@ -49,9 +49,10 @@ describe("Calculator plant-stage guidance", () => {
   it("shows the lettuce transplant-age cue without selecting a phenological stage", () => {
     render(<CalculatorPage language="en" initialPlantId="bibb-lettuce" />);
 
-    fireEvent.change(screen.getByRole("spinbutton", { name: "Days since sowing of Bibb Lettuce" }), {
-      target: { value: "17" },
-    });
+    fireEvent.change(
+      screen.getByRole("spinbutton", { name: "Days since sowing of Bibb Lettuce" }),
+      { target: { value: "17" } },
+    );
 
     expect(screen.getByText(/typical transplant window/i)).toBeTruthy();
     expect(screen.getAllByText(/3–4 true leaves/i).length).toBeGreaterThan(0);
@@ -60,6 +61,11 @@ describe("Calculator plant-stage guidance", () => {
         .getAllByRole("combobox")
         .some((select) => (select as HTMLSelectElement).value === "UNSPECIFIED"),
     ).toBe(true);
+
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "SEEDLING",
+    );
   });
 
   it("shows published holy-basil age windows only as confirmation cues", () => {
@@ -75,6 +81,41 @@ describe("Calculator plant-stage guidance", () => {
         .getAllByRole("combobox")
         .some((select) => (select as HTMLSelectElement).value === "UNSPECIFIED"),
     ).toBe(true);
+  });
+
+  it("shows shared hydroponic seedling criteria for spinach and requires confirmation", () => {
+    render(<CalculatorPage language="en" initialPlantId="seaside-f1-spinach" />);
+    fireEvent.change(screen.getByRole("spinbutton", { name: /Days since sowing of/ }), {
+      target: { value: "15" },
+    });
+
+    expect(screen.getAllByText(/3–5 true leaves and visible roots/i).length).toBeGreaterThan(0);
+    const stage = screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement;
+    expect(stage.value).toBe("UNSPECIFIED");
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect(stage.value).toBe("SEEDLING");
+  });
+
+  it("shows cilantro bolting morphology without assigning an age-derived stage", () => {
+    render(<CalculatorPage language="en" initialPlantId="cilantro" />);
+    const disclosure = screen.getByText("Reference for observing this plant");
+    fireEvent.click(disclosure);
+    expect(screen.getByText(/young cilantro leaves as broad and flat/i)).toBeTruthy();
+    expect((screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement).value).toBe(
+      "UNSPECIFIED",
+    );
+  });
+
+  it("lets the grower confirm a source-backed age cue without auto-changing stage or dose", () => {
+    render(<CalculatorPage language="en" initialPlantId="tulsi-holy-basil-ocimum-tenuiflorum" />);
+    const age = screen.getByRole("spinbutton", { name: /Days since sowing of/ });
+    fireEvent.change(age, { target: { value: "18" } });
+
+    const stage = screen.getByRole("combobox", { name: /Stage of/ }) as HTMLSelectElement;
+    expect(stage.value).toBe("UNSPECIFIED");
+    fireEvent.click(screen.getByRole("button", { name: "Confirm stage: seedling" }));
+    expect(stage.value).toBe("SEEDLING");
+    expect(screen.getByText(/if none applies, the calculation will say so/i)).toBeTruthy();
   });
 
   it("offers both reported Zinnia EC treatments as explicit user targets", () => {

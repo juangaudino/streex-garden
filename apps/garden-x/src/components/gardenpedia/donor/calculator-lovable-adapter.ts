@@ -13,6 +13,7 @@ import {
 } from "@/lib/garden-nutrient-engine-v1/engine";
 import {
   CROP_EVIDENCE,
+  CROP_STAGE_REFERENCES,
   MANUFACTURER_RECIPES,
   NUTRIENT_SOURCES,
 } from "@/lib/garden-nutrient-engine-v1/data";
@@ -93,6 +94,90 @@ export const CALCULATOR_PLANTS: CalculatorPlant[] = donorPlants.map((plant) => (
   aliases: plant.tags,
 }));
 
+const CALCULATOR_SEARCH_STOP_WORDS = new Set(["common", "mixed", "plant", "type", "variety"]);
+
+function normalizeCalculatorSearch(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLocaleLowerCase()
+    .replace(/×/g, " x ")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+/**
+ * Search public canonical identities without resolving a crop by name. Query
+ * words may match across display name, scientific name, cultivar and tags;
+ * results remain explicit identities for the user to choose.
+ */
+export function searchCalculatorPlants(query: string, language: Lang): CalculatorPlant[] {
+  const normalizedQuery = normalizeCalculatorSearch(query);
+  const groups = query
+    .split("/")
+    .map((group) =>
+      normalizeCalculatorSearch(group)
+        .split(" ")
+        .filter((word) => !CALCULATOR_SEARCH_STOP_WORDS.has(word)),
+    )
+    .filter((words) => words.length > 0);
+  const searchable = CALCULATOR_PLANTS.filter(
+    (plant) => !CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id),
+  );
+  if (!normalizedQuery) return searchable;
+
+  const matches = searchable.flatMap((plant) => {
+    const fields = [
+      plant.id,
+      plant.name.en,
+      plant.name.es,
+      plant.scientificName,
+      plant.cultivar ?? "",
+      ...plant.aliases,
+    ];
+    const normalizedFields = fields.map(normalizeCalculatorSearch).filter(Boolean);
+    const corpus = normalizedFields.join(" ");
+    const normalizedDisplayName = normalizeCalculatorSearch(plant.name[language]);
+    const exactDisplayName = normalizedDisplayName === normalizedQuery;
+    const exactField = normalizedFields.includes(normalizedQuery);
+    const queryTokens = groups.flat();
+    const matchedTokens = queryTokens.filter((word) => corpus.includes(word));
+    const matchedRatio = queryTokens.length ? matchedTokens.length / queryTokens.length : 0;
+    const matchedGroup = groups.some(
+      (words) => words.length >= 2 && words.every((word) => corpus.includes(word)),
+    );
+    const isSingleTermQuery = groups.length === 1 && groups[0]!.length === 1;
+    if (
+      !exactField &&
+      !matchedGroup &&
+      !(isSingleTermQuery && matchedRatio === 1) &&
+      matchedRatio < 0.67
+    )
+      return [];
+
+    const score = exactDisplayName
+      ? 0
+      : normalizedDisplayName.startsWith(normalizedQuery)
+        ? 1
+        : exactField
+          ? 2
+          : matchedRatio === 1
+            ? 3
+            : 4;
+    return [{ plant, score, matchedCount: matchedTokens.length }];
+  });
+
+  return matches
+    .sort(
+      (a, b) =>
+        a.score - b.score ||
+        b.matchedCount - a.matchedCount ||
+        a.plant.name[language].localeCompare(b.plant.name[language]),
+    )
+    .map(({ plant }) => plant);
+}
+
 const STAGE_GUIDE_SECTIONS: Record<CalculatorCropStage, readonly string[]> = {
   UNSPECIFIED: ["growth", "flowering", "harvest", "germination"],
   SEEDLING: ["germination", "growth"],
@@ -129,6 +214,30 @@ export function calculatorStageGuidanceForPlant(
       confidence,
       sources,
     }));
+}
+
+/** Returns only the reviewed stage reference explicitly mapped to this identity. */
+export function calculatorStageReferenceForPlant(plantId: string) {
+  const exactIdentity = CROP_STAGE_REFERENCES.find((item) => item.cropIdentity === plantId);
+  if (exactIdentity) return exactIdentity;
+  const cropIdentity = resolveNutrientCropIdentity(plantId);
+  return cropIdentity
+    ? CROP_STAGE_REFERENCES.find((item) => item.cropIdentity === cropIdentity)
+    : undefined;
+}
+
+/**
+ * Returns a source-backed age cue for the selected canonical plant identity.
+ * The caller must ask the user to confirm morphology before applying the stage.
+ */
+export function calculatorAgeStageCueForPlant(plantId: string, ageDays: number) {
+  if (!Number.isFinite(ageDays) || ageDays < 0) return undefined;
+  const reference = calculatorStageReferenceForPlant(plantId);
+  if (!reference || !("ageWindows" in reference)) return undefined;
+  const ageWindow = reference.ageWindows.find(
+    (window) => ageDays >= window.minDays && ageDays <= window.maxDays,
+  );
+  return ageWindow ? { reference, ageWindow } : undefined;
 }
 
 /** Carnivorous plant profiles stay in Gardenpedia, but are not nutrient recipe inputs. */

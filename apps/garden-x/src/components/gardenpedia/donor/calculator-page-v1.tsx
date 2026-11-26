@@ -21,7 +21,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { gardenSeedAgeReferences } from "@/generated/garden-seed-profile-index";
 import type { HydroponicSystem } from "@/lib/garden-nutrient-engine-v1/types";
-import { CROP_STAGE_REFERENCES, CROP_STUDY_REFERENCES } from "@/lib/garden-nutrient-engine-v1/data";
+import { CROP_STUDY_REFERENCES } from "@/lib/garden-nutrient-engine-v1/data";
 import {
   Dialog,
   DialogContent,
@@ -37,6 +37,7 @@ import {
   calibrationUsage,
   calculatorSourceUrl,
   calculatorStageGuidanceForPlant,
+  calculatorStageReferenceForPlant,
   generalCropReferenceForStage,
   formatActualDosePrefill,
   loadSavedSystems,
@@ -47,6 +48,8 @@ import {
   recipeStagesForSchedule,
   recordActualDoses,
   resolveNutrientCropIdentity,
+  calculatorAgeStageCueForPlant,
+  searchCalculatorPlants,
   type CalcResult,
   type CalculatorAdditionalStage,
   type CalculatorCropStage,
@@ -1109,15 +1112,13 @@ export function CalculatorPage({
                     {Object.keys(crops).map((id) => {
                       const c = CALCULATOR_PLANTS.find((x) => x.id === id);
                       if (!c) return null;
-                      const stageReference = CROP_STAGE_REFERENCES.find(
-                        (reference) => reference.cropIdentity === resolveNutrientCropIdentity(id),
-                      );
+                      const stageReference = calculatorStageReferenceForPlant(id);
                       const ageDays = Number(cropSowingAgeDays[id]);
-                      const ageWindow =
-                        stageReference && "ageWindows" in stageReference
-                          ? stageReference.ageWindows.find(
-                              (window) => ageDays >= window.minDays && ageDays <= window.maxDays,
-                            )
+                      const ageCue = calculatorAgeStageCueForPlant(id, ageDays);
+                      const ageWindow = ageCue?.ageWindow;
+                      const ageStageSuggestion =
+                        ageWindow && "stageSuggestion" in ageWindow
+                          ? ageWindow.stageSuggestion
                           : undefined;
                       const studies = CROP_STUDY_REFERENCES.filter((reference) =>
                         (reference.plantIds as readonly string[]).includes(id),
@@ -1466,6 +1467,39 @@ export function CalculatorPage({
                           {cropSowingAgeDays[id] !== undefined && cropSowingAgeDays[id] !== "" && (
                             <div className="col-span-full text-xs text-muted-foreground">
                               {ageWindow && <p>{ageWindow.text[lang]}</p>}
+                              {ageStageSuggestion && (
+                                <div className="mt-2 rounded-md border border-border/70 p-2">
+                                  <p>
+                                    {lang === "es"
+                                      ? "La ventana publicada ofrece una pista de plántula; confirma cotiledones/hojas y desarrollo. La edad no la aplica automáticamente."
+                                      : "The published window offers a seedling cue; confirm cotyledons/leaves and development. Age does not apply it automatically."}
+                                  </p>
+                                  <button
+                                    type="button"
+                                    disabled={cropStages[id] === ageStageSuggestion}
+                                    onClick={() =>
+                                      setCropStages((current) => ({
+                                        ...current,
+                                        [id]: ageStageSuggestion,
+                                      }))
+                                    }
+                                    className="mt-2 min-h-9 rounded-md border border-border px-3 font-medium text-foreground disabled:opacity-60"
+                                  >
+                                    {cropStages[id] === ageStageSuggestion
+                                      ? lang === "es"
+                                        ? "Plántula seleccionada"
+                                        : "Seedling selected"
+                                      : lang === "es"
+                                        ? "Confirmar etapa: plántula"
+                                        : "Confirm stage: seedling"}
+                                  </button>
+                                  <p className="mt-1">
+                                    {lang === "es"
+                                      ? "Al confirmarla, la etapa se usa para filtrar evidencia; si no hay evidencia aplicable, el cálculo lo indicará."
+                                      : "After confirmation, this stage filters applicable evidence; if none applies, the calculation will say so."}
+                                  </p>
+                                </div>
+                              )}
                               {seedAgeReferences[id] ? (
                                 <>
                                   <p>
@@ -2384,29 +2418,8 @@ function PlantPickerResults({
   onSelect: (id: string) => void;
   noResults: string;
 }) {
-  const normalizedQuery = query
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLocaleLowerCase();
-  const matches = CALCULATOR_PLANTS.filter((plant) => {
-    if (CALCULATOR_EXCLUDED_CARNIVOROUS_IDS.has(plant.id)) return false;
-    if (!normalizedQuery) return true;
-    return [
-      plant.id,
-      plant.name.es,
-      plant.name.en,
-      plant.scientificName,
-      plant.cultivar ?? "",
-      ...plant.aliases,
-    ].some((value) =>
-      value
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .toLocaleLowerCase()
-        .includes(normalizedQuery),
-    );
-  });
-  const visible = normalizedQuery ? matches : matches.slice(0, 8);
+  const matches = searchCalculatorPlants(query, lang);
+  const visible = query.trim() ? matches : matches.slice(0, 8);
 
   return (
     <div className="min-h-0 overflow-y-auto rounded-xl border border-border/70" role="listbox">

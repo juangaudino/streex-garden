@@ -9,12 +9,17 @@
 
 ## Current production snapshot — 2026-11-26
 
-- Canonical `main`: `cdc6306468304a6f50594b6d863b4dd576447332` (`Add sourced
-  plant transition cues to calculator`). Vercel reports the corresponding
-  production deployment **READY**. This is the state to use for User Zero QA.
+- Canonical `main`: `ad092c486d36c35d4a19ca603eafec4bed7496ce` (`perf(calculator):
+  cache canonical plant search index`). Vercel reports this production
+  deployment **READY** at the canonical Gardenpedia domain. The live
+  `/gardenpedia/?view=calculator` route returned HTTP 200 and rendered the
+  Recipe workbench with the official FloraSeries dose and EC expectation range.
 - Calculator evidence follow-ups were merged through PRs #25, #26 and #27.
   The latest changes preserve explicit crop-stage/system evidence boundaries,
-  correct the Jolly Jester species boundary, and add sourced transition cues.
+  correct the Jolly Jester species boundary, add sourced transition cues,
+  require explicit composition for mixed-age/stage reservoirs, and cache the
+  canonical plant-search index so bilingual coverage checks stay within the
+  test timeout.
 - The catalog adapter exposes 507 identities; 499 are nutrient-calculator
   eligible and 8 carnivorous profiles are intentionally excluded. All 83 of
   User Zero's non-carnivorous varieties are searchable and covered by
@@ -27,11 +32,16 @@
   official recipe or an explicit user target with compatible exact-product
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
-- The latest local verification on this state passed the full suite:
-  **997/997 tests across 126 files**, Calculator/engine focused tests
-  **276/276**, typecheck, and Gardenpedia content validation. Content counts:
+- The latest local verification and GitHub Actions CI passed the full suite:
+  **998/998 tests across 126 files**, along with typecheck, lint and production
+  build. Gardenpedia content validation passed. Content counts:
   512 plant source records, 1,304 sources, 328 Seed Profiles, 464 taxonomy
   records, and 0 unresolved source IDs.
+- Production browser inspection verified that Calculator loads in Spanish, the
+  four modes are present, Quick Mix starts empty, and the default FloraSeries
+  Recipe shows FloraMicro, FloraGro, FloraBloom and the manufacturer EC range.
+  This was a desktop browser check; it does not replace interaction QA on the
+  physical iPhone.
 - Physical iPhone QA and a real measured FloraSeries calibration are still
   pending. Simulated software observations validate arithmetic only; they are
   not empirical product-response measurements. Do not mark the Calculator

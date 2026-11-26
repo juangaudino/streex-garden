@@ -7,7 +7,37 @@
 > [QA-USUARIO.md](./QA-USUARIO.md). This file preserves the original fixtures
 > and historical evidence; it does not certify a later release.
 
-## Current continuation snapshot — 2026-11-26
+## Current production snapshot — 2026-11-26
+
+- Canonical `main`: `cdc6306468304a6f50594b6d863b4dd576447332` (`Add sourced
+  plant transition cues to calculator`). Vercel reports the corresponding
+  production deployment **READY**. This is the state to use for User Zero QA.
+- Calculator evidence follow-ups were merged through PRs #25, #26 and #27.
+  The latest changes preserve explicit crop-stage/system evidence boundaries,
+  correct the Jolly Jester species boundary, and add sourced transition cues.
+- The catalog adapter exposes 507 identities; 499 are nutrient-calculator
+  eligible and 8 carnivorous profiles are intentionally excluded. All 83 of
+  User Zero's non-carnivorous varieties are searchable and covered by
+  deterministic Recipe, By EC, Correct and Top Up tests.
+- At unspecified stage/system, the 83-variety audit classifies 7 as
+  `SUPPORTED_DIRECT`, 57 as `SUPPORTED_VIA_DEFENSIBLE_MAPPING`, and 19 as
+  `INSUFFICIENT`. Across the tested 6 phenological stages × 7 hydroponic
+  systems, 70/83 have an automatic evidence range in at least one context;
+  13 remain insufficient in every tested context. Those 13 still support an
+  official recipe or an explicit user target with compatible exact-product
+  calibration; the UI must not turn manual study observations into automatic
+  crop optima.
+- The latest local verification on this state passed the full suite:
+  **997/997 tests across 126 files**, Calculator/engine focused tests
+  **276/276**, typecheck, and Gardenpedia content validation. Content counts:
+  512 plant source records, 1,304 sources, 328 Seed Profiles, 464 taxonomy
+  records, and 0 unresolved source IDs.
+- Physical iPhone QA and a real measured FloraSeries calibration are still
+  pending. Simulated software observations validate arithmetic only; they are
+  not empirical product-response measurements. Do not mark the Calculator
+  empirically validated until User Zero records and reviews a real calibration.
+
+## Historical continuation snapshot — superseded
 
 - Isolated worktree: `/private/tmp/garden-calculator-online-review`, branch
   `codex/calculator-online-review-2026-11-26`, base/HEAD snapshot
@@ -143,7 +173,7 @@ There is no empirical GH EC-to-dose calibration in the inspected repository/prot
 
 The requested empirical-calibration gate is **not proven** by these checks. An actual measured exact-product observation is needed for that gate. The software accepts, saves and consumes such observations; simulated QA entries must never be relabeled as physical evidence.
 
-## Latest continuation — 2026-11-26
+## Historical continuation — 2026-11-26 (superseded by production snapshot)
 
 - Worktree: `/private/tmp/garden-calculator-online-review`, branch
   `codex/calculator-online-review-2026-11-26`, based on local

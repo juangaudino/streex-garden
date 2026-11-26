@@ -92,6 +92,11 @@ const T = {
     customAbNote:
       "Identificado por ti. No hay receta oficial cargada: mide las dosis reales de A y B para calibrar y sigue las instrucciones del fabricante para mezclarlos.",
     stage: "Etapa de la receta",
+    mixedStages: "Etapas presentes",
+    mixedStagesHelp:
+      "Selecciona las etapas que observas en esta variedad. Garden evaluará el rango común sin ponderar por cantidad de plantas.",
+    mixedStagesRequired:
+      "Para evaluar una mezcla de etapas, indica al menos dos etapas observadas y una cantidad de plantas suficiente.",
     recipeProgram: "Programa del fabricante",
     feedingEvent: "Evento de alimentación",
     currentEc: "EC que mediste",
@@ -231,6 +236,11 @@ const T = {
     customAbNote:
       "Identified by you. No official recipe is loaded: measure the actual A and B doses to calibrate and follow the manufacturer's mixing instructions.",
     stage: "Recipe stage",
+    mixedStages: "Stages represented",
+    mixedStagesHelp:
+      "Select the stages you observe in this variety. Garden evaluates the common range without weighting by plant count.",
+    mixedStagesRequired:
+      "To evaluate mixed stages, select at least two observed stages and a sufficient plant count.",
     recipeProgram: "Manufacturer program",
     feedingEvent: "Feeding event",
     currentEc: "EC you measured",
@@ -1165,6 +1175,21 @@ export function CalculatorPage({
                       const ageCue = calculatorAgeStageCueForPlant(id, ageDays);
                       const ageWindow = ageCue?.ageWindow;
                       const seedTransitionCue = calculatorSeedTransitionForPlant(id);
+                      const mixedStageLabels = (cropAdditionalStages[id] ?? [])
+                        .map(
+                          (stage) =>
+                            (
+                              ({
+                                SEEDLING: lang === "es" ? "Plántula" : "Seedling",
+                                VEGETATIVE:
+                                  lang === "es" ? "Crecimiento vegetativo" : "Vegetative growth",
+                                MATURE: lang === "es" ? "Planta madura" : "Mature plant",
+                                FLOWERING: lang === "es" ? "Floración" : "Flowering",
+                                FRUITING: lang === "es" ? "Fructificación" : "Fruiting",
+                              }) as const
+                            )[stage],
+                        )
+                        .join(", ");
                       const ageStageSuggestion: CalculatorCropStage | undefined =
                         ageWindow &&
                         "stageSuggestion" in ageWindow &&
@@ -1248,12 +1273,7 @@ export function CalculatorPage({
                                 ...cropStages,
                                 [id]: event.target.value as CalculatorCropStage,
                               });
-                              setCropAdditionalStages((current) => ({
-                                ...current,
-                                [id]: (current[id] ?? []).filter(
-                                  (stage) => stage !== event.target.value,
-                                ),
-                              }));
+                              setCropAdditionalStages((current) => ({ ...current, [id]: [] }));
                             }}
                             className="col-span-full w-full min-w-0 bg-transparent text-xs font-normal"
                           >
@@ -1276,9 +1296,7 @@ export function CalculatorPage({
                               {lang === "es" ? "Fructificación" : "Fruiting"}
                             </option>
                             <option value="MIXED">
-                              {lang === "es"
-                                ? "Plántulas y otras etapas"
-                                : "Seedlings and other stages"}
+                              {lang === "es" ? "Varias etapas" : "Mixed stages"}
                             </option>
                           </select>
                           {generalReference && (
@@ -1540,17 +1558,23 @@ export function CalculatorPage({
                               ))}
                             </details>
                           )}
-                          {crops[id]! > 1 && (
+                          {(crops[id]! > 1 || cropStages[id] === "MIXED") && (
                             <details className="col-span-full text-xs text-muted-foreground">
                               <summary className="cursor-pointer font-medium">
                                 {lang === "es"
-                                  ? "¿Hay otras etapas de esta planta?"
-                                  : "Other stages of this plant?"}
+                                  ? cropStages[id] === "MIXED"
+                                    ? `${t.mixedStages}${mixedStageLabels ? ` · ${mixedStageLabels}` : ""}`
+                                    : "¿Hay otras etapas de esta planta?"
+                                  : cropStages[id] === "MIXED"
+                                    ? `${t.mixedStages}${mixedStageLabels ? ` · ${mixedStageLabels}` : ""}`
+                                    : "Other stages of this plant?"}
                               </summary>
                               <p className="mt-2">
-                                {lang === "es"
-                                  ? "Selecciona las etapas observadas en las demás plantas de esta variedad."
-                                  : "Select the stages observed in the other plants of this variety."}
+                                {cropStages[id] === "MIXED"
+                                  ? t.mixedStagesHelp
+                                  : lang === "es"
+                                    ? "Selecciona las etapas observadas en las demás plantas de esta variedad."
+                                    : "Select the stages observed in the other plants of this variety."}
                               </p>
                               <div className="mt-2 flex flex-wrap gap-x-4 gap-y-2">
                                 {(
@@ -1569,8 +1593,7 @@ export function CalculatorPage({
                                 )
                                   .filter(
                                     ([stage]) =>
-                                      stage !== cropStages[id] &&
-                                      !(cropStages[id] === "MIXED" && stage === "SEEDLING"),
+                                      cropStages[id] === "MIXED" || stage !== cropStages[id],
                                   )
                                   .map(([stage, label]) => (
                                     <label key={stage} className="flex items-center gap-2">
@@ -2166,7 +2189,11 @@ export function CalculatorPage({
                   <p className="eyebrow">{t.now}</p>
                   <p className="mt-3 font-display text-xl font-semibold">{t.needs}</p>
                   {result.message ? (
-                    <p className="mt-3 text-sm text-muted-foreground">{result.message}</p>
+                    <p className="mt-3 text-sm text-muted-foreground">
+                      {result.message === "MIXED_STAGE_COMPOSITION_REQUIRED"
+                        ? t.mixedStagesRequired
+                        : result.message}
+                    </p>
                   ) : null}
                   {result.calibrationRequired && product.available && (
                     <Button

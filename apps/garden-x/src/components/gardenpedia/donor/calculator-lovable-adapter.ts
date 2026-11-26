@@ -917,9 +917,9 @@ export function contextFor(
     [
       ...new Set([
         ...(cropStages[id] === "MIXED"
-          ? (["UNSPECIFIED", "SEEDLING"] as const)
+          ? (cropAdditionalStages[id] ?? [])
           : ([cropStages[id] ?? "UNSPECIFIED"] as const)),
-        ...(crops[id]! > 1 ? (cropAdditionalStages[id] ?? []) : []),
+        ...(cropStages[id] !== "MIXED" && crops[id]! > 1 ? (cropAdditionalStages[id] ?? []) : []),
       ]),
     ].map((stage) => ({
       cropIdentity: resolveNutrientCropIdentity(id) ?? id,
@@ -1370,18 +1370,17 @@ function calculateResult(input: CalcInput): CalcResult {
     );
   }
   if (
+    input.mode !== "recipe" &&
     Object.entries(input.crops).some(([id, count]) => {
       const primary = input.cropStages?.[id] ?? "UNSPECIFIED";
       const stages = new Set([
-        ...(primary === "MIXED" ? ["UNSPECIFIED", "SEEDLING"] : [primary]),
+        ...(primary === "MIXED" ? [] : [primary]),
         ...(input.cropAdditionalStages?.[id] ?? []),
       ]);
-      return stages.size > count;
+      return primary === "MIXED" ? stages.size < 2 || stages.size > count : stages.size > count;
     })
   )
-    return engineNeeds(
-      "Hay más etapas distintas que plantas de una variedad. Ajusta la cantidad de plantas o las etapas seleccionadas.",
-    );
+    return engineNeeds("MIXED_STAGE_COMPOSITION_REQUIRED");
   if (
     ![
       input.liters,

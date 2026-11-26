@@ -1068,9 +1068,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
       userTarget: null,
       round: 1,
     });
-    expect(invalid.kind).toBe("needs");
-    if (invalid.kind === "needs")
-      expect(invalid.message).toContain("more distinct stages than plants");
+    // Manufacturer recipe math is independent of crop stage composition.
+    expect(invalid.kind).toBe("ok");
+    if (invalid.kind === "ok") expect(invalid.compatibility?.status).toBe("INSUFFICIENT");
   });
 
   it("uses the selected growing system instead of inferring it from the nutrient product", () => {
@@ -1940,6 +1940,56 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
   });
 
+  it("exposes only the published weeks for each official FloraSeries schedule", () => {
+    expect(
+      recipeStagesForSchedule("gh-flora", "LIGHT_FEED").map((stage) => stage.feedingIndex),
+    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+    expect(
+      recipeStagesForSchedule("gh-flora", "MEDIUM_FEED").map((stage) => stage.feedingIndex),
+    ).toEqual([1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13]);
+    expect(
+      recipeStagesForSchedule("gh-flora", "AGGRESSIVE_FEED").map((stage) => stage.feedingIndex),
+    ).toEqual([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]);
+
+    // Same feeding index is a different manufacturer recipe between programs.
+    const light = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      scheduleId: "LIGHT_FEED",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    const medium = calculateGardenResult({
+      mode: "recipe",
+      crops: { "genovese-basil": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "medium_feed-feeding-2",
+      scheduleId: "MEDIUM_FEED",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: null,
+      currentLiters: null,
+      waterAdded: null,
+      userTarget: null,
+      round: 1,
+    });
+    expect(light.kind).toBe("ok");
+    expect(medium.kind).toBe("ok");
+    if (light.kind === "ok" && medium.kind === "ok") {
+      expect(light.doses).not.toEqual(medium.doses);
+      expect(light.expectedEc).not.toEqual(medium.expectedEc);
+    }
+  });
+
   it("keeps an unmapped published identity insufficient instead of guessing a crop", () => {
     const result = calculateGardenResult({
       mode: "recipe",
@@ -2204,8 +2254,65 @@ describe("Gardenpedia Calculator V1 integration", () => {
       crops: { "bibb-lettuce": 2 },
       cropStages: { "bibb-lettuce": "MIXED" },
     });
-    expect(seedlings.compatibility?.status).toBe("INSUFFICIENT");
-    expect(seedlings.range).toBeUndefined();
+    expect(seedlings.kind).toBe("needs");
+    if (seedlings.kind === "needs")
+      expect(seedlings.message).toBe("MIXED_STAGE_COMPOSITION_REQUIRED");
+    expect(
+      contextFor(
+        { "bibb-lettuce": 2 },
+        "gh-flora",
+        { "bibb-lettuce": "MIXED" },
+        { "bibb-lettuce": ["SEEDLING", "VEGETATIVE"] },
+      ).map((context) => context.phenologicalStage),
+    ).toEqual(["SEEDLING", "VEGETATIVE"]);
+    const declaredMixedStages = calculateGardenResult({
+      ...base,
+      crops: { "bibb-lettuce": 2 },
+      cropStages: { "bibb-lettuce": "MIXED" },
+      cropAdditionalStages: { "bibb-lettuce": ["SEEDLING", "VEGETATIVE"] },
+    });
+    expect(declaredMixedStages.kind).toBe("needs");
+    if (declaredMixedStages.kind === "needs") expect(declaredMixedStages.range).toBeUndefined();
+
+    const mixedStageCalibration = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1,
+      actualDoses: { micro: "4.8", gro: "4.0", bloom: "3.2" },
+    });
+    const explicitMixedStageTarget = calculateGardenResult({
+      ...base,
+      mode: "target",
+      crops: { "bibb-lettuce": 2 },
+      cropStages: { "bibb-lettuce": "MIXED" },
+      cropAdditionalStages: { "bibb-lettuce": ["SEEDLING", "VEGETATIVE"] },
+      sourceEc: 0.2,
+      sourceEcKnown: true,
+      userTarget: 1.2,
+      calibrationObservations: [mixedStageCalibration.value!],
+    });
+    expect(explicitMixedStageTarget.kind).toBe("ok");
+    if (explicitMixedStageTarget.kind === "ok") {
+      expect(explicitMixedStageTarget.target).toEqual({ value: 1.2, provenance: "user" });
+      expect(explicitMixedStageTarget.evidence).toBe("insufficient");
+      expect(explicitMixedStageTarget.doses.map((dose) => dose.label)).toEqual([
+        "FloraMicro",
+        "FloraGro",
+        "FloraBloom",
+      ]);
+    }
+
+    const recipeDoesNotDependOnMixedPhenology = calculateGardenResult({
+      ...base,
+      mode: "recipe",
+      crops: { "bibb-lettuce": 2 },
+      cropStages: { "bibb-lettuce": "MIXED" },
+    });
+    expect(recipeDoesNotDependOnMixedPhenology.kind).toBe("ok");
+    expect(recipeDoesNotDependOnMixedPhenology.compatibility?.status).toBe("INSUFFICIENT");
   });
 
   it("changes correction and top-up outputs when measured reservoir state changes", () => {

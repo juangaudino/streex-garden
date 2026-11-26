@@ -507,6 +507,9 @@ describe("Calculator real control interactions", () => {
     await user.type(screen.getByPlaceholderText("Search plant…"), "Genovese Basil");
     await user.click(screen.getByRole("option", { name: /Genovese Basil/ }));
     await user.selectOptions(screen.getByLabelText("Stage of Genovese Basil"), "MIXED");
+    await user.click(screen.getByText(/Stages represented/));
+    await user.click(screen.getByLabelText("Seedling"));
+    await user.click(screen.getByLabelText("Vegetative growth"));
     await user.click(screen.getByRole("button", { name: "Save as system" }));
     await user.type(screen.getByRole("textbox", { name: "System name" }), "Seedlings");
     await user.click(screen.getByRole("button", { name: /^Save$/ }));
@@ -516,6 +519,9 @@ describe("Calculator real control interactions", () => {
     expect((screen.getByLabelText("Stage of Genovese Basil") as HTMLSelectElement).value).toBe(
       "MIXED",
     );
+    await user.click(screen.getByText(/Stages represented/));
+    expect((screen.getByLabelText("Seedling") as HTMLInputElement).checked).toBe(true);
+    expect((screen.getByLabelText("Vegetative growth") as HTMLInputElement).checked).toBe(true);
   });
 
   it("preserves the current Quick Mix draft after saving it as a system", async () => {

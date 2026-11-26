@@ -108,12 +108,14 @@ del nombre. Esta lista describe la cobertura automática predeterminada, no impi
 que una variedad opere con receta oficial o con objetivo manual y calibración
 compatible.
 
-Las otras 13 sin rango automático en las combinaciones de etapa/sistema
-verificadas son Blush Hibiscus, Bush Nasturtium, Delphinium Magic Fountains Dwarf,
-Epazote, Hyssop, Lady Murasaki Komatsuna, Jolly Jester Marigold, Mexican Tarragon,
-Papalo, Rainbow Mix Coleus, Tennessee Coneflower, Tiny Tim Sweet Alyssum y Zinnia
-Lilliput Mixed. Algunas tienen condiciones experimentales publicadas para elegir
-manualmente un EC, pero no constituyen un intervalo óptimo automático.
+De las 19 con evidencia insuficiente en el contexto por defecto, seis sí resuelven
+evidencia en una etapa o sistema más específico. Las otras 13 que no obtienen un
+rango automático en ninguna combinación probada son Blush Hibiscus, Bush
+Nasturtium, Delphinium Magic Fountains Dwarf, Epazote, Hyssop, Lady Murasaki
+Komatsuna, Jolly Jester Marigold, Mexican Tarragon, Papalo, Rainbow Mix Coleus,
+Tennessee Coneflower, Tiny Tim Sweet Alyssum y Zinnia Lilliput Mixed. Algunas
+tienen tratamientos experimentales publicados que pueden elegirse como objetivos
+manuales; no son intervalos óptimos automáticos ni recomendaciones universales.
 
 Las pruebas de cálculo usan observaciones de calibración **simuladas** para
 verificar los cuatro flujos. No son datos medidos de tu FloraSeries: Por EC,

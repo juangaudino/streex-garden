@@ -101141,7 +101141,7 @@
       "kind": "needs",
       "evidence": "high",
       "compatibility": "NO_COMMON_OPTIMUM_RANGE",
-      "message": "Los rangos publicados no se solapan. Define un objetivo explícito o separa los cultivos."
+      "message": "Los rangos reportados de EC no se solapan."
     }
   },
   {

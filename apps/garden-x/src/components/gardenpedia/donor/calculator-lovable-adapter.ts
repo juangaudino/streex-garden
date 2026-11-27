@@ -17,14 +17,8 @@ import {
   MANUFACTURER_RECIPES,
   NUTRIENT_SOURCES,
 } from "@/lib/garden-nutrient-engine-v1/data";
-import {
-  buildDonorPlantDetail,
-  canonicalEntries,
-  donorPlants,
-  donorPlantsById,
-  type DonorGuideSection,
-} from "./canonical-adapter";
-import type { DonorPlant } from "./canonical-adapter";
+import type { DonorGuideSection } from "./canonical-adapter";
+import { gardenCalculatorPlantIndex } from "@/generated/garden-calculator-plant-index";
 import type {
   CalibrationObservation,
   CalibrationModel,
@@ -120,14 +114,8 @@ export type CalculatorSeedTransitionReference = {
   sources: readonly { id: string; title: string; url: string }[];
 };
 
-export const CALCULATOR_PLANTS: CalculatorPlant[] = donorPlants.map((plant) => ({
-  id: plant.id,
-  emoji: plant.emoji,
-  name: { es: plant.spanishName, en: plant.name },
-  scientificName: plant.scientificName,
-  cultivar: plant.variety,
-  aliases: plant.tags,
-}));
+export const CALCULATOR_PLANTS =
+  gardenCalculatorPlantIndex as unknown as readonly CalculatorPlant[];
 
 const CALCULATOR_SEARCH_STOP_WORDS = new Set(["common", "mixed", "plant", "type", "variety"]);
 
@@ -358,13 +346,14 @@ function chamomileStageGuidance(
  * observed stage. These editorial cues do not infer stage from age or change
  * the Calculator's evidence selection or dose.
  */
-export function calculatorStageGuidanceForPlant(
+export async function calculatorStageGuidanceForPlant(
   plantId: string,
   language: Lang,
   stage: CalculatorCropStage,
-): CalculatorStageGuidance[] {
+): Promise<CalculatorStageGuidance[]> {
   if (plantId === "chamomile-unspecified") return chamomileStageGuidance(language, stage);
   const mapped = SAME_SPECIES_STAGE_GUIDANCE[plantId];
+  const { buildDonorPlantDetail, canonicalEntries } = await import("./canonical-adapter");
   const entry = canonicalEntries.find(
     (candidate) => candidate.libraryPlantId === (mapped?.profileId ?? plantId),
   );
@@ -1074,8 +1063,8 @@ export function buildCropEvidenceCoverage(
   return { context: resolvedContext, totals, rows };
 }
 
-export function calculatorPlantById(id: string): DonorPlant | undefined {
-  return donorPlantsById.get(id);
+export function calculatorPlantById(id: string): CalculatorPlant | undefined {
+  return CALCULATOR_PLANTS.find((plant) => plant.id === id);
 }
 
 export function calculatorSourceUrl(title: string): string | undefined {

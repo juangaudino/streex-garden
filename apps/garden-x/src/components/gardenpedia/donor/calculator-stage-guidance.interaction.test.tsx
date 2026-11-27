@@ -15,7 +15,7 @@ import { CalculatorPage } from "./calculator-page-v1";
 afterEach(cleanup);
 
 describe("Calculator plant-stage guidance", () => {
-  it("keeps public profile cues collapsed and presents their provenance when opened", () => {
+  it("keeps public profile cues collapsed and presents their provenance when opened", async () => {
     render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
 
     const disclosure = screen.getByText("Profile cues to help identify the stage");
@@ -23,14 +23,18 @@ describe("Calculator plant-stage guidance", () => {
     expect(details?.open).toBe(false);
     expect(screen.getByText(/Age may show a published reference/)).toBeTruthy();
 
-    fireEvent.click(disclosure);
+    fireEvent.click(details?.querySelector("summary") ?? disclosure);
 
     expect(details?.open).toBe(true);
     expect(
       screen.getByText(/Days since sowing do not confirm a stage or change the dose/),
     ).toBeTruthy();
-    expect(screen.getByText(/NC State Extension describes Genovese/)).toBeTruthy();
-    expect(screen.getAllByText("Source-backed").length).toBeGreaterThan(0);
+    expect(
+      await screen.findByText(/NC State Extension describes Genovese/, {}, { timeout: 5000 }),
+    ).toBeTruthy();
+    expect(
+      (await screen.findAllByText("Source-backed", {}, { timeout: 5000 })).length,
+    ).toBeGreaterThan(0);
     expect(
       within(details!)
         .getAllByRole("link")
@@ -44,12 +48,17 @@ describe("Calculator plant-stage guidance", () => {
     expect(screen.getByText(/La edad puede mostrar una referencia publicada/)).toBeTruthy();
   });
 
-  it("labels shared-species cues and unresolved chamomile scope in the visible UI", () => {
+  it("labels shared-species cues and unresolved chamomile scope in the visible UI", async () => {
     const { unmount } = render(<CalculatorPage language="en" initialPlantId="basil-dark-opal" />);
-    fireEvent.click(screen.getByText("Profile cues to help identify the stage"));
+    const basilDisclosure = screen
+      .getByText("Profile cues to help identify the stage")
+      .closest("details");
+    fireEvent.click(basilDisclosure?.querySelector("summary") ?? document.body);
     expect(
-      screen.getAllByText(
+      await screen.findAllByText(
         /General Ocimum basilicum cue; not validated specifically for the Dark Opal cultivar/i,
+        {},
+        { timeout: 5000 },
       ),
     ).not.toHaveLength(0);
     unmount();
@@ -61,8 +70,10 @@ describe("Calculator plant-stage guidance", () => {
     fireEvent.click(chamomileDisclosure?.querySelector("summary") ?? document.body);
     expect(chamomileDisclosure?.open).toBe(true);
     expect(
-      within(chamomileDisclosure!).getByText(
+      await within(chamomileDisclosure!).findByText(
         /profile does not resolve the species and this does not establish hydroponic EC/i,
+        {},
+        { timeout: 5000 },
       ),
     ).toBeTruthy();
     expect(

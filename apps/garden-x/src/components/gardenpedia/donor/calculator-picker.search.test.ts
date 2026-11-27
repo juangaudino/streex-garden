@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { gardenCalculatorPlantIndex } from "@/generated/garden-calculator-plant-index";
 import {
   CALCULATOR_EXCLUDED_CARNIVOROUS_IDS,
   CALCULATOR_PLANTS,
@@ -6,6 +7,27 @@ import {
 } from "./calculator-lovable-adapter";
 
 describe("canonical Calculator plant search", () => {
+  it("uses a public identity-only index rather than loading profile or private inventory data", () => {
+    expect(gardenCalculatorPlantIndex.length).toBeGreaterThan(500);
+    for (const plant of gardenCalculatorPlantIndex) {
+      expect(Object.keys(plant).sort()).toEqual([
+        "aliases",
+        "cultivar",
+        "emoji",
+        "id",
+        "name",
+        "scientificName",
+      ]);
+      expect(Object.keys(plant.name).sort()).toEqual(["en", "es"]);
+      expect(JSON.stringify(plant)).not.toMatch(/owner_?id|user_?id|seed_package|system_instance/i);
+      expect(
+        plant.aliases.every(
+          (alias) => !/owned seed|home grown|user zero|uruq|packet|inventory/i.test(alias),
+        ),
+      ).toBe(true);
+    }
+  });
+
   it.each([
     ["Black Seeded Simpson Lettuce", "black-seeded-simpson"],
     ["Evergreen Bunching Onion Nabuka / Nebuka", "evergreen-bunching-onion-nabuka"],

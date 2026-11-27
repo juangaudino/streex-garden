@@ -163,9 +163,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(hasApplicableCropNutrientEvidence("blush-hibiscus")).toBe(false);
   });
 
-  it("uses bilingual public profile guidance to help identify observed plant stages", () => {
-    const english = calculatorStageGuidanceForPlant("genovese-basil", "en", "FLOWERING");
-    const spanish = calculatorStageGuidanceForPlant("genovese-basil", "es", "FLOWERING");
+  it("uses bilingual public profile guidance to help identify observed plant stages", async () => {
+    expect(
+      await calculatorStageGuidanceForPlant("genovese-basil", "en", "UNSPECIFIED"),
+    ).toHaveLength(2);
+    const english = await calculatorStageGuidanceForPlant("genovese-basil", "en", "FLOWERING");
+    const spanish = await calculatorStageGuidanceForPlant("genovese-basil", "es", "FLOWERING");
 
     expect(english.map((guide) => guide.title)).toEqual(["Flowering", "Growth"]);
     expect(english[0]?.backing).toBe("source");
@@ -175,11 +178,13 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(spanish[0]?.sources[0]?.url).toMatch(/^https:\/\//);
   });
 
-  it("returns no stage guidance for an unknown identity without inventing content", () => {
-    expect(calculatorStageGuidanceForPlant("unmapped-test-identity", "en", "MATURE")).toEqual([]);
+  it("returns no stage guidance for an unknown identity without inventing content", async () => {
+    expect(await calculatorStageGuidanceForPlant("unmapped-test-identity", "en", "MATURE")).toEqual(
+      [],
+    );
   });
 
-  it("reuses stage cues only across explicitly mapped same-species profiles and labels their scope", () => {
+  it("reuses stage cues only across explicitly mapped same-species profiles and labels their scope", async () => {
     expect(CALCULATOR_PLANTS.find((plant) => plant.id === "basil-dark-opal")?.scientificName).toBe(
       "Ocimum basilicum",
     );
@@ -194,7 +199,7 @@ describe("Gardenpedia Calculator V1 integration", () => {
     );
 
     for (const plantId of ["basil-dark-opal", "basil-spicy-globe"]) {
-      const guidance = calculatorStageGuidanceForPlant(plantId, "en", "VEGETATIVE");
+      const guidance = await calculatorStageGuidanceForPlant(plantId, "en", "VEGETATIVE");
       expect(guidance.length, plantId).toBeGreaterThan(0);
       expect(guidance.every((item) => item.scopeNote?.en.includes("Ocimum basilicum"))).toBe(true);
       expect(
@@ -203,14 +208,14 @@ describe("Gardenpedia Calculator V1 integration", () => {
     }
 
     for (const plantId of ["basil-lemon", "basil-lime"]) {
-      const guidance = calculatorStageGuidanceForPlant(plantId, "en", "VEGETATIVE");
+      const guidance = await calculatorStageGuidanceForPlant(plantId, "en", "VEGETATIVE");
       expect(
         guidance.every((item) => !item.scopeNote?.en.includes("Ocimum basilicum")),
         plantId,
       ).toBe(true);
     }
 
-    const butterhead = calculatorStageGuidanceForPlant(
+    const butterhead = await calculatorStageGuidanceForPlant(
       "butterhead-lettuce-unspecified",
       "es",
       "SEEDLING",
@@ -221,8 +226,12 @@ describe("Gardenpedia Calculator V1 integration", () => {
     });
   });
 
-  it("provides only scoped RHS stage cues for unresolved chamomile without EC claims", () => {
-    const seedling = calculatorStageGuidanceForPlant("chamomile-unspecified", "en", "SEEDLING");
+  it("provides only scoped RHS stage cues for unresolved chamomile without EC claims", async () => {
+    const seedling = await calculatorStageGuidanceForPlant(
+      "chamomile-unspecified",
+      "en",
+      "SEEDLING",
+    );
     expect(seedling).toHaveLength(1);
     expect(seedling[0]?.scopeNote?.en).toMatch(/does not identify your species/i);
     expect(seedling[0]?.body).toMatch(/need light to germinate/i);
@@ -2437,7 +2446,9 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const capacity = calculateGardenResult({ ...base, capacityLiters: undefined });
     expect(capacity.kind).toBe("needs");
     if (capacity.kind === "needs")
-      expect(capacity.message).toBe("Se requiere conocer la capacidad del tanque antes de añadir agua.");
+      expect(capacity.message).toBe(
+        "Se requiere conocer la capacidad del tanque antes de añadir agua.",
+      );
   });
 
   it("uses crop evidence for mixed systems and refuses to infer a seedling range", () => {

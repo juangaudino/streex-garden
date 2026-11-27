@@ -55,6 +55,7 @@ import {
   type CalcResult,
   type CalculatorAdditionalStage,
   type CalculatorCropStage,
+  type CalculatorStageGuidance,
   type EcUnit,
   type Evidence,
   type Lang,
@@ -531,19 +532,9 @@ export function CalculatorPage({
   const [correctionStepInput, setCorrectionStepInput] = useState("50");
   const dosingResolutionMl = parseDecimalInput(dosingResolutionInput) ?? undefined;
   const meterResolutionMs = parseDecimalInput(meterResolutionInput) ?? undefined;
-  const stageGuidanceByPlant = useMemo(
-    () =>
-      new Map(
-        Object.keys(crops).map(
-          (id) =>
-            [
-              id,
-              calculatorStageGuidanceForPlant(id, lang, cropStages[id] ?? "UNSPECIFIED"),
-            ] as const,
-        ),
-      ),
-    [crops, cropStages, lang],
-  );
+  const [stageGuidanceByPlant, setStageGuidanceByPlant] = useState<
+    Record<string, { key: string; status: "loading" | "loaded"; guides: CalculatorStageGuidance[] }>
+  >({});
   const [round, setRound] = useState(1);
   const [justLearned, setJustLearned] = useState(false);
   const [calibrationObservations, setCalibrationObservations] = useState<
@@ -1283,7 +1274,13 @@ export function CalculatorPage({
                         cropStages[id] ?? "UNSPECIFIED",
                         hydroponicSystem,
                       );
-                      const stageGuidance = stageGuidanceByPlant.get(id) ?? [];
+                      const stageGuidanceKey = `${lang}:${cropStages[id] ?? "UNSPECIFIED"}`;
+                      const stageGuidanceState = stageGuidanceByPlant[id];
+                      const stageGuidance =
+                        stageGuidanceState?.key === stageGuidanceKey &&
+                        stageGuidanceState.status === "loaded"
+                          ? stageGuidanceState.guides
+                          : undefined;
                       return (
                         <li
                           key={id}
@@ -1499,65 +1496,115 @@ export function CalculatorPage({
                               </ul>
                             </details>
                           )}
-                          {stageGuidance.length > 0 && (
-                            <details className="col-span-full text-xs text-muted-foreground">
-                              <summary className="cursor-pointer font-medium">
-                                {lang === "es"
-                                  ? "Pistas de la ficha para reconocer la etapa"
-                                  : "Profile cues to help identify the stage"}
-                              </summary>
+                          <details
+                            key={`${id}:${stageGuidanceKey}`}
+                            className="col-span-full text-xs text-muted-foreground"
+                            onClick={() => {
+                              const existing = stageGuidanceByPlant[id];
+                              if (existing?.key === stageGuidanceKey) return;
+                              setStageGuidanceByPlant((current) => ({
+                                ...current,
+                                [id]: {
+                                  key: stageGuidanceKey,
+                                  status: "loading",
+                                  guides: [],
+                                },
+                              }));
+                              void calculatorStageGuidanceForPlant(
+                                id,
+                                lang,
+                                cropStages[id] ?? "UNSPECIFIED",
+                              )
+                                .then((guides) => {
+                                  setStageGuidanceByPlant((current) => ({
+                                    ...current,
+                                    [id]: {
+                                      key: stageGuidanceKey,
+                                      status: "loaded",
+                                      guides,
+                                    },
+                                  }));
+                                })
+                                .catch(() => {
+                                  setStageGuidanceByPlant((current) => ({
+                                    ...current,
+                                    [id]: {
+                                      key: stageGuidanceKey,
+                                      status: "loaded",
+                                      guides: [],
+                                    },
+                                  }));
+                                });
+                            }}
+                          >
+                            <summary className="cursor-pointer font-medium">
+                              {lang === "es"
+                                ? "Pistas de la ficha para reconocer la etapa"
+                                : "Profile cues to help identify the stage"}
+                            </summary>
+                            <p className="mt-2">
+                              {lang === "es"
+                                ? "Usa estas notas públicas junto con lo que observas en la planta. Los días desde la siembra no confirman una etapa ni cambian la dosis."
+                                : "Use these public notes alongside what you observe on the plant. Days since sowing do not confirm a stage or change the dose."}
+                            </p>
+                            {stageGuidance === undefined && (
+                              <p className="mt-2">
+                                {lang === "es" ? "Cargando orientación…" : "Loading guidance…"}
+                              </p>
+                            )}
+                            {stageGuidance?.length === 0 && (
                               <p className="mt-2">
                                 {lang === "es"
-                                  ? "Usa estas notas públicas junto con lo que observas en la planta. Los días desde la siembra no confirman una etapa ni cambian la dosis."
-                                  : "Use these public notes alongside what you observe on the plant. Days since sowing do not confirm a stage or change the dose."}
+                                  ? "Esta ficha no tiene pistas adicionales de etapa."
+                                  : "This profile has no additional stage cues."}
                               </p>
-                              <div className="mt-2 space-y-2">
-                                {stageGuidance.map((guide) => (
-                                  <section
-                                    key={guide.id}
-                                    className="rounded-md border border-border/70 p-2"
-                                  >
-                                    <h4 className="font-medium text-foreground">
-                                      {guide.title}
-                                      <span className="ml-2 rounded border px-1.5 py-0.5 text-[10px] font-normal">
-                                        {guide.backing === "source"
+                            )}
+                            <div className="mt-2 space-y-2">
+                              {(stageGuidance ?? []).map((guide) => (
+                                <section
+                                  key={guide.id}
+                                  className="rounded-md border border-border/70 p-2"
+                                >
+                                  <h4 className="font-medium text-foreground">
+                                    {guide.title}
+                                    <span className="ml-2 rounded border px-1.5 py-0.5 text-[10px] font-normal">
+                                      {guide.backing === "source"
+                                        ? lang === "es"
+                                          ? "Respaldado por fuente"
+                                          : "Source-backed"
+                                        : guide.backing === "garden"
                                           ? lang === "es"
-                                            ? "Respaldado por fuente"
-                                            : "Source-backed"
-                                          : guide.backing === "garden"
-                                            ? lang === "es"
-                                              ? "Adaptación Garden"
-                                              : "Garden adaptation"
-                                            : lang === "es"
-                                              ? "Por validar"
-                                              : "Needs validation"}
-                                      </span>
-                                    </h4>
-                                    {guide.scopeNote && (
-                                      <p className="mt-1 italic">{guide.scopeNote[lang]}</p>
-                                    )}
-                                    <p className="mt-1">{guide.body}</p>
-                                    {guide.sources.length > 0 && (
-                                      <ul className="mt-1 space-y-1">
-                                        {guide.sources.slice(0, 2).map((source) => (
-                                          <li key={source.url}>
-                                            <a
-                                              className="underline"
-                                              href={source.url}
-                                              target="_blank"
-                                              rel="noreferrer"
-                                            >
-                                              {source.label}
-                                            </a>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    )}
-                                  </section>
-                                ))}
-                              </div>
-                            </details>
-                          )}
+                                            ? "Adaptación Garden"
+                                            : "Garden adaptation"
+                                          : lang === "es"
+                                            ? "Por validar"
+                                            : "Needs validation"}
+                                    </span>
+                                  </h4>
+                                  {guide.scopeNote && (
+                                    <p className="mt-1 italic">{guide.scopeNote[lang]}</p>
+                                  )}
+                                  <p className="mt-1">{guide.body}</p>
+                                  {guide.sources.length > 0 && (
+                                    <ul className="mt-1 space-y-1">
+                                      {guide.sources.slice(0, 2).map((source) => (
+                                        <li key={source.url}>
+                                          <a
+                                            className="underline"
+                                            href={source.url}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                          >
+                                            {source.label}
+                                          </a>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  )}
+                                </section>
+                              ))}
+                            </div>
+                          </details>
                           {id === "chamomile-unspecified" && (
                             <p className="col-span-full text-xs text-muted-foreground">
                               {lang === "es"

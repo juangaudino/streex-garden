@@ -41,6 +41,15 @@
   official recipe or an explicit user target with compatible exact-product
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
+- All **83/83** varieties also have at least one cited stage-observation or
+  cultivation-context reference available to the Calculator. **67/83** have a
+  published age window that can be shown as a confirmation cue. For the other
+  16—Broadleaf Sage, Common Fenugreek, Common Mint, Mexican Tarragon, Monterey
+  Strawberry, Papalo, Marjoram, Borage, Chamomile (species unspecified),
+  Peppermint, Crimson Giant Radish, Curled Chervil, Lemon Balm, Tennessee
+  Coneflower, Bush Nasturtium and Bull's Blood Beet—the user can still choose
+  the observed stage and open the plant's cited context, but the Calculator
+  does not invent a day-to-stage window. Age is never an automatic dose input.
 - Local verification on the baseline plus this follow-through passed the full
   suite: **1,012/1,012 tests across 126 files**, including **171/171** focused
   Calculator tests. Typecheck, changed-file lint and production build also pass.
@@ -49,6 +58,10 @@
   records, and 0 unresolved source IDs.
 - Latest Calculator interaction suite: **47/47**. The full suite includes the
   83-variety coverage and four-mode fixtures.
+- A regression now traverses all 83 owned varieties and requires at least one
+  HTTPS-backed age, seed-transition, crop-stage or public profile reference for
+  stage context. It deliberately does not require an age window where sources
+  do not support one.
 - Production browser inspection also verified Calculator loads in Spanish, the
   four modes are present, Quick Mix starts empty, and the default FloraSeries
   Recipe shows FloraMicro, FloraGro, FloraBloom and the manufacturer EC range.

@@ -80,6 +80,10 @@ la observación con una diferencia medible o un instrumento más preciso.
 - En cada planta compara por separado **edad desde siembra**, **etapa observada**
   y **etapa del programa del fabricante**. Cambiar los días no debe alterar una
   dosis hasta que una etapa observada/aplicable o un objetivo cambie explícitamente.
+- De las 83 variedades, 67 tienen una ventana temporal publicada que puede
+  aparecer como pista confirmable. En las otras 16 no se muestra una conversión
+  de días a etapa; eso es intencional cuando la fuente no la respalda. La etapa
+  sigue siendo seleccionable y el perfil ofrece su contexto citado cuando existe.
 - Para **American Giant**, **Autumn Beauty** y el girasol genérico, registra 20
   días: aparecerá el hito de trasplante de un ensayo NFT con otro cultivar
   (‘Girassol de Jardim Amarelo Alto’), cerca de 5 cm. Confirma el tamaño y el

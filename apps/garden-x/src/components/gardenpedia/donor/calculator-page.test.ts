@@ -27,7 +27,9 @@ import {
   calibrationUsage,
   contextFor,
   calculatorAgeStageCueForPlant,
+  calculatorSeedTransitionForPlant,
   calculatorStageGuidanceForPlant,
+  calculatorStageReferenceForPlant,
   generalCropReferenceForStage,
   hasApplicableCropNutrientEvidence,
   loadSavedSystems,
@@ -182,6 +184,34 @@ describe("Gardenpedia Calculator V1 integration", () => {
     expect(await calculatorStageGuidanceForPlant("unmapped-test-identity", "en", "MATURE")).toEqual(
       [],
     );
+  });
+
+  it("provides source-grounded stage context for all 83 User Zero varieties without inventing age windows", async () => {
+    const stages = ["SEEDLING", "VEGETATIVE", "MATURE", "FLOWERING", "FRUITING"] as const;
+
+    for (const plantId of USER_ZERO_83_VARIETY_IDS) {
+      const ageCue = Array.from({ length: 731 }, (_, day) =>
+        calculatorAgeStageCueForPlant(plantId, day),
+      ).find(Boolean);
+      const seedTransition = calculatorSeedTransitionForPlant(plantId);
+      const stageReference = calculatorStageReferenceForPlant(plantId);
+      let profileGuidance: Awaited<ReturnType<typeof calculatorStageGuidanceForPlant>> = [];
+
+      for (const stage of stages) {
+        profileGuidance = await calculatorStageGuidanceForPlant(plantId, "en", stage);
+        if (profileGuidance.length > 0) break;
+      }
+
+      const hasSourcedContext =
+        Boolean(ageCue?.reference.source.url.startsWith("https://")) ||
+        Boolean(seedTransition?.sources.some((source) => source.url.startsWith("https://"))) ||
+        Boolean(stageReference?.source.url.startsWith("https://")) ||
+        profileGuidance.some((guide) =>
+          guide.sources.some((source) => source.url.startsWith("https://")),
+        );
+
+      expect(hasSourcedContext, plantId).toBe(true);
+    }
   });
 
   it("reuses stage cues only across explicitly mapped same-species profiles and labels their scope", async () => {

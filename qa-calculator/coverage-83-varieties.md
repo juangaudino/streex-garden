@@ -1,6 +1,6 @@
 # Cobertura de evidencia de Calculator para las 83 variedades de User Zero
 
-Corte: 2026-11-26. Generado a partir de `buildCropEvidenceCoverage()` y los contextos controlados del engine.
+Corte: 2026-11-27. Generado a partir de `buildCropEvidenceCoverage()` y los contextos controlados del engine. Las referencias de germinación/etapa se registran por separado y no cambian los resultados de esta matriz EC.
 
 **Interpretación:** `SUPPORTED_DIRECT` = evidencia EC identificada directamente para la identidad; `SUPPORTED_VIA_DEFENSIBLE_MAPPING` = identidad resuelta a una evidencia de cultivo con mapeo explícito; `INSUFFICIENT` = no existe rango automático comparable en ese contexto. Todas las 83 son seleccionables; cuando la evidencia es insuficiente, los cálculos requieren objetivo elegido explícitamente y calibración compatible del producto. Las observaciones de contexto no se convierten en rangos óptimos.
 
@@ -99,6 +99,7 @@ Esta columna enumera referencias relacionadas con la identidad, pero no signific
 | Identidad | Referencias contextuales |
 |---|---|
 | Lechuga Bibb (`bibb-lettuce`) | barc-fertilizer-recommendation-guide-2024-hydroponics |
+| Salvia de hoja ancha (`broadleaf-sage`) | johnnys-common-sage-seed-germination |
 | Lechuga Black Seeded Simpson (`black-seeded-simpson`) | barc-fertilizer-recommendation-guide-2024-hydroponics |
 | Hibisco Blush (`blush-hibiscus`) | panam-hibiscus-luna-grower-2023, hardy-hibiscus-cultivar-fertigation-2016, uky-luna-blush-substrate-ec |
 | Lechuga romana Breen (`breen-romaine-lettuce`) | barc-fertilizer-recommendation-guide-2024-hydroponics |
@@ -124,7 +125,7 @@ Esta columna enumera referencias relacionadas con la identidad, pero no signific
 | Albahaca limón (`basil-lemon`) | lemon-basil-light-ec-2023, walters-currey-basil-species-nft-2018 |
 | Zinnia Lilliput — mezcla de colores (`zinnia-lilliput-mixed`) | uga-bedding-plant-subirrigation-study, can-tho-zinnia-hoagland-2022 |
 | Albahaca lima (`basil-lime`) | walters-currey-basil-species-nft-2018 |
-| Estragón mexicano (`mexican-tarragon`) | unam-pericon-tagetes-lucida, zipgrow-mexican-tarragon-hydroponic-tower, scale-stem-mexican-tarragon-hydroponic-guide |
+| Estragón mexicano (`mexican-tarragon`) | unam-pericon-tagetes-lucida, zipgrow-mexican-tarragon-hydroponic-tower, scale-stem-mexican-tarragon-hydroponic-guide, la-societe-des-plantes-mexican-tarragon-germination |
 | Pimiento dulce mini (`mini-lunchbox-sweet-pepper`) | barc-fertilizer-recommendation-guide-2024-hydroponics |
 | Fresa Monterey (`monterey-strawberry`) | barc-fertilizer-recommendation-guide-2024-hydroponics, strawberry-hydroponic-ec-by-growth-stage-2021, illinois-extension-monterey-hydroponic-strawberry-2023 |
 | Pápalo (`papalo-porophyllum-ruderale`) | juarez-porophyllum-nutrient-poster |
@@ -140,10 +141,11 @@ Esta columna enumera referencias relacionadas con la identidad, pero no signific
 | Berro de agua (`watercress`) | walters-lopez-bouquet-dill-deep-flow-2021 |
 | Girasol American Giant Hybrid (`sunflower-american-giant-hybrid`) | brazil-sunflower-hydroponic-salinity-2013 |
 | Rúcula Astro (`astro-arugula`) | idroponica-facile-home-tower-guide, astro-arugula-nft-inoculation-2025, osu-arugula-ec-2021 |
+| Rábano Crimson Giant (`crimson-giant-radish`) | hydrocrop-hydrosol-crop-ec-guide, inrae-radish-germination-temperature-table |
 | Girasol Autumn Beauty — mezcla de colores (`sunflower-autumn-beauty`) | brazil-sunflower-hydroponic-salinity-2013 |
-| Borraja azul (`borage-blue`) | pisa-borage-leaves-hydroponic-2022, borage-coir-seed-salinity-2019 |
+| Borraja azul (`borage-blue`) | pisa-borage-leaves-hydroponic-2022, borage-coir-seed-salinity-2019, yates-borago-officinalis-germination |
 | Manzanilla (`chamomile-unspecified`) | nccih-chamomile-species-context, letpot-hydroponic-chamomile-guide |
-| Perifollo rizado (`curled-chervil`) | florida-vertical-hydroponic-herbs-2001 |
+| Perifollo rizado (`curled-chervil`) | florida-vertical-hydroponic-herbs-2001, uc-marin-chervil-germination |
 | Clavel miniatura (`fragrant-dwarf-dianthus-mix`) | uga-bedding-plant-subirrigation-study, carnation-cultivation-gamma-2025 |
 | Hisopo (`hyssop`) | hyssop-hydroponic-selenium-2022, scale-stem-hyssop-hydroponic-guide |
 | Komatsuna Lady Murasaki (`lady-murasaki-komatsuna`) | arkansas-komatsuna-nft-2014 |
@@ -153,7 +155,7 @@ Esta columna enumera referencias relacionadas con la identidad, pero no signific
 | Colinabo morado (`purple-kohlrabi`) | idroponica-facile-home-tower-guide, purple-kohlrabi-coir-ec-2024 |
 | Tatsoi rojo escarlata (`scarlet-red-tatsoi`) | nsw-asian-vegetables-nft-2011 |
 | Equinácea de Tennessee (`tennessee-coneflower-echinacea-tennesseensis`) | echinacea-agronomy-review-2024, tennessee-extension-coneflower-fertilization |
-| Capuchina enana (`bush-nasturtium-tropaeolum-minus`) | johnnys-nasturtium-shades-of-green-hydroponic, nasturtium-majus-cutting-rooting-ec-2021 |
+| Capuchina enana (`bush-nasturtium-tropaeolum-minus`) | johnnys-nasturtium-shades-of-green-hydroponic, nasturtium-majus-cutting-rooting-ec-2021, uw-madison-nasturtium-germination |
 | Remolacha Bull's Blood (`bulls-blood-beet`) | egilla-bulls-blood-beet-nft-2009, hydrocrop-hydrosol-crop-ec-guide |
 | Cebolla de verdeo (`bunching-onion-allium-fistulosum`) | gangwon-welsh-onion-recirculating-hydroponics-2005, leal-bezerra-cilantro-onion-coir-2005 |
 | Tatsoi (`tatsoi`) | nsw-asian-vegetables-nft-2011 |

@@ -6,7 +6,7 @@
 > see [QA-USUARIO.md](./QA-USUARIO.md). Neither software tests nor a READY
 > deployment certify a real nutrient-response calibration or physical iPhone QA.
 
-## Current production snapshot — 2026-11-26
+## Current production snapshot — 2026-11-27
 
 - Baseline `main` before this calculator follow-through:
   `5849129f32dccd47c05257fcadb2be14ec75a460` (`Clarify calculator plant
@@ -42,16 +42,14 @@
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
 - All **83/83** varieties also have at least one cited stage-observation or
-  cultivation-context reference available to the Calculator. **70/83** have a
+  cultivation-context reference available to the Calculator. **76/83** have a
   published age window that can be shown as a confirmation cue. For the other
-  13—Broadleaf Sage, Common Mint, Mexican Tarragon, Monterey
-  Strawberry, Borage, Chamomile (species unspecified),
-  Peppermint, Crimson Giant Radish, Curled Chervil, Lemon Balm, Tennessee
-  Coneflower, Bush Nasturtium and Bull's Blood Beet—the user can still choose
-  the observed stage and open the plant's cited context, but the Calculator
+  7—Common Mint, Monterey Strawberry, Chamomile (species unspecified),
+  Peppermint, Lemon Balm, Tennessee Coneflower and Bull's Blood Beet—the user
+  can still choose the observed stage and open the plant's cited context, but the Calculator
   does not invent a day-to-stage window. Age is never an automatic dose input.
 - Local verification on the baseline plus this follow-through passed the full
-  suite: **1,012/1,012 tests across 126 files**, including **171/171** focused
+  suite: **1,047/1,047 tests across 127 files**, including **171/171** focused
   Calculator tests. Typecheck, changed-file lint and production build also pass.
   Gardenpedia content validation passed. Content counts:
   512 plant source records, 1,304 sources, 328 Seed Profiles, 464 taxonomy
@@ -78,12 +76,14 @@ case, the manufacturer dose is unchanged and Garden withholds crop compatibility
 and any common range until the stage composition is complete. A recipe step is
 not plant phenology, and this guard does not make it one.
 
-### Additional age-context coverage — 2026-11-26
+### Additional age-context coverage — 2026-11-27
 
 - Added source-backed nursery or germination context for Nebuka/bunching onion,
   perpetual spinach, Hon Tsai Tai, Scarlet Red Tatsoi, purple kohlrabi and the
-  miniature/spray Dianthus mix. Tatsoi also has a separately labeled floating-
-  culture trial reference.
+  miniature/spray Dianthus mix. Later additions cover fenugreek, marjoram,
+  Papalo, borage, curled chervil, temperature-specific radish germination,
+  common sage, bush nasturtium and Mexican tarragon.
+  Tatsoi also has a separately labeled floating-culture trial reference.
 - These references do not assign phenological stage or change an EC range or
   dose. The grower must inspect the plant and confirm a suggested stage. Garden
   does not convert an unsupported sowing-day count into a stage.
@@ -92,9 +92,9 @@ not plant phenology, and this guard does not make it one.
   germination windows only indicate emergence context.
 - Added a regression assertion that every registered nutrient source ID is
   unique and every source URL is HTTPS. Focused age/stage and Calculator UI tests
-  pass **102/102**; the full suite passes **1,023/1,023**. Typecheck, the Garden
-  build, content validation and changed-file lint pass. Build regenerated only
-  the manifest timestamp; that noise is excluded from the change.
+  pass **32/32** age-stage tests; the full suite passes **1,047/1,047**. Typecheck,
+  the Garden build, content validation and changed-file lint pass. Build
+  regenerated only ignored artifacts; no product manifest is part of this diff.
 - The detailed per-identity audit for the 83 owned varieties, including the
   default evidence class and stage/system contexts that resolve, is in
   [`coverage-83-varieties.md`](./coverage-83-varieties.md).

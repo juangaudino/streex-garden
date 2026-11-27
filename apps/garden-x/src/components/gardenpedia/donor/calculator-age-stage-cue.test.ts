@@ -233,6 +233,86 @@ describe("calculator age stage cues", () => {
     ).toBe(false);
   });
 
+  it("adds conditional, sourced emergence cues for borage, curled chervil, and radish only", () => {
+    const borage = calculatorAgeStageCueForPlant("borage-blue", 7);
+    expect(borage?.reference.source.id).toBe("yates-borago-officinalis-germination");
+    expect(borage?.ageWindow).toMatchObject({
+      minDays: 5,
+      maxDays: 10,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(borage?.ageWindow.text.en).toMatch(/supplier reference/i);
+
+    const chervil = calculatorAgeStageCueForPlant("curled-chervil", 10);
+    expect(chervil?.reference.source.id).toBe("uc-marin-chervil-germination");
+    expect(chervil?.ageWindow).toMatchObject({
+      minDays: 10,
+      maxDays: 10,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(chervil?.ageWindow.text.en).toMatch(/60°F/);
+
+    const radish = calculatorAgeStageCueForPlant("crimson-giant-radish", 5);
+    expect(radish?.reference.source.id).toBe("inrae-radish-germination-temperature-table");
+    expect(radish?.ageWindow).toMatchObject({
+      minDays: 4,
+      maxDays: 6,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(radish?.ageWindow.text.en).toMatch(/temperature/i);
+    expect(radish?.ageWindow.text.en).toMatch(/does not change EC evidence or dose/i);
+
+    expect(
+      CROP_EVIDENCE.some((observation) =>
+        [
+          "yates-borago-officinalis-germination",
+          "uc-marin-chervil-germination",
+          "inrae-radish-germination-temperature-table",
+        ].includes(observation.source.id),
+      ),
+    ).toBe(false);
+  });
+
+  it("adds conditional age cues for sage, bush nasturtium, and Mexican tarragon", () => {
+    const sage = calculatorAgeStageCueForPlant("broadleaf-sage", 14);
+    expect(sage?.reference.source.id).toBe("johnnys-common-sage-seed-germination");
+    expect(sage?.ageWindow).toMatchObject({
+      minDays: 7,
+      maxDays: 21,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(sage?.ageWindow.text.en).toMatch(/65–70°F/);
+
+    const nasturtium = calculatorAgeStageCueForPlant("bush-nasturtium-tropaeolum-minus", 8);
+    expect(nasturtium?.reference.source.id).toBe("uw-madison-nasturtium-germination");
+    expect(nasturtium?.ageWindow).toMatchObject({
+      minDays: 7,
+      maxDays: 10,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(nasturtium?.ageWindow.text.en).toMatch(/soil temperature/i);
+
+    const mexicanTarragon = calculatorAgeStageCueForPlant("mexican-tarragon", 10);
+    expect(mexicanTarragon?.reference.source.id).toBe(
+      "la-societe-des-plantes-mexican-tarragon-germination",
+    );
+    expect(mexicanTarragon?.ageWindow).toMatchObject({
+      minDays: 7,
+      maxDays: 15,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(mexicanTarragon?.ageWindow.text.en).toMatch(/21°C/);
+
+    const addedSourceIds = [
+      "johnnys-common-sage-seed-germination",
+      "uw-madison-nasturtium-germination",
+      "la-societe-des-plantes-mexican-tarragon-germination",
+    ];
+    expect(
+      CROP_EVIDENCE.some((observation) => addedSourceIds.includes(observation.source.id)),
+    ).toBe(false);
+  });
+
   it("adds Texas A&M transplant timing for exact ornamental identities without changing nutrient evidence", () => {
     const cases = [
       ["tiny-tim-sweet-alyssum", 28, 21, 35],

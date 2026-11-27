@@ -790,6 +790,60 @@ export const NUTRIENT_SOURCES = {
     tier: "C",
     retrievedAt: "2026-11-27",
   },
+  borageYatesSeeds: {
+    id: "yates-borago-officinalis-germination",
+    publisher: "Yates",
+    title: "Borage · Borago officinalis",
+    url: "https://www.yates.co.nz/products/seeds/herbs/borage/",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-27",
+  },
+  chervilUcMarin: {
+    id: "uc-marin-chervil-germination",
+    publisher: "UC Marin Master Gardeners · University of California Cooperative Extension",
+    title: "Chervil · Anthriscus cerefolium",
+    url: "https://ucanr.edu/site/uc-marin-master-gardeners/document/chervil",
+    sourceClass: "EXTENSION",
+    tier: "B",
+    retrievedAt: "2026-11-27",
+  },
+  radishInrae: {
+    id: "inrae-radish-germination-temperature-table",
+    publisher: "INRAE · Ephytia Tropilég",
+    title: "Radish · Raphanus sativus",
+    url: "https://ephytia.inrae.fr/en/Contents/view/23981/Tropileg-Radish",
+    sourceClass: "RESEARCH",
+    tier: "B",
+    retrievedAt: "2026-11-27",
+  },
+  commonSageJohnnys: {
+    id: "johnnys-common-sage-seed-germination",
+    publisher: "Johnny's Selected Seeds",
+    title: "Common Sage (Salvia officinalis) from Seed · Key Growing Information",
+    url: "https://www.johnnyseeds.com/growers-library/herbs/sage/sage-key-growing-information.html",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-27",
+  },
+  nasturtiumUwMadison: {
+    id: "uw-madison-nasturtium-germination",
+    publisher: "University of Wisconsin–Madison Division of Extension",
+    title: "Nasturtium, Tropaeolum species",
+    url: "https://hort.extension.wisc.edu/articles/nasturtium-tropaeolum-majus/",
+    sourceClass: "EXTENSION",
+    tier: "B",
+    retrievedAt: "2026-11-27",
+  },
+  mexicanTarragonSeedSupplier: {
+    id: "la-societe-des-plantes-mexican-tarragon-germination",
+    publisher: "La Société des Plantes",
+    title: "Organic Mexican Tarragon · Tagetes lucida",
+    url: "https://www.lasocietedesplantes.com/en/products/organic-mexican-tarragon/",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-27",
+  },
   culantroHydroponicStudy: {
     id: "nguyen-eryngium-foetidum-hydroponics-2018",
     publisher: "Nông nghiệp và Phát triển Nông thôn · Nguyen Thi Quynh et al.",
@@ -1865,6 +1919,126 @@ function wvuTransplantReference(
 }
 
 export const CROP_STAGE_REFERENCES = [
+  {
+    cropIdentity: "sage",
+    plantIds: ["broadleaf-sage"],
+    source: NUTRIENT_SOURCES.commonSageJohnnys,
+    ageWindows: [
+      {
+        minDays: 7,
+        maxDays: 21,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Johnny's indica 7–21 días para germinar Salvia officinalis a 65–70 °F (18–21 °C). Es una ventana del proveedor para semilla; comprueba emergencia y hojas. No asigna por sí sola una etapa hidropónica ni cambia evidencia EC o dosis.",
+          en: "Johnny's lists 7–21 days for Salvia officinalis to germinate at 65–70°F (18–21°C). This is the supplier's seed-starting window; check emergence and leaves. It does not assign a hydroponic stage or change EC evidence or dose by itself.",
+        },
+      },
+    ],
+    text: {
+      es: "Johnny's publica 7–21 días de germinación para Salvia officinalis a 65–70 °F. Es contexto de semilla de salvia común, no una etapa hidropónica ni una pauta de EC.",
+      en: "Johnny's lists 7–21 days to germination for Salvia officinalis at 65–70°F. This is common-sage seed context, not a hydroponic stage or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "nasturtium",
+    plantIds: ["bush-nasturtium-tropaeolum-minus"],
+    source: NUTRIENT_SOURCES.nasturtiumUwMadison,
+    ageWindows: [
+      {
+        minDays: 7,
+        maxDays: 10,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "UW–Madison Extension indica que las semillas de nasturtium suelen germinar en 7–10 días según la temperatura del suelo y distingue el tipo arbustivo Tropaeolum minus. Es contexto de germinación, no un calendario hidropónico; confirma el desarrollo visible y no cambia EC ni dosis.",
+          en: "UW–Madison Extension says nasturtium seeds typically germinate in 7–10 days depending on soil temperature and identifies bush type Tropaeolum minus. This is germination context, not a hydroponic schedule; confirm visible growth and do not change EC or dose from age alone.",
+        },
+      },
+    ],
+    text: {
+      es: "UW–Madison Extension indica 7–10 días para germinación de nasturtium y describe el tipo arbustivo Tropaeolum minus. La temperatura del suelo condiciona el plazo; no es una etapa hidropónica ni pauta de EC.",
+      en: "UW–Madison Extension lists 7–10 days for nasturtium germination and describes bush type Tropaeolum minus. Soil temperature affects timing; this is not a hydroponic stage or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "mexican-tarragon",
+    plantIds: ["mexican-tarragon"],
+    source: NUTRIENT_SOURCES.mexicanTarragonSeedSupplier,
+    ageWindows: [
+      {
+        minDays: 7,
+        maxDays: 15,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "La Société des Plantes indica 7–15 días para germinar Tagetes lucida a 21 °C. Es una ventana de proveedor para esta especie; verifica emergencia y hojas. No confirma una etapa hidropónica ni cambia el rango EC o la dosis.",
+          en: "La Société des Plantes lists 7–15 days for Tagetes lucida germination at 21°C. This is a supplier window for this species; check emergence and leaves. It does not confirm a hydroponic stage or change EC evidence or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "La Société des Plantes publica germinación de Tagetes lucida en 7–15 días a 21 °C. Es contexto de semilla del proveedor, no una transición hidropónica ni pauta de EC.",
+      en: "La Société des Plantes lists Tagetes lucida germination in 7–15 days at 21°C. This is the supplier's seed context, not a hydroponic transition or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "borage",
+    plantIds: ["borage-blue"],
+    source: NUTRIENT_SOURCES.borageYatesSeeds,
+    ageWindows: [
+      {
+        minDays: 5,
+        maxDays: 10,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Yates indica 5–10 días de germinación para sus semillas identificadas como Borago officinalis. Es una referencia del proveedor para siembra en sustrato y emergencia; comprueba las hojas y raíces. No define una etapa hidropónica ni cambia el objetivo EC o la dosis.",
+          en: "Yates lists 5–10 days to germination for its Borago officinalis seed. This is a supplier reference for substrate sowing and emergence; check the leaves and roots. It does not define a hydroponic stage or change the EC target or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Yates indica 5–10 días de germinación para Borago officinalis. Es contexto de emergencia del proveedor, no una etapa hidropónica, rango de EC ni pauta de dosis.",
+      en: "Yates lists 5–10 days to germination for Borago officinalis. This is supplier emergence context, not a hydroponic stage, EC range, or dose schedule.",
+    },
+  },
+  {
+    cropIdentity: "chervil",
+    plantIds: ["curled-chervil"],
+    source: NUTRIENT_SOURCES.chervilUcMarin,
+    ageWindows: [
+      {
+        minDays: 10,
+        maxDays: 10,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "UC Marin indica que Anthriscus cerefolium brota en unos 10 días con suelo a 60 °F (≈16 °C); la ficha también incluye ‘Crispum’. Es una referencia de germinación en suelo, no un calendario hidropónico. Comprueba la planta antes de confirmar etapa; la edad no cambia la dosis.",
+          en: "UC Marin reports Anthriscus cerefolium sprouting in about 10 days at 60°F (about 16°C) soil temperature; the page also lists ‘Crispum’. This is a soil-germination reference, not a hydroponic schedule. Check the plant before confirming stage; age does not change the dose.",
+        },
+      },
+    ],
+    text: {
+      es: "UC Marin indica emergencia de Anthriscus cerefolium en unos 10 días a 60 °F de temperatura del suelo e incluye la variedad ‘Crispum’. La condición térmica importa; no es un calendario hidropónico ni una pauta de EC.",
+      en: "UC Marin reports Anthriscus cerefolium emergence in about 10 days at 60°F soil temperature and lists the ‘Crispum’ variety. The temperature condition matters; this is not a hydroponic schedule or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "radish",
+    plantIds: ["crimson-giant-radish"],
+    source: NUTRIENT_SOURCES.radishInrae,
+    ageWindows: [
+      {
+        minDays: 4,
+        maxDays: 6,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "INRAE publica para Raphanus sativus germinación en 6 días a 15 °C y 4 días a 20–25 °C. Esta ventana depende de la temperatura de germinación y no valida específicamente el cultivar Crimson Giant. Comprueba emergencia y hojas; no cambia evidencia EC ni dosis.",
+          en: "INRAE reports Raphanus sativus germination in 6 days at 15°C and 4 days at 20–25°C. This window depends on germination temperature and does not specifically validate the Crimson Giant cultivar. Check emergence and leaves; it does not change EC evidence or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "INRAE publica tiempos de germinación dependientes de temperatura para Raphanus sativus: 6 días a 15 °C, 4 días a 20–25 °C. Es una referencia de especie, no del cultivar Crimson Giant ni de etapa hidropónica o EC.",
+      en: "INRAE publishes temperature-dependent germination times for Raphanus sativus: 6 days at 15°C and 4 days at 20–25°C. This is species-level context, not Crimson Giant cultivar, hydroponic-stage, or EC evidence.",
+    },
+  },
   {
     cropIdentity: "marjoram",
     plantIds: ["marjoram"],

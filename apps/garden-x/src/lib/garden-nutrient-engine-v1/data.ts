@@ -467,6 +467,16 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     retrievedAt: "2026-11-12",
   },
+  coleusNcStateSubstrateEc: {
+    id: "ncstate-coleus-substrate-ec-2020",
+    publisher: "NC State University · Nutritional Monitoring Series",
+    title: "Coleus (Plectranthus scutellarioides): Nutritional Monitoring",
+    url: "https://cabarrus.ces.ncsu.edu/wp-content/uploads/2021/02/2021-Abiotic-Disorders-v2.pdf?fwd=no",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "2020",
+    retrievedAt: "2026-11-26",
+  },
   coleusPlantGardenGuide: {
     id: "plant-garden-coleus-hydroponic-guide",
     publisher: "Plant.Garden",
@@ -1211,6 +1221,14 @@ export const CROP_STUDY_REFERENCES: readonly {
     text: {
       es: "Un estudio comparó concentraciones de nitrógeno en tres cultivares de coleus. No identificó Rainbow Mix ni proporciona una EC de depósito aplicable a esa mezcla.",
       en: "A study compared nitrogen concentrations for three coleus cultivars. It did not identify Rainbow Mix or provide an applicable reservoir EC for that mixture.",
+    },
+  },
+  {
+    plantIds: ["rainbow-mix-coleus"],
+    source: NUTRIENT_SOURCES.coleusNcStateSubstrateEc,
+    text: {
+      es: "NC State University publica para coleus Plectranthus scutellarioides valores EC de 0,6–0,9 mS/cm por extracción 1:2, 1,3–2,0 por SME y 2,0–3,0 por PourThru. Son mediciones del sustrato obtenidas con métodos distintos, no EC de solución nutritiva en un depósito; no se convierten en objetivo de tanque ni en dosis para Rainbow Mix.",
+      en: "NC State University reports coleus Plectranthus scutellarioides EC values of 0.6–0.9 mS/cm by 1:2 extraction, 1.3–2.0 by SME, and 2.0–3.0 by PourThru. These are substrate measurements from different methods, not nutrient-solution EC in a reservoir; they are not converted into a tank target or a dose for Rainbow Mix.",
     },
   },
   {

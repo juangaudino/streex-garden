@@ -480,6 +480,22 @@ describe("Calculator objective independent validation", () => {
       calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE).status,
     ).toBe("INSUFFICIENT");
   });
+  it("preserves Coleus root-zone EC evidence without treating substrate readings as reservoir targets", () => {
+    const plantId = "rainbow-mix-coleus";
+    const reference = CROP_STUDY_REFERENCES.find(
+      (item) =>
+        item.plantIds.includes(plantId) && item.source.id === "ncstate-coleus-substrate-ec-2020",
+    );
+
+    expect(reference?.selectableEcMs).toBeUndefined();
+    expect(reference?.selectableEcValuesMs).toBeUndefined();
+    expect(reference?.text.en).toContain("substrate measurements from different methods");
+    expect(reference?.text.en).toContain("not nutrient-solution EC in a reservoir");
+    expect(CROP_EVIDENCE.some((item) => item.cropIdentity === plantId)).toBe(false);
+    expect(
+      calculatePolycultureRange(contextFor({ [plantId]: 1 }, "gh-flora"), CROP_EVIDENCE).status,
+    ).toBe("INSUFFICIENT");
+  });
   it("independently recomputes fresh dosing across nine families, six waters, eight targets and four volumes", () => {
     for (const id of [
       "genovese-basil",

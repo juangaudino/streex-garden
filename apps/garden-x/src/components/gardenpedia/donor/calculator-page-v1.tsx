@@ -203,7 +203,7 @@ const T = {
     calibrate: "Calibrar este producto",
     calibrationTitle: "Una medición real para calibrar",
     calibrationInstructions:
-      "Prepara esta mezcla, mide el EC antes y después, y registra las cantidades que añadiste realmente.",
+      "Usa una muestra de prueba separada. Mide su EC antes y después de añadir nutrientes y registra las cantidades reales de cada componente.",
     calibrationStage: "Receta usada",
     calibrationBaseline: "EC antes de añadir",
     calibrationAfter: "EC después de mezclar",
@@ -355,7 +355,7 @@ const T = {
     calibrate: "Calibrate this product",
     calibrationTitle: "A real measurement to calibrate",
     calibrationInstructions:
-      "Prepare this mix, measure EC before and after, and record the amounts you actually added.",
+      "Use a separate test sample. Measure EC before and after adding nutrients, and record the actual amount of each component.",
     calibrationStage: "Recipe used",
     calibrationBaseline: "EC before adding nutrients",
     calibrationAfter: "EC after mixing",
@@ -3300,18 +3300,28 @@ function CalibrationCard({
         <ol className="mt-2 list-inside list-decimal space-y-2 text-muted-foreground">
           <li>
             {lang === "es"
-              ? "Anota el volumen real de la muestra y mide su EC antes de añadir nutrientes."
-              : "Enter the actual sample volume and measure its EC before adding nutrients."}
+              ? "Anota el volumen real de una muestra independiente y mide el EC del agua antes de añadir nutrientes."
+              : "Enter the actual volume of an independent sample and measure the water EC before adding nutrients."}
           </li>
           <li>
             {lang === "es"
-              ? "Añade los componentes siguiendo las instrucciones de mezcla de tu producto. Anota cuánto pusiste realmente de cada uno."
-              : "Add the components following your product's mixing instructions. Record the actual amount of each one."}
+              ? "Añade los componentes según la etiqueta, sin cambiar el producto ni su proporción. Anota cuánto añadiste realmente de cada uno."
+              : "Add components according to the label without changing the product or its ratio. Record the actual amount of each one."}
           </li>
           <li>
             {lang === "es"
-              ? "Mezcla, espera una lectura estable y vuelve a medir el EC. Introduce ambas lecturas y las cantidades reales abajo."
-              : "Mix, wait for a stable reading and measure EC again. Enter both readings and the actual amounts below."}
+              ? "Mezcla, espera una lectura estable y vuelve a medir. Registra el EC final y las dosis reales abajo. Cada calibración debe ser una muestra nueva; no acumules dosis sucesivas en la misma muestra."
+              : "Mix, wait for a stable reading, then measure again. Record the final EC and actual doses below. Use a fresh sample for each calibration; do not build successive dose points in one sample."}
+          </li>
+          <li>
+            {lang === "es"
+              ? "Una lectura ancla la estimación a esa dosis y volumen. Para cubrir un intervalo, registra varias muestras independientes con el mismo producto, formulación, proporción de componentes y volumen, usando dosis reales distintas. Mantén el volumen de calibración dentro del rango de tus depósitos."
+              : "One reading anchors the estimate to that dose and volume. To cover a range, record multiple independent samples with the same product, formulation, component ratio, and volume, using different actual doses. Keep calibration volumes within the range of your reservoirs."}
+          </li>
+          <li>
+            {lang === "es"
+              ? "Fuera de las dosis o volúmenes observados, Garden mostrará una advertencia de extrapolación. Una calibración personal no demuestra que el EC recuperado represente el equilibrio de nutrientes."
+              : "Outside the observed dose or volume range, Garden shows a calibration extrapolation warning. A personal calibration does not prove that restored EC represents nutrient balance."}
           </li>
         </ol>
       </details>

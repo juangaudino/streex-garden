@@ -217,15 +217,25 @@ ni una validación independiente del cultivar.
    sin dosis nutritiva. Ninguna selección de programa identifica automáticamente
    la etapa biológica de la planta.
 3. Para obtener una calibración real, prepara una muestra de prueba siguiendo la
-   receta y mide su EC **antes** y **después** de añadir y mezclar los nutrientes. Espera a
-   que la lectura se estabilice. En «¿Qué obtuviste?» introduce ambas mediciones y
-   las cantidades efectivamente añadidas de cada componente; edita cualquier dosis
-  que haya sido distinta de la sugerida. Marca la confirmación de que las
-  cantidades coinciden con lo que añadiste realmente y guarda la lectura. Completa
-  el registro de medición anterior para conservar la observación fuera del navegador. Si
-  cambias una dosis, el volumen de muestra o la receta, vuelve a confirmar antes
-  de guardar.
-4. La dosis de la receta oficial y el EC esperado por el fabricante son referencias
+   receta en un recipiente separado del sistema de las plantas. Mide el EC del agua
+   **antes** y **después** de añadir y mezclar los nutrientes, espera una lectura
+   estable y registra el volumen exacto. En «¿Qué obtuviste?» introduce ambas
+   mediciones y las cantidades efectivamente añadidas de cada componente; edita
+   cualquier dosis que haya sido distinta de la sugerida. Marca la confirmación de
+   que las cantidades coinciden con lo que añadiste realmente y guarda la lectura.
+   Completa el registro de medición anterior para conservar la observación fuera
+   del navegador. Si cambias una dosis, el volumen de muestra o la receta, vuelve
+   a confirmar antes de guardar.
+4. Una observación solo ancla la estimación a la dosis y al volumen registrados.
+   Para medir una respuesta en un intervalo más amplio, repite la prueba con
+   **muestras nuevas e independientes**, manteniendo el mismo producto y
+   formulación, la misma proporción real de componentes y el mismo volumen, pero
+   usando dosis totales reales distintas. Cada muestra debe partir de agua nueva
+   con su EC inicial medido; no añadas dosis sucesivas a una sola muestra para
+   fabricar varios puntos. Usa volúmenes de prueba que representen el rango de tus
+   depósitos. Garden marcará como extrapolación cualquier cálculo fuera de las
+   dosis o volúmenes observados.
+5. La dosis de la receta oficial y el EC esperado por el fabricante son referencias
    diferentes del EC que acabas de medir. No sustituyas tu medición por el rango
    esperado. Si una cantidad es menor que la resolución de tu equipo, usa un
    procedimiento o instrumento adecuado antes de registrarla.

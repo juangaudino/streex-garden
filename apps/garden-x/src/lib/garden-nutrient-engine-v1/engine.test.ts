@@ -751,6 +751,34 @@ describe("Garden Nutrient Engine V1", () => {
     expect(tenLiters.value?.doseMl).toBeCloseTo(10);
   });
 
+  it("limits a single calibration point to its observed dose and volume while multiple points support interpolation", () => {
+    const { product, observations } = calibrationInput();
+    const build = (points: typeof observations) =>
+      buildCalibrationModel({
+        productIdentity: product,
+        formulationVersion: product.formulationVersion,
+        recipeSignature: "micro:gro:bloom=1:1:1",
+        observations: points,
+      }).value!;
+    const request = (calibration: ReturnType<typeof build>) =>
+      calculateFreshTargetEcDose({
+        sourceWaterEc: measurement(0.4, "SOURCE_WATER"),
+        targetEc: 0.6,
+        reservoirVolumeL: 10,
+        calibration,
+      });
+
+    const onePoint = request(build(observations.slice(0, 1)));
+    expect(onePoint.value?.doseMl).toBeCloseTo(2);
+    expect(onePoint.warnings.some((item) => item.code === "CALIBRATION_EXTRAPOLATION")).toBe(true);
+
+    const measuredRange = request(build(observations));
+    expect(measuredRange.value?.doseMl).toBeCloseTo(2);
+    expect(measuredRange.warnings.some((item) => item.code === "CALIBRATION_EXTRAPOLATION")).toBe(
+      false,
+    );
+  });
+
   it("checks source water against the target before requiring calibration", () => {
     const run = (ec: number) =>
       calculateFreshTargetEcDose({
@@ -799,7 +827,9 @@ describe("Garden Nutrient Engine V1", () => {
     expect(compromise!.dependsOn.length).toBeGreaterThan(0);
     expect(compromise!.deviations).toHaveLength(result.cropRanges.length);
     for (const crop of result.cropRanges) {
-      const deviation = compromise!.deviations.find((item) => item.cropIdentity === crop.cropIdentity);
+      const deviation = compromise!.deviations.find(
+        (item) => item.cropIdentity === crop.cropIdentity,
+      );
       expect(deviation?.deviation).toBeCloseTo(
         Math.max(crop.ec!.min - compromise!.targetEc, 0, compromise!.targetEc - crop.ec!.max),
         12,

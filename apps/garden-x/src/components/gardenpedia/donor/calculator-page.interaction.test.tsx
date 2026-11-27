@@ -622,7 +622,11 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByRole("tab", { name: "By EC" }));
     await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
     await user.click(screen.getByText("First calibration?"));
-    expect(screen.getByText(/actual sample volume and measure its EC/)).toBeTruthy();
+    expect(screen.getByText(/actual volume of an independent sample/)).toBeTruthy();
+    expect(screen.getByText(/Use a fresh sample for each calibration/)).toBeTruthy();
+    expect(
+      screen.getByText(/One reading anchors the estimate to that dose and volume/),
+    ).toBeTruthy();
     view.unmount();
     window.localStorage.clear();
     render(<CalculatorPage language="es" />);
@@ -632,7 +636,9 @@ describe("Calculator real control interactions", () => {
     await user.click(screen.getByRole("tab", { name: "Por EC" }));
     await user.type(screen.getByLabelText(/^EC del agua de origen/), "0.20");
     await user.click(screen.getByText("¿Primera calibración?"));
-    expect(screen.getByText(/volumen real de la muestra y mide su EC/)).toBeTruthy();
+    expect(screen.getByText(/volumen real de una muestra independiente/)).toBeTruthy();
+    expect(screen.getByText(/Cada calibración debe ser una muestra nueva/)).toBeTruthy();
+    expect(screen.getByText(/Una lectura ancla la estimación a esa dosis y volumen/)).toBeTruthy();
     await user.click(screen.getByRole("button", { name: "Calibrar este producto" }));
     expect(
       screen.getByRole("checkbox", {

@@ -233,8 +233,11 @@ ni una validación independiente del cultivar.
    usando dosis totales reales distintas. Cada muestra debe partir de agua nueva
    con su EC inicial medido; no añadas dosis sucesivas a una sola muestra para
    fabricar varios puntos. Usa volúmenes de prueba que representen el rango de tus
-   depósitos. Garden marcará como extrapolación cualquier cálculo fuera de las
-   dosis o volúmenes observados.
+   depósitos. El motor resume esas lecturas como una respuesta lineal normalizada
+   por volumen; no construye una curva entre dosis ni valida una curva del
+   fabricante. Garden marcará como extrapolación cualquier cálculo fuera de las
+   dosis o volúmenes observados. Mide después de cada dosificación; un EC coincidente
+   no confirma que se haya restaurado el equilibrio de nutrientes.
 5. La dosis de la receta oficial y el EC esperado por el fabricante son referencias
    diferentes del EC que acabas de medir. No sustituyas tu medición por el rango
    esperado. Si una cantidad es menor que la resolución de tu equipo, usa un

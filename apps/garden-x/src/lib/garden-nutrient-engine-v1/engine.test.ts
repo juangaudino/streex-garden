@@ -751,7 +751,7 @@ describe("Garden Nutrient Engine V1", () => {
     expect(tenLiters.value?.doseMl).toBeCloseTo(10);
   });
 
-  it("limits a single calibration point to its observed dose and volume while multiple points support interpolation", () => {
+  it("limits a single calibration point to its observed dose and volume while a measured range avoids the extrapolation warning", () => {
     const { product, observations } = calibrationInput();
     const build = (points: typeof observations) =>
       buildCalibrationModel({

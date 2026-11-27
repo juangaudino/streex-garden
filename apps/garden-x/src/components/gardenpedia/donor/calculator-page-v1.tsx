@@ -204,6 +204,8 @@ const T = {
     calibrationTitle: "Una medición real para calibrar",
     calibrationInstructions:
       "Usa una muestra de prueba separada. Mide su EC antes y después de añadir nutrientes y registra las cantidades reales de cada componente.",
+    calibrationResponseNote:
+      "Garden estima una respuesta lineal de EC por dosis a partir de tus mediciones compatibles y la escala por volumen. No es una curva de respuesta validada; vuelve a medir después de dosificar y respeta los avisos de extrapolación. El EC no confirma el equilibrio de nutrientes.",
     calibrationStage: "Receta usada",
     calibrationBaseline: "EC antes de añadir",
     calibrationAfter: "EC después de mezclar",
@@ -356,6 +358,8 @@ const T = {
     calibrationTitle: "A real measurement to calibrate",
     calibrationInstructions:
       "Use a separate test sample. Measure EC before and after adding nutrients, and record the actual amount of each component.",
+    calibrationResponseNote:
+      "Garden estimates a linear EC response per dose from your matching measurements and scales it by volume. This is not a validated dose-response curve; remeasure after dosing and heed extrapolation warnings. EC does not confirm nutrient balance.",
     calibrationStage: "Recipe used",
     calibrationBaseline: "EC before adding nutrients",
     calibrationAfter: "EC after mixing",
@@ -2791,6 +2795,11 @@ export function CalculatorPage({
                         )}
                         <EvidenceMark level={result.evidence} t={t} />
                         <p className="text-muted-foreground">{result.evidenceNote[lang]}</p>
+                        {mode !== "recipe" && calibrationCounts.used > 0 && (
+                          <p className="rounded-md border-l-2 border-primary/50 bg-secondary/50 p-3 text-sm">
+                            {t.calibrationResponseNote}
+                          </p>
+                        )}
                         <div>
                           <p className="text-xs font-semibold text-muted-foreground">{t.sources}</p>
                           <ul className="mt-1 list-inside list-disc text-muted-foreground">

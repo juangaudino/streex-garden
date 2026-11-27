@@ -5,6 +5,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 import { CalculatorPage } from "./calculator-page-v1";
+import { recordActualDoses } from "./calculator-lovable-adapter";
 
 vi.mock("@/components/ui/dialog", () => {
   const Passthrough = ({ children }: { children: ReactNode }) => children;
@@ -645,6 +646,46 @@ describe("Calculator real control interactions", () => {
         name: "Confirmo que estas cantidades coinciden con lo que añadí realmente",
       }),
     ).toBeTruthy();
+  });
+
+  it("discloses the linear calibrated-response approximation in EN and ES", async () => {
+    const user = userEvent.setup();
+    const observation = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1.1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(observation.value).toBeDefined();
+    window.localStorage.setItem(
+      "gardenpedia.calculator.quick-calibration.v1",
+      JSON.stringify([observation.value]),
+    );
+
+    const view = render(<CalculatorPage language="en" initialPlantId="genovese-basil" />);
+    await user.click(screen.getByRole("tab", { name: "By EC" }));
+    await user.type(screen.getByLabelText(/^Source-water EC/), "0.20");
+    await user.click(screen.getByText("Why, and where it comes from"));
+    expect(
+      screen.getByText(/estimates a linear EC response per dose from your matching measurements/i),
+    ).toBeTruthy();
+    expect(screen.getByText(/not a validated dose-response curve/i)).toBeTruthy();
+
+    view.unmount();
+    window.localStorage.clear();
+    window.localStorage.setItem(
+      "gardenpedia.calculator.quick-calibration.v1",
+      JSON.stringify([observation.value]),
+    );
+    render(<CalculatorPage language="es" initialPlantId="genovese-basil" />);
+    await user.click(screen.getByRole("tab", { name: "Por EC" }));
+    await user.type(screen.getByLabelText(/^EC del agua de origen/), "0.20");
+    await user.click(screen.getByText("Por qué y de dónde sale"));
+    expect(screen.getByText(/Garden estima una respuesta lineal de EC por dosis/i)).toBeTruthy();
+    expect(screen.getByText(/No es una curva de respuesta validada/i)).toBeTruthy();
   });
 
   it("accepts a small single-plant volume and calculates planned water to capacity", async () => {

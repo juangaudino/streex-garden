@@ -102002,7 +102002,7 @@
       },
       "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "message": "Reservoir capacity is required before adding water."
+      "message": "Se requiere conocer la capacidad del tanque antes de añadir agua."
     }
   },
   {
@@ -102037,7 +102037,7 @@
       },
       "evidence": "high",
       "compatibility": "COMMON_OPTIMUM_RANGE",
-      "message": "Reservoir capacity is required before adding water."
+      "message": "Se requiere conocer la capacidad del tanque antes de añadir agua."
     }
   },
   {

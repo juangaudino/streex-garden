@@ -1025,8 +1025,11 @@ export function generalCropReferenceForStage(
     hydroponicSystem,
     measurementScope: "NUTRIENT_SOLUTION",
   };
-  const selected = stage === "MIXED" ? "SEEDLING" : stage;
-  if (selectCropRange({ ...context, phenologicalStage: selected }).ec.ec) return undefined;
+  // A mixed cohort has no single phenological stage. Do not use Seedling as a
+  // proxy: that can hide or mislabel a general reference for groups that do not
+  // contain seedlings. General references remain contextual, never automatic.
+  if (stage !== "MIXED" && selectCropRange({ ...context, phenologicalStage: stage }).ec.ec)
+    return undefined;
   const reference = selectCropRange(context).ec;
   if (!reference.ec) return undefined;
   return { range: reference.ec, sources: reference.observations.map((item) => item.source) };
@@ -1420,6 +1423,14 @@ function presentationMessage(message: string, lang: Lang): string {
     [
       "Registra una calibración específica de este producto para calcular la dosis de nutrientes.",
       "A product-specific calibration is required to calculate nutrient addition.",
+    ],
+    [
+      "Se requiere una calibración específica del producto para calcular el aporte de nutrientes después del relleno.",
+      "A product-specific calibration is required to calculate nutrient addition after top-up.",
+    ],
+    [
+      "Se requiere conocer la capacidad del tanque antes de añadir agua.",
+      "Reservoir capacity is required before adding water.",
     ],
     [
       "La primera dosis parcial es una estrategia experimental; mezcla, espera una lectura estable y vuelve a medir antes de continuar.",
@@ -1897,7 +1908,13 @@ function calculateResult(input: CalcInput): CalcResult {
       targetPresentation,
     );
   if (input.capacityLiters == null)
-    return engineNeeds("Reservoir capacity is required before adding water.", targetPresentation);
+    return engineNeeds(
+      presentationMessage(
+        "Se requiere conocer la capacidad del tanque antes de añadir agua.",
+        input.language ?? "es",
+      ),
+      targetPresentation,
+    );
   const topup = calculateTopUpMaintenance({
     currentVolumeL: input.currentLiters,
     nominalVolumeL: input.capacityLiters,

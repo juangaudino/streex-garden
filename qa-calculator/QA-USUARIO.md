@@ -94,7 +94,7 @@ ese sistema; Lavender Vera, Tulsi y Garlic Chives requieren elegir una etapa que
 coincida con la observación. La procedencia de cultivar y sistema sigue visible;
 no se presenta como validación específica de cada cultivar.
 
-Una auditoría de **6 etapas × 7 sistemas** para las 83 variedades encontró un
+Una auditoría de **6 etapas × 8 sistemas** para las 83 variedades encontró un
 rango aplicable para **70/83** al menos en uno de esos contextos. Las 13 listadas
 abajo no resuelven un rango automático en esa matriz; siguen disponibles para
 receta oficial o para cálculo con objetivo explícito y calibración compatible.

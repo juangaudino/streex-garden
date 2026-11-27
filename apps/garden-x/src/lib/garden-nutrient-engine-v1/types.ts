@@ -29,15 +29,18 @@ export type ScopeBasis = "STATED" | "INFERRED" | "UNKNOWN";
 export type StageApplicability =
   "SEEDLING" | "VEGETATIVE" | "MATURE" | "FLOWERING" | "FRUITING" | "ALL" | "UNSPECIFIED";
 
-export type HydroponicSystem =
-  | "KRATKY"
-  | "DWC"
-  | "NFT"
-  | "DRIP"
-  | "AEROPONIC"
-  | "COUNTERTOP_POD"
-  | "GENERAL_HYDROPONIC"
-  | "UNKNOWN";
+export const HYDROPONIC_SYSTEMS = [
+  "KRATKY",
+  "DWC",
+  "NFT",
+  "DRIP",
+  "AEROPONIC",
+  "COUNTERTOP_POD",
+  "GENERAL_HYDROPONIC",
+  "UNKNOWN",
+] as const;
+
+export type HydroponicSystem = (typeof HYDROPONIC_SYSTEMS)[number];
 
 export type SourceClass =
   "MANUFACTURER" | "UNIVERSITY_EXTENSION" | "SPECIALIST_GROWER" | "COMMUNITY" | "OTHER";
@@ -234,16 +237,18 @@ export interface PolycultureRange {
   limitingCrops: string[];
   deviations?: { cropIdentity: string; deviation: number }[] | undefined;
   separationRecommended?: boolean | undefined;
-  operationalCompromise?: {
-    targetEc: number;
-    limitingCrops: string[];
-    deviations: { cropIdentity: string; deviation: number }[];
-    rationale: string;
-    separationRecommended: true;
-    epistemic: "ENGINE_INFERENCE";
-    experimentalPolicy: true;
-    dependsOn: string[];
-  } | undefined;
+  operationalCompromise?:
+    | {
+        targetEc: number;
+        limitingCrops: string[];
+        deviations: { cropIdentity: string; deviation: number }[];
+        rationale: string;
+        separationRecommended: true;
+        epistemic: "ENGINE_INFERENCE";
+        experimentalPolicy: true;
+        dependsOn: string[];
+      }
+    | undefined;
   rationale?: string | undefined;
   evidenceState: EvidenceState;
   claims: Claim[];

@@ -35,7 +35,7 @@
   deterministic Recipe, By EC, Correct and Top Up tests.
 - At unspecified stage/system, the 83-variety audit classifies 7 as
   `SUPPORTED_DIRECT`, 57 as `SUPPORTED_VIA_DEFENSIBLE_MAPPING`, and 19 as
-  `INSUFFICIENT`. Across the tested 6 phenological stages × 7 hydroponic
+  `INSUFFICIENT`. Across the tested 6 phenological stages × 8 hydroponic
   systems, 70/83 have an automatic evidence range in at least one context;
   13 remain insufficient in every tested context. Those 13 still support an
   official recipe or an explicit user target with compatible exact-product
@@ -109,7 +109,7 @@ not plant phenology, and this guard does not make it one.
   measurements.
 - For those 83 varieties at unspecified stage/system, coverage is 7
   `SUPPORTED_DIRECT`, 57 `SUPPORTED_VIA_DEFENSIBLE_MAPPING`, and 19
-  `INSUFFICIENT`. Across 6 stages × 7 hydroponic contexts, 70/83 obtain an
+  `INSUFFICIENT`. Across 6 stages × 8 hydroponic contexts, 70/83 obtain an
   automatic evidence range somewhere; 13 do not. All 83 can still run with an
   explicit user target and compatible measured calibration. The 13 must remain
   visibly `INSUFFICIENT`; no automatic crop EC range is claimed for them.

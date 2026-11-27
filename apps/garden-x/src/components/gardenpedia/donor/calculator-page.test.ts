@@ -6,6 +6,7 @@ import {
   CROP_STUDY_REFERENCES,
   FLORA_RECIPE,
 } from "@/lib/garden-nutrient-engine-v1/data";
+import { HYDROPONIC_SYSTEMS } from "@/lib/garden-nutrient-engine-v1/types";
 import {
   buildCalibrationModel,
   calculateEcCorrection,
@@ -1177,6 +1178,16 @@ describe("Gardenpedia Calculator V1 integration", () => {
     );
     expect(calculateFreshTargetEc({ contexts: context }).ok).toBe(false);
   });
+
+  it("keeps general references stage-neutral for mixed cohorts", () => {
+    expect(generalCropReferenceForStage("bibb-lettuce", "MIXED", "DWC")?.range).toMatchObject({
+      min: 1.2,
+      max: 1.8,
+    });
+    // Lavender has stage-specific observations only; a mixed group must not
+    // silently be treated as Seedling just to produce a contextual reference.
+    expect(generalCropReferenceForStage("lavender-vera", "MIXED", "DWC")).toBeUndefined();
+  });
   it("keeps different observed stages of the same crop as separate evidence contexts", () => {
     const contexts = contextFor(
       { "bibb-lettuce": 2 },
@@ -1653,17 +1664,8 @@ describe("Gardenpedia Calculator V1 integration", () => {
       "FLOWERING",
       "FRUITING",
     ] as const;
-    const hydroponicSystems = [
-      "UNKNOWN",
-      "DWC",
-      "NFT",
-      "KRATKY",
-      "DRIP",
-      "AEROPONIC",
-      "GENERAL_HYDROPONIC",
-    ] as const;
     const contexts = stages.flatMap((phenologicalStage) =>
-      hydroponicSystems.map((hydroponicSystem) => ({ phenologicalStage, hydroponicSystem })),
+      HYDROPONIC_SYSTEMS.map((hydroponicSystem) => ({ phenologicalStage, hydroponicSystem })),
     );
     const supported = new Set<string>();
     const userVarietyIds = new Set<string>(USER_ZERO_83_VARIETY_IDS);
@@ -2403,6 +2405,39 @@ describe("Gardenpedia Calculator V1 integration", () => {
     const nutrient = calculateGardenResult({ ...base, mode: "adjust", currentEc: 0.8 });
     expect(nutrient.kind).toBe("needs");
     if (nutrient.kind === "needs") expect(nutrient.calibrationRequired).toBe(true);
+  });
+
+  it("localizes the top-up calibration requirement in Spanish", () => {
+    const base = {
+      language: "es",
+      mode: "topup",
+      crops: { "bibb-lettuce": 1 },
+      liters: 4,
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      pods: 6,
+      sourceEc: 0.2,
+      currentEc: 0.8,
+      currentLiters: 2.5,
+      capacityLiters: 4,
+      waterAdded: 0.5,
+      userTarget: 1.2,
+      round: 1,
+    } as const;
+    const result = calculateGardenResult(base);
+
+    expect(result.kind).toBe("needs");
+    if (result.kind === "needs") {
+      expect(result.calibrationRequired).toBe(true);
+      expect(result.message).toBe(
+        "Se requiere una calibración específica del producto para calcular el aporte de nutrientes después del relleno.",
+      );
+    }
+
+    const capacity = calculateGardenResult({ ...base, capacityLiters: undefined });
+    expect(capacity.kind).toBe("needs");
+    if (capacity.kind === "needs")
+      expect(capacity.message).toBe("Se requiere conocer la capacidad del tanque antes de añadir agua.");
   });
 
   it("uses crop evidence for mixed systems and refuses to infer a seedling range", () => {

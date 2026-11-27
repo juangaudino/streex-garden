@@ -18,6 +18,7 @@ import {
   NUTRIENT_SOURCES,
 } from "@/lib/garden-nutrient-engine-v1/data";
 import type { DonorGuideSection } from "./canonical-adapter";
+import { CALCULATOR_STORAGE_KEY } from "./calculator-calibration-storage";
 import { gardenCalculatorPlantIndex } from "@/generated/garden-calculator-plant-index";
 import type {
   CalibrationObservation,
@@ -31,6 +32,8 @@ import type {
   UserMeasurement,
 } from "@/lib/garden-nutrient-engine-v1/types";
 import { gardenSeedTransitionReferences } from "@/generated/garden-seed-transition-index";
+
+export { CALCULATOR_STORAGE_KEY } from "./calculator-calibration-storage";
 
 export type Lang = "es" | "en";
 export type Mode = "recipe" | "target" | "adjust" | "topup";
@@ -671,8 +674,6 @@ export type SavedSystem = {
   correctionFraction?: number | undefined;
   sourceEcKnown?: boolean | undefined;
 };
-
-export const CALCULATOR_STORAGE_KEY = "gardenpedia.calculator.systems.v1";
 
 export function loadSavedSystems(): SavedSystem[] {
   if (typeof window === "undefined") return [];

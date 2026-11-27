@@ -6,6 +6,7 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 
 import { CalculatorPage } from "./calculator-page-v1";
 import { recordActualDoses } from "./calculator-lovable-adapter";
+import { QUICK_CALIBRATION_STORAGE_KEY } from "./calculator-calibration-storage";
 
 vi.mock("@/components/ui/dialog", () => {
   const Passthrough = ({ children }: { children: ReactNode }) => children;
@@ -33,6 +34,49 @@ vi.mock("@/lib/utils", () => ({
 }));
 
 describe("Calculator real control interactions", () => {
+  it("makes a Quick Mix calibration available to a named system with the same exact recipe", async () => {
+    const user = userEvent.setup();
+    const calibration = recordActualDoses({
+      productId: "gh-flora",
+      stageId: "feeding-2",
+      liters: 4,
+      pods: 6,
+      baselineEc: 0.2,
+      resultingEc: 1.1,
+      actualDoses: { micro: "4", gro: "3", bloom: "2" },
+    });
+    expect(calibration.value).toBeDefined();
+    window.localStorage.setItem(QUICK_CALIBRATION_STORAGE_KEY, JSON.stringify([calibration.value]));
+    window.localStorage.setItem(
+      "gardenpedia.calculator.systems.v1",
+      JSON.stringify([
+        {
+          id: "named-tank",
+          name: "Named Tank",
+          crops: { "genovese-basil": 1 },
+          liters: 4,
+          productId: "gh-flora",
+          water: { label: { es: "Agua de origen", en: "Source water" }, ec: 0.2 },
+          sourceEcKnown: true,
+          meter: "—",
+          stageId: "feeding-2",
+          pods: 6,
+          unit: "mS",
+          mode: "target",
+          userTarget: 1.2,
+        },
+      ]),
+    );
+
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByText("Named Tank", { exact: true }));
+
+    expect(
+      screen.getByText(/Calibration: 1 of 1 saved readings apply to this formulation and ratio/),
+    ).toBeTruthy();
+    expect(screen.queryByText(/No calibration observations match/i)).toBeNull();
+  });
+
   it("keeps Top Up examples visibly separate from empty measured inputs in EN and ES", async () => {
     const user = userEvent.setup();
     const view = render(<CalculatorPage language="en" />);
@@ -1111,7 +1155,10 @@ describe("Calculator real control interactions", () => {
       water: { ec: 0.2 },
       crops: { "genovese-basil": 1 },
     });
-    expect(saved.calibrationObservations[0].componentDosesMl).toEqual({
+    const storedCalibrations = JSON.parse(
+      window.localStorage.getItem("gardenpedia.calculator.calibrations.v1")!,
+    );
+    expect(storedCalibrations[0].componentDosesMl).toEqual({
       micro: 4,
       gro: 3,
       bloom: 2,

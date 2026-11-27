@@ -65,6 +65,12 @@ import {
 } from "./calculator-lovable-adapter";
 import { cn } from "@/lib/utils";
 import type { GardenpediaLanguage } from "./gardenpedia-shell";
+import {
+  loadCalibrationObservations,
+  mergeCalibrationObservations,
+  persistCalibrationObservations,
+  QUICK_CALIBRATION_STORAGE_KEY,
+} from "./calculator-calibration-storage";
 
 const CROP_STAGE_SUGGESTIONS = [
   "SEEDLING",
@@ -419,22 +425,10 @@ const MODE_ICONS: Record<Mode, React.ComponentType<{ className?: string }>> = {
 };
 const MODES: Mode[] = ["recipe", "target", "adjust", "topup"];
 const LITERS = [2, 4, 6.5, 10];
-const QUICK_CALIBRATION_STORAGE_KEY = "gardenpedia.calculator.quick-calibration.v1";
-
 function parseDecimalInput(raw: string): number | null {
   if (raw.trim() === "") return null;
   const parsed = Number(raw.trim().replace(",", "."));
   return Number.isFinite(parsed) ? parsed : null;
-}
-
-function loadQuickCalibrationObservations(): import("@/lib/garden-nutrient-engine-v1").CalibrationObservation[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const parsed = JSON.parse(window.localStorage.getItem(QUICK_CALIBRATION_STORAGE_KEY) ?? "[]");
-    return Array.isArray(parsed) ? parsed : [];
-  } catch {
-    return [];
-  }
 }
 
 const QUICK: SavedSystem = {
@@ -539,7 +533,7 @@ export function CalculatorPage({
   const [justLearned, setJustLearned] = useState(false);
   const [calibrationObservations, setCalibrationObservations] = useState<
     import("@/lib/garden-nutrient-engine-v1").CalibrationObservation[]
-  >(() => loadQuickCalibrationObservations());
+  >(() => loadCalibrationObservations());
 
   const product = CALCULATOR_PRODUCTS.find((p) => p.id === productId) ?? CALCULATOR_PRODUCTS[0]!;
   const activeRecipeStage = product.recipeStages.find((stage) => stage.id === stageId);
@@ -588,7 +582,7 @@ export function CalculatorPage({
         correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
         water: { ...sys.water, ec: sourceEc },
         sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
-        calibrationObservations,
+        calibrationObservations: sys.calibrationObservations ?? [],
       };
     }
   };
@@ -633,8 +627,7 @@ export function CalculatorPage({
     setCorrectionStepInput(String((s.correctionFraction ?? 0.5) * 100));
     setReservoirMixConfirmed(false);
     setRound(1);
-    const observations =
-      s.id === "quick" ? loadQuickCalibrationObservations() : (s.calibrationObservations ?? []);
+    const observations = loadCalibrationObservations();
     setCalibrationObservations(observations);
     setJustLearned(false);
     setCalibrationOpen(true);
@@ -668,7 +661,7 @@ export function CalculatorPage({
       unit,
       water: { ...sys.water, ec: sourceEc },
       sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
-      calibrationObservations,
+      calibrationObservations: sys.calibrationObservations ?? [],
       mode,
       userTarget,
       currentEc: parseDisplayedEc(currentEc),
@@ -780,7 +773,11 @@ export function CalculatorPage({
   const saveCalibrationObservation = (
     observation: import("@/lib/garden-nutrient-engine-v1").CalibrationObservation,
   ) => {
-    const nextObservations = [...calibrationObservations, observation];
+    const nextObservations = mergeCalibrationObservations(
+      loadCalibrationObservations(),
+      calibrationObservations,
+      [observation],
+    );
     const snapshot: SavedSystem = {
       ...sys,
       crops: { ...crops },
@@ -801,7 +798,7 @@ export function CalculatorPage({
       unit,
       water: { ...sys.water, ec: sourceEc },
       sourceEcKnown: parseDecimalInput(sourceEcInput) !== null,
-      calibrationObservations: nextObservations,
+      calibrationObservations: sys.calibrationObservations ?? [],
       mode,
       userTarget,
       currentEc: parseDisplayedEc(currentEc),
@@ -813,22 +810,42 @@ export function CalculatorPage({
       correctionFraction: (parseDecimalInput(correctionStepInput) ?? 50) / 100,
       calibration: { learned: 0, readings: nextObservations.length },
     };
-    let persisted = true;
+    let persisted = persistCalibrationObservations(nextObservations);
     if (sys.id === "quick") {
-      try {
-        window.localStorage.setItem(
-          QUICK_CALIBRATION_STORAGE_KEY,
-          JSON.stringify(nextObservations),
-        );
-      } catch {
-        persisted = false;
+      if (!persisted) {
+        try {
+          const legacy = JSON.parse(
+            window.localStorage.getItem(QUICK_CALIBRATION_STORAGE_KEY) ?? "[]",
+          );
+          window.localStorage.setItem(
+            QUICK_CALIBRATION_STORAGE_KEY,
+            JSON.stringify(
+              mergeCalibrationObservations(Array.isArray(legacy) ? legacy : [], [observation]),
+            ),
+          );
+          persisted = true;
+        } catch {
+          // Keep this calibration in memory for the current session.
+        }
       }
     } else {
-      const nextSystems = savedSystems.map((item) => (item.id === sys.id ? snapshot : item));
+      const systemObservations = mergeCalibrationObservations(sys.calibrationObservations ?? [], [
+        observation,
+      ]);
+      const nextSystems = savedSystems.map((item) =>
+        item.id === sys.id
+          ? {
+              ...snapshot,
+              calibrationObservations: systemObservations,
+              calibration: { learned: 0, readings: systemObservations.length },
+            }
+          : item,
+      );
       try {
         persistSavedSystems(nextSystems);
+        persisted = true;
       } catch {
-        persisted = false;
+        // The shared registry may still have persisted the observation.
       }
       setSavedSystems(nextSystems);
     }

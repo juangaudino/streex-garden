@@ -4,6 +4,7 @@ import {
   calculatorSeedTransitionForPlant,
   calculatorStageReferenceForPlant,
   contextFor,
+  hasApplicableCropNutrientEvidence,
 } from "./calculator-lovable-adapter";
 import { calculatePolycultureRange } from "@/lib/garden-nutrient-engine-v1/engine";
 import { CROP_EVIDENCE, NUTRIENT_SOURCES } from "@/lib/garden-nutrient-engine-v1/data";
@@ -361,12 +362,89 @@ describe("calculator age stage cues", () => {
     expect(calculatorSeedTransitionForPlant("unmapped-test-identity")).toBeUndefined();
   });
 
-  it("uses the UNAM Epazote transplant observation as context, never an automatic age window", () => {
+  it("uses the UNAM Epazote transplant observation as confirmable context, never automatic dosing", () => {
     const reference = calculatorStageReferenceForPlant("epazote");
     expect(reference?.source.id).toBe("unam-epazote-hydroponic-2013");
     expect(reference?.text.en).toMatch(/about 30 days.*second pair of leaves/i);
     expect(reference?.text.en).toMatch(/ambiguous/i);
-    expect(calculatorAgeStageCueForPlant("epazote", 30)).toBeUndefined();
+    const cue = calculatorAgeStageCueForPlant("epazote", 30);
+    expect(cue?.ageWindow).toMatchObject({ minDays: 30, maxDays: 30, stageSuggestion: "SEEDLING" });
+    expect(cue?.ageWindow.text.en).toMatch(/not an automatic transition or dose/i);
+    expect(hasApplicableCropNutrientEvidence("epazote", { phenologicalStage: "SEEDLING" })).toBe(
+      false,
+    );
+  });
+
+  it("keeps seasonal sage guidance out of age matching and adds supported cues for chives and culantro", () => {
+    const sage = calculatorStageReferenceForPlant("broadleaf-sage");
+    expect(sage?.source.id).toBe("uw-madison-common-sage-seed-starting");
+    expect(sage?.text.en).toMatch(/6–8 weeks before the average last frost/i);
+    expect(calculatorAgeStageCueForPlant("broadleaf-sage", 49)).toBeUndefined();
+
+    const chives = calculatorAgeStageCueForPlant("common-chives", 49);
+    expect(chives?.reference.source.id).toBe("usu-extension-chives-transplant-6-8-weeks");
+    expect(chives?.ageWindow).toMatchObject({
+      minDays: 42,
+      maxDays: 56,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(chives?.ageWindow.text.en).toMatch(/not an automatic hydroponic stage/i);
+
+    const garlicChives = calculatorAgeStageCueForPlant("garlic-chives", 60);
+    expect(garlicChives?.reference.source.id).toBe("chinese-chive-hydroponic-salinity-2022");
+    expect(garlicChives?.ageWindow).toMatchObject({
+      minDays: 60,
+      maxDays: 60,
+      stageSuggestion: "SEEDLING",
+    });
+
+    const culantro = calculatorAgeStageCueForPlant("culantro", 60);
+    expect(culantro?.reference.source.id).toBe(
+      "soto-rodriguez-eryngium-hydroponic-transplant-2020",
+    );
+    expect(culantro?.ageWindow.text.en).toMatch(/about seven true leaves/i);
+    expect(culantro?.ageWindow.text.en).toMatch(/not a universal transition or dose/i);
+
+    expect(hasApplicableCropNutrientEvidence("culantro", { phenologicalStage: "SEEDLING" })).toBe(
+      false,
+    );
+  });
+
+  it("uses USU's Vera lavender seed-to-transplant interval as wide nursery context", () => {
+    const cue = calculatorAgeStageCueForPlant("lavender-vera", 150);
+    expect(cue?.reference.source.id).toBe("usu-english-lavender-seed-to-transplant-100-200-days");
+    expect(cue?.ageWindow).toMatchObject({
+      minDays: 100,
+      maxDays: 200,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(cue?.ageWindow.text.en).toMatch(/lists Vera among English lavender varieties/);
+    expect(cue?.ageWindow.text.en).toMatch(/not a hydroponic stage or dose/);
+  });
+
+  it("uses USU leafy-green and brassica transplant ages only as confirmed nursery context", () => {
+    const arugula = calculatorAgeStageCueForPlant("astro-arugula", 24);
+    expect(arugula?.reference.source.id).toBe("usu-leafy-greens-transplant-3-4-weeks");
+    expect(arugula?.ageWindow).toMatchObject({
+      minDays: 21,
+      maxDays: 28,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(arugula?.ageWindow.text.en).toMatch(/field production/);
+    expect(arugula?.ageWindow.text.en).toMatch(/not a confirmed hydroponic stage or dose/);
+
+    const tatsoi = calculatorAgeStageCueForPlant("tatsoi", 49);
+    expect(tatsoi?.reference.source.id).toBe("usu-brassica-transplant-6-8-weeks");
+    expect(tatsoi?.ageWindow).toMatchObject({
+      minDays: 42,
+      maxDays: 56,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(tatsoi?.ageWindow.text.en).toMatch(/most Brassica crops/);
+    expect(tatsoi?.ageWindow.text.en).toMatch(/not a hydroponic schedule or dose/);
+    expect(hasApplicableCropNutrientEvidence("tatsoi", { phenologicalStage: "SEEDLING" })).toBe(
+      false,
+    );
   });
 
   it("returns no cue for unmapped plants or invalid ages", () => {

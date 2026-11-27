@@ -774,6 +774,18 @@ export const NUTRIENT_SOURCES = {
     region: "Vietnam",
     retrievedAt: "2026-11-25",
   },
+  culantroHydroponicTransplant2020: {
+    id: "soto-rodriguez-eryngium-hydroponic-transplant-2020",
+    publisher: "Universidad de Costa Rica · Agronomía Costarricense",
+    title:
+      "Efecto de la protección y la nutrición sobre parámetros hídricos y el rendimiento de culantro coyote hidropónico",
+    url: "https://www.scielo.sa.cr/scielo.php?pid=S0377-94242020000200063&script=sci_arttext&tlng=es",
+    sourceClass: "OTHER",
+    tier: "B",
+    publication: "2020; 44(2):63–80",
+    region: "Costa Rica",
+    retrievedAt: "2026-11-27",
+  },
   garlicChivesHydroponicStudy: {
     id: "chinese-chive-hydroponic-salinity-2022",
     publisher: "Frontiers in Nutrition",
@@ -783,6 +795,45 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     publication: "2022",
     retrievedAt: "2026-11-12",
+  },
+  usuChivesTransplant: {
+    id: "usu-extension-chives-transplant-6-8-weeks",
+    publisher: "Utah State University Extension",
+    title: "How to Grow Chives in Your Garden",
+    url: "https://extension.usu.edu/yardandgarden/research/chives-in-the-garden",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "2020",
+    retrievedAt: "2026-11-27",
+  },
+  uwMadisonCommonSage: {
+    id: "uw-madison-common-sage-seed-starting",
+    publisher: "University of Wisconsin–Madison Division of Extension",
+    title: "Sage, Salvia officinalis",
+    url: "https://hort.extension.wisc.edu/articles/sage-salvia-officinalis/",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-27",
+  },
+  usuLeafyGreensTransplantTiming: {
+    id: "usu-leafy-greens-transplant-3-4-weeks",
+    publisher: "Utah State University Extension",
+    title:
+      "Chapter 6: Leafy Greens Production · Utah Vegetable Production and Pest Management Guide",
+    url: "https://extension.usu.edu/vegetableguide/leafy-greens/planting-spacing",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "2020",
+    retrievedAt: "2026-11-27",
+  },
+  usuBrassicaTransplantTiming: {
+    id: "usu-brassica-transplant-6-8-weeks",
+    publisher: "Utah State University Extension",
+    title: "Transplant Production · Brassica",
+    url: "https://extension.usu.edu/vegetableguide/brassica/transplant-production",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    retrievedAt: "2026-11-27",
   },
   garlicChivesAeroponicEcStudy2026: {
     id: "asianjab-chinese-chives-aeroponics-ec-2026",
@@ -813,6 +864,16 @@ export const NUTRIENT_SOURCES = {
     tier: "B",
     publication: "2019",
     retrievedAt: "2026-11-07",
+  },
+  usuEnglishLavenderSeedTiming: {
+    id: "usu-english-lavender-seed-to-transplant-100-200-days",
+    publisher: "Utah State University Extension",
+    title: "How to Grow English Lavender in Your Garden",
+    url: "https://extension.usu.edu/yardandgarden/research/english-lavender-in-the-garden",
+    sourceClass: "UNIVERSITY_EXTENSION",
+    tier: "A",
+    publication: "2020",
+    retrievedAt: "2026-11-27",
   },
   lavenderHydroponicStudy: {
     id: "cyprus-lavender-potassium-hydroponic-2017",
@@ -1848,9 +1909,149 @@ export const CROP_STAGE_REFERENCES = [
   {
     cropIdentity: "epazote",
     source: NUTRIENT_SOURCES.epazoteUnamStudy,
+    ageWindows: [
+      {
+        minDays: 30,
+        maxDays: 30,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "La tesis de la UNAM trasplantó epazote alrededor del día 30, al observar el segundo par de hojas, en su sistema de agregados. Compara hojas y raíces y confirma la etapa; es el calendario de ese ensayo, no una transición automática ni una dosis. La unidad de conductividad de la tesis es ambigua y no se usa para EC.",
+          en: "The UNAM thesis transplanted epazote at about day 30, after observing the second pair of leaves, in its aggregate system. Compare leaves and roots and confirm the stage; this is that trial's timeline, not an automatic transition or dose. The thesis's conductivity unit is ambiguous and is not used for EC.",
+        },
+      },
+    ],
     text: {
       es: "En un cultivo hidropónico de agregados, la tesis de la UNAM trasplantó epazote alrededor de los 30 días, cuando observó el segundo par de hojas. Es una referencia de ese ensayo para observar el desarrollo, no una transición automática ni una dosis. La unidad publicada de conductividad es ambigua y no se usa para establecer un rango de EC.",
       en: "In a hydroponic aggregate system, the UNAM thesis transplanted epazote at about 30 days after observing the second pair of leaves. This is a development cue from that study, not an automatic stage transition or a dose. The thesis's unit for conductivity is ambiguous and is not used to establish an EC range.",
+    },
+  },
+  {
+    cropIdentity: "broadleaf-sage",
+    plantIds: ["broadleaf-sage"],
+    source: NUTRIENT_SOURCES.uwMadisonCommonSage,
+    text: {
+      es: "UW–Madison recomienda iniciar Salvia officinalis bajo techo 6–8 semanas antes de la última helada promedio. Es una pauta estacional para el tipo común de salvia, no una transición hidropónica ni una recomendación de EC.",
+      en: "UW–Madison recommends starting Salvia officinalis indoors 6–8 weeks before the average last frost. This is seasonal guidance for common sage, not a hydroponic stage transition or EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "chives",
+    plantIds: ["common-chives"],
+    source: NUTRIENT_SOURCES.usuChivesTransplant,
+    ageWindows: [
+      {
+        minDays: 42,
+        maxDays: 56,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "USU Extension indica que los trasplantes de cebollino común necesitan 6–8 semanas de crecimiento antes de plantarse en el jardín. Es contexto de vivero, no una etapa hidropónica automática; confirma el desarrollo visible antes de usarlo.",
+          en: "USU Extension says common chive transplants need 6–8 weeks of growth before planting in the garden. This is nursery context, not an automatic hydroponic stage; confirm visible development before using it.",
+        },
+      },
+    ],
+    text: {
+      es: "USU Extension indica 6–8 semanas de crecimiento para trasplantes de cebollino común antes de plantarlos en el jardín. No es una pauta de EC ni valida la misma ventana para cebollino chino/garlic chives.",
+      en: "USU Extension lists 6–8 weeks of growth for common chive transplants before planting in the garden. This is not EC guidance and does not validate the same window for Chinese/garlic chives.",
+    },
+  },
+  {
+    cropIdentity: "garlic-chives",
+    plantIds: ["garlic-chives"],
+    source: NUTRIENT_SOURCES.garlicChivesHydroponicStudy,
+    ageWindows: [
+      {
+        minDays: 60,
+        maxDays: 60,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "El estudio de Allium tuberosum cultivar 791 trasplantó plántulas de dos meses a DFT. Es una observación del cultivar y ensayo citados; compara raíces y hojas y confirma la etapa. No convierte los 60 días en una transición universal ni cambia la dosis.",
+          en: "The Allium tuberosum cultivar 791 study transplanted two-month-old seedlings into DFT. This is an observation from that cultivar and trial; compare roots and leaves and confirm the stage. It does not make 60 days a universal transition or change the dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Un ensayo DFT de Allium tuberosum cultivar 791 trasplantó plántulas de dos meses y luego las mantuvo sin cosechar durante el primer año para favorecer el rizoma. La edad es contexto de ese método, no una etapa automática ni una recomendación de EC.",
+      en: "A DFT study of Allium tuberosum cultivar 791 transplanted two-month-old seedlings and then left them unharvested in the first year to promote rhizome growth. This age is method-specific context, not an automatic stage or EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "culantro",
+    plantIds: ["culantro"],
+    source: NUTRIENT_SOURCES.culantroHydroponicTransplant2020,
+    ageWindows: [
+      {
+        minDays: 60,
+        maxDays: 60,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "En un ensayo hidropónico de Costa Rica, plántulas de culantro coyote de 60 días y unas siete hojas verdaderas se trasplantaron al sistema de producción. Confirma hojas y raíces visibles: es una observación del cultivar local y manejo del estudio, no una transición ni dosis universal.",
+          en: "In a Costa Rican hydroponic trial, 60-day-old culantro coyote seedlings with about seven true leaves were transplanted into the production system. Confirm visible leaves and roots: this reflects the study's local material and method, not a universal transition or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Un ensayo hidropónico costarricense usó plántulas de culantro coyote de 60 días con aproximadamente siete hojas verdaderas al trasplantar. Es contexto de establecimiento del estudio, no una etapa automática ni una recomendación de EC.",
+      en: "A Costa Rican hydroponic trial used 60-day-old culantro coyote seedlings with approximately seven true leaves at transplant. This is establishment context from that study, not an automatic stage or EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "arugula",
+    plantIds: ["astro-arugula"],
+    source: NUTRIENT_SOURCES.usuLeafyGreensTransplantTiming,
+    ageWindows: [
+      {
+        minDays: 21,
+        maxDays: 28,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "USU Extension indica que los trasplantes de arúgula y otras hojas se plantan con 3–4 semanas en bandejas de 128 o 256 celdas para producción de campo. Es contexto de vivero, no una etapa hidropónica confirmada ni una dosis; compara el desarrollo visible y confirma la etapa.",
+          en: "USU Extension says arugula and other leafy-green transplants are planted at 3–4 weeks in 128- or 256-cell trays for field production. This is nursery context, not a confirmed hydroponic stage or dose; compare visible development and confirm the stage.",
+        },
+      },
+    ],
+    text: {
+      es: "USU Extension indica 3–4 semanas para trasplantes de hojas, incluida la arúgula, en bandejas de vivero para campo. No es un calendario hidropónico, transición automática ni recomendación de EC.",
+      en: "USU Extension lists 3–4 weeks for leafy-green transplants, including arugula, in nursery trays for field production. This is not a hydroponic schedule, automatic transition or EC recommendation.",
+    },
+  },
+  {
+    cropIdentity: "tatsoi",
+    plantIds: ["tatsoi"],
+    source: NUTRIENT_SOURCES.usuBrassicaTransplantTiming,
+    ageWindows: [
+      {
+        minDays: 42,
+        maxDays: 56,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "USU Extension da 6–8 semanas desde la siembra para que la mayoría de las brásicas alcance tamaño de trasplante (5–7 hojas verdaderas), según la temperatura. Se muestra como contexto de vivero exterior para tatsoi, no como calendario hidropónico ni dosis; verifica hojas y raíces y confirma la etapa.",
+          en: "USU Extension gives 6–8 weeks from sowing for most Brassica crops to reach transplant size (5–7 true leaves), depending on temperature. This is shown as outdoor nursery context for tatsoi, not a hydroponic schedule or dose; check leaves and roots and confirm the stage.",
+        },
+      },
+    ],
+    text: {
+      es: "USU Extension describe 6–8 semanas y 5–7 hojas verdaderas para tamaño de trasplante en la mayoría de las brásicas. Es contexto general de vivero; confirma que corresponde a tu tatsoi y no lo uses como etapa hidropónica o pauta de EC.",
+      en: "USU Extension describes 6–8 weeks and 5–7 true leaves for transplant size in most Brassica crops. This is general nursery context; confirm it fits your tatsoi and do not use it as a hydroponic stage or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "english-lavender",
+    plantIds: ["lavender-vera"],
+    source: NUTRIENT_SOURCES.usuEnglishLavenderSeedTiming,
+    ageWindows: [
+      {
+        minDays: 100,
+        maxDays: 200,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "USU Extension identifica Vera entre las variedades de lavanda inglesa y estima 100–200 días desde semilla hasta trasplante; también advierte que la siembra directa germina lentamente y no es su método recomendado. Es un intervalo amplio de vivero exterior, no una etapa hidropónica ni una dosis. Comprueba raíces y hojas y confirma la etapa observada.",
+          en: "USU Extension lists Vera among English lavender varieties and estimates 100–200 days from seed to transplant; it also notes that direct seeding germinates slowly and is not its recommended method. This is a broad outdoor nursery interval, not a hydroponic stage or dose. Check roots and leaves and confirm the observed stage.",
+        },
+      },
+    ],
+    text: {
+      es: "USU Extension incluye Vera entre las variedades de lavanda inglesa y estima 100–200 días desde semilla hasta trasplante, pero recomienda normalmente propagación por esquejes. Este intervalo no confirma una etapa hidropónica ni modifica EC o dosis.",
+      en: "USU Extension includes Vera among English lavender varieties and estimates 100–200 days from seed to transplant, while noting that propagation is usually by cuttings. This interval does not confirm a hydroponic stage or change EC or dose.",
     },
   },
   {

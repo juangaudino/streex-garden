@@ -1133,6 +1133,16 @@ describe("Gardenpedia Calculator V1 integration", () => {
           reservoirMixConfirmed: true,
         });
         expect(result.kind, `${plant.id}: ${mode}`).toBe("ok");
+        if (result.kind === "ok") {
+          expect(
+            result.doses.length,
+            `${plant.id}: ${mode} must return an actionable dose`,
+          ).toBeGreaterThan(0);
+          expect(
+            result.doses.some((dose) => dose.amount > 0),
+            `${plant.id}: ${mode} must not silently return zero-dose output`,
+          ).toBe(true);
+        }
         if (mode !== "recipe" && result.kind === "ok") {
           expect(result.target?.value).toBe(1.2);
           if (!hasApplicableCropNutrientEvidence(plant.id)) {

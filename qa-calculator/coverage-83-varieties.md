@@ -156,7 +156,7 @@ Esta columna enumera referencias relacionadas con la identidad, pero no signific
 | Tatsoi rojo escarlata (`scarlet-red-tatsoi`) | nsw-asian-vegetables-nft-2011 |
 | Equinácea de Tennessee (`tennessee-coneflower-echinacea-tennesseensis`) | echinacea-agronomy-review-2024, tennessee-extension-coneflower-fertilization |
 | Capuchina enana (`bush-nasturtium-tropaeolum-minus`) | johnnys-nasturtium-shades-of-green-hydroponic, nasturtium-majus-cutting-rooting-ec-2021, uw-madison-nasturtium-germination |
-| Remolacha Bull's Blood (`bulls-blood-beet`) | egilla-bulls-blood-beet-nft-2009, hydrocrop-hydrosol-crop-ec-guide |
+| Remolacha Bull's Blood (`bulls-blood-beet`) | egilla-bulls-blood-beet-nft-2009, hydrocrop-hydrosol-crop-ec-guide, rupp-bulls-blood-beet-germination |
 | Cebolla de verdeo (`bunching-onion-allium-fistulosum`) | gangwon-welsh-onion-recirculating-hydroponics-2005, leal-bezerra-cilantro-onion-coir-2005 |
 | Tatsoi (`tatsoi`) | nsw-asian-vegetables-nft-2011 |
 | Girasol (`sunflower-helianthus-annuus`) | brazil-sunflower-hydroponic-salinity-2013 |

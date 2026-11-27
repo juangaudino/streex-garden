@@ -844,6 +844,15 @@ export const NUTRIENT_SOURCES = {
     tier: "C",
     retrievedAt: "2026-11-27",
   },
+  bullsBloodRuppSeeds: {
+    id: "rupp-bulls-blood-beet-germination",
+    publisher: "Rupp Seeds, Inc.",
+    title: "Bull's Blood Beet · Product and Growing Tips",
+    url: "https://www.ruppseeds.com/vegetables/products/beets/bulls-blood",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-27",
+  },
   culantroHydroponicStudy: {
     id: "nguyen-eryngium-foetidum-hydroponics-2018",
     publisher: "Nông nghiệp và Phát triển Nông thôn · Nguyen Thi Quynh et al.",
@@ -1977,6 +1986,26 @@ export const CROP_STAGE_REFERENCES = [
     text: {
       es: "La Société des Plantes publica germinación de Tagetes lucida en 7–15 días a 21 °C. Es contexto de semilla del proveedor, no una transición hidropónica ni pauta de EC.",
       en: "La Société des Plantes lists Tagetes lucida germination in 7–15 days at 21°C. This is the supplier's seed context, not a hydroponic transition or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "beetroot",
+    plantIds: ["bulls-blood-beet"],
+    source: NUTRIENT_SOURCES.bullsBloodRuppSeeds,
+    ageWindows: [
+      {
+        minDays: 6,
+        maxDays: 10,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Rupp Seeds indica 6–10 días para germinar su remolacha Bull's Blood con suelo a 60–85 °F. Es una referencia varietal del proveedor para emergencia; comprueba hojas y raíces. No define etapa hidropónica ni cambia evidencia EC o dosis.",
+          en: "Rupp Seeds lists 6–10 days for its Bull's Blood beet to germinate at 60–85°F soil temperature. This is the supplier's variety-level emergence reference; check leaves and roots. It does not define a hydroponic stage or change EC evidence or dose.",
+        },
+      },
+    ],
+    text: {
+      es: "Rupp Seeds publica 6–10 días de germinación para Bull's Blood a 60–85 °F. Es una ventana varietal de semilla, no una etapa hidropónica ni una pauta de EC.",
+      en: "Rupp Seeds lists 6–10 days to germination for Bull's Blood at 60–85°F. This is a varietal seed window, not a hydroponic stage or EC prescription.",
     },
   },
   {

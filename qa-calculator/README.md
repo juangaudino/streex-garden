@@ -42,14 +42,14 @@
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
 - All **83/83** varieties also have at least one cited stage-observation or
-  cultivation-context reference available to the Calculator. **76/83** have a
+  cultivation-context reference available to the Calculator. **77/83** have a
   published age window that can be shown as a confirmation cue. For the other
-  7—Common Mint, Monterey Strawberry, Chamomile (species unspecified),
-  Peppermint, Lemon Balm, Tennessee Coneflower and Bull's Blood Beet—the user
-  can still choose the observed stage and open the plant's cited context, but the Calculator
+  6—Common Mint, Monterey Strawberry, Chamomile (species unspecified),
+  Peppermint, Lemon Balm and Tennessee Coneflower—the user can still choose
+  the observed stage and open the plant's cited context, but the Calculator
   does not invent a day-to-stage window. Age is never an automatic dose input.
 - Local verification on the baseline plus this follow-through passed the full
-  suite: **1,047/1,047 tests across 127 files**, including **171/171** focused
+  suite: **1,048/1,048 tests across 127 files**, including **171/171** focused
   Calculator tests. Typecheck, changed-file lint and production build also pass.
   Gardenpedia content validation passed. Content counts:
   512 plant source records, 1,304 sources, 328 Seed Profiles, 464 taxonomy
@@ -82,7 +82,7 @@ not plant phenology, and this guard does not make it one.
   perpetual spinach, Hon Tsai Tai, Scarlet Red Tatsoi, purple kohlrabi and the
   miniature/spray Dianthus mix. Later additions cover fenugreek, marjoram,
   Papalo, borage, curled chervil, temperature-specific radish germination,
-  common sage, bush nasturtium and Mexican tarragon.
+  common sage, bush nasturtium, Mexican tarragon and Bull's Blood beet.
   Tatsoi also has a separately labeled floating-culture trial reference.
 - These references do not assign phenological stage or change an EC range or
   dose. The grower must inspect the plant and confirm a suggested stage. Garden
@@ -90,9 +90,17 @@ not plant phenology, and this guard does not make it one.
 - The exact cultivar/system boundary is retained in each note: garden and
   nursery timing is not presented as a hydroponic transition, and supplier
   germination windows only indicate emergence context.
+- Six varieties remain without a numerical age cue for specific reasons:
+  Common Mint is genus-level and its seed supplier's germination temperature
+  entries conflict; Monterey Strawberry has cultivar/planting-calendar sources,
+  not a seed-to-stage timeline; Chamomile is species-unspecified; Peppermint is
+  a hybrid generally propagated vegetatively; Lemon Balm has no verified
+  seed-to-stage interval in the applicable references; Tennessee Coneflower's
+  cold-stratification code is not a post-sowing stage age. Their selectable
+  observed stages and cited context remain available.
 - Added a regression assertion that every registered nutrient source ID is
   unique and every source URL is HTTPS. Focused age/stage and Calculator UI tests
-  pass **32/32** age-stage tests; the full suite passes **1,047/1,047**. Typecheck,
+  pass **33/33** age-stage tests; the full suite passes **1,048/1,048**. Typecheck,
   the Garden build, content validation and changed-file lint pass. Build
   regenerated only ignored artifacts; no product manifest is part of this diff.
 - The detailed per-identity audit for the 83 owned varieties, including the

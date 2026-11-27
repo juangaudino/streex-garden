@@ -313,6 +313,23 @@ describe("calculator age stage cues", () => {
     ).toBe(false);
   });
 
+  it("adds Bull's Blood emergence timing only as a varietal seedling cue", () => {
+    const cue = calculatorAgeStageCueForPlant("bulls-blood-beet", 8);
+    expect(cue?.reference.source.id).toBe("rupp-bulls-blood-beet-germination");
+    expect(cue?.ageWindow).toMatchObject({
+      minDays: 6,
+      maxDays: 10,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(cue?.ageWindow.text.en).toMatch(/60–85°F/);
+    expect(cue?.ageWindow.text.en).toMatch(/does not define a hydroponic stage/i);
+    expect(
+      CROP_EVIDENCE.some(
+        (observation) => observation.source.id === "rupp-bulls-blood-beet-germination",
+      ),
+    ).toBe(false);
+  });
+
   it("adds Texas A&M transplant timing for exact ornamental identities without changing nutrient evidence", () => {
     const cases = [
       ["tiny-tim-sweet-alyssum", 28, 21, 35],

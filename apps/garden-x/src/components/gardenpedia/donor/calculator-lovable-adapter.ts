@@ -1910,7 +1910,11 @@ function calculateResult(input: CalcInput): CalcResult {
     nominalVolumeL: input.capacityLiters,
     replacementWaterL: input.waterAdded,
     currentEc: makeMeasurement(input.currentEc),
-    replacementWaterEc: makeSourceWaterMeasurement(input.sourceEc),
+    // Never turn the input's numeric default into a claimed measurement. The
+    // engine needs source-water EC only when replacement water or dilution is
+    // actually required; without a user-confirmed reading it must abstain.
+    replacementWaterEc:
+      input.sourceEcKnown === false ? undefined : makeSourceWaterMeasurement(input.sourceEc),
     targetEc: targetValue,
     calibration: calibrationModel,
     policy: {

@@ -329,6 +329,30 @@ describe("Calculator objective independent validation", () => {
     });
     expect(refill.kind).toBe("needs");
     if (refill.kind === "needs") expect(refill.message).toMatch(/source-water EC/);
+    const noAdjustmentNeeded = calculateGardenResult({
+      ...calibrated,
+      mode: "topup",
+      sourceEcKnown: false,
+      currentEc: 1.2,
+      currentLiters: 3,
+      capacityLiters: 4.1,
+      waterAdded: 0,
+    });
+    expect(noAdjustmentNeeded.kind).toBe("ok");
+    if (noAdjustmentNeeded.kind === "ok") expect(noAdjustmentNeeded.action).toBe("hold");
+    const dilutionWithoutKnownWater = calculateGardenResult({
+      ...calibrated,
+      language: "en",
+      mode: "topup",
+      sourceEcKnown: false,
+      currentEc: 1.5,
+      currentLiters: 3,
+      capacityLiters: 4.1,
+      waterAdded: 0,
+    });
+    expect(dilutionWithoutKnownWater.kind).toBe("needs");
+    if (dilutionWithoutKnownWater.kind === "needs")
+      expect(dilutionWithoutKnownWater.message).toMatch(/dilution water EC/);
     expect(calculateGardenResult({ ...calibrated, sourceEcKnown: true }).kind).toBe("ok");
   });
   it("requires source-water EC for dilution, not for adding nutrient or holding", () => {

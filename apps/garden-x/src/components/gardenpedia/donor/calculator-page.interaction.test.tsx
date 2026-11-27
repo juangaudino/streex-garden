@@ -102,6 +102,26 @@ describe("Calculator real control interactions", () => {
     ).toBeTruthy();
   });
 
+  it("requires source-water EC in Top Up only when replacement or dilution needs it", async () => {
+    const user = userEvent.setup();
+    render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("tab", { name: "Top up" }));
+    await user.type(screen.getByLabelText(/^Reservoir capacity/), "4");
+    await user.type(screen.getByLabelText(/^Liters before top-up/), "3");
+    await user.type(screen.getByLabelText(/^Water to add/), "0");
+    await user.type(screen.getByLabelText(/^EC before top-up/), "1.2");
+    await user.type(screen.getByRole("textbox", { name: "Target EC" }), "1.2");
+
+    expect(screen.queryByText("To calculate I need")).toBeNull();
+    expect(screen.getByText("Add nothing. Measure again at your next check.")).toBeTruthy();
+
+    const currentEc = screen.getByLabelText(/^EC before top-up/);
+    await user.clear(currentEc);
+    await user.type(currentEc, "1.5");
+    expect(screen.getByText("To calculate I need")).toBeTruthy();
+    expect(screen.getByText("Source-water EC")).toBeTruthy();
+  });
+
   it("offers an explicit shared-tank compromise without replacing a chosen target", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

@@ -906,9 +906,7 @@ export function CalculatorPage({
               ? [t.volume]
               : []
             : []),
-          ...((mode === "target" || mode === "topup") && parseDecimalInput(sourceEcInput) === null
-            ? [t.sourceEc]
-            : []),
+          ...(mode === "target" && parseDecimalInput(sourceEcInput) === null ? [t.sourceEc] : []),
           ...(targetEdited && (userTarget === null || userTarget <= 0) && mode !== "recipe"
             ? [t.targetEc]
             : []),

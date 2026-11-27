@@ -22,6 +22,9 @@ describe("Calculator plant-stage guidance", () => {
     const details = disclosure.closest("details");
     expect(details?.open).toBe(false);
     expect(screen.getByText(/Age may show a published reference/)).toBeTruthy();
+    expect(
+      screen.getByText(/Count from sowing\. If it arrived as a transplant or cutting/i),
+    ).toBeTruthy();
 
     fireEvent.click(details?.querySelector("summary") ?? disclosure);
 
@@ -46,6 +49,9 @@ describe("Calculator plant-stage guidance", () => {
     render(<CalculatorPage language="es" initialPlantId="genovese-basil" />);
 
     expect(screen.getByText(/La edad puede mostrar una referencia publicada/)).toBeTruthy();
+    expect(
+      screen.getByText(/Cuenta desde la siembra\. Si llegó como trasplante o esqueje/i),
+    ).toBeTruthy();
   });
 
   it("labels shared-species cues and unresolved chamomile scope in the visible UI", async () => {

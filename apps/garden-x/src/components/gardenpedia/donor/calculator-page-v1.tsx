@@ -1833,8 +1833,8 @@ export function CalculatorPage({
                                           <span>{stageLabel}</span>
                                           <span className="ml-auto">
                                             {lang === "es"
-                                              ? "Días desde siembra"
-                                              : "Days since sowing"}
+                                              ? "Días desde siembra (referencia)"
+                                              : "Days since sowing (reference)"}
                                           </span>
                                           <input
                                             type="number"
@@ -1857,6 +1857,11 @@ export function CalculatorPage({
                                             }}
                                           />
                                         </label>
+                                        <p className="text-xs text-muted-foreground">
+                                          {lang === "es"
+                                            ? "Cuenta desde la siembra. Si llegó como trasplante o esqueje y no conoces esa fecha, déjalo vacío y confirma la etapa observada."
+                                            : "Count from sowing. If it arrived as a transplant or cutting and you do not know that date, leave this blank and confirm the observed stage."}
+                                        </p>
                                         {age !== "" && (
                                           <div className="text-muted-foreground">
                                             {cue ? (
@@ -1945,25 +1950,32 @@ export function CalculatorPage({
                             </details>
                           )}
                           {cropStages[id] !== "MIXED" && (
-                            <label className="col-span-full flex items-center gap-2 text-xs text-muted-foreground">
-                              {lang === "es"
-                                ? "Días desde la siembra (referencia)"
-                                : "Days since sowing (reference)"}
-                              <input
-                                type="number"
-                                min="0"
-                                step="1"
-                                inputMode="numeric"
-                                className="ml-auto h-10 w-20 rounded border border-input bg-background px-2 text-sm"
-                                aria-label={`${lang === "es" ? "Días desde la siembra de" : "Days since sowing of"} ${c.name[lang]}`}
-                                value={cropSowingAgeDays[id] ?? ""}
-                                onChange={(event) => {
-                                  const value = event.target.value;
-                                  if (value === "" || /^\d{1,5}$/.test(value))
-                                    setCropSowingAgeDays({ ...cropSowingAgeDays, [id]: value });
-                                }}
-                              />
-                            </label>
+                            <div className="col-span-full">
+                              <label className="flex items-center gap-2 text-xs text-muted-foreground">
+                                {lang === "es"
+                                  ? "Días desde la siembra (referencia)"
+                                  : "Days since sowing (reference)"}
+                                <input
+                                  type="number"
+                                  min="0"
+                                  step="1"
+                                  inputMode="numeric"
+                                  className="ml-auto h-10 w-20 rounded border border-input bg-background px-2 text-sm"
+                                  aria-label={`${lang === "es" ? "Días desde la siembra de" : "Days since sowing of"} ${c.name[lang]}`}
+                                  value={cropSowingAgeDays[id] ?? ""}
+                                  onChange={(event) => {
+                                    const value = event.target.value;
+                                    if (value === "" || /^\d{1,5}$/.test(value))
+                                      setCropSowingAgeDays({ ...cropSowingAgeDays, [id]: value });
+                                  }}
+                                />
+                              </label>
+                              <p className="mt-1 text-xs text-muted-foreground">
+                                {lang === "es"
+                                  ? "Cuenta desde la siembra. Si llegó como trasplante o esqueje y no conoces esa fecha, déjalo vacío y confirma la etapa observada."
+                                  : "Count from sowing. If it arrived as a transplant or cutting and you do not know that date, leave this blank and confirm the observed stage."}
+                              </p>
+                            </div>
                           )}
                           {cropStages[id] !== "MIXED" &&
                             cropSowingAgeDays[id] !== undefined &&

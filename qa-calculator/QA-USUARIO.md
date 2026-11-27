@@ -52,6 +52,11 @@ la observación con una diferencia medible o un instrumento más preciso.
 
 ## Edad y etapa observada
 
+- Introduce días desde siembra solo si conoces esa fecha. Si la planta llegó
+  como trasplante, raíz desnuda o esqueje y no sabes cuándo se sembró, deja el
+  campo vacío y selecciona la etapa que observas. El contador de llegada o
+  trasplante no equivale a días desde siembra; el dato de edad es contexto y no
+  cambia por sí solo la dosis.
 - En un tanque compartido con la misma variedad en varias etapas, elige **Varias
   etapas**, marca cada etapa observada y registra los días de cada grupo por
   separado. Por ejemplo, Genovese Basil: Plántula = 15 días y Crecimiento

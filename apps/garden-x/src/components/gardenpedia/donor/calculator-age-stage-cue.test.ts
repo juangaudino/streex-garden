@@ -180,6 +180,59 @@ describe("calculator age stage cues", () => {
     expect(transplantCue?.ageWindow.text.en).toMatch(/not an automatic stage or EC target/i);
   });
 
+  it("uses PROSEA fenugreek emergence timing only as a confirmable seedling cue", () => {
+    const cue = calculatorAgeStageCueForPlant("common-fenugreek-trigonella-foenum-graecum", 4);
+
+    expect(cue?.reference.source.id).toBe("prosea-fenugreek-germination");
+    expect(cue?.ageWindow).toMatchObject({
+      minDays: 4,
+      maxDays: 5,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(cue?.ageWindow.text.en).toMatch(/first leaf is simple/i);
+    expect(cue?.ageWindow.text.en).toMatch(/does not change the dose/i);
+    expect(
+      CROP_EVIDENCE.some((observation) => observation.source.id === "prosea-fenugreek-germination"),
+    ).toBe(false);
+    expect(calculatorAgeStageCueForPlant("common-fenugreek-trigonella-foenum-graecum", 3)).toBe(
+      undefined,
+    );
+    expect(calculatorAgeStageCueForPlant("common-fenugreek-trigonella-foenum-graecum", 6)).toBe(
+      undefined,
+    );
+  });
+
+  it("shows sourced marjoram and Papalo emergence windows without turning them into dose rules", () => {
+    const marjoram = calculatorAgeStageCueForPlant("marjoram", 17);
+    expect(marjoram?.reference.source.id).toBe("prosea-origanum-majorana-seedling-emergence");
+    expect(marjoram?.ageWindow).toMatchObject({
+      minDays: 14,
+      maxDays: 21,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(marjoram?.ageWindow.text.en).toMatch(/change the dose/i);
+    expect(calculatorAgeStageCueForPlant("marjoram", 22)).toBeUndefined();
+
+    const papalo = calculatorAgeStageCueForPlant("papalo-porophyllum-ruderale", 18);
+    expect(papalo?.reference.source.id).toBe("baumaux-papalo-seed-germination");
+    expect(papalo?.ageWindow).toMatchObject({
+      minDays: 15,
+      maxDays: 20,
+      stageSuggestion: "SEEDLING",
+    });
+    expect(papalo?.ageWindow.text.en).toMatch(/5–10 cm/i);
+    expect(papalo?.ageWindow.text.en).toMatch(/does not.*change the dose/i);
+    expect(calculatorAgeStageCueForPlant("papalo-porophyllum-ruderale", 21)).toBeUndefined();
+
+    expect(
+      CROP_EVIDENCE.some((observation) =>
+        ["prosea-origanum-majorana-seedling-emergence", "baumaux-papalo-seed-germination"].includes(
+          observation.source.id,
+        ),
+      ),
+    ).toBe(false);
+  });
+
   it("adds Texas A&M transplant timing for exact ornamental identities without changing nutrient evidence", () => {
     const cases = [
       ["tiny-tim-sweet-alyssum", 28, 21, 35],

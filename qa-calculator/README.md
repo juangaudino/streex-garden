@@ -42,10 +42,10 @@
   calibration; the UI must not turn manual study observations into automatic
   crop optima.
 - All **83/83** varieties also have at least one cited stage-observation or
-  cultivation-context reference available to the Calculator. **67/83** have a
+  cultivation-context reference available to the Calculator. **70/83** have a
   published age window that can be shown as a confirmation cue. For the other
-  16—Broadleaf Sage, Common Fenugreek, Common Mint, Mexican Tarragon, Monterey
-  Strawberry, Papalo, Marjoram, Borage, Chamomile (species unspecified),
+  13—Broadleaf Sage, Common Mint, Mexican Tarragon, Monterey
+  Strawberry, Borage, Chamomile (species unspecified),
   Peppermint, Crimson Giant Radish, Curled Chervil, Lemon Balm, Tennessee
   Coneflower, Bush Nasturtium and Bull's Blood Beet—the user can still choose
   the observed stage and open the plant's cited context, but the Calculator

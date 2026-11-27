@@ -763,6 +763,33 @@ export const NUTRIENT_SOURCES = {
     publication: "2023",
     retrievedAt: "2026-11-12",
   },
+  fenugreekProsea: {
+    id: "prosea-fenugreek-germination",
+    publisher: "Plant Resources of South-East Asia (PROSEA) · Pl@ntUse",
+    title: "Trigonella foenum-graecum",
+    url: "https://plantuse.plantnet.org/en/Trigonella_foenum-graecum_(PROSEA)",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-27",
+  },
+  marjoramProsea: {
+    id: "prosea-origanum-majorana-seedling-emergence",
+    publisher: "Plant Resources of South-East Asia (PROSEA) · PROTA4U",
+    title: "Origanum majorana",
+    url: "https://prosea.prota4u.org/view.aspx?id=583",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-27",
+  },
+  papaloBaumauxSeeds: {
+    id: "baumaux-papalo-seed-germination",
+    publisher: "Graines Baumaux",
+    title: "Papalo (Porophyllum ruderale)",
+    url: "https://www.graines-baumaux.fr/251988-papalo-porophyllum-ruderale.html",
+    sourceClass: "OTHER",
+    tier: "C",
+    retrievedAt: "2026-11-27",
+  },
   culantroHydroponicStudy: {
     id: "nguyen-eryngium-foetidum-hydroponics-2018",
     publisher: "Nông nghiệp và Phát triển Nông thôn · Nguyen Thi Quynh et al.",
@@ -1838,6 +1865,66 @@ function wvuTransplantReference(
 }
 
 export const CROP_STAGE_REFERENCES = [
+  {
+    cropIdentity: "marjoram",
+    plantIds: ["marjoram"],
+    source: NUTRIENT_SOURCES.marjoramProsea,
+    ageWindows: [
+      {
+        minDays: 14,
+        maxDays: 21,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "PROSEA indica que la mejorana sembrada en cajas de germinación emerge en unos 14–21 días. Comprueba si emergió y qué hojas observas; este contexto no confirma por sí solo la etapa de una planta interior o hidropónica ni cambia la dosis.",
+          en: "PROSEA says marjoram sown in germination boxes emerges in about 14–21 days. Check whether it has emerged and which leaves are visible; this context does not by itself confirm the stage of an indoor or hydroponic plant or change the dose.",
+        },
+      },
+    ],
+    text: {
+      es: "PROSEA indica emergencia de plántulas de mejorana 14–21 días después de sembrar en cajas de germinación. Es una pista de vivero, no una etapa hidropónica ni un calendario de dosis.",
+      en: "PROSEA reports marjoram seedlings emerging 14–21 days after sowing in germination boxes. This is a nursery cue, not a hydroponic stage or dosing schedule.",
+    },
+  },
+  {
+    cropIdentity: "papalo",
+    plantIds: ["papalo-porophyllum-ruderale"],
+    source: NUTRIENT_SOURCES.papaloBaumauxSeeds,
+    ageWindows: [
+      {
+        minDays: 15,
+        maxDays: 20,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "Graines Baumaux indica 15–20 días para germinación de sus semillas de Pápalo y recomienda trasplantar a 5–10 cm. Es el contexto del proveedor para siembra cálida en maceta; comprueba emergencia, tamaño y raíces. No confirma una etapa hidropónica ni cambia la dosis.",
+          en: "Graines Baumaux lists 15–20 days for germination of its Papalo seed and recommends transplanting at 5–10 cm. This is the supplier's context for warm pot sowing; check emergence, size and roots. It does not confirm a hydroponic stage or change the dose.",
+        },
+      },
+    ],
+    text: {
+      es: "El proveedor de semillas de Pápalo indica germinación en 15–20 días y trasplante a 5–10 cm. La referencia corresponde a siembra cálida en maceta, no a una transición hidropónica o pauta de EC.",
+      en: "The Papalo seed supplier lists germination in 15–20 days and transplanting at 5–10 cm. This refers to warm pot sowing, not a hydroponic transition or EC prescription.",
+    },
+  },
+  {
+    cropIdentity: "fenugreek",
+    plantIds: ["common-fenugreek-trigonella-foenum-graecum"],
+    source: NUTRIENT_SOURCES.fenugreekProsea,
+    ageWindows: [
+      {
+        minDays: 4,
+        maxDays: 5,
+        stageSuggestion: "SEEDLING",
+        text: {
+          es: "PROSEA describe germinación epigea de fenogreco en unos 4–5 días; la primera hoja es simple y la segunda suele ser trifoliolada. Usa la edad solo como pista de emergencia y comprueba qué hojas ves. No es un calendario hidropónico, no confirma por sí sola la etapa y no cambia la dosis.",
+          en: "PROSEA describes epigeal fenugreek germination in about 4–5 days; the first leaf is simple and the second is usually trifoliolate. Use age only as an emergence cue and check which leaves are visible. This is not a hydroponic schedule, does not confirm stage by itself, and does not change the dose.",
+        },
+      },
+    ],
+    text: {
+      es: "PROSEA describe germinación epigea en 4–5 días y diferencia la primera hoja simple de la segunda, normalmente trifoliolada. La referencia ayuda a observar la emergencia; no define una etapa hidropónica, rango de EC ni dosis.",
+      en: "PROSEA describes epigeal germination in 4–5 days and distinguishes the first simple leaf from the second, usually trifoliolate leaf. This helps contextualize emergence; it does not define a hydroponic stage, EC range, or dose.",
+    },
+  },
   {
     cropIdentity: "hibiscus-moscheutos",
     plantIds: ["blush-hibiscus"],

@@ -108,7 +108,7 @@ Esta columna enumera referencias relacionadas con la identidad, pero no signific
 | Petunia colgante (`cascading-petunia`) | purdue-petunia-fertilizer-ho313 |
 | Tomate cherry (`cherry-tomato`) | barc-fertilizer-recommendation-guide-2024-hydroponics |
 | Cilantro (`cilantro`) | nsw-asian-vegetables-nft-2011, walters-currey-herb-nft-2019, leal-bezerra-cilantro-onion-coir-2005 |
-| Fenogreco común (`common-fenugreek-trigonella-foenum-graecum`) | fenugreek-selenium-iodine-2023 |
+| Fenogreco común (`common-fenugreek-trigonella-foenum-graecum`) | fenugreek-selenium-iodine-2023, prosea-fenugreek-germination |
 | Culantro (`culantro`) | nguyen-eryngium-foetidum-hydroponics-2018 |
 | Eneldo Bouquet (`dill-bouquet`) | pure-hydroponics-crop-conductivity-2015, idroponica-facile-home-tower-guide, walters-lopez-bouquet-dill-deep-flow-2021, guanajuato-aromatic-herbs-cultivation-2017, walters-currey-herb-nft-2019 |
 | Petunia enana de macizo — mezcla de colores (`petunia-dwarf-bedding-mixed`) | purdue-petunia-fertilizer-ho313 |
@@ -128,6 +128,8 @@ Esta columna enumera referencias relacionadas con la identidad, pero no signific
 | Pimiento dulce mini (`mini-lunchbox-sweet-pepper`) | barc-fertilizer-recommendation-guide-2024-hydroponics |
 | Fresa Monterey (`monterey-strawberry`) | barc-fertilizer-recommendation-guide-2024-hydroponics, strawberry-hydroponic-ec-by-growth-stage-2021, illinois-extension-monterey-hydroponic-strawberry-2023 |
 | Pápalo (`papalo-porophyllum-ruderale`) | juarez-porophyllum-nutrient-poster |
+| Pápalo (`papalo-porophyllum-ruderale`) | baumaux-papalo-seed-germination |
+| Mejorana (`marjoram`) | prosea-origanum-majorana-seedling-emergence |
 | Cóleo mezcla arcoíris (`rainbow-mix-coleus`) | ishs-coleus-nitrogen-cultivars, plant-garden-coleus-hydroponic-guide |
 | Lechuga romana roja (`red-romaine-lettuce`) | barc-fertilizer-recommendation-guide-2024-hydroponics |
 | Caléndula Resina (`resina-calendula`) | lima-calendula-hydroponic-2019 |

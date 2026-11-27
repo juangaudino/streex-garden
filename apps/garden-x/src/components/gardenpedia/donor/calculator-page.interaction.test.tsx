@@ -32,6 +32,31 @@ vi.mock("@/lib/utils", () => ({
 }));
 
 describe("Calculator real control interactions", () => {
+  it("keeps Top Up examples visibly separate from empty measured inputs in EN and ES", async () => {
+    const user = userEvent.setup();
+    const view = render(<CalculatorPage language="en" />);
+    await user.click(screen.getByRole("tab", { name: "Top up" }));
+
+    for (const example of ["4.0", "3.0", "1.0", "1.10"]) {
+      const input = screen.getByPlaceholderText(example) as HTMLInputElement;
+      expect(input.value).toBe("");
+      const description = document.getElementById(input.getAttribute("aria-describedby") ?? "");
+      expect(description?.textContent).toMatch(/Example only/);
+    }
+    expect(screen.getAllByText("Example only; no measurement is entered.")).toHaveLength(3);
+    expect(screen.getByText("Example only; no reading is entered.")).toBeTruthy();
+    expect(screen.getByText("Enter the measured reading; tap water is not assumed.")).toBeTruthy();
+
+    view.unmount();
+    render(<CalculatorPage language="es" />);
+    await user.click(screen.getByRole("tab", { name: "Rellenar" }));
+    expect(screen.getAllByText("Ejemplo, no una medición cargada.")).toHaveLength(3);
+    expect(screen.getByText("Ejemplo, no una lectura cargada.")).toBeTruthy();
+    expect(
+      screen.getByText("Introduce la lectura medida; no se presupone agua del grifo."),
+    ).toBeTruthy();
+  });
+
   it("offers an explicit shared-tank compromise without replacing a chosen target", async () => {
     const user = userEvent.setup();
     render(<CalculatorPage language="en" />);

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from "react";
 import {
   ArrowRight,
   BookOpen,
@@ -1039,6 +1039,11 @@ export function CalculatorPage({
                       value={capacityInput}
                       onChange={setCapacityInput}
                       placeholder="4.0"
+                      hint={
+                        lang === "es"
+                          ? "Ejemplo, no una medición cargada."
+                          : "Example only; no measurement is entered."
+                      }
                     />
                   )}
                   {(mode === "topup" || mode === "adjust") && (
@@ -1048,6 +1053,11 @@ export function CalculatorPage({
                       value={currentLiters}
                       onChange={setCurrentLiters}
                       placeholder="3.0"
+                      hint={
+                        lang === "es"
+                          ? "Ejemplo, no una medición cargada."
+                          : "Example only; no measurement is entered."
+                      }
                     />
                   )}
                   {mode === "topup" && (
@@ -1061,6 +1071,11 @@ export function CalculatorPage({
                           setFillPlanMessage("");
                         }}
                         placeholder="1.0"
+                        hint={
+                          lang === "es"
+                            ? "Ejemplo, no una medición cargada."
+                            : "Example only; no measurement is entered."
+                        }
                       />
                       <button
                         type="button"
@@ -1153,6 +1168,11 @@ export function CalculatorPage({
                       setJustLearned(false);
                     }}
                     placeholder={unit === "mS" ? "1.10" : "1100"}
+                    hint={
+                      lang === "es"
+                        ? "Ejemplo, no una lectura cargada."
+                        : "Example only; no reading is entered."
+                    }
                     highlight={mode === "adjust"}
                     className={mode === "adjust" ? "sm:col-span-3" : ""}
                   />
@@ -2197,6 +2217,11 @@ export function CalculatorPage({
                   suffix={unitLabel}
                   value={sourceEcInput}
                   onChange={setSourceEcInput}
+                  hint={
+                    lang === "es"
+                      ? "Introduce la lectura medida; no se presupone agua del grifo."
+                      : "Enter the measured reading; tap water is not assumed."
+                  }
                 />
               )}
 
@@ -2278,6 +2303,11 @@ export function CalculatorPage({
                       suffix={unitLabel}
                       value={sourceEcInput}
                       onChange={setSourceEcInput}
+                      hint={
+                        lang === "es"
+                          ? "Introduce la lectura medida; no se presupone agua del grifo."
+                          : "Enter the measured reading; tap water is not assumed."
+                      }
                     />
                   )}
                   {mode === "adjust" && (
@@ -3547,6 +3577,7 @@ function Field({
   value,
   onChange,
   placeholder,
+  hint,
   highlight,
   className,
   type = "text",
@@ -3558,35 +3589,43 @@ function Field({
   value: string;
   onChange: (v: string) => void;
   placeholder?: string;
+  hint?: string;
   highlight?: boolean;
   className?: string;
   type?: React.HTMLInputTypeAttribute;
   inputMode?: React.HTMLAttributes<HTMLInputElement>["inputMode"];
   autoComplete?: string;
 }) {
+  const hintId = useId();
   return (
-    <label
-      className={cn("block w-full min-w-0 max-w-full text-xs text-muted-foreground", className)}
-    >
-      {label}
-      <span
-        className={cn(
-          "mt-1 flex h-12 w-full min-w-0 max-w-full items-center rounded-md border bg-background/70 px-3",
-          highlight ? "border-primary/50" : "border-input",
-        )}
-      >
-        <input
-          type={type}
-          inputMode={inputMode}
-          autoComplete={autoComplete}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder={placeholder}
-          className="w-0 min-w-0 flex-1 bg-transparent font-display text-lg font-semibold text-foreground outline-none"
-        />
-        {suffix && <span className="shrink-0 text-xs">{suffix}</span>}
-      </span>
-    </label>
+    <div className={cn("w-full min-w-0 max-w-full", className)}>
+      <label className="block text-xs text-muted-foreground">
+        {label}
+        <span
+          className={cn(
+            "mt-1 flex h-12 w-full min-w-0 max-w-full items-center rounded-md border bg-background/70 px-3",
+            highlight ? "border-primary/50" : "border-input",
+          )}
+        >
+          <input
+            type={type}
+            inputMode={inputMode}
+            autoComplete={autoComplete}
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+            aria-describedby={hint ? hintId : undefined}
+            className="w-0 min-w-0 flex-1 bg-transparent font-display text-lg font-semibold text-foreground outline-none"
+          />
+          {suffix && <span className="shrink-0 text-xs">{suffix}</span>}
+        </span>
+      </label>
+      {hint && (
+        <span id={hintId} className="mt-1 block text-[11px] font-normal text-muted-foreground">
+          {hint}
+        </span>
+      )}
+    </div>
   );
 }
 
